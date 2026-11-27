@@ -50,12 +50,12 @@ class Series:
 
 SERIES = {
     "EG": Series("EG", "eg", "hiwin.eg.guideway", "HW", "SC", {"H": "A", "W": "AB"}, ("R",)),
-    "HG": Series("HG", "hg", "hiwin.hg.guideway", "HW", "CH", {"H": "A", "W": "ABC"}, ("R", "T"), extra_columns=("hT",)),
+    "HG": Series("HG", "hg", "hiwin.hg.guideway", "HW", "CH", {"H": "A", "W": "ABC"}, ("R", "T"), extra_columns=("hT", "tap")),
     "RG": Series("RG", "rg", "hiwin.rg.guideway", "HW", "CH", {"H": "A", "W": "C"}, ("R",), extra_columns=("C1",)),
 }
 
 BASE_COLUMNS = ["size", "rail", "WR", "HR", "D", "h", "d", "P", "Es", "Elo", "minlen", "maxlen", "W", "H", "H1", "L1", "L", "B", "C", "Mdepth", "hole_d"]
-NOUNIT = {"size", "rail", "blocks"}
+NOUNIT = {"size", "rail", "blocks", "tap"}
 
 def columns(S: Series):
     return BASE_COLUMNS + list(S.extra_columns)
@@ -165,6 +165,7 @@ def row_values(S: Series, blocks, product, b, size, rm):
              W=mm(d["W"]), H=mm(d["H"]), H1=mm(d["H1"]), L1=mm(d["L1"]), L=mm(d["L"]), B=mm(d["B"]),
              C=mm(d["C"] or 0), Mdepth=mm(d["M_depth"] or 1), hole_d=mm(d.get("hole_d") or 1))
     if "hT" in S.extra_columns: v["hT"] = mm(r["hT"])
+    if "tap" in S.extra_columns: v["tap"] = str(int(r["S"][1:])) if rm == "T" else "0"      # the thread of a bottom-mounted rail: selects the tap feature
     if "C1" in S.extra_columns: v["C1"] = mm(d.get("C1") or d["C"])
     v["length"] = "400 mm"; v["blocks"] = "1"
     return v
@@ -219,11 +220,13 @@ def commands(S: Series, rules_mode="expr"):
     cm.append(c("solid.box", length="length", width="WR", height="HR", corner=[0, "-WR / 2", 0], operation="new", body_name="Rail", name="Rail"))
     cm.append(c("sketch.create", plane={"origin": [0, 0, "HR"], "x_dir": [1, 0, 0], "y_dir": [0, 1, 0]}, name="Rail hole"))
     cm += [c("sketch.point", point=["E", 0]), c("sketch.finish")]
-    if taps:       # the taps (smallest first) before the counterbored through hole, which is larger than the smallest tap and would leave it no material
-        cm.append(c("sketch.create", plane={"origin": [0, 0, 0], "x_dir": [1, 0, 0], "y_dir": [0, 1, 0]}, name="Rail hole bottom"))
-        cm += [c("sketch.point", point=["E", 0]), c("sketch.finish")]
-        for t in taps:
-            cm.append(c("solid.hole", sketch="Rail hole bottom", thread=t, depth="hT", targets=["Rail"], name=f"Rail hole tap {t}"))
+    if taps:       # one sketch and one tap per thread. A tap sits at x = E only when `tap` is its size; the others are displaced (the
+        # alternatives must not cut into each other while all of them exist: a thread needs a cylindrical face), the row suppresses them anyway
+        for tp in taps:
+            k = tp[1:]
+            cm.append(c("sketch.create", plane={"origin": [0, 0, 0], "x_dir": [1, 0, 0], "y_dir": [0, 1, 0]}, name=f"Rail hole bottom {tp}"))
+            cm += [c("sketch.point", point=[f"E + max(tap - {k}, {k} - tap) * 20 mm", 0]), c("sketch.finish")]
+            cm.append(c("solid.hole", sketch=f"Rail hole bottom {tp}", thread=tp, depth="hT", targets=["Rail"], name=f"Rail hole tap {tp}"))
     cm.append(c("solid.hole", sketch="Rail hole", diameter="d", type="counterbore", cb_diameter="D", cb_depth="h", targets=["Rail"], name="Rail hole 1"))
     cm.append(c("solid.pattern.rectangular", features=[f for f in rail_f if f.startswith("Rail hole ")], dir1=[1, 0, 0], count1="n", spacing1="P", name="Rail holes"))
     # ---- block: U profile (rail channel cut in) extruded over L1, then the mounting holes of the row's kind
@@ -237,7 +240,7 @@ def commands(S: Series, rules_mode="expr"):
     cm.append(c("sketch.finish"))
     cm.append(c("solid.extrude", sketch="Block profile", profiles=[{"sketch": "Block profile", "loops": [{"curves": ids, "outer": True}]}], distance="L1",
                 direction="positive", operation="new", body_name="Block", name="Block"))
-    hidden = ["Rail hole", "Block profile"] + (["Rail hole bottom"] if taps else [])
+    hidden = ["Rail hole", "Block profile"] + [f"Rail hole bottom {tp}" for tp in taps]
     cx = "x0 + L1 / 2"
     for tag in layout_tags(S):
         if S.key == "EG":

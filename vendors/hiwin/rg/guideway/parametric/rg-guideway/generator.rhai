@@ -166,7 +166,24 @@ fn resolve_rail(f) {                                // RGR<size>R<length>...
     #{ configuration: `RGR-${f.size}`, parameters: #{ length: len } }
 }
 
+// what the Python generator says for a code its regular expressions do not accept: the RG chapter prints no stainless option (M)
+fn generic(f) {
+    let code = "RG";
+    if "kind" in f { code += `${f.kind}${f.size}${f.load}${f.mount}`; } else { code += `R${f.size}`; }
+    if "eblock" in f && f.eblock { code += "E"; }
+    if "n" in f { code += `${f.n}`; }
+    if "rm" in f { code += `${f.rm}${g(f.length)}`; }
+    if "erail" in f && f.erail { code += "E"; }
+    if "preload" in f { code += f.preload; }
+    if "prec" in f { code += f.prec; }
+    code += "M";
+    if "rails" in f { code += f.rails; }
+    if "opt" in f { code += "+" + f.opt; }
+    refuse("invalid", `'${code}': expected a set RG<H|W><size><C|H><A|C><n>R<length>[Z0|ZA|ZB][H|P|SP|UP], e.g. RGH20CA2R1000ZAH, a rail RGR<size>R<length>, e.g. RGR25R1240, or a block RGW25CC`);
+}
+
 fn resolve(f) {
+    if "mat" in f { generic(f); }
     if "n" in f { resolve_set(f) } else if "kind" in f { resolve_block(f) } else { resolve_rail(f) }
 }
 
