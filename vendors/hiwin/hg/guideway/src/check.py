@@ -19,7 +19,9 @@ def _dimensioned(bodies):
             keep[n] = dict(b, bbox={"min": [min(xs)] + b["bbox"]["min"][1:], "max": [max(xe)] + b["bbox"]["max"][1:]})
     return keep
 
-def check(s, sc, out):
+def check(s, sc, out, appearance=True):
+    """appearance=False skips the rows about appearance bodies, finishes and the description's APPEARANCE section: the parametric form of this
+    generator holds dimensioned bodies only, and is compared with the Python part built the same way (build.commands(appearance=False))."""
     r, b = s.rail, s.block
     cmds = [{"command": "inspect.measure", "params": {}},
             {"command": "model.faces", "params": {"body": "Rail"}} if s.kind != "block" else {"command": "model.threads", "params": {}},
@@ -92,18 +94,22 @@ def check(s, sc, out):
     if s.kind == "set":
         R.eq("rail/block interference count (all bodies)", 0, res[3]["count"], "-")
     # appearance: what the photoreal work adds, named (appearance, approximate) and kept out of the dimensioned rows above
-    app = [n for n in allb if n.endswith(APPX)]
-    R.true("appearance bodies all named '(appearance, approximate)'", all(n.endswith(APPX) or n in bodies or n.startswith("Body") for n in allb), "-")
-    R.eq("appearance bodies per block (2 end caps, 2 end seals, grease nipple)", 5 * (s.n_blocks if s.kind != "rail" else 0), len(app), "-", "appearance, approximate")
-    if s.kind != "block" and s.rail_mount == "R":
-        R.eq("rail screws (one per rail hole)", s.holes, len([n for n in allb if n.startswith("Body")]), "S7 p.38 bolt " + r["bolt"])
+    if appearance:
+        app = [n for n in allb if n.endswith(APPX)]
+        R.true("appearance bodies all named '(appearance, approximate)'", all(n.endswith(APPX) or n in bodies or n.startswith("Body") for n in allb), "-")
+        R.eq("appearance bodies per block (2 end caps, 2 end seals, grease nipple)", 5 * (s.n_blocks if s.kind != "rail" else 0), len(app), "-", "appearance, approximate")
+        if s.kind != "block" and s.rail_mount == "R":
+            R.eq("rail screws (one per rail hole)", s.holes, len([n for n in allb if n.startswith("Body")]), "S7 p.38 bolt " + r["bolt"])
     for i in range(s.n_blocks if s.kind != "rail" else 0):
         nm = f"Block {i + 1}"
         R.num(f"{nm} steel body length L1", b["L1"], allb[nm]["bbox"]["max"][0] - allb[nm]["bbox"]["min"][0], 0.005, "S7 p.38-43")
-        R.eq(f"{nm} end cap material", "ABS Plastic", allb[f"{nm} end cap A {APPX}"]["material"], "-", "appearance, approximate")
-    check_finishes(s, sc, out, R)
-    desc = (res[4].get("metadata") or res[4]).get("description", "")
-    R.true("description has DIMENSIONED and APPEARANCE sections", "APPEARANCE (approximate, not a catalogue dimension)" in desc, "-")
+        if appearance:
+            R.eq(f"{nm} end cap material", "ABS Plastic", allb[f"{nm} end cap A {APPX}"]["material"], "-", "appearance, approximate")
+    if appearance:
+        check_finishes(s, sc, out, R)
+    if appearance:
+        desc = (res[4].get("metadata") or res[4]).get("description", "")
+        R.true("description has DIMENSIONED and APPEARANCE sections", "APPEARANCE (approximate, not a catalogue dimension)" in desc, "-")
     R.eq("part number metadata", s.code, (res[4].get("metadata") or res[4]).get("part_number"), "-")
     R.eq("design part number", s.code, find_key(res[5], "part_number"), "-")
     return R
