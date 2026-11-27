@@ -13,7 +13,7 @@ from runtime.parametric_harness import Harness, main, table_row, with_descriptio
 
 PKG = HERE / "flanged-shaft-support"
 GEN_ID = "misumi.sth.flanged-shaft-support"
-EXTRA_REFUSALS = ["E-STHRB0", "E-STHRB100", "E-STHRB6X", "E-STHRBN", "E-STHSBN10", "E-STHMRL8", "E-STHMRBL10", "E-STHWRBL8", "E-STHNRB10", "E-STHXSB10", "E-STHXRBL12", "E-SSTHRB12"]
+EXTRA_REFUSALS = ["E-STHRB8-", "E-STHRB0", "E-STHRB100", "E-STHRB6X", "E-STHRBN", "E-STHSBN10", "E-STHMRL8", "E-STHMRBL10", "E-STHWRBL8", "E-STHNRB10", "E-STHXSB10", "E-STHXRBL12", "E-SSTHRB12"]
 # a built design switched to another row (a different series, shape or sleeve) = that other code inserted directly
 REBUILD = [("E-STHRB6", "E-STHWCBL50"), ("E-STHWCBL50", "E-STHMRL16"), ("E-STHMRB8", "E-STHXC16"), ("E-STHXR40", "E-STHSBL16"),
            ("E-STHCNL35", "E-STHRBN8"), ("E-STHWSB8", "E-STHCBL30")]

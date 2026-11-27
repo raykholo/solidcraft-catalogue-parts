@@ -13,7 +13,7 @@ from runtime.parametric_harness import Harness, main, table_row, with_descriptio
 
 PKG = HERE / "dowel-flanged-shaft-support"
 GEN_ID = "misumi.sth.dowel-flanged-shaft-support"
-EXTRA_REFUSALS = ["E-STHWRBK0", "E-STHWRBK09", "E-STHWRBK100", "E-STHWSBK16", "E-STHWRK", "E-SSTHWCBK12", "E-STHWCK12", "E-STHWRBKL16", "E-STHWIRBK12"]
+EXTRA_REFUSALS = ["E-STHWRBK12-", "E-STHWRBK0", "E-STHWRBK09", "E-STHWRBK100", "E-STHWSBK16", "E-STHWRK", "E-SSTHWCBK12", "E-STHWCK12", "E-STHWRBKL16", "E-STHWIRBK12"]
 # a built design switched to another row (a different family, a different screw size, a very different size) = that other code inserted directly
 REBUILD = [("E-STHWRBK12", "E-STHWCBK30"), ("E-STHWCBK16", "E-SSTHWRK25"), ("E-STHWRBK30", "E-STHWRBK12")]
 BLOCKED = [{"what": "a code that matches no template gets the engine's message, not the generator's (the stand-in asks an optional fn no_match(raw))",
