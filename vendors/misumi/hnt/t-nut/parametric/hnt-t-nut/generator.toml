@@ -9,7 +9,11 @@ type = { type = "text", default = "HNTT5" }
 m = { type = "text", default = "5" }
 
 [[template]]
-pattern = '{type: text 3..9 [A-Za-z0-9]}[-{m: text 1..5 [0-9.]}]'
+pattern = '{type: text 3..9 [A-Za-z0-9]}[\-{m: text 1..5 [0-9.]}]'
+
+# a catch-all behind it, so that the script gives the Python 'expected ...' refusal for a code that is not a code
+[[template]]
+pattern = '{raw: text 1..128 [A-Za-z0-9._ /-]}'
 
 [rows."HNTT5-3"]
 source = "MISUMI FA catalogue S9 (sources.toml), p.559"

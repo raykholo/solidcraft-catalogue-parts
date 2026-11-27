@@ -48,6 +48,10 @@ fn describe(typ, kind, material, surface, m, e, t) {
 }
 
 fn resolve(fields) {
+    if fields.raw != () {
+        let tl = join(split_bar(param("types")), ", ");
+        refuse("invalid", `'${fields.raw}': expected <type>-<M>, e.g. HNTT5-4 (types: ${tl})`);
+    }
     let typ = fields.type.to_upper();
     let ms = fields.m;
     let types = split_bar(param("types"));

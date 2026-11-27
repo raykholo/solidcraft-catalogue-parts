@@ -222,7 +222,7 @@ class Template:
                 if n[2]: a[n[2]] = True
                 return run(nodes, i + 1, p, a, k)
             if n[0] == "field":
-                for v, p in n[1].options(text, pos if n[1].kind == "bag" else skip(pos), self.escape):
+                for v, p in n[1].options(text, pos if (n[1].kind == "bag" or (i > 0 and nodes[i - 1][0] == "req")) else skip(pos), self.escape):
                     r = run(nodes, i + 1, p, {**acc, n[1].name: v}, k)
                     if r is not None: return r
                 return None
@@ -230,7 +230,7 @@ class Template:
                 r = run(n[1], 0, pos, acc, lambda p, a: run(nodes, i + 1, p, a, k))
                 if r is not None: return r
                 return run(nodes, i + 1, pos, acc, k)
-        out = run(self.nodes, 0, 0, {}, lambda p, a: a if skip(p) == len(text) else None)
+        out = run(self.nodes, 0, 0, {}, lambda p, a: a if text[p:].strip() == "" else None)   # a dangling separator is not a code
         if out is None: return None
         return {n: out.get(n, False if n in {x[2] for x in self._walk() if x[0] == "lit" and x[2]} else None) for n in sorted(names, key=lambda x: str(x))} | {k: v for k, v in out.items()}
 

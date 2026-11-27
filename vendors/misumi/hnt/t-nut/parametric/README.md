@@ -32,7 +32,7 @@ faithfulness.py  ci.sh         faithfulness.json for tools/parametric-verdict (w
 
 ## The ordering code
 
-`generator.toml`: `{type: text 3..9 [A-Za-z0-9]}[-{m: text 1..5 [0-9.]}]`. The type and M are text fields; `generator.rhai` carries every Python
+`generator.toml`: `{type: text 3..9 [A-Za-z0-9]}[\-{m: text 1..5 [0-9.]}]` and a catch-all second template. The type and M are text fields; `generator.rhai` carries every Python
 refusal with its message word for word: the shape of the code (`S?HNT[A-Z]*5` and `\d+(\.\d)?`), the types of the 5 series that are valid but not drawn
 (`not_modelled`), an unknown type, and "offered in M3, M4, M5, not M<m>" from the `allowed_m` cell of the type. `HNTT5` alone resolves to `HNTT5-5`
 (`default_m` in `tables/params.csv`, catalogue note). The part number, description and material metadata are plain Rhai over the tables.
@@ -40,7 +40,7 @@ refusal with its message word for word: the shape of the code (`S?HNT[A-Z]*5` an
 
 ## What was run
 
-For every line of `../codes.txt` (5 valid codes, 3 `!` rejects) plus the 4 other (type, M) rows of the table (all 9 rows) and 20 extra refusals:
+For every line of `../codes.txt` (5 valid codes, 3 `!` rejects) plus the 4 other (type, M) rows of the table (all 9 rows) and 25 extra refusals:
 code -> template -> Rhai `resolve` -> the configuration row named by the code -> a design inserts the package model with
 `component.insert_design {configuration}` -> `inspect.measure` (volume, area, bbox, faces) + `model.threads` + the unchanged `src/check.py` spec check
 (run on the inserted part, with the `Nut` it needs rebuilt from the Rhai result and the package tables, never from the Python parser) -> the same
@@ -98,6 +98,11 @@ compares the thread span.
 | HNST5 | 'HNST5': expected <type>-<M>, e.g. HNTT5-4 (types: HNTT5, HNTTV5, HNTTZ5, HNTTSN5, HNTTSS5) | 'HNST5': expected <type>-<M>, e.g. HNTT5-4 (types: HNTT5, HNTTV5, HNTTZ5, HNTTSN5, HNTTSS5) | yes |
 | HNTTBS5-5 | HNTTBS5: a valid 5 series nut, not drawn here; drawn: HNTT5, HNTTV5, HNTTZ5, HNTTSN5, HNTTSS5 | HNTTBS5: a valid 5 series nut, not drawn here; drawn: HNTT5, HNTTV5, HNTTZ5, HNTTSN5, HNTTSS5 | yes |
 | HNTT5-06 | HNTT5 is offered in M3, M4, M5, not M06 | HNTT5 is offered in M3, M4, M5, not M06 | yes |
+| HNTT5- | 'HNTT5-': expected <type>-<M>, e.g. HNTT5-4 (types: HNTT5, HNTTV5, HNTTZ5, HNTTSN5, HNTTSS5) | 'HNTT5-': expected <type>-<M>, e.g. HNTT5-4 (types: HNTT5, HNTTV5, HNTTZ5, HNTTSN5, HNTTSS5) | yes |
+| HNTT5-4-4 | 'HNTT5-4-4': expected <type>-<M>, e.g. HNTT5-4 (types: HNTT5, HNTTV5, HNTTZ5, HNTTSN5, HNTTSS5) | 'HNTT5-4-4': expected <type>-<M>, e.g. HNTT5-4 (types: HNTT5, HNTTV5, HNTTZ5, HNTTSN5, HNTTSS5) | yes |
+| HNTT5--4 | 'HNTT5--4': expected <type>-<M>, e.g. HNTT5-4 (types: HNTT5, HNTTV5, HNTTZ5, HNTTSN5, HNTTSS5) | 'HNTT5--4': expected <type>-<M>, e.g. HNTT5-4 (types: HNTT5, HNTTV5, HNTTZ5, HNTTSN5, HNTTSS5) | yes |
+| HNTT5-4- | 'HNTT5-4-': expected <type>-<M>, e.g. HNTT5-4 (types: HNTT5, HNTTV5, HNTTZ5, HNTTSN5, HNTTSS5) | 'HNTT5-4-': expected <type>-<M>, e.g. HNTT5-4 (types: HNTT5, HNTTV5, HNTTZ5, HNTTSN5, HNTTSS5) | yes |
+| HNTT | 'HNTT': expected <type>-<M>, e.g. HNTT5-4 (types: HNTT5, HNTTV5, HNTTZ5, HNTTSN5, HNTTSS5) | 'HNTT': expected <type>-<M>, e.g. HNTT5-4 (types: HNTT5, HNTTV5, HNTTZ5, HNTTSN5, HNTTSS5) | yes |
 
 ## What SolidCraft 0.50.0 could not express, and the workarounds
 
@@ -111,7 +116,9 @@ compares the thread span.
    both types.
 2. **Thread designation from a parameter** (S8): one `solid.thread` feature per size M3 / M4 / M5, suppressed by the row. Needed:
    `designation` as an expression or a size parameter (or `solid.thread` sized from the pilot bore).
-3. **Template engine, trailing separator.** The Python pattern rejects `HNTT5-` (a dash with no M), while the field template skips separators, so
-   `HNTT5-` reads as `HNTT5` and resolves to `HNTT5-5`. A code with an extra field (`HNTT5-4-4`) matches no template and is refused with the
-   engine's generic message, not the Python one; neither is in the comparison above (the second has no Python-equivalent message to compare).
-   Needed: a "required separator" mark that also refuses a dangling one.
+3. **Template engine, dangling separators (fixed here).** The field template skipped separators, so `HNTT5-` read as `HNTT5` and `HNTT5--4` as
+   `HNTT5-4`, and a code with an extra field (`HNTT5-4-4`) matched nothing. Now the template is
+   `{type: text 3..9 [A-Za-z0-9]}[\-{m: text 1..5 [0-9.]}]` (the `-` before M is a required separator that the next field does not skip), the stand-in
+   engine refuses a dangling separator at the end of a code, and a catch-all second template `{raw: text 1..128 [A-Za-z0-9._ /-]}` lets the script give
+   Python's `expected <type>-<M>` refusal. `HNTT5-`, `HNTT5-4-4`, `HNTT5--4`, `HNTT5-4-` and `HNTT` are in the compared rejects. The engine change leaves the
+   HFS, MG and shaft results unchanged.

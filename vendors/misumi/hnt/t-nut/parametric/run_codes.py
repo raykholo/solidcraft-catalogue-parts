@@ -21,7 +21,7 @@ PKG = HERE / "hnt-t-nut"
 TEMPLATES = ft.load(PKG)
 TYPES = {r["type"]: r for r in read_csv(PKG / "tables" / "types.csv")}
 EXTRA_REFUSALS = ["HNTU5", "HNTU5-5", "SHNTU5", "HNTTX5", "HNTT5-0", "HNTT5-5.5", "HNTT5-3.0", "HNTT5-6", "HNTTSS5-3", "HNTTZ5-4", "HNTTV5-3", "HNTTSN5-6",
-                  "HNTT6-4", "HNTT-4", "XHNTT5", "HNTT5-12", "HNTTSN5-2", "HNST5", "HNTTBS5-5", "HNTT5-06"]
+                  "HNTT6-4", "HNTT-4", "XHNTT5", "HNTT5-12", "HNTTSN5-2", "HNST5", "HNTTBS5-5", "HNTT5-06", "HNTT5-", "HNTT5-4-4", "HNTT5--4", "HNTT5-4-", "HNTT"]
 
 def resolve(code):
     m = TEMPLATES.match(code.strip().upper())
