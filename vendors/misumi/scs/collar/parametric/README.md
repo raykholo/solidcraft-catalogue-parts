@@ -137,7 +137,7 @@ same bbox, face and body counts.
 config.table: 102 rows, 61 columns, 73 rules
 
 All 30 codes: the parametric part has the same volume, area, bbox, face and body count as the Python part (one body, two for the split ring, three for the split
-urethane collar), and passes the same spec check with the same number of rows. Every refusal (the 18 of `codes.txt` and 17 more, compared with `collar.parse`) has the
+urethane collar), and passes the same spec check with the same number of rows. Every refusal (the 18 of `codes.txt` and 22 more, compared with `collar.parse`) has the
 Python message word for word. The table has 102 rows, 61 columns and 73 rules.
 
 A code with a dangling separator or a missing one (`E-SCD12-`, `C-SCSAW1210`, `C-SCSAW-10`) is refused with the Python shape message, quoting the code as typed: the two sizes

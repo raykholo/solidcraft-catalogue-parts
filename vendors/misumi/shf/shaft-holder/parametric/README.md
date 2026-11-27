@@ -119,7 +119,7 @@ same bbox, face and body counts.
 config.table: 30 rows, 47 columns, 86 rules
 
 All 16 codes: the parametric part has the same volume, area, bbox, face and body count as the Python part, and passes the same spec check with the same number of
-rows (21, or 23 for the two-screw thickened types, or 8 for C-SHA). Every refusal (the 10 of `codes.txt` and 19 more, compared with `holder.parse`) has the
+rows (21, or 23 for the two-screw thickened types, or 8 for C-SHA). Every refusal (the 10 of `codes.txt` and 21 more, compared with `holder.parse`) has the
 Python message word for word.
 
 A code with a dangling or doubled separator (`E-SHSTM8-25-`, `E-SHSTM8--25`) is refused with the Python shape message, quoting the code as typed: the height is
