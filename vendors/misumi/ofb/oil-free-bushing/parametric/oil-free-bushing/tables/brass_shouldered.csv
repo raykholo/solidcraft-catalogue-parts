@@ -1,0 +1,12 @@
+dr,bore_tol_upper,bore_tol_lower,D,N,H,t,lengths,source,page,status
+5,0.032,0.02,9,2,14,2,10 12,S16,p.519 table (shouldered),labelled
+6,0.032,0.02,10,2,16,2,10 12 15,S16,p.519 table (shouldered),labelled
+8,0.04,0.025,12,2,20,2,10 12 15 20,S16,p.519 table (shouldered),labelled
+10,0.04,0.025,14,2,22,2,10 12 15 20,S16,p.519 table (shouldered),labelled
+12,0.05,0.032,18,3,25,3,10 12 15 20 25 30,S16,p.519 table (shouldered),labelled
+13,0.05,0.032,19,3,26,3,12 15 20,S16,p.519 table (shouldered),labelled
+15,0.05,0.032,21,3,28,3,10 12 15 20 25,S16,p.519 table (shouldered),labelled
+16,0.05,0.032,22,3,29,3,12 15 20 25 30,S16,p.519 table (shouldered),labelled
+20,0.061,0.04,30,5,40,5,15 20 25 30 40,S16,p.519 table (shouldered),labelled
+25,0.061,0.04,35,5,45,5,30 40 50,S16,p.519 table (shouldered),labelled
+30,0.061,0.04,40,5,50,5,30 40 50,S16,p.519 table (shouldered),labelled

@@ -1,0 +1,13 @@
+type,family,wall,table,material,od_class,bore_class,source,page,status
+C-MUBZ,straight,standard,copper_straight,"High tensile brass alloy, solid lubricant embedded",m6,F7,S16,p.514 type table,labelled
+C-MUBZU,straight,thin,copper_straight,"High tensile brass alloy, solid lubricant embedded",m6,F7,S16,p.514 type table,labelled
+C-MUFZ,shouldered,standard,copper_shouldered,"High tensile brass alloy, solid lubricant embedded",r6,E7,S16,p.514 type table,labelled
+C-MUFZU,shouldered,thin,copper_shouldered,"High tensile brass alloy, solid lubricant embedded",r6,E7,S16,p.514 type table,labelled
+C-MUTZ,round,standard,copper_flanged,"High tensile brass alloy, solid lubricant embedded",h7,F7,S16,p.515 type table,labelled
+C-MUTSZ,square,standard,copper_flanged,"High tensile brass alloy, solid lubricant embedded",h7,F7,S16,p.515 type table,labelled
+C-MUTNZ,compact,standard,copper_flanged,"High tensile brass alloy, solid lubricant embedded",h7,F7,S16,p.515 type table,labelled
+E-MUGZ,thrust,standard,thrust,"High tensile brass alloy, solid lubricant embedded",r6,E7,S16,p.516 type table,labelled
+E-SHBZ,straight,standard,brass_straight,Special brass,m6,F7,S16,p.519 type table,labelled
+E-SHFZ,shouldered,standard,brass_shouldered,Special brass,r6,E7,S16,p.519 type table,labelled
+E-SHTZ,round,standard,brass_flanged,Special brass,h7,F7,S16,p.520 type table,labelled
+E-SHTNZ,compact,standard,brass_flanged,Special brass,h7,F7,S16,p.520 type table,labelled

@@ -1,0 +1,6 @@
+key,value,what,source,page,status
+L_tol_upper,-0.1,"overall length L tolerance, upper deviation (printed -0.1 / -0.3 on p.514, p.515, p.516, p.519, p.520)",S16,p.514 p.515 p.516 p.519 p.520 figures,labelled
+L_tol_lower,-0.3,"overall length L tolerance, lower deviation",S16,p.514 p.515 p.516 p.519 p.520 figures,labelled
+T_tol_lower,-0.1,"flange thickness T tolerance 0 / -0.1 (p.515, p.520)",S16,p.514 p.515 p.516 p.519 p.520 figures,labelled
+thrust_t_tol_lower,-0.03,thrust flange thickness t tolerance 0 / -0.03 (p.516),S16,p.514 p.515 p.516 p.519 p.520 figures,labelled
+compact_flat_extra,6,compact flange width across the two flats is D + 6 (printed in the figures of p.515 and p.520),S16,p.514 p.515 p.516 p.519 p.520 figures,labelled

@@ -1,0 +1,179 @@
+name,kind,series,shape,dr,L1,L2,source,page,status
+short-6,straight,short,,6,16,,S11,p.464 table,labelled
+short-8,straight,short,,8,20,,S11,p.464 table,labelled
+short-10,straight,short,,10,25,,S11,p.464 table,labelled
+short-12,straight,short,,12,25,,S11,p.464 table,labelled
+short-13,straight,short,,13,25,,S11,p.464 table,labelled
+short-16,straight,short,,16,30,,S11,p.464 table,labelled
+short-20,straight,short,,20,35,,S11,p.464 table,labelled
+medium-6,straight,medium,,6,29,,S11,p.465 table,labelled
+medium-8,straight,medium,,8,37,,S11,p.465 table,labelled
+medium-10,straight,medium,,10,47,,S11,p.465 table,labelled
+medium-12,straight,medium,,12,47,,S11,p.465 table,labelled
+medium-16,straight,medium,,16,56,,S11,p.465 table,labelled
+medium-20,straight,medium,,20,65,,S11,p.465 table,labelled
+medium-25,straight,medium,,25,83,,S11,p.465 table,labelled
+medium-30,straight,medium,,30,90,,S11,p.465 table,labelled
+flanged_long-round-6,flanged,long,round,6,19,35,S11,p.466 p.468 tables,labelled
+flanged_long-square-6,flanged,long,square,6,19,35,S11,p.466 p.468 tables,labelled
+flanged_long-round-8,flanged,long,round,8,24,45,S11,p.466 p.468 tables,labelled
+flanged_long-square-8,flanged,long,square,8,24,45,S11,p.466 p.468 tables,labelled
+flanged_long-round-10,flanged,long,round,10,29,55,S11,p.466 p.468 tables,labelled
+flanged_long-square-10,flanged,long,square,10,29,55,S11,p.466 p.468 tables,labelled
+flanged_long-round-12,flanged,long,round,12,30,57,S11,p.466 p.468 tables,labelled
+flanged_long-square-12,flanged,long,square,12,30,57,S11,p.466 p.468 tables,labelled
+flanged_long-round-13,flanged,long,round,13,32,61,S11,p.466 p.468 tables,labelled
+flanged_long-square-13,flanged,long,square,13,32,61,S11,p.466 p.468 tables,labelled
+flanged_long-round-16,flanged,long,round,16,37,70,S11,p.466 p.468 tables,labelled
+flanged_long-square-16,flanged,long,square,16,37,70,S11,p.466 p.468 tables,labelled
+flanged_long-round-20,flanged,long,round,20,42,80,S11,p.466 p.468 tables,labelled
+flanged_long-square-20,flanged,long,square,20,42,80,S11,p.466 p.468 tables,labelled
+flanged_long-round-25,flanged,long,round,25,59,112,S11,p.466 p.468 tables,labelled
+flanged_long-square-25,flanged,long,square,25,59,112,S11,p.466 p.468 tables,labelled
+flanged_long-round-30,flanged,long,round,30,64,123,S11,p.466 p.468 tables,labelled
+flanged_long-square-30,flanged,long,square,30,64,123,S11,p.466 p.468 tables,labelled
+flanged_long-round-35,flanged,long,round,35,70,135,S11,p.466 p.468 tables,labelled
+flanged_long-square-35,flanged,long,square,35,70,135,S11,p.466 p.468 tables,labelled
+flanged_long-round-40,flanged,long,round,40,80,151,S11,p.466 p.468 tables,labelled
+flanged_long-square-40,flanged,long,square,40,80,151,S11,p.466 p.468 tables,labelled
+flanged_long-round-50,flanged,long,round,50,100,192,S11,p.466 p.468 tables,labelled
+flanged_long-square-50,flanged,long,square,50,100,192,S11,p.466 p.468 tables,labelled
+flanged_medium-round-6,flanged,medium,round,6,29,,S11,p.467 p.469 tables,labelled
+flanged_medium-square-6,flanged,medium,square,6,29,,S11,p.467 p.469 tables,labelled
+flanged_medium-round-8,flanged,medium,round,8,37,,S11,p.467 p.469 tables,labelled
+flanged_medium-square-8,flanged,medium,square,8,37,,S11,p.467 p.469 tables,labelled
+flanged_medium-round-10,flanged,medium,round,10,47,,S11,p.467 p.469 tables,labelled
+flanged_medium-square-10,flanged,medium,square,10,47,,S11,p.467 p.469 tables,labelled
+flanged_medium-round-12,flanged,medium,round,12,47,,S11,p.467 p.469 tables,labelled
+flanged_medium-square-12,flanged,medium,square,12,47,,S11,p.467 p.469 tables,labelled
+flanged_medium-round-16,flanged,medium,round,16,56,,S11,p.467 p.469 tables,labelled
+flanged_medium-square-16,flanged,medium,square,16,56,,S11,p.467 p.469 tables,labelled
+flanged_medium-round-20,flanged,medium,round,20,65,,S11,p.467 p.469 tables,labelled
+flanged_medium-square-20,flanged,medium,square,20,65,,S11,p.467 p.469 tables,labelled
+flanged_medium-round-25,flanged,medium,round,25,83,,S11,p.467 p.469 tables,labelled
+flanged_medium-square-25,flanged,medium,square,25,83,,S11,p.467 p.469 tables,labelled
+flanged_medium-round-30,flanged,medium,round,30,90,,S11,p.467 p.469 tables,labelled
+flanged_medium-square-30,flanged,medium,square,30,90,,S11,p.467 p.469 tables,labelled
+compact_long-compact-5,compact,long,compact,5,15,,S13,p.470 table,labelled
+compact_long-compact-6,compact,long,compact,6,19,35,S13,p.470 table,labelled
+compact_long-compact-8,compact,long,compact,8,24,45,S13,p.470 table,labelled
+compact_long-compact-10,compact,long,compact,10,29,55,S13,p.470 table,labelled
+compact_long-compact-12,compact,long,compact,12,30,57,S13,p.470 table,labelled
+compact_long-compact-13,compact,long,compact,13,32,61,S13,p.470 table,labelled
+compact_long-compact-16,compact,long,compact,16,37,70,S13,p.470 table,labelled
+compact_long-compact-20,compact,long,compact,20,42,80,S13,p.470 table,labelled
+compact_long-compact-25,compact,long,compact,25,59,112,S13,p.470 table,labelled
+compact_long-compact-30,compact,long,compact,30,64,123,S13,p.470 table,labelled
+compact_long-compact-35,compact,long,compact,35,70,135,S13,p.470 table,labelled
+compact_long-compact-40,compact,long,compact,40,80,151,S13,p.470 table,labelled
+compact_long-compact-50,compact,long,compact,50,100,192,S13,p.470 table,labelled
+compact_medium-compact-6,compact,medium,compact,6,29,,S13,p.471 table,labelled
+compact_medium-compact-8,compact,medium,compact,8,37,,S13,p.471 table,labelled
+compact_medium-compact-10,compact,medium,compact,10,47,,S13,p.471 table,labelled
+compact_medium-compact-12,compact,medium,compact,12,47,,S13,p.471 table,labelled
+compact_medium-compact-16,compact,medium,compact,16,56,,S13,p.471 table,labelled
+compact_medium-compact-20,compact,medium,compact,20,65,,S13,p.471 table,labelled
+compact_medium-compact-25,compact,medium,compact,25,83,,S13,p.471 table,labelled
+compact_medium-compact-30,compact,medium,compact,30,90,,S13,p.471 table,labelled
+pilot_long-round-6,pilot,long,round,6,19,35,S13,p.472 table,labelled
+pilot_long-round-8,pilot,long,round,8,24,45,S13,p.472 table,labelled
+pilot_long-round-10,pilot,long,round,10,29,55,S13,p.472 table,labelled
+pilot_long-round-12,pilot,long,round,12,30,57,S13,p.472 table,labelled
+pilot_long-round-16,pilot,long,round,16,37,70,S13,p.472 table,labelled
+pilot_long-round-20,pilot,long,round,20,42,80,S13,p.472 table,labelled
+pilot_long-round-25,pilot,long,round,25,59,112,S13,p.472 table,labelled
+pilot_long-round-30,pilot,long,round,30,64,123,S13,p.472 table,labelled
+pilot_long-round-40,pilot,long,round,40,80,151,S13,p.472 table,labelled
+pilot_long-square-6,pilot,long,square,6,19,35,S13,p.474 table,labelled
+pilot_long-square-8,pilot,long,square,8,24,45,S13,p.474 table,labelled
+pilot_long-square-10,pilot,long,square,10,29,55,S13,p.474 table,labelled
+pilot_long-square-12,pilot,long,square,12,30,57,S13,p.474 table,labelled
+pilot_long-square-16,pilot,long,square,16,37,70,S13,p.474 table,labelled
+pilot_long-square-20,pilot,long,square,20,42,80,S13,p.474 table,labelled
+pilot_long-square-25,pilot,long,square,25,59,112,S13,p.474 table,labelled
+pilot_long-square-30,pilot,long,square,30,64,123,S13,p.474 table,labelled
+pilot_long-square-40,pilot,long,square,40,80,151,S13,p.474 table,labelled
+pilot_long-compact-6,pilot,long,compact,6,19,35,S13,p.476 table,labelled
+pilot_long-compact-8,pilot,long,compact,8,24,45,S13,p.476 table,labelled
+pilot_long-compact-10,pilot,long,compact,10,29,55,S13,p.476 table,labelled
+pilot_long-compact-12,pilot,long,compact,12,30,57,S13,p.476 table,labelled
+pilot_long-compact-16,pilot,long,compact,16,37,70,S13,p.476 table,labelled
+pilot_long-compact-20,pilot,long,compact,20,42,80,S13,p.476 table,labelled
+pilot_long-compact-25,pilot,long,compact,25,59,112,S13,p.476 table,labelled
+pilot_long-compact-30,pilot,long,compact,30,64,123,S13,p.476 table,labelled
+pilot_long-compact-40,pilot,long,compact,40,80,151,S13,p.476 table,labelled
+pilot_medium-round-6,pilot,medium,round,6,29,,S13,p.473 table,labelled
+pilot_medium-round-8,pilot,medium,round,8,37,,S13,p.473 table,labelled
+pilot_medium-round-10,pilot,medium,round,10,47,,S13,p.473 table,labelled
+pilot_medium-round-12,pilot,medium,round,12,47,,S13,p.473 table,labelled
+pilot_medium-round-16,pilot,medium,round,16,56,,S13,p.473 table,labelled
+pilot_medium-round-20,pilot,medium,round,20,65,,S13,p.473 table,labelled
+pilot_medium-round-25,pilot,medium,round,25,83,,S13,p.473 table,labelled
+pilot_medium-round-30,pilot,medium,round,30,90,,S13,p.473 table,labelled
+pilot_medium-square-6,pilot,medium,square,6,29,,S13,p.475 table,labelled
+pilot_medium-square-8,pilot,medium,square,8,37,,S13,p.475 table,labelled
+pilot_medium-square-10,pilot,medium,square,10,47,,S13,p.475 table,labelled
+pilot_medium-square-12,pilot,medium,square,12,47,,S13,p.475 table,labelled
+pilot_medium-square-16,pilot,medium,square,16,56,,S13,p.475 table,labelled
+pilot_medium-square-20,pilot,medium,square,20,65,,S13,p.475 table,labelled
+pilot_medium-square-25,pilot,medium,square,25,83,,S13,p.475 table,labelled
+pilot_medium-square-30,pilot,medium,square,30,90,,S13,p.475 table,labelled
+pilot_medium-compact-6,pilot,medium,compact,6,29,,S13,p.477 table,labelled
+pilot_medium-compact-8,pilot,medium,compact,8,37,,S13,p.477 table,labelled
+pilot_medium-compact-10,pilot,medium,compact,10,47,,S13,p.477 table,labelled
+pilot_medium-compact-12,pilot,medium,compact,12,47,,S13,p.477 table,labelled
+pilot_medium-compact-16,pilot,medium,compact,16,56,,S13,p.477 table,labelled
+pilot_medium-compact-20,pilot,medium,compact,20,65,,S13,p.477 table,labelled
+pilot_medium-compact-25,pilot,medium,compact,25,83,,S13,p.477 table,labelled
+pilot_medium-compact-30,pilot,medium,compact,30,90,,S13,p.477 table,labelled
+center_long-round-6,center,long,round,6,35,,S13,p.478 table,labelled
+center_long-round-8,center,long,round,8,45,,S13,p.478 table,labelled
+center_long-round-10,center,long,round,10,55,,S13,p.478 table,labelled
+center_long-round-12,center,long,round,12,57,,S13,p.478 table,labelled
+center_long-round-16,center,long,round,16,70,,S13,p.478 table,labelled
+center_long-round-20,center,long,round,20,80,,S13,p.478 table,labelled
+center_long-round-25,center,long,round,25,112,,S13,p.478 table,labelled
+center_long-round-30,center,long,round,30,123,,S13,p.478 table,labelled
+center_long-round-40,center,long,round,40,151,,S13,p.478 table,labelled
+center_long-square-6,center,long,square,6,35,,S13,p.479 table,labelled
+center_long-square-8,center,long,square,8,45,,S13,p.479 table,labelled
+center_long-square-10,center,long,square,10,55,,S13,p.479 table,labelled
+center_long-square-12,center,long,square,12,57,,S13,p.479 table,labelled
+center_long-square-16,center,long,square,16,70,,S13,p.479 table,labelled
+center_long-square-20,center,long,square,20,80,,S13,p.479 table,labelled
+center_long-square-25,center,long,square,25,112,,S13,p.479 table,labelled
+center_long-square-30,center,long,square,30,123,,S13,p.479 table,labelled
+center_long-square-40,center,long,square,40,151,,S13,p.479 table,labelled
+center_long-compact-6,center,long,compact,6,35,,S13,p.480 table,labelled
+center_long-compact-8,center,long,compact,8,45,,S13,p.480 table,labelled
+center_long-compact-10,center,long,compact,10,55,,S13,p.480 table,labelled
+center_long-compact-12,center,long,compact,12,57,,S13,p.480 table,labelled
+center_long-compact-16,center,long,compact,16,70,,S13,p.480 table,labelled
+center_long-compact-20,center,long,compact,20,80,,S13,p.480 table,labelled
+center_long-compact-25,center,long,compact,25,112,,S13,p.480 table,labelled
+center_long-compact-30,center,long,compact,30,123,,S13,p.480 table,labelled
+center_long-compact-40,center,long,compact,40,151,,S13,p.480 table,labelled
+center_medium-round-6,center,medium,round,6,29,,S13,p.478 table,labelled
+center_medium-round-8,center,medium,round,8,37,,S13,p.478 table,labelled
+center_medium-round-10,center,medium,round,10,47,,S13,p.478 table,labelled
+center_medium-round-12,center,medium,round,12,47,,S13,p.478 table,labelled
+center_medium-round-16,center,medium,round,16,56,,S13,p.478 table,labelled
+center_medium-round-20,center,medium,round,20,65,,S13,p.478 table,labelled
+center_medium-round-25,center,medium,round,25,83,,S13,p.478 table,labelled
+center_medium-round-30,center,medium,round,30,90,,S13,p.478 table,labelled
+center_medium-square-6,center,medium,square,6,29,,S13,p.479 table,labelled
+center_medium-square-8,center,medium,square,8,37,,S13,p.479 table,labelled
+center_medium-square-10,center,medium,square,10,47,,S13,p.479 table,labelled
+center_medium-square-12,center,medium,square,12,47,,S13,p.479 table,labelled
+center_medium-square-16,center,medium,square,16,56,,S13,p.479 table,labelled
+center_medium-square-20,center,medium,square,20,65,,S13,p.479 table,labelled
+center_medium-square-25,center,medium,square,25,83,,S13,p.479 table,labelled
+center_medium-square-30,center,medium,square,30,90,,S13,p.479 table,labelled
+center_medium-compact-6,center,medium,compact,6,29,,S13,p.480 table,labelled
+center_medium-compact-8,center,medium,compact,8,37,,S13,p.480 table,labelled
+center_medium-compact-10,center,medium,compact,10,47,,S13,p.480 table,labelled
+center_medium-compact-12,center,medium,compact,12,47,,S13,p.480 table,labelled
+center_medium-compact-16,center,medium,compact,16,56,,S13,p.480 table,labelled
+center_medium-compact-20,center,medium,compact,20,65,,S13,p.480 table,labelled
+center_medium-compact-25,center,medium,compact,25,83,,S13,p.480 table,labelled
+center_medium-compact-30,center,medium,compact,30,90,,S13,p.480 table,labelled
