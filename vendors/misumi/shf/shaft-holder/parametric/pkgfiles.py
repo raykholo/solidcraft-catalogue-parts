@@ -4,7 +4,7 @@ import csv, json
 from pathlib import Path
 from runtime.table import read_csv
 
-TEMPLATES = ["{pfx: E|C}-SH{fam: STBN|STMN|STB|STM|STA|WTB|WTA|A}{d: int 1..99}[-{h: int 0..99999999}]",
+TEMPLATES = ["{pfx: E|C}-SH{fam: STBN|STMN|STB|STM|STA|WTB|WTA|A}{d: int 1..99}[\\-{h: int 0..99999999}]",
              "{raw: text 1..64 [A-Za-z0-9-]}"]
 
 def write_csv(path, header, rows):

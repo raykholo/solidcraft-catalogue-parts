@@ -10,7 +10,7 @@ model = "shf-shaft-holder.sc"
 h = { type = "int", min = 10, max = 80, unit = "mm" }
 
 [[template]]
-pattern = '{pfx: E|C}-SH{fam: STBN|STMN|STB|STM|STA|WTB|WTA|A}{d: int 1..99}[-{h: int 0..99999999}]'
+pattern = '{pfx: E|C}-SH{fam: STBN|STMN|STB|STM|STA|WTB|WTA|A}{d: int 1..99}[\-{h: int 0..99999999}]'
 
 [[template]]
 pattern = '{raw: text 1..64 [A-Za-z0-9-]}'
