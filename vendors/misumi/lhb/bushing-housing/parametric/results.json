@@ -1,0 +1,1891 @@
+{
+ "codes": [
+  {
+   "code": "E-LBHN6",
+   "configuration": "single-6",
+   "parameters": {
+    "dowel": "0"
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 10927.85866985633,
+    "area": 4281.584020367384,
+    "faces": 25,
+    "bbox": [
+     30.0,
+     25.0,
+     18.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      8.0
+     ],
+     [
+      -0.0,
+      8.0
+     ],
+     [
+      -0.0,
+      8.0
+     ],
+     [
+      -0.0,
+      8.0
+     ]
+    ],
+    "names": [
+     "E-LBHN6"
+    ]
+   },
+   "python_spec": {
+    "rows": 17,
+    "failed": []
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 10927.85866985633,
+    "area": 4281.584020367384,
+    "faces": 25,
+    "bbox": [
+     30.0,
+     25.0,
+     18.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      8.0
+     ],
+     [
+      -0.0,
+      8.0
+     ],
+     [
+      -0.0,
+      8.0
+     ],
+     [
+      -0.0,
+      8.0
+     ]
+    ],
+    "names": [
+     "Housing"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 17,
+    "failed": []
+   }
+  },
+  {
+   "code": "E-LBHN16",
+   "configuration": "single-16",
+   "parameters": {
+    "dowel": "0"
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 67046.75965882838,
+    "area": 14453.166908668361,
+    "faces": 25,
+    "bbox": [
+     50.0,
+     44.0,
+     38.5
+    ],
+    "threads": [
+     [
+      0.0,
+      12.0
+     ],
+     [
+      0.0,
+      12.0
+     ],
+     [
+      0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ]
+    ],
+    "names": [
+     "E-LBHN16"
+    ]
+   },
+   "python_spec": {
+    "rows": 17,
+    "failed": []
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 67046.75965882838,
+    "area": 14453.166908668358,
+    "faces": 25,
+    "bbox": [
+     50.0,
+     44.0,
+     38.5
+    ],
+    "threads": [
+     [
+      0.0,
+      12.0
+     ],
+     [
+      0.0,
+      12.0
+     ],
+     [
+      0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ]
+    ],
+    "names": [
+     "Housing"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 17,
+    "failed": []
+   }
+  },
+  {
+   "code": "E-LBHN16D-P",
+   "configuration": "medium-16",
+   "parameters": {
+    "dowel": "1"
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 96730.9192859196,
+    "area": 18710.219066147372,
+    "faces": 29,
+    "bbox": [
+     50.0,
+     63.0,
+     38.5
+    ],
+    "threads": [
+     [
+      0.0,
+      12.0
+     ],
+     [
+      0.0,
+      12.0
+     ],
+     [
+      0.0,
+      12.0
+     ],
+     [
+      0.0,
+      12.0
+     ]
+    ],
+    "names": [
+     "E-LBHN16D-P"
+    ]
+   },
+   "python_spec": {
+    "rows": 18,
+    "failed": []
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 96730.91928591959,
+    "area": 18710.21906614737,
+    "faces": 29,
+    "bbox": [
+     50.0,
+     63.0,
+     38.5
+    ],
+    "threads": [
+     [
+      0.0,
+      12.0
+     ],
+     [
+      0.0,
+      12.0
+     ],
+     [
+      0.0,
+      12.0
+     ],
+     [
+      0.0,
+      12.0
+     ]
+    ],
+    "names": [
+     "Housing"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 18,
+    "failed": []
+   }
+  },
+  {
+   "code": "E-LBHN20D",
+   "configuration": "medium-20",
+   "parameters": {
+    "dowel": "0"
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 123632.23570282795,
+    "area": 23429.617998408787,
+    "faces": 25,
+    "bbox": [
+     54.0,
+     73.0,
+     41.0
+    ],
+    "threads": [
+     [
+      0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ]
+    ],
+    "names": [
+     "E-LBHN20D"
+    ]
+   },
+   "python_spec": {
+    "rows": 17,
+    "failed": []
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 123632.23570282792,
+    "area": 23429.617998408794,
+    "faces": 25,
+    "bbox": [
+     54.0,
+     73.0,
+     41.0
+    ],
+    "threads": [
+     [
+      0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ]
+    ],
+    "names": [
+     "Housing"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 17,
+    "failed": []
+   }
+  },
+  {
+   "code": "E-LBHN13",
+   "configuration": "single-13",
+   "parameters": {
+    "dowel": "0"
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 39694.860867240146,
+    "area": 10348.591628342743,
+    "faces": 25,
+    "bbox": [
+     44.0,
+     39.0,
+     30.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ]
+    ],
+    "names": [
+     "E-LBHN13"
+    ]
+   },
+   "python_spec": {
+    "rows": 17,
+    "failed": []
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 39694.860867240146,
+    "area": 10348.591628342743,
+    "faces": 25,
+    "bbox": [
+     44.0,
+     39.0,
+     30.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ]
+    ],
+    "names": [
+     "Housing"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 17,
+    "failed": []
+   }
+  },
+  {
+   "code": "E-LBHN30-P",
+   "configuration": "single-30",
+   "parameters": {
+    "dowel": "1"
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 249364.5407403222,
+    "area": 37003.29607513065,
+    "faces": 29,
+    "bbox": [
+     78.0,
+     72.0,
+     59.5
+    ],
+    "threads": [
+     [
+      0.0,
+      18.0
+     ],
+     [
+      -0.0,
+      18.0
+     ],
+     [
+      0.0,
+      18.0
+     ],
+     [
+      0.0,
+      18.0
+     ]
+    ],
+    "names": [
+     "E-LBHN30-P"
+    ]
+   },
+   "python_spec": {
+    "rows": 18,
+    "failed": []
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 249364.5407403221,
+    "area": 37003.296075130645,
+    "faces": 29,
+    "bbox": [
+     78.0,
+     72.0,
+     59.5
+    ],
+    "threads": [
+     [
+      0.0,
+      18.0
+     ],
+     [
+      -0.0,
+      18.0
+     ],
+     [
+      0.0,
+      18.0
+     ],
+     [
+      0.0,
+      18.0
+     ]
+    ],
+    "names": [
+     "Housing"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 18,
+    "failed": []
+   }
+  },
+  {
+   "code": "E-LBHN50",
+   "configuration": "single-50",
+   "parameters": {
+    "dowel": "0"
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 1017908.7887416425,
+    "area": 90611.61588233714,
+    "faces": 25,
+    "bbox": [
+     122.0,
+     110.0,
+     102.0
+    ],
+    "threads": [
+     [
+      0.0,
+      25.0
+     ],
+     [
+      -0.0,
+      25.0
+     ],
+     [
+      0.0,
+      25.0
+     ],
+     [
+      0.0,
+      25.0
+     ]
+    ],
+    "names": [
+     "E-LBHN50"
+    ]
+   },
+   "python_spec": {
+    "rows": 17,
+    "failed": []
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 1017908.7887416424,
+    "area": 90611.61588233712,
+    "faces": 25,
+    "bbox": [
+     122.0,
+     110.0,
+     102.0
+    ],
+    "threads": [
+     [
+      0.0,
+      25.0
+     ],
+     [
+      -0.0,
+      25.0
+     ],
+     [
+      0.0,
+      25.0
+     ],
+     [
+      0.0,
+      25.0
+     ]
+    ],
+    "names": [
+     "Housing"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 17,
+    "failed": []
+   }
+  },
+  {
+   "code": "E-LBHNW8",
+   "configuration": "double-8",
+   "parameters": {
+    "dowel": "0"
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 35175.83310502836,
+    "area": 9513.60256540817,
+    "faces": 25,
+    "bbox": [
+     34.0,
+     58.0,
+     22.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      8.0
+     ],
+     [
+      -0.0,
+      8.0
+     ],
+     [
+      -0.0,
+      8.0
+     ],
+     [
+      -0.0,
+      8.0
+     ]
+    ],
+    "names": [
+     "E-LBHNW8"
+    ]
+   },
+   "python_spec": {
+    "rows": 17,
+    "failed": []
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 35175.83310502836,
+    "area": 9513.60256540817,
+    "faces": 25,
+    "bbox": [
+     34.0,
+     58.0,
+     22.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      8.0
+     ],
+     [
+      -0.0,
+      8.0
+     ],
+     [
+      -0.0,
+      8.0
+     ],
+     [
+      -0.0,
+      8.0
+     ]
+    ],
+    "names": [
+     "Housing"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 17,
+    "failed": []
+   }
+  },
+  {
+   "code": "E-LBHNW12L",
+   "configuration": "long-12",
+   "parameters": {
+    "dowel": "0"
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 89712.45718216308,
+    "area": 20001.18861808829,
+    "faces": 31,
+    "bbox": [
+     42.0,
+     96.0,
+     28.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ]
+    ],
+    "names": [
+     "E-LBHNW12L"
+    ]
+   },
+   "python_spec": {
+    "rows": 17,
+    "failed": []
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 89712.45718216308,
+    "area": 20001.188618088283,
+    "faces": 31,
+    "bbox": [
+     42.0,
+     96.0,
+     28.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ]
+    ],
+    "names": [
+     "Housing"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 17,
+    "failed": []
+   }
+  },
+  {
+   "code": "E-LBHNW16D",
+   "configuration": "medlong-16",
+   "parameters": {
+    "dowel": "0"
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 154907.29158836257,
+    "area": 26629.890765235934,
+    "faces": 25,
+    "bbox": [
+     50.0,
+     100.0,
+     38.5
+    ],
+    "threads": [
+     [
+      0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      0.0,
+      12.0
+     ],
+     [
+      0.0,
+      12.0
+     ]
+    ],
+    "names": [
+     "E-LBHNW16D"
+    ]
+   },
+   "python_spec": {
+    "rows": 17,
+    "failed": []
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 154907.29158836254,
+    "area": 26629.890765235938,
+    "faces": 25,
+    "bbox": [
+     50.0,
+     100.0,
+     38.5
+    ],
+    "threads": [
+     [
+      0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      0.0,
+      12.0
+     ],
+     [
+      0.0,
+      12.0
+     ]
+    ],
+    "names": [
+     "Housing"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 17,
+    "failed": []
+   }
+  },
+  {
+   "code": "E-LBHNW20L-P",
+   "configuration": "long-20",
+   "parameters": {
+    "dowel": "1"
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 227776.18201209762,
+    "area": 39515.57985669738,
+    "faces": 35,
+    "bbox": [
+     54.0,
+     134.0,
+     41.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ]
+    ],
+    "names": [
+     "E-LBHNW20L-P"
+    ]
+   },
+   "python_spec": {
+    "rows": 18,
+    "failed": []
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 227776.18201209756,
+    "area": 39515.57985669735,
+    "faces": 35,
+    "bbox": [
+     54.0,
+     134.0,
+     41.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ]
+    ],
+    "names": [
+     "Housing"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 18,
+    "failed": []
+   }
+  },
+  {
+   "code": "E-LBHNW30D",
+   "configuration": "medlong-30",
+   "parameters": {
+    "dowel": "0"
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 600163.9621776864,
+    "area": 71349.91209693765,
+    "faces": 25,
+    "bbox": [
+     78.0,
+     170.0,
+     59.5
+    ],
+    "threads": [
+     [
+      -0.0,
+      18.0
+     ],
+     [
+      -0.0,
+      18.0
+     ],
+     [
+      -0.0,
+      18.0
+     ],
+     [
+      -0.0,
+      18.0
+     ]
+    ],
+    "names": [
+     "E-LBHNW30D"
+    ]
+   },
+   "python_spec": {
+    "rows": 17,
+    "failed": []
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 600163.9621776863,
+    "area": 71349.91209693767,
+    "faces": 25,
+    "bbox": [
+     78.0,
+     170.0,
+     59.5
+    ],
+    "threads": [
+     [
+      -0.0,
+      18.0
+     ],
+     [
+      -0.0,
+      18.0
+     ],
+     [
+      -0.0,
+      18.0
+     ],
+     [
+      -0.0,
+      18.0
+     ]
+    ],
+    "names": [
+     "Housing"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 17,
+    "failed": []
+   }
+  },
+  {
+   "code": "E-LBHNW50-P",
+   "configuration": "double-50",
+   "parameters": {
+    "dowel": "1"
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 2008287.1301754592,
+    "area": 150963.19386789907,
+    "faces": 29,
+    "bbox": [
+     122.0,
+     215.0,
+     102.0
+    ],
+    "threads": [
+     [
+      0.0,
+      25.0
+     ],
+     [
+      0.0,
+      25.0
+     ],
+     [
+      -0.0,
+      25.0
+     ],
+     [
+      -0.0,
+      25.0
+     ]
+    ],
+    "names": [
+     "E-LBHNW50-P"
+    ]
+   },
+   "python_spec": {
+    "rows": 18,
+    "failed": []
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 2008287.1301754592,
+    "area": 150963.19386789922,
+    "faces": 29,
+    "bbox": [
+     122.0,
+     215.0,
+     102.0
+    ],
+    "threads": [
+     [
+      0.0,
+      25.0
+     ],
+     [
+      0.0,
+      25.0
+     ],
+     [
+      -0.0,
+      25.0
+     ],
+     [
+      -0.0,
+      25.0
+     ]
+    ],
+    "names": [
+     "Housing"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 18,
+    "failed": []
+   }
+  }
+ ],
+ "refusals": [
+  {
+   "code": "E-LBHN6-P",
+   "python": "E-LBHN6: dr 6 has no dowel hole version, the dowel hole table starts at dr 8 (p.485 / p.487)",
+   "parametric": "E-LBHN6: dr 6 has no dowel hole version, the dowel hole table starts at dr 8 (p.485 / p.487)",
+   "kind": "invalid"
+  },
+  {
+   "code": "E-LBHN13D",
+   "python": "E-LBHN13D: the medium housing is offered for dr [6, 8, 10, 12, 16, 20, 25, 30] only; dr 13, 35, 40 and 50 are single only (p.485)",
+   "parametric": "E-LBHN13D: the medium housing is offered for dr [6, 8, 10, 12, 16, 20, 25, 30] only; dr 13, 35, 40 and 50 are single only (p.485)",
+   "kind": "invalid"
+  },
+  {
+   "code": "E-LBHN16L",
+   "python": "E-LBHN has Single (no suffix) and Medium (D) only; the Long length L belongs to E-LBHNW (p.485)",
+   "parametric": "E-LBHN has Single (no suffix) and Medium (D) only; the Long length L belongs to E-LBHNW (p.485)",
+   "kind": "invalid"
+  },
+  {
+   "code": "E-LBHN9",
+   "python": "E-LBHN9: the wide single housing is offered for dr [6, 8, 10, 12, 13, 16, 20, 25, 30, 35, 40, 50] (p.485)",
+   "parametric": "E-LBHN9: the wide single housing is offered for dr [6, 8, 10, 12, 13, 16, 20, 25, 30, 35, 40, 50] (p.485)",
+   "kind": "invalid"
+  },
+  {
+   "code": "E-LBHNW10D",
+   "python": "E-LBHNW10D: the medium long housing is offered for dr [16, 20, 25, 30] (p.487)",
+   "parametric": "E-LBHNW10D: the medium long housing is offered for dr [16, 20, 25, 30] (p.487)",
+   "kind": "invalid"
+  },
+  {
+   "code": "E-LBHNW6",
+   "python": "E-LBHNW6: the wide double housing is offered for dr [8, 10, 12, 13, 16, 20, 25, 30, 35, 40, 50] (p.487)",
+   "parametric": "E-LBHNW6: the wide double housing is offered for dr [8, 10, 12, 13, 16, 20, 25, 30, 35, 40, 50] (p.487)",
+   "kind": "invalid"
+  },
+  {
+   "code": "E-LBHNW35L",
+   "python": "E-LBHNW35L: the long housing is offered for dr [12, 16, 20, 25, 30] (p.487)",
+   "parametric": "E-LBHNW35L: the long housing is offered for dr [12, 16, 20, 25, 30] (p.487)",
+   "kind": "invalid"
+  },
+  {
+   "code": "E-LBHN16-X",
+   "python": "'E-LBHN16-X': expected <type><dr>[<length>][-P] with type E-LBHN (single, length none or D) or E-LBHNW (double, length none, D or L), -P for dowel holes, e.g. E-LBHN16, E-LBHN16D-P, E-LBHNW20L",
+   "parametric": "'E-LBHN16-X': expected <type><dr>[<length>][-P] with type E-LBHN (single, length none or D) or E-LBHNW (double, length none, D or L), -P for dowel holes, e.g. E-LBHN16, E-LBHN16D-P, E-LBHNW20L",
+   "kind": "invalid"
+  },
+  {
+   "code": "E-LBHN",
+   "python": "'E-LBHN': expected <type><dr>[<length>][-P] with type E-LBHN (single, length none or D) or E-LBHNW (double, length none, D or L), -P for dowel holes, e.g. E-LBHN16, E-LBHN16D-P, E-LBHNW20L",
+   "parametric": "'E-LBHN': expected <type><dr>[<length>][-P] with type E-LBHN (single, length none or D) or E-LBHNW (double, length none, D or L), -P for dowel holes, e.g. E-LBHN16, E-LBHN16D-P, E-LBHNW20L",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "E-LBHNW-P",
+   "python": "'E-LBHNW-P': expected <type><dr>[<length>][-P] with type E-LBHN (single, length none or D) or E-LBHNW (double, length none, D or L), -P for dowel holes, e.g. E-LBHN16, E-LBHN16D-P, E-LBHNW20L",
+   "parametric": "'E-LBHNW-P': expected <type><dr>[<length>][-P] with type E-LBHN (single, length none or D) or E-LBHNW (double, length none, D or L), -P for dowel holes, e.g. E-LBHN16, E-LBHN16D-P, E-LBHNW20L",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "E-LBHN16X",
+   "python": "'E-LBHN16X': expected <type><dr>[<length>][-P] with type E-LBHN (single, length none or D) or E-LBHNW (double, length none, D or L), -P for dowel holes, e.g. E-LBHN16, E-LBHN16D-P, E-LBHNW20L",
+   "parametric": "'E-LBHN16X': expected <type><dr>[<length>][-P] with type E-LBHN (single, length none or D) or E-LBHNW (double, length none, D or L), -P for dowel holes, e.g. E-LBHN16, E-LBHN16D-P, E-LBHNW20L",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "E-LBHN16-X",
+   "python": "'E-LBHN16-X': expected <type><dr>[<length>][-P] with type E-LBHN (single, length none or D) or E-LBHNW (double, length none, D or L), -P for dowel holes, e.g. E-LBHN16, E-LBHN16D-P, E-LBHNW20L",
+   "parametric": "'E-LBHN16-X': expected <type><dr>[<length>][-P] with type E-LBHN (single, length none or D) or E-LBHNW (double, length none, D or L), -P for dowel holes, e.g. E-LBHN16, E-LBHN16D-P, E-LBHNW20L",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "E-LBHN16DP",
+   "python": "'E-LBHN16DP': expected <type><dr>[<length>][-P] with type E-LBHN (single, length none or D) or E-LBHNW (double, length none, D or L), -P for dowel holes, e.g. E-LBHN16, E-LBHN16D-P, E-LBHNW20L",
+   "parametric": "'E-LBHN16DP': expected <type><dr>[<length>][-P] with type E-LBHN (single, length none or D) or E-LBHNW (double, length none, D or L), -P for dowel holes, e.g. E-LBHN16, E-LBHN16D-P, E-LBHNW20L",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "E-LBHN160",
+   "python": "'E-LBHN160': expected <type><dr>[<length>][-P] with type E-LBHN (single, length none or D) or E-LBHNW (double, length none, D or L), -P for dowel holes, e.g. E-LBHN16, E-LBHN16D-P, E-LBHNW20L",
+   "parametric": "'E-LBHN160': expected <type><dr>[<length>][-P] with type E-LBHN (single, length none or D) or E-LBHNW (double, length none, D or L), -P for dowel holes, e.g. E-LBHN16, E-LBHN16D-P, E-LBHNW20L",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "E-LBHN6D-P",
+   "python": "E-LBHN6: dr 6 has no dowel hole version, the dowel hole table starts at dr 8 (p.485 / p.487)",
+   "parametric": "E-LBHN6: dr 6 has no dowel hole version, the dowel hole table starts at dr 8 (p.485 / p.487)",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "E-LBHN35D",
+   "python": "E-LBHN35D: the medium housing is offered for dr [6, 8, 10, 12, 16, 20, 25, 30] only; dr 13, 35, 40 and 50 are single only (p.485)",
+   "parametric": "E-LBHN35D: the medium housing is offered for dr [6, 8, 10, 12, 16, 20, 25, 30] only; dr 13, 35, 40 and 50 are single only (p.485)",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "E-LBHNW6-P",
+   "python": "E-LBHNW6: the wide double housing is offered for dr [8, 10, 12, 13, 16, 20, 25, 30, 35, 40, 50] (p.487)",
+   "parametric": "E-LBHNW6: the wide double housing is offered for dr [8, 10, 12, 13, 16, 20, 25, 30, 35, 40, 50] (p.487)",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "E-LBHNW13D",
+   "python": "E-LBHNW13D: the medium long housing is offered for dr [16, 20, 25, 30] (p.487)",
+   "parametric": "E-LBHNW13D: the medium long housing is offered for dr [16, 20, 25, 30] (p.487)",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "E-LBHNW10L",
+   "python": "E-LBHNW10L: the long housing is offered for dr [12, 16, 20, 25, 30] (p.487)",
+   "parametric": "E-LBHNW10L: the long housing is offered for dr [12, 16, 20, 25, 30] (p.487)",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "E-LBHNW35L",
+   "python": "E-LBHNW35L: the long housing is offered for dr [12, 16, 20, 25, 30] (p.487)",
+   "parametric": "E-LBHNW35L: the long housing is offered for dr [12, 16, 20, 25, 30] (p.487)",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "E-LBHN8L",
+   "python": "E-LBHN has Single (no suffix) and Medium (D) only; the Long length L belongs to E-LBHNW (p.485)",
+   "parametric": "E-LBHN has Single (no suffix) and Medium (D) only; the Long length L belongs to E-LBHNW (p.485)",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "E-LBHN9-P",
+   "python": "E-LBHN9: the wide single housing is offered for dr [6, 8, 10, 12, 13, 16, 20, 25, 30, 35, 40, 50] (p.485)",
+   "parametric": "E-LBHN9: the wide single housing is offered for dr [6, 8, 10, 12, 13, 16, 20, 25, 30, 35, 40, 50] (p.485)",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "E-LBHP20LUU",
+   "python": "'E-LBHP20LUU': expected <type><dr>[<length>][-P] with type E-LBHN (single, length none or D) or E-LBHNW (double, length none, D or L), -P for dowel holes, e.g. E-LBHN16, E-LBHN16D-P, E-LBHNW20L",
+   "parametric": "'E-LBHP20LUU': expected <type><dr>[<length>][-P] with type E-LBHN (single, length none or D) or E-LBHNW (double, length none, D or L), -P for dowel holes, e.g. E-LBHN16, E-LBHN16D-P, E-LBHNW20L",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "E-LBHNW50D",
+   "python": "E-LBHNW50D: the medium long housing is offered for dr [16, 20, 25, 30] (p.487)",
+   "parametric": "E-LBHNW50D: the medium long housing is offered for dr [16, 20, 25, 30] (p.487)",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "E-LBHN40D-P",
+   "python": "E-LBHN40D: the medium housing is offered for dr [6, 8, 10, 12, 16, 20, 25, 30] only; dr 13, 35, 40 and 50 are single only (p.485)",
+   "parametric": "E-LBHN40D: the medium housing is offered for dr [6, 8, 10, 12, 16, 20, 25, 30] only; dr 13, 35, 40 and 50 are single only (p.485)",
+   "kind": "invalid",
+   "extra": true
+  }
+ ],
+ "parametric": [
+  {
+   "base": "E-LBHN16",
+   "param": "dowel",
+   "value": "1",
+   "direct": "E-LBHN16-P",
+   "changed": {
+    "bodies": 1,
+    "volume": 66921.09595268479,
+    "area": 14578.830614811948,
+    "faces": 29,
+    "bbox": [
+     50.0,
+     44.0,
+     38.5
+    ],
+    "threads": [
+     [
+      0.0,
+      12.0
+     ],
+     [
+      0.0,
+      12.0
+     ],
+     [
+      0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ]
+    ],
+    "names": [
+     "Housing"
+    ]
+   },
+   "direct_inserted": {
+    "bodies": 1,
+    "volume": 66921.09595268479,
+    "area": 14578.830614811948,
+    "faces": 29,
+    "bbox": [
+     50.0,
+     44.0,
+     38.5
+    ],
+    "threads": [
+     [
+      0.0,
+      12.0
+     ],
+     [
+      0.0,
+      12.0
+     ],
+     [
+      0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ]
+    ],
+    "names": [
+     "Housing"
+    ]
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 66921.09595268479,
+    "area": 14578.830614811948,
+    "faces": 29,
+    "bbox": [
+     50.0,
+     44.0,
+     38.5
+    ],
+    "threads": [
+     [
+      0.0,
+      12.0
+     ],
+     [
+      0.0,
+      12.0
+     ],
+     [
+      0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ]
+    ],
+    "names": [
+     "E-LBHN16-P"
+    ]
+   }
+  },
+  {
+   "base": "E-LBHNW20L-P",
+   "param": "dowel",
+   "value": "0",
+   "direct": "E-LBHNW20L",
+   "changed": {
+    "bodies": 1,
+    "volume": 227972.53155294695,
+    "area": 39358.50022401789,
+    "faces": 31,
+    "bbox": [
+     54.0,
+     134.0,
+     41.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ]
+    ],
+    "names": [
+     "Housing"
+    ]
+   },
+   "direct_inserted": {
+    "bodies": 1,
+    "volume": 227972.5315529469,
+    "area": 39358.500224017866,
+    "faces": 31,
+    "bbox": [
+     54.0,
+     134.0,
+     41.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ]
+    ],
+    "names": [
+     "Housing"
+    ]
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 227972.53155294695,
+    "area": 39358.50022401789,
+    "faces": 31,
+    "bbox": [
+     54.0,
+     134.0,
+     41.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ],
+     [
+      -0.0,
+      12.0
+     ]
+    ],
+    "names": [
+     "E-LBHNW20L"
+    ]
+   }
+  },
+  {
+   "base": "E-LBHN30D",
+   "param": "dowel",
+   "value": "1",
+   "direct": "E-LBHN30D-P",
+   "changed": {
+    "bodies": 1,
+    "volume": 349525.6270227064,
+    "area": 46870.47081256562,
+    "faces": 29,
+    "bbox": [
+     78.0,
+     100.0,
+     59.5
+    ],
+    "threads": [
+     [
+      0.0,
+      18.0
+     ],
+     [
+      -0.0,
+      18.0
+     ],
+     [
+      -0.0,
+      18.0
+     ],
+     [
+      -0.0,
+      18.0
+     ]
+    ],
+    "names": [
+     "Housing"
+    ]
+   },
+   "direct_inserted": {
+    "bodies": 1,
+    "volume": 349525.6270227063,
+    "area": 46870.47081256562,
+    "faces": 29,
+    "bbox": [
+     78.0,
+     100.0,
+     59.5
+    ],
+    "threads": [
+     [
+      0.0,
+      18.0
+     ],
+     [
+      -0.0,
+      18.0
+     ],
+     [
+      -0.0,
+      18.0
+     ],
+     [
+      -0.0,
+      18.0
+     ]
+    ],
+    "names": [
+     "Housing"
+    ]
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 349525.6270227064,
+    "area": 46870.47081256562,
+    "faces": 29,
+    "bbox": [
+     78.0,
+     100.0,
+     59.5
+    ],
+    "threads": [
+     [
+      0.0,
+      18.0
+     ],
+     [
+      -0.0,
+      18.0
+     ],
+     [
+      -0.0,
+      18.0
+     ],
+     [
+      -0.0,
+      18.0
+     ]
+    ],
+    "names": [
+     "E-LBHN30D-P"
+    ]
+   }
+  },
+  {
+   "base": "E-LBHNW50-P",
+   "param": "dowel",
+   "value": "0",
+   "direct": "E-LBHNW50",
+   "changed": {
+    "bodies": 1,
+    "volume": 2008682.9708498116,
+    "area": 150699.30008499755,
+    "faces": 25,
+    "bbox": [
+     122.0,
+     215.0,
+     102.0
+    ],
+    "threads": [
+     [
+      0.0,
+      25.0
+     ],
+     [
+      0.0,
+      25.0
+     ],
+     [
+      -0.0,
+      25.0
+     ],
+     [
+      -0.0,
+      25.0
+     ]
+    ],
+    "names": [
+     "Housing"
+    ]
+   },
+   "direct_inserted": {
+    "bodies": 1,
+    "volume": 2008682.9708498116,
+    "area": 150699.3000849977,
+    "faces": 25,
+    "bbox": [
+     122.0,
+     215.0,
+     102.0
+    ],
+    "threads": [
+     [
+      0.0,
+      25.0
+     ],
+     [
+      0.0,
+      25.0
+     ],
+     [
+      -0.0,
+      25.0
+     ],
+     [
+      -0.0,
+      25.0
+     ]
+    ],
+    "names": [
+     "Housing"
+    ]
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 2008682.9708498116,
+    "area": 150699.30008499755,
+    "faces": 25,
+    "bbox": [
+     122.0,
+     215.0,
+     102.0
+    ],
+    "threads": [
+     [
+      0.0,
+      25.0
+     ],
+     [
+      0.0,
+      25.0
+     ],
+     [
+      -0.0,
+      25.0
+     ],
+     [
+      -0.0,
+      25.0
+     ]
+    ],
+    "names": [
+     "E-LBHNW50"
+    ]
+   }
+  }
+ ],
+ "limits": {
+  "insert_design with a free `parameters` map (dowel 1)": {
+   "error": null,
+   "result": {
+    "bbox_max": [
+     [
+      25.0,
+      22.000000000000004,
+      38.5
+     ],
+     [
+      25.0,
+      22.000000000000004,
+      38.5
+     ]
+    ],
+    "bodies": [
+     "Housing",
+     "Housing (2)"
+    ]
+   }
+  },
+  "component.set_link_parameters": {
+   "error": "{\"command\": \"component.set_link_parameters\", \"error\": \"unknown command `component.set_link_parameters`\", \"step\": 1}",
+   "result": null
+  },
+  "generator.parse": {
+   "error": "{\"command\": \"generator.parse\", \"error\": \"unknown command `generator.parse`\", \"step\": 1}",
+   "result": null
+  },
+  "generator.insert": {
+   "error": "{\"command\": \"generator.insert\", \"error\": \"unknown command `generator.insert` (did you mean `canvas.insert`, `parts.insert` or `pointcloud.insert`?)\", \"step\": 1}",
+   "result": null
+  },
+  "parameters.change dowel on the host design holding the linked part": {
+   "error": null,
+   "result": {
+    "bbox_max": [
+     [
+      25.0,
+      22.000000000000004,
+      38.5
+     ]
+    ],
+    "bodies": [
+     "Housing"
+    ]
+   }
+  },
+  "unknown row": {
+   "error": "{\"command\": \"component.insert_design\", \"error\": \"invalid parameters for `component.insert_design`: configuration `no-such-row` does not exist in the source design\", \"step\": 1}",
+   "result": null
+  },
+  "dowel = 1 on dr 6 (no dowel hole version) in a configuration row": {
+   "error": "{\"command\": \"config.row\", \"error\": \"invalid parameters for `config.row`: invalid parameters for `config.activate`: configuration rules: rule `No dowel hole version for this dr (S12 p.485 / p.487: the dowel hole table starts at dr 8)` restricts the final value\", \"step\": 1}",
+   "result": null
+  },
+  "dowel = 2 (outside 0..1) by an ordinary parameters.change": {
+   "error": null,
+   "result": {
+    "bbox_max": [
+     [
+      15.0,
+      12.5,
+      18.000000000000004
+     ]
+    ],
+    "bodies": [
+     "Housing"
+    ]
+   }
+  }
+ },
+ "descriptions": [
+  {
+   "code": "E-LBHN6",
+   "same": true,
+   "python": "MISUMI Economy linear bushing housing unit E-LBHN6, wide block, single, shaft diameter dr 6 mm (+0.003/-0.012 mm as printed, bore drawn empty at nominal), L 25 mm (+-0.4), L1 15 mm, W 30 mm, H 18 mm, h 9 mm (+-0.04), 4 mounting holes M4 (pilot d 3.4 mm, thread depth 8 mm). Housing aluminium alloy, clear anodized. The built-in bushing, grease nipple hole and edge chamfers are not drawn. Generated from the published catalogue dimensions.",
+   "parametric": "MISUMI Economy linear bushing housing unit E-LBHN6, wide block, single, shaft diameter dr 6 mm (+0.003/-0.012 mm as printed, bore drawn empty at nominal), L 25 mm (+-0.4), L1 15 mm, W 30 mm, H 18 mm, h 9 mm (+-0.04), 4 mounting holes M4 (pilot d 3.4 mm, thread depth 8 mm). Housing aluminium alloy, clear anodized. The built-in bushing, grease nipple hole and edge chamfers are not drawn. Generated from the published catalogue dimensions."
+  },
+  {
+   "code": "E-LBHN16",
+   "same": true,
+   "python": "MISUMI Economy linear bushing housing unit E-LBHN16, wide block, single, shaft diameter dr 16 mm (+0.003/-0.012 mm as printed, bore drawn empty at nominal), L 44 mm (+-0.4), L1 34 mm, W 50 mm, H 38.5 mm, h 19 mm (+-0.04), 4 mounting holes M5 (pilot d 4.3 mm, thread depth 12 mm). Housing aluminium alloy, clear anodized. The built-in bushing, grease nipple hole and edge chamfers are not drawn. Generated from the published catalogue dimensions.",
+   "parametric": "MISUMI Economy linear bushing housing unit E-LBHN16, wide block, single, shaft diameter dr 16 mm (+0.003/-0.012 mm as printed, bore drawn empty at nominal), L 44 mm (+-0.4), L1 34 mm, W 50 mm, H 38.5 mm, h 19 mm (+-0.04), 4 mounting holes M5 (pilot d 4.3 mm, thread depth 12 mm). Housing aluminium alloy, clear anodized. The built-in bushing, grease nipple hole and edge chamfers are not drawn. Generated from the published catalogue dimensions."
+  },
+  {
+   "code": "E-LBHN16D-P",
+   "same": true,
+   "python": "MISUMI Economy linear bushing housing unit E-LBHN16D-P, wide block, medium, shaft diameter dr 16 mm (+0.000/-0.120 mm as printed, bore drawn empty at nominal), L 63 mm (+-0.4), L1 48 mm, W 50 mm, H 38.5 mm, h 19 mm (+-0.04), 4 mounting holes M5 (pilot d 4.3 mm, thread depth 12 mm), 2 dowel holes P 4 mm x 5 deep (positions (appearance, approximate)). Housing aluminium alloy, clear anodized. The built-in bushing, grease nipple hole and edge chamfers are not drawn. Generated from the published catalogue dimensions.",
+   "parametric": "MISUMI Economy linear bushing housing unit E-LBHN16D-P, wide block, medium, shaft diameter dr 16 mm (+0.000/-0.120 mm as printed, bore drawn empty at nominal), L 63 mm (+-0.4), L1 48 mm, W 50 mm, H 38.5 mm, h 19 mm (+-0.04), 4 mounting holes M5 (pilot d 4.3 mm, thread depth 12 mm), 2 dowel holes P 4 mm x 5 deep (positions (appearance, approximate)). Housing aluminium alloy, clear anodized. The built-in bushing, grease nipple hole and edge chamfers are not drawn. Generated from the published catalogue dimensions."
+  },
+  {
+   "code": "E-LBHN20D",
+   "same": true,
+   "python": "MISUMI Economy linear bushing housing unit E-LBHN20D, wide block, medium, shaft diameter dr 20 mm (+0.000/-0.150 mm as printed, bore drawn empty at nominal), L 73 mm (+-0.4), L1 56 mm, W 54 mm, H 41 mm, h 21 mm (+-0.04), 4 mounting holes M6 (pilot d 5.2 mm, thread depth 12 mm). Housing aluminium alloy, clear anodized. The built-in bushing, grease nipple hole and edge chamfers are not drawn. Generated from the published catalogue dimensions.",
+   "parametric": "MISUMI Economy linear bushing housing unit E-LBHN20D, wide block, medium, shaft diameter dr 20 mm (+0.000/-0.150 mm as printed, bore drawn empty at nominal), L 73 mm (+-0.4), L1 56 mm, W 54 mm, H 41 mm, h 21 mm (+-0.04), 4 mounting holes M6 (pilot d 5.2 mm, thread depth 12 mm). Housing aluminium alloy, clear anodized. The built-in bushing, grease nipple hole and edge chamfers are not drawn. Generated from the published catalogue dimensions."
+  },
+  {
+   "code": "E-LBHN13",
+   "same": true,
+   "python": "MISUMI Economy linear bushing housing unit E-LBHN13, wide block, single, shaft diameter dr 13 mm (+0.003/-0.012 mm as printed, bore drawn empty at nominal), L 39 mm (+-0.4), L1 26 mm, W 44 mm, H 30 mm, h 15 mm (+-0.04), 4 mounting holes M5 (pilot d 4.3 mm, thread depth 12 mm). Housing aluminium alloy, clear anodized. The built-in bushing, grease nipple hole and edge chamfers are not drawn. Generated from the published catalogue dimensions.",
+   "parametric": "MISUMI Economy linear bushing housing unit E-LBHN13, wide block, single, shaft diameter dr 13 mm (+0.003/-0.012 mm as printed, bore drawn empty at nominal), L 39 mm (+-0.4), L1 26 mm, W 44 mm, H 30 mm, h 15 mm (+-0.04), 4 mounting holes M5 (pilot d 4.3 mm, thread depth 12 mm). Housing aluminium alloy, clear anodized. The built-in bushing, grease nipple hole and edge chamfers are not drawn. Generated from the published catalogue dimensions."
+  },
+  {
+   "code": "E-LBHN30-P",
+   "same": true,
+   "python": "MISUMI Economy linear bushing housing unit E-LBHN30-P, wide block, single, shaft diameter dr 30 mm (+0.003/-0.013 mm as printed, bore drawn empty at nominal), L 72 mm (+-0.4), L1 58 mm, W 78 mm, H 59.5 mm, h 30 mm (+-0.04), 4 mounting holes M8 (pilot d 7 mm, thread depth 18 mm), 2 dowel holes P 5 mm x 6 deep (positions (appearance, approximate)). Housing aluminium alloy, clear anodized. The built-in bushing, grease nipple hole and edge chamfers are not drawn. Generated from the published catalogue dimensions.",
+   "parametric": "MISUMI Economy linear bushing housing unit E-LBHN30-P, wide block, single, shaft diameter dr 30 mm (+0.003/-0.013 mm as printed, bore drawn empty at nominal), L 72 mm (+-0.4), L1 58 mm, W 78 mm, H 59.5 mm, h 30 mm (+-0.04), 4 mounting holes M8 (pilot d 7 mm, thread depth 18 mm), 2 dowel holes P 5 mm x 6 deep (positions (appearance, approximate)). Housing aluminium alloy, clear anodized. The built-in bushing, grease nipple hole and edge chamfers are not drawn. Generated from the published catalogue dimensions."
+  },
+  {
+   "code": "E-LBHN50",
+   "same": true,
+   "python": "MISUMI Economy linear bushing housing unit E-LBHN50, wide block, single, shaft diameter dr 50 mm (+0.003/-0.015 mm as printed, bore drawn empty at nominal), L 110 mm (+-0.4), L1 80 mm, W 122 mm, H 102 mm, h 52 mm (+-0.04), 4 mounting holes M10 (pilot d 8.7 mm, thread depth 25 mm). Housing aluminium alloy, clear anodized. The built-in bushing, grease nipple hole and edge chamfers are not drawn. Generated from the published catalogue dimensions.",
+   "parametric": "MISUMI Economy linear bushing housing unit E-LBHN50, wide block, single, shaft diameter dr 50 mm (+0.003/-0.015 mm as printed, bore drawn empty at nominal), L 110 mm (+-0.4), L1 80 mm, W 122 mm, H 102 mm, h 52 mm (+-0.04), 4 mounting holes M10 (pilot d 8.7 mm, thread depth 25 mm). Housing aluminium alloy, clear anodized. The built-in bushing, grease nipple hole and edge chamfers are not drawn. Generated from the published catalogue dimensions."
+  },
+  {
+   "code": "E-LBHNW8",
+   "same": true,
+   "python": "MISUMI Economy linear bushing housing unit E-LBHNW8, wide block, double, shaft diameter dr 8 mm (+0.000/-0.010 mm as printed, bore drawn empty at nominal), L 58 mm (+-0.4), L1 42 mm, W 34 mm, H 22 mm, h 11 mm (+-0.04), 4 mounting holes M4 (pilot d 3.4 mm, thread depth 8 mm). Housing aluminium alloy, clear anodized. The built-in bushing, grease nipple hole and edge chamfers are not drawn. Generated from the published catalogue dimensions.",
+   "parametric": "MISUMI Economy linear bushing housing unit E-LBHNW8, wide block, double, shaft diameter dr 8 mm (+0.000/-0.010 mm as printed, bore drawn empty at nominal), L 58 mm (+-0.4), L1 42 mm, W 34 mm, H 22 mm, h 11 mm (+-0.04), 4 mounting holes M4 (pilot d 3.4 mm, thread depth 8 mm). Housing aluminium alloy, clear anodized. The built-in bushing, grease nipple hole and edge chamfers are not drawn. Generated from the published catalogue dimensions."
+  },
+  {
+   "code": "E-LBHNW12L",
+   "same": true,
+   "python": "MISUMI Economy linear bushing housing unit E-LBHNW12L, wide block, long, shaft diameter dr 12 mm (+0.000/-0.012 mm as printed, bore drawn empty at nominal), L 96 mm (+-0.4), L1 72 mm, W 42 mm, H 28 mm, h 15 mm (+-0.04), 6 mounting holes M5 (pilot d 4.3 mm, thread depth 12 mm). Housing aluminium alloy, clear anodized. The built-in bushing, grease nipple hole and edge chamfers are not drawn. Generated from the published catalogue dimensions.",
+   "parametric": "MISUMI Economy linear bushing housing unit E-LBHNW12L, wide block, long, shaft diameter dr 12 mm (+0.000/-0.012 mm as printed, bore drawn empty at nominal), L 96 mm (+-0.4), L1 72 mm, W 42 mm, H 28 mm, h 15 mm (+-0.04), 6 mounting holes M5 (pilot d 4.3 mm, thread depth 12 mm). Housing aluminium alloy, clear anodized. The built-in bushing, grease nipple hole and edge chamfers are not drawn. Generated from the published catalogue dimensions."
+  },
+  {
+   "code": "E-LBHNW16D",
+   "same": true,
+   "python": "MISUMI Economy linear bushing housing unit E-LBHNW16D, wide block, medium long, shaft diameter dr 16 mm (+0.000/-0.015 mm as printed, bore drawn empty at nominal), L 100 mm (+-0.4), L1 74 mm, W 50 mm, H 38.5 mm, h 19 mm (+-0.04), 4 mounting holes M5 (pilot d 4.3 mm, thread depth 12 mm). Housing aluminium alloy, clear anodized. The built-in bushing, grease nipple hole and edge chamfers are not drawn. Generated from the published catalogue dimensions.",
+   "parametric": "MISUMI Economy linear bushing housing unit E-LBHNW16D, wide block, medium long, shaft diameter dr 16 mm (+0.000/-0.015 mm as printed, bore drawn empty at nominal), L 100 mm (+-0.4), L1 74 mm, W 50 mm, H 38.5 mm, h 19 mm (+-0.04), 4 mounting holes M5 (pilot d 4.3 mm, thread depth 12 mm). Housing aluminium alloy, clear anodized. The built-in bushing, grease nipple hole and edge chamfers are not drawn. Generated from the published catalogue dimensions."
+  },
+  {
+   "code": "E-LBHNW20L-P",
+   "same": true,
+   "python": "MISUMI Economy linear bushing housing unit E-LBHNW20L-P, wide block, long, shaft diameter dr 20 mm (+0.000/-0.018 mm as printed, bore drawn empty at nominal), L 134 mm (+-0.4), L1 100 mm, W 54 mm, H 41 mm, h 21 mm (+-0.04), 6 mounting holes M6 (pilot d 5.2 mm, thread depth 12 mm), 2 dowel holes P 5 mm x 5 deep (positions (appearance, approximate)). Housing aluminium alloy, clear anodized. The built-in bushing, grease nipple hole and edge chamfers are not drawn. Generated from the published catalogue dimensions.",
+   "parametric": "MISUMI Economy linear bushing housing unit E-LBHNW20L-P, wide block, long, shaft diameter dr 20 mm (+0.000/-0.018 mm as printed, bore drawn empty at nominal), L 134 mm (+-0.4), L1 100 mm, W 54 mm, H 41 mm, h 21 mm (+-0.04), 6 mounting holes M6 (pilot d 5.2 mm, thread depth 12 mm), 2 dowel holes P 5 mm x 5 deep (positions (appearance, approximate)). Housing aluminium alloy, clear anodized. The built-in bushing, grease nipple hole and edge chamfers are not drawn. Generated from the published catalogue dimensions."
+  },
+  {
+   "code": "E-LBHNW30D",
+   "same": true,
+   "python": "MISUMI Economy linear bushing housing unit E-LBHNW30D, wide block, medium long, shaft diameter dr 30 mm (+0.000/-0.018 mm as printed, bore drawn empty at nominal), L 170 mm (+-0.4), L1 130 mm, W 78 mm, H 59.5 mm, h 30 mm (+-0.04), 4 mounting holes M8 (pilot d 7 mm, thread depth 18 mm). Housing aluminium alloy, clear anodized. The built-in bushing, grease nipple hole and edge chamfers are not drawn. Generated from the published catalogue dimensions.",
+   "parametric": "MISUMI Economy linear bushing housing unit E-LBHNW30D, wide block, medium long, shaft diameter dr 30 mm (+0.000/-0.018 mm as printed, bore drawn empty at nominal), L 170 mm (+-0.4), L1 130 mm, W 78 mm, H 59.5 mm, h 30 mm (+-0.04), 4 mounting holes M8 (pilot d 7 mm, thread depth 18 mm). Housing aluminium alloy, clear anodized. The built-in bushing, grease nipple hole and edge chamfers are not drawn. Generated from the published catalogue dimensions."
+  },
+  {
+   "code": "E-LBHNW50-P",
+   "same": true,
+   "python": "MISUMI Economy linear bushing housing unit E-LBHNW50-P, wide block, double, shaft diameter dr 50 mm (+0.000/-0.015 mm as printed, bore drawn empty at nominal), L 215 mm (+-0.4), L1 160 mm, W 122 mm, H 102 mm, h 52 mm (+-0.04), 4 mounting holes M10 (pilot d 8.7 mm, thread depth 25 mm), 2 dowel holes P 6 mm x 7 deep (positions (appearance, approximate)). Housing aluminium alloy, clear anodized. The built-in bushing, grease nipple hole and edge chamfers are not drawn. Generated from the published catalogue dimensions.",
+   "parametric": "MISUMI Economy linear bushing housing unit E-LBHNW50-P, wide block, double, shaft diameter dr 50 mm (+0.000/-0.015 mm as printed, bore drawn empty at nominal), L 215 mm (+-0.4), L1 160 mm, W 122 mm, H 102 mm, h 52 mm (+-0.04), 4 mounting holes M10 (pilot d 8.7 mm, thread depth 25 mm), 2 dowel holes P 6 mm x 7 deep (positions (appearance, approximate)). Housing aluminium alloy, clear anodized. The built-in bushing, grease nipple hole and edge chamfers are not drawn. Generated from the published catalogue dimensions."
+  }
+ ],
+ "roundtrip": [
+  {
+   "code": "E-LBHN6",
+   "printed": "E-LBHN6",
+   "same": true
+  },
+  {
+   "code": "E-LBHN16",
+   "printed": "E-LBHN16",
+   "same": true
+  },
+  {
+   "code": "E-LBHN16D-P",
+   "printed": "E-LBHN16D-P",
+   "same": true
+  },
+  {
+   "code": "E-LBHN20D",
+   "printed": "E-LBHN20D",
+   "same": true
+  },
+  {
+   "code": "E-LBHN13",
+   "printed": "E-LBHN13",
+   "same": true
+  },
+  {
+   "code": "E-LBHN30-P",
+   "printed": "E-LBHN30-P",
+   "same": true
+  },
+  {
+   "code": "E-LBHN50",
+   "printed": "E-LBHN50",
+   "same": true
+  },
+  {
+   "code": "E-LBHNW8",
+   "printed": "E-LBHNW8",
+   "same": true
+  },
+  {
+   "code": "E-LBHNW12L",
+   "printed": "E-LBHNW12L",
+   "same": true
+  },
+  {
+   "code": "E-LBHNW16D",
+   "printed": "E-LBHNW16D",
+   "same": true
+  },
+  {
+   "code": "E-LBHNW20L-P",
+   "printed": "E-LBHNW20L-P",
+   "same": true
+  },
+  {
+   "code": "E-LBHNW30D",
+   "printed": "E-LBHNW30D",
+   "same": true
+  },
+  {
+   "code": "E-LBHNW50-P",
+   "printed": "E-LBHNW50-P",
+   "same": true
+  }
+ ],
+ "table": {
+  "rows": 40,
+  "columns": 31,
+  "rules": 6
+ }
+}

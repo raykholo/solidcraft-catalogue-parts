@@ -1,0 +1,909 @@
+{
+ "codes": [
+  {
+   "code": "E-LBHG12-15",
+   "configuration": "G-12",
+   "parameters": {
+    "hc": "15 mm"
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 36785.84115666196,
+    "area": 10389.788976567963,
+    "faces": 17,
+    "bbox": [
+     58.0,
+     40.0,
+     30.0
+    ],
+    "threads": [],
+    "names": [
+     "E-LBHG12-15"
+    ]
+   },
+   "python_spec": {
+    "rows": 12,
+    "failed": []
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 36785.84115666196,
+    "area": 10389.788976567963,
+    "faces": 17,
+    "bbox": [
+     58.0,
+     40.0,
+     30.0
+    ],
+    "threads": [],
+    "names": [
+     "Housing"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 12,
+    "failed": []
+   }
+  },
+  {
+   "code": "E-LBHG12-25",
+   "configuration": "G-12",
+   "parameters": {
+    "hc": "25 mm"
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 48785.841156661954,
+    "area": 11789.788976567963,
+    "faces": 17,
+    "bbox": [
+     58.0,
+     40.0,
+     40.0
+    ],
+    "threads": [],
+    "names": [
+     "E-LBHG12-25"
+    ]
+   },
+   "python_spec": {
+    "rows": 12,
+    "failed": []
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 48785.84115666196,
+    "area": 11789.788976567963,
+    "faces": 17,
+    "bbox": [
+     58.0,
+     40.0,
+     40.0
+    ],
+    "threads": [],
+    "names": [
+     "Housing"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 12,
+    "failed": []
+   }
+  },
+  {
+   "code": "E-LBHG16-20",
+   "configuration": "G-16",
+   "parameters": {
+    "hc": "20 mm"
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 71744.007520291,
+    "area": 15475.702705012918,
+    "faces": 17,
+    "bbox": [
+     68.0,
+     47.0,
+     40.0
+    ],
+    "threads": [],
+    "names": [
+     "E-LBHG16-20"
+    ]
+   },
+   "python_spec": {
+    "rows": 12,
+    "failed": []
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 71744.00752029098,
+    "area": 15475.702705012918,
+    "faces": 17,
+    "bbox": [
+     68.0,
+     47.0,
+     40.0
+    ],
+    "threads": [],
+    "names": [
+     "Housing"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 12,
+    "failed": []
+   }
+  },
+  {
+   "code": "E-LBHG20-30",
+   "configuration": "G-20",
+   "parameters": {
+    "hc": "30 mm"
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 110846.32006807998,
+    "area": 20348.229565105976,
+    "faces": 17,
+    "bbox": [
+     72.0,
+     52.0,
+     52.0
+    ],
+    "threads": [],
+    "names": [
+     "E-LBHG20-30"
+    ]
+   },
+   "python_spec": {
+    "rows": 12,
+    "failed": []
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 110846.32006807995,
+    "area": 20348.229565105976,
+    "faces": 17,
+    "bbox": [
+     72.0,
+     52.0,
+     52.0
+    ],
+    "threads": [],
+    "names": [
+     "Housing"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 12,
+    "failed": []
+   }
+  },
+  {
+   "code": "E-LBHG25-40",
+   "configuration": "G-25",
+   "parameters": {
+    "hc": "40 mm"
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 238800.48756362946,
+    "area": 33812.458307756206,
+    "faces": 17,
+    "bbox": [
+     90.0,
+     69.0,
+     67.5
+    ],
+    "threads": [],
+    "names": [
+     "E-LBHG25-40"
+    ]
+   },
+   "python_spec": {
+    "rows": 12,
+    "failed": []
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 238800.48756362946,
+    "area": 33812.458307756206,
+    "faces": 17,
+    "bbox": [
+     90.0,
+     69.0,
+     67.5
+    ],
+    "threads": [],
+    "names": [
+     "Housing"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 12,
+    "failed": []
+   }
+  },
+  {
+   "code": "E-LBHG30-50",
+   "configuration": "G-30",
+   "parameters": {
+    "hc": "50 mm"
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 374652.10221891454,
+    "area": 45180.09262771897,
+    "faces": 17,
+    "bbox": [
+     105.0,
+     74.0,
+     82.5
+    ],
+    "threads": [],
+    "names": [
+     "E-LBHG30-50"
+    ]
+   },
+   "python_spec": {
+    "rows": 12,
+    "failed": []
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 374652.1022189144,
+    "area": 45180.09262771898,
+    "faces": 17,
+    "bbox": [
+     105.0,
+     74.0,
+     82.5
+    ],
+    "threads": [],
+    "names": [
+     "Housing"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 12,
+    "failed": []
+   }
+  },
+  {
+   "code": "E-LBHGW12-20",
+   "configuration": "GW-12",
+   "parameters": {
+    "hc": "20 mm"
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 75445.421090785,
+    "area": 17502.011248670566,
+    "faces": 17,
+    "bbox": [
+     58.0,
+     70.0,
+     35.0
+    ],
+    "threads": [],
+    "names": [
+     "E-LBHGW12-20"
+    ]
+   },
+   "python_spec": {
+    "rows": 12,
+    "failed": []
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 75445.421090785,
+    "area": 17502.011248670566,
+    "faces": 17,
+    "bbox": [
+     58.0,
+     70.0,
+     35.0
+    ],
+    "threads": [],
+    "names": [
+     "Housing"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 12,
+    "failed": []
+   }
+  },
+  {
+   "code": "E-LBHGW20-25",
+   "configuration": "GW-20",
+   "parameters": {
+    "hc": "25 mm"
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 180617.13092300284,
+    "area": 31408.09163461315,
+    "faces": 17,
+    "bbox": [
+     72.0,
+     94.0,
+     47.0
+    ],
+    "threads": [],
+    "names": [
+     "E-LBHGW20-25"
+    ]
+   },
+   "python_spec": {
+    "rows": 12,
+    "failed": []
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 180617.1309230028,
+    "area": 31408.091634613153,
+    "faces": 17,
+    "bbox": [
+     72.0,
+     94.0,
+     47.0
+    ],
+    "threads": [],
+    "names": [
+     "Housing"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 12,
+    "failed": []
+   }
+  },
+  {
+   "code": "E-LBHGW25-30",
+   "configuration": "GW-25",
+   "parameters": {
+    "hc": "30 mm"
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 374347.4302883486,
+    "area": 52265.34267756155,
+    "faces": 17,
+    "bbox": [
+     90.0,
+     128.0,
+     57.5
+    ],
+    "threads": [],
+    "names": [
+     "E-LBHGW25-30"
+    ]
+   },
+   "python_spec": {
+    "rows": 12,
+    "failed": []
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 374347.43028834864,
+    "area": 52265.34267756155,
+    "faces": 17,
+    "bbox": [
+     90.0,
+     128.0,
+     57.5
+    ],
+    "threads": [],
+    "names": [
+     "Housing"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 12,
+    "failed": []
+   }
+  },
+  {
+   "code": "E-LBHGW30-40",
+   "configuration": "GW-30",
+   "parameters": {
+    "hc": "40 mm"
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 613377.1680072213,
+    "area": 69802.29857031896,
+    "faces": 17,
+    "bbox": [
+     105.0,
+     138.0,
+     72.5
+    ],
+    "threads": [],
+    "names": [
+     "E-LBHGW30-40"
+    ]
+   },
+   "python_spec": {
+    "rows": 12,
+    "failed": []
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 613377.1680072213,
+    "area": 69802.29857031896,
+    "faces": 17,
+    "bbox": [
+     105.0,
+     138.0,
+     72.5
+    ],
+    "threads": [],
+    "names": [
+     "Housing"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 12,
+    "failed": []
+   }
+  }
+ ],
+ "refusals": [
+  {
+   "code": "E-LBHG12-30",
+   "python": "E-LBHG12-30: centre height H 30 is not offered for dr 12; the choices are [15, 20, 25] (p.491)",
+   "parametric": "E-LBHG12-30: centre height H 30 is not offered for dr 12; the choices are [15, 20, 25] (p.491)",
+   "kind": "invalid"
+  },
+  {
+   "code": "E-LBHG30-25",
+   "python": "E-LBHG30-25: centre height H 25 is not offered for dr 30; the choices are [30, 40, 50] (p.491)",
+   "parametric": "E-LBHG30-25: centre height H 25 is not offered for dr 30; the choices are [30, 40, 50] (p.491)",
+   "kind": "invalid"
+  },
+  {
+   "code": "E-LBHG12",
+   "python": "'E-LBHG12': expected E-LBHG<dr>-<H> (single) or E-LBHGW<dr>-<H> (double), H the centre height, e.g. E-LBHG12-15, E-LBHGW30-40",
+   "parametric": "'E-LBHG12': expected E-LBHG<dr>-<H> (single) or E-LBHGW<dr>-<H> (double), H the centre height, e.g. E-LBHG12-15, E-LBHGW30-40",
+   "kind": "invalid"
+  },
+  {
+   "code": "E-LBHGW16-15",
+   "python": "E-LBHGW16-15: centre height H 15 is not offered for dr 16; the choices are [20, 25, 30] (p.491)",
+   "parametric": "E-LBHGW16-15: centre height H 15 is not offered for dr 16; the choices are [20, 25, 30] (p.491)",
+   "kind": "invalid"
+  },
+  {
+   "code": "E-LBHG10-15",
+   "python": "E-LBHG10-15: dr 10 is not a catalogue size; E-LBHG / E-LBHGW are offered for dr [12, 16, 20, 25, 30] (p.491)",
+   "parametric": "E-LBHG10-15: dr 10 is not a catalogue size; E-LBHG / E-LBHGW are offered for dr [12, 16, 20, 25, 30] (p.491)",
+   "kind": "invalid"
+  },
+  {
+   "code": "E-LBHG12-15-P",
+   "python": "'E-LBHG12-15-P': expected E-LBHG<dr>-<H> (single) or E-LBHGW<dr>-<H> (double), H the centre height, e.g. E-LBHG12-15, E-LBHGW30-40",
+   "parametric": "'E-LBHG12-15-P': expected E-LBHG<dr>-<H> (single) or E-LBHGW<dr>-<H> (double), H the centre height, e.g. E-LBHG12-15, E-LBHGW30-40",
+   "kind": "invalid"
+  },
+  {
+   "code": "E-LBHG12-",
+   "python": "'E-LBHG12-': expected E-LBHG<dr>-<H> (single) or E-LBHGW<dr>-<H> (double), H the centre height, e.g. E-LBHG12-15, E-LBHGW30-40",
+   "parametric": "'E-LBHG12-': expected E-LBHG<dr>-<H> (single) or E-LBHGW<dr>-<H> (double), H the centre height, e.g. E-LBHG12-15, E-LBHGW30-40",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "E-LBHG1215",
+   "python": "'E-LBHG1215': expected E-LBHG<dr>-<H> (single) or E-LBHGW<dr>-<H> (double), H the centre height, e.g. E-LBHG12-15, E-LBHGW30-40",
+   "parametric": "'E-LBHG1215': expected E-LBHG<dr>-<H> (single) or E-LBHGW<dr>-<H> (double), H the centre height, e.g. E-LBHG12-15, E-LBHGW30-40",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "E-LBHGW-25",
+   "python": "'E-LBHGW-25': expected E-LBHG<dr>-<H> (single) or E-LBHGW<dr>-<H> (double), H the centre height, e.g. E-LBHG12-15, E-LBHGW30-40",
+   "parametric": "'E-LBHGW-25': expected E-LBHG<dr>-<H> (single) or E-LBHGW<dr>-<H> (double), H the centre height, e.g. E-LBHG12-15, E-LBHGW30-40",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "E-LBHGW12-15-P",
+   "python": "'E-LBHGW12-15-P': expected E-LBHG<dr>-<H> (single) or E-LBHGW<dr>-<H> (double), H the centre height, e.g. E-LBHG12-15, E-LBHGW30-40",
+   "parametric": "'E-LBHGW12-15-P': expected E-LBHG<dr>-<H> (single) or E-LBHGW<dr>-<H> (double), H the centre height, e.g. E-LBHG12-15, E-LBHGW30-40",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "E-LBHG12X",
+   "python": "'E-LBHG12X': expected E-LBHG<dr>-<H> (single) or E-LBHGW<dr>-<H> (double), H the centre height, e.g. E-LBHG12-15, E-LBHGW30-40",
+   "parametric": "'E-LBHG12X': expected E-LBHG<dr>-<H> (single) or E-LBHGW<dr>-<H> (double), H the centre height, e.g. E-LBHG12-15, E-LBHGW30-40",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "E-LBHG16-35",
+   "python": "E-LBHG16-35: centre height H 35 is not offered for dr 16; the choices are [20, 25, 30] (p.491)",
+   "parametric": "E-LBHG16-35: centre height H 35 is not offered for dr 16; the choices are [20, 25, 30] (p.491)",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "E-LBHGW25-50",
+   "python": "E-LBHGW25-50: centre height H 50 is not offered for dr 25; the choices are [25, 30, 40] (p.491)",
+   "parametric": "E-LBHGW25-50: centre height H 50 is not offered for dr 25; the choices are [25, 30, 40] (p.491)",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "E-LBHG013-15",
+   "python": "'E-LBHG013-15': expected E-LBHG<dr>-<H> (single) or E-LBHGW<dr>-<H> (double), H the centre height, e.g. E-LBHG12-15, E-LBHGW30-40",
+   "parametric": "'E-LBHG013-15': expected E-LBHG<dr>-<H> (single) or E-LBHGW<dr>-<H> (double), H the centre height, e.g. E-LBHG12-15, E-LBHGW30-40",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "E-LBHGW20-0",
+   "python": "E-LBHGW20-0: centre height H 0 is not offered for dr 20; the choices are [20, 25, 30] (p.491)",
+   "parametric": "E-LBHGW20-0: centre height H 0 is not offered for dr 20; the choices are [20, 25, 30] (p.491)",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "E-LBHG99-99",
+   "python": "E-LBHG99-99: dr 99 is not a catalogue size; E-LBHG / E-LBHGW are offered for dr [12, 16, 20, 25, 30] (p.491)",
+   "parametric": "E-LBHG99-99: dr 99 is not a catalogue size; E-LBHG / E-LBHGW are offered for dr [12, 16, 20, 25, 30] (p.491)",
+   "kind": "invalid",
+   "extra": true
+  }
+ ],
+ "parametric": [
+  {
+   "base": "E-LBHG12-15",
+   "param": "hc",
+   "value": "25 mm",
+   "direct": "E-LBHG12-25",
+   "changed": {
+    "bodies": 1,
+    "volume": 48785.841156661954,
+    "area": 11789.788976567963,
+    "faces": 17,
+    "bbox": [
+     58.0,
+     40.0,
+     40.0
+    ],
+    "threads": [],
+    "names": [
+     "Housing"
+    ]
+   },
+   "direct_inserted": {
+    "bodies": 1,
+    "volume": 48785.84115666196,
+    "area": 11789.788976567963,
+    "faces": 17,
+    "bbox": [
+     58.0,
+     40.0,
+     40.0
+    ],
+    "threads": [],
+    "names": [
+     "Housing"
+    ]
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 48785.841156661954,
+    "area": 11789.788976567963,
+    "faces": 17,
+    "bbox": [
+     58.0,
+     40.0,
+     40.0
+    ],
+    "threads": [],
+    "names": [
+     "E-LBHG12-25"
+    ]
+   }
+  },
+  {
+   "base": "E-LBHGW25-25",
+   "param": "hc",
+   "value": "40 mm",
+   "direct": "E-LBHGW25-40",
+   "changed": {
+    "bodies": 1,
+    "volume": 444747.4302883486,
+    "area": 55925.34267756155,
+    "faces": 17,
+    "bbox": [
+     90.0,
+     128.0,
+     67.5
+    ],
+    "threads": [],
+    "names": [
+     "Housing"
+    ]
+   },
+   "direct_inserted": {
+    "bodies": 1,
+    "volume": 444747.4302883486,
+    "area": 55925.34267756155,
+    "faces": 17,
+    "bbox": [
+     90.0,
+     128.0,
+     67.5
+    ],
+    "threads": [],
+    "names": [
+     "Housing"
+    ]
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 444747.4302883486,
+    "area": 55925.34267756155,
+    "faces": 17,
+    "bbox": [
+     90.0,
+     128.0,
+     67.5
+    ],
+    "threads": [],
+    "names": [
+     "E-LBHGW25-40"
+    ]
+   }
+  },
+  {
+   "base": "E-LBHG30-30",
+   "param": "hc",
+   "value": "50 mm",
+   "direct": "E-LBHG30-50",
+   "changed": {
+    "bodies": 1,
+    "volume": 374652.10221891454,
+    "area": 45180.09262771897,
+    "faces": 17,
+    "bbox": [
+     105.0,
+     74.0,
+     82.5
+    ],
+    "threads": [],
+    "names": [
+     "Housing"
+    ]
+   },
+   "direct_inserted": {
+    "bodies": 1,
+    "volume": 374652.1022189144,
+    "area": 45180.09262771898,
+    "faces": 17,
+    "bbox": [
+     105.0,
+     74.0,
+     82.5
+    ],
+    "threads": [],
+    "names": [
+     "Housing"
+    ]
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 374652.10221891454,
+    "area": 45180.09262771897,
+    "faces": 17,
+    "bbox": [
+     105.0,
+     74.0,
+     82.5
+    ],
+    "threads": [],
+    "names": [
+     "E-LBHG30-50"
+    ]
+   }
+  }
+ ],
+ "limits": {
+  "insert_design with a free `parameters` map (hc 25 mm)": {
+   "error": null,
+   "result": {
+    "bbox_max": [
+     [
+      29.0,
+      20.0,
+      30.0
+     ],
+     [
+      29.0,
+      20.0,
+      30.0
+     ]
+    ],
+    "bodies": [
+     "Housing",
+     "Housing (2)"
+    ]
+   }
+  },
+  "component.set_link_parameters": {
+   "error": "{\"command\": \"component.set_link_parameters\", \"error\": \"unknown command `component.set_link_parameters`\", \"step\": 1}",
+   "result": null
+  },
+  "generator.parse": {
+   "error": "{\"command\": \"generator.parse\", \"error\": \"unknown command `generator.parse`\", \"step\": 1}",
+   "result": null
+  },
+  "generator.insert": {
+   "error": "{\"command\": \"generator.insert\", \"error\": \"unknown command `generator.insert` (did you mean `canvas.insert`, `parts.insert` or `pointcloud.insert`?)\", \"step\": 1}",
+   "result": null
+  },
+  "parameters.change hc on the host design holding the linked part": {
+   "error": null,
+   "result": {
+    "bbox_max": [
+     [
+      29.0,
+      20.0,
+      30.0
+     ]
+    ],
+    "bodies": [
+     "Housing"
+    ]
+   }
+  },
+  "unknown row": {
+   "error": "{\"command\": \"component.insert_design\", \"error\": \"invalid parameters for `component.insert_design`: configuration `no-such-row` does not exist in the source design\", \"step\": 1}",
+   "result": null
+  },
+  "centre height 60 mm (outside 15..50) by an ordinary parameters.change": {
+   "error": null,
+   "result": {
+    "bbox_max": [
+     [
+      29.0,
+      20.0,
+      75.0
+     ]
+    ],
+    "bodies": [
+     "Housing"
+    ]
+   }
+  },
+  "centre height 15 mm on dr 30 in a configuration row (allowed 30, 40, 50)": {
+   "error": "{\"command\": \"config.row\", \"error\": \"invalid parameters for `config.row`: invalid parameters for `config.activate`: configuration rules: rule `Centre heights offered for dr 30 (S14 p.491 table)` restricts the final value\", \"step\": 1}",
+   "result": null
+  }
+ },
+ "descriptions": [
+  {
+   "code": "E-LBHG12-15",
+   "same": true,
+   "python": "MISUMI Economy linear bushing housing unit E-LBHG12-15, centre hole height optional, single, shaft diameter dr 12 mm (bore drawn empty at nominal), centre height H 15 mm (+-0.05), total height H1 30 mm (0/-0.5), flange width L 58 mm (centre at L/2 +-0.05), length T 40 mm, flange thickness S 8 mm, body width W 30 mm, 4 mounting holes d 5.5 mm on L1 46 x T1 25 mm. Housing aluminium alloy, clear anodized. The built-in bushing and edge chamfers are not drawn; the upper corner chamfers C1 8.5 mm are (appearance, approximate). Generated from the published catalogue dimensions.",
+   "parametric": "MISUMI Economy linear bushing housing unit E-LBHG12-15, centre hole height optional, single, shaft diameter dr 12 mm (bore drawn empty at nominal), centre height H 15 mm (+-0.05), total height H1 30 mm (0/-0.5), flange width L 58 mm (centre at L/2 +-0.05), length T 40 mm, flange thickness S 8 mm, body width W 30 mm, 4 mounting holes d 5.5 mm on L1 46 x T1 25 mm. Housing aluminium alloy, clear anodized. The built-in bushing and edge chamfers are not drawn; the upper corner chamfers C1 8.5 mm are (appearance, approximate). Generated from the published catalogue dimensions."
+  },
+  {
+   "code": "E-LBHG12-25",
+   "same": true,
+   "python": "MISUMI Economy linear bushing housing unit E-LBHG12-25, centre hole height optional, single, shaft diameter dr 12 mm (bore drawn empty at nominal), centre height H 25 mm (+-0.05), total height H1 40 mm (0/-0.5), flange width L 58 mm (centre at L/2 +-0.05), length T 40 mm, flange thickness S 8 mm, body width W 30 mm, 4 mounting holes d 5.5 mm on L1 46 x T1 25 mm. Housing aluminium alloy, clear anodized. The built-in bushing and edge chamfers are not drawn; the upper corner chamfers C1 8.5 mm are (appearance, approximate). Generated from the published catalogue dimensions.",
+   "parametric": "MISUMI Economy linear bushing housing unit E-LBHG12-25, centre hole height optional, single, shaft diameter dr 12 mm (bore drawn empty at nominal), centre height H 25 mm (+-0.05), total height H1 40 mm (0/-0.5), flange width L 58 mm (centre at L/2 +-0.05), length T 40 mm, flange thickness S 8 mm, body width W 30 mm, 4 mounting holes d 5.5 mm on L1 46 x T1 25 mm. Housing aluminium alloy, clear anodized. The built-in bushing and edge chamfers are not drawn; the upper corner chamfers C1 8.5 mm are (appearance, approximate). Generated from the published catalogue dimensions."
+  },
+  {
+   "code": "E-LBHG16-20",
+   "same": true,
+   "python": "MISUMI Economy linear bushing housing unit E-LBHG16-20, centre hole height optional, single, shaft diameter dr 16 mm (bore drawn empty at nominal), centre height H 20 mm (+-0.05), total height H1 40 mm (0/-0.5), flange width L 68 mm (centre at L/2 +-0.05), length T 47 mm, flange thickness S 10 mm, body width W 40 mm, 4 mounting holes d 5.5 mm on L1 56 x T1 30 mm. Housing aluminium alloy, clear anodized. The built-in bushing and edge chamfers are not drawn; the upper corner chamfers C1 11.5 mm are (appearance, approximate). Generated from the published catalogue dimensions.",
+   "parametric": "MISUMI Economy linear bushing housing unit E-LBHG16-20, centre hole height optional, single, shaft diameter dr 16 mm (bore drawn empty at nominal), centre height H 20 mm (+-0.05), total height H1 40 mm (0/-0.5), flange width L 68 mm (centre at L/2 +-0.05), length T 47 mm, flange thickness S 10 mm, body width W 40 mm, 4 mounting holes d 5.5 mm on L1 56 x T1 30 mm. Housing aluminium alloy, clear anodized. The built-in bushing and edge chamfers are not drawn; the upper corner chamfers C1 11.5 mm are (appearance, approximate). Generated from the published catalogue dimensions."
+  },
+  {
+   "code": "E-LBHG20-30",
+   "same": true,
+   "python": "MISUMI Economy linear bushing housing unit E-LBHG20-30, centre hole height optional, single, shaft diameter dr 20 mm (bore drawn empty at nominal), centre height H 30 mm (+-0.05), total height H1 52 mm (0/-0.5), flange width L 72 mm (centre at L/2 +-0.05), length T 52 mm, flange thickness S 12 mm, body width W 44 mm, 4 mounting holes d 5.5 mm on L1 60 x T1 35 mm. Housing aluminium alloy, clear anodized. The built-in bushing and edge chamfers are not drawn; the upper corner chamfers C1 12.5 mm are (appearance, approximate). Generated from the published catalogue dimensions.",
+   "parametric": "MISUMI Economy linear bushing housing unit E-LBHG20-30, centre hole height optional, single, shaft diameter dr 20 mm (bore drawn empty at nominal), centre height H 30 mm (+-0.05), total height H1 52 mm (0/-0.5), flange width L 72 mm (centre at L/2 +-0.05), length T 52 mm, flange thickness S 12 mm, body width W 44 mm, 4 mounting holes d 5.5 mm on L1 60 x T1 35 mm. Housing aluminium alloy, clear anodized. The built-in bushing and edge chamfers are not drawn; the upper corner chamfers C1 12.5 mm are (appearance, approximate). Generated from the published catalogue dimensions."
+  },
+  {
+   "code": "E-LBHG25-40",
+   "same": true,
+   "python": "MISUMI Economy linear bushing housing unit E-LBHG25-40, centre hole height optional, single, shaft diameter dr 25 mm (bore drawn empty at nominal), centre height H 40 mm (+-0.05), total height H1 67.5 mm (0/-0.5), flange width L 90 mm (centre at L/2 +-0.05), length T 69 mm, flange thickness S 15 mm, body width W 55 mm, 4 mounting holes d 6.6 mm on L1 75 x T1 50 mm. Housing aluminium alloy, clear anodized. The built-in bushing and edge chamfers are not drawn; the upper corner chamfers C1 16 mm are (appearance, approximate). Generated from the published catalogue dimensions.",
+   "parametric": "MISUMI Economy linear bushing housing unit E-LBHG25-40, centre hole height optional, single, shaft diameter dr 25 mm (bore drawn empty at nominal), centre height H 40 mm (+-0.05), total height H1 67.5 mm (0/-0.5), flange width L 90 mm (centre at L/2 +-0.05), length T 69 mm, flange thickness S 15 mm, body width W 55 mm, 4 mounting holes d 6.6 mm on L1 75 x T1 50 mm. Housing aluminium alloy, clear anodized. The built-in bushing and edge chamfers are not drawn; the upper corner chamfers C1 16 mm are (appearance, approximate). Generated from the published catalogue dimensions."
+  },
+  {
+   "code": "E-LBHG30-50",
+   "same": true,
+   "python": "MISUMI Economy linear bushing housing unit E-LBHG30-50, centre hole height optional, single, shaft diameter dr 30 mm (bore drawn empty at nominal), centre height H 50 mm (+-0.05), total height H1 82.5 mm (0/-0.5), flange width L 105 mm (centre at L/2 +-0.05), length T 74 mm, flange thickness S 20 mm, body width W 65 mm, 4 mounting holes d 9 mm on L1 85 x T1 55 mm. Housing aluminium alloy, clear anodized. The built-in bushing and edge chamfers are not drawn; the upper corner chamfers C1 18 mm are (appearance, approximate). Generated from the published catalogue dimensions.",
+   "parametric": "MISUMI Economy linear bushing housing unit E-LBHG30-50, centre hole height optional, single, shaft diameter dr 30 mm (bore drawn empty at nominal), centre height H 50 mm (+-0.05), total height H1 82.5 mm (0/-0.5), flange width L 105 mm (centre at L/2 +-0.05), length T 74 mm, flange thickness S 20 mm, body width W 65 mm, 4 mounting holes d 9 mm on L1 85 x T1 55 mm. Housing aluminium alloy, clear anodized. The built-in bushing and edge chamfers are not drawn; the upper corner chamfers C1 18 mm are (appearance, approximate). Generated from the published catalogue dimensions."
+  },
+  {
+   "code": "E-LBHGW12-20",
+   "same": true,
+   "python": "MISUMI Economy linear bushing housing unit E-LBHGW12-20, centre hole height optional, double, shaft diameter dr 12 mm (bore drawn empty at nominal), centre height H 20 mm (+-0.05), total height H1 35 mm (0/-0.5), flange width L 58 mm (centre at L/2 +-0.05), length T 70 mm, flange thickness S 8 mm, body width W 30 mm, 4 mounting holes d 5.5 mm on L1 46 x T1 50 mm. Housing aluminium alloy, clear anodized. The built-in bushing and edge chamfers are not drawn; the upper corner chamfers C1 8.5 mm are (appearance, approximate). Generated from the published catalogue dimensions.",
+   "parametric": "MISUMI Economy linear bushing housing unit E-LBHGW12-20, centre hole height optional, double, shaft diameter dr 12 mm (bore drawn empty at nominal), centre height H 20 mm (+-0.05), total height H1 35 mm (0/-0.5), flange width L 58 mm (centre at L/2 +-0.05), length T 70 mm, flange thickness S 8 mm, body width W 30 mm, 4 mounting holes d 5.5 mm on L1 46 x T1 50 mm. Housing aluminium alloy, clear anodized. The built-in bushing and edge chamfers are not drawn; the upper corner chamfers C1 8.5 mm are (appearance, approximate). Generated from the published catalogue dimensions."
+  },
+  {
+   "code": "E-LBHGW20-25",
+   "same": true,
+   "python": "MISUMI Economy linear bushing housing unit E-LBHGW20-25, centre hole height optional, double, shaft diameter dr 20 mm (bore drawn empty at nominal), centre height H 25 mm (+-0.05), total height H1 47 mm (0/-0.5), flange width L 72 mm (centre at L/2 +-0.05), length T 94 mm, flange thickness S 12 mm, body width W 44 mm, 4 mounting holes d 5.5 mm on L1 60 x T1 60 mm. Housing aluminium alloy, clear anodized. The built-in bushing and edge chamfers are not drawn; the upper corner chamfers C1 12.5 mm are (appearance, approximate). Generated from the published catalogue dimensions.",
+   "parametric": "MISUMI Economy linear bushing housing unit E-LBHGW20-25, centre hole height optional, double, shaft diameter dr 20 mm (bore drawn empty at nominal), centre height H 25 mm (+-0.05), total height H1 47 mm (0/-0.5), flange width L 72 mm (centre at L/2 +-0.05), length T 94 mm, flange thickness S 12 mm, body width W 44 mm, 4 mounting holes d 5.5 mm on L1 60 x T1 60 mm. Housing aluminium alloy, clear anodized. The built-in bushing and edge chamfers are not drawn; the upper corner chamfers C1 12.5 mm are (appearance, approximate). Generated from the published catalogue dimensions."
+  },
+  {
+   "code": "E-LBHGW25-30",
+   "same": true,
+   "python": "MISUMI Economy linear bushing housing unit E-LBHGW25-30, centre hole height optional, double, shaft diameter dr 25 mm (bore drawn empty at nominal), centre height H 30 mm (+-0.05), total height H1 57.5 mm (0/-0.5), flange width L 90 mm (centre at L/2 +-0.05), length T 128 mm, flange thickness S 15 mm, body width W 55 mm, 4 mounting holes d 6.6 mm on L1 75 x T1 90 mm. Housing aluminium alloy, clear anodized. The built-in bushing and edge chamfers are not drawn; the upper corner chamfers C1 16 mm are (appearance, approximate). Generated from the published catalogue dimensions.",
+   "parametric": "MISUMI Economy linear bushing housing unit E-LBHGW25-30, centre hole height optional, double, shaft diameter dr 25 mm (bore drawn empty at nominal), centre height H 30 mm (+-0.05), total height H1 57.5 mm (0/-0.5), flange width L 90 mm (centre at L/2 +-0.05), length T 128 mm, flange thickness S 15 mm, body width W 55 mm, 4 mounting holes d 6.6 mm on L1 75 x T1 90 mm. Housing aluminium alloy, clear anodized. The built-in bushing and edge chamfers are not drawn; the upper corner chamfers C1 16 mm are (appearance, approximate). Generated from the published catalogue dimensions."
+  },
+  {
+   "code": "E-LBHGW30-40",
+   "same": true,
+   "python": "MISUMI Economy linear bushing housing unit E-LBHGW30-40, centre hole height optional, double, shaft diameter dr 30 mm (bore drawn empty at nominal), centre height H 40 mm (+-0.05), total height H1 72.5 mm (0/-0.5), flange width L 105 mm (centre at L/2 +-0.05), length T 138 mm, flange thickness S 20 mm, body width W 65 mm, 4 mounting holes d 9 mm on L1 85 x T1 100 mm. Housing aluminium alloy, clear anodized. The built-in bushing and edge chamfers are not drawn; the upper corner chamfers C1 18 mm are (appearance, approximate). Generated from the published catalogue dimensions.",
+   "parametric": "MISUMI Economy linear bushing housing unit E-LBHGW30-40, centre hole height optional, double, shaft diameter dr 30 mm (bore drawn empty at nominal), centre height H 40 mm (+-0.05), total height H1 72.5 mm (0/-0.5), flange width L 105 mm (centre at L/2 +-0.05), length T 138 mm, flange thickness S 20 mm, body width W 65 mm, 4 mounting holes d 9 mm on L1 85 x T1 100 mm. Housing aluminium alloy, clear anodized. The built-in bushing and edge chamfers are not drawn; the upper corner chamfers C1 18 mm are (appearance, approximate). Generated from the published catalogue dimensions."
+  }
+ ],
+ "roundtrip": [
+  {
+   "code": "E-LBHG12-15",
+   "printed": "E-LBHG12-15",
+   "same": true
+  },
+  {
+   "code": "E-LBHG12-25",
+   "printed": "E-LBHG12-25",
+   "same": true
+  },
+  {
+   "code": "E-LBHG16-20",
+   "printed": "E-LBHG16-20",
+   "same": true
+  },
+  {
+   "code": "E-LBHG20-30",
+   "printed": "E-LBHG20-30",
+   "same": true
+  },
+  {
+   "code": "E-LBHG25-40",
+   "printed": "E-LBHG25-40",
+   "same": true
+  },
+  {
+   "code": "E-LBHG30-50",
+   "printed": "E-LBHG30-50",
+   "same": true
+  },
+  {
+   "code": "E-LBHGW12-20",
+   "printed": "E-LBHGW12-20",
+   "same": true
+  },
+  {
+   "code": "E-LBHGW20-25",
+   "printed": "E-LBHGW20-25",
+   "same": true
+  },
+  {
+   "code": "E-LBHGW25-30",
+   "printed": "E-LBHGW25-30",
+   "same": true
+  },
+  {
+   "code": "E-LBHGW30-40",
+   "printed": "E-LBHGW30-40",
+   "same": true
+  }
+ ],
+ "table": {
+  "rows": 10,
+  "columns": 12,
+  "rules": 6
+ }
+}
