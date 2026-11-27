@@ -1,0 +1,4 @@
+name,value,unit,source,page,status
+max_len,4000.0,mm,S7,p.37 Table 2-1-27,labelled
+max_len_stainless,2000.0,mm,S7,p.37 Table 2-1-27 note 4,labelled
+stainless_sizes,15|20|25,,S7,p.23 note 5,labelled

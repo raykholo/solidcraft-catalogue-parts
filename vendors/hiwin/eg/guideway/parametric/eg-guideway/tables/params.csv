@@ -1,0 +1,5 @@
+name,value,unit,source,page,status
+max_len,4000.0,mm,S15,p.56 Table 2-2-22,labelled
+max_len_stainless,2000.0,mm,S15,p.56 Table 2-2-22 note 4,labelled
+min_len,100.0,mm,S15,p.46 Table 2-2-1 (rail length 100 ~ 4000),labelled
+stainless_sizes,15,,S15,p.45 note 4 (EG15C),labelled

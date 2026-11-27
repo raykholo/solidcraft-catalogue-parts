@@ -29,7 +29,7 @@ jobs:
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             base=$(git merge-base origin/${{ github.base_ref }} HEAD)
             if git diff --name-only "$base" HEAD | grep -qE '^(runtime|tools)/|^\.github/workflows/parametric\.yml$'; then sel="$all"; else
-              sel=$(for g in $all; do git diff --name-only "$base" HEAD | grep -q "^$g/" && echo "$g"; done); fi
+              sel=$(for g in $all; do if git diff --name-only "$base" HEAD | grep -q "^$g/"; then echo "$g"; fi; done); fi
           else sel="$all"; fi
           echo "gens=$(printf '%s\n' $sel | python3 -c 'import json,sys; print(json.dumps([l.strip() for l in sys.stdin if l.strip()]))')" >> "$GITHUB_OUTPUT"
   faithfulness:

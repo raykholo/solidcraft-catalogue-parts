@@ -1,0 +1,440 @@
+format = "solidcraft-generator/2"
+id = "rg-guideway"
+name = "HIWIN RG roller guideway: rail, block or rail with blocks"
+license = "CC0-1.0"
+model = "rg-guideway.sc"
+min_solidcraft = "0.52.0"
+
+# Ordering codes, HIWIN Linear Guideway catalogue G99TE24-2410, RG series, section 2-9-3:
+#   set    RG W 35 C C E 2 R 1640 E ZA P II + KK/E2+RC       rail with blocks
+#   rail   RGR 35 R 1640 E P + ...                           rail alone
+#   block  RG W 35 C C E ZA P + ...                          block alone (interchangeable)
+# The option text after + may hold a dust-protection code (ZZ, DD, KK): it replaces the block length L (Table 2-9-22), a parameter
+# override of the row. Size and number of blocks are plain fields and the rest is checked in generator.rhai, so that every refusal
+# carries the Python generator's wording. `length` is the free parameter of the model, `blocks` the other one.
+[parameters]
+length = { type = "decimal", min = 100, max = 4000, unit = "mm" }
+blocks = { type = "int", min = 1, max = 99, default = 1 }
+
+[[template]]
+pattern = "RGR{size: text 2..2 [0-9]}{rm: R|T}{length: decimal 0..99999}[E:erail][{prec: SP|UP|C|H|P}][{mat: M}][+{opt: text 1..64}]"
+escape  = "[A-Za-z0-9+/]+"
+description = "RGR{size} rail, {length} mm"
+
+[[template]]
+pattern = "RG{kind: H|W|L|S|F}{size: text 2..2 [0-9]}{load: C|H}{mount: A|C}[E:eblock]{n: int 0..9999}{rm: R|T}{length: decimal 0..99999}[E:erail][{preload: Z0|ZA|ZB}][{prec: SP|UP|C|H|P}][{mat: M}][{rails: I|II|III|IIII}][+{opt: text 1..64}]"
+escape  = "[A-Za-z0-9+/]+"
+description = "RG{kind}{size}{load}{mount} with {n} block(s) on a {length} mm rail"
+
+[[template]]
+pattern = "RG{kind: H|W|L|S|F}{size: text 2..2 [0-9]}{load: C|H}{mount: A|C}[E:eblock][{preload: Z0|ZA|ZB}][{prec: SP|UP|C|H|P}][{mat: M}][+{opt: text 1..64}]"
+escape  = "[A-Za-z0-9+/]+"
+description = "RG{kind}{size}{load}{mount} block"
+
+[rows."RGR-15"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "rail alone"
+
+[rows."RGH-CA-15"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 (1) RGH-CA/HA; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "rail and blocks"
+
+[rows."RGH-CA-15-block"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 (1) RGH-CA/HA; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "block alone"
+
+[rows."RGW-CC-15"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.168 (3) RGW-CC/HC; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 168
+status = "verified"
+note = "rail and blocks"
+
+[rows."RGW-CC-15-block"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.168 (3) RGW-CC/HC; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 168
+status = "verified"
+note = "block alone"
+
+[rows."RGR-20"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "rail alone"
+
+[rows."RGH-CA-20"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 (1) RGH-CA/HA; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "rail and blocks"
+
+[rows."RGH-CA-20-block"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 (1) RGH-CA/HA; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "block alone"
+
+[rows."RGH-HA-20"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 (1) RGH-CA/HA; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "rail and blocks"
+
+[rows."RGH-HA-20-block"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 (1) RGH-CA/HA; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "block alone"
+
+[rows."RGW-CC-20"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.168 (3) RGW-CC/HC; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 168
+status = "verified"
+note = "rail and blocks"
+
+[rows."RGW-CC-20-block"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.168 (3) RGW-CC/HC; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 168
+status = "verified"
+note = "block alone"
+
+[rows."RGW-HC-20"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.168 (3) RGW-CC/HC; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 168
+status = "verified"
+note = "rail and blocks"
+
+[rows."RGW-HC-20-block"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.168 (3) RGW-CC/HC; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 168
+status = "verified"
+note = "block alone"
+
+[rows."RGR-25"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "rail alone"
+
+[rows."RGH-CA-25"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 (1) RGH-CA/HA; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "rail and blocks"
+
+[rows."RGH-CA-25-block"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 (1) RGH-CA/HA; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "block alone"
+
+[rows."RGH-HA-25"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 (1) RGH-CA/HA; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "rail and blocks"
+
+[rows."RGH-HA-25-block"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 (1) RGH-CA/HA; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "block alone"
+
+[rows."RGW-CC-25"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.168 (3) RGW-CC/HC; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 168
+status = "verified"
+note = "rail and blocks"
+
+[rows."RGW-CC-25-block"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.168 (3) RGW-CC/HC; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 168
+status = "verified"
+note = "block alone"
+
+[rows."RGW-HC-25"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.168 (3) RGW-CC/HC; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 168
+status = "verified"
+note = "rail and blocks"
+
+[rows."RGW-HC-25-block"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.168 (3) RGW-CC/HC; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 168
+status = "verified"
+note = "block alone"
+
+[rows."RGR-30"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "rail alone"
+
+[rows."RGH-CA-30"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 (1) RGH-CA/HA; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "rail and blocks"
+
+[rows."RGH-CA-30-block"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 (1) RGH-CA/HA; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "block alone"
+
+[rows."RGH-HA-30"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 (1) RGH-CA/HA; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "rail and blocks"
+
+[rows."RGH-HA-30-block"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 (1) RGH-CA/HA; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "block alone"
+
+[rows."RGW-CC-30"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.168 (3) RGW-CC/HC; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 168
+status = "verified"
+note = "rail and blocks"
+
+[rows."RGW-CC-30-block"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.168 (3) RGW-CC/HC; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 168
+status = "verified"
+note = "block alone"
+
+[rows."RGW-HC-30"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.168 (3) RGW-CC/HC; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 168
+status = "verified"
+note = "rail and blocks"
+
+[rows."RGW-HC-30-block"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.168 (3) RGW-CC/HC; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 168
+status = "verified"
+note = "block alone"
+
+[rows."RGR-35"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "rail alone"
+
+[rows."RGH-CA-35"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 (1) RGH-CA/HA; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "rail and blocks"
+
+[rows."RGH-CA-35-block"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 (1) RGH-CA/HA; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "block alone"
+
+[rows."RGH-HA-35"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 (1) RGH-CA/HA; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "rail and blocks"
+
+[rows."RGH-HA-35-block"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 (1) RGH-CA/HA; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "block alone"
+
+[rows."RGW-CC-35"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.168 (3) RGW-CC/HC; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 168
+status = "verified"
+note = "rail and blocks"
+
+[rows."RGW-CC-35-block"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.168 (3) RGW-CC/HC; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 168
+status = "verified"
+note = "block alone"
+
+[rows."RGW-HC-35"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.168 (3) RGW-CC/HC; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 168
+status = "verified"
+note = "rail and blocks"
+
+[rows."RGW-HC-35-block"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.168 (3) RGW-CC/HC; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 168
+status = "verified"
+note = "block alone"
+
+[rows."RGR-45"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "rail alone"
+
+[rows."RGH-CA-45"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 (1) RGH-CA/HA; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "rail and blocks"
+
+[rows."RGH-CA-45-block"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 (1) RGH-CA/HA; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "block alone"
+
+[rows."RGH-HA-45"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 (1) RGH-CA/HA; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "rail and blocks"
+
+[rows."RGH-HA-45-block"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 (1) RGH-CA/HA; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "block alone"
+
+[rows."RGW-CC-45"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.168 (3) RGW-CC/HC; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 168
+status = "verified"
+note = "rail and blocks"
+
+[rows."RGW-CC-45-block"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.168 (3) RGW-CC/HC; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 168
+status = "verified"
+note = "block alone"
+
+[rows."RGW-HC-45"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.168 (3) RGW-CC/HC; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 168
+status = "verified"
+note = "rail and blocks"
+
+[rows."RGW-HC-45-block"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.168 (3) RGW-CC/HC; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 168
+status = "verified"
+note = "block alone"
+
+[rows."RGR-55"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "rail alone"
+
+[rows."RGH-CA-55"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 (1) RGH-CA/HA; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "rail and blocks"
+
+[rows."RGH-CA-55-block"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 (1) RGH-CA/HA; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "block alone"
+
+[rows."RGH-HA-55"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 (1) RGH-CA/HA; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "rail and blocks"
+
+[rows."RGH-HA-55-block"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 (1) RGH-CA/HA; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "block alone"
+
+[rows."RGW-CC-55"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.168 (3) RGW-CC/HC; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 168
+status = "verified"
+note = "rail and blocks"
+
+[rows."RGW-CC-55-block"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.168 (3) RGW-CC/HC; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 168
+status = "verified"
+note = "block alone"
+
+[rows."RGW-HC-55"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.168 (3) RGW-CC/HC; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 168
+status = "verified"
+note = "rail and blocks"
+
+[rows."RGW-HC-55-block"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.168 (3) RGW-CC/HC; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 168
+status = "verified"
+note = "block alone"
+
+[rows."RGR-65"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "rail alone"
+
+[rows."RGH-CA-65"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 (1) RGH-CA/HA; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "rail and blocks"
+
+[rows."RGH-CA-65-block"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 (1) RGH-CA/HA; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "block alone"
+
+[rows."RGH-HA-65"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 (1) RGH-CA/HA; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "rail and blocks"
+
+[rows."RGH-HA-65-block"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.166 (1) RGH-CA/HA; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 166
+status = "verified"
+note = "block alone"
+
+[rows."RGW-CC-65"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.168 (3) RGW-CC/HC; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 168
+status = "verified"
+note = "rail and blocks"
+
+[rows."RGW-CC-65-block"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.168 (3) RGW-CC/HC; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 168
+status = "verified"
+note = "block alone"
+
+[rows."RGW-HC-65"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.168 (3) RGW-CC/HC; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 168
+status = "verified"
+note = "rail and blocks"
+
+[rows."RGW-HC-65-block"]
+source = "HIWIN Linear Guideway catalogue G99TE24-2410, S17 p.168 (3) RGW-CC/HC; S17 p.166 and p.168 rail columns; p.165 Table 2-9-29 (P and Es)"
+page = 168
+status = "verified"
+note = "block alone"

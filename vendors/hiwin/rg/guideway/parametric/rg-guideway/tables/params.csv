@@ -1,0 +1,3 @@
+name,value,unit,source,page,status
+max_len,4000.0,mm,S17,p.165 Table 2-9-29 (Max. Length); p.153 Table 2-9-2,labelled
+min_len,100.0,mm,S17,p.153 Table 2-9-2 (rail length 100 ~ 4000),labelled
