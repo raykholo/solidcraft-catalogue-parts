@@ -118,7 +118,7 @@ fn resolve(fields) {
 fn fields(configuration, parameters) {
     let typ = parameters.part_type;
     let d = parse_int(configuration.split("-")[1]);
-    let f = #{ pfx: typ.sub_string(0, 1), fam: typ.sub_string(5, typ.len() - 5), d: d, h: () };
+    let f = #{ pfx: typ.sub_string(0, 1), fam: typ.sub_string(4, typ.len() - 4), d: d, h: () };
     if typ != "C-SHA" { f.h = parse_int(parameters.h.split(" ")[0]); }
     f
 }
