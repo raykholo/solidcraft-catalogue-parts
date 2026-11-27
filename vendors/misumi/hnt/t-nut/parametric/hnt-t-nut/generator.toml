@@ -1,0 +1,66 @@
+format = "solidcraft-generator/2"
+id = "hnt-t-nut"
+name = "MISUMI 5 series pre-assembly T-nuts (HNTT family)"
+license = "CC0-1.0"
+model = "hnt-t-nut.sc"
+
+[parameters]
+type = { type = "text", default = "HNTT5" }
+m = { type = "text", default = "5" }
+
+[[template]]
+pattern = '{type: text 3..9 [A-Za-z0-9]}[-{m: text 1..5 [0-9.]}]'
+
+[rows."HNTT5-3"]
+source = "MISUMI FA catalogue S9 (sources.toml), p.559"
+page = "p.559 table"
+status = "verified"
+note = "tap drill derived (ISO coarse), edge rounds and flank measured: see the generator README, not guaranteed"
+
+[rows."HNTT5-4"]
+source = "MISUMI FA catalogue S9 (sources.toml), p.559"
+page = "p.559 table"
+status = "verified"
+note = "tap drill derived (ISO coarse), edge rounds and flank measured: see the generator README, not guaranteed"
+
+[rows."HNTT5-5"]
+source = "MISUMI FA catalogue S9 (sources.toml), p.559"
+page = "p.559 table"
+status = "verified"
+note = "tap drill derived (ISO coarse), edge rounds and flank measured: see the generator README, not guaranteed"
+
+[rows."HNTTV5-5"]
+source = "MISUMI FA catalogue S9 (sources.toml), p.559"
+page = "p.559 table"
+status = "verified"
+note = "tap drill derived (ISO coarse), edge rounds and flank measured: see the generator README, not guaranteed"
+
+[rows."HNTTZ5-5"]
+source = "MISUMI FA catalogue S9 (sources.toml), p.559"
+page = "p.559 table"
+status = "verified"
+note = "tap drill derived (ISO coarse), edge rounds and flank measured: see the generator README, not guaranteed"
+
+[rows."HNTTSN5-3"]
+source = "MISUMI FA catalogue S9 (sources.toml), p.559"
+page = "p.559 table"
+status = "verified"
+note = "tap drill derived (ISO coarse), edge rounds and flank measured: see the generator README, not guaranteed"
+
+[rows."HNTTSN5-4"]
+source = "MISUMI FA catalogue S9 (sources.toml), p.559"
+page = "p.559 table"
+status = "verified"
+note = "tap drill derived (ISO coarse), edge rounds and flank measured: see the generator README, not guaranteed"
+
+[rows."HNTTSN5-5"]
+source = "MISUMI FA catalogue S9 (sources.toml), p.559"
+page = "p.559 table"
+status = "verified"
+note = "tap drill derived (ISO coarse), edge rounds and flank measured: see the generator README, not guaranteed"
+
+[rows."HNTTSS5-5"]
+source = "MISUMI FA catalogue S9 (sources.toml), p.559"
+page = "p.559 table"
+status = "verified"
+note = "tap drill derived (ISO coarse), edge rounds and flank measured: see the generator README, not guaranteed"

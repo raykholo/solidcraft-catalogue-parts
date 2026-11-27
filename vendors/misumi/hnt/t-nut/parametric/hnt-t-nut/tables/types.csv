@@ -1,0 +1,6 @@
+type,kind,material,surface,allowed_m,E,T,source,page,status
+HNTT5,standard,S10C equivalent,Trivalent chromate,3|4|5,3.3,4.1,S9,p.559 table,labelled
+HNTTV5,thread locking adhesive,S10C equivalent,"Trivalent chromate, thread locking adhesive",5,3.3,4.1,S9,p.559 table,labelled
+HNTTZ5,thread locking resin coating,S10C equivalent,"Trivalent chromate, thread locking resin coating",5,3.3,4.1,S9,p.559 table,labelled
+HNTTSN5,"stainless, sintered",SUS316 equivalent (sintered),-,3|4|5,3.5,4.3,S9,p.559 table,labelled
+HNTTSS5,"stainless, electrically conductive",SUS303 equivalent,-,5,3.3,4.1,S9,p.559 table,labelled

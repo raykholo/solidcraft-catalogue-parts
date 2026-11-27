@@ -1,0 +1,11 @@
+name,value,unit,source,page,status
+plan,10.0,mm,S9,p.559 plan view,labelled
+neck,5.8,mm,S9,p.559 side view,labelled
+flank_h,3.0,mm,S9,p.559 side view vector outline,measured
+default_m,5,,S9,p.559 ordering example and note,labelled
+torque_m5,6.8,N m,S9,p.559,labelled
+round_bottom,0.3,mm,S9,p.559 side view vector outline (bottom face / flank corners; no radius printed),approximate
+round_flank_top,1.0,mm,S9,p.559 side view vector outline (flank / 10 wide body corners; no radius printed),approximate
+round_edge,0.2,mm,S9,p.559 side view vector outline (10 wide body / shoulder and neck top corners; no radius printed),approximate
+types,HNTT5|HNTTV5|HNTTZ5|HNTTSN5|HNTTSS5,,S9,p.559 table,labelled
+other_types,HNST5|HNTE5|HNTJ5|HNTTBS5|HNTU5|HNTUV5|HNTUZ5|SHNST5|SHNTE5|SHNTU5,,S9,p.557 overview,labelled
