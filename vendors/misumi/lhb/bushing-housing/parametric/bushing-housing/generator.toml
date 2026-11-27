@@ -1,0 +1,215 @@
+format = "solidcraft-generator/2"
+id = "bushing-housing"
+name = "MISUMI Economy linear bushing housing units, wide blocks (E-LBHN, E-LBHNW), with or without dowel holes"
+license = "CC0-1.0"
+model = "bushing-housing.sc"
+
+[parameters]
+dowel = { type = "int", min = 0, max = 1 }
+
+# Ordering code: E-LBHN[W]<dr>[D|L][-P]. The second template takes any other text so that generator.rhai can refuse it with the shape message.
+[[template]]
+pattern = 'E\-LBHN[W:double]{dr: text 1..2 [0-9]}[{length: D|L}][\-P:dowel]'
+
+[[template]]
+pattern = '{raw: text 1..128 [ -~]}'
+
+[rows."single-6"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.485 tables"
+status = "verified"
+
+[rows."single-8"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.485 tables"
+status = "verified"
+
+[rows."single-10"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.485 tables"
+status = "verified"
+
+[rows."single-12"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.485 tables"
+status = "verified"
+
+[rows."single-13"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.485 tables"
+status = "verified"
+
+[rows."single-16"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.485 tables"
+status = "verified"
+
+[rows."single-20"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.485 tables"
+status = "verified"
+
+[rows."single-25"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.485 tables"
+status = "verified"
+
+[rows."single-30"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.485 tables"
+status = "verified"
+
+[rows."single-35"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.485 tables"
+status = "verified"
+
+[rows."single-40"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.485 tables"
+status = "verified"
+
+[rows."single-50"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.485 tables"
+status = "verified"
+
+[rows."medium-6"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.485 tables"
+status = "verified"
+
+[rows."medium-8"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.485 tables"
+status = "verified"
+
+[rows."medium-10"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.485 tables"
+status = "verified"
+
+[rows."medium-12"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.485 tables"
+status = "verified"
+
+[rows."medium-16"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.485 tables"
+status = "verified"
+
+[rows."medium-20"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.485 tables"
+status = "verified"
+
+[rows."medium-25"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.485 tables"
+status = "verified"
+
+[rows."medium-30"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.485 tables"
+status = "verified"
+
+[rows."double-8"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.486 p.487 tables"
+status = "verified"
+
+[rows."double-10"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.486 p.487 tables"
+status = "verified"
+
+[rows."double-12"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.486 p.487 tables"
+status = "verified"
+
+[rows."double-13"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.486 p.487 tables"
+status = "verified"
+
+[rows."double-16"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.486 p.487 tables"
+status = "verified"
+
+[rows."double-20"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.486 p.487 tables"
+status = "verified"
+
+[rows."double-25"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.486 p.487 tables"
+status = "verified"
+
+[rows."double-30"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.486 p.487 tables"
+status = "verified"
+
+[rows."double-35"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.486 p.487 tables"
+status = "verified"
+
+[rows."double-40"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.486 p.487 tables"
+status = "verified"
+
+[rows."double-50"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.486 p.487 tables"
+status = "verified"
+
+[rows."medlong-16"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.486 p.487 tables"
+status = "verified"
+
+[rows."medlong-20"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.486 p.487 tables"
+status = "verified"
+
+[rows."medlong-25"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.486 p.487 tables"
+status = "verified"
+
+[rows."medlong-30"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.486 p.487 tables"
+status = "verified"
+
+[rows."long-12"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.486 p.487 tables"
+status = "verified"
+
+[rows."long-16"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.486 p.487 tables"
+status = "verified"
+
+[rows."long-20"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.486 p.487 tables"
+status = "verified"
+
+[rows."long-25"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.486 p.487 tables"
+status = "verified"
+
+[rows."long-30"]
+source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
+page = "p.486 p.487 tables"
+status = "verified"

@@ -1,0 +1,39 @@
+valid E-LBHN6 description same roundtrip E-LBHN6
+valid E-LBHN16 description same roundtrip E-LBHN16
+valid E-LBHN16D-P description same roundtrip E-LBHN16D-P
+valid E-LBHN20D description same roundtrip E-LBHN20D
+valid E-LBHN13 description same roundtrip E-LBHN13
+valid E-LBHN30-P description same roundtrip E-LBHN30-P
+valid E-LBHN50 description same roundtrip E-LBHN50
+valid E-LBHNW8 description same roundtrip E-LBHNW8
+valid E-LBHNW12L description same roundtrip E-LBHNW12L
+valid E-LBHNW16D description same roundtrip E-LBHNW16D
+valid E-LBHNW20L-P description same roundtrip E-LBHNW20L-P
+valid E-LBHNW30D description same roundtrip E-LBHNW30D
+valid E-LBHNW50-P description same roundtrip E-LBHNW50-P
+reject E-LBHN6-P same
+reject E-LBHN13D same
+reject E-LBHN16L same
+reject E-LBHN9 same
+reject E-LBHNW10D same
+reject E-LBHNW6 same
+reject E-LBHNW35L same
+reject E-LBHN16-X same
+reject E-LBHN same
+reject E-LBHNW-P same
+reject E-LBHN16X same
+reject E-LBHN16-X same
+reject E-LBHN16DP same
+reject E-LBHN160 same
+reject E-LBHN6D-P same
+reject E-LBHN35D same
+reject E-LBHNW6-P same
+reject E-LBHNW13D same
+reject E-LBHNW10L same
+reject E-LBHNW35L same
+reject E-LBHN8L same
+reject E-LBHN9-P same
+reject E-LBHP20LUU same
+reject E-LBHNW50D same
+reject E-LBHN40D-P same
+wrote wk-rq/bushing-housing/results.json
