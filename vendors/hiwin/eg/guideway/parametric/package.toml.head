@@ -1,0 +1,31 @@
+format = "solidcraft-generator/2"
+id = "eg-guideway"
+name = "HIWIN EG low-profile linear guideway: rail, block or rail with blocks"
+license = "CC0-1.0"
+model = "eg-guideway.sc"
+min_solidcraft = "0.52.0"
+
+# Ordering codes, HIWIN Linear Guideway catalogue G99TE24-2410, EG series, section 2-2-3 (p.44-45):
+#   set    EG W 25 C A E 2 R 1600 E ZA P M II + DD/E2+RC     rail with blocks
+#   rail   EGR 25 R 1600 E P M + ...                          rail alone
+#   block  EG W 25 C A E ZA P M + ...                         block alone (interchangeable)
+# Size and number of blocks are plain fields and the rest is checked in generator.rhai, so that every refusal carries the Python
+# generator's wording. `length` is the free parameter of the model, `blocks` the other one.
+[parameters]
+length = { type = "decimal", min = 100, max = 4000, unit = "mm" }
+blocks = { type = "int", min = 1, max = 99, default = 1 }
+
+[[template]]
+pattern = "EGR{size: text 2..2 [0-9]}{rm: R|U|T}{length: decimal 0..99999}[E:erail][{prec: SP|UP|C|H|P}][{mat: M}][+{opt: text 1..64}]"
+escape  = "[A-Za-z0-9+/]+"
+description = "EGR{size} rail, {length} mm"
+
+[[template]]
+pattern = "EG{kind: H|W}{size: text 2..2 [0-9]}{load: C|S}{mount: A|B}[E:eblock]{n: int 0..9999}{rm: R|U|T}{length: decimal 0..99999}[E:erail][{preload: Z0|ZA|ZB}][{prec: SP|UP|C|H|P}][{mat: M}][{rails: I|II|III|IIII}][+{opt: text 1..64}]"
+escape  = "[A-Za-z0-9+/]+"
+description = "EG{kind}{size}{load}{mount} with {n} block(s) on a {length} mm rail"
+
+[[template]]
+pattern = "EG{kind: H|W}{size: text 2..2 [0-9]}{load: C|S}{mount: A|B}[E:eblock][{preload: Z0|ZA|ZB}][{prec: SP|UP|C|H|P}][{mat: M}][+{opt: text 1..64}]"
+escape  = "[A-Za-z0-9+/]+"
+description = "EG{kind}{size}{load}{mount} block"
