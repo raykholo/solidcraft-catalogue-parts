@@ -1,48 +1,57 @@
 reviewer_kind = "ai"
 reviewer = "AI review lane (Claude Sonnet), independent of the authoring lane"
-author = "AI authoring lanes (Claude) for raykholo"
-date = "2026-11-26"
-commit = "03b87edbe2ed3062036b8c001303618a064e0817"
-sources_hash = "sha256:d68657bfbd05c2d7f5274907f15c5f36952ce72e975f07d0ed7314d48963a9d1"
-amended = "2026-11-27: source URLs moved from stg0-my.misumi-ec.com to in.misumi-ec.com (MISUMI own host; the PDFs are byte-identical, sha256 compared). No value changed; sources_hash re-pinned. Previous: sha256:23c0d6fd12302f8b67718b1e0f3bfae5bc3a4df3326670c333a7eb817dea109f"
-method = "Downloaded the cited MISUMI catalogue page (2-559) from the URL in sources.toml, rendered it at 400-500 dpi and re-read every table cell, label and note; re-measured the side-view flank and neck from the PDF vector paths; checked the reject cases in codes.txt against the offered M ranges."
+author = "AI authoring lanes (Claude)"
+date = "2026-11-27"
+commit = "fae917cba18b5ab4a87e8f2943f293878cf10586"
+sources_hash = "sha256:4bd8910c2240776d980f5e53a7ebcb8279895ed6e8259c49ce3affca4acb122c"
+method = "Downloaded the cited MISUMI catalogue page 2-559 (p2_559.pdf on in.misumi-ec.com) and re-read every table cell, label and note at 500-1300 dpi. Re-measured the side view from the PDF vector paths (scale from the plan 10 = 36.28 pt, 3.628 pt/mm): bottom face, flank angle and run, body, neck, E, T, every corner arc and its tangent length, the dashed hole lines and the plan circles. Re-derived the ISO coarse tap drills. Read src/nut.py and src/check.py against the rows. tools/check on SolidCraft 0.50.0: 5 codes 14/14 and 3 rejects pass."
 
 [[row]]
 id = 102
 verdict = "agree"
-note = "Type list, M ranges (HNTT5 3/4/5; V5, Z5, SS5 only 5; SN5 3/4/5), materials and surface treatment match the p.559 type table and size table cell by cell."
+note = "Type table (p.559, top): HNTT5, PACK-HNTT5, HNTTV5, HNTTZ5 S10C equivalent / trivalent chromate; HNTTSN5, PACK-HNTTSN5 SUS316 equivalent (sintered) / no treatment; HNTTSS5 SUS303 equivalent / no treatment. M cells of the size table: HNTT5 3 4 5; V5 5; Z5 5; SN5 3 4 5; SS5 5. All match types.csv."
 
 [[row]]
 id = 103
 verdict = "agree"
-note = "Plan view labelled 10 x 10 with M at the centre; matches."
+note = "Plan view: 10 and 10 dimensions, M leader to the hole; measured plan square 36.28 pt = 10.00 mm on both sides, sharp corners. Matches."
 
 [[row]]
 id = 104
 verdict = "agree"
-note = "Side view dimension 5.8 on the bottom face and neck; matches (neck outline re-measured from the vector paths = 5.8 at the plan-10 scale)."
+note = "Side view dimension 5.8: vector neck edges at 148.21 and 169.25 pt = 21.04 pt = 5.80 mm at the plan scale; the bottom face corner points (before the R0.3 round) lie on the same 5.8. Matches."
 
 [[row]]
 id = 105
 verdict = "agree"
-note = "E/T cells: T5, V5, Z5 3.3/4.1 (merged cell); SN5 3.5/4.3; SS5 3.3/4.1. Matches. Vector neck length T-E = 0.8 mm is consistent."
+note = "Size table cells: E 3.3 / T 4.1 merged over HNTT5, HNTTV5, HNTTZ5; HNTTSN5 E 3.5 / T 4.3; HNTTSS5 E 3.3 / T 4.1. Match types.csv. The drawing itself is at E 3.5 / T 4.3 (vector: shoulder 3.50, top 4.30 from the bottom face)."
 
 [[row]]
 id = 106
 verdict = "agree"
-note = "Ordering example HNTT5 - M and the note that HNTT5-5 is selected when M is omitted; matches."
+note = "Ordering example 'HNTT5 - M' with 5 in the M box, and the callout 'When ordering HNTT5 without specifying M, HNTT5-5 is selected automatically'. Matches default_m = 5."
 
 [[row]]
 id = 107
 verdict = "agree"
-note = "Reference tightening torque table, M5 = 6.8 N m; matches."
+note = "Reference Tightening Torque (N m) table, one row M 5 = 6.8 for the S10C / SUS316 (sintered) / SUS303 equivalents. Matches torque_m5 = 6.8."
 
 [[row]]
 id = 108
 verdict = "agree"
-note = "Re-measured from the vector outline of the side view (pymupdf get_drawings): flank slope 35.0 degrees from the nut axis; extended from 5.8 to 10 wide that is a 3.0 mm run; neck 5.8 wide from E to T. Matches."
+note = "Re-measured from the vector outline of the side view (E 3.5 drawing): flank from (317.649, 147.880) to (327.133, 141.242) pt = 35.0 degrees from the nut axis; extended to the bottom corner it meets the 5.8 line at the bottom face and reaches the 10 wide line 10.89 pt = 3.00 mm along the axis. Body 10 wide to the shoulder at 3.50, neck 5.8 wide from E to T (4.30). Matches flank_h = 3.0 and the reworded text."
 
 [[row]]
 id = 109
 verdict = "agree"
-note = "Approximate by design: the page gives no thread length; correctly flagged as an estimate with no source."
+note = "Side view: the two pairs of dashed hole lines run the whole length from the bottom face to the top of the neck (full T), at 4.2 and 5.0 across (inner pair 15.23 pt = 4.20 mm, outer 18.11 pt = 5.00 mm), straight to both faces: no countersink or chamfer at either mouth. The plan view shows the same circles. Matches the through-hole wording."
+
+[[row]]
+id = 2000
+verdict = "agree"
+note = "Plan view vectors: thick inner circle diameter 4.200 mm, thin outer circle 5.000 mm (M5 drawing); the side-view hidden lines agree. The page prints no tap drill. ISO coarse tap drills 3 - 0.5 = 2.5, 4 - 0.7 = 3.3, 5 - 0.8 = 4.2 are right; tap.csv matches. src/nut.py cuts a pilot-diameter cylinder through T and lays a cosmetic solid.thread of the nominal size over T; src/check.py requires exactly one axial cylinder face of the pilot radius at the plan centre, none of the nominal radius, thread designation M<n>, thread length = T and axis at the plan centre. Same convention as misumi.hfs.extrusion row 1905."
+
+[[row]]
+id = 2001
+verdict = "agree"
+note = "Vector outline of the side view (3.628 pt/mm): bottom corner arcs with tangent length 0.567 pt on the 125 degree corner = R0.30; flank / body corner tangent length 1.143 pt on the 145 degree corner = R1.00; body top corners and neck top corners arcs of radius 0.726 pt = R0.20; the shoulder / neck inner corner (329.885, 148.206) is a sharp line corner; no chamfer or C value anywhere; plan view corners sharp. Model: fillets at p0,p1 (R0.3), p2,p9 (R1.0, reduced on the E 3.3 types), p3,p8,p5,p6 (R0.2), p4,p7 sharp: the same set. Values stay approximate (none printed)."

@@ -74,23 +74,43 @@ note = "published"
 
 [[dimension]]
 id = 108
-item = "Flank from the 5.8 bottom to the 10 wide body: 3.0 high (about 35 degrees from the nut axis); body 10 wide from there to E, neck 5.8 wide from E to T; corner rounds left out"
+item = "Flank from the 5.8 bottom to the 10 wide body: 3.0 high (about 35 degrees from the nut axis); body 10 wide from there to E, neck 5.8 wide from E to T; the edge rounds are row 2001"
 value = ""
 source = ["S9"]
 source_text = "S9 p.559 side view"
 page = "p.559 side view"
 status = "measured"
-note = "measured (vector outline of the side view, scale from the labelled 10 and 5.8)"
+note = "measured (vector outline of the side view, scale from the labelled 10 and 5.8: the flank line meets the bottom at y = 2.90 and the 10 wide line at z = 3.00 on the drawing, which is drawn at E 3.5, T 4.3)"
 
 [[dimension]]
 id = 109
-item = "Thread drawn through the whole thickness T (tapped hole with the tap-drill size)"
+item = "The hole runs through the whole thickness T (the drawing shows the hole edges across the full side view; no countersink or chamfer at either mouth); the thread is drawn over the whole of T"
 value = ""
-source = []
-source_text = "-"
-page = "-"
+source = ["S9"]
+source_text = "S9 p.559 side view (hole edges drawn from the bottom face to the top face) and plan view"
+page = "p.559 side and plan views"
+status = "measured"
+note = "measured (vector outline); the catalogue gives no thread length, the drawing shows a through hole"
+
+[[dimension]]
+id = 2000
+item = "Tapped hole: what is modelled (tap drill and nominal thread)"
+value = "the pilot bore (tap drill) is the modelled hole: O2.5 for M3, O3.3 for M4, O4.2 for M5; a cosmetic thread of the nominal size M3 / M4 / M5 through the thickness T is laid on it"
+source = ["S9"]
+source_text = "S9 p.559 plan view: the hole is drawn as a thick inner circle and a thin outer circle (M5 drawing: inner 4.2, outer 5.0 measured), labelled \"M\""
+page = "p.559 plan and side views"
+status = "derived"
+note = "The page prints no tap drill. ISO coarse tap drill = nominal - pitch: M3 x 0.5 = 2.5, M4 x 0.7 = 3.3, M5 x 0.8 = 4.2 (the M5 value agrees with the inner circle measured on the plan view of the drawing). Convention of this repository (as for the HFS end taps, row 1905 of misumi.hfs.extrusion, and SolidCraft's own tapped hole): the geometry is the pilot bore, never the nominal diameter; the thread is cosmetic (solid.thread, extent length) with the catalogue designation. check.py checks the cylinder that carries the thread has the pilot diameter and that no cylinder of the nominal diameter exists"
+
+[[dimension]]
+id = 2001
+item = "Edge rounds on the side view: R0.3 at the two bottom corners (bottom face / flank), R1.0 at the two flank / 10 wide body corners, R0.2 at the four corners of the body / shoulder and of the neck top; the neck / shoulder inner corners and the plan view corners are sharp"
+value = ""
+source = ["S9"]
+source_text = "S9 p.559 side view: rounded corners drawn, no radius printed"
+page = "p.559 side view"
 status = "approximate"
-note = "approximate (the catalogue gives no thread length)"
+note = "Shown on the drawing but not dimensioned. Radii fitted to the vector arcs of the drawing (0.30, 1.00, 0.20 mm at the scale of the labelled 5.8 and 10). On the E 3.3 types the R1.0 round is reduced (R = (E - 0.2 - 3.0) / tan 17.5 degrees) so that it does not run into the R0.2 round. Appearance only: listed in not_guaranteed, never dimension-checked. No chamfers (C values) are drawn anywhere"
 
 [[note]]
-text = "Source count for family 4: 8 rows (102-109): 4 published, 2 labelled, 1 measured, 1 approximate; one new document (S9). Not drawn: spring-loaded nuts (HNTU, HNTP, HNTA), stoppers (HNST, SHNST), integrated nuts (HNTE5), insertion from the end only for the HNTT family, corner brackets."
+text = "Source count for family 4: 11 rows (102-109, 2000-2001): 4 published, 2 labelled, 2 measured, 1 derived, 1 approximate; one new document (S9). Not drawn: spring-loaded nuts (HNTU, HNTP, HNTA), stoppers (HNST, SHNST), integrated nuts (HNTE5), insertion from the end only for the HNTT family, corner brackets."

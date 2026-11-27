@@ -30,4 +30,4 @@ type = { choices = ["HNTT5", "HNTTV5", "HNTTZ5", "HNTTSN5", "HNTTSS5"] }
 thread = { choices = ["M3", "M4", "M5"] }
 
 [guarantee]
-not_guaranteed = ["The flank from the 5.8 mm bottom to the 10 mm body (measured from the vector side view, about 35 degrees from the nut axis)", "The thread is drawn through the whole thickness T (a tapped hole with the tap-drill size)"]
+not_guaranteed = ["The flank from the 5.8 mm bottom to the 10 mm body (measured from the vector side view, about 35 degrees from the nut axis)", "The edge rounds of the side view (R0.3, R1.0 reduced on the E 3.3 types, R0.2; none is dimensioned on the page)", "The tap drill (pilot bore O2.5 / O3.3 / O4.2 for M3 / M4 / M5) is the ISO coarse one: the page prints none; the thread is cosmetic (solid.thread) through the thickness T"]

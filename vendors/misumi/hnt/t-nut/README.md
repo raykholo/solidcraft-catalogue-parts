@@ -18,7 +18,8 @@ Types HNTT5, HNTTV5, HNTTZ5, HNTTSN5, HNTTSS5; thread M3, M4 or M5 (M5 when omit
 **Not guaranteed**:
 
 - The flank from the 5.8 mm bottom to the 10 mm body (measured from the vector side view, about 35 degrees from the nut axis)
-- The thread is drawn through the whole thickness T (a tapped hole with the tap-drill size)
+- The edge rounds of the side view: R0.3 (bottom corners), R1.0 (flank / body, reduced on the E 3.3 types), R0.2 (shoulder and neck top). The drawing shows them but prints no radius; no chamfer is drawn
+- The tap drill: the modelled hole is the pilot bore (O2.5 / O3.3 / O4.2 for M3 / M4 / M5, the ISO coarse tap drill; the page prints none), the thread is a cosmetic `solid.thread` of the nominal size through the thickness T (the repo convention, see misumi.hfs.extrusion "Tapped holes")
 
 Not drawn: spring-loaded nuts (HNTU, HNTP, HNTA), stoppers (HNST, SHNST), integrated nuts (HNTE) and the other families on the same catalogue page.
 

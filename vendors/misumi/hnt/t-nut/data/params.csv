@@ -4,3 +4,6 @@ neck,5.8,mm,S9,p.559 side view,labelled
 flank_h,3.0,mm,S9,p.559 side view vector outline,measured
 default_m,5,,S9,p.559 ordering example and note,labelled
 torque_m5,6.8,N m,S9,p.559,labelled
+round_bottom,0.3,mm,S9,p.559 side view vector outline (bottom face / flank corners; no radius printed),approximate
+round_flank_top,1.0,mm,S9,p.559 side view vector outline (flank / 10 wide body corners; no radius printed),approximate
+round_edge,0.2,mm,S9,p.559 side view vector outline (10 wide body / shoulder and neck top corners; no radius printed),approximate

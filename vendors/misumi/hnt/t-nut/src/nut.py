@@ -32,6 +32,10 @@ NECK = _P["neck"]
 # flank from the 5.8 bottom to the 10 body: height of the flank (measured on the drawing, about 35 degrees from the nut axis)
 FLANK_H = _P["flank_h"]
 DEFAULT_M = _P["default_m"]
+# edge rounds seen on the side view, none dimensioned: appearance, approximate (sources.toml row 2001)
+R_BOTTOM, R_FLANK_TOP, R_EDGE = _P["round_bottom"], _P["round_flank_top"], _P["round_edge"]
+# tap drill (pilot bore) per thread: ISO coarse tap drill, status "derived" (sources.toml row 2000)
+PILOT = {int(num(_r["m"])): num(_r["pilot"]) for _r in read_csv(DATA / "tap.csv")}
 
 CODE = re.compile(r"^(S?HNT[A-Z]*5)(?:-(\d+(?:\.\d)?))?$")
 
@@ -55,7 +59,7 @@ class Nut:
             d += f", {self.surface}"
         if self.M == 5:
             d += f", reference tightening torque {TORQUE_M5:g} N m"
-        return d + ". Generated from the published catalogue dimensions; the flank profile is measured from the drawing."
+        return d + ". Generated from the published catalogue dimensions; the flank profile and the edge rounds are measured from the drawing; the tap drill is the ISO coarse one."
 
 def parse(code: str) -> Nut:
     c = code.strip().upper()
@@ -85,15 +89,33 @@ def section(n: Nut):
     b, w = NECK / 2, PLAN / 2
     return [(-b, 0.0), (b, 0.0), (w, FLANK_H), (w, n.E), (b, n.E), (b, n.T), (-b, n.T), (-b, n.E), (-w, n.E), (-w, FLANK_H)]
 
+def flank_top_radius(n: Nut) -> float:
+    """The drawn R1.0 round between the flank and the 10 wide body ends about at E - R0.2 on the E 3.5 nut; on the E 3.3 types the land
+    is shorter, so the radius is reduced to keep the two rounds from overlapping."""
+    import math
+    t_max = n.E - R_EDGE - FLANK_H
+    return min(R_FLANK_TOP, t_max / math.tan(math.radians(17.5)))
+
 def commands(n: Nut) -> list[dict]:
     cmds: list[dict] = []
     def add(c, **p): cmds.append({"command": c, "params": p})
     add("component.create", name=n.code)
     add("sketch.create", plane="YZ", name="Profile")
     add("sketch.line", points=[[y, z] for y, z in section(n)], closed=True)
+    # section corners p0..p9 -> l{i}.end is p{i} (p0 is l10.end); rounds are appearance only (row 2001)
+    ref = lambda *idx: [f"l{i % 10 or 10}.end" for i in idx]
+    add("sketch.fillet", points=ref(0, 1), radius=R_BOTTOM)
+    add("sketch.fillet", points=ref(2, 9), radius=flank_top_radius(n))
+    add("sketch.fillet", points=ref(3, 8, 5, 6), radius=R_EDGE)
     add("sketch.finish")
     add("solid.extrude", distance=PLAN, name="Nut", body_name=n.code)
-    add("solid.hole", position=[PLAN / 2, 0, n.T], thread=f"M{n.M}", targets=[n.code], name=f"Thread M{n.M}")
+    # Tapped hole (repo convention, sources.toml row 2000): the modelled hole is the tap drill (pilot bore), never the nominal diameter;
+    # the thread is a cosmetic solid.thread of the nominal size laid on it, through the whole thickness T.
+    r = PILOT[n.M] / 2
+    add("solid.cylinder", diameter=PILOT[n.M], height=n.T + 2, base=[PLAN / 2, 0, -1], axis="Z", operation="cut",
+        targets=[n.code], name=f"Pilot bore O{PILOT[n.M]:g}")
+    add("solid.thread", face=[PLAN / 2 + r, 0, n.T / 2], designation=f"M{n.M}", extent="length", length=n.T,
+        **{"from": [PLAN / 2 + r, 0, n.T]}, name=f"Thread M{n.M}")
     add("browser.visibility", items=["Profile"], visible=False)
     add("component.metadata.set", component=n.code, part_number=n.code, description=n.description,
         material=f"{n.material}" + ("" if n.surface == "-" else f"; {n.surface}"))

@@ -6,7 +6,7 @@ Manufacturer names and ordering codes are used only to say what each part is. Th
 
 **Guarantee level: Reviewed**  (levels: Checked = automatic spec check; Reviewed = + independent reviewer; Drawing-matched = + drawing match)
 
-**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.50.0; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-26); not reviewed by a person.
+**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.50.0; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
 
 ## Based on
 
@@ -14,7 +14,7 @@ Manufacturer names and ordering codes are used only to say what each part is. Th
 |----|----------|-----|-----------|
 | S9 | MISUMI FA catalogue, "Pre-Assembly Insertion Nuts / Stoppers for Aluminum Extrusions - Standard, For 5 Series (Slot Width 6mm)" | https://in.misumi-ec.com/pdf/fa/2014/p2_559.pdf | 2-559 (HNTT5 drawing and table), 2-557 (overview) |
 
-8 cited rows (1 approximate, 2 labelled, 1 measured, 4 published). "labelled" / "published" = a number printed in the catalogue; "measured" = read from the vertex coordinates of the published vector drawing; "derived" = computed from labelled numbers; "approximate" = an estimate, shown only as appearance or as an illustration choice.
+10 cited rows (1 approximate, 1 derived, 2 labelled, 2 measured, 4 published). "labelled" / "published" = a number printed in the catalogue; "measured" = read from the vertex coordinates of the published vector drawing; "derived" = computed from labelled numbers; "approximate" = an estimate, shown only as appearance or as an illustration choice.
 
 | # | Item | Value | Source | Page / how | Status |
 |---|------|-------|--------|-----------|--------|
@@ -24,33 +24,36 @@ Manufacturer names and ordering codes are used only to say what each part is. Th
 | 105 | E and T: HNTT5, HNTTV5, HNTTZ5, HNTTSS5: E 3.3, T 4.1; HNTTSN5: E 3.5, T 4.3 |  | S9 | p.559 table | published |
 | 106 | Ordering "HNTT5 - M"; M omitted selects M5 |  | S9 | p.559 ordering example and note | published |
 | 107 | Reference tightening torque M5: 6.8 N m (written into the description) |  | S9 | p.559 | published |
-| 108 | Flank from the 5.8 bottom to the 10 wide body: 3.0 high (about 35 degrees from the nut axis); body 10 wide from there to E, neck 5.8 wide from E to T; corner rounds left out |  | S9 | p.559 side view | measured |
-| 109 | Thread drawn through the whole thickness T (tapped hole with the tap-drill size) |  |  | - | approximate |
+| 108 | Flank from the 5.8 bottom to the 10 wide body: 3.0 high (about 35 degrees from the nut axis); body 10 wide from there to E, neck 5.8 wide from E to T; the edge rounds are row 2001 |  | S9 | p.559 side view | measured |
+| 109 | The hole runs through the whole thickness T (the drawing shows the hole edges across the full side view; no countersink or chamfer at either mouth); the thread is drawn over the whole of T |  | S9 | p.559 side and plan views | measured |
+| 2000 | Tapped hole: what is modelled (tap drill and nominal thread) | the pilot bore (tap drill) is the modelled hole: O2.5 for M3, O3.3 for M4, O4.2 for M5; a cosmetic thread of the nominal size M3 / M4 / M5 through the thickness T is laid on it | S9 | p.559 plan and side views | derived |
+| 2001 | Edge rounds on the side view: R0.3 at the two bottom corners (bottom face / flank), R1.0 at the two flank / 10 wide body corners, R0.2 at the four corners of the body / shoulder and of the neck top; the neck / shoulder inner corners and the plan view corners are sharp |  | S9 | p.559 side view | approximate |
 
 Data tables (every row cites a source id and page):
 
-- `data/params.csv`: 5 rows
+- `data/params.csv`: 8 rows
+- `data/tap.csv`: 3 rows
 - `data/types.csv`: 5 rows
 
-Sources hash: `sha256:d68657bfbd05c2d7f5274907f15c5f36952ce72e975f07d0ed7314d48963a9d1` (sha256 over `sources.toml` and `data/*.csv`).
+Sources hash: `sha256:4bd8910c2240776d980f5e53a7ebcb8279895ed6e8259c49ce3affca4acb122c` (sha256 over `sources.toml` and `data/*.csv`).
 
 ## Verified by
 
 1. **Automatic spec check** (`tools/check`): every code in `codes.txt` is built with solidcraft-cli and every dimension is compared with the datasheet value within the stated tolerance.
-   - SolidCraft 0.50.0: 60 of 60 dimension rows match, over 5 codes.
+   - SolidCraft 0.50.0: 70 of 70 dimension rows match, over 5 codes.
    - CI run: none yet (placeholder `<link to the generator.yml run>`; filled by CI once the repository exists).
 
    | Code | Options | Result | File |
    |------|---------|--------|------|
-   | `HNTT5` | - | 12/12 | `checks/0.50.0/HNTT5.txt` |
-   | `HNTT5-4` | - | 12/12 | `checks/0.50.0/HNTT5-4.txt` |
-   | `HNTTSN5-3` | - | 12/12 | `checks/0.50.0/HNTTSN5-3.txt` |
-   | `HNTTSS5-5` | - | 12/12 | `checks/0.50.0/HNTTSS5-5.txt` |
-   | `HNTTV5-5` | - | 12/12 | `checks/0.50.0/HNTTV5-5.txt` |
+   | `HNTT5` | - | 14/14 | `checks/0.50.0/HNTT5.txt` |
+   | `HNTT5-4` | - | 14/14 | `checks/0.50.0/HNTT5-4.txt` |
+   | `HNTTSN5-3` | - | 14/14 | `checks/0.50.0/HNTTSN5-3.txt` |
+   | `HNTTSS5-5` | - | 14/14 | `checks/0.50.0/HNTTSS5-5.txt` |
+   | `HNTTV5-5` | - | 14/14 | `checks/0.50.0/HNTTV5-5.txt` |
 
    Invalid codes that must be rejected with a message (`!` lines in codes.txt): 3.
 
-2. **Independent review:** `review.toml`, by AI review lane (Claude Sonnet), independent of the authoring lane on 2026-11-26 (8 rows agree, 0 corrected). Valid for the current sources.
+2. **Independent review:** `review.toml`, by AI review lane (Claude Sonnet), independent of the authoring lane on 2026-11-27 (10 rows agree, 0 corrected). Valid for the current sources.
 3. **Drawing match** (only where the vendor allows it): none yet.
 
 ## Not guaranteed
@@ -58,7 +61,8 @@ Sources hash: `sha256:d68657bfbd05c2d7f5274907f15c5f36952ce72e975f07d0ed7314d489
 Everything tagged "appearance, approximate" in the part, and every illustration choice. It is shown for looks only and is not checked against a catalogue dimension:
 
 - The flank from the 5.8 mm bottom to the 10 mm body (measured from the vector side view, about 35 degrees from the nut axis)
-- The thread is drawn through the whole thickness T (a tapped hole with the tap-drill size)
+- The edge rounds of the side view (R0.3, R1.0 reduced on the E 3.3 types, R0.2; none is dimensioned on the page)
+- The tap drill (pilot bore O2.5 / O3.3 / O4.2 for M3 / M4 / M5) is the ISO coarse one: the page prints none; the thread is cosmetic (solid.thread) through the thickness T
 
 ## Recipe stored on a placed part
 
@@ -67,7 +71,7 @@ Everything tagged "appearance, approximate" in the part, and every illustration 
   "generator": "misumi.hnt.t-nut",
   "version": "0.1.0",
   "code": "<the ordering code>",
-  "sources_hash": "sha256:d68657bfbd05c2d7f5274907f15c5f36952ce72e975f07d0ed7314d48963a9d1"
+  "sources_hash": "sha256:4bd8910c2240776d980f5e53a7ebcb8279895ed6e8259c49ce3affca4acb122c"
 }
 ```
 

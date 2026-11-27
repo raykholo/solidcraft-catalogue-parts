@@ -1,16 +1,17 @@
 """Spec check for MISUMI pre-assembly insertion nuts (nut.py, sources.toml S9)."""
 from __future__ import annotations
-from runtime.check import Rows, run_measure, find_key
+from runtime.check import Rows, run_measure, find_key, cyl_groups
 from runtime.sc import slug
 from . import nut as nt
 
 def check(n, sc, out):
+    zn = (n.E + n.T - nt.R_EDGE) / 2          # on the straight neck flank, below the R0.2 round of the top edge
     cmds = [{"command": "inspect.measure", "params": {}},
             {"command": "model.faces", "params": {"body": n.code}},
             {"command": "model.threads", "params": {}},
             {"command": "inspect.measure", "params": {"items": [
-                {"type": "face", "body": n.code, "point": [3, -nt.NECK / 2, n.T - 0.2]},
-                {"type": "face", "body": n.code, "point": [3, nt.NECK / 2, n.T - 0.2]}]}},
+                {"type": "face", "body": n.code, "point": [3, -nt.NECK / 2, zn]},
+                {"type": "face", "body": n.code, "point": [3, nt.NECK / 2, zn]}]}},
             {"command": "component.metadata", "params": {"component": n.code}},
             {"command": "document.metadata", "params": {}}]
     r = run_measure(sc, cmds, out, slug(n.code))
@@ -31,6 +32,13 @@ def check(n, sc, out):
     R.eq(f"thread M{n.M} present", 1, len(sel), "S9 p.559 'M'")
     if sel:
         R.num("thread runs through the nut (T)", n.T, sel[0]["end"] - sel[0]["start"], 0.01, "S9 p.559", "thickness T")
+    # the modelled hole of the tapped bore is the pilot bore (tap drill), never the nominal diameter: sources.toml row 2000
+    g = cyl_groups(faces)
+    pil = nt.PILOT[n.M]
+    bore = [(o, a) for (o, a) in g.get(round(pil / 2, 3), []) if abs(abs(a[2]) - 1) < 1e-6 and abs(o[0] - nt.PLAN / 2) < 0.01 and abs(o[1]) < 0.01]
+    R.eq(f"tapped bore: cylinder face of the pilot diameter O{pil:g} at the plan centre", 1, len(bore), "S9 p.559", f"M{n.M} tap drill (ISO coarse), derived")
+    nominal = [1 for (o, a) in g.get(round(n.M / 2, 3), []) if abs(abs(a[2]) - 1) < 1e-6]
+    R.eq(f"no cylinder of the nominal diameter O{n.M} (thread is cosmetic)", 0, len(nominal), "S9 p.559", "convention, sources.toml row 2000")
     R.true("thread axis at the plan centre", bool(sel) and abs(sel[0]["axis_point"][0] - nt.PLAN / 2) < 0.01 and abs(sel[0]["axis_point"][1]) < 0.01, "S9 p.559 plan view")
     R.eq("part number metadata", n.code, (r[4].get("metadata") or r[4]).get("part_number"), "-")
     R.eq("design part number", n.code, find_key(r[5], "part_number"), "-")

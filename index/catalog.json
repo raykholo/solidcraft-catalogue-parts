@@ -504,8 +504,8 @@
     }
    ],
    "path": "vendors/misumi/hfs/extrusion",
-   "level": "Checked",
-   "sources_hash": "sha256:274bfe0aa89087b251e4d256d43a6ec3a8c10fef0d6176f332831e0bb82d9c88"
+   "level": "Reviewed",
+   "sources_hash": "sha256:734c8793b44e13f4324567be9aeeb515489c5e0edd0014a0ce8007e110333714"
   },
   {
    "id": "misumi.hnt.t-nut",
@@ -555,7 +555,7 @@
    ],
    "path": "vendors/misumi/hnt/t-nut",
    "level": "Reviewed",
-   "sources_hash": "sha256:d68657bfbd05c2d7f5274907f15c5f36952ce72e975f07d0ed7314d48963a9d1"
+   "sources_hash": "sha256:4bd8910c2240776d980f5e53a7ebcb8279895ed6e8259c49ce3affca4acb122c"
   },
   {
    "id": "misumi.lb.linear-bushing",
