@@ -108,7 +108,7 @@ def thread_set(S: Series, blocks):
         for b in blocks.get(size, []):
             if b.d["hole"] == "through": through = True
             elif b.d["M"] not in ms: ms.append(b.d["M"])
-    return ms, through
+    return sorted(ms, key=lambda m: int(m[1:])), through       # smallest first: a later (larger) hole must still find material to thread
 
 def rail_threads(S: Series):
     out = []
@@ -196,7 +196,9 @@ def commands(S: Series, rules_mode="expr"):
     through = any(h.startswith("Block through") for h in holes)
     rows = row_list(S, blocks)
     cols = columns(S)
-    first = row_values(S, blocks, *rows[0][0:1], rows[0][1], rows[0][2], rows[0][3])
+    # the parameters start at the values of the LAST set row (largest size, a block with two hole columns): every alternative feature is
+    # modelled once before the table suppresses them, so each must find material at those values (a thread needs a cylindrical face)
+    first = row_values(S, blocks, *next(r for r in reversed(rows) if r[0] == "set" and r[1].d["hole"] == "thread" and r[1].d["C"]))
     cm = []
     for k in cols:
         cm.append(c("parameters.add", name=k, expression=first[k] if k != "rail" else "1", **({"unit": ""} if k in NOUNIT else {})))
@@ -217,12 +219,12 @@ def commands(S: Series, rules_mode="expr"):
     cm.append(c("solid.box", length="length", width="WR", height="HR", corner=[0, "-WR / 2", 0], operation="new", body_name="Rail", name="Rail"))
     cm.append(c("sketch.create", plane={"origin": [0, 0, "HR"], "x_dir": [1, 0, 0], "y_dir": [0, 1, 0]}, name="Rail hole"))
     cm += [c("sketch.point", point=["E", 0]), c("sketch.finish")]
-    cm.append(c("solid.hole", sketch="Rail hole", diameter="d", type="counterbore", cb_diameter="D", cb_depth="h", targets=["Rail"], name="Rail hole 1"))
-    if taps:
+    if taps:       # the taps (smallest first) before the counterbored through hole, which is larger than the smallest tap and would leave it no material
         cm.append(c("sketch.create", plane={"origin": [0, 0, 0], "x_dir": [1, 0, 0], "y_dir": [0, 1, 0]}, name="Rail hole bottom"))
         cm += [c("sketch.point", point=["E", 0]), c("sketch.finish")]
         for t in taps:
             cm.append(c("solid.hole", sketch="Rail hole bottom", thread=t, depth="hT", targets=["Rail"], name=f"Rail hole tap {t}"))
+    cm.append(c("solid.hole", sketch="Rail hole", diameter="d", type="counterbore", cb_diameter="D", cb_depth="h", targets=["Rail"], name="Rail hole 1"))
     cm.append(c("solid.pattern.rectangular", features=[f for f in rail_f if f.startswith("Rail hole ")], dir1=[1, 0, 0], count1="n", spacing1="P", name="Rail holes"))
     # ---- block: U profile (rail channel cut in) extruded over L1, then the mounting holes of the row's kind
     pts = [("-W/2", "H1"), ("-WR/2", "H1"), ("-WR/2", "HR"), ("WR/2", "HR"), ("WR/2", "H1"), ("W/2", "H1"), ("W/2", "H"), ("-W/2", "H")]
