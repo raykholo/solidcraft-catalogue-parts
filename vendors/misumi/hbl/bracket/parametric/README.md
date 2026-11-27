@@ -110,7 +110,7 @@ same bbox, face and body counts.
 | unknown row | {"command": "component.insert_design", "error": "invalid parameters for `component.insert_design`: configuration `no-such-row` does not exist in the source design", "step": 1} |
 | tabs = 1 on an HBLTS5 row (rules switch the tab features on) | {'bodies': ['Bracket'], 'volume': 4684.900466686726} |
 
-config.table: 20 rows, 20 columns, 11 rules
+config.table: 19 rows, 20 columns, 11 rules
 
 All 25 codes: the parametric part has the same volume, area, bbox, face and body count as the Python part, and passes the same spec check with the same number of
 rows. Every refusal (the 11 of `codes.txt` and 13 more, compared with `br.parse`) has the Python message word for word.
