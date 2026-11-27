@@ -1,0 +1,10 @@
+name,value,unit,source,page,status
+fixed_lengths,1000|4000,mm,S1;S10,p.529 / p.571,labelled
+l_min,50.0,mm,S1;S10,p.529 / p.571,labelled
+l_max,4000.0,mm,S1;S10,p.529 / p.571,labelled
+l_step,0.5,mm,S1;S10,p.529 / p.571,labelled
+types5,CAF5|HFS5|HFSB5|HFSY5|NFS5|NFSB5,,S1;S10,p.529 / p.571,labelled
+types6,CAF6|HFS6|HFSB6|HFSY6,,S1;S10,p.529 / p.571,labelled
+other_types,EFS6|EFSB6|EFSC6|EFSF6|EFSH6|EFST6|GFS6|HFSC5|HFSC6|HFSF5|HFSF6|HFSFB5|HFSFB6|HFSH5|HFSH6|HFSL6|HFSLB6|HFSR5|HFST5|HFST6|HFSTB5|HFSTB6|NEFS6|NEFSB6|NEFSF6|NEFST6|NFSF5|NFSL6|NFST5,,S1;S10,p.529 / p.571,labelled
+profiles5,2020|2040|4040,,S1;S10,p.529 / p.571,labelled
+profiles6,3030,,S1;S10,p.529 / p.571,labelled

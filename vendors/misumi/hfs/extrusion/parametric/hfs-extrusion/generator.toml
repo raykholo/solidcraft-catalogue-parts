@@ -1,0 +1,42 @@
+format = "solidcraft-generator/2"
+id = "hfs-extrusion"
+name = "MISUMI aluminium extrusions, 5 series 2020 / 2040 / 4040 and 6 series 3030"
+license = "CC0-1.0"
+model = "hfs-extrusion.sc"
+
+[parameters]
+part_type = { type = "text", default = "HFS5" }
+profile = { type = "choice", values = ["2020", "2040", "4040", "3030"] }
+length = { type = "decimal", min = 50, max = 4000, step = 0.5, unit = "mm" }
+fixed = { type = "int", min = 0, max = 1 }
+tap_l = { type = "int", min = 0, max = 1 }
+tap_r = { type = "int", min = 0, max = 1 }
+wl_rows = { type = "int", min = 0, max = 3 }
+wr_rows = { type = "int", min = 0, max = 3 }
+
+[[template]]
+pattern = '[K:fixed]{part_type: text 3..8 [A-Za-z0-9]}-{profile: text 4..6 [0-9]}[-{length: decimal}][-{alts: text 1..80 [A-Za-z0-9-]}]'
+
+[rows."2020"]
+source = "MISUMI FA catalogue S1 (sources.toml), p.529"
+page = "p.529"
+status = "verified"
+note = "section values read from the vector drawing are listed in the generator README under not guaranteed"
+
+[rows."2040"]
+source = "MISUMI FA catalogue S1 (sources.toml), p.530"
+page = "p.530"
+status = "verified"
+note = "section values read from the vector drawing are listed in the generator README under not guaranteed"
+
+[rows."4040"]
+source = "MISUMI FA catalogue S1 (sources.toml), p.530"
+page = "p.530"
+status = "verified"
+note = "section values read from the vector drawing are listed in the generator README under not guaranteed"
+
+[rows."3030"]
+source = "MISUMI FA catalogue S10 (sources.toml), p.571"
+page = "p.571"
+status = "verified"
+note = "section values read from the vector drawing are listed in the generator README under not guaranteed"

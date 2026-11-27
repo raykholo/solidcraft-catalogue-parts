@@ -7,7 +7,9 @@
 Elements: literals; {name} (a choice listed in `choices`), {name: a|b|c} (longest listed value that fits), {name: C=standard, H=heavy}
 (letter -> value; printing writes the letter), {name: int LO..HI}, {name: decimal LO..HI [step S] [digits D]}, {name: text MIN..MAX}
 (characters from the escape class), [optional part] (fields in it are absent -> None / their default), [E:flag] (a literal that sets a
-boolean). Separators " -_/." and case are ignored when parsing. Matching backtracks, longest value first, the first complete
+boolean). A text field may carry its own escape class after the length: {name: text 1..80 [A-Za-z0-9-]} (else the template's `escape`, else
+any character but a separator). Separators " -_/." and case are ignored when parsing: they are skipped between elements (never inside a
+text field whose class allows them), printing uses the template's own spelling. Matching backtracks, longest value first, the first complete
 match wins; limits as the doc: code <= 128 characters, template <= 256, 32 fields, 20000 steps.
 """
 from __future__ import annotations
@@ -25,7 +27,7 @@ def _norm(s):
 
 def _charclass(esc):
     """[A-Za-z0-9-]+ -> (set test, min, max). A tiny class language: one [...] class plus +, * or {n,m}."""
-    m = re.fullmatch(r"\[([^\]]+)\](\+|\*|\{(\d+),(\d+)\})?", esc)
+    m = re.fullmatch(r"\[([^\]]+)\](\+|\*|\{(\d+),(\d+)\})?", esc)   # the quantifier is optional: an inline class has none
     if not m: raise TemplateError(f"bad escape pattern {esc!r}")
     cls = m.group(1); chars = set(); i = 0
     while i < len(cls):
@@ -47,8 +49,8 @@ class _Field:
         elif m := re.fullmatch(r"decimal(?:\s+([\d.]+)\.\.([\d.]+))?(?:\s+step\s+([\d.]+))?(?:\s+digits\s+(\d+))?", s):
             self.kind = "decimal"; self.lo = float(m.group(1) or 0); self.hi = float(m.group(2) or 1e9)
             self.step = float(m.group(3)) if m.group(3) else None; self.digits = int(m.group(4)) if m.group(4) else None
-        elif m := re.fullmatch(r"text\s+(\d+)\.\.(\d+)", s):
-            self.kind = "text"; self.lo, self.hi = int(m.group(1)), int(m.group(2))
+        elif m := re.fullmatch(r"text\s+(\d+)\.\.(\d+)(?:\s+(\[[^\]]+\]))?", s):
+            self.kind = "text"; self.lo, self.hi = int(m.group(1)), int(m.group(2)); self.cls = _charclass(m.group(3)) if m.group(3) else None
         elif "=" in s:
             self.kind = "map"; self.map = {}
             for part in s.split(","):
@@ -83,9 +85,10 @@ class _Field:
                     if self.lo <= v <= self.hi and (not self.step or abs((v - self.lo) / self.step - round((v - self.lo) / self.step)) < 1e-9):
                         yield v, pos + ln
         elif self.kind == "text":
-            allowed = esc
+            allowed = self.cls if self.cls is not None else esc
             n = 0
-            while pos + n < len(text) and (allowed is None or text[pos + n].upper() in allowed or text[pos + n].lower() in allowed) and n < self.hi: n += 1
+            while (pos + n < len(text) and n < self.hi and
+                   (text[pos + n] not in SEPARATORS if allowed is None else (text[pos + n].upper() in allowed or text[pos + n].lower() in allowed))): n += 1
             for ln in range(n, self.lo - 1, -1):
                 if ln >= 1: yield text[pos:pos + ln], pos + ln
 
@@ -140,7 +143,7 @@ class Template:
                 flag = None
                 if closing and (fm := re.fullmatch(r"(.*?):([A-Za-z_]\w*)", lit)):   # [E:flag]
                     lit, flag = fm.group(1), fm.group(2)
-                nodes.append(("lit", _norm(lit), flag))
+                nodes.append(("lit", _norm(lit), flag, lit))
             if closing: raise TemplateError("unclosed [")
             return nodes
         nodes = parse_seq(False)
@@ -150,7 +153,10 @@ class Template:
     # ---- code -> fields
     def match(self, code):
         if len(code) > MAX_CODE: raise Refusal("invalid", "code longer than 128 characters")
-        text = _norm(code); steps = [0]
+        text = code.strip().upper(); steps = [0]
+        def skip(p):
+            while p < len(text) and text[p] in SEPARATORS: p += 1
+            return p
         names = {f.name for f in self.fields} | {n[2] for n in self._walk() if n[0] == "lit" and n[2]}
         def run(nodes, i, pos, acc, k):
             """match nodes[i:] at pos, then continue with k(pos, acc); returns the final acc or None"""
@@ -159,13 +165,16 @@ class Template:
             if i == len(nodes): return k(pos, acc)
             n = nodes[i]
             if n[0] == "lit":
-                if text.startswith(n[1], pos):
-                    a = dict(acc); 
-                    if n[2]: a[n[2]] = True
-                    return run(nodes, i + 1, pos + len(n[1]), a, k)
-                return None
+                p = pos
+                for c in n[1]:                      # separators in the code are skipped between the literal's characters
+                    p = skip(p)
+                    if text[p:p + 1] != c: return None
+                    p += 1
+                a = dict(acc)
+                if n[2]: a[n[2]] = True
+                return run(nodes, i + 1, p, a, k)
             if n[0] == "field":
-                for v, p in n[1].options(text, pos, self.escape):
+                for v, p in n[1].options(text, skip(pos), self.escape):
                     r = run(nodes, i + 1, p, {**acc, n[1].name: v}, k)
                     if r is not None: return r
                 return None
@@ -173,7 +182,7 @@ class Template:
                 r = run(n[1], 0, pos, acc, lambda p, a: run(nodes, i + 1, p, a, k))
                 if r is not None: return r
                 return run(nodes, i + 1, pos, acc, k)
-        out = run(self.nodes, 0, 0, {}, lambda p, a: a if p == len(text) else None)
+        out = run(self.nodes, 0, 0, {}, lambda p, a: a if skip(p) == len(text) else None)
         if out is None: return None
         return {n: out.get(n, False if n in {x[2] for x in self._walk() if x[0] == "lit" and x[2]} else None) for n in sorted(names, key=lambda x: str(x))} | {k: v for k, v in out.items()}
 
@@ -187,7 +196,7 @@ class Template:
         def emit(nodes):
             s = ""
             for n in nodes:
-                if n[0] == "lit": s += n[1] if (n[2] is None or True) else ""
+                if n[0] == "lit": s += n[3]
                 elif n[0] == "field":
                     if params.get(n[1].name) is None: raise ValueError(f"field {n[1].name}: no value")
                     s += n[1].printed(params[n[1].name])
@@ -209,3 +218,24 @@ class TemplateSet:
             if r is not None: return i, r
         return None
     def print(self, params, index=0): return self.templates[index].print(params)
+
+def load(gen_dir):
+    """The TemplateSet of a generator package folder: generator.toml [[template]] entries (pattern, optional escape), choices from [parameters]."""
+    import tomllib
+    from pathlib import Path
+    toml = tomllib.loads((Path(gen_dir) / "generator.toml").read_text())
+    ch = {k: v["values"] for k, v in toml.get("parameters", {}).items() if v.get("type") == "choice"}
+    return TemplateSet([Template.parse(t["pattern"], ch, t.get("escape")) for t in toml["template"]])
+
+if __name__ == "__main__":      # python3 runtime/fieldtemplate.py parse|print PACKAGE_DIR CODE|JSON   (the Rhai host's code_template() uses print)
+    import json, sys
+    cmd, gdir, arg = sys.argv[1:4]
+    ts = load(gdir)
+    try:
+        if cmd == "parse":
+            m = ts.match(arg)
+            print(json.dumps({"template": m[0], "fields": m[1]} if m else {"refusal": {"kind": "invalid", "message": "no template matches"}}))
+        else:
+            print(ts.print(json.loads(arg)))
+    except (Refusal, ValueError) as e:
+        print(json.dumps({"refusal": {"kind": getattr(e, "kind", "invalid"), "message": str(e)}}))

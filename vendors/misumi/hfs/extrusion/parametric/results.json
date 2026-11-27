@@ -1,0 +1,1840 @@
+{
+ "codes": [
+  {
+   "code": "HFS5-2020-1000-LTP-RTP",
+   "python": {
+    "bodies": 1,
+    "volume": 182832.25572890491,
+    "area": 172426.53523990518,
+    "faces": 59,
+    "bbox": [
+     1000.0,
+     20.0,
+     20.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      985.0,
+      1000.0
+     ]
+    ],
+    "names": [
+     "HFS5-2020-1000-LTP-RTP"
+    ]
+   },
+   "python_spec": {
+    "rows": 25,
+    "failed": []
+   },
+   "configuration": "2020",
+   "parameters": {
+    "fixed": "0",
+    "length": "1000 mm",
+    "part_type": "HFS5",
+    "profile": "2020",
+    "tap_l": "1",
+    "tap_r": "1",
+    "wl_dir": "0",
+    "wl_rows": "0",
+    "wl_shift": "0 mm",
+    "wr_dir": "0",
+    "wr_rows": "0",
+    "wr_shift": "0 mm"
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 182832.25572890491,
+    "area": 172426.53523990518,
+    "faces": 59,
+    "bbox": [
+     1000.0,
+     20.0,
+     20.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      985.0,
+      1000.0
+     ]
+    ],
+    "names": [
+     "Extrusion2020"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 25,
+    "failed": []
+   }
+  },
+  {
+   "code": "HFS5-2020-120-LTP-RTP-LCH",
+   "python": {
+    "bodies": 1,
+    "volume": 21679.935959817336,
+    "area": 20989.63144204307,
+    "faces": 75,
+    "bbox": [
+     120.0,
+     20.0,
+     20.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      6.984
+     ],
+     [
+      105.0,
+      120.0
+     ]
+    ],
+    "names": [
+     "HFS5-2020-120-LTP-RTP-LCH"
+    ]
+   },
+   "python_spec": {
+    "rows": 28,
+    "failed": []
+   },
+   "configuration": "2020",
+   "parameters": {
+    "fixed": "0",
+    "length": "120 mm",
+    "part_type": "HFS5",
+    "profile": "2020",
+    "tap_l": "1",
+    "tap_r": "1",
+    "wh_d": "7.35 mm",
+    "wl_dir": "0",
+    "wl_rows": "1",
+    "wl_shift": "0 mm",
+    "wr_dir": "0",
+    "wr_rows": "0",
+    "wr_shift": "0 mm"
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 21679.935959817332,
+    "area": 20989.63144379186,
+    "faces": 75,
+    "bbox": [
+     120.0,
+     20.0,
+     20.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      105.0,
+      120.0
+     ]
+    ],
+    "names": [
+     "Extrusion2020"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 28,
+    "failed": []
+   }
+  },
+  {
+   "code": "HFS5-2020-300-TPW-RWV",
+   "python": {
+    "bodies": 1,
+    "volume": 54329.80726336897,
+    "area": 51937.25061614733,
+    "faces": 91,
+    "bbox": [
+     300.0,
+     20.0,
+     20.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      293.016,
+      300.0
+     ]
+    ],
+    "names": [
+     "HFS5-2020-300-TPW-RWV"
+    ]
+   },
+   "python_spec": {
+    "rows": 29,
+    "failed": []
+   },
+   "configuration": "2020",
+   "parameters": {
+    "fixed": "0",
+    "length": "300 mm",
+    "part_type": "HFS5",
+    "profile": "2020",
+    "tap_l": "1",
+    "tap_r": "1",
+    "wh_d": "7.35 mm",
+    "wl_dir": "0",
+    "wl_rows": "0",
+    "wl_shift": "0 mm",
+    "wr_dir": "1",
+    "wr_rows": "2",
+    "wr_shift": "0 mm"
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 54329.807263368944,
+    "area": 51937.25061562395,
+    "faces": 91,
+    "bbox": [
+     300.0,
+     20.0,
+     20.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      285.0,
+      300.0
+     ]
+    ],
+    "names": [
+     "Extrusion2020"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 29,
+    "failed": []
+   }
+  },
+  {
+   "code": "HFS5-2020-497.5-TPW-LEV-REH",
+   "python": {
+    "bodies": 1,
+    "volume": 89399.43885922262,
+    "area": 85825.92235760888,
+    "faces": 155,
+    "bbox": [
+     497.5,
+     20.0,
+     20.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      6.984
+     ],
+     [
+      490.516,
+      497.5
+     ]
+    ],
+    "names": [
+     "HFS5-2020-497.5-TPW-LEV-REH"
+    ]
+   },
+   "python_spec": {
+    "rows": 35,
+    "failed": []
+   },
+   "configuration": "2020",
+   "parameters": {
+    "fixed": "0",
+    "length": "497.5 mm",
+    "part_type": "HFS5",
+    "profile": "2020",
+    "tap_l": "1",
+    "tap_r": "1",
+    "wh_d": "7.35 mm",
+    "wl_dir": "1",
+    "wl_rows": "3",
+    "wl_shift": "0 mm",
+    "wr_dir": "0",
+    "wr_rows": "3",
+    "wr_shift": "0 mm"
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 89399.43885930588,
+    "area": 85825.92236207114,
+    "faces": 155,
+    "bbox": [
+     497.5,
+     20.0,
+     20.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      482.5,
+      497.5
+     ]
+    ],
+    "names": [
+     "Extrusion2020"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 35,
+    "failed": []
+   }
+  },
+  {
+   "code": "HFS5-2040-1000-TPW-RWV",
+   "python": {
+    "bodies": 1,
+    "volume": 322742.36300496536,
+    "area": 312749.7545791087,
+    "faces": 136,
+    "bbox": [
+     1000.0,
+     20.0,
+     40.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      993.016,
+      1000.0
+     ],
+     [
+      993.016,
+      1000.0
+     ]
+    ],
+    "names": [
+     "HFS5-2040-1000-TPW-RWV"
+    ]
+   },
+   "python_spec": {
+    "rows": 31,
+    "failed": []
+   },
+   "configuration": "2040",
+   "parameters": {
+    "fixed": "0",
+    "length": "1000 mm",
+    "part_type": "HFS5",
+    "profile": "2040",
+    "tap_l": "1",
+    "tap_r": "1",
+    "wh_d": "7.35 mm",
+    "wl_dir": "0",
+    "wl_rows": "0",
+    "wl_shift": "0 mm",
+    "wr_dir": "1",
+    "wr_rows": "2",
+    "wr_shift": "0 mm"
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 322742.36300496524,
+    "area": 312749.7545780885,
+    "faces": 136,
+    "bbox": [
+     1000.0,
+     20.0,
+     40.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      985.0,
+      1000.0
+     ],
+     [
+      985.0,
+      1000.0
+     ]
+    ],
+    "names": [
+     "Extrusion2040"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 31,
+    "failed": []
+   }
+  },
+  {
+   "code": "HFS5-2040-300-LTP-RTP-LCH",
+   "python": {
+    "bodies": 1,
+    "volume": 96906.34981299518,
+    "area": 94247.14913026904,
+    "faces": 104,
+    "bbox": [
+     300.0,
+     20.0,
+     40.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      285.0,
+      300.0
+     ],
+     [
+      285.0,
+      300.0
+     ]
+    ],
+    "names": [
+     "HFS5-2040-300-LTP-RTP-LCH"
+    ]
+   },
+   "python_spec": {
+    "rows": 30,
+    "failed": []
+   },
+   "configuration": "2040",
+   "parameters": {
+    "fixed": "0",
+    "length": "300 mm",
+    "part_type": "HFS5",
+    "profile": "2040",
+    "tap_l": "1",
+    "tap_r": "1",
+    "wh_d": "7.35 mm",
+    "wl_dir": "0",
+    "wl_rows": "1",
+    "wl_shift": "0 mm",
+    "wr_dir": "0",
+    "wr_rows": "0",
+    "wr_shift": "0 mm"
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 96906.34981299518,
+    "area": 94247.14913026903,
+    "faces": 104,
+    "bbox": [
+     300.0,
+     20.0,
+     40.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      285.0,
+      300.0
+     ],
+     [
+      285.0,
+      300.0
+     ]
+    ],
+    "names": [
+     "Extrusion2040"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 30,
+    "failed": []
+   }
+  },
+  {
+   "code": "HFS5-4040-300-TPW",
+   "python": {
+    "bodies": 1,
+    "volume": 141729.48155278087,
+    "area": 143209.46210950645,
+    "faces": 146,
+    "bbox": [
+     300.0,
+     40.0,
+     40.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      285.0,
+      300.0
+     ],
+     [
+      285.0,
+      300.0
+     ],
+     [
+      285.0,
+      300.0
+     ],
+     [
+      285.0,
+      300.0
+     ]
+    ],
+    "names": [
+     "HFS5-4040-300-TPW"
+    ]
+   },
+   "python_spec": {
+    "rows": 32,
+    "failed": []
+   },
+   "configuration": "4040",
+   "parameters": {
+    "fixed": "0",
+    "length": "300 mm",
+    "part_type": "HFS5",
+    "profile": "4040",
+    "tap_l": "1",
+    "tap_r": "1",
+    "wl_dir": "0",
+    "wl_rows": "0",
+    "wl_shift": "0 mm",
+    "wr_dir": "0",
+    "wr_rows": "0",
+    "wr_shift": "0 mm"
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 141729.48155278093,
+    "area": 143209.46210950645,
+    "faces": 146,
+    "bbox": [
+     300.0,
+     40.0,
+     40.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      285.0,
+      300.0
+     ],
+     [
+      285.0,
+      300.0
+     ],
+     [
+      285.0,
+      300.0
+     ],
+     [
+      285.0,
+      300.0
+     ]
+    ],
+    "names": [
+     "Extrusion4040"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 32,
+    "failed": []
+   }
+  },
+  {
+   "code": "HFS5-4040-497.5-LTP-RCV",
+   "python": {
+    "bodies": 1,
+    "volume": 234814.4670287593,
+    "area": 236814.53156761435,
+    "faces": 154,
+    "bbox": [
+     497.5,
+     40.0,
+     40.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      -0.0,
+      15.0
+     ]
+    ],
+    "names": [
+     "HFS5-4040-497.5-LTP-RCV"
+    ]
+   },
+   "python_spec": {
+    "rows": 33,
+    "failed": []
+   },
+   "configuration": "4040",
+   "parameters": {
+    "fixed": "0",
+    "length": "497.5 mm",
+    "part_type": "HFS5",
+    "profile": "4040",
+    "tap_l": "1",
+    "tap_r": "0",
+    "wh_d": "7.35 mm",
+    "wl_dir": "0",
+    "wl_rows": "0",
+    "wl_shift": "0 mm",
+    "wr_dir": "1",
+    "wr_rows": "1",
+    "wr_shift": "0 mm"
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 234814.4670288999,
+    "area": 236814.53156761438,
+    "faces": 154,
+    "bbox": [
+     497.5,
+     40.0,
+     40.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      -0.0,
+      15.0
+     ]
+    ],
+    "names": [
+     "Extrusion4040"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 33,
+    "failed": []
+   }
+  },
+  {
+   "code": "HFS6-3030-500-LCH-X5-TPW",
+   "python": {
+    "bodies": 1,
+    "volume": 166459.0031601146,
+    "area": 156875.10942561965,
+    "faces": 65,
+    "bbox": [
+     500.0,
+     30.0,
+     30.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      24.0
+     ],
+     [
+      476.0,
+      500.0
+     ]
+    ],
+    "names": [
+     "HFS6-3030-500-LCH-X5-TPW"
+    ]
+   },
+   "python_spec": {
+    "rows": 33,
+    "failed": []
+   },
+   "configuration": "3030",
+   "parameters": {
+    "fixed": "0",
+    "length": "500 mm",
+    "part_type": "HFS6",
+    "profile": "3030",
+    "tap_l": "1",
+    "tap_r": "1",
+    "wh_d": "5 mm",
+    "wl_dir": "0",
+    "wl_rows": "1",
+    "wl_shift": "0 mm",
+    "wr_dir": "0",
+    "wr_rows": "0",
+    "wr_shift": "0 mm"
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 166459.00316011463,
+    "area": 156875.10942582772,
+    "faces": 65,
+    "bbox": [
+     500.0,
+     30.0,
+     30.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      24.0
+     ],
+     [
+      476.0,
+      500.0
+     ]
+    ],
+    "names": [
+     "Extrusion3030"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 33,
+    "failed": []
+   }
+  },
+  {
+   "code": "HFSB6-3030-120-LTP-RTP-RWV-X8",
+   "python": {
+    "bodies": 1,
+    "volume": 39292.84773962081,
+    "area": 38122.91944882389,
+    "faces": 67,
+    "bbox": [
+     120.0,
+     30.0,
+     30.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      24.0
+     ],
+     [
+      107.107,
+      120.0
+     ]
+    ],
+    "names": [
+     "HFSB6-3030-120-LTP-RTP-RWV-X8"
+    ]
+   },
+   "python_spec": {
+    "rows": 34,
+    "failed": []
+   },
+   "configuration": "3030",
+   "parameters": {
+    "fixed": "0",
+    "length": "120 mm",
+    "part_type": "HFSB6",
+    "profile": "3030",
+    "tap_l": "1",
+    "tap_r": "1",
+    "wh_d": "8 mm",
+    "wl_dir": "0",
+    "wl_rows": "0",
+    "wl_shift": "0 mm",
+    "wr_dir": "1",
+    "wr_rows": "2",
+    "wr_shift": "0 mm"
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 39292.847739620825,
+    "area": 38122.919448775545,
+    "faces": 67,
+    "bbox": [
+     120.0,
+     30.0,
+     30.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      24.0
+     ],
+     [
+      96.0,
+      120.0
+     ]
+    ],
+    "names": [
+     "Extrusion3030"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 34,
+    "failed": []
+   }
+  },
+  {
+   "code": "KHFS5-2020-1000",
+   "python": {
+    "bodies": 1,
+    "volume": 182832.25572890491,
+    "area": 172426.53523990518,
+    "faces": 59,
+    "bbox": [
+     1000.0,
+     20.0,
+     20.0
+    ],
+    "threads": [],
+    "names": [
+     "KHFS5-2020-1000"
+    ]
+   },
+   "python_spec": {
+    "rows": 22,
+    "failed": []
+   },
+   "configuration": "2020",
+   "parameters": {
+    "fixed": "1",
+    "length": "1000 mm",
+    "part_type": "HFS5",
+    "profile": "2020",
+    "tap_l": "0",
+    "tap_r": "0",
+    "wl_dir": "0",
+    "wl_rows": "0",
+    "wl_shift": "0 mm",
+    "wr_dir": "0",
+    "wr_rows": "0",
+    "wr_shift": "0 mm"
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 182832.25572890491,
+    "area": 172426.53523990518,
+    "faces": 59,
+    "bbox": [
+     1000.0,
+     20.0,
+     20.0
+    ],
+    "threads": [],
+    "names": [
+     "Extrusion2020"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 22,
+    "failed": []
+   }
+  },
+  {
+   "code": "KHFS5-2040-1000",
+   "python": {
+    "bodies": 1,
+    "volume": 323750.375465397,
+    "area": 312821.97576052014,
+    "faces": 96,
+    "bbox": [
+     1000.0,
+     20.0,
+     40.0
+    ],
+    "threads": [],
+    "names": [
+     "KHFS5-2040-1000"
+    ]
+   },
+   "python_spec": {
+    "rows": 23,
+    "failed": []
+   },
+   "configuration": "2040",
+   "parameters": {
+    "fixed": "1",
+    "length": "1000 mm",
+    "part_type": "HFS5",
+    "profile": "2040",
+    "tap_l": "0",
+    "tap_r": "0",
+    "wl_dir": "0",
+    "wl_rows": "0",
+    "wl_shift": "0 mm",
+    "wr_dir": "0",
+    "wr_rows": "0",
+    "wr_shift": "0 mm"
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 323750.375465397,
+    "area": 312821.97576052,
+    "faces": 96,
+    "bbox": [
+     1000.0,
+     20.0,
+     40.0
+    ],
+    "threads": [],
+    "names": [
+     "Extrusion2040"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 23,
+    "failed": []
+   }
+  },
+  {
+   "code": "KHFS6-3030-1000",
+   "python": {
+    "bodies": 1,
+    "volume": 333141.7518071833,
+    "area": 313051.7362882541,
+    "faces": 63,
+    "bbox": [
+     1000.0,
+     30.0,
+     30.0
+    ],
+    "threads": [],
+    "names": [
+     "KHFS6-3030-1000"
+    ]
+   },
+   "python_spec": {
+    "rows": 27,
+    "failed": []
+   },
+   "configuration": "3030",
+   "parameters": {
+    "fixed": "1",
+    "length": "1000 mm",
+    "part_type": "HFS6",
+    "profile": "3030",
+    "tap_l": "0",
+    "tap_r": "0",
+    "wl_dir": "0",
+    "wl_rows": "0",
+    "wl_shift": "0 mm",
+    "wr_dir": "0",
+    "wr_rows": "0",
+    "wr_shift": "0 mm"
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 333141.7518071834,
+    "area": 313051.73628825386,
+    "faces": 63,
+    "bbox": [
+     1000.0,
+     30.0,
+     30.0
+    ],
+    "threads": [],
+    "names": [
+     "Extrusion3030"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 27,
+    "failed": []
+   }
+  },
+  {
+   "code": "NFSB5-2020-250",
+   "python": {
+    "bodies": 1,
+    "volume": 45708.06393222623,
+    "area": 43380.882193569734,
+    "faces": 59,
+    "bbox": [
+     250.0,
+     20.0,
+     20.0
+    ],
+    "threads": [],
+    "names": [
+     "NFSB5-2020-250"
+    ]
+   },
+   "python_spec": {
+    "rows": 22,
+    "failed": []
+   },
+   "configuration": "2020",
+   "parameters": {
+    "fixed": "0",
+    "length": "250 mm",
+    "part_type": "NFSB5",
+    "profile": "2020",
+    "tap_l": "0",
+    "tap_r": "0",
+    "wl_dir": "0",
+    "wl_rows": "0",
+    "wl_shift": "0 mm",
+    "wr_dir": "0",
+    "wr_rows": "0",
+    "wr_shift": "0 mm"
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 45708.06393222623,
+    "area": 43380.882193569734,
+    "faces": 59,
+    "bbox": [
+     250.0,
+     20.0,
+     20.0
+    ],
+    "threads": [],
+    "names": [
+     "Extrusion2020"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 22,
+    "failed": []
+   }
+  },
+  {
+   "code": "NFSB5-4040-250",
+   "python": {
+    "bodies": 1,
+    "volume": 118107.90129398406,
+    "area": 119498.69562631402,
+    "faces": 146,
+    "bbox": [
+     250.0,
+     40.0,
+     40.0
+    ],
+    "threads": [],
+    "names": [
+     "NFSB5-4040-250"
+    ]
+   },
+   "python_spec": {
+    "rows": 26,
+    "failed": []
+   },
+   "configuration": "4040",
+   "parameters": {
+    "fixed": "0",
+    "length": "250 mm",
+    "part_type": "NFSB5",
+    "profile": "4040",
+    "tap_l": "0",
+    "tap_r": "0",
+    "wl_dir": "0",
+    "wl_rows": "0",
+    "wl_shift": "0 mm",
+    "wr_dir": "0",
+    "wr_rows": "0",
+    "wr_shift": "0 mm"
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 118107.9012939841,
+    "area": 119498.695626314,
+    "faces": 146,
+    "bbox": [
+     250.0,
+     40.0,
+     40.0
+    ],
+    "threads": [],
+    "names": [
+     "Extrusion4040"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 26,
+    "failed": []
+   }
+  },
+  {
+   "code": "NFS5-2040-300",
+   "python": {
+    "bodies": 1,
+    "volume": 97125.11263961907,
+    "area": 94299.84325380776,
+    "faces": 96,
+    "bbox": [
+     300.0,
+     20.0,
+     40.0
+    ],
+    "threads": [],
+    "names": [
+     "NFS5-2040-300"
+    ]
+   },
+   "python_spec": {
+    "rows": 23,
+    "failed": []
+   },
+   "configuration": "2040",
+   "parameters": {
+    "fixed": "0",
+    "length": "300 mm",
+    "part_type": "NFS5",
+    "profile": "2040",
+    "tap_l": "0",
+    "tap_r": "0",
+    "wl_dir": "0",
+    "wl_rows": "0",
+    "wl_shift": "0 mm",
+    "wr_dir": "0",
+    "wr_rows": "0",
+    "wr_shift": "0 mm"
+   },
+   "parametric": {
+    "bodies": 1,
+    "volume": 97125.11263961907,
+    "area": 94299.84325380775,
+    "faces": 96,
+    "bbox": [
+     300.0,
+     20.0,
+     40.0
+    ],
+    "threads": [],
+    "names": [
+     "Extrusion2040"
+    ]
+   },
+   "parametric_spec": {
+    "rows": 23,
+    "failed": []
+   }
+  }
+ ],
+ "refusals": [
+  {
+   "code": "HFS5-2020-49-LTP",
+   "python": "length 49 mm outside 50-4000 mm",
+   "parametric": "length 49 mm outside 50-4000 mm",
+   "kind": "invalid"
+  },
+  {
+   "code": "KHFS5-2020-800",
+   "python": "fixed-length (K) extrusions come only in [1000, 4000] mm, not 800",
+   "parametric": "fixed-length (K) extrusions come only in [1000, 4000] mm, not 800",
+   "kind": "invalid"
+  },
+  {
+   "code": "HFS5-2020-100-LTP-LTP",
+   "python": "alteration LTP given twice",
+   "parametric": "alteration LTP given twice",
+   "kind": "invalid"
+  },
+  {
+   "code": "HFS5-2020-100-ZZZ",
+   "python": "unknown or unsupported alteration 'ZZZ'",
+   "parametric": "unknown or unsupported alteration 'ZZZ'",
+   "kind": "invalid"
+  },
+  {
+   "code": "HFS5-2020-100.3",
+   "python": "length 100.3 mm is not a multiple of 0.5 mm",
+   "parametric": "length 100.3 mm is not a multiple of 0.5 mm",
+   "kind": "invalid"
+  },
+  {
+   "code": "HFS6-3030-100-LTP-RWV-X7",
+   "python": "unknown or unsupported alteration 'X7'",
+   "parametric": "unknown or unsupported alteration 'X7'",
+   "kind": "invalid"
+  },
+  {
+   "code": "HFS5-2020",
+   "python": "a length is required: the last number before the alterations, in mm",
+   "parametric": "a length is required: the last number before the alterations, in mm",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "HFS5-2020-LTP",
+   "python": "a length is required: the last number before the alterations, in mm",
+   "parametric": "a length is required: the last number before the alterations, in mm",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "HFS7-2020-100",
+   "python": "'HFS7-2020-100': expected [K]<type>5|6-<profile>-<length>[-<alteration>...], e.g. HFS5-2040-800-LTP-RTP",
+   "parametric": "'HFS7-2020-100': expected [K]<type>5|6-<profile>-<length>[-<alteration>...], e.g. HFS5-2040-800-LTP-RTP",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "HFS5-6060-100",
+   "python": "profile '6060' not available for HFS5 here; verified for the 5 series: ['2020', '2040', '4040']",
+   "parametric": "profile '6060' not available for HFS5 here; verified for the 5 series: ['2020', '2040', '4040']",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "HFSY5-2040-100",
+   "python": "HFSY5 is listed for 2020 only (S1 p.530 type table has no HFSY5 for 2040)",
+   "parametric": "HFSY5 is listed for 2020 only (S1 p.530 type table has no HFSY5 for 2040)",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "NFSF5-2020-100",
+   "python": "NFSF5: valid 5 series type, but only ['CAF5', 'HFS5', 'HFSB5', 'HFSY5', 'NFS5', 'NFSB5'] are drawn",
+   "parametric": "NFSF5: valid 5 series type, but only ['CAF5', 'HFS5', 'HFSB5', 'HFSY5', 'NFS5', 'NFSB5'] are drawn",
+   "kind": "not_modelled",
+   "extra": true
+  },
+  {
+   "code": "XYZ5-2020-100",
+   "python": "unknown 5 series type 'XYZ5'; known: ['CAF5', 'CAF6', 'EFS6', 'EFSB6', 'EFSC6', 'EFSF6', 'EFSH6', 'EFST6', 'GFS6', 'HFS5', 'HFS6', 'HFSB5', 'HFSB6', 'HFSC5', 'HFSC6', 'HFSF5', 'HFSF6', 'HFSFB5', 'HFSFB6', 'HFSH5', 'HFSH6', 'HFSL6', 'HFSLB6', 'HFSR5', 'HFST5', 'HFST6', 'HFSTB5', 'HFSTB6', 'HFSY5', 'HFSY6', 'NEFS6', 'NEFSB6', 'NEFSF6', 'NEFST6', 'NFS5', 'NFSB5', 'NFSF5', 'NFSL6', 'NFST5']",
+   "parametric": "unknown 5 series type 'XYZ5'; known: ['CAF5', 'CAF6', 'EFS6', 'EFSB6', 'EFSC6', 'EFSF6', 'EFSH6', 'EFST6', 'GFS6', 'HFS5', 'HFS6', 'HFSB5', 'HFSB6', 'HFSC5', 'HFSC6', 'HFSF5', 'HFSF6', 'HFSFB5', 'HFSFB6', 'HFSH5', 'HFSH6', 'HFSL6', 'HFSLB6', 'HFSR5', 'HFST5', 'HFST6', 'HFSTB5', 'HFSTB6', 'HFSY5', 'HFSY6', 'NEFS6', 'NEFSB6', 'NEFSF6', 'NEFST6', 'NFS5', 'NFSB5', 'NFSF5', 'NFSL6', 'NFST5']",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "HFS5-2020-100-SC-SC",
+   "python": "alteration SC given twice",
+   "parametric": "alteration SC given twice",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "HFS5-2020-2000-SC",
+   "python": "SC (high precision cut) applies to L <= 1500 mm only",
+   "parametric": "SC (high precision cut) applies to L <= 1500 mm only",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "HFS5-2020-100-LHP",
+   "python": "LHP: heli-coil end tapping: parsed, not modelled",
+   "parametric": "LHP: heli-coil end tapping: parsed, not modelled",
+   "kind": "not_modelled",
+   "extra": true
+  },
+  {
+   "code": "HFS5-2020-100-LCP",
+   "python": "LCP: crisscross (P) layout is ambiguous in the catalogue text; use H or V",
+   "parametric": "LCP: crisscross (P) layout is ambiguous in the catalogue text; use H or V",
+   "kind": "not_modelled",
+   "extra": true
+  },
+  {
+   "code": "HFS6-3030-100-RWV",
+   "python": "the 6 series wrench hole diameter is selectable: add -X5 or -X8 (S3 p.759 footnote)",
+   "parametric": "the 6 series wrench hole diameter is selectable: add -X5 or -X8 (S3 p.759 footnote)",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "HFS5-2020-100-RWV-X5",
+   "python": "X5/X8 (wrench hole diameter) applies to the 6 series; the 5 series hole is d7.35",
+   "parametric": "X5/X8 (wrench hole diameter) applies to the 6 series; the 5 series hole is d7.35",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "HFS5-2020-100-X5",
+   "python": "X5/X8 sets the wrench hole diameter; there is no wrench hole alteration in this code",
+   "parametric": "X5/X8 sets the wrench hole diameter; there is no wrench hole alteration in this code",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "HFS5-2020-100-FL",
+   "python": "FL shifts a wrench hole on the left end, but there is none",
+   "parametric": "FL shifts a wrench hole on the left end, but there is none",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "HFS5-2020-30-LTP-RTP",
+   "python": "length 30 mm outside 50-4000 mm",
+   "parametric": "length 30 mm outside 50-4000 mm",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "HFS5-2020-100-LCH-LCV",
+   "python": "two wrench-hole options for the left end",
+   "parametric": "two wrench-hole options for the left end",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "HFS5-2020-100-LWH-RWH-RCH",
+   "python": "two wrench-hole options for the right end",
+   "parametric": "two wrench-hole options for the right end",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "KHFS5-2020-1000-LTP",
+   "python": "alterations apply to configurable-length extrusions only (fixed-length K types have none)",
+   "parametric": "alterations apply to configurable-length extrusions only (fixed-length K types have none)",
+   "kind": "invalid",
+   "extra": true
+  },
+  {
+   "code": "HFS5-2020-4001",
+   "python": "length 4001 mm outside 50-4000 mm",
+   "parametric": "length 4001 mm outside 50-4000 mm",
+   "kind": "invalid",
+   "extra": true
+  }
+ ],
+ "parametric": [
+  {
+   "base": "HFS5-2020-1000-LTP-RTP",
+   "length": 300,
+   "direct": "HFS5-2020-300-LTP-RTP",
+   "error": null,
+   "changed": {
+    "bodies": 1,
+    "volume": 54849.676718671486,
+    "area": 51983.92572999212,
+    "faces": 59,
+    "bbox": [
+     300.0,
+     20.0,
+     20.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      285.0,
+      300.0
+     ]
+    ],
+    "names": [
+     "Extrusion2020"
+    ]
+   },
+   "direct_inserted": {
+    "bodies": 1,
+    "volume": 54849.676718671486,
+    "area": 51983.92572999212,
+    "faces": 59,
+    "bbox": [
+     300.0,
+     20.0,
+     20.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      285.0,
+      300.0
+     ]
+    ],
+    "names": [
+     "Extrusion2020"
+    ]
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 54849.676718671486,
+    "area": 51983.92572999212,
+    "faces": 59,
+    "bbox": [
+     300.0,
+     20.0,
+     20.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      285.0,
+      300.0
+     ]
+    ],
+    "names": [
+     "HFS5-2020-300-LTP-RTP"
+    ]
+   }
+  },
+  {
+   "base": "HFS5-2020-300-TPW-RWV",
+   "length": 800,
+   "direct": "HFS5-2020-800-TPW-RWV",
+   "error": null,
+   "changed": {
+    "bodies": 1,
+    "volume": 145745.93512782062,
+    "area": 137967.68598037146,
+    "faces": 91,
+    "bbox": [
+     800.0,
+     20.0,
+     20.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      785.0,
+      800.0
+     ]
+    ],
+    "names": [
+     "Extrusion2020"
+    ]
+   },
+   "direct_inserted": {
+    "bodies": 1,
+    "volume": 145745.93512782062,
+    "area": 137967.68597984925,
+    "faces": 91,
+    "bbox": [
+     800.0,
+     20.0,
+     20.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      785.0,
+      800.0
+     ]
+    ],
+    "names": [
+     "Extrusion2020"
+    ]
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 145745.93512782062,
+    "area": 137967.6859803714,
+    "faces": 91,
+    "bbox": [
+     800.0,
+     20.0,
+     20.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      793.016,
+      800.0
+     ]
+    ],
+    "names": [
+     "HFS5-2020-800-TPW-RWV"
+    ]
+   }
+  },
+  {
+   "base": "HFS5-4040-300-TPW",
+   "length": 1500,
+   "direct": "HFS5-4040-1500-TPW",
+   "error": null,
+   "changed": {
+    "bodies": 1,
+    "volume": 708647.4077639051,
+    "area": 712267.8577061251,
+    "faces": 146,
+    "bbox": [
+     1500.0,
+     40.0,
+     40.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      1485.0,
+      1500.0
+     ],
+     [
+      1485.0,
+      1500.0
+     ],
+     [
+      1485.0,
+      1500.0
+     ],
+     [
+      1485.0,
+      1500.0
+     ]
+    ],
+    "names": [
+     "Extrusion4040"
+    ]
+   },
+   "direct_inserted": {
+    "bodies": 1,
+    "volume": 708647.4077639052,
+    "area": 712267.857706125,
+    "faces": 146,
+    "bbox": [
+     1500.0,
+     40.0,
+     40.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      1485.0,
+      1500.0
+     ],
+     [
+      1485.0,
+      1500.0
+     ],
+     [
+      1485.0,
+      1500.0
+     ],
+     [
+      1485.0,
+      1500.0
+     ]
+    ],
+    "names": [
+     "Extrusion4040"
+    ]
+   },
+   "python": {
+    "bodies": 1,
+    "volume": 708647.4077639051,
+    "area": 712267.8577061251,
+    "faces": 146,
+    "bbox": [
+     1500.0,
+     40.0,
+     40.0
+    ],
+    "threads": [
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      -0.0,
+      15.0
+     ],
+     [
+      1485.0,
+      1500.0
+     ],
+     [
+      1485.0,
+      1500.0
+     ],
+     [
+      1485.0,
+      1500.0
+     ],
+     [
+      1485.0,
+      1500.0
+     ]
+    ],
+    "names": [
+     "HFS5-4040-1500-TPW"
+    ]
+   }
+  }
+ ],
+ "limits": {
+  "insert_design with a free `parameters` map (length 777 mm)": {
+   "error": null,
+   "result": {
+    "bbox_max": [
+     [
+      300.00000000000006,
+      10.0,
+      10.000000000000002
+     ],
+     [
+      1000.0,
+      10.0,
+      10.0
+     ]
+    ],
+    "bodies": [
+     "Extrusion2020",
+     "Extrusion2020 (2)"
+    ]
+   }
+  },
+  "component.set_link_parameters": {
+   "error": "{\"command\": \"component.set_link_parameters\", \"error\": \"unknown command `component.set_link_parameters`\", \"step\": 1}",
+   "result": null
+  },
+  "generator.parse": {
+   "error": "{\"command\": \"generator.parse\", \"error\": \"unknown command `generator.parse`\", \"step\": 1}",
+   "result": null
+  },
+  "generator.insert": {
+   "error": "{\"command\": \"generator.insert\", \"error\": \"unknown command `generator.insert` (did you mean `canvas.insert`, `parts.insert` or `pointcloud.insert`?)\", \"step\": 1}",
+   "result": null
+  },
+  "parameters.change length on the host design holding the linked part": {
+   "error": null,
+   "result": {
+    "bbox_max": [
+     [
+      300.00000000000006,
+      10.0,
+      10.000000000000002
+     ]
+    ],
+    "bodies": [
+     "Extrusion2020"
+    ]
+   }
+  },
+  "length 20 mm (outside 50..4000) by an ordinary parameters.change": {
+   "error": null,
+   "result": {
+    "bbox_max": [
+     [
+      20.000000000000004,
+      10.0,
+      10.0
+     ]
+    ],
+    "bodies": [
+     "Extrusion2020"
+    ]
+   }
+  },
+  "length 20 mm in a configuration row": {
+   "error": "{\"command\": \"config.row\", \"error\": \"invalid parameters for `config.row`: invalid parameters for `config.activate`: configuration rules: rule `Length 50 to 4000 mm (S1 p.529, S10 p.571)` restricts the final value\", \"step\": 1}",
+   "result": null
+  },
+  "length 777.3 mm (not a 0.5 mm step) in a configuration row": {
+   "error": null,
+   "result": "{\"active\": \"2020\", \"columns\": [\"param:w\", \"param:h\", \"param:corner_r\", \"param:tip_r\", \"param:mouth\", \"param:lip\", \"param:cavity\", \"param:d0\", \"param:floor_half\", \"param:depth\", \"param:profile\", \"param"
+  },
+  "unknown row": {
+   "error": "{\"command\": \"component.insert_design\", \"error\": \"invalid parameters for `component.insert_design`: configuration `no-such-row` does not exist in the source design\", \"step\": 1}",
+   "result": null
+  }
+ },
+ "roundtrip": [
+  {
+   "code": "HFS5-2020-1000-LTP-RTP",
+   "printed": "HFS5-2020-1000-TPW",
+   "same_parameters": true
+  },
+  {
+   "code": "HFS5-2020-120-LTP-RTP-LCH",
+   "printed": "HFS5-2020-120-TPW-LCH",
+   "same_parameters": true
+  },
+  {
+   "code": "HFS5-2020-300-TPW-RWV",
+   "printed": "HFS5-2020-300-TPW-RWV",
+   "same_parameters": true
+  },
+  {
+   "code": "HFS5-2020-497.5-TPW-LEV-REH",
+   "printed": "HFS5-2020-497.5-TPW-LEV-REH",
+   "same_parameters": true
+  },
+  {
+   "code": "HFS5-2040-1000-TPW-RWV",
+   "printed": "HFS5-2040-1000-TPW-RWV",
+   "same_parameters": true
+  },
+  {
+   "code": "HFS5-2040-300-LTP-RTP-LCH",
+   "printed": "HFS5-2040-300-TPW-LCH",
+   "same_parameters": true
+  },
+  {
+   "code": "HFS5-4040-300-TPW",
+   "printed": "HFS5-4040-300-TPW",
+   "same_parameters": true
+  },
+  {
+   "code": "HFS5-4040-497.5-LTP-RCV",
+   "printed": "HFS5-4040-497.5-LTP-RCV",
+   "same_parameters": true
+  },
+  {
+   "code": "HFS6-3030-500-LCH-X5-TPW",
+   "printed": "HFS6-3030-500-TPW-LCH-X5",
+   "same_parameters": true
+  },
+  {
+   "code": "HFSB6-3030-120-LTP-RTP-RWV-X8",
+   "printed": "HFSB6-3030-120-TPW-RWV-X8",
+   "same_parameters": true
+  },
+  {
+   "code": "KHFS5-2020-1000",
+   "printed": "KHFS5-2020-1000",
+   "same_parameters": true
+  },
+  {
+   "code": "KHFS5-2040-1000",
+   "printed": "KHFS5-2040-1000",
+   "same_parameters": true
+  },
+  {
+   "code": "KHFS6-3030-1000",
+   "printed": "KHFS6-3030-1000",
+   "same_parameters": true
+  },
+  {
+   "code": "NFSB5-2020-250",
+   "printed": "NFSB5-2020-250",
+   "same_parameters": true
+  },
+  {
+   "code": "NFSB5-4040-250",
+   "printed": "NFSB5-4040-250",
+   "same_parameters": true
+  },
+  {
+   "code": "NFS5-2040-300",
+   "printed": "NFS5-2040-300",
+   "same_parameters": true
+  }
+ ],
+ "table": {
+  "rows": [
+   "Default",
+   "2020",
+   "2040",
+   "4040",
+   "3030"
+  ],
+  "columns": 62,
+  "rules": 62
+ }
+}
