@@ -9,12 +9,18 @@ def eq(a, b):
     return close(a["volume"], b["volume"]) and close(a["area"], b["area"]) and all(close(x, y) for x, y in zip(a["bbox"], b["bbox"])) and a["faces"] == b["faces"] and a["bodies"] == b["bodies"]
 print("| code | row | python vol / area / bbox / faces | parametric vol / area / bbox / faces | spec python | spec parametric | description same | equal |")
 print("|---|---|---|---|---|---|---|---|")
-for c in R["codes"]:
+sweep = [c for c in R["codes"] if c.get("sweep")]
+for c in [c for c in R["codes"] if not c.get("sweep")]:
     p, q = c["python"], c.get("parametric", {})
     ps = c["python_spec"]; qs = c.get("parametric_spec")
     if "volume" not in q:
         print(f"| {c['code']} | | {f(p)} | {q} | | | | no |"); continue
     print(f"| {c['code']} | {c['configuration']} | {f(p)} | {f(q)} | {ps['rows'] - len(ps['failed'])}/{ps['rows']} | {qs['rows'] - len(qs['failed'])}/{qs['rows']} | {'yes' if c.get('description_same') else 'NO'} | {'yes' if eq(p, q) else 'NO'} |")
+if sweep:
+    same = sum(1 for c in sweep if "volume" in c.get("parametric", {}) and eq(c["python"], c["parametric"]))
+    spec = sum(1 for c in sweep if c.get("parametric_spec") and not c["parametric_spec"]["failed"] and c["python_spec"]["rows"] == c["parametric_spec"]["rows"])
+    desc = sum(1 for c in sweep if c.get("description_same"))
+    print(f"\nSweep of every other valid code of the generator: {len(sweep)} codes, identical to the Python part {same}/{len(sweep)}, same spec check rows and all passed {spec}/{len(sweep)}, same description {desc}/{len(sweep)}.")
 print()
 print("| rejected code | python message | parametric message | same |")
 print("|---|---|---|---|")

@@ -68,16 +68,18 @@ def main():
     out = Path(a.out); work = Path(tempfile.mkdtemp()); out.mkdir(exist_ok=True)
     gen = registry.find("C-MUFZ5-10")
     results = {"codes": [], "refusals": [], "parametric": [], "limits": {}, "roundtrip": []}
+    swept = []
     todo = [(cl.code, cl.valid) for cl in gen.codes() if not (a.only and cl.code != a.only)]
     if SWEEP and not a.only:
         have = {c for c, v in todo if v}
-        todo += [(c, True) for c in all_valid() if c not in have]
+        swept = [c for c in all_valid() if c not in have]
+        todo += [(c, True) for c in swept]
     for code, valid in todo:
         st, fields = rz(code)
         if not valid:
             results["refusals"].append({"code": code, "python": py_message(code), "parametric": st[2] if st[0] == "refused" else "ACCEPTED", "kind": st[1] if st[0] == "refused" else None})
             continue
-        row = {"code": code}
+        row = {"code": code, "sweep": code in swept}
         tag = scrun.slug(code)
         part, py_sc = python_part(code, work)
         row["python"] = measure(py_sc, work, tag + ".py")
