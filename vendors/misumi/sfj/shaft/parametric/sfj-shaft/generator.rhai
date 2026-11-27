@@ -411,10 +411,10 @@ fn mm(x) { g(x) + " mm" }
 fn flag(b) { if b { "1" } else { "0" } }
 fn make_parameters(s) {
     let pp = s.D; if s.F > 0 || s.T > 0 { pp = s.P; }
-    let p = #{ part_type: s.name, L: mm(s.L), lkc: flag(s.lkc), F: mm(s.F), P: mm(pp), T: mm(s.T), ml: "0 mm", mr: "0 mm", md: flag(s.md),
+    let p = #{ part_type: s.name, L: mm(s.L), lkc: flag(s.lkc), F: mm(s.F), P: mm(pp), T: mm(s.T), m_left: "0 mm", m_right: "0 mm", md: flag(s.md),
                sc: "-1 mm", sx: "-1 mm", wsc: "-1 mm", xw: "0 mm", fc: "-1 mm", fa: "-1 mm", fe: "-1 mm", wfc: "-1 mm", wa: "-1 mm", we: "-1 mm",
                lfc: "-1 mm", la: "-1 mm", lfd: "1 mm" };
-    for t in s.taps { if t.label == "left" { p.ml = mm(t.M); } else { p.mr = mm(t.M); } }
+    for t in s.taps { if t.label == "left" { p.m_left = mm(t.M); } else { p.m_right = mm(t.M); } }
     flat_parameters(s, p)
 }
 fn flat_parameters(s, p) {
@@ -470,8 +470,8 @@ fn positional_opts(p, fam) {      // F P M|MD [N] [T]
     if fam == "PG" || fam == "PH" { o.push(["F", ival(p.F)]); o.push(["P", ival(p.P)]); }
     if fam == "straight" { return o; }
     let mname = "M"; if p.md == "1" { mname = "MD"; }
-    o.push([mname, gv(p.ml)]);
-    if fam == "Z" || fam == "W" { o.push(["N", gv(p.mr)]); }
+    o.push([mname, gv(p.m_left)]);
+    if fam == "Z" || fam == "W" { o.push(["N", gv(p.m_right)]); }
     if fam == "PH" { o.push(["T", ival(p.T)]); }
     o
 }

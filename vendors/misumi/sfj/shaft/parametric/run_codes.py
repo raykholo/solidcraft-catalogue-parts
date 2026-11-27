@@ -163,8 +163,8 @@ def main():
                 ent["result"] = ({"bbox_max": [b["bbox"]["max"] for b in last["bodies"]]} if isinstance(last, dict) and "bodies" in last and "body_count" in last else json.dumps(last)[:200])
             results["limits"][k] = ent
         # the hole of a tap and the face it was picked on: a row without the left step whose tap hole was picked on the step end
-        r, err = cli([{"command": "config.row", "params": {"name": "x", "from": "12", "values": {"param:ml": "6 mm"}}}, {"command": "config.activate", "params": {"row": "x"}}], src=PKG / "sfj-shaft.sc")
-        r, err = cli([{"command": "config.row", "params": {"name": "x", "from": "12", "values": {"param:ml": "6 mm", "param:F": "0 mm"}}},
+        r, err = cli([{"command": "config.row", "params": {"name": "x", "from": "12", "values": {"param:m_left": "6 mm"}}}, {"command": "config.activate", "params": {"row": "x"}}], src=PKG / "sfj-shaft.sc")
+        r, err = cli([{"command": "config.row", "params": {"name": "x", "from": "12", "values": {"param:m_left": "6 mm", "param:F": "0 mm"}}},
                       {"command": "config.activate", "params": {"row": "x"}}, {"command": "timeline.suppress", "params": {"feature": "Tap L step M6", "suppressed": False}}], src=PKG / "sfj-shaft.sc")
         results["limits"]["a tap hole picked on the step end, step suppressed"] = {"error": err if isinstance(err, str) or err is None else json.dumps(err), "result": None}
         r, err = cli([{"command": "config.table", "params": {}}], src=PKG / "sfj-shaft.sc")
