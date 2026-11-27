@@ -21,11 +21,12 @@ PKG = HERE / "linear-bushing"
 PKG_SC = PKG / "linear-bushing.sc"
 RHAI = os.environ.get("RHAI_RUN", "rhai-run")
 CLI = scrun.CLI
+SWEEP = os.environ.get("SWEEP", "1") != "0"      # every valid code of the generator, not only the codes.txt lines
 TEMPLATES = ft.load(PKG)
 EXTRA_REFUSALS = ["E-LB10UU", "E-LBF10TUU", "E-LBF1UU", "E-LBF20DUU1", "E-LBF14LUU", "E-LBFM20DUU", "E-LBFZ40UU", "E-LBFZ35LUU", "E-LBK35DUU", "E-LB26DUU",
                   "E-LBS10UU", "E-LBHS20UU", "E-LBFS5UU", "E-LB", "E-LBX10UU", "E-LBHZ40UU", "E-LBHM20DUU", "E-LBH13DUU", "E-LBH5LUU", "E-LBHM5UU", "E-LBH20TUU",
                   "E-LBFP35UU", "E-LBFP6DUU", "E-LBFPM20DMUU", "E-LBKP20DUU", "E-LBHPM20DMUU", "E-LBFC20UU", "E-LBKC20DUU", "E-LBKCM20DMUU", "E-LBHC50LUU",
-                  "E-LBFC13LUU", "E-LBFC35DMUU", "E-LBHP13LUU", "E-LBHP50DMUU", "E-LBK20TUU", "E-LBKZ13LUU"]
+                  "E-LBFC13LUU", "E-LBFC35DMUU", "E-LBHP13LUU", "E-LBHP50DMUU", "E-LBK20TUU"]
 # free parameter changed on a built part: (code built, {parameter: new value from the direct code's row}, code built directly)
 REBUILDS = [("E-LBF20UU", ("blen",), "E-LBF20LUU"), ("E-LBK16UU", ("blen",), "E-LBK16LUU"), ("E-LBHP16UU", ("blen",), "E-LBHP16LUU"),
             ("E-LBH10UU", ("blen",), "E-LBH10LUU"), ("E-LBF10UU", ("opp",), "E-LBFZ10UU"), ("E-LBHZ20UU", ("opp",), "E-LBH20UU"),
@@ -45,6 +46,18 @@ def python_part(code, out):
     path, _ = scrun.run_script(cmds, str(out), scrun.slug(code) + ".py")
     return part, path
 
+def all_valid():
+    """Every code the Python generator accepts: type letters x dr 1..60 x suffix."""
+    out = []
+    for typ in bu.TYPES:
+        for dr in range(1, 61):
+            for suf in ("TUU", "DMUU", "DUU", "LUU", "UU"):
+                code = f"{typ}{dr}{suf}"
+                try: bu.parse(code)
+                except ValueError: continue
+                out.append(code)
+    return out
+
 def py_message(code):
     try:
         bu.parse(code); return "accepted"
@@ -55,11 +68,13 @@ def main():
     out = Path(a.out); work = Path(tempfile.mkdtemp()); out.mkdir(exist_ok=True)
     gen = registry.find("E-LB10TUU")
     results = {"codes": [], "refusals": [], "parametric": [], "limits": {}, "roundtrip": []}
-    for cl in gen.codes():
-        if a.only and cl.code != a.only: continue
-        code = cl.code
+    todo = [(cl.code, cl.valid) for cl in gen.codes() if not (a.only and cl.code != a.only)]
+    if SWEEP and not a.only:
+        have = {c for c, v in todo if v}
+        todo += [(c, True) for c in all_valid() if c not in have]
+    for code, valid in todo:
         st, fields = rz(code)
-        if not cl.valid:
+        if not valid:
             results["refusals"].append({"code": code, "python": py_message(code), "parametric": st[2] if st[0] == "refused" else "ACCEPTED", "kind": st[1] if st[0] == "refused" else None})
             continue
         row = {"code": code}
@@ -77,6 +92,7 @@ def main():
         b = bushing_from(res)
         row["parametric_spec"] = pc.spec_check(pycheck, b, host, work, row["parametric"]["names"][0])
         row["description_same"] = res["properties"]["description"] == part.description
+        for q in (host, wc): Path(q).unlink(missing_ok=True)      # the working copy holds the whole model: keep the disk free over hundreds of codes
         # parameters -> fields -> code (generator.code) and the round trip
         f2 = pc.rhai(RHAI, PKG, ROOT, "fields", res["configuration"], res["parameters"])
         printed = TEMPLATES.print(f2["value"]) if f2.get("ok") else None
