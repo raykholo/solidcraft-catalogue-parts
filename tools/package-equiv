@@ -1,0 +1,150 @@
+#!/usr/bin/env python3
+"""tools/package-equiv [GENERATOR_DIR ...] [--sweep N] [--build] [--record] [--out DIR]: the generator package (tools/export-package,
+runtime/package.py) against the Python generator it was exported from.
+
+Cheap mode, no SolidCraft: for EVERY code in codes.txt a valid code must give a command list equal to the Python generator's (same
+commands, same parameters, numbers within 1e-9) and a `!` code must be refused (the message and class are compared and reported, a
+difference is not a failure). Then a seeded sweep of N more codes (default 600, `--sweep 0` to skip) per generator: accepted by both
+with equal commands, or refused by both. The package's own `checks` run too (invalid codes refused, dimensions equal).
+
+--build also builds both command lists with solidcraft-cli, compares volume, bounding box and face count, and runs the generator's
+Python spec check on the package-built part (SC_CLI / SC_APP name the binaries, as for tools/check). --record (with --build) writes the
+package's volume / bbox / faces per code to checks/<ver>/package-measured.json, which tools/export-package puts in the package checks.
+Exit 1 on any difference."""
+import argparse, contextlib, importlib, importlib.util, io, json, random, sys
+from pathlib import Path
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+from runtime import registry, sc
+from runtime.package import Package, Refusal, diff
+from runtime.package_export import export
+
+ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+ap.add_argument("dirs", nargs="*")
+ap.add_argument("--sweep", type=int, default=600)
+ap.add_argument("--build", action="store_true")
+ap.add_argument("--record", action="store_true")
+ap.add_argument("--out", default=str(ROOT / "out" / "package-equiv"))
+a = ap.parse_args()
+
+gens = [g for g in registry.generators() if importlib.util.find_spec("runtime.package_export." + g.id.replace(".", "_").replace("-", "_"))]
+if a.dirs:
+    want = {Path(d).resolve() for d in a.dirs}
+    gens = [g for g in gens if g.dir.resolve() in want]
+    if not gens:
+        raise SystemExit("no generator folder with an export description matches " + ", ".join(a.dirs))
+bad = 0
+
+def py_build(g, code, **opts):
+    try:
+        part, cmds = g.build(code, **opts)
+        return part, cmds, None
+    except ValueError as ex:
+        return None, None, ex
+
+def measure(path, tag, out, code):
+    from runtime.check import run_measure
+    r = run_measure(path, [{"command": "inspect.measure", "params": {}}, {"command": "model.faces", "params": {"body": code}}], out, tag)
+    body = r[0]["bodies"][0]; bb = body["bbox"]
+    faces = r[1]["faces"] if isinstance(r[1], dict) else r[1][0]["faces"]
+    return {"volume_mm3": body["volume_mm3"], "bbox_mm": [bb["max"][i] - bb["min"][i] for i in range(3)], "faces": len(faces)}
+
+for g in gens:
+    pkg = Package(export(g))
+    errs = pkg.validate(json.loads((ROOT / "schema" / "generator-package.schema.json").read_text()))
+    print(f"## {g.id}  ->  {pkg.id}.generator.json")
+    for e in errs:
+        print(f"INVALID  {e}"); bad += 1
+    for w in pkg.warnings:
+        print(f"note  {w}")
+    n_valid = n_equal = n_rej = n_rej_ok = 0
+    msg_diffs = []
+    for c in g.codes():
+        part, pcmds, perr = py_build(g, c.code, **c.opts)
+        try:
+            _, kcmds = pkg.run(c.code); kerr = None
+        except Refusal as r:
+            kcmds, kerr = None, r
+        if c.valid:
+            n_valid += 1
+            if perr or kerr:
+                print(f"FAIL  {c.code}: python {'refused: ' + str(perr) if perr else 'built'}, package {'refused: ' + str(kerr) if kerr else 'built'}"); bad += 1
+                continue
+            d = diff(pcmds, kcmds)
+            if d:
+                print(f"FAIL  {c.code}: {len(d)} difference(s), first: {d[0]}"); bad += 1
+            else:
+                n_equal += 1
+        else:
+            n_rej += 1
+            if perr is None:
+                print(f"FAIL  !{c.code}: the Python generator accepts it"); bad += 1
+            elif kerr is None:
+                print(f"FAIL  !{c.code}: the package accepts it"); bad += 1
+            else:
+                n_rej_ok += 1
+                if f"{type(perr).__name__}: {perr}" != f"{kerr.cls}: {kerr}":
+                    msg_diffs.append((c.code, f"{type(perr).__name__}: {perr}", f"{kerr.cls}: {kerr}"))
+    print(f"codes.txt: {n_valid} valid codes compared, {n_equal} equal; {n_rej} reject codes, {n_rej_ok} refused by both")
+    for code, p, k in msg_diffs:
+        print(f"  message differs  !{code}\n    python : {p}\n    package: {k}")
+    # the package's own checks
+    ch = pkg.check_cheap()
+    nbad = [x for x in ch if not x[0]]
+    print(f"package checks: {len(ch)} run, {len(nbad)} failed")
+    for ok, code, what in nbad:
+        print(f"FAIL  check {code}: {what}"); bad += 1
+    # sweep
+    if a.sweep:
+        mod = importlib.import_module("runtime.package_export." + g.id.replace(".", "_").replace("-", "_"))
+        codes = mod.sweep(random.Random(20261127), a.sweep) if hasattr(mod, "sweep") else []
+        acc = rej = 0; mism = []
+        for code in codes:
+            _, pcmds, perr = py_build(g, code)
+            try:
+                _, kcmds = pkg.run(code); kerr = None
+            except Refusal as r:
+                kcmds, kerr = None, r
+            if perr and kerr: rej += 1
+            elif perr or kerr:
+                mism.append((code, f"python {'refused: ' + str(perr) if perr else 'built'}; package {'refused: ' + str(kerr) if kerr else 'built'}"))
+            else:
+                d = diff(pcmds, kcmds)
+                if d: mism.append((code, f"commands differ: {d[0]}"))
+                else: acc += 1
+        print(f"sweep: {len(codes)} codes: {acc} accepted by both with equal commands, {rej} refused by both, {len(mism)} mismatches")
+        for code, why in mism[:15]:
+            print(f"FAIL  sweep {code}: {why}")
+        bad += len(mism)
+    if a.build:
+        out = Path(a.out) / pkg.id
+        rec = {}
+        for c in g.codes():
+            if not c.valid or c.code not in {x[1] for x in ch}:
+                continue
+            part, pcmds, _ = py_build(g, c.code, **c.opts)
+            _, kcmds = pkg.run(c.code)
+            ppath, _ = sc.run_script(pcmds, out / "python", c.name)
+            kpath, _ = sc.run_script(kcmds, out / "package", c.name)
+            mp, mk = measure(ppath, c.name + ".py", str(out / "python"), part.code), measure(kpath, c.name + ".pkg", str(out / "package"), part.code)
+            probs = []
+            if abs(mp["volume_mm3"] - mk["volume_mm3"]) > 1e-6 * max(1.0, abs(mp["volume_mm3"])): probs.append(f"volume {mp['volume_mm3']} vs {mk['volume_mm3']}")
+            if any(abs(x - y) > 1e-6 for x, y in zip(mp["bbox_mm"], mk["bbox_mm"])): probs.append(f"bbox {mp['bbox_mm']} vs {mk['bbox_mm']}")
+            if mp["faces"] != mk["faces"]: probs.append(f"faces {mp['faces']} vs {mk['faces']}")
+            buf = io.StringIO()
+            with contextlib.redirect_stdout(buf):
+                ok = g.check(part, kpath, str(out / "package")).print()
+            if not ok:
+                probs.append("the generator's spec check fails on the package-built part: " + "; ".join(l for l in buf.getvalue().splitlines() if l.startswith("FAIL"))[:600])
+            print(f"{'PASS' if not probs else 'FAIL'}  build {c.code}: volume {mk['volume_mm3']:.3f}, bbox {[round(x, 3) for x in mk['bbox_mm']]}, faces {mk['faces']}, spec check {buf.getvalue().splitlines()[-1]}"
+                  + ("" if not probs else "  <- " + "; ".join(probs)))
+            bad += bool(probs)
+            rec[c.code] = {"volume_mm3": round(mk["volume_mm3"], 6), "bbox_mm": [round(x, 6) for x in mk["bbox_mm"]], "faces": mk["faces"]}
+        if a.record and not bad:
+            d = g.dir / "checks" / sc.VER
+            d.mkdir(parents=True, exist_ok=True)
+            (d / "package-measured.json").write_text(json.dumps(rec, indent=1) + "\n")
+            (Path(a.out) / f"{g.id}.package-measured.json").write_text(json.dumps(rec, indent=1) + "\n")     # a copy next to the build output
+            print(f"recorded {d / 'package-measured.json'}")
+print("package-equiv: equivalent" if not bad else f"package-equiv: {bad} problem(s)")
+sys.exit(1 if bad else 0)

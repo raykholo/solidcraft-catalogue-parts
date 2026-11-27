@@ -9,5 +9,9 @@ Copyright (c) 2026 Tangency Labs. Permission is granted, free of charge, to use,
 distribute, sublicense and sell copies of that file, provided this copyright notice and the MIT permission notice
 (the LICENSE file of that repository) are included. The file is provided "as is", without warranty of any kind.
 
+schema/generator-package.schema.json is copied unchanged from the SolidCraft draft pull request tangency-labs/solidcraft#23175
+(docs/formats/generator-package.schema.json at commit cf0b3c66ebe3c84aef7830ac35ff9250745860d4, branch Lgen-generators of the
+raykholo/solidcraft fork). It is the draft v0 schema of the SolidCraft generator package format and is replaced by the released one.
+
 Manufacturer names (HIWIN, MISUMI) and ordering codes are trademarks of their owners, used only to identify catalogue
 parts. This project is not affiliated with or endorsed by them.

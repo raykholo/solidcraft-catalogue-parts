@@ -1,5 +1,5 @@
 """A small JSON-Schema subset (type, required, properties, additionalProperties, items, enum, pattern, minItems, maxItems,
-minLength, maxLength, const, uniqueItems, minimum, maximum, anyOf; "format" is ignored): enough for schema/*.json, with no dependency."""
+minLength, maxLength, const, uniqueItems, minimum, maximum, anyOf, patternProperties, maxProperties; "format" is ignored): enough for schema/*.json, with no dependency."""
 from __future__ import annotations
 import re
 
@@ -48,9 +48,16 @@ def validate(value, schema, path="$") -> list[str]:
             if k not in value:
                 errs.append(f"{path}: missing {k}")
         props = schema.get("properties", {})
+        pats = schema.get("patternProperties", {})
+        if len(value) > schema.get("maxProperties", 10 ** 9):
+            errs.append(f"{path}: more than {schema['maxProperties']} properties")
         for k, v in value.items():
             if k in props:
                 errs += validate(v, props[k], f"{path}.{k}")
+            elif any(re.search(p, k) for p in pats):
+                for p, sub in pats.items():
+                    if re.search(p, k):
+                        errs += validate(v, sub, f"{path}.{k}")
             elif schema.get("additionalProperties") is False:
                 errs.append(f"{path}: unknown field {k}")
             elif isinstance(schema.get("additionalProperties"), dict):

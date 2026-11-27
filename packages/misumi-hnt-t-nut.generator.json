@@ -1,0 +1,511 @@
+{
+ "format": "solidcraft-generator/1",
+ "min_solidcraft": "0.49.1",
+ "id": "misumi-hnt-t-nut",
+ "name": "MISUMI 5 series pre-assembly T-nuts (HNTT family)",
+ "description": "MISUMI 5 series pre-assembly T-nuts (HNTT family). Part of the catalogue-parts library; not made, endorsed or checked by the manufacturer, no manufacturer CAD, logo or photo used.",
+ "license": "Apache-2.0",
+ "author": "raykholo",
+ "guarantee": "reviewed",
+ "provenance": "Generated from the catalogue generator misumi.hnt.t-nut 0.1.0 of raykholo/solidcraft-catalogue-parts; every number is a row of a table below with its source, page and status. Verified by: automatic spec check of every code in codes.txt on SolidCraft 0.50.0; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person. Not guaranteed (appearance, approximate): The flank from the 5.8 mm bottom to the 10 mm body (measured from the vector side view, about 35 degrees from the nut axis); The edge rounds of the side view (R0.3, R1.0 reduced on the E 3.3 types, R0.2; none is dimensioned on the page); The tap drill (pilot bore O2.5 / O3.3 / O4.2 for M3 / M4 / M5) is the ISO coarse one: the page prints none; the thread is cosmetic (solid.thread) thro",
+ "sources": [
+  {
+   "id": "S9",
+   "title": "MISUMI FA catalogue, \"Pre-Assembly Insertion Nuts / Stoppers for Aluminum Extrusions - Standard, For 5 Series (Slot Width 6mm)\"",
+   "url": "https://in.misumi-ec.com/pdf/fa/2014/p2_559.pdf",
+   "pages": "2-559 (HNTT5 drawing and table), 2-557 (overview)"
+  }
+ ],
+ "declares": {
+  "labels": [
+   "T-nut",
+   "Insertion nut",
+   "Slot nut",
+   "Pre-assembly nut",
+   "HNTT"
+  ],
+  "keywords": [
+   "slot nut",
+   "drop-in nut",
+   "extrusion nut",
+   "M5 nut",
+   "6 mm slot"
+  ],
+  "vendor": "MISUMI",
+  "matches": [
+   {
+    "id": "hnt-tnut",
+    "generator": "t-nut",
+    "pattern": "^HNT(?:T|TV|TZ|TSN|TSS)5(?:-(?P<m>\\d+(?:\\.\\d)?))?$",
+    "flags": "i",
+    "confidence": "exact",
+    "params": {
+     "thread": "M{m}"
+    },
+    "examples": [
+     "HNTT5-4",
+     "HNTT5",
+     "HNTTSN5-3",
+     "HNTTV5-5",
+     "HNTTSS5-5"
+    ],
+    "negative": [
+     "HNTT",
+     "HNTU5",
+     "HNTT6-4",
+     "HNTT5-"
+    ]
+   }
+  ]
+ },
+ "grammar": {
+  "alternatives": [
+   [
+    {
+     "field": "type",
+     "enum": [
+      "HNTT5",
+      "HNTTV5",
+      "HNTTZ5",
+      "HNTTSN5",
+      "HNTTSS5",
+      "HNST5",
+      "HNTE5",
+      "HNTJ5",
+      "HNTTBS5",
+      "HNTU5",
+      "HNTUV5",
+      "HNTUZ5",
+      "SHNST5",
+      "SHNTE5",
+      "SHNTU5"
+     ]
+    },
+    {
+     "optional": [
+      {
+       "lit": "-"
+      },
+      {
+       "field": "m",
+       "chars": "digits",
+       "min_len": 1,
+       "max_len": 3
+      }
+     ],
+     "default": {
+      "m": "5"
+     }
+    }
+   ]
+  ],
+  "refuse": "{code}: expected <type>-<M>, e.g. HNTT5-4 (types: HNTT5, HNTTV5, HNTTZ5, HNTTSN5, HNTTSS5)"
+ },
+ "tables": {
+  "types": {
+   "columns": {
+    "type": "text",
+    "kind": "text",
+    "material": "text",
+    "surface": "text",
+    "allowed_m": "list",
+    "allowed_text": "text",
+    "E": "number",
+    "T": "number",
+    "polygon": "points",
+    "source": "text",
+    "page": "text",
+    "status": "text",
+    "note": "text"
+   },
+   "key": [
+    "type"
+   ],
+   "csv": "type,kind,material,surface,allowed_m,allowed_text,E,T,polygon,source,page,status,note\nHNTT5,standard,S10C equivalent,Trivalent chromate,3 4 5,\"M3, M4, M5\",3.3,4.1,-2.9 0;2.9 0;5 3;5 3.3;2.9 3.3;2.9 4.1;-2.9 4.1;-2.9 3.3;-5 3.3;-5 3,S9,p.559 table,labelled,\"polygon (section across the slot: y, z) and allowed_text are derived from E, T and the params rows by tools/export-package\"\nHNTTV5,thread locking adhesive,S10C equivalent,\"Trivalent chromate, thread locking adhesive\",5,M5,3.3,4.1,-2.9 0;2.9 0;5 3;5 3.3;2.9 3.3;2.9 4.1;-2.9 4.1;-2.9 3.3;-5 3.3;-5 3,S9,p.559 table,labelled,\"polygon (section across the slot: y, z) and allowed_text are derived from E, T and the params rows by tools/export-package\"\nHNTTZ5,thread locking resin coating,S10C equivalent,\"Trivalent chromate, thread locking resin coating\",5,M5,3.3,4.1,-2.9 0;2.9 0;5 3;5 3.3;2.9 3.3;2.9 4.1;-2.9 4.1;-2.9 3.3;-5 3.3;-5 3,S9,p.559 table,labelled,\"polygon (section across the slot: y, z) and allowed_text are derived from E, T and the params rows by tools/export-package\"\nHNTTSN5,\"stainless, sintered\",SUS316 equivalent (sintered),-,3 4 5,\"M3, M4, M5\",3.5,4.3,-2.9 0;2.9 0;5 3;5 3.5;2.9 3.5;2.9 4.3;-2.9 4.3;-2.9 3.5;-5 3.5;-5 3,S9,p.559 table,labelled,\"polygon (section across the slot: y, z) and allowed_text are derived from E, T and the params rows by tools/export-package\"\nHNTTSS5,\"stainless, electrically conductive\",SUS303 equivalent,-,5,M5,3.3,4.1,-2.9 0;2.9 0;5 3;5 3.3;2.9 3.3;2.9 4.1;-2.9 4.1;-2.9 3.3;-5 3.3;-5 3,S9,p.559 table,labelled,\"polygon (section across the slot: y, z) and allowed_text are derived from E, T and the params rows by tools/export-package\"\n"
+  },
+  "params": {
+   "columns": {
+    "name": "text",
+    "value": "number",
+    "unit": "text",
+    "source": "text",
+    "page": "text",
+    "status": "text"
+   },
+   "key": [
+    "name"
+   ],
+   "csv": "name,value,unit,source,page,status\nplan,10,mm,S9,p.559 plan view,labelled\nneck,5.8,mm,S9,p.559 side view,labelled\nflank_h,3,mm,S9,p.559 side view vector outline,measured\ndefault_m,5,,S9,p.559 ordering example and note,labelled\ntorque_m5,6.8,N m,S9,p.559,labelled\nround_bottom,0.3,mm,S9,p.559 side view vector outline (bottom face / flank corners; no radius printed),approximate\nround_flank_top,1,mm,S9,p.559 side view vector outline (flank / 10 wide body corners; no radius printed),approximate\nround_edge,0.2,mm,S9,p.559 side view vector outline (10 wide body / shoulder and neck top corners; no radius printed),approximate\n"
+  },
+  "tap": {
+   "columns": {
+    "m": "text",
+    "pilot": "number",
+    "unit": "text",
+    "source": "text",
+    "page": "text",
+    "status": "text"
+   },
+   "key": [
+    "m"
+   ],
+   "csv": "m,pilot,unit,source,page,status\n3,2.5,mm,S9,p.559 (ISO coarse tap drill M3 x 0.5; the page prints no tap drill),derived\n4,3.3,mm,S9,p.559 (ISO coarse tap drill M4 x 0.7; the page prints no tap drill),derived\n5,4.2,mm,S9,p.559 plan view inner circle measured 4.2 (ISO coarse tap drill M5 x 0.8),derived\n"
+  }
+ },
+ "defaults": {
+  "k_plan": "\"plan\"",
+  "k_flank_h": "\"flank_h\"",
+  "k_round_bottom": "\"round_bottom\"",
+  "k_round_flank_top": "\"round_flank_top\"",
+  "k_round_edge": "\"round_edge\"",
+  "k_torque_m5": "\"torque_m5\""
+ },
+ "x-early-rules": [
+  {
+   "when": "type == \"HNST5\" || type == \"HNTE5\" || type == \"HNTJ5\" || type == \"HNTTBS5\" || type == \"HNTU5\" || type == \"HNTUV5\" || type == \"HNTUZ5\" || type == \"SHNST5\" || type == \"SHNTE5\" || type == \"SHNTU5\"",
+   "refuse": "{type}: a valid 5 series nut, not drawn here; drawn: HNTT5, HNTTV5, HNTTZ5, HNTTSN5, HNTTSS5",
+   "kind": "not_modelled"
+  }
+ ],
+ "lookups": [
+  {
+   "table": "types",
+   "as": "s",
+   "key": {
+    "type": "type"
+   }
+  },
+  {
+   "table": "tap",
+   "as": "tp",
+   "key": {
+    "m": "m"
+   },
+   "missing": "{type} is offered in {s.allowed_text}, not M{m}"
+  },
+  {
+   "table": "params",
+   "as": "p_plan",
+   "key": {
+    "name": "k_plan"
+   }
+  },
+  {
+   "table": "params",
+   "as": "p_flank_h",
+   "key": {
+    "name": "k_flank_h"
+   }
+  },
+  {
+   "table": "params",
+   "as": "p_round_bottom",
+   "key": {
+    "name": "k_round_bottom"
+   }
+  },
+  {
+   "table": "params",
+   "as": "p_round_flank_top",
+   "key": {
+    "name": "k_round_flank_top"
+   }
+  },
+  {
+   "table": "params",
+   "as": "p_round_edge",
+   "key": {
+    "name": "k_round_edge"
+   }
+  },
+  {
+   "table": "params",
+   "as": "p_torque_m5",
+   "key": {
+    "name": "k_torque_m5"
+   }
+  }
+ ],
+ "vars": [
+  {
+   "name": "code",
+   "expr": "concat(type, \"-\", m)"
+  },
+  {
+   "name": "E",
+   "expr": "s.E"
+  },
+  {
+   "name": "T",
+   "expr": "s.T"
+  },
+  {
+   "name": "pilot",
+   "expr": "tp.pilot"
+  },
+  {
+   "name": "flank_r",
+   "expr": "min(p_round_flank_top.value, (E - p_round_edge.value - p_flank_h.value) / tan(17.5))"
+  },
+  {
+   "name": "surf",
+   "expr": "s.surface == \"-\" ? \"\" : concat(\", \", s.surface)"
+  },
+  {
+   "name": "torque",
+   "expr": "m == \"5\" ? concat(\", reference tightening torque \", p_torque_m5.value, \" N m\") : \"\""
+  },
+  {
+   "name": "desc",
+   "expr": "concat(\"MISUMI pre-assembly insertion nut \", type, \" (\", s.kind, \") for 5 series (slot width 6 mm) extrusions, M\", m, \", \", p_plan.value, \" x \", p_plan.value, \" mm plan, E=\", E, \", T=\", T, \", \", s.material, surf, torque, \". Generated from the published catalogue dimensions; the flank profile and the edge rounds are measured from the drawing; the tap drill is the ISO coarse one.\")"
+  },
+  {
+   "name": "mat",
+   "expr": "s.surface == \"-\" ? s.material : concat(s.material, \"; \", s.surface)"
+  }
+ ],
+ "rules": [
+  {
+   "when": "!in(m, s.allowed_m)",
+   "refuse": "{type} is offered in {s.allowed_text}, not M{m}"
+  }
+ ],
+ "steps": [
+  {
+   "command": "sketch.create",
+   "params": {
+    "plane": "YZ",
+    "name": "Profile"
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "points": "${s.polygon}",
+    "closed": true
+   }
+  },
+  {
+   "command": "sketch.fillet",
+   "params": {
+    "points": [
+     "l10.end",
+     "l1.end"
+    ],
+    "radius": "${p_round_bottom.value}"
+   }
+  },
+  {
+   "command": "sketch.fillet",
+   "params": {
+    "points": [
+     "l2.end",
+     "l9.end"
+    ],
+    "radius": "${flank_r}"
+   }
+  },
+  {
+   "command": "sketch.fillet",
+   "params": {
+    "points": [
+     "l3.end",
+     "l8.end",
+     "l5.end",
+     "l6.end"
+    ],
+    "radius": "${p_round_edge.value}"
+   }
+  },
+  {
+   "command": "sketch.finish",
+   "params": {}
+  },
+  {
+   "command": "solid.extrude",
+   "params": {
+    "distance": "${p_plan.value}",
+    "name": "Nut",
+    "body_name": "${code}"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "${pilot}",
+    "height": "${T + 2}",
+    "base": [
+     "${p_plan.value / 2}",
+     0,
+     -1
+    ],
+    "axis": "Z",
+    "operation": "cut",
+    "targets": [
+     "${code}"
+    ],
+    "name": "Pilot bore O${pilot}"
+   }
+  },
+  {
+   "command": "solid.thread",
+   "params": {
+    "face": [
+     "${p_plan.value / 2 + pilot / 2}",
+     0,
+     "${T / 2}"
+    ],
+    "designation": "M${m}",
+    "extent": "length",
+    "length": "${T}",
+    "from": [
+     "${p_plan.value / 2 + pilot / 2}",
+     0,
+     "${T}"
+    ],
+    "name": "Thread M${m}"
+   }
+  },
+  {
+   "command": "browser.visibility",
+   "params": {
+    "items": [
+     "Profile"
+    ],
+    "visible": false
+   }
+  },
+  {
+   "command": "component.metadata.set",
+   "params": {
+    "component": "${code}",
+    "part_number": "${code}",
+    "description": "${desc}",
+    "material": "${mat}"
+   }
+  },
+  {
+   "command": "document.metadata.set",
+   "params": {
+    "values": {
+     "part_number": "${code}",
+     "description": "${desc}"
+    }
+   }
+  }
+ ],
+ "insert": {
+  "component": "${code}"
+ },
+ "checks": [
+  {
+   "code": "HNTT5",
+   "dimensions": {
+    "E": 3.3,
+    "T": 4.1,
+    "pilot": 4.2,
+    "flank_r": 0.3171594802363201
+   },
+   "volume_mm3": 256.160549,
+   "bbox_mm": [
+    10.0,
+    10.0,
+    4.1
+   ],
+   "faces": 21
+  },
+  {
+   "code": "HNTT5-4",
+   "dimensions": {
+    "E": 3.3,
+    "T": 4.1,
+    "pilot": 3.3,
+    "flank_r": 0.3171594802363201
+   },
+   "volume_mm3": 277.896443,
+   "bbox_mm": [
+    10.0,
+    10.0,
+    4.1
+   ],
+   "faces": 21
+  },
+  {
+   "code": "HNTTSN5-3",
+   "dimensions": {
+    "E": 3.5,
+    "T": 4.3,
+    "pilot": 2.5,
+    "flank_r": 0.9514784407089633
+   },
+   "volume_mm3": 311.697431,
+   "bbox_mm": [
+    10.0,
+    10.0,
+    4.3
+   ],
+   "faces": 21
+  },
+  {
+   "code": "HNTTSS5-5",
+   "dimensions": {
+    "E": 3.3,
+    "T": 4.1,
+    "pilot": 4.2,
+    "flank_r": 0.3171594802363201
+   },
+   "volume_mm3": 256.160549,
+   "bbox_mm": [
+    10.0,
+    10.0,
+    4.1
+   ],
+   "faces": 21
+  },
+  {
+   "code": "HNTTV5-5",
+   "dimensions": {
+    "E": 3.3,
+    "T": 4.1,
+    "pilot": 4.2,
+    "flank_r": 0.3171594802363201
+   },
+   "volume_mm3": 256.160549,
+   "bbox_mm": [
+    10.0,
+    10.0,
+    4.1
+   ],
+   "faces": 21
+  },
+  {
+   "code": "HNTT5-6",
+   "invalid": true,
+   "message_contains": "HNTT5 is offered in M3, M4, M5, not M6"
+  },
+  {
+   "code": "HNTTV5-4",
+   "invalid": true,
+   "message_contains": "HNTTV5 is offered in M5, not M4"
+  },
+  {
+   "code": "HNTT5-3.5",
+   "invalid": true,
+   "message_contains": "HNTT5-3.5: expected <type>-<M>, e.g. HNTT5-4 (types: HNTT5, HNTTV5, HNTTZ5, HNTTSN5, HNTTSS5)"
+  }
+ ],
+ "x-generator": {
+  "id": "misumi.hnt.t-nut",
+  "version": "0.1.0",
+  "sources_hash": "sha256:4bd8910c2240776d980f5e53a7ebcb8279895ed6e8259c49ce3affca4acb122c",
+  "level": "Reviewed",
+  "checked_on": "0.50.0",
+  "review": {
+   "reviewer_kind": "ai",
+   "reviewer": "AI review lane (Claude Sonnet), independent of the authoring lane",
+   "author": "AI authoring lanes (Claude)",
+   "date": "2026-11-27",
+   "sources_hash": "sha256:4bd8910c2240776d980f5e53a7ebcb8279895ed6e8259c49ce3affca4acb122c"
+  }
+ }
+}

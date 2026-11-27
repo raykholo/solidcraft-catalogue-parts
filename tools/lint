@@ -7,7 +7,7 @@
   - no personal paths, development-session text or (locally) private words in any file (runtime/privacy.py), inflate-aware: PNG
     chunks and their zlib streams are scanned too.
 Exit 1 when anything is found."""
-import csv, re, struct, sys, tomllib, zlib
+import csv, json, re, struct, sys, tomllib, zlib
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
@@ -106,6 +106,16 @@ for g in registry.generators():
                     bad(f"{rel}/data/{csvf.name}:{i}: page and status are required")
     if (g.dir / "PROVENANCE.md").is_file() and (g.dir / "PROVENANCE.md").read_text() != provenance.render(g):
         bad(f"{rel}/PROVENANCE.md: out of date (run tools/provenance)")
+import json
+# packages/*.generator.json: the SolidCraft generator packages (tools/export-package) against the package schema and the package rules
+from runtime.package import Package, PackageError
+_pk_schema = json.loads((ROOT / "schema" / "generator-package.schema.json").read_text())
+for pf in sorted((ROOT / "packages").glob("*.generator.json")) if (ROOT / "packages").is_dir() else []:
+    try:
+        if pf.stat().st_size > 1 << 20: bad(f"packages/{pf.name}: over 1 MiB")
+        for err in Package(pf).validate(_pk_schema): bad(f"packages/{pf.name}: {err}")
+    except (PackageError, ValueError, KeyError) as ex:
+        bad(f"packages/{pf.name}: {ex}")
 # library.toml (only in a repository that packs a parts-library release) must make a manifest the parts index accepts
 if (ROOT / "library.toml").is_file():
     import json, tomllib

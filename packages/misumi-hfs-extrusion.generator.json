@@ -1,0 +1,1354 @@
+{
+ "format": "solidcraft-generator/1",
+ "min_solidcraft": "0.49.1",
+ "id": "misumi-hfs-extrusion",
+ "name": "MISUMI aluminium extrusions, 5 series 2020 / 2040 / 4040 and 6 series 3030",
+ "description": "MISUMI aluminium extrusions, 5 series 2020 / 2040 / 4040 and 6 series 3030. Part of the catalogue-parts library; not made, endorsed or checked by the manufacturer, no manufacturer CAD, logo or photo used.",
+ "license": "Apache-2.0",
+ "author": "raykholo",
+ "guarantee": "reviewed",
+ "provenance": "Generated from the catalogue generator misumi.hfs.extrusion 0.1.0 of raykholo/solidcraft-catalogue-parts; every number is a row of a table below with its source, page and status. Verified by: automatic spec check of every code in codes.txt on SolidCraft 0.50.0; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person. Not guaranteed (appearance, approximate): Section values read from the vector drawing rather than printed: lip thickness on the 5 series, where the cavity wall ends and the floor half width (m; The central voids of the 2040 / 4040 (measured) and the 4040 bore-block inner-corner notch (3.6 mm square, fitted so that the section area meets the p; Wrench access hole depth (through the whole section) and, on 2040 / 4040 / 3030, the H / V axis convention; The cosmetic M5 / M8 end thread on the bore (its length and the effect of a wrench hole cutting the bore); FL / FR on the 5 series (the catalogue table lists the 6 and 8 series only)",
+ "sources": [
+  {
+   "id": "S1",
+   "title": "MISUMI FA catalogue, \"5 Series Aluminum Extrusions 20, 25, 40mm Square\"",
+   "url": "https://in.misumi-ec.com/pdf/fa/2014/p2_529.pdf",
+   "pages": "2-529 (1 Slot: HFS5-2020 drawing and table), 2-530 (2 Slots: 2040 and 4040 drawings and tables; same PDF, double page)"
+  },
+  {
+   "id": "S2",
+   "title": "MISUMI FA catalogue, \"Tapping\" (end tapping LTP/RTP/TPW, LHP/RHP/HPW)",
+   "url": "https://in.misumi-ec.com/pdf/fa/2014/p2_757.pdf",
+   "pages": "2-757 (and 2-758: High Precision Cut SC, 45 degree cut)"
+  },
+  {
+   "id": "S3",
+   "title": "MISUMI FA catalogue, \"Fastening Location Wrench Access Hole Alterations\"",
+   "url": "https://in.misumi-ec.com/pdf/fa/2014/p2_759.pdf",
+   "pages": "2-759 (hole position and size table, code method), 2-760 (FL/FR)"
+  },
+  {
+   "id": "S5",
+   "title": "MISUMI FA catalogue, \"Alterations for Aluminum Extrusions - Overview\"",
+   "url": "https://in.misumi-ec.com/pdf/fa/2014/p2_513_755.pdf",
+   "pages": "2-755, 2-756 (code list, position convention, CW, labeling ZZZ, R0.3 / 5-R1 drawing)"
+  },
+  {
+   "id": "S10",
+   "title": "MISUMI FA catalogue, \"6 Series Aluminum Extrusions 30, 60 mm, 1 Slot\"",
+   "url": "https://in.misumi-ec.com/pdf/fa/2014/p2_571.pdf",
+   "pages": "2-571 (HFS6-3030 drawing and table), 2-572"
+  },
+  {
+   "id": "S22",
+   "title": "MISUMI FA catalogue, \"5 Series Aluminum Extrusions 20, 25, 40mm Square\": the product tables (Mass kg/m, Sectional Area mm2, Cross Sectional Moment of Inertia lx / ly mm4) under the drawings",
+   "url": "https://in.misumi-ec.com/pdf/fa/2014/p2_529.pdf",
+   "pages": "2-529 (table 2020), 2-530 (tables 2040 and 4040): \"Configurable Length Extrusions\" (mass, area, lx, ly) and the two \"Fixed Length Extrusion\" tables (area, lx, ly again, same values)"
+  },
+  {
+   "id": "S23",
+   "title": "MISUMI FA catalogue, \"6 Series Aluminum Extrusions 30, 60 mm, 1 Slot\": the product tables (Mass kg/m, Sectional Area mm2, Cross Sectional Moment of Inertia lx / ly mm4)",
+   "url": "https://in.misumi-ec.com/pdf/fa/2014/p2_571.pdf",
+   "pages": "2-571 (table 3030): \"Configurable Length Extrusions\" (mass, area, lx, ly) and the two \"Fixed Length Extrusions\" tables (area, lx, ly again, same values)"
+  }
+ ],
+ "declares": {
+  "labels": [
+   "Aluminium extrusion",
+   "T-slot profile",
+   "Aluminum profile",
+   "HFS5",
+   "HFS6",
+   "2020",
+   "4040"
+  ],
+  "keywords": [
+   "slot profile",
+   "extrusion",
+   "aluminium frame",
+   "MISUMI 5 series",
+   "MISUMI 6 series",
+   "end tapping",
+   "wrench access hole"
+  ],
+  "vendor": "MISUMI",
+  "matches": [
+   {
+    "id": "hfs5",
+    "generator": "extrusion",
+    "pattern": "^K?(?:NFS|NFSB|HFS|HFSB|CAF|HFSY)5-(?P<profile>2020|2040|4040)-(?P<length>\\d+(?:\\.\\d+)?)(?P<alterations>(?:-[A-Z0-9]+)*)$",
+    "flags": "i",
+    "confidence": "exact",
+    "params": {
+     "profile": "{profile}",
+     "length_mm": "{length}"
+    },
+    "examples": [
+     "HFS5-2020-120-LTP-RTP-LCH",
+     "KHFS5-2040-1000",
+     "NFSB5-4040-250",
+     "HFS5-2020-497.5-TPW-LEV-REH"
+    ],
+    "negative": [
+     "HFS5-2020",
+     "HFS5-3030-100",
+     "HFS6-2020-100",
+     "MGN12H2R300Z0C"
+    ]
+   },
+   {
+    "id": "hfs6",
+    "generator": "extrusion",
+    "pattern": "^K?(?:HFS|HFSB|CAF|HFSY)6-(?P<profile>3030)-(?P<length>\\d+(?:\\.\\d+)?)(?P<alterations>(?:-[A-Z0-9]+)*)$",
+    "flags": "i",
+    "confidence": "exact",
+    "params": {
+     "profile": "{profile}",
+     "length_mm": "{length}"
+    },
+    "examples": [
+     "HFS6-3030-500-LCH-X5-TPW",
+     "KHFS6-3030-1000",
+     "HFSB6-3030-120-LTP-RTP-RWV-X8"
+    ],
+    "negative": [
+     "HFS6-3030",
+     "HFS6-6060-100",
+     "HFS5-3030-100"
+    ]
+   }
+  ]
+ },
+ "grammar": {
+  "alternatives": [
+   [
+    {
+     "optional": [
+      {
+       "field": "k",
+       "enum": [
+        "K"
+       ]
+      }
+     ],
+     "default": {
+      "k": ""
+     }
+    },
+    {
+     "field": "tname",
+     "chars": "alpha",
+     "min_len": 1,
+     "max_len": 8
+    },
+    {
+     "field": "series",
+     "enum": [
+      "5",
+      "6"
+     ]
+    },
+    {
+     "lit": "-"
+    },
+    {
+     "field": "profile",
+     "chars": "digits",
+     "min_len": 4,
+     "max_len": 6
+    },
+    {
+     "lit": "-"
+    },
+    {
+     "field": "length",
+     "decimal": {
+      "min": 0,
+      "max": 100000,
+      "digits": 6
+     }
+    },
+    {
+     "flags": {
+      "field": "options",
+      "options": [
+       {
+        "code": "-LTP",
+        "value": "LTP"
+       },
+       {
+        "code": "-RTP",
+        "value": "RTP"
+       },
+       {
+        "code": "-TPW",
+        "value": "TPW"
+       },
+       {
+        "code": "-LHP",
+        "value": "LHP"
+       },
+       {
+        "code": "-RHP",
+        "value": "RHP"
+       },
+       {
+        "code": "-HPW",
+        "value": "HPW"
+       },
+       {
+        "code": "-SC",
+        "value": "SC"
+       },
+       {
+        "code": "-CW",
+        "value": "CW"
+       },
+       {
+        "code": "-FL",
+        "value": "FL"
+       },
+       {
+        "code": "-FR",
+        "value": "FR"
+       },
+       {
+        "code": "-X5",
+        "value": "X5"
+       },
+       {
+        "code": "-X8",
+        "value": "X8"
+       },
+       {
+        "code": "-LCH",
+        "value": "LCH"
+       },
+       {
+        "code": "-LCV",
+        "value": "LCV"
+       },
+       {
+        "code": "-LCP",
+        "value": "LCP"
+       },
+       {
+        "code": "-LWH",
+        "value": "LWH"
+       },
+       {
+        "code": "-LWV",
+        "value": "LWV"
+       },
+       {
+        "code": "-LWP",
+        "value": "LWP"
+       },
+       {
+        "code": "-LEH",
+        "value": "LEH"
+       },
+       {
+        "code": "-LEV",
+        "value": "LEV"
+       },
+       {
+        "code": "-LEP",
+        "value": "LEP"
+       },
+       {
+        "code": "-RCH",
+        "value": "RCH"
+       },
+       {
+        "code": "-RCV",
+        "value": "RCV"
+       },
+       {
+        "code": "-RCP",
+        "value": "RCP"
+       },
+       {
+        "code": "-RWH",
+        "value": "RWH"
+       },
+       {
+        "code": "-RWV",
+        "value": "RWV"
+       },
+       {
+        "code": "-RWP",
+        "value": "RWP"
+       },
+       {
+        "code": "-REH",
+        "value": "REH"
+       },
+       {
+        "code": "-REV",
+        "value": "REV"
+       },
+       {
+        "code": "-REP",
+        "value": "REP"
+       }
+      ],
+      "max": 30
+     }
+    }
+   ]
+  ],
+  "refuse": "{code}: expected [K]<type>5|6-<profile>-<length>[-<alteration>...], e.g. HFS5-2040-800-LTP-RTP"
+ },
+ "tables": {
+  "profiles": {
+   "columns": {
+    "profile": "text",
+    "series": "number",
+    "w": "number",
+    "h": "number",
+    "corner_r": "number",
+    "tip_r": "number",
+    "mouth": "number",
+    "lip": "number",
+    "cavity": "number",
+    "d0": "number",
+    "floor_half": "number",
+    "depth": "number",
+    "tap_depth": "number",
+    "wrench_h": "number",
+    "wrench_j": "number",
+    "wrench_k": "number",
+    "wrench_d": "number",
+    "published_area": "number",
+    "published_ix": "number",
+    "published_iy": "number",
+    "published_mass": "number",
+    "tap_thread": "text",
+    "slots": "text",
+    "bores": "text",
+    "outline": "points",
+    "corner_refs": "list",
+    "mouth_refs": "list",
+    "void_poly": "points",
+    "source": "text",
+    "page": "text",
+    "status": "text",
+    "note": "text",
+    "v0_line": "points",
+    "v0_arc": "points",
+    "t0_c": "points",
+    "t0_n": "number",
+    "v1_line": "points",
+    "v1_arc": "points",
+    "t1_c": "points",
+    "t1_n": "number",
+    "v2_line": "points",
+    "v2_arc": "points",
+    "t2_c": "points",
+    "t2_n": "number",
+    "v3_line": "points",
+    "v3_arc": "points",
+    "t3_c": "points",
+    "t3_n": "number",
+    "b0_c": "points",
+    "b0_d": "number",
+    "b1_c": "points",
+    "b1_d": "number",
+    "b2_c": "points",
+    "b2_d": "number",
+    "b3_c": "points",
+    "b3_d": "number",
+    "b4_c": "points",
+    "b4_d": "number"
+   },
+   "key": [
+    "profile"
+   ],
+   "csv": "profile,series,w,h,corner_r,tip_r,mouth,lip,cavity,d0,floor_half,depth,tap_thread,tap_depth,wrench_h,wrench_j,wrench_k,wrench_d,published_area,published_ix,published_iy,published_mass,slots,bores,outline,corner_refs,mouth_refs,void_poly,v0_line,v0_arc,v1_line,v1_arc,v2_line,v2_arc,v3_line,v3_arc,b0_c,b0_d,b1_c,b1_d,b2_c,b2_d,b3_c,b3_d,b4_c,b4_d,t0_c,t0_n,t1_c,t1_n,t2_c,t2_n,t3_c,t3_n,source,page,status,note\n2020,5,20,20,1,0.3,6,2,12,2.93,2.93,6,M5,15,10,20,20,7.35,183,7420,7420,0.5,R:0.0|T:0.0|L:0.0|B:0.0,0:0:4.2,10 -10;10 -3;8 -3;8 -6;7.07 -6;4 -2.93;4 2.93;7.07 6;8 6;8 3;10 3;10 10;3 10;3 8;6 8;6 7.07;2.93 4;-2.93 4;-6 7.07;-6 8;-3 8;-3 10;-10 10;-10 3;-8 3;-8 6;-7.07 6;-4 2.93;-4 -2.93;-7.07 -6;-8 -6;-8 -3;-10 -3;-10 -10;-3 -10;-3 -8;-6 -8;-6 -7.07;-2.93 -4;2.93 -4;6 -7.07;6 -8;3 -8;3 -10,l44.end l11.end l22.end l33.end,l1.end l10.end l12.end l21.end l23.end l32.end l34.end l43.end,,,,,,,,,,0 0,4.2,,0,,0,,0,,0,2.1 0,1,,0,,0,,0,S1,p.529,measured,\"series / outline / corner_refs / mouth_refs / void_poly / v*_line / v*_arc / b*_c / t*_c are derived from the numbers of this row by tools/export-package (the Python generator's geometry); wrench_d 0 = chosen with -X5 / -X8. Original note: mouth, lip (5 series), cavity, depth, corner_r, bores, published_*: labelled or published; d0, floor_half: measured from the vector drawing to 0.01 mm (3030 d0 fitted to the printed area within the measuring accuracy); tip_r: approximate; 4040 void_notch: fitted to the printed area (sources.toml rows 1900-1999)\"\n2040,5,20,40,1,0.3,6,2,12,2.93,2.93,6,M5,15,10,20,20,7.35,324,13580,51300,0.88,R:-10.0;10.0|T:0.0|L:-10.0;10.0|B:0.0,0:-10:4.2|0:10:4.2,10 -20;10 -13;8 -13;8 -16;7.07 -16;4 -12.93;4 -7.07;7.07 -4;8 -4;8 -7;10 -7;10 7;8 7;8 4;7.07 4;4 7.07;4 12.93;7.07 16;8 16;8 13;10 13;10 20;3 20;3 18;6 18;6 17.07;2.93 14;-2.93 14;-6 17.07;-6 18;-3 18;-3 20;-10 20;-10 13;-8 13;-8 16;-7.07 16;-4 12.93;-4 7.07;-7.07 4;-8 4;-8 7;-10 7;-10 -7;-8 -7;-8 -4;-7.07 -4;-4 -7.07;-4 -12.93;-7.07 -16;-8 -16;-8 -13;-10 -13;-10 -20;-3 -20;-3 -18;-6 -18;-6 -17.07;-2.93 -14;2.93 -14;6 -17.07;6 -18;3 -18;3 -20,l64.end l21.end l32.end l53.end,l1.end l10.end l11.end l20.end l22.end l31.end l33.end l42.end l43.end l52.end l54.end l63.end,3 -6;7 -2;8 -2;8 2;7 2;3 6;-3 6;-7 2;-8 2;-8 -2;-7 -2;-3 -6,,,,,,,,,0 -10,4.2,0 10,4.2,,0,,0,,0,2.1 -10,1,2.1 10,2,,0,,0,S1,p.530,measured,\"series / outline / corner_refs / mouth_refs / void_poly / v*_line / v*_arc / b*_c / t*_c are derived from the numbers of this row by tools/export-package (the Python generator's geometry); wrench_d 0 = chosen with -X5 / -X8. Original note: mouth, lip (5 series), cavity, depth, corner_r, bores, published_*: labelled or published; d0, floor_half: measured from the vector drawing to 0.01 mm (3030 d0 fitted to the printed area within the measuring accuracy); tip_r: approximate; 4040 void_notch: fitted to the printed area (sources.toml rows 1900-1999)\"\n4040,5,40,40,1,0.3,6,2,12,2.93,2.93,6,M5,15,10,20,20,7.35,472,88900,88900,1.28,R:-10.0;10.0|T:-10.0;10.0|L:-10.0;10.0|B:-10.0;10.0,,20 -20;20 -13;18 -13;18 -16;17.07 -16;14 -12.93;14 -7.07;17.07 -4;18 -4;18 -7;20 -7;20 7;18 7;18 4;17.07 4;14 7.07;14 12.93;17.07 16;18 16;18 13;20 13;20 20;13 20;13 18;16 18;16 17.07;12.93 14;7.07 14;4 17.07;4 18;7 18;7 20;-7 20;-7 18;-4 18;-4 17.07;-7.07 14;-12.93 14;-16 17.07;-16 18;-13 18;-13 20;-20 20;-20 13;-18 13;-18 16;-17.07 16;-14 12.93;-14 7.07;-17.07 4;-18 4;-18 7;-20 7;-20 -7;-18 -7;-18 -4;-17.07 -4;-14 -7.07;-14 -12.93;-17.07 -16;-18 -16;-18 -13;-20 -13;-20 -20;-13 -20;-13 -18;-16 -18;-16 -17.07;-12.93 -14;-7.07 -14;-4 -17.07;-4 -18;-7 -18;-7 -20;7 -20;7 -18;4 -18;4 -17.07;7.07 -14;12.93 -14;16 -17.07;16 -18;13 -18;13 -20,l84.end l21.end l42.end l63.end,l1.end l10.end l11.end l20.end l22.end l31.end l32.end l41.end l43.end l52.end l53.end l62.end l64.end l73.end l74.end l83.end,,9.6 -7.938447187191169;9.6 -6;12.948679656440358 -6;16.94867965644036 -2;18 -2;18 2;16.94867965644036 2;12.948679656440358 6;9.6 6;9.6 7.938447187191169,9.6 7.938447187191169;11.48492424049175 11.48492424049175;7.938447187191169 9.6,7.938447187191169 9.6;6 9.6;6 12.948679656440358;2 16.94867965644036;2 18;-2 18;-2 16.94867965644036;-6 12.948679656440358;-6 9.6;-7.938447187191169 9.6,-7.938447187191169 9.6;-11.48492424049175 11.48492424049175;-9.6 7.938447187191169,-9.6 7.938447187191169;-9.6 6;-12.948679656440358 6;-16.94867965644036 2;-18 2;-18 -2;-16.94867965644036 -2;-12.948679656440358 -6;-9.6 -6;-9.6 -7.938447187191169,-9.6 -7.938447187191169;-11.48492424049175 -11.48492424049175;-7.938447187191169 -9.6,-7.938447187191169 -9.6;-6 -9.6;-6 -12.948679656440358;-2 -16.94867965644036;-2 -18;2 -18;2 -16.94867965644036;6 -12.948679656440358;6 -9.6;7.938447187191169 -9.6,7.938447187191169 -9.6;11.48492424049175 -11.48492424049175;9.6 -7.938447187191169,,0,,0,,0,,0,,0,-11.48492424049175 -11.48492424049175,1,-11.48492424049175 11.48492424049175,2,11.48492424049175 -11.48492424049175,3,11.48492424049175 11.48492424049175,4,S1,p.530,measured,\"series / outline / corner_refs / mouth_refs / void_poly / v*_line / v*_arc / b*_c / t*_c are derived from the numbers of this row by tools/export-package (the Python generator's geometry); wrench_d 0 = chosen with -X5 / -X8. Original note: mouth, lip (5 series), cavity, depth, corner_r, bores, published_*: labelled or published; d0, floor_half: measured from the vector drawing to 0.01 mm (3030 d0 fitted to the printed area within the measuring accuracy); tip_r: approximate; 4040 void_notch: fitted to the printed area (sources.toml rows 1900-1999)\"\n3030,6,30,30,2,0.3,8,2,16.5,5.31,4.56,9,M8,24,15,30,30,0,333,28300,28300,0.9,R:0.0|T:0.0|L:0.0|B:0.0,11.6:11.6:4.2|-11.6:11.6:4.2|-11.6:-11.6:4.2|11.6:-11.6:4.2|0:0:6.8,15 -15;15 -4;13 -4;13 -8.25;9.690000000000001 -8.25;6 -4.56;6 4.56;9.690000000000001 8.25;13 8.25;13 4;15 4;15 15;4 15;4 13;8.25 13;8.25 9.690000000000001;4.56 6;-4.56 6;-8.25 9.690000000000001;-8.25 13;-4 13;-4 15;-15 15;-15 4;-13 4;-13 8.25;-9.690000000000001 8.25;-6 4.56;-6 -4.56;-9.690000000000001 -8.25;-13 -8.25;-13 -4;-15 -4;-15 -15;-4 -15;-4 -13;-8.25 -13;-8.25 -9.690000000000001;-4.56 -6;4.56 -6;8.25 -9.690000000000001;8.25 -13;4 -13;4 -15,l44.end l11.end l22.end l33.end,l1.end l10.end l12.end l21.end l23.end l32.end l34.end l43.end,,,,,,,,,,11.6 11.6,4.2,-11.6 11.6,4.2,-11.6 -11.6,4.2,11.6 -11.6,4.2,0 0,6.8,3.4 0,5,,0,,0,,0,S10,p.571,measured,\"series / outline / corner_refs / mouth_refs / void_poly / v*_line / v*_arc / b*_c / t*_c are derived from the numbers of this row by tools/export-package (the Python generator's geometry); wrench_d 0 = chosen with -X5 / -X8. Original note: mouth, lip (5 series), cavity, depth, corner_r, bores, published_*: labelled or published; d0, floor_half: measured from the vector drawing to 0.01 mm (3030 d0 fitted to the printed area within the measuring accuracy); tip_r: approximate; 4040 void_notch: fitted to the printed area (sources.toml rows 1900-1999)\"\n"
+  },
+  "types": {
+   "columns": {
+    "type": "text",
+    "profile": "text",
+    "material": "text",
+    "surface": "text",
+    "source": "text",
+    "page": "text",
+    "status": "text",
+    "note": "text"
+   },
+   "key": [
+    "type",
+    "profile"
+   ],
+   "csv": "type,profile,material,surface,source,page,status,note\nNFS5,2020,A6063S-T5,Clear anodize,S1,p.529 type table (1 slot),labelled,\"one row per (type, profile): the Python generator's lookup, expanded\"\nNFS5,2040,A6063SS-T5,Clear anodize,S1,p.530 type table (2 slots: 2040 and 4040),labelled,\"one row per (type, profile): the Python generator's lookup, expanded\"\nNFS5,4040,A6063SS-T5,Clear anodize,S1,p.530 type table (2 slots: 2040 and 4040),labelled,\"one row per (type, profile): the Python generator's lookup, expanded\"\nNFSB5,2020,A6063S-T5,Black anodize,S1,p.529 type table (1 slot),labelled,\"one row per (type, profile): the Python generator's lookup, expanded\"\nNFSB5,2040,A6063SS-T5,Black anodize,S1,p.530 type table (2 slots: 2040 and 4040),labelled,\"one row per (type, profile): the Python generator's lookup, expanded\"\nNFSB5,4040,A6063SS-T5,Black anodize,S1,p.530 type table (2 slots: 2040 and 4040),labelled,\"one row per (type, profile): the Python generator's lookup, expanded\"\nHFS5,2020,A6N01SS-T5,Clear anodize,S1,p.529-530 type table,labelled,\"one row per (type, profile): the Python generator's lookup, expanded\"\nHFS5,2040,A6N01SS-T5,Clear anodize,S1,p.529-530 type table,labelled,\"one row per (type, profile): the Python generator's lookup, expanded\"\nHFS5,4040,A6N01SS-T5,Clear anodize,S1,p.529-530 type table,labelled,\"one row per (type, profile): the Python generator's lookup, expanded\"\nHFSB5,2020,A6N01SS-T5,Black anodize,S1,p.529-530 type table,labelled,\"one row per (type, profile): the Python generator's lookup, expanded\"\nHFSB5,2040,A6N01SS-T5,Black anodize,S1,p.529-530 type table,labelled,\"one row per (type, profile): the Python generator's lookup, expanded\"\nHFSB5,4040,A6N01SS-T5,Black anodize,S1,p.529-530 type table,labelled,\"one row per (type, profile): the Python generator's lookup, expanded\"\nCAF5,2020,A6N01SS-T5,Clear coating (anodize + clear paint),S1,p.529-530 type table,labelled,\"one row per (type, profile): the Python generator's lookup, expanded\"\nCAF5,2040,A6N01SS-T5,Clear coating (anodize + clear paint),S1,p.529-530 type table,labelled,\"one row per (type, profile): the Python generator's lookup, expanded\"\nCAF5,4040,A6N01SS-T5,Clear coating (anodize + clear paint),S1,p.529-530 type table,labelled,\"one row per (type, profile): the Python generator's lookup, expanded\"\nHFSY5,2020,A6N01SS-T5,Baked paint (yellow),S1,p.529-530 type table,labelled,\"one row per (type, profile): the Python generator's lookup, expanded\"\nHFS6,3030,A6N01SS-T5,Clear anodize,S10,p.571 type table,labelled,\"one row per (type, profile): the Python generator's lookup, expanded\"\nHFSB6,3030,A6N01SS-T5,Black anodize,S10,p.571 type table,labelled,\"one row per (type, profile): the Python generator's lookup, expanded\"\nCAF6,3030,A6N01SS-T5,Clear coating (anodize + clear paint),S10,p.571 type table,labelled,\"one row per (type, profile): the Python generator's lookup, expanded\"\nHFSY6,3030,A6N01SS-T5,Baked paint (yellow),S10,p.571 type table,labelled,\"one row per (type, profile): the Python generator's lookup, expanded\"\n"
+  },
+  "params": {
+   "columns": {
+    "name": "text",
+    "value": "number",
+    "unit": "text",
+    "source": "text",
+    "page": "text",
+    "status": "text"
+   },
+   "key": [
+    "name"
+   ],
+   "csv": "name,value,unit,source,page,status\nfixed_length_1,1000,mm,S1;S10,p.529 / p.571,labelled\nfixed_length_2,4000,mm,S1;S10,p.529 / p.571,labelled\nl_min,50,mm,S1;S10,p.529 / p.571,labelled\nl_max,4000,mm,S1;S10,p.529 / p.571,labelled\nl_step,0.5,mm,S1;S10,p.529 / p.571,labelled\n"
+  }
+ },
+ "defaults": {
+  "type": "concat(tname, series)",
+  "k_l_min": "\"l_min\"",
+  "k_l_max": "\"l_max\"",
+  "k_l_step": "\"l_step\"",
+  "k_fixed_length_1": "\"fixed_length_1\"",
+  "k_fixed_length_2": "\"fixed_length_2\""
+ },
+ "x-early-rules": [
+  {
+   "when": "type == \"EFS6\" || type == \"EFSB6\" || type == \"EFSC6\" || type == \"EFSF6\" || type == \"EFSH6\" || type == \"EFST6\" || type == \"GFS6\" || type == \"HFSC5\" || type == \"HFSC6\" || type == \"HFSF5\"",
+   "refuse": "{type}: valid {series} series type, but not drawn here (drawn: CAF5, CAF6, HFS5, HFS6, HFSB5, HFSB6, HFSY5, HFSY6, NFS5, NFSB5)",
+   "kind": "not_modelled"
+  },
+  {
+   "when": "type == \"HFSF6\" || type == \"HFSFB5\" || type == \"HFSFB6\" || type == \"HFSH5\" || type == \"HFSH6\" || type == \"HFSL6\" || type == \"HFSLB6\" || type == \"HFSR5\" || type == \"HFST5\" || type == \"HFST6\"",
+   "refuse": "{type}: valid {series} series type, but not drawn here (drawn: CAF5, CAF6, HFS5, HFS6, HFSB5, HFSB6, HFSY5, HFSY6, NFS5, NFSB5)",
+   "kind": "not_modelled"
+  },
+  {
+   "when": "type == \"HFSTB5\" || type == \"HFSTB6\" || type == \"NEFS6\" || type == \"NEFSB6\" || type == \"NEFSF6\" || type == \"NEFST6\" || type == \"NFSF5\" || type == \"NFSL6\" || type == \"NFST5\"",
+   "refuse": "{type}: valid {series} series type, but not drawn here (drawn: CAF5, CAF6, HFS5, HFS6, HFSB5, HFSB6, HFSY5, HFSY6, NFS5, NFSB5)",
+   "kind": "not_modelled"
+  }
+ ],
+ "lookups": [
+  {
+   "table": "profiles",
+   "as": "pr",
+   "key": {
+    "profile": "profile"
+   },
+   "missing": "profile {profile} is not available here (drawn: 2020, 2040, 4040, 3030)"
+  },
+  {
+   "table": "types",
+   "as": "tp",
+   "key": {
+    "type": "type",
+    "profile": "profile"
+   },
+   "missing": "{type} is not listed for profile {profile} (unknown type, wrong series, or HFSY5 outside 2020)"
+  },
+  {
+   "table": "params",
+   "as": "lmin",
+   "key": {
+    "name": "k_l_min"
+   }
+  },
+  {
+   "table": "params",
+   "as": "lmax",
+   "key": {
+    "name": "k_l_max"
+   }
+  },
+  {
+   "table": "params",
+   "as": "lstep",
+   "key": {
+    "name": "k_l_step"
+   }
+  },
+  {
+   "table": "params",
+   "as": "fl1",
+   "key": {
+    "name": "k_fixed_length_1"
+   }
+  },
+  {
+   "table": "params",
+   "as": "fl2",
+   "key": {
+    "name": "k_fixed_length_2"
+   }
+  }
+ ],
+ "vars": [
+  {
+   "name": "code",
+   "expr": "code_in"
+  },
+  {
+   "name": "fixed",
+   "expr": "k == \"K\""
+  },
+  {
+   "name": "type_full",
+   "expr": "concat(k, type)"
+  },
+  {
+   "name": "tapL",
+   "expr": "in(\"LTP\", options) || in(\"TPW\", options)"
+  },
+  {
+   "name": "tapR",
+   "expr": "in(\"RTP\", options) || in(\"TPW\", options)"
+  },
+  {
+   "name": "rowsL",
+   "expr": "(in(\"LCH\", options) || in(\"LCV\", options)) ? 1 : ((in(\"LWH\", options) || in(\"LWV\", options)) ? 2 : ((in(\"LEH\", options) || in(\"LEV\", options)) ? 3 : 0))"
+  },
+  {
+   "name": "cntL",
+   "expr": "if(in(\"LCH\", options), 1, 0) + if(in(\"LCV\", options), 1, 0) + if(in(\"LWH\", options), 1, 0) + if(in(\"LWV\", options), 1, 0) + if(in(\"LEH\", options), 1, 0) + if(in(\"LEV\", options), 1, 0)"
+  },
+  {
+   "name": "orientL",
+   "expr": "(in(\"LCH\", options) || in(\"LWH\", options) || in(\"LEH\", options)) ? \"H\" : \"V\""
+  },
+  {
+   "name": "h0L",
+   "expr": "pr.wrench_h - (in(\"FL\", options) ? 3 : 0)"
+  },
+  {
+   "name": "lastL",
+   "expr": "h0L + (rowsL >= 2 ? pr.wrench_j : 0) + (rowsL >= 3 ? pr.wrench_k : 0)"
+  },
+  {
+   "name": "rowsR",
+   "expr": "(in(\"RCH\", options) || in(\"RCV\", options)) ? 1 : ((in(\"RWH\", options) || in(\"RWV\", options)) ? 2 : ((in(\"REH\", options) || in(\"REV\", options)) ? 3 : 0))"
+  },
+  {
+   "name": "cntR",
+   "expr": "if(in(\"RCH\", options), 1, 0) + if(in(\"RCV\", options), 1, 0) + if(in(\"RWH\", options), 1, 0) + if(in(\"RWV\", options), 1, 0) + if(in(\"REH\", options), 1, 0) + if(in(\"REV\", options), 1, 0)"
+  },
+  {
+   "name": "orientR",
+   "expr": "(in(\"RCH\", options) || in(\"RWH\", options) || in(\"REH\", options)) ? \"H\" : \"V\""
+  },
+  {
+   "name": "h0R",
+   "expr": "pr.wrench_h - (in(\"FR\", options) ? 3 : 0)"
+  },
+  {
+   "name": "lastR",
+   "expr": "h0R + (rowsR >= 2 ? pr.wrench_j : 0) + (rowsR >= 3 ? pr.wrench_k : 0)"
+  },
+  {
+   "name": "hasW",
+   "expr": "rowsL > 0 || rowsR > 0"
+  },
+  {
+   "name": "xany",
+   "expr": "in(\"X5\", options) || in(\"X8\", options)"
+  },
+  {
+   "name": "wd",
+   "expr": "pr.wrench_d > 0 ? pr.wrench_d : (in(\"X5\", options) ? 5 : (in(\"X8\", options) ? 8 : 0))"
+  },
+  {
+   "name": "tap_txt",
+   "expr": "(tapL || tapR) ? concat(\", end tapped \", pr.tap_thread, \" depth \", pr.tap_depth, \" (\", (tapL && tapR) ? \"both ends\" : (tapL ? \"left end\" : \"right end\"), \")\") : \"\""
+  },
+  {
+   "name": "wtxtL",
+   "expr": "rowsL > 0 ? concat(\", left wrench access holes x\", rowsL, \" \", orientL == \"H\" ? \"horizontal\" : \"vertical\", \" d\", wd) : \"\""
+  },
+  {
+   "name": "wtxtR",
+   "expr": "rowsR > 0 ? concat(\", right wrench access holes x\", rowsR, \" \", orientR == \"H\" ? \"horizontal\" : \"vertical\", \" d\", wd) : \"\""
+  },
+  {
+   "name": "desc",
+   "expr": "concat(\"MISUMI aluminium extrusion \", type_full, \"-\", profile, \" \", lower(tp.surface), \", \", tp.material, \", L=\", length, \" mm\", tap_txt, wtxtL, wtxtR, \". Generated from the published catalogue dimensions.\")"
+  },
+  {
+   "name": "mat",
+   "expr": "concat(tp.material, \", \", tp.surface)"
+  }
+ ],
+ "rules": [
+  {
+   "when": "fixed && len(options) > 0",
+   "refuse": "alterations apply to configurable-length extrusions only (fixed-length K types have none)"
+  },
+  {
+   "when": "fixed && length != fl1.value && length != fl2.value",
+   "refuse": "fixed-length (K) extrusions come only in {fl1.value}, {fl2.value} mm, not {length}"
+  },
+  {
+   "when": "!fixed && (length < lmin.value || length > lmax.value)",
+   "refuse": "length {length} mm outside {lmin.value}-{lmax.value} mm"
+  },
+  {
+   "when": "!fixed && abs(length / lstep.value - round(length / lstep.value)) > 0.000000001",
+   "refuse": "length {length} mm is not a multiple of {lstep.value} mm"
+  },
+  {
+   "when": "(in(\"LTP\", options) || in(\"RTP\", options)) && in(\"TPW\", options)",
+   "refuse": "end tapping given twice for the same end"
+  },
+  {
+   "when": "in(\"LHP\", options) || in(\"RHP\", options) || in(\"HPW\", options)",
+   "refuse": "heli-coil end tapping (LHP / RHP / HPW): parsed, not modelled",
+   "kind": "not_modelled"
+  },
+  {
+   "when": "in(\"LCP\", options) || in(\"LWP\", options) || in(\"LEP\", options) || in(\"RCP\", options) || in(\"RWP\", options) || in(\"REP\", options)",
+   "refuse": "crisscross (P) wrench-hole layout is ambiguous in the catalogue text; use H or V",
+   "kind": "not_modelled"
+  },
+  {
+   "when": "cntL > 1",
+   "refuse": "two wrench-hole options for the left end"
+  },
+  {
+   "when": "cntR > 1",
+   "refuse": "two wrench-hole options for the right end"
+  },
+  {
+   "when": "in(\"X5\", options) && in(\"X8\", options)",
+   "refuse": "X5 and X8 are both given (the package refuses; the Python generator takes the last)"
+  },
+  {
+   "when": "hasW && pr.wrench_d > 0 && xany",
+   "refuse": "X5/X8 (wrench hole diameter) applies to the 6 series; the 5 series hole is d{pr.wrench_d}"
+  },
+  {
+   "when": "hasW && pr.wrench_d == 0 && !xany",
+   "refuse": "the 6 series wrench hole diameter is selectable: add -X5 or -X8 (S3 p.759 footnote)"
+  },
+  {
+   "when": "!hasW && xany",
+   "refuse": "X5/X8 sets the wrench hole diameter; there is no wrench hole alteration in this code"
+  },
+  {
+   "when": "in(\"FL\", options) && rowsL == 0",
+   "refuse": "FL shifts a wrench hole on the left end, but there is none"
+  },
+  {
+   "when": "in(\"FR\", options) && rowsR == 0",
+   "refuse": "FR shifts a wrench hole on the right end, but there is none"
+  },
+  {
+   "when": "in(\"SC\", options) && length > 1500",
+   "refuse": "SC (high precision cut) applies to L <= 1500 mm only"
+  },
+  {
+   "when": "in(\"CW\", options)",
+   "refuse": "CW: End face C chamfer (thread chamfer C0.2-0.3): not modelled",
+   "kind": "not_modelled"
+  },
+  {
+   "when": "(tapL || tapR) && 2 * pr.tap_depth > length",
+   "refuse": "tapped holes overlap"
+  },
+  {
+   "when": "rowsL > 0 && (h0L - wd / 2 < 0 || lastL + wd / 2 > length)",
+   "refuse": "wrench holes of the left end do not fit in a {length} mm length"
+  },
+  {
+   "when": "rowsR > 0 && (length - lastR - wd / 2 < 0 || h0R - wd / 2 < 0)",
+   "refuse": "wrench holes of the right end do not fit in a {length} mm length"
+  }
+ ],
+ "steps": [
+  {
+   "command": "sketch.create",
+   "params": {
+    "plane": "YZ",
+    "name": "Profile"
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "points": "${pr.outline}",
+    "closed": true
+   }
+  },
+  {
+   "command": "sketch.fillet",
+   "params": {
+    "points": "${pr.corner_refs}",
+    "radius": "${pr.corner_r}"
+   }
+  },
+  {
+   "command": "sketch.fillet",
+   "params": {
+    "points": "${pr.mouth_refs}",
+    "radius": "${pr.tip_r}"
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "points": "${pr.void_poly}",
+    "closed": true
+   },
+   "when": "len(pr.void_poly) > 0"
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "points": "${pr.v0_line}"
+   },
+   "when": "len(pr.v0_line) > 0"
+  },
+  {
+   "command": "sketch.arc.three_point",
+   "params": {
+    "start": "${at(pr.v0_arc, 0)}",
+    "through": "${at(pr.v0_arc, 1)}",
+    "end": "${at(pr.v0_arc, 2)}"
+   },
+   "when": "len(pr.v0_arc) > 0"
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "points": "${pr.v1_line}"
+   },
+   "when": "len(pr.v1_line) > 0"
+  },
+  {
+   "command": "sketch.arc.three_point",
+   "params": {
+    "start": "${at(pr.v1_arc, 0)}",
+    "through": "${at(pr.v1_arc, 1)}",
+    "end": "${at(pr.v1_arc, 2)}"
+   },
+   "when": "len(pr.v1_arc) > 0"
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "points": "${pr.v2_line}"
+   },
+   "when": "len(pr.v2_line) > 0"
+  },
+  {
+   "command": "sketch.arc.three_point",
+   "params": {
+    "start": "${at(pr.v2_arc, 0)}",
+    "through": "${at(pr.v2_arc, 1)}",
+    "end": "${at(pr.v2_arc, 2)}"
+   },
+   "when": "len(pr.v2_arc) > 0"
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "points": "${pr.v3_line}"
+   },
+   "when": "len(pr.v3_line) > 0"
+  },
+  {
+   "command": "sketch.arc.three_point",
+   "params": {
+    "start": "${at(pr.v3_arc, 0)}",
+    "through": "${at(pr.v3_arc, 1)}",
+    "end": "${at(pr.v3_arc, 2)}"
+   },
+   "when": "len(pr.v3_arc) > 0"
+  },
+  {
+   "command": "sketch.circle.center",
+   "params": {
+    "center": "${at(pr.b0_c, 0)}",
+    "diameter": "${pr.b0_d}"
+   },
+   "when": "len(pr.b0_c) > 0"
+  },
+  {
+   "command": "sketch.circle.center",
+   "params": {
+    "center": "${at(pr.b1_c, 0)}",
+    "diameter": "${pr.b1_d}"
+   },
+   "when": "len(pr.b1_c) > 0"
+  },
+  {
+   "command": "sketch.circle.center",
+   "params": {
+    "center": "${at(pr.b2_c, 0)}",
+    "diameter": "${pr.b2_d}"
+   },
+   "when": "len(pr.b2_c) > 0"
+  },
+  {
+   "command": "sketch.circle.center",
+   "params": {
+    "center": "${at(pr.b3_c, 0)}",
+    "diameter": "${pr.b3_d}"
+   },
+   "when": "len(pr.b3_c) > 0"
+  },
+  {
+   "command": "sketch.circle.center",
+   "params": {
+    "center": "${at(pr.b4_c, 0)}",
+    "diameter": "${pr.b4_d}"
+   },
+   "when": "len(pr.b4_c) > 0"
+  },
+  {
+   "command": "sketch.finish",
+   "params": {}
+  },
+  {
+   "command": "solid.extrude",
+   "params": {
+    "distance": "${length}",
+    "name": "Extrusion",
+    "body_name": "${code}"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "${wd}",
+    "height": "${orientL == \"H\" ? pr.w + 2 : pr.h + 2}",
+    "base": [
+     "${(i == 0 ? h0L : (i == 1 ? h0L + pr.wrench_j : h0L + pr.wrench_j + pr.wrench_k))}",
+     "${orientL == \"H\" ? -pr.w / 2 - 1 : 0}",
+     "${orientL == \"H\" ? 0 : -pr.h / 2 - 1}"
+    ],
+    "axis": "${orientL == \"H\" ? \"Y\" : \"Z\"}",
+    "operation": "cut",
+    "targets": [
+     "${code}"
+    ],
+    "name": "Wrench hole L${i + 1}"
+   },
+   "when": "rowsL > 0",
+   "repeat": {
+    "var": "i",
+    "count": "rowsL",
+    "max": 3
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "${wd}",
+    "height": "${orientR == \"H\" ? pr.w + 2 : pr.h + 2}",
+    "base": [
+     "${(length - (i == 0 ? h0R : (i == 1 ? h0R + pr.wrench_j : h0R + pr.wrench_j + pr.wrench_k)))}",
+     "${orientR == \"H\" ? -pr.w / 2 - 1 : 0}",
+     "${orientR == \"H\" ? 0 : -pr.h / 2 - 1}"
+    ],
+    "axis": "${orientR == \"H\" ? \"Y\" : \"Z\"}",
+    "operation": "cut",
+    "targets": [
+     "${code}"
+    ],
+    "name": "Wrench hole R${i + 1}"
+   },
+   "when": "rowsR > 0",
+   "repeat": {
+    "var": "i",
+    "count": "rowsR",
+    "max": 3
+   }
+  },
+  {
+   "command": "solid.thread",
+   "params": {
+    "face": [
+     0.5,
+     "${at(at(pr.t0_c, 0), 0)}",
+     "${at(at(pr.t0_c, 0), 1)}"
+    ],
+    "designation": "${pr.tap_thread}",
+    "extent": "length",
+    "length": "${pr.tap_depth}",
+    "from": [
+     0.0,
+     "${at(at(pr.t0_c, 0), 0)}",
+     "${at(at(pr.t0_c, 0), 1)}"
+    ],
+    "name": "Tap L${pr.t0_n}"
+   },
+   "when": "tapL && len(pr.t0_c) > 0"
+  },
+  {
+   "command": "solid.thread",
+   "params": {
+    "face": [
+     0.5,
+     "${at(at(pr.t1_c, 0), 0)}",
+     "${at(at(pr.t1_c, 0), 1)}"
+    ],
+    "designation": "${pr.tap_thread}",
+    "extent": "length",
+    "length": "${pr.tap_depth}",
+    "from": [
+     0.0,
+     "${at(at(pr.t1_c, 0), 0)}",
+     "${at(at(pr.t1_c, 0), 1)}"
+    ],
+    "name": "Tap L${pr.t1_n}"
+   },
+   "when": "tapL && len(pr.t1_c) > 0"
+  },
+  {
+   "command": "solid.thread",
+   "params": {
+    "face": [
+     0.5,
+     "${at(at(pr.t2_c, 0), 0)}",
+     "${at(at(pr.t2_c, 0), 1)}"
+    ],
+    "designation": "${pr.tap_thread}",
+    "extent": "length",
+    "length": "${pr.tap_depth}",
+    "from": [
+     0.0,
+     "${at(at(pr.t2_c, 0), 0)}",
+     "${at(at(pr.t2_c, 0), 1)}"
+    ],
+    "name": "Tap L${pr.t2_n}"
+   },
+   "when": "tapL && len(pr.t2_c) > 0"
+  },
+  {
+   "command": "solid.thread",
+   "params": {
+    "face": [
+     0.5,
+     "${at(at(pr.t3_c, 0), 0)}",
+     "${at(at(pr.t3_c, 0), 1)}"
+    ],
+    "designation": "${pr.tap_thread}",
+    "extent": "length",
+    "length": "${pr.tap_depth}",
+    "from": [
+     0.0,
+     "${at(at(pr.t3_c, 0), 0)}",
+     "${at(at(pr.t3_c, 0), 1)}"
+    ],
+    "name": "Tap L${pr.t3_n}"
+   },
+   "when": "tapL && len(pr.t3_c) > 0"
+  },
+  {
+   "command": "solid.thread",
+   "params": {
+    "face": [
+     "${length - 0.5}",
+     "${at(at(pr.t0_c, 0), 0)}",
+     "${at(at(pr.t0_c, 0), 1)}"
+    ],
+    "designation": "${pr.tap_thread}",
+    "extent": "length",
+    "length": "${pr.tap_depth}",
+    "from": [
+     "${length}",
+     "${at(at(pr.t0_c, 0), 0)}",
+     "${at(at(pr.t0_c, 0), 1)}"
+    ],
+    "name": "Tap R${pr.t0_n}"
+   },
+   "when": "tapR && len(pr.t0_c) > 0"
+  },
+  {
+   "command": "solid.thread",
+   "params": {
+    "face": [
+     "${length - 0.5}",
+     "${at(at(pr.t1_c, 0), 0)}",
+     "${at(at(pr.t1_c, 0), 1)}"
+    ],
+    "designation": "${pr.tap_thread}",
+    "extent": "length",
+    "length": "${pr.tap_depth}",
+    "from": [
+     "${length}",
+     "${at(at(pr.t1_c, 0), 0)}",
+     "${at(at(pr.t1_c, 0), 1)}"
+    ],
+    "name": "Tap R${pr.t1_n}"
+   },
+   "when": "tapR && len(pr.t1_c) > 0"
+  },
+  {
+   "command": "solid.thread",
+   "params": {
+    "face": [
+     "${length - 0.5}",
+     "${at(at(pr.t2_c, 0), 0)}",
+     "${at(at(pr.t2_c, 0), 1)}"
+    ],
+    "designation": "${pr.tap_thread}",
+    "extent": "length",
+    "length": "${pr.tap_depth}",
+    "from": [
+     "${length}",
+     "${at(at(pr.t2_c, 0), 0)}",
+     "${at(at(pr.t2_c, 0), 1)}"
+    ],
+    "name": "Tap R${pr.t2_n}"
+   },
+   "when": "tapR && len(pr.t2_c) > 0"
+  },
+  {
+   "command": "solid.thread",
+   "params": {
+    "face": [
+     "${length - 0.5}",
+     "${at(at(pr.t3_c, 0), 0)}",
+     "${at(at(pr.t3_c, 0), 1)}"
+    ],
+    "designation": "${pr.tap_thread}",
+    "extent": "length",
+    "length": "${pr.tap_depth}",
+    "from": [
+     "${length}",
+     "${at(at(pr.t3_c, 0), 0)}",
+     "${at(at(pr.t3_c, 0), 1)}"
+    ],
+    "name": "Tap R${pr.t3_n}"
+   },
+   "when": "tapR && len(pr.t3_c) > 0"
+  },
+  {
+   "command": "browser.visibility",
+   "params": {
+    "items": [
+     "Profile"
+    ],
+    "visible": false
+   }
+  },
+  {
+   "command": "component.metadata.set",
+   "params": {
+    "component": "${code}",
+    "part_number": "${code}",
+    "description": "${desc}",
+    "material": "${mat}"
+   }
+  },
+  {
+   "command": "document.metadata.set",
+   "params": {
+    "values": {
+     "part_number": "${code}",
+     "description": "${desc}"
+    }
+   }
+  }
+ ],
+ "insert": {
+  "component": "${code}"
+ },
+ "checks": [
+  {
+   "code": "HFS5-2020-1000-LTP-RTP",
+   "dimensions": {
+    "length": 1000.0,
+    "wd": 7.35,
+    "rowsL": 0.0,
+    "rowsR": 0.0
+   },
+   "volume_mm3": 182832.255729,
+   "bbox_mm": [
+    1000.0,
+    20.0,
+    20.0
+   ],
+   "faces": 59
+  },
+  {
+   "code": "HFS5-2020-120-LTP-RTP-LCH",
+   "dimensions": {
+    "length": 120.0,
+    "wd": 7.35,
+    "rowsL": 1.0,
+    "rowsR": 0.0
+   },
+   "volume_mm3": 21679.93596,
+   "bbox_mm": [
+    120.0,
+    20.0,
+    20.0
+   ],
+   "faces": 75
+  },
+  {
+   "code": "HFS5-2020-300-TPW-RWV",
+   "dimensions": {
+    "length": 300.0,
+    "wd": 7.35,
+    "rowsL": 0.0,
+    "rowsR": 2.0
+   },
+   "volume_mm3": 54329.807263,
+   "bbox_mm": [
+    300.0,
+    20.0,
+    20.0
+   ],
+   "faces": 91
+  },
+  {
+   "code": "HFS5-2020-497.5-TPW-LEV-REH",
+   "dimensions": {
+    "length": 497.5,
+    "wd": 7.35,
+    "rowsL": 3.0,
+    "rowsR": 3.0
+   },
+   "volume_mm3": 89399.438859,
+   "bbox_mm": [
+    497.5,
+    20.0,
+    20.0
+   ],
+   "faces": 155
+  },
+  {
+   "code": "HFS5-2040-1000-TPW-RWV",
+   "dimensions": {
+    "length": 1000.0,
+    "wd": 7.35,
+    "rowsL": 0.0,
+    "rowsR": 2.0
+   },
+   "volume_mm3": 322742.363005,
+   "bbox_mm": [
+    1000.0,
+    20.0,
+    40.0
+   ],
+   "faces": 136
+  },
+  {
+   "code": "HFS5-2040-300-LTP-RTP-LCH",
+   "dimensions": {
+    "length": 300.0,
+    "wd": 7.35,
+    "rowsL": 1.0,
+    "rowsR": 0.0
+   },
+   "volume_mm3": 96906.349813,
+   "bbox_mm": [
+    300.0,
+    20.0,
+    40.0
+   ],
+   "faces": 104
+  },
+  {
+   "code": "HFS5-4040-300-TPW",
+   "dimensions": {
+    "length": 300.0,
+    "wd": 7.35,
+    "rowsL": 0.0,
+    "rowsR": 0.0
+   },
+   "volume_mm3": 141729.481553,
+   "bbox_mm": [
+    300.0,
+    40.0,
+    40.0
+   ],
+   "faces": 146
+  },
+  {
+   "code": "HFS5-4040-497.5-LTP-RCV",
+   "dimensions": {
+    "length": 497.5,
+    "wd": 7.35,
+    "rowsL": 0.0,
+    "rowsR": 1.0
+   },
+   "volume_mm3": 234814.467029,
+   "bbox_mm": [
+    497.5,
+    40.0,
+    40.0
+   ],
+   "faces": 154
+  },
+  {
+   "code": "HFS6-3030-500-LCH-X5-TPW",
+   "dimensions": {
+    "length": 500.0,
+    "wd": 5.0,
+    "rowsL": 1.0,
+    "rowsR": 0.0
+   },
+   "volume_mm3": 166459.00316,
+   "bbox_mm": [
+    500.0,
+    30.0,
+    30.0
+   ],
+   "faces": 65
+  },
+  {
+   "code": "HFSB6-3030-120-LTP-RTP-RWV-X8",
+   "dimensions": {
+    "length": 120.0,
+    "wd": 8.0,
+    "rowsL": 0.0,
+    "rowsR": 2.0
+   },
+   "volume_mm3": 39292.84774,
+   "bbox_mm": [
+    120.0,
+    30.0,
+    30.0
+   ],
+   "faces": 67
+  },
+  {
+   "code": "KHFS5-2020-1000",
+   "dimensions": {
+    "length": 1000.0,
+    "wd": 7.35,
+    "rowsL": 0.0,
+    "rowsR": 0.0
+   },
+   "volume_mm3": 182832.255729,
+   "bbox_mm": [
+    1000.0,
+    20.0,
+    20.0
+   ],
+   "faces": 59
+  },
+  {
+   "code": "KHFS5-2040-1000",
+   "dimensions": {
+    "length": 1000.0,
+    "wd": 7.35,
+    "rowsL": 0.0,
+    "rowsR": 0.0
+   },
+   "volume_mm3": 323750.375465,
+   "bbox_mm": [
+    1000.0,
+    20.0,
+    40.0
+   ],
+   "faces": 96
+  },
+  {
+   "code": "KHFS6-3030-1000",
+   "dimensions": {
+    "length": 1000.0,
+    "wd": 0.0,
+    "rowsL": 0.0,
+    "rowsR": 0.0
+   },
+   "volume_mm3": 333141.751807,
+   "bbox_mm": [
+    1000.0,
+    30.0,
+    30.0
+   ],
+   "faces": 63
+  },
+  {
+   "code": "NFSB5-2020-250",
+   "dimensions": {
+    "length": 250.0,
+    "wd": 7.35,
+    "rowsL": 0.0,
+    "rowsR": 0.0
+   },
+   "volume_mm3": 45708.063932,
+   "bbox_mm": [
+    250.0,
+    20.0,
+    20.0
+   ],
+   "faces": 59
+  },
+  {
+   "code": "NFSB5-4040-250",
+   "dimensions": {
+    "length": 250.0,
+    "wd": 7.35,
+    "rowsL": 0.0,
+    "rowsR": 0.0
+   },
+   "volume_mm3": 118107.901294,
+   "bbox_mm": [
+    250.0,
+    40.0,
+    40.0
+   ],
+   "faces": 146
+  },
+  {
+   "code": "NFS5-2040-300",
+   "dimensions": {
+    "length": 300.0,
+    "wd": 7.35,
+    "rowsL": 0.0,
+    "rowsR": 0.0
+   },
+   "volume_mm3": 97125.11264,
+   "bbox_mm": [
+    300.0,
+    20.0,
+    40.0
+   ],
+   "faces": 96
+  },
+  {
+   "code": "HFS5-2020-49-LTP",
+   "invalid": true,
+   "message_contains": "length 49 mm outside 50-4000 mm"
+  },
+  {
+   "code": "KHFS5-2020-800",
+   "invalid": true,
+   "message_contains": "fixed-length (K) extrusions come only in 1000, 4000 mm, not 800"
+  },
+  {
+   "code": "HFS5-2020-100-LTP-LTP",
+   "invalid": true,
+   "message_contains": "HFS5-2020-100-LTP-LTP: expected [K]<type>5|6-<profile>-<length>[-<alteration>...], e.g. HFS5-2040-800-LTP-RTP"
+  },
+  {
+   "code": "HFS5-2020-100-ZZZ",
+   "invalid": true,
+   "message_contains": "HFS5-2020-100-ZZZ: expected [K]<type>5|6-<profile>-<length>[-<alteration>...], e.g. HFS5-2040-800-LTP-RTP"
+  },
+  {
+   "code": "HFS5-2020-100.3",
+   "invalid": true,
+   "message_contains": "length 100.3 mm is not a multiple of 0.5 mm"
+  },
+  {
+   "code": "HFS6-3030-100-LTP-RWV-X7",
+   "invalid": true,
+   "message_contains": "HFS6-3030-100-LTP-RWV-X7: expected [K]<type>5|6-<profile>-<length>[-<alteration>...], e.g. HFS5-2040-800-LTP-RTP"
+  }
+ ],
+ "x-generator": {
+  "id": "misumi.hfs.extrusion",
+  "version": "0.1.0",
+  "sources_hash": "sha256:734c8793b44e13f4324567be9aeeb515489c5e0edd0014a0ce8007e110333714",
+  "level": "Reviewed",
+  "checked_on": "0.50.0",
+  "review": {
+   "reviewer_kind": "ai",
+   "reviewer": "AI review lane (Claude Sonnet), independent of the authoring lane",
+   "author": "AI authoring lanes (Claude)",
+   "date": "2026-11-27",
+   "sources_hash": "sha256:734c8793b44e13f4324567be9aeeb515489c5e0edd0014a0ce8007e110333714"
+  }
+ }
+}

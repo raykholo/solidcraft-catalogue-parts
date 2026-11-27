@@ -1,0 +1,59 @@
+#!/usr/bin/env python3
+"""tools/export-package [GENERATOR_DIR ...] [--out packages] [--check]: write the SolidCraft generator package
+(`<id>.generator.json`, format solidcraft-generator/1, docs/generator-package.md) of each generator that has an export description
+(runtime/package_export/<id>.py; default: all that have one). The tables are copied from data/*.csv with derived columns, provenance
+comes from sources.toml and review.toml, the checks are the codes of codes.txt.
+
+--check writes nothing: it exports in memory, validates every package against schema/generator-package.schema.json and the package
+rules (runtime/package.py validate), and fails when a committed packages/*.generator.json differs from the export or has no generator."""
+import argparse, importlib.util, json, sys
+from pathlib import Path
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+from runtime import registry
+from runtime.package import Package, PackageError
+from runtime.package_export import export, package_id
+
+ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+ap.add_argument("dirs", nargs="*", help="generator folders (default: every generator with an export description)")
+ap.add_argument("--out", default=str(ROOT / "packages"))
+ap.add_argument("--check", action="store_true")
+a = ap.parse_args()
+
+def has_description(g):
+    return importlib.util.find_spec("runtime.package_export." + g.id.replace(".", "_").replace("-", "_")) is not None
+
+gens = registry.generators()
+if a.dirs:
+    want = {Path(d).resolve() for d in a.dirs}
+    gens = [g for g in gens if g.dir.resolve() in want]
+    if not gens:
+        raise SystemExit("no generator folder matches " + ", ".join(a.dirs))
+else:
+    gens = [g for g in gens if has_description(g)]
+schema = json.loads((ROOT / "schema" / "generator-package.schema.json").read_text())
+out = Path(a.out)
+bad = 0
+ids = set()
+for g in gens:
+    pkg = export(g)
+    text = json.dumps(pkg, indent=1, ensure_ascii=False) + "\n"
+    f = out / f"{pkg['id']}.generator.json"
+    ids.add(f.name)
+    errs = Package(pkg).validate(schema)
+    for e in errs:
+        print(f"INVALID  {g.id}: {e}"); bad += 1
+    if a.check:
+        if not f.exists() or f.read_text() != text:
+            print(f"STALE  {f.relative_to(ROOT) if f.is_relative_to(ROOT) else f}: differs from tools/export-package output"); bad += 1
+        else:
+            print(f"ok  {f.name}")
+    else:
+        out.mkdir(parents=True, exist_ok=True)
+        f.write_text(text)
+        print(f"wrote {f}  ({len(text) // 1024} KiB, {len(pkg['tables'])} tables, {len(pkg['steps'])} steps, {len(pkg['checks'])} checks)")
+if a.check and not a.dirs:
+    for f in sorted(out.glob("*.generator.json")):
+        if f.name not in ids:
+            print(f"ORPHAN  {f.name}: no generator exports it"); bad += 1
+sys.exit(1 if bad else 0)

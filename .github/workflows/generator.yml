@@ -3,10 +3,10 @@ name: generator
 # On a push to main, or by hand: every generator.
 on:
   pull_request:
-    paths: ["vendors/**", "runtime/**", "schema/**", "tools/**"]
+    paths: ["vendors/**", "runtime/**", "schema/**", "tools/**", "packages/**", "docs/generator-package.md"]
   push:
     branches: [main]
-    paths: ["vendors/**", "runtime/**", "schema/**", "tools/**", ".github/workflows/generator.yml"]
+    paths: ["vendors/**", "runtime/**", "schema/**", "tools/**", "packages/**", "docs/generator-package.md", ".github/workflows/generator.yml"]
   workflow_dispatch:
 env:
   SC_VER: "0.50.0"
@@ -40,3 +40,17 @@ jobs:
       - run: tools/provenance --check
       - run: tools/lint
       - run: tools/build-index --check
+      # Generator packages (docs/generator-package.md): the committed packages must be what tools/export-package writes, and each must give the
+      # Python generator's commands for every code (no SolidCraft needed); changed generators that have a package are also built both ways.
+      - run: tools/export-package --check
+      - run: tools/package-equiv
+      - name: Package build equivalence (changed generators that have a package)
+        run: |
+          dirs="${{ steps.changed.outputs.dirs }}"
+          [ -n "$dirs" ] || dirs=$(ls -d vendors/*/*/*/)
+          with_pkg=""
+          for d in $dirs; do
+            id=$(echo "$d" | cut -d/ -f2-4 | tr / -)
+            [ -f "packages/$id.generator.json" ] && with_pkg="$with_pkg $d"
+          done
+          if [ -n "$with_pkg" ]; then tools/package-equiv --build $with_pkg; else echo "no changed generator has a package"; fi
