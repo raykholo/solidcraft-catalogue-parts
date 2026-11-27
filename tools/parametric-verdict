@@ -1,0 +1,71 @@
+#!/usr/bin/env python3
+"""tools/parametric-verdict FAITHFULNESS.json [...]: judge a generator's parametric form against its Python generator.
+
+Each generator that has a parametric form (vendors/<v>/<s>/<g>/parametric/) provides parametric/ci.sh OUTDIR, which builds the
+parametric design, runs every codes.txt code both ways and writes OUTDIR/faithfulness.json:
+  {"generator": id,
+   "valid":   [{"code", "python": M, "parametric": M, "spec_python": "n/m", "spec_parametric": "n/m", "note"?}],
+   "rejects": [{"code", "python": message, "parametric": message or null (= accepted)}],
+   "rebuild": [{"label", "direct": M, "changed": M}],     # a free parameter changed on a built part vs that code built directly
+   "blocked": [{"what", "needs"}]}                         # what SolidCraft 0.50.0 cannot do yet (from tangency-labs/solidcraft#23175)
+  M = {"volume": mm3, "area": mm2, "bbox": [numbers], "faces": n, "bodies": n}
+Equal means volume and area within 1e-6 relative, every bbox number within 1e-6 (relative, at least 1e-6 absolute), the same face and
+body counts; spec checks pass the same number of rows; rejects carry the same message. The equality is decided HERE, not by the
+harness. Prints one table per generator and a summary row; exit 1 when anything differs or a file has no valid codes."""
+import json, sys
+
+def close(a, b, tol=1e-6):
+    return abs(a - b) <= tol * max(1.0, abs(a), abs(b))
+
+def same(p, q):
+    if not p or not q or "error" in p or "error" in q:
+        return False, "missing or error"
+    why = [k for k in ("volume", "area") if not close(p[k], q[k])]
+    why += [k for k in ("faces", "bodies") if p[k] != q[k]]
+    if len(p["bbox"]) != len(q["bbox"]) or not all(close(x, y) for x, y in zip(p["bbox"], q["bbox"])):
+        why.append("bbox")
+    return not why, ", ".join(why)
+
+def fm(m):
+    if not m or "error" in m: return "ERROR"
+    return f"{m['volume']:.2f} / {m['area']:.2f} / {m['faces']}f {m['bodies']}b"
+
+def passed(s):
+    try: n, m = str(s).split()[0].split("/"); return int(n), int(m)
+    except Exception: return None
+
+bad_total = 0
+summary = []
+for path in sys.argv[1:]:
+    r = json.load(open(path))
+    gid = r.get("generator", path)
+    print(f"\n## {gid}\n\n| code | python | parametric | spec (py / param) | verdict |\n|---|---|---|---|---|")
+    bad = 0
+    for v in r.get("valid", []):
+        ok, why = same(v.get("python"), v.get("parametric"))
+        sp, sq = passed(v.get("spec_python")), passed(v.get("spec_parametric"))
+        spec_ok = sp is not None and sp == sq
+        if not spec_ok: why = (why + ", " if why else "") + "spec check counts"
+        ok = ok and spec_ok
+        bad += not ok
+        print(f"| {v['code']} | {fm(v.get('python'))} | {fm(v.get('parametric'))} | {v.get('spec_python')} / {v.get('spec_parametric')} | {'identical' if ok else 'DIFFERS: ' + why} |")
+    for x in r.get("rejects", []):
+        ok = x.get("parametric") is not None and x["parametric"] == x["python"]
+        bad += not ok
+        print(f"| !{x['code'].lstrip('!')} | {x['python']} | {x.get('parametric') or 'ACCEPTED'} | - | {'same message' if ok else 'DIFFERS'} |")
+    for x in r.get("rebuild", []):
+        ok, why = same(x.get("direct"), x.get("changed"))
+        bad += not ok
+        print(f"| rebuild: {x['label']} | {fm(x.get('direct'))} | {fm(x.get('changed'))} | - | {'identical' if ok else 'DIFFERS: ' + why} |")
+    for x in r.get("blocked", []):
+        print(f"| blocked: {x['what']} | - | - | - | needs: {x['needs']} |")
+    nvalid = len(r.get("valid", []))
+    if nvalid == 0:
+        bad += 1; print("| (no valid codes) | | | | DIFFERS |")
+    status = "identical" if bad == 0 else f"differs ({bad})"
+    if r.get("blocked") and bad == 0: status += f", {len(r['blocked'])} blocked item(s)"
+    summary.append((gid, nvalid, len(r.get("rejects", [])), len(r.get("rebuild", [])), status))
+    bad_total += bad
+print("\n| generator | valid | rejects | rebuilds | verdict |\n|---|---|---|---|---|")
+for s in summary: print("| " + " | ".join(map(str, s)) + " |")
+sys.exit(1 if bad_total else 0)

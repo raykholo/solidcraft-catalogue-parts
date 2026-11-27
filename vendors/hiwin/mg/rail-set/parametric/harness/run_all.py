@@ -142,7 +142,7 @@ for line in GEN.codes():
     n, bad = spec_check(s, ipath, tag)
     pn, pbad = spec_check(s, pypath, tag)
     rows.append(dict(code=line.code + (" caps" if caps else ""), configuration=r["configuration"], parameters=r["parameters"], roundtrip=(canon, rt["fields"] == r["fields"]),
-                     python=fmt(pm), param=fmt(am), same=same(pm, am), check=f"{n - len(bad)}/{n}" + (" FAIL: " + "; ".join(bad) if bad else ""), pycheck=f"{pn - len(pbad)}/{pn}" + (" FAIL: " + "; ".join(pbad) if pbad else ""), template_idx=r["template"]))
+                     python=fmt(pm), param=fmt(am), same=same(pm, am), python_m=pm, param_m=am, check=f"{n - len(bad)}/{n}" + (" FAIL: " + "; ".join(bad) if bad else ""), pycheck=f"{pn - len(pbad)}/{pn}" + (" FAIL: " + "; ".join(pbad) if pbad else ""), template_idx=r["template"]))
 json.dump(rows, open(OUT / "report.json", "w"), indent=1)
 
 # ---------------------------------------------------------------------------------------------- insertion (0.50.0)
@@ -199,6 +199,7 @@ p400 = instance(r400, False, "r400")[0]; m400 = measure(p400, "m-inst-r400")
 s4, py4 = python_part("MGN12H2R400Z0C", False, "r400"); pm400 = measure(py4, "m-py-r400")
 rb["parameters.change length 300 -> 400 on the instance == fresh MGN12H2R400 instance"] = same(rebuilt, m400) if rebuilt else short(err)
 rb["... == Python MGN12H2R400Z0C"] = same(rebuilt, pm400) if rebuilt else "-"
+json.dump({"rebuilt": rebuilt, "fresh": m400, "python": pm400}, open(OUT / "rebuild.json", "w"))
 rb["rebuilt " ] = fmt(rebuilt) if rebuilt else "-"; rb["fresh R400 instance"] = fmt(m400); rb["python R400"] = fmt(pm400)
 # linked in an assembly: edit the linked file in place, update links
 shutil.copy(ip, OUT / "linked.sc")

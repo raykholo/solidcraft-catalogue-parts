@@ -1,0 +1,67 @@
+name: parametric
+# The parametric form of each generator (vendors/<v>/<s>/<g>/parametric/: one .sc + configuration table + field template + Rhai)
+# against its Python generator, for every code in codes.txt: parametric/ci.sh OUTDIR writes faithfulness.json and
+# tools/parametric-verdict decides. One job per generator. Pull requests: the generators they touch (all when runtime/ or tools/
+# change); pushes to main and manual runs: all.
+on:
+  pull_request:
+    paths: ["vendors/**", "runtime/**", "tools/**", ".github/workflows/parametric.yml"]
+  push:
+    branches: [main]
+    paths: ["vendors/**", "runtime/**", "tools/**", ".github/workflows/parametric.yml"]
+  workflow_dispatch:
+env:
+  SC_VER: "0.50.0"
+concurrency:
+  group: parametric-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+jobs:
+  list:
+    runs-on: ubuntu-latest
+    outputs:
+      gens: ${{ steps.l.outputs.gens }}
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - id: l
+        run: |
+          all=$(ls vendors/*/*/*/parametric/ci.sh 2>/dev/null | xargs -r -n1 dirname | xargs -r -n1 dirname | sort -u)
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            base=$(git merge-base origin/${{ github.base_ref }} HEAD)
+            if git diff --name-only "$base" HEAD | grep -qE '^(runtime|tools)/|^\.github/workflows/parametric\.yml$'; then sel="$all"; else
+              sel=$(for g in $all; do git diff --name-only "$base" HEAD | grep -q "^$g/" && echo "$g"; done); fi
+          else sel="$all"; fi
+          echo "gens=$(printf '%s\n' $sel | python3 -c 'import json,sys; print(json.dumps([l.strip() for l in sys.stdin if l.strip()]))')" >> "$GITHUB_OUTPUT"
+  faithfulness:
+    needs: list
+    if: needs.list.outputs.gens != '[]'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        gen: ${{ fromJson(needs.list.outputs.gens) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - uses: actions/cache@v4
+        with:
+          path: ~/rhai-target
+          key: rhai-run-${{ hashFiles('runtime/rhai-run/**') }}
+      - name: SolidCraft CLI and the Rhai host
+        run: |
+          gh release download "v${SC_VER}" --repo tangency-labs/solidcraft --pattern "solidcraft-${SC_VER}-linux-x86_64.tar.gz" --dir "$RUNNER_TEMP/sc"
+          tar -xzf "$RUNNER_TEMP/sc/solidcraft-${SC_VER}-linux-x86_64.tar.gz" -C "$RUNNER_TEMP/sc"
+          echo "SC_CLI=$RUNNER_TEMP/sc/solidcraft-${SC_VER}-linux-x86_64/bin/solidcraft-cli" >> "$GITHUB_ENV"
+          (cd runtime/rhai-run && CARGO_TARGET_DIR=~/rhai-target cargo build --release --quiet)
+          echo "RHAI_RUN=$HOME/rhai-target/release/rhai-run" >> "$GITHUB_ENV"
+        env: { GH_TOKEN: "${{ github.token }}" }
+      - name: Every code both ways
+        run: bash ${{ matrix.gen }}/parametric/ci.sh "$RUNNER_TEMP/out"
+      - name: Verdict
+        run: tools/parametric-verdict "$RUNNER_TEMP/out/faithfulness.json" | tee -a "$GITHUB_STEP_SUMMARY"
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: faithfulness-${{ strategy.job-index }}
+          path: ${{ runner.temp }}/out/*.json
