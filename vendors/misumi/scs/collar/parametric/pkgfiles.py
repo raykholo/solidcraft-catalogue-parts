@@ -4,9 +4,10 @@ import csv, json
 from pathlib import Path
 from runtime.table import read_csv
 
-TEMPLATES = ["C-{type: SCSAW|SCNPAW|SCSMAW|SCSGAW}{nums: text 1..8 [0-9-]}",
-             "C-{kind: SCSBNAW}{nums: text 1..8 [0-9-]}",
-             "E-[{plat: P|S}]{fam: SCSPD|SCDJ|SCD}{nums: text 1..8 [0-9-]}",
+TEMPLATES = [r"C-{type: SCSAW|SCNPAW|SCSMAW|SCSGAW}{d: int 0..99}\-{b: int 0..99}",
+             r"C-{kind: SCSBNAW}{d: int 0..99}\-{ds: int 0..99}",
+             "E-[{plat: P|S}]{fam: SCSPD|SCD}{d: int 0..99}",
+             r"E-[{plat: P|S}]{fam: SCDJ}{d: int 0..99}[\-{b: int 0..99}]",
              "{raw: text 1..64 [A-Za-z0-9-]}"]
 
 def write_csv(path, header, rows):
@@ -42,7 +43,7 @@ def write_toml(pkg: Path, data: Path):
              'name = "MISUMI Economy Series shaft collars: aluminium slit and split, with fixing holes, bearing inner mount, and with urethane damper"',
              'license = "CC0-1.0"', 'model = "scs-collar.sc"', "",
              "# One configuration row per catalogue row; no free parameter (B follows from D in every table, and the plating E- / E-P / E-S only changes the text).",
-             "# The numbers are one text field per template (`12-10`) so that a code without its `-` is refused, as the Python regular expressions do.",
+             "# The `\\-` between the two sizes is a required separator (`C-SCSAW1210` is refused, as the Python regular expressions do).",
              "# The last template takes anything else so that generator.rhai can give the Python generator's message for a code of the wrong shape."]
     for p in TEMPLATES:
         lines += ["", "[[template]]", f"pattern = '{p}'"]

@@ -5,7 +5,7 @@ from pathlib import Path
 from runtime.table import read_csv
 from vendors.misumi.hbl.bracket.src import bracket as br
 
-TEMPLATE = "{base: text 1..24 [A-Za-z0-9]}[-{rest: text 1..40 [A-Za-z0-9-]}]"
+TEMPLATES = ["{base: text 1..24 [A-Za-z0-9]}[\\-{rest: text 1..40 [A-Za-z0-9-]}]", "{raw: text 1..64 [A-Za-z0-9-]}"]
 
 def write_csv(path, header, rows):
     with open(path, "w", newline="") as f:
@@ -30,7 +30,7 @@ def write_toml(pkg: Path, data: Path):
              'model = "hbl-bracket.sc"', "",
              "# The code is the type (one configuration row per type, -4 included) and at most one alteration. The alteration only adds accessory text,",
              "# so there is no free parameter. Both fields are plain text: generator.rhai answers every Python refusal with its own message.",
-             "[[template]]", f"pattern = '{TEMPLATE}'", ""]
+             "[[template]]", f"pattern = '{TEMPLATES[0]}'", "", "[[template]]", f"pattern = '{TEMPLATES[1]}'", ""]
     for r in read_csv(data / "types.csv"):
         lines += [f'[rows."{r["type"]}"]', f'source = {json.dumps("MISUMI FA catalogue 2014 " + r["source"] + " (sources.toml), " + r["page"])}', f'page = "{r["page"].split()[0]}"',
                   'status = "verified"', 'note = "plain flat arms: the inner-corner web, its ribs and the tab length are not drawn (README, not guaranteed)"', ""]

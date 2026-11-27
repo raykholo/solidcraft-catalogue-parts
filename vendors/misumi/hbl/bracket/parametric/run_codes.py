@@ -20,7 +20,7 @@ MODEL = PKG / "hbl-bracket.sc"
 RHAI = os.environ.get("RHAI_RUN", "rhai-run")
 CLI = scrun.CLI
 EXTRA_REFUSALS = ["HBLTS5-4-C-SET", "HBLTS5-4-5", "HBLFSNK5", "HBLTS8", "HBLTSB5-4", "HBKTST5-C", "HBKUSB5-C", "HBLTS5-SEC-SST", "HBLTV5-4-C",
-                  "HBLTS5-C-C", "HBLTS5-4-4", "HBLUS5-4", "HBLTH5-C-SET"]
+                  "HBLTS5-C-C", "HBLTS5-4-4", "HBLUS5-4", "HBLTH5-C-SET", "HBLTS5-", "HBLTS5--C", "HBLTS5-C-"]
 REBUILD = [("HBLTS5", "width", "19 mm", "HBLTV5"), ("HBLTS5", "hole_d", "4.5 mm", "HBLTS5-4")]
 
 def cli(cmds, src=None, save=None):

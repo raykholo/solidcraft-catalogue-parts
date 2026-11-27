@@ -79,10 +79,8 @@ fn result(configuration, typ, c, desc, t) {
     #{ configuration: configuration, parameters: #{ part_type: typ }, properties: props }
 }
 fn resolve_ring(fields, c) {
-    let parts = fields.nums.split("-");
-    if parts.len() != 2 || !is_digits(parts[0], 1, 2) || !is_digits(parts[1], 1, 2) { shape_error(c); }
     let typ = "C-" + fields.type;
-    let d = parse_int(parts[0]); let b = parse_int(parts[1]);
+    let d = fields.d; let b = fields.b;
     let r = check_ring(typ, d, b);
     let t = table("types", typ);
     result(`${typ}-${d}-${b}`, typ, c, describe_ring(typ, d, b, r, t), t)
@@ -97,10 +95,8 @@ fn describe_bearing(c, d, ds, r, t) {
     s + `Generated from the published catalogue dimensions; slit, clamp screw position and chamfers are ${a}.`
 }
 fn resolve_bearing(fields, c) {
-    let parts = fields.nums.split("-");
-    if parts.len() != 2 || !is_digits(parts[0], 1, 2) || !is_digits(parts[1], 1, 2) { shape_error(c); }
     let typ = "C-SCSBNAW";
-    let d = parse_int(parts[0]); let ds = parse_int(parts[1]);
+    let d = fields.d; let ds = fields.ds;
     let dl = bar(param("ds_bearing"));
     if !(d.to_string() in dl) {
         let dj = join(dl, ", ");
@@ -143,23 +139,17 @@ fn check_ure(typ, family, d, b) {   // -> the urethane row; refuses
     if family == "slit" && d == 4 && typ != "E-PSCD" { refuse("invalid", `${typ}4: for D = 4 only the electroless nickel plated E-PSCD4 is available (p.547 note)`); }
     r
 }
-fn ure_numbers(fam, nums, c) {      // -> [D, B or ()]; refuses with the Python message for a wrong shape
-    let parts = nums.split("-");
-    if fam != "SCDJ" {
-        if parts.len() != 1 || !is_digits(parts[0], 1, 2) { shape_error(c); }
-        return [parse_int(parts[0]), ()];
-    }
-    if parts.len() == 1 && is_digits(parts[0], 1, 2) {
+fn ure_numbers(fields, c) {         // -> [D, B or ()]; refuses with the Python message when the compact slit has no width
+    if fields.fam == "SCDJ" && fields.b == () {
         refuse("invalid", `'${c}': the compact slit type needs the width selection, <type><D>-<B>, e.g. E-SCDJ12-10 (p.547)`);
     }
-    if parts.len() != 2 || !is_digits(parts[0], 1, 2) || !is_digits(parts[1], 1, 2) { shape_error(c); }
-    [parse_int(parts[0]), parse_int(parts[1])]
+    [fields.d, fields.b]
 }
 fn resolve_ure(fields, c) {
     let plat = ""; if fields.plat != () { plat = fields.plat; }
     let typ = "E-" + plat + fields.fam;
     let family = family_of(fields.fam);
-    let nb = ure_numbers(fields.fam, fields.nums, c);
+    let nb = ure_numbers(fields, c);
     let d = nb[0];
     let r = check_ure(typ, family, d, nb[1]);
     let t = table("types", typ);
@@ -186,22 +176,18 @@ fn ure_fields(configuration, typ) {
     let plat = rest.sub_string(0, rest.len() - stem.len());
     let bits = configuration.split("-");
     let d = bits[bits.len() - 1];
-    let nums = d;
-    if stem == "SCDJ" { let b = g(table("urethane", configuration, "B")); nums = `${d}-${b}`; }
-    let f = #{ fam: stem, nums: nums, plat: () };
+    let f = #{ fam: stem, d: parse_int(d), b: (), plat: () };
+    if stem == "SCDJ" { f.b = table("urethane", configuration, "B"); }
     if plat != "" { f.plat = plat; }
     f
 }
 fn bearing_fields(configuration, bits) {
-    let ds = g(table("bearing", configuration, "Ds"));
-    let nums = `${bits[2]}-${ds}`;
-    #{ kind: "SCSBNAW", nums: nums }
+    #{ kind: "SCSBNAW", d: parse_int(bits[2]), ds: table("bearing", configuration, "Ds") }
 }
 fn fields(configuration, parameters) {
     let typ = parameters.part_type;
     if typ.starts_with("E-") { return ure_fields(configuration, typ); }
     let bits = configuration.split("-");
     if typ == "C-SCSBNAW" { return bearing_fields(configuration, bits); }
-    let nums = `${bits[2]}-${bits[3]}`;
-    #{ type: typ.sub_string(2, typ.len() - 2), nums: nums }
+    #{ type: typ.sub_string(2, typ.len() - 2), d: parse_int(bits[2]), b: parse_int(bits[3]) }
 }

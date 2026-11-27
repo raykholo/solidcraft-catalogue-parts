@@ -7,7 +7,10 @@ model = "hbl-bracket.sc"
 # The code is the type (one configuration row per type, -4 included) and at most one alteration. The alteration only adds accessory text,
 # so there is no free parameter. Both fields are plain text: generator.rhai answers every Python refusal with its own message.
 [[template]]
-pattern = '{base: text 1..24 [A-Za-z0-9]}[-{rest: text 1..40 [A-Za-z0-9-]}]'
+pattern = '{base: text 1..24 [A-Za-z0-9]}[\-{rest: text 1..40 [A-Za-z0-9-]}]'
+
+[[template]]
+pattern = '{raw: text 1..64 [A-Za-z0-9-]}'
 
 [rows."HBLTS5"]
 source = "MISUMI FA catalogue 2014 S40 (sources.toml), p.539 HBLTS5 drawing and tables"

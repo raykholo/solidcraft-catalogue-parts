@@ -79,7 +79,11 @@ fn describe_part(key, alt, r) {
 }
 
 fn resolve(fields) {
-    let c = code_template(fields);
+    let c = fields.raw;                         // a code the first template does not take (a dangling `-`, `--`): the text as typed
+    if c == () { c = code_template(fields); }
+    resolve_code(c)
+}
+fn resolve_code(c) {
     let toks = c.split("-");
     let base = toks[0];
     let rest = [];

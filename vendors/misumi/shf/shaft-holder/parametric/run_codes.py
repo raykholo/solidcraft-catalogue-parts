@@ -22,7 +22,7 @@ CLI = scrun.CLI
 GEN = registry.find("E-SHSTM8-25")
 hm, pycheck = GEN.module("holder"), GEN.module("check")
 EXTRA_REFUSALS = ["E-SHSTM8-25-3", "E-SHA10", "E-SHSTM100-20", "E-SHSTA16-25", "E-SHSTMN10-15", "E-SHSTB15", "C-SHA7", "C-SHA10-5", "E-SHWTB9-10", "E-SHSTM8-0",
-                  "E-SHWTA12-25", "E-SHSTB8-45", "E-SHSTA8-10", "E-SHWTA8-10", "E-SHSTBN9-10", "E-SHSTMN15-25-1", "C-SHA", "C-SHA25-20", "X"]
+                  "E-SHWTA12-25", "E-SHSTB8-45", "E-SHSTA8-10", "E-SHWTA8-10", "E-SHSTBN9-10", "E-SHSTMN15-25-1", "C-SHA", "C-SHA25-20", "X", "E-SHSTM8-25-", "E-SHSTM8--25"]
 REBUILD = [("E-SHSTM8-25", 40, "E-SHSTM8-40"), ("E-SHWTB20-30", 60, "E-SHWTB20-60"), ("E-SHSTBN30-80", 25, "E-SHSTBN30-25"), ("E-SHSTA16-20", 15, "E-SHSTA16-15"),
            ("E-SHSTB15-20", 30, "E-SHSTB15-30")]
 
