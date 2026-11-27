@@ -19,4 +19,5 @@ A router. Hard rules first, then where to look. Humans: CONTRIBUTING.md and READ
 | The spec check | `runtime/check`, the generator's `src/check.py` |
 | Screenshots and previews | `tools/shots`, `tools/preview`, the generator's `src/shots.py` |
 | Generator packages (`packages/`, SolidCraft `solidcraft-generator/1`) | `docs/generator-package.md`, `runtime/package.py`, `runtime/package_export/`, `tools/export-package`, `tools/package-equiv` |
+| Commits, versions, tags, CI scope, owners | `docs/repository-layout.md`, `tools/commit-scope`, `tools/versions` |
 | Provenance and the guarantee levels | `runtime/provenance.py`, `tools/provenance`, `tools/build-index` |

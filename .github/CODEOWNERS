@@ -1,0 +1,13 @@
+# Who reviews what. GitHub asks the owners of every file a pull request touches; the last matching line wins.
+#
+# Adding a vendor maintainer: give them write access (or add them to a team that has it), then put their handle after the vendor's
+# folder below, for example  /vendors/misumi/  @raykholo @their-handle  . A maintainer of one series or one generator gets a longer
+# path: /vendors/misumi/hfs/extrusion/ . They then review changes to their folders; the maintainer stays on every line.
+# Turn on "Require review from Code Owners" in the branch protection of main to make the review binding.
+
+# Shared code, tools, workflows and docs
+*                    @raykholo
+
+# Vendors (one line per vendor folder)
+/vendors/hiwin/      @raykholo
+/vendors/misumi/     @raykholo

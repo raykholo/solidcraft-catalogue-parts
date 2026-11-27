@@ -1,0 +1,34 @@
+name: tag
+# On a push to main that changes a generator.toml: tag the commit `<id>/v<version>` (e.g. misumi.hnt.t-nut/v0.1.1) for every generator whose
+# `version` changed and whose tag does not exist yet. Run by hand ("Run workflow") it tags every generator that has no tag yet, which is
+# how the first versions are tagged. Tags never start with `v`, so release.yml (v* tags) is not triggered. See docs/repository-layout.md.
+on:
+  push:
+    branches: [main]
+    paths: ["vendors/*/*/*/generator.toml"]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: tag
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: Create the missing tags
+        run: |
+          before=""
+          [ "${{ github.event_name }}" = "push" ] && before="${{ github.event.before }}"
+          tools/versions tags $before > "$RUNNER_TEMP/tags"
+          cat "$RUNNER_TEMP/tags"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          while read -r t; do
+            [ -n "$t" ] || continue
+            git tag -a "$t" -m "$t" "${GITHUB_SHA}"
+            git push origin "refs/tags/$t"
+          done < "$RUNNER_TEMP/tags"
