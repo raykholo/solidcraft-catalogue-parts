@@ -1,0 +1,59 @@
+format = "solidcraft-generator/2"
+id = "mg-rail-set"
+name = "HIWIN MG miniature linear guide: rail with blocks"
+license = "CC0-1.0"
+model = "mg-rail-set.sc"
+min_solidcraft = "0.52.0"
+
+# Ordering code, HIWIN MG catalogue G99TE24-2410 section 2-4-10 (p.78): MGN 12 C E 2 R1600 E Z1 P M II + SS/U/EL+RC/-O
+# Size and length are plain integers here and checked in generator.rhai, so that the refusals carry the catalogue's wording.
+[parameters]
+size   = { type = "int", min = 7, max = 15 }
+block  = { type = "choice", values = ["C", "H"], labels = { C = "standard", H = "heavy" } }
+blocks = { type = "int", min = 1, max = 4 }
+length = { type = "int", min = 40, max = 2000, unit = "mm" }
+caps   = { type = "int", min = 0, max = 1, default = 0 }   # option, not in the code: plastic bolt caps (MGN12, MGN15)
+
+[[template]]
+pattern = "MGN{size: int 1..99}{block: C|H}[E:special_block]{blocks: int 1..9}R{length: int 1..9999}[E:special_rail][{preload: Z0|ZF|Z1}][{precision: C|H|P}][{material: M|HC|NC}][{rails: I|II|III|IIII}][+{options: text 1..64}]"
+escape  = "[A-Za-z0-9+]+"
+
+[rows."C-7"]
+source = "HIWIN MG catalogue G99TE24-2410, S4 p.88 table 2-4-19 (1); rail: S4 p.88 table 2-4-19 (1), p.85 Table 2-4-15"
+page = 88
+status = "verified"
+
+[rows."H-7"]
+source = "HIWIN MG catalogue G99TE24-2410, S4 p.88 table 2-4-19 (1); rail: S4 p.88 table 2-4-19 (1), p.85 Table 2-4-15"
+page = 88
+status = "verified"
+
+[rows."C-9"]
+source = "HIWIN MG catalogue G99TE24-2410, S4 p.88 table 2-4-19 (1); rail: S4 p.88 table 2-4-19 (1), p.85 Table 2-4-15"
+page = 88
+status = "verified"
+
+[rows."H-9"]
+source = "HIWIN MG catalogue G99TE24-2410, S4 p.88 table 2-4-19 (1); rail: S4 p.88 table 2-4-19 (1), p.85 Table 2-4-15"
+page = 88
+status = "verified"
+
+[rows."C-12"]
+source = "HIWIN MG catalogue G99TE24-2410, S4 p.88 table 2-4-19 (1); rail: S4 p.88 table 2-4-19 (1), p.85 Table 2-4-15"
+page = 88
+status = "verified"
+
+[rows."H-12"]
+source = "HIWIN MG catalogue G99TE24-2410, S4 p.88 table 2-4-19 (1); rail: S4 p.88 table 2-4-19 (1), p.85 Table 2-4-15"
+page = 88
+status = "verified"
+
+[rows."C-15"]
+source = "HIWIN MG catalogue G99TE24-2410, S4 p.88 table 2-4-19 (1); rail: S4 p.88 table 2-4-19 (1), p.85 Table 2-4-15"
+page = 88
+status = "verified"
+
+[rows."H-15"]
+source = "HIWIN MG catalogue G99TE24-2410, S4 p.88 table 2-4-19 (1); rail: S4 p.88 table 2-4-19 (1), p.85 Table 2-4-15"
+page = 88
+status = "verified"

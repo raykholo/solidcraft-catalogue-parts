@@ -1,0 +1,5 @@
+size,WR,HR,D,h,d,P,Es,max_std,max_len,bolt,source,page,status
+7,7,4.8,4.2,2.3,2.4,15,5,595,600,M2x6,S4,"p.88 table 2-4-19 (1); p.85 Table 2-4-15 (Es, max lengths)",labelled
+9,9,6.5,6,3.5,3.5,20,7.5,1195,1200,M3x8,S4,"p.88 table 2-4-19 (1); p.85 Table 2-4-15 (Es, max lengths)",labelled
+12,12,8,6,4.5,3.5,25,10,1995,2000,M3x8,S4,"p.88 table 2-4-19 (1); p.85 Table 2-4-15 (Es, max lengths)",labelled
+15,15,10,6,4.5,3.5,40,15,1990,2000,M3x10,S4,"p.88 table 2-4-19 (1); p.85 Table 2-4-15 (Es, max lengths)",labelled

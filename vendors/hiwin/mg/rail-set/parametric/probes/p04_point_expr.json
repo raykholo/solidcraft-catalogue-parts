@@ -1,0 +1,103 @@
+{
+ "commands": [
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "length",
+    "expression": "300 mm"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "WR",
+    "expression": "12 mm"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "HR",
+    "expression": "8 mm"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "P",
+    "expression": "25 mm"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "Es",
+    "expression": "10 mm"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "length",
+    "width": "WR",
+    "height": "HR",
+    "corner": [
+     0,
+     -6,
+     0
+    ],
+    "operation": "new",
+    "body_name": "Rail",
+    "name": "Rail"
+   }
+  },
+  {
+   "command": "sketch.create",
+   "params": {
+    "plane": {
+     "origin": [
+      0,
+      0,
+      8
+     ],
+     "x_dir": [
+      1,
+      0,
+      0
+     ],
+     "y_dir": [
+      0,
+      1,
+      0
+     ]
+    },
+    "name": "Rail hole"
+   }
+  },
+  {
+   "command": "sketch.point",
+   "params": {
+    "point": [
+     "Es",
+     0
+    ]
+   }
+  },
+  {
+   "command": "sketch.finish",
+   "params": {}
+  },
+  {
+   "command": "solid.hole",
+   "params": {
+    "sketch": "Rail hole",
+    "diameter": 3.5,
+    "name": "Rail hole 1"
+   }
+  },
+  {
+   "command": "inspect.measure",
+   "params": {}
+  }
+ ]
+}

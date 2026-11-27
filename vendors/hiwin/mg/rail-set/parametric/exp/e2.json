@@ -1,0 +1,11 @@
+{"commands":[
+{"command":"config.rules"},
+{"command":"config.activate","params":{"row":"MGN12H"}},
+{"command":"inspect.measure"},
+{"command":"parameters.change","params":{"changes":{"caps":"1"}}},
+{"command":"inspect.measure"},
+{"command":"parameters.change","params":{"changes":{"caps":"0"}}},
+{"command":"inspect.measure"},
+{"command":"parameters.change","params":{"changes":{"length":"3000 mm"}}},
+{"command":"config.activate","params":{"row":"MGN7C"}}
+]}

@@ -1,0 +1,9 @@
+{"commands":[
+{"command":"config.activate","params":{"row":"MGN12H"}},
+{"command":"config.table"},
+{"command":"parameters.list"},
+{"command":"inspect.measure"},
+{"command":"parameters.change","params":{"changes":{"length":"400 mm","blocks":"2"}}},
+{"command":"inspect.measure"},
+{"command":"timeline.inspect","params":{"feature":"Rail caps"}}
+]}

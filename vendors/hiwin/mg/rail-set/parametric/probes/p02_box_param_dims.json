@@ -1,0 +1,59 @@
+{
+ "commands": [
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "length",
+    "expression": "300 mm"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "WR",
+    "expression": "12 mm"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "HR",
+    "expression": "8 mm"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "P",
+    "expression": "25 mm"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "Es",
+    "expression": "10 mm"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "length",
+    "width": "WR",
+    "height": "HR",
+    "corner": [
+     0,
+     -6,
+     0
+    ],
+    "operation": "new",
+    "body_name": "Rail",
+    "name": "Rail"
+   }
+  },
+  {
+   "command": "inspect.measure",
+   "params": {}
+  }
+ ]
+}

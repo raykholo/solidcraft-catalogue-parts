@@ -8,3 +8,9 @@ __pycache__/
 dist/
 .claude/
 shots-out/
+# parametric prototype scratch (build outputs, the built rhai-resolve binary)
+/p1out/
+/t1/
+/r1/
+/r2/
+/rbin/

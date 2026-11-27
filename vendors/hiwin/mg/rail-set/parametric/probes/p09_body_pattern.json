@@ -1,0 +1,419 @@
+{
+ "commands": [
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "length",
+    "expression": "300 mm"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "WR",
+    "expression": "12 mm"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "HR",
+    "expression": "8 mm"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "P",
+    "expression": "25 mm"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "Es",
+    "expression": "10 mm"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "W",
+    "expression": "27 mm"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "H",
+    "expression": "13 mm"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "H1",
+    "expression": "3 mm"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "L1",
+    "expression": "21.7 mm"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "L",
+    "expression": "34.7 mm"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "B",
+    "expression": "20 mm"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "C",
+    "expression": "15 mm"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "gap",
+    "expression": "10 mm"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "blocks",
+    "expression": "2",
+    "unit": ""
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "x0",
+    "expression": "length/2 - (blocks-1)*(L+gap)/2 - L1/2"
+   }
+  },
+  {
+   "command": "sketch.create",
+   "params": {
+    "plane": {
+     "origin": [
+      "x0",
+      0,
+      0
+     ],
+     "x_dir": [
+      0,
+      1,
+      0
+     ],
+     "y_dir": [
+      0,
+      0,
+      1
+     ]
+    },
+    "name": "Block profile"
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "ids": [
+     "l1"
+    ],
+    "points": [
+     [
+      "-W/2",
+      "H1"
+     ],
+     [
+      "-WR/2",
+      "H1"
+     ]
+    ],
+    "construction": false
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "ids": [
+     "l2"
+    ],
+    "points": [
+     [
+      "-WR/2",
+      "H1"
+     ],
+     [
+      "-WR/2",
+      "HR"
+     ]
+    ],
+    "construction": false
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "ids": [
+     "l3"
+    ],
+    "points": [
+     [
+      "-WR/2",
+      "HR"
+     ],
+     [
+      "WR/2",
+      "HR"
+     ]
+    ],
+    "construction": false
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "ids": [
+     "l4"
+    ],
+    "points": [
+     [
+      "WR/2",
+      "HR"
+     ],
+     [
+      "WR/2",
+      "H1"
+     ]
+    ],
+    "construction": false
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "ids": [
+     "l5"
+    ],
+    "points": [
+     [
+      "WR/2",
+      "H1"
+     ],
+     [
+      "W/2",
+      "H1"
+     ]
+    ],
+    "construction": false
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "ids": [
+     "l6"
+    ],
+    "points": [
+     [
+      "W/2",
+      "H1"
+     ],
+     [
+      "W/2",
+      "H"
+     ]
+    ],
+    "construction": false
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "ids": [
+     "l7"
+    ],
+    "points": [
+     [
+      "W/2",
+      "H"
+     ],
+     [
+      "-W/2",
+      "H"
+     ]
+    ],
+    "construction": false
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "ids": [
+     "l8"
+    ],
+    "points": [
+     [
+      "-W/2",
+      "H"
+     ],
+     [
+      "-W/2",
+      "H1"
+     ]
+    ],
+    "construction": false
+   }
+  },
+  {
+   "command": "sketch.finish",
+   "params": {}
+  },
+  {
+   "command": "solid.extrude",
+   "params": {
+    "sketch": "Block profile",
+    "profiles": [
+     {
+      "sketch": "Block profile",
+      "loops": [
+       {
+        "curves": [
+         "l1",
+         "l2",
+         "l3",
+         "l4",
+         "l5",
+         "l6",
+         "l7",
+         "l8"
+        ],
+        "outer": true
+       }
+      ]
+     }
+    ],
+    "distance": "L1",
+    "direction": "positive",
+    "operation": "new",
+    "body_name": "Block",
+    "name": "Block"
+   }
+  },
+  {
+   "command": "sketch.create",
+   "params": {
+    "plane": {
+     "origin": [
+      0,
+      0,
+      "H"
+     ],
+     "x_dir": [
+      1,
+      0,
+      0
+     ],
+     "y_dir": [
+      0,
+      1,
+      0
+     ]
+    },
+    "name": "Block holes"
+   }
+  },
+  {
+   "command": "sketch.point",
+   "params": {
+    "point": [
+     "x0 + L1/2 + (-1)*C/2",
+     "(-1)*B/2"
+    ]
+   }
+  },
+  {
+   "command": "sketch.point",
+   "params": {
+    "point": [
+     "x0 + L1/2 + (-1)*C/2",
+     "(1)*B/2"
+    ]
+   }
+  },
+  {
+   "command": "sketch.point",
+   "params": {
+    "point": [
+     "x0 + L1/2 + (1)*C/2",
+     "(-1)*B/2"
+    ]
+   }
+  },
+  {
+   "command": "sketch.point",
+   "params": {
+    "point": [
+     "x0 + L1/2 + (1)*C/2",
+     "(1)*B/2"
+    ]
+   }
+  },
+  {
+   "command": "sketch.finish",
+   "params": {}
+  },
+  {
+   "command": "solid.hole",
+   "params": {
+    "sketch": "Block holes",
+    "thread": "M3",
+    "depth": "3.5 mm",
+    "targets": [
+     "Block"
+    ],
+    "name": "Block threads M3"
+   }
+  },
+  {
+   "command": "solid.pattern.rectangular",
+   "params": {
+    "bodies": [
+     "Block"
+    ],
+    "dir1": [
+     1,
+     0,
+     0
+    ],
+    "count1": "blocks",
+    "spacing1": "L + gap",
+    "name": "Blocks"
+   }
+  },
+  {
+   "command": "inspect.measure",
+   "params": {}
+  },
+  {
+   "command": "model.threads",
+   "params": {}
+  }
+ ]
+}
