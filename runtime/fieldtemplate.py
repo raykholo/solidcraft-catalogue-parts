@@ -37,6 +37,21 @@ def _charclass(esc):
             chars.add(cls[i]); i += 1
     return chars
 
+def _tokens(lit):
+    """A literal as (character, required) pairs. A plain character is upper-cased and skipped when it is a separator; `\\-` (a backslash then
+    a character) is a REQUIRED separator or character: it must be present as written (doc section 3: E-SFJ{d}\\-{l})."""
+    out, i = [], 0
+    while i < len(lit):
+        if lit[i] == "\\" and i + 1 < len(lit):
+            out.append((lit[i + 1].upper(), True)); i += 2
+        else:
+            if lit[i] not in SEPARATORS: out.append((lit[i].upper(), False))
+            i += 1
+    return out
+
+def _unescape(lit):
+    return re.sub(r"\\(.)", r"\1", lit)
+
 class _Field:
     def __init__(self, name, spec, choices):
         self.name, self.spec = name, (spec or "").strip()
@@ -143,7 +158,7 @@ class Template:
                 flag = None
                 if closing and (fm := re.fullmatch(r"(.*?):([A-Za-z_]\w*)", lit)):   # [E:flag]
                     lit, flag = fm.group(1), fm.group(2)
-                nodes.append(("lit", _norm(lit), flag, lit))
+                nodes.append(("lit", _tokens(lit), flag, lit))
             if closing: raise TemplateError("unclosed [")
             return nodes
         nodes = parse_seq(False)
@@ -166,8 +181,8 @@ class Template:
             n = nodes[i]
             if n[0] == "lit":
                 p = pos
-                for c in n[1]:                      # separators in the code are skipped between the literal's characters
-                    p = skip(p)
+                for c, req in n[1]:                 # separators in the code are skipped between the literal's characters, but not before a required one
+                    if not req: p = skip(p)
                     if text[p:p + 1] != c: return None
                     p += 1
                 a = dict(acc)
@@ -196,7 +211,7 @@ class Template:
         def emit(nodes):
             s = ""
             for n in nodes:
-                if n[0] == "lit": s += n[3]
+                if n[0] == "lit": s += _unescape(n[3])
                 elif n[0] == "field":
                     if params.get(n[1].name) is None: raise ValueError(f"field {n[1].name}: no value")
                     s += n[1].printed(params[n[1].name])

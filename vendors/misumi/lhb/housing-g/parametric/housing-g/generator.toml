@@ -1,0 +1,65 @@
+format = "solidcraft-generator/2"
+id = "housing-g"
+name = "MISUMI Economy linear bushing housing units, center hole height optional (E-LBHG, E-LBHGW)"
+license = "CC0-1.0"
+model = "housing-g.sc"
+
+[parameters]
+hc = { type = "int", min = 15, max = 50, unit = "mm" }
+
+# Ordering code: E-LBHG[W]<dr>-<H>. The second template takes any other text so that generator.rhai can refuse it with the shape message.
+[[template]]
+pattern = 'E\-LBHG[W:double]{dr: text 1..2 [0-9]}\-{h: text 1..2 [0-9]}'
+
+[[template]]
+pattern = '{raw: text 1..128 [ -~]}'
+
+[rows."G-12"]
+source = "MISUMI Economy catalogue 2025 (S14, sources.toml)"
+page = "p.491 table"
+status = "verified"
+
+[rows."GW-12"]
+source = "MISUMI Economy catalogue 2025 (S14, sources.toml)"
+page = "p.491 table"
+status = "verified"
+
+[rows."G-16"]
+source = "MISUMI Economy catalogue 2025 (S14, sources.toml)"
+page = "p.491 table"
+status = "verified"
+
+[rows."GW-16"]
+source = "MISUMI Economy catalogue 2025 (S14, sources.toml)"
+page = "p.491 table"
+status = "verified"
+
+[rows."G-20"]
+source = "MISUMI Economy catalogue 2025 (S14, sources.toml)"
+page = "p.491 table"
+status = "verified"
+
+[rows."GW-20"]
+source = "MISUMI Economy catalogue 2025 (S14, sources.toml)"
+page = "p.491 table"
+status = "verified"
+
+[rows."G-25"]
+source = "MISUMI Economy catalogue 2025 (S14, sources.toml)"
+page = "p.491 table"
+status = "verified"
+
+[rows."GW-25"]
+source = "MISUMI Economy catalogue 2025 (S14, sources.toml)"
+page = "p.491 table"
+status = "verified"
+
+[rows."G-30"]
+source = "MISUMI Economy catalogue 2025 (S14, sources.toml)"
+page = "p.491 table"
+status = "verified"
+
+[rows."GW-30"]
+source = "MISUMI Economy catalogue 2025 (S14, sources.toml)"
+page = "p.491 table"
+status = "verified"

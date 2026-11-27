@@ -1,0 +1,27 @@
+valid E-LBHG12-15 description same roundtrip E-LBHG12-15
+valid E-LBHG12-25 description same roundtrip E-LBHG12-25
+valid E-LBHG16-20 description same roundtrip E-LBHG16-20
+valid E-LBHG20-30 description same roundtrip E-LBHG20-30
+valid E-LBHG25-40 description same roundtrip E-LBHG25-40
+valid E-LBHG30-50 description same roundtrip E-LBHG30-50
+valid E-LBHGW12-20 description same roundtrip E-LBHGW12-20
+valid E-LBHGW20-25 description same roundtrip E-LBHGW20-25
+valid E-LBHGW25-30 description same roundtrip E-LBHGW25-30
+valid E-LBHGW30-40 description same roundtrip E-LBHGW30-40
+reject E-LBHG12-30 same
+reject E-LBHG30-25 same
+reject E-LBHG12 same
+reject E-LBHGW16-15 same
+reject E-LBHG10-15 same
+reject E-LBHG12-15-P same
+reject E-LBHG12- same
+reject E-LBHG1215 same
+reject E-LBHGW-25 same
+reject E-LBHGW12-15-P same
+reject E-LBHG12X same
+reject E-LBHG16-35 same
+reject E-LBHGW25-50 same
+reject E-LBHG013-15 same
+reject E-LBHGW20-0 same
+reject E-LBHG99-99 same
+wrote wk-rq/housing-g/results.json
