@@ -13,7 +13,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[4]
 sys.path.insert(0, str(ROOT))
 from runtime import fieldtemplate as ft, registry, sc as scrun
-from runtime.pharness import cli, rhai, measure, spec_check
+from runtime.parametric import cli, rhai, measure, spec_check
 
 sh = importlib.import_module("vendors.misumi.sfj.shaft.src.shaft")
 pycheck = importlib.import_module("vendors.misumi.sfj.shaft.src.check")

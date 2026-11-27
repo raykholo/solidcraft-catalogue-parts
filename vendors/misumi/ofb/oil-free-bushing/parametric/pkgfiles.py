@@ -11,9 +11,7 @@ TEMPLATES = ["{otype: " + "|".join(TYPES) + r"}{d: text 1..3 [0-9]}\-{l: text 1.
              "{raw: text 1..80 [A-Za-z0-9 _./-]}"]
 TABLES = ["copper_straight", "copper_shouldered", "copper_flanged", "thrust", "brass_straight", "brass_shouldered", "brass_flanged"]
 
-def write_csv(path, header, data):
-    with open(path, "w", newline="") as f:
-        w = csv.writer(f, lineterminator="\n"); w.writerow(header); w.writerows(data)
+from runtime.parametric.kit import write_csv
 
 def write_tables(pkg: Path, data: Path, model_rows):
     t = pkg / "tables"; t.mkdir(parents=True, exist_ok=True)

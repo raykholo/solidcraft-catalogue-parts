@@ -1,0 +1,11 @@
+{
+  "package": "oil-free-bushing",
+  "checks": [
+    {
+      "parameter": "blen",
+      "insert": "C-MUBZ20-40",
+      "change": "C-MUBZ20-30",
+      "outside": "9999 mm"
+    }
+  ]
+}

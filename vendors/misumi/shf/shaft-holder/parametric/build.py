@@ -45,18 +45,10 @@ FEATS_V = ["VSlit", "VClear1", "VCbore1", "VClear2", "VCbore2"] + [f"VThread_M{m
 FEATS_S = ["SideSlit", "SideClear", "SideCbore"] + [f"SideThread_M{m}" for m in ST]
 FEATS = FEATS_BASE + FEATS_V + FEATS_S
 
+from runtime.parametric.process import run_build
+
 def run(cmds, src=None, save=None, workdir=None):
-    wd = Path(workdir)
-    script = wd / "step.json"; res = wd / "step.res.json"
-    script.write_text(json.dumps({"commands": cmds}))
-    a = [CLI, "run", str(script), "--results", "--json-out", str(res), "--quiet"]
-    if src: a += ["--in", str(src)]
-    if save: a += ["--save", str(save)]
-    r = subprocess.run(a, capture_output=True, text=True)
-    out = json.loads(res.read_text()) if res.exists() else {}
-    if r.returncode != 0 or (isinstance(out, dict) and out.get("error")):
-        sys.exit(f"solidcraft-cli failed: {r.stderr[-1500:]}\n{json.dumps(out.get('error') if isinstance(out, dict) else out)[:1500]}")
-    return out if isinstance(out, list) else out["results"]
+    return run_build(cmds, src, save, workdir, detailed=False, executable=CLI)
 
 def cell(v):
     return f"{v:g}" if isinstance(v, float) else str(v)

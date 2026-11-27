@@ -1,0 +1,17 @@
+{
+  "package": "mg-rail-set",
+  "checks": [
+    {
+      "parameter": "length",
+      "insert": "MGN12H2R400Z0C",
+      "change": "MGN12H2R300Z0C",
+      "outside": "3000 mm",
+      "build_options": {
+        "appearance": false,
+        "screws": false,
+        "caps": false,
+        "base_plate": false
+      }
+    }
+  ]
+}

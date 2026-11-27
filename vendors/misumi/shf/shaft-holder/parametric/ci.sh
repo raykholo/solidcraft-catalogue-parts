@@ -5,3 +5,6 @@ python3 $P/build.py
 python3 $P/run_codes.py --out "$O"
 python3 $P/faithfulness.py "$O/results.json" "$O/faithfulness.json"
 cp "$P/shf-shaft-holder/shf-shaft-holder.sc" "$O/shf-shaft-holder.sc.json"    # the built model, kept with the CI artifact (a .json name so the upload picks it up)
+
+# Optional link proof: release CLIs retain the legacy verdict unchanged.
+python3 -m runtime.parametric.links "vendors/misumi/shf/shaft-holder" "$O"

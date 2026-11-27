@@ -7,8 +7,9 @@ parametric design, runs every codes.txt code both ways and writes OUTDIR/faithfu
    "valid":   [{"code", "python": M, "parametric": M, "spec_python": "n/m", "spec_parametric": "n/m", "note"?}],
    "rejects": [{"code", "python": message, "parametric": message or null (= accepted)}],
    "rebuild": [{"label", "direct": M, "changed": M}],     # a free parameter changed on a built part vs that code built directly
-   "blocked": [{"what", "needs"}]}                         # what SolidCraft 0.50.0 cannot do yet (from tangency-labs/solidcraft#23175)
+   "blocked": [{"what", "needs"}]}                         # draft dependencies and follow-ups
   M = {"volume": mm3, "area": mm2, "bbox": [numbers], "faces": n, "bodies": n}
+  A refusal rebuild uses direct={"refused": true}; changed.refused must be true. The harness records the verbatim refusal in changed.message.
 Equal means volume and area within 1e-6 relative, every bbox number within 1e-6 (relative, at least 1e-6 absolute), the same face and
 body counts; spec checks pass the same number of rows; rejects carry the same message. The equality is decided HERE, not by the
 harness. Prints one table per generator and a summary row; exit 1 when anything differs or a file has no valid codes."""
@@ -20,6 +21,9 @@ def close(a, b, tol=1e-6):
 def same(p, q):
     if not p or not q or "error" in p or "error" in q:
         return False, "missing or error"
+    if p == {"refused": True}:
+        ok = q.get("refused") is True
+        return ok, "" if ok else "out-of-range value accepted or wrong refusal"
     why = [k for k in ("volume", "area") if not close(p[k], q[k])]
     why += [k for k in ("faces", "bodies") if p[k] != q[k]]
     if len(p["bbox"]) != len(q["bbox"]) or not all(close(x, y) for x, y in zip(p["bbox"], q["bbox"])):
@@ -28,6 +32,8 @@ def same(p, q):
 
 def fm(m):
     if not m or "error" in m: return "ERROR"
+    if "refused" in m:
+        return "refused" if m["refused"] is True else "ACCEPTED or wrong refusal"
     return f"{m['volume']:.2f} / {m['area']:.2f} / {m['faces']}f {m['bodies']}b"
 
 def passed(s):

@@ -1,5 +1,7 @@
 # misumi.sth.dowel-flanged-shaft-support as a parametric SolidCraft generator
 
+Using free parameters on inserted links, `component.set_link_parameters`, `generator.parse` / `generator.insert`, field templates, Rhai, and rules addressed by feature name needs #23175 (our draft, being finished). The exact command errors quoted below are observations from SolidCraft 0.50.0. The draft checks ranges on link overrides; ordinary source `parameters.change` still does not enforce range restrictions.
+
 The support modelled ONCE in SolidCraft (`dowel-flanged-shaft-support/dowel-flanged-shaft-support.sc`), a configuration table of the catalogue
 rows, the ordering code as field templates and the logic as plain Rhai, following SolidCraft's generator interface (`docs/formats/generator.md`,
 version 2, issue 22331). The Python generator in `../src` is untouched and is the reference every code below is compared with.
@@ -10,11 +12,11 @@ dowel-flanged-shaft-support/                 the package layout of the interface
   dowel-flanged-shaft-support.sc    the parametric model + its configuration table (built by build.py)
   generator.rhai               resolve(fields) -> #{configuration, parameters, properties}; no_match(raw)
   tables/*.csv                 copies of ../data/*.csv (first column = the key `table()` reads) and params.csv (message texts, size lists)
-build.py                       builds the model with solidcraft-cli (runtime/parametric_build.py), writes the tables and generator.toml
-run_codes.py                   the end-to-end proof (runtime/parametric_harness.py): results.json and faithfulness.json
+build.py                       builds the model with solidcraft-cli (runtime/parametric/build.py), writes the tables and generator.toml
+run_codes.py                   the end-to-end proof (runtime/parametric/harness.py): results.json and faithfulness.json
 ci.sh OUTDIR                   what the `parametric` workflow runs: build.py, run_codes.py, then tools/parametric-verdict reads faithfulness.json
-../../../../runtime/parametric_build.py     shared with the other STH generators: units, configuration rows, two-stage build (rules name features by id)
-../../../../runtime/parametric_harness.py   shared with the other STH generators: every code both ways, the spec check on both parts
+../../../../runtime/parametric/build.py     shared with the other STH generators: units, configuration rows, two-stage build (rules name features by id)
+../../../../runtime/parametric/harness.py   shared with the other STH generators: every code both ways, the spec check on both parts
 ../../../../runtime/fieldtemplate.py        stand-in for the field-template parser and printer (doc section 3), shared with the HIWIN MG and HFS proofs
 ../../../../runtime/rhai-run/               stand-in host for generator.rhai (the real Rhai engine, the documented sandbox limits)
 ```
@@ -59,7 +61,7 @@ passed spec rows, the same refusal message).
 export SC_CLI=<solidcraft-cli> RHAI_RUN=<rhai-run binary>
 bash vendors/misumi/sth/dowel-flanged-shaft-support/parametric/ci.sh OUT          # builds the model, runs every code both ways, writes OUT/results.json and OUT/faithfulness.json
 tools/parametric-verdict OUT/faithfulness.json
-python3 runtime/parametric_harness.py report OUT/results.json     # the tables below
+python3 runtime/parametric/harness.py report OUT/results.json     # the tables below
 ```
 
 ## Result: side by side
@@ -135,12 +137,12 @@ columns are passed rows / rows.
 | E-SSTHWCK30 | E-SSTHWCK30 | yes |
 
 
-## What SolidCraft 0.50.0 cannot express (exact errors) and the workarounds
+## SolidCraft 0.50.0 observations (exact errors) and workarounds
 
 1. **A thread designation cannot come from a parameter.** `solid.hole` with `thread: "msize"` (a user parameter) -> `invalid parameters for
    `solid.hole`: unknown tapped thread `msize` (ISO metric or a catalogued UNC/UNF, G, Rp, Rc or NPT size)`. Workaround (labelled): one thread
    feature per screw size (M5 M6), each suppressed in the rows whose screw is another size; they are `temp` units of the build
-   (`runtime/parametric_build.py`): drawn one by one with the others suppressed, because a second thread feature drawn while the first is live
+   (`runtime/parametric/build.py`): drawn one by one with the others suppressed, because a second thread feature drawn while the first is live
    fails with `invalid parameters for `solid.hole`: `position` [10, 7.5, 18] is not on a face of a body; pick a point on the face to drill`.
 2. **A picked face cannot follow a cut that a row switches.** A thread feature drawn while the groove, slit and clearance cuts were suppressed
    picks the plain sleeve face; activating a row with those cuts live then fails: `config.activate ... configuration slit-round-8 would fail to
@@ -162,7 +164,7 @@ columns are passed rows / rows.
 
 | Where | What this generator needs | Proposal |
 |---|---|---|
-| 4 `resolve` | a code that matches no template (no digits, an unknown letter after `E-STH`) must get the generator's message, which is also the Python one (`'E-STHRB': expected <type><D>, ...`) | optional `fn no_match(raw)` in `generator.rhai` returning the message (done in the stand-in: `runtime/parametric_harness.py` asks for it) |
+| 4 `resolve` | a code that matches no template (no digits, an unknown letter after `E-STH`) must get the generator's message, which is also the Python one (`'E-STHRB': expected <type><D>, ...`) | optional `fn no_match(raw)` in `generator.rhai` returning the message (done in the stand-in: `runtime/parametric/harness.py` asks for it) |
 | 3 field kinds | `int 6..50` refuses a leading zero and 0; the Python generator reads `E-STHRB06` as D6 and words `D0` as "hole diameter D must be one of ..." | the table check stays in Rhai: the proof uses `{d: text 1..6 [0-9]}` and `parse_int`; an `int` kind with `lenient` (any digits, range checked by the script) would keep the typed range for search |
 | 3 second template | one structured template gives the fields (series, shape, black, thick, long, size); a second, generic one (`E-{type: text 1..12 [A-Za-z]}{d: ...}`) gives every other type text to Rhai, which refuses it with the Python message | document that a script may refuse a template match; or `generator.parse` hands the raw code to `resolve` as `fields.raw` (Python words its messages with the typed code, `raw!r`, here the printed code stands in) |
 | 3 separators | the template ignores `-`, space, `_`, `/`, `.` between elements, Python's `re.fullmatch` does not: `E-STHRB 12` is read by the template and refused by Python | a per-template `strict` switch, or a required separator mark on every boundary (the doc has `\-` for one) |
@@ -173,3 +175,5 @@ What fits without change: per-row topology as suppression columns (one activatio
 parameter cell (numbers and expressions over other cells), `generator.toml` rows with source and page, `generator.rhai` with `table()` /
 `refuse()` / `code_template()` for every refusal of the Python generator, the field templates for the code shape, and `config.activate` for
 switching a built design to another row.
+
+This package has no free ordering parameter, so it adds no optional link-parameter checks. Internal dimension rebuild probes remain as recorded above.

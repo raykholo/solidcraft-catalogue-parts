@@ -1,5 +1,7 @@
 # misumi.shf.shaft-holder as a parametric SolidCraft generator
 
+Using free parameters on inserted links, `component.set_link_parameters`, `generator.parse` / `generator.insert`, field templates, Rhai, and rules addressed by feature name needs #23175 (our draft, being finished). The exact command errors quoted below are observations from SolidCraft 0.50.0. The draft checks ranges on link overrides; ordinary source `parameters.change` still does not enforce range restrictions.
+
 The MISUMI Economy shaft supports (T-shaped with slit `E-SHSTB/M/A`, with side slit `E-SHWTB/A`, thickened `E-SHSTBN/MN`, and the aluminium `C-SHA`) modelled
 ONCE in SolidCraft (`shf-shaft-holder/shf-shaft-holder.sc`), a configuration table of the 30 catalogue rows, the ordering code as field templates and the logic
 as plain Rhai, following SolidCraft's generator interface (`docs/formats/generator.md`, version 2, issue 22331). The Python generator in `../src` is untouched
@@ -140,13 +142,13 @@ Row for the code (`config.row from=<family-D row>` with the height), activate it
 code inserted the same way and with the Python part: identical in all five cases (the table's last block; one of them an aluminium type and one a two-screw
 thickened type). The screws, the slit, the counterbore and the bore centre all follow `h` through `h1 = h + h1_off`.
 
-## What SolidCraft 0.50.0 cannot express (exact errors) and the workarounds
+## SolidCraft 0.50.0 observations (exact errors) and workarounds
 
-1. **A free parameter value on an inserted part.** `component.insert_design {path, configuration: "slit-8", parameters: {h: "40 mm"}}` is accepted and the key ignored
+1. **A free parameter value on an inserted part needs #23175 (our draft, being finished).** `component.insert_design {path, configuration: "slit-8", parameters: {h: "40 mm"}}` is accepted and the key ignored
    (the occurrence keeps the row's own height, not 40 mm; no error); `component.set_link_parameters` -> `unknown command`; `generator.parse` -> `unknown command`.
    Workaround (labelled): a row for the code in a working copy of the model (`config.row {from: <family-D row>, values: {param:h: "25 mm", ...}}`), inserted with
    `configuration`; to change the height, change it in the working copy and insert again. Listed under "blocked" in `faithfulness.json`
-   (needs tangency-labs/solidcraft#23175).
+   (needs #23175 (our draft, being finished)).
 2. **Limits on ordinary edits.** `allow_parameter_values` is enforced on a row (`config.row ... values {param:h: "35 mm"}` on `slit-8` -> `rule `slit-8: H from the p.541
    table` restricts the final value`; the aluminium list `slit-10: aluminium types only for the * marked H (p.541)` the same) but `parameters.change h 35 mm` in the
    design is accepted. The list per row is therefore enforced by `resolve` for a code and by the rules for a row.
@@ -160,7 +162,7 @@ thickened type). The screws, the slit, the counterbore and the bore centre all f
 6. **A feature group is drawn in its own state.** The side-slit group (screw axis `e_off` across, not up) is drawn with the side D30 dimensions after the
    vertical-slit group is switched off, because the vertical group's default dimensions put its screw axis (`h + e_off`) above the top of the side-slit body; each thread feature is switched off right after it is created,
    because the next size drills the same place.
-7. **Rules name features by integer id** (`config.rule` `feature` is an integer), so `build.py` builds the model in two passes.
+7. **Rules addressed by feature name need #23175 (our draft, being finished).** In 0.50.0, rules name features by integer id (`config.rule` `feature` is an integer), so `build.py` builds the model in two passes.
 
 ## What does not fit the interface document, and proposals
 
@@ -171,3 +173,5 @@ thickened type). The screws, the slit, the counterbore and the bore centre all f
 | `[parameters]` | a list of allowed values per row | `allow_parameter_values` rules (done here); a `values` column of the table would read better |
 | `resolve` return | description, material, surface per code, the type as a text parameter for the inverse | `properties: #{...}` and a text parameter `part_type` (done here) |
 | rules | name a feature by name; a suppress-if that reads a parameter in the feature itself | `feature` by name in `config.rule` |
+
+The optional link proof is declared in `link_checks.json` and run by `ci.sh` through `runtime.parametric.links`. It adds insertion, link-edit, and out-of-range refusal rows only when the command catalogue lists `component.set_link_parameters`. Release builds retain their existing rows and link dependency item.

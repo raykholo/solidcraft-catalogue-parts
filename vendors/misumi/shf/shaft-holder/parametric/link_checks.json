@@ -1,0 +1,11 @@
+{
+  "package": "shf-shaft-holder",
+  "checks": [
+    {
+      "parameter": "h",
+      "insert": "E-SHSTM8-40",
+      "change": "E-SHSTM8-25",
+      "outside": "81 mm"
+    }
+  ]
+}

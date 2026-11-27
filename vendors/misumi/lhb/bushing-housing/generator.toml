@@ -1,6 +1,6 @@
 id = "misumi.lhb.bushing-housing"
 name = "MISUMI Economy linear bushing housing units, wide blocks: single / medium (E-LBHN) and double / medium long / long (E-LBHNW), with or without dowel holes"
-version = "0.1.0"
+version = "0.2.0"
 kind = "generator"
 min_host_version = "0.49.1"
 preview_code = "E-LBHN16D-P"

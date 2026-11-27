@@ -1,0 +1,11 @@
+{
+  "package": "housing-g",
+  "checks": [
+    {
+      "parameter": "hc",
+      "insert": "E-LBHG12-25",
+      "change": "E-LBHG12-15",
+      "outside": "60 mm"
+    }
+  ]
+}

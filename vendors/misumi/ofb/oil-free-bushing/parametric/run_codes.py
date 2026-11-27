@@ -13,7 +13,7 @@ ROOT = HERE.parents[4]
 sys.path.insert(0, str(ROOT)); sys.path.insert(0, str(HERE))
 from runtime import fieldtemplate as ft, registry, sc as scrun
 from runtime.check import run_measure
-import pcommon as pc
+from runtime.parametric import bushing as pc
 ob = importlib.import_module("vendors.misumi.ofb.oil-free-bushing.src.oilfree")
 pycheck = importlib.import_module("vendors.misumi.ofb.oil-free-bushing.src.check")
 

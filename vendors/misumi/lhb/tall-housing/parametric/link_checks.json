@@ -1,0 +1,11 @@
+{
+  "package": "tall-housing",
+  "checks": [
+    {
+      "parameter": "dowel",
+      "insert": "E-LBHS16-P",
+      "change": "E-LBHS16",
+      "outside": "2"
+    }
+  ]
+}

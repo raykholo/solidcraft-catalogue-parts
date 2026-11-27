@@ -1,0 +1,11 @@
+{
+  "package": "bushing-housing",
+  "checks": [
+    {
+      "parameter": "dowel",
+      "insert": "E-LBHN16-P",
+      "change": "E-LBHN16",
+      "outside": "2"
+    }
+  ]
+}

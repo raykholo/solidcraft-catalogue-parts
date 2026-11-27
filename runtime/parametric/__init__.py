@@ -13,11 +13,13 @@ from pathlib import Path
 from runtime import sc as scrun
 from runtime.check import run_measure
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]
 RHAI = os.environ.get("RHAI_RUN", "rhai-run")
 
-def cli(cmds, src=None, save=None):
-    d = Path(tempfile.mkdtemp())
+def cli(cmds, src=None, save=None, name="step", workdir=None, error_style="legacy"):
+    d = Path(workdir or tempfile.mkdtemp())
+    d.mkdir(parents=True, exist_ok=True)
+    if (d / "r.json").exists(): (d / "r.json").unlink()
     (d / "s.json").write_text(json.dumps({"commands": cmds}))
     a = [scrun.CLI, "run", str(d / "s.json"), "--results", "--json-out", str(d / "r.json"), "--quiet"]
     if src: a += ["--in", str(src)]
@@ -26,6 +28,10 @@ def cli(cmds, src=None, save=None):
     out = json.loads((d / "r.json").read_text()) if (d / "r.json").exists() else {}
     err = out.get("error") if isinstance(out, dict) else None
     res = out.get("results") if isinstance(out, dict) else out
+    if error_style == "kit":
+        if err is None and r.returncode:
+            err = (r.stderr.strip() or r.stdout.strip())[-1500:]
+        return res, err
     return res, (err or (r.stderr.strip() if r.returncode else None))
 
 def rhai(pkg, fn, *args):
@@ -33,14 +39,14 @@ def rhai(pkg, fn, *args):
     r = subprocess.run([RHAI, str(pkg), fn, *[json.dumps(a) for a in args]], capture_output=True, text=True, env=env)
     return json.loads(r.stdout) if r.stdout.strip() else {"ok": False, "reason": "script_error", "message": r.stderr}
 
-def measure(sc_path, out_dir, tag, threads=True):
+def measure(sc_path, out_dir, tag, threads=True, include_threads=True):
     cmds = [{"command": "inspect.measure", "params": {}}] + ([{"command": "model.threads", "params": {}}] if threads else [])
     r = run_measure(sc_path, cmds, str(out_dir), tag)
     m = r[0]; b = m["bodies"]
     lo = [min(x["bbox"]["min"][i] for x in b) for i in range(3)]; hi = [max(x["bbox"]["max"][i] for x in b) for i in range(3)]
     th = sorted((round(t["start"], 3), round(t["end"], 3)) for t in (r[1]["threads"] if threads else []))
     return {"bodies": len(b), "volume": m["total"]["volume_mm3"], "area": m["total"]["area_mm2"], "faces": m["total"]["faces"],
-            "bbox": [round(h - l, 4) for l, h in zip(lo, hi)], "threads": th, "names": [x["name"] for x in b]}
+            "bbox": [round(h - l, 4) for l, h in zip(lo, hi)], **({"threads": th} if include_threads else {}), "names": [x["name"] for x in b]}
 
 def subst(o, old, new):
     """The spec check names the body after the code (the Python build does); the inserted body keeps the model's own name:
@@ -59,3 +65,17 @@ def spec_check(mod, part, host_sc, out, body, code):
         mod.run_measure = orig
     bad = [r for r in R.rows if not r[0]]
     return {"rows": len(R.rows), "failed": [f"{r[1]}: spec {r[2]} got {r[3]}" for r in bad]}
+
+from functools import lru_cache
+
+@lru_cache(maxsize=1)
+def supports_link_parameters():
+    """Inspect the JSON command catalogue once per harness process."""
+    r = subprocess.run([scrun.CLI, "commands"], capture_output=True, text=True, check=True)
+    commands = json.loads(r.stdout)
+    def contains(value):
+        if isinstance(value, str): return value == "component.set_link_parameters"
+        if isinstance(value, list): return any(contains(x) for x in value)
+        if isinstance(value, dict): return any(contains(k) or contains(v) for k, v in value.items())
+        return False
+    return contains(commands)

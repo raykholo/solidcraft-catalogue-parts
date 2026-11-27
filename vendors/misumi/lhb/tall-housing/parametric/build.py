@@ -16,7 +16,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[4]
 sys.path.insert(0, str(ROOT))
 from runtime.table import read_csv
-from runtime import paramkit as pk
+from runtime.parametric import kit as pk
 
 PKG = HERE / "tall-housing"
 DATA = HERE.parent / "data"

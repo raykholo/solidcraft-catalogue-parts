@@ -12,7 +12,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Callable
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 from runtime import fieldtemplate as ft, sc as scrun                      # noqa: E402
 from runtime.check import run_measure                                       # noqa: E402
@@ -22,22 +22,7 @@ RHAI = os.environ.get("RHAI_RUN", "rhai-run")
 
 # ------------------------------------------------------------------------------------------------ solidcraft-cli
 def cli(cmds, src=None, save=None, workdir=None):
-    """Run a command list; -> (results, error or None). Never exits."""
-    d = Path(workdir or tempfile.mkdtemp())
-    d.mkdir(parents=True, exist_ok=True)
-    script, res = d / "s.json", d / "r.json"
-    if res.exists(): res.unlink()
-    script.write_text(json.dumps({"commands": cmds}))
-    a = [CLI, "run", str(script), "--results", "--json-out", str(res), "--quiet"]
-    if src: a += ["--in", str(src)]
-    if save: a += ["--save", str(save)]
-    r = subprocess.run(a, capture_output=True, text=True)
-    out = json.loads(res.read_text()) if res.exists() else {}
-    err = out.get("error") if isinstance(out, dict) else None
-    results = out.get("results") if isinstance(out, dict) else out
-    if err is None and r.returncode:
-        err = (r.stderr.strip() or r.stdout.strip())[-1500:]
-    return results, err
+    return call_cli(cmds, src, save, workdir=workdir, error_style="kit")
 
 def cli_or_exit(cmds, src=None, save=None, workdir=None, what="solidcraft-cli"):
     res, err = cli(cmds, src, save, workdir)
@@ -99,10 +84,6 @@ class Gen:
     free_param: str = ""                       # for the "cannot express" probes
     free_value: str = ""
 
-def rhai(pkg, fn, *args):
-    env = dict(os.environ, FT_ROOT=str(ROOT))
-    r = subprocess.run([RHAI, str(pkg), fn, *[json.dumps(a) for a in args]], capture_output=True, text=True, env=env)
-    return json.loads(r.stdout) if r.stdout.strip() else {"ok": False, "reason": "script_error", "message": r.stderr}
 
 def tables_of(pkg: Path):
     """tables/*.csv of the package as {name: {key: row}}, cells typed as the Python generators read them (runtime.table.num)."""
@@ -113,6 +94,8 @@ def tables_of(pkg: Path):
         first = next(iter(rows[0])) if rows else "key"
         out[p.stem] = {r[first]: {k: num(v) for k, v in r.items()} for r in rows}
     return out
+
+from runtime.parametric import cli as call_cli, measure as call_measure, rhai, subst
 
 class Runner:
     def __init__(self, g: Gen):
@@ -144,12 +127,7 @@ class Runner:
         return part, path
 
     def measure(self, sc_path, out_dir, tag):
-        r = run_measure(str(sc_path), [{"command": "inspect.measure", "params": {}}, {"command": "model.threads", "params": {}}], str(out_dir), tag)
-        m = r[0]; b = m["bodies"]
-        lo = [min(x["bbox"]["min"][i] for x in b) for i in range(3)]; hi = [max(x["bbox"]["max"][i] for x in b) for i in range(3)]
-        th = sorted((round(t["start"], 3), round(t["end"], 3)) for t in r[1]["threads"])
-        return {"bodies": len(b), "volume": m["total"]["volume_mm3"], "area": m["total"]["area_mm2"], "faces": m["total"]["faces"],
-                "bbox": [round(h - l, 4) for l, h in zip(lo, hi)], "threads": th, "names": [x["name"] for x in b]}
+        return call_measure(str(sc_path), out_dir, tag)
 
     def code_row_cmds(self, res):
         vals = {f"param:{k}": v for k, v in res["parameters"].items()}
@@ -181,12 +159,6 @@ class Runner:
         bad = [r for r in R.rows if not r[0]]
         return {"rows": len(R.rows), "failed": [f"{r[1]}: spec {r[2]} got {r[3]}" for r in bad]}
 
-def subst(o, old, new):
-    """The spec check names the body after the code (the Python build does); the inserted body keeps the model's own name: rename the
-    `body` references only (the component is named after the code)."""
-    if isinstance(o, dict): return {k: (new if k == "body" and v == old else subst(v, old, new)) for k, v in o.items()}
-    if isinstance(o, list): return [subst(v, old, new) for v in o]
-    return o
 
 def say(*a):
     print(*a, flush=True)
@@ -299,21 +271,7 @@ def rebuild_and_probes(g: Gen, R: Runner, results, work):
         results["limits"]["(probes failed)"] = {"error": str(ex), "result": None}
 
 # ------------------------------------------------------------------------------------------------ faithfulness.json
-def write_faithfulness(results_path, out_path, gid, blocked):
-    r = json.load(open(results_path))
-    def m(x):
-        if not x or "error" in x or "refused" in x or "volume" not in x: return {"error": True}
-        return {"volume": x["volume"], "area": x["area"], "bbox": list(x["bbox"]), "faces": x["faces"], "bodies": x["bodies"]}
-    def spec(s): return f"{s['rows'] - len(s['failed'])}/{s['rows']}" if s else None
-    out = {"generator": gid,
-           "valid": [{"code": c["code"], "python": m(c.get("python")), "parametric": m(c.get("parametric")),
-                      "spec_python": spec(c.get("python_spec")), "spec_parametric": spec(c.get("parametric_spec"))} for c in r["codes"]],
-           "rejects": [{"code": x["code"], "python": x["python"], "parametric": x["parametric"]} for x in r["refusals"]],
-           "rebuild": [{"label": f"{p['base']} {p['param']} -> {p['value']} vs {p['direct']}", "direct": m(p.get("direct_inserted")), "changed": m(p.get("changed"))}
-                       for p in r["parametric"]],
-           "blocked": blocked}
-    json.dump(out, open(out_path, "w"), indent=1)
-    return out
+from runtime.parametric.results import write_faithfulness
 
 # ------------------------------------------------------------------------------------------------ the README tables
 def report_md(results_path):
@@ -345,7 +303,7 @@ def report_md(results_path):
         o.append(f"| {k} | {v.get('error') or ''} | {v.get('result') or ''} |")
     return "\n".join(o)
 
-if __name__ == "__main__":      # python3 runtime/paramkit.py package-files PKG_DIR OUT.json
+if __name__ == "__main__":      # python3 -m runtime.parametric.kit package-files PKG_DIR OUT.json
     if len(sys.argv) == 4 and sys.argv[1] == "package-files":
         package_files_json(Path(sys.argv[2]), Path(sys.argv[3]))
     else:

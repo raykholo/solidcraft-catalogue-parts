@@ -10,7 +10,7 @@ import sys
 from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parents[4]))
-from runtime import paramkit as pk
+from runtime.parametric import kit as pk
 
 def part_from_result(R, res, code):
     """The object src/check.py takes, built from the Rhai result and the package tables (never from the Python parser)."""
@@ -31,9 +31,9 @@ GEN = pk.Gen(
             "dowel = 2 (outside 0..1) by an ordinary parameters.change": lambda res: [
                 {"command": "parameters.change", "params": {"name": "dowel", "expression": "2"}}, {"command": "inspect.measure", "params": {}}]},
     free_param="dowel", free_value="1",
-    blocked=[{"what": "free parameter values on an inserted link (insert_design parameters ignored; set_link_parameters unknown)", "needs": "tangency-labs/solidcraft#23175"},
+    blocked=[{"what": "free parameter values on an inserted link (insert_design parameters ignored; set_link_parameters unknown)", "needs": "needs #23175 (our draft, being finished)"},
              {"what": "thread designation from a parameter (one suppressed hole feature per size M4 / M5 / M6 / M8 / M10 for M1, for M2 and for the middle M2 hole)",
-              "needs": "tangency-labs/solidcraft#23175 (solid.hole thread as a parameter or choice)"}])
+              "needs": 'follow-up: parameter-driven threads and persistent thread references (outside #23175)'}])
 
 if __name__ == "__main__":
     pk.main(GEN)

@@ -7,9 +7,7 @@ from vendors.misumi.hbl.bracket.src import bracket as br
 
 TEMPLATES = ["{base: text 1..24 [A-Za-z0-9]}[\\-{rest: text 1..40 [A-Za-z0-9-]}]", "{raw: text 1..64 [A-Za-z0-9-]}"]
 
-def write_csv(path, header, rows):
-    with open(path, "w", newline="") as f:
-        w = csv.writer(f, lineterminator="\n"); w.writerow(header); w.writerows(rows)
+from runtime.parametric.kit import write_csv
 
 def write_tables(pkg: Path, data: Path):
     t = pkg / "tables"; t.mkdir(parents=True, exist_ok=True)

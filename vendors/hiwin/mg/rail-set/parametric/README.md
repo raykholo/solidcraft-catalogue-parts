@@ -1,5 +1,7 @@
 # hiwin.mg.rail-set as a parametric generator (prototype, SolidCraft 0.50.0)
 
+Using free parameters on inserted links, `component.set_link_parameters`, `generator.parse` / `generator.insert`, field templates, Rhai, and rules addressed by feature name needs #23175 (our draft, being finished). The exact command errors quoted below are observations from SolidCraft 0.50.0. The draft checks ranges on link overrides; ordinary source `parameters.change` still does not enforce range restrictions.
+
 Question (issue tangency-labs/solidcraft#22331): can a generator be ONE parametric `.sc` plus a configuration table plus an
 ordering-code template and a few lines of Rhai, instead of `build.py` emitting fixed numbers? Answer on MG: **the model, the table,
 the pattern counts, the optional features and the limits all work on 0.50.0 and give the same solids as the Python generator.
@@ -18,7 +20,7 @@ parametric/
     tables/{rails,blocks,caps}.csv   the catalogue rows (copies of ../data with source/page/status; blocks keyed "<block>-<size>")
   build_template.py          the model as a command list (what is modelled once)
   run_template.sh            builds the .sc: stage 1 parameters, geometry, table; stage 2 rules (they need feature ids)
-  harness/                   the end-to-end run: stub.py (parse/code), run_all.py (the Rhai host is the shared runtime/rhai-run)
+  harness/run_all.py          generator-specific proof; parsing and CLI helpers live in runtime/parametric/
   probes.py, run_probes.sh, exp/   the small experiments behind the findings below
   ../../../../../runtime/fieldtemplate.py   Python reference of the field-template syntax
 ```
@@ -135,3 +137,7 @@ runs `src/check.py` on both. About 7 minutes.
    options: {caps: true}}` handed to `resolve(fields)` as `fields.options`; (d) `table(name, key)` must accept an integer key
    (`table("rails", 12)`): the stand-in registers that overload; (e) per-row provenance in `generator.toml` is generated from the
    CSVs here: the `.csv` `source/page/status` columns are enough for `table()`, but `[rows.*]` repeats them.
+
+
+This feature needs #23175 (our draft, being finished); the errors above are from 0.50.0.
+The optional link proof is declared in `link_checks.json` and run by `ci.sh` through `runtime.parametric.links`. It adds insertion, link-edit, and out-of-range refusal rows only when the command catalogue lists `component.set_link_parameters`. Release builds retain their existing rows and link dependency item.

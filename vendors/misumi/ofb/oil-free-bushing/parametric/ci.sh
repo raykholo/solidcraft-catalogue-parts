@@ -6,3 +6,6 @@ python3 $P/build.py
 python3 $P/run_codes.py --out "$O"
 python3 $P/faithfulness.py "$O/results.json" "$O/faithfulness.json"
 cp vendors/misumi/ofb/oil-free-bushing/parametric/oil-free-bushing/oil-free-bushing.sc "$O/oil-free-bushing.sc.json"   # the model (a zip; named .json so the workflow uploads it)
+
+# Optional link proof: release CLIs retain the legacy verdict unchanged.
+python3 -m runtime.parametric.links "vendors/misumi/ofb/oil-free-bushing" "$O"

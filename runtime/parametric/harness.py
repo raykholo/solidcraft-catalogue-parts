@@ -9,12 +9,12 @@ For every line of the generator's codes.txt (and some extra refusals):
 Rejected codes: the Python message and the Rhai message are compared word for word. Rebuild: a configuration row switched to another row
 on a built design against that other code inserted directly. Writes results.json and faithfulness.json (tools/parametric-verdict schema).
 
-    SC_CLI=<solidcraft-cli> RHAI_RUN=<rhai-run binary> python3 parametric_harness.py ... (used through a generator's run_codes.py)
+    SC_CLI=<solidcraft-cli> RHAI_RUN=<rhai-run binary> python3 -m runtime.parametric.harness ... (used through a generator's run_codes.py)
 """
 from __future__ import annotations
 import json, os, subprocess, sys, tempfile
 from pathlib import Path
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 from runtime import fieldtemplate as ft, registry, sc as scrun
 from runtime.check import run_measure
@@ -22,31 +22,13 @@ from runtime.check import run_measure
 RHAI = os.environ.get("RHAI_RUN", "rhai-run")
 CLI = scrun.CLI
 
-def cli(cmds, src=None, save=None):
-    d = Path(tempfile.mkdtemp())
-    (d / "s.json").write_text(json.dumps({"commands": cmds}))
-    a = [CLI, "run", str(d / "s.json"), "--results", "--json-out", str(d / "r.json"), "--quiet"]
-    if src: a += ["--in", str(src)]
-    if save: a += ["--save", str(save)]
-    r = subprocess.run(a, capture_output=True, text=True)
-    out = json.loads((d / "r.json").read_text()) if (d / "r.json").exists() else {}
-    err = out.get("error") if isinstance(out, dict) else None
-    res = out.get("results") if isinstance(out, dict) else out
-    return res, (err or (r.stderr.strip() if r.returncode else None))
+
+
+
+from runtime.parametric import cli, subst, rhai as call_rhai, measure as measure_core
 
 def measure(sc_path, out_dir, tag):
-    r = run_measure(sc_path, [{"command": "inspect.measure", "params": {}}], str(out_dir), tag)
-    m = r[0]; b = m["bodies"]
-    lo = [min(x["bbox"]["min"][i] for x in b) for i in range(3)]; hi = [max(x["bbox"]["max"][i] for x in b) for i in range(3)]
-    return {"bodies": len(b), "volume": m["total"]["volume_mm3"], "area": m["total"]["area_mm2"], "faces": m["total"]["faces"],
-            "bbox": [round(h - l, 4) for l, h in zip(lo, hi)], "names": [x["name"] for x in b]}
-
-def subst(o, old, new):
-    """The spec check names the body after the code (the Python build does); the inserted body keeps the model's own name, the component
-    is named after the code: rename the `body` references only."""
-    if isinstance(o, dict): return {k: (new if k == "body" and v == old else subst(v, old, new)) for k, v in o.items()}
-    if isinstance(o, list): return [subst(v, old, new) for v in o]
-    return o
+    return measure_core(sc_path, out_dir, tag, threads=False, include_threads=False)
 
 class Harness:
     def __init__(self, gen_dir, pkg_dir, model, support_from, extra_refusals, rebuild, blocked, check_module="check", extra_valid=()):
@@ -59,9 +41,7 @@ class Harness:
 
     # ---- Rhai ------------------------------------------------------------------------------------------------
     def rhai(self, fn, *args):
-        env = dict(os.environ, FT_ROOT=str(ROOT))
-        r = subprocess.run([RHAI, str(self.pkg), fn, *[json.dumps(a) for a in args]], capture_output=True, text=True, env=env)
-        return json.loads(r.stdout) if r.stdout.strip() else {"ok": False, "reason": "script_error", "message": r.stderr}
+        return call_rhai(self.pkg, fn, *args)
 
     def resolve(self, code):
         """code -> (('ok', result) | ('refused', kind, message), fields)"""
@@ -173,18 +153,8 @@ class Harness:
         return m[0] if m else 0
 
 def faithfulness(results, gen_id, blocked, path):
-    def m(x):
-        if not x or "error" in x: return {"error": True}
-        return {"volume": x["volume"], "area": x["area"], "bbox": list(x["bbox"]), "faces": x["faces"], "bodies": x["bodies"]}
-    spec = lambda s: f"{s['rows'] - len(s['failed'])}/{s['rows']}" if s else None
-    out = {"generator": gen_id,
-           "valid": [{"code": c["code"], "python": m(c.get("python")), "parametric": m(c.get("parametric")),
-                      "spec_python": spec(c.get("python_spec")), "spec_parametric": spec(c.get("parametric_spec")),
-                      **({"note": c["parametric"]["error"]} if "error" in c.get("parametric", {}) else {})} for c in results["codes"]],
-           "rejects": [{"code": x["code"], "python": x["python"], "parametric": x["parametric"]} for x in results["refusals"]],
-           "rebuild": [{"label": f"row {p['from']} switched to {p['to']}", "direct": m(p.get("direct")), "changed": m(p.get("changed"))} for p in results["rebuild"]],
-           "blocked": blocked}
-    Path(path).write_text(json.dumps(out, indent=1))
+    from runtime.parametric.results import convert
+    Path(path).write_text(json.dumps(convert(results, gen_id, blocked, "rows"), indent=1))
 
 def table_row(pkg, name, key):
     """a row of the package's tables/<name>.csv with the cells typed as the Python generator types data/*.csv (empty is None)"""

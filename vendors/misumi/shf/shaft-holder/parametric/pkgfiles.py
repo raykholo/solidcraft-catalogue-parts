@@ -7,9 +7,7 @@ from runtime.table import read_csv
 TEMPLATES = ["{pfx: E|C}-SH{fam: STBN|STMN|STB|STM|STA|WTB|WTA|A}{d: int 1..99}[\\-{h: int 0..99999999}]",
              "{raw: text 1..64 [A-Za-z0-9-]}"]
 
-def write_csv(path, header, rows):
-    with open(path, "w", newline="") as f:
-        w = csv.writer(f, lineterminator="\n"); w.writerow(header); w.writerows(rows)
+from runtime.parametric.kit import write_csv
 
 def write_tables(pkg: Path, data: Path, keys=None):
     t = pkg / "tables"; t.mkdir(parents=True, exist_ok=True)

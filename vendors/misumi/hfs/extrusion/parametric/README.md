@@ -1,5 +1,7 @@
 # misumi.hfs.extrusion as a parametric SolidCraft generator
 
+Using free parameters on inserted links, `component.set_link_parameters`, `generator.parse` / `generator.insert`, field templates, Rhai, and rules addressed by feature name needs #23175 (our draft, being finished). The exact command errors quoted below are observations from SolidCraft 0.50.0. The draft checks ranges on link overrides; ordinary source `parameters.change` still does not enforce range restrictions.
+
 The extrusion modelled ONCE in SolidCraft (`hfs-extrusion/hfs-extrusion.sc`), a configuration table of the catalogue rows, the ordering code as a
 field template and the logic as plain Rhai, following SolidCraft's generator interface (`docs/formats/generator.md`, version 2, issue 22331). The
 Python generator in `../src` is untouched and is the reference every code below is compared with.
@@ -132,7 +134,7 @@ reports a code that matches no template through the `a length is required` / `ex
 
 **One difference, cosmetic.** The cosmetic thread annotations of a tapped end that a wrench hole crosses: the Python build places the thread
 after the hole cut, so its length is shortened (`[0, 6.984]`, `[293.016, 300]`); the parametric model has to place the thread BEFORE the cuts (see
-"What 0.50.0 cannot express", first item) so it stays full length (`[0, 15]`, `[285, 300]`). The bores and the solid are identical (the spec
+"SolidCraft 0.50.0 observations", first item) so it stays full length (`[0, 15]`, `[285, 300]`). The bores and the solid are identical (the spec
 check, whose rule for tapped ends crossed by a wrench hole is "depth <= 15", passes); the other tapped-end codes (no wrench hole on that end) have
 identical thread ranges.
 
@@ -142,7 +144,7 @@ Row for the code, activate it, then `parameters.change length` on the configured
 with the Python part: identical in all three cases (the table's last block), including the right wrench holes (`wr_x1 = length - ...`
 moves) and the right-end taps, which follow the new end.
 
-## What SolidCraft 0.50.0 cannot express (exact errors) and the workarounds
+## SolidCraft 0.50.0 observations (exact errors) and workarounds
 
 1. **A cosmetic thread cannot take its face or its end from a parameter, and does not follow a later cut.** `solid.thread` with
    `face: ["length-0.5", 2.1, 0]` -> `invalid parameters for solid.thread: face must be a point [x, y, z] on a cylindrical face`. A thread created
@@ -150,7 +152,7 @@ moves) and the right-end taps, which follow the new end.
    TapL2020_1: the reference F4:side:c1 no longer exists as it was picked; reselect it`. Workaround (labelled, closest faithful): the threads come
    first in the timeline with a point 0.5 mm inside the end of a 1000 mm model, and follow `length` through the face reference; they are then not
    shortened by a crossing hole (above).
-2. **A free parameter value on an inserted part.** `component.insert_design {path, configuration: "2020", parameters: {length: "777 mm"}}` is
+2. **A free parameter value on an inserted part needs #23175 (our draft, being finished).** `component.insert_design {path, configuration: "2020", parameters: {length: "777 mm"}}` is
    accepted and the key ignored (the part comes in 1000 mm long, no error); `component.set_link_parameters` -> `unknown command`;
    `generator.parse` / `generator.insert` -> `unknown command`. `parameters.change length 777 mm` in the host design returns `recomputed: 0` and
    leaves the inserted part unchanged. Workaround (labelled): a row for the code in a working copy of the model (`config.row {from: <profile row>,
@@ -161,7 +163,7 @@ moves) and the right-end taps, which follow the new end.
 4. **A cylinder's axis, and a count of different features, cannot be a parameter.** Horizontal / vertical wrench holes and left / right, rows 1..3
    are 12 cut features with 24 on/off rules; `solid.pattern.rectangular` with `count1 = wl_rows` would do rows of equal spacing J = K but not the
    catalogue's separate J and K, and a count of 0 is not allowed (so a suppression rule is needed anyway).
-5. **Rules name features by integer id** (`config.rule` schema: `feature` is an integer), so the generated model is built in two passes (the ids come
+5. **Rules addressed by feature name need #23175 (our draft, being finished).** In 0.50.0, rules name features by integer id (`config.rule` schema: `feature` is an integer), so the generated model is built in two passes (the ids come
    from the replies); a name would keep the rules readable.
 6. **Body names collide:** four extrusions named alike get `Body1` / `Extrusion2020 (2)`, so each profile's extrusion has its own body name and
    cuts are written without `targets`.
@@ -177,7 +179,7 @@ moves) and the right-end taps, which follow the new end.
 | 4 inverse | `generator.code {parameters}` needs parameters -> fields; the interface only has the template printer | optional `fn fields(configuration, parameters)` (done here) |
 | 2 `[parameters]` | a text parameter (`part_type`) and a decimal with a step (`length`, 0.5 mm) | `type = "text"` and `"decimal"` with `step` |
 | 5 sandbox | the limit of 16 for expression depth inside a function is hit by a message built from 8 `+` terms, by an `if / else if` chain of 8, and by a closure in a nested block (`ExprTooDeep`); Rhai passes arguments by value, so helper functions return the map they change | document it; or raise the function depth to 32 |
-| 4 free parameter on a link | see "cannot express" 2 | `parameters` on `component.insert_design`, checked against the source's range rules, plus `step` on `parameter_range` |
+| 4 free parameter on a link | see observation 2 | `parameters` on `component.insert_design`, checked against the source's range rules, plus `step` on `parameter_range` |
 | model | thread follows its bore, threads placed by a parameter | `solid.thread` face / from as expressions or `end: left|right`; a cosmetic thread that follows a later cut |
 | rules | name a feature by name; a suppress-if that reads a parameter in the feature itself | `feature` by name in `config.rule` |
 
@@ -185,3 +187,5 @@ What fits the extrusion without change: per-profile topology as suppression colu
 extrusion and taps), options as `drive_suppression` rules, limits as `parameter_range` / allowed values, per-row source and page in `generator.toml`,
 `generator.rhai` with `table()` / `refuse()` / `code_template()` (all 26 rejects and 16 codes), the field template for the code shape, the round trip.
 
+
+The optional link proof is declared in `link_checks.json` and run by `ci.sh` through `runtime.parametric.links`. It adds insertion, link-edit, and out-of-range refusal rows only when the command catalogue lists `component.set_link_parameters`. Release builds retain their existing rows and link dependency item.

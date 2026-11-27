@@ -18,7 +18,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[4]
 sys.path.insert(0, str(ROOT))
 from runtime.table import read_csv, num
-from runtime.parametric_build import Spec, Unit, Row, build_model
+from runtime.parametric.build import Spec, Unit, Row, build_model
 import pkgfiles
 
 PKG = "flanged-shaft-support"

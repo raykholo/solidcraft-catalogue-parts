@@ -5,22 +5,18 @@ from __future__ import annotations
 import json, os, subprocess, tempfile
 from pathlib import Path
 
+
+
+from runtime.parametric import cli as call_cli, rhai as call_rhai, measure as call_measure, subst
+
 def cli(CLI, cmds, src=None, save=None):
-    d = Path(tempfile.mkdtemp())
-    (d / "s.json").write_text(json.dumps({"commands": cmds}))
-    a = [CLI, "run", str(d / "s.json"), "--results", "--json-out", str(d / "r.json"), "--quiet"]
-    if src: a += ["--in", str(src)]
-    if save: a += ["--save", str(save)]
-    r = subprocess.run(a, capture_output=True, text=True)
-    out = json.loads((d / "r.json").read_text()) if (d / "r.json").exists() else {}
-    err = out.get("error") if isinstance(out, dict) else None
-    res = out.get("results") if isinstance(out, dict) else out
-    return res, (err or (r.stderr.strip() if r.returncode else None))
+    return call_cli(cmds, src, save)
 
 def rhai(RHAI, pkg, root, fn, *args):
-    env = dict(os.environ, FT_ROOT=str(root))
-    r = subprocess.run([RHAI, str(pkg), fn, *[json.dumps(a) for a in args]], capture_output=True, text=True, env=env)
-    return json.loads(r.stdout) if r.stdout.strip() else {"ok": False, "reason": "script_error", "message": r.stderr}
+    return call_rhai(pkg, fn, *args)
+
+def measure(run_measure, sc_path, out_dir, tag):
+    return call_measure(sc_path, out_dir, tag, threads=False, include_threads=False)
 
 def resolve(templates, RHAI, pkg, root, code):
     """code -> (('ok', result) | ('refused', kind, message), fields)"""
@@ -32,19 +28,7 @@ def resolve(templates, RHAI, pkg, root, code):
     if not out.get("ok"): return ("refused", out["reason"], out["message"]), fields
     return ("ok", out["value"]), fields
 
-def measure(run_measure, sc_path, out_dir, tag):
-    r = run_measure(sc_path, [{"command": "inspect.measure", "params": {}}], str(out_dir), tag)
-    m = r[0]; b = m["bodies"]
-    lo = [min(x["bbox"]["min"][i] for x in b) for i in range(3)]; hi = [max(x["bbox"]["max"][i] for x in b) for i in range(3)]
-    return {"bodies": len(b), "volume": m["total"]["volume_mm3"], "area": m["total"]["area_mm2"], "faces": m["total"]["faces"],
-            "bbox": [round(h - l, 4) for l, h in zip(lo, hi)], "names": [x["name"] for x in b]}
 
-def subst(o, old, new):
-    """The spec check names the body after the code (the Python build does); the inserted body keeps the model's own name, the component is
-    named after the code: rename the `body` references only."""
-    if isinstance(o, dict): return {k: (new if k == "body" and v == old else subst(v, old, new)) for k, v in o.items()}
-    if isinstance(o, list): return [subst(v, old, new) for v in o]
-    return o
 
 def spec_check(pycheck, part, host_sc, out, body):
     orig = pycheck.run_measure

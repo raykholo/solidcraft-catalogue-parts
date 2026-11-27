@@ -14,7 +14,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[4]
 sys.path.insert(0, str(ROOT))
 from runtime.table import read_csv
-from runtime.pharness import cli
+from runtime.parametric import cli
 
 nt = importlib.import_module("vendors.misumi.hnt.t-nut.src.nut")
 PKG = "hnt-t-nut"
@@ -28,9 +28,7 @@ def run(cmds, src=None, save=None):
     if err: sys.exit(f"solidcraft-cli failed: {err}")
     return res
 
-def write_csv(path, header, rows):
-    with open(path, "w", newline="") as f:
-        w = csv.writer(f, lineterminator="\n"); w.writerow(header); w.writerows(rows)
+from runtime.parametric.kit import write_csv
 
 def rows_of_table():
     """(configuration row name, type, m, E, T) for every valid (type, M) pair."""

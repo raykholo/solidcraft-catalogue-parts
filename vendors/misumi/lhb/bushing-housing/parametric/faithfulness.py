@@ -3,6 +3,6 @@
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[5]))
-from runtime import paramkit as pk
+from runtime.parametric import kit as pk
 from run_codes import GEN
 pk.write_faithfulness(sys.argv[1], sys.argv[2], GEN.gid, GEN.blocked)

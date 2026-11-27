@@ -1,5 +1,7 @@
 # misumi.lhb.housing-g as a parametric SolidCraft generator
 
+Using free parameters on inserted links, `component.set_link_parameters`, `generator.parse` / `generator.insert`, field templates, Rhai, and rules addressed by feature name needs #23175 (our draft, being finished). The exact command errors quoted below are observations from SolidCraft 0.50.0. The draft checks ranges on link overrides; ordinary source `parameters.change` still does not enforce range restrictions.
+
 The housing modelled ONCE in SolidCraft (`housing-g/housing-g.sc`), a configuration table of the catalogue rows, the ordering code as a field template and
 the logic as plain Rhai, following SolidCraft's generator interface (`docs/formats/generator.md`, version 2, issue 22331). The Python generator in `../src`
 is untouched and is the reference every code below is compared with. CI (`.github/workflows/parametric.yml`) builds the model and runs everything below on
@@ -14,7 +16,7 @@ housing-g/                  the package layout of the interface document
 build.py                       writes tables/ and generator.toml, then builds the model with solidcraft-cli (--package-only: no SolidCraft)
 run_codes.py  report.py        the end-to-end proof (results.json) and the tables below
 faithfulness.py  ci.sh         results.json -> faithfulness.json for tools/parametric-verdict; the one command CI runs
-../../../../../runtime/paramkit.py       harness shared with the other lhb housings (solidcraft-cli runs, the model build in two stages, rebuilds, README tables)
+../../../../../-m runtime.parametric.kit       harness shared with the other lhb housings (solidcraft-cli runs, the model build in two stages, rebuilds, README tables)
 ../../../../../runtime/fieldtemplate.py  stand-in for the field-template parser and printer (doc section 3), shared with the HFS and MG proofs; these
                                           generators added the required separator `\-` (a character that must be present as written)
 ../../../../../runtime/rhai-run/         stand-in host for generator.rhai (the real Rhai engine, the documented sandbox limits, table() / refuse() / code_template())
@@ -114,9 +116,9 @@ and face count (decided by `tools/parametric-verdict`, not by the harness).
 Row for the code, activate it, then `parameters.change hc` on the configured design; compared with the direct code inserted the same way and with the Python
 part: identical in all three cases (the rebuild table), including the bore, which follows `hc`, and the total height H1 = hc + offset.
 
-## What SolidCraft 0.50.0 cannot express (exact errors) and the workarounds
+## SolidCraft 0.50.0 observations (exact errors) and workarounds
 
-1. **A free parameter value on an inserted part.** `component.insert_design {path, configuration, parameters: {hc: "25 mm"}}` is accepted and the key
+1. **A free parameter value on an inserted part needs #23175 (our draft, being finished).** `component.insert_design {path, configuration, parameters: {hc: "25 mm"}}` is accepted and the key
    ignored: the second part comes in with the same bounding box as the first, no error (`bbox max of both parts [[29.0, 20.0, 30.0], [29.0, 20.0, 30.0]]`).
    `component.set_link_parameters` -> `unknown command `component.set_link_parameters``; `generator.parse` -> `unknown command `generator.parse``;
    `generator.insert` -> `unknown command `generator.insert``. `parameters.change hc 25 mm` in the host design returns without error and leaves the inserted
@@ -126,7 +128,7 @@ part: identical in all three cases (the rebuild table), including the bore, whic
    `rule Centre heights offered for dr 30 (S14 p.491 table) restricts the final value`); an `allow_parameter_values` rule restricts a row, not an ordinary edit.
    The catalogue's own refusals (a height not offered for the dr) are `resolve`'s, with the Python message.
 3. **The thread designation cannot come from a parameter.** Not needed here: this housing has no threaded hole (the four mounting holes are plain through holes in the flange).
-4. **Rules name features by integer id** (`config.rule` schema: `feature` is an integer), so the model is built in two passes (the ids come from the replies of the
+4. **Rules addressed by feature name need #23175 (our draft, being finished).** In 0.50.0, rules name features by integer id (`config.rule` schema: `feature` is an integer), so the model is built in two passes (the ids come from the replies of the
    first); a name would keep the rules readable. A rule target must be a configuration column: `hc` and `drk` are columns.
 5. **The seeded row.** `config.configure` seeds a row named `Default` from the first parameter values; `build.py` deletes it with `config.row {name: "Default", delete: true}`
    after the catalogue rows exist, so the table holds exactly the catalogue rows (10: G-12 ... GW-30).
@@ -140,9 +142,11 @@ part: identical in all three cases (the rebuild table), including the bore, whic
 | 3 field templates | text fields come back upper-case in the stand-in, so a refusal shows the code upper-cased | text fields keep the case typed |
 | 2 `[parameters]` | a flag such as `dowel` (0 or 1) as a value, and a bare `[\-P:dowel]` flag naming a user parameter | `type = "flag"` mapping to a unitless 0 / 1 user parameter |
 | 4 `resolve` return | description, material and part number per code | `properties: #{...}` (done here, as in the HFS proof) written to the component's properties by `generator.insert` |
-| 4 free parameter on a link | see "cannot express" 1 | `parameters` on `component.insert_design`, checked against the source's range and allowed-value rules |
+| 4 free parameter on a link | see observation 1 | `parameters` on `component.insert_design`, checked against the source's range and allowed-value rules |
 | rules | name a feature by name | `feature` by name in `config.rule`, so the model needs no second build stage |
 
 What fits the housing without change: per-series topology as suppression columns of the configuration rows (one activation switches the thread sizes, the
 third mounting row, the dowel sites), the dowel option as a `drive_suppression` pair on a unitless parameter, limits as `parameter_range` / allowed values, per-row
 source and page in `generator.toml`, `generator.rhai` with `table()` / `refuse()` / `code_template()`.
+
+The optional link proof is declared in `link_checks.json` and run by `ci.sh` through `runtime.parametric.links`. It adds insertion, link-edit, and out-of-range refusal rows only when the command catalogue lists `component.set_link_parameters`. Release builds retain their existing rows and link dependency item.

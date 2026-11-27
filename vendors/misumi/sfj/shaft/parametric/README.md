@@ -1,5 +1,7 @@
 # misumi.sfj.shaft as a parametric SolidCraft generator
 
+Using free parameters on inserted links, `component.set_link_parameters`, `generator.parse` / `generator.insert`, field templates, Rhai, and rules addressed by feature name needs #23175 (our draft, being finished). The exact command errors quoted below are observations from SolidCraft 0.50.0. The draft checks ranges on link overrides; ordinary source `parameters.change` still does not enforce range restrictions.
+
 The shaft modelled ONCE in SolidCraft (`sfj-shaft/sfj-shaft.sc`), a configuration table of the diameter rows, the ordering code as a field template
 (an unordered option set with arguments, a decimal length) and the logic, about 30 cross-option refusals included, as plain Rhai, following
 SolidCraft's generator interface (`docs/formats/generator.md`, version 2, issue 22331). The Python generator in `../src` is untouched and is the
@@ -17,7 +19,7 @@ run_codes.py  report.py        the end-to-end proof (results.json) and the table
 faithfulness.py  ci.sh         faithfulness.json for tools/parametric-verdict (what the `parametric` workflow runs)
 ../../../../runtime/fieldtemplate.py   the field-template stand-in, shared with the HIWIN MG and HFS proofs; this generator added `\-` (a required
                                        separator) and the option bag `{opts: bag(M:num, F:int, LKC, ...)}` (see "The ordering code")
-../../../../runtime/pharness.py        helpers shared by the harnesses (solidcraft-cli, the Rhai host, measuring, the spec check on an inserted part)
+../../../../runtime/parametric/        helpers shared by the harnesses (solidcraft-cli, the Rhai host, measuring, the spec check on an inserted part)
 ```
 
 ## How the model is built (all of it worked on SolidCraft 0.50.0)
@@ -273,3 +275,7 @@ also compares the thread spans, the description text and the round trip.
    data of the script, not of the model: a rule's `parameter_range` has no per-row value, so they stay in Rhai, next to the other refusals.
 7. **Trailing separator.** The template engine skips a trailing `-`: the bag refuses a dangling dash itself (`E-PSFJ6-20-` reads no code), the catch-all
    template then gives the `expected ...` refusal, as Python does.
+
+
+This feature needs #23175 (our draft, being finished); the errors above are from 0.50.0.
+The optional link proof is declared in `link_checks.json` and run by `ci.sh` through `runtime.parametric.links`. It adds insertion, link-edit, and out-of-range refusal rows only when the command catalogue lists `component.set_link_parameters`. Release builds retain their existing rows and link dependency item.

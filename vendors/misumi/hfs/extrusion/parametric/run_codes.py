@@ -22,24 +22,18 @@ EXTRA_REFUSALS = ["HFS5-2020", "HFS5-2020-LTP", "HFS7-2020-100", "HFS5-6060-100"
                   "HFS5-2020-2000-SC", "HFS5-2020-100-LHP", "HFS5-2020-100-LCP", "HFS6-3030-100-RWV", "HFS5-2020-100-RWV-X5", "HFS5-2020-100-X5",
                   "HFS5-2020-100-FL", "HFS5-2020-30-LTP-RTP", "HFS5-2020-100-LCH-LCV", "HFS5-2020-100-LWH-RWH-RCH", "KHFS5-2020-1000-LTP", "HFS5-2020-4001"]
 
-def cli(cmds, src=None, save=None, name="step"):
-    d = Path(tempfile.mkdtemp())
-    (d / "s.json").write_text(json.dumps({"commands": cmds}))
-    a = [CLI, "run", str(d / "s.json"), "--results", "--json-out", str(d / "r.json"), "--quiet"]
-    if src: a += ["--in", str(src)]
-    if save: a += ["--save", str(save)]
-    r = subprocess.run(a, capture_output=True, text=True)
-    out = json.loads((d / "r.json").read_text()) if (d / "r.json").exists() else {}
-    err = out.get("error") if isinstance(out, dict) else None
-    res = out.get("results") if isinstance(out, dict) else out
-    return res, (err or (r.stderr.strip() if r.returncode else None))
 
-def rhai(fn, *args):
-    env = dict(os.environ, FT_ROOT=str(ROOT))
-    r = subprocess.run([RHAI, str(PKG), fn, *[json.dumps(a) for a in args]], capture_output=True, text=True, env=env)
-    return json.loads(r.stdout) if r.stdout.strip() else {"ok": False, "reason": "script_error", "message": r.stderr}
 
 TEMPLATES = ft.load(PKG)
+
+from runtime.parametric import cli, rhai as call_rhai, measure as measure_core
+
+def rhai(fn, *args):
+    return call_rhai(PKG, fn, *args)
+
+def measure(sc_path, out_dir, tag, threads=True):
+    return measure_core(sc_path, out_dir, tag, threads=threads)
+
 
 def resolve(code):
     """code -> (('ok', result) | ('refused', kind, message), fields)"""
@@ -51,14 +45,6 @@ def resolve(code):
     if not out.get("ok"): return ("refused", out["reason"], out["message"]), fields
     return ("ok", out["value"]), fields
 
-def measure(sc_path, out_dir, tag, threads=True):
-    cmds = [{"command": "inspect.measure", "params": {}}] + ([{"command": "model.threads", "params": {}}] if threads else [])
-    r = run_measure(sc_path, cmds, str(out_dir), tag)
-    m = r[0]; b = m["bodies"]
-    lo = [min(x["bbox"]["min"][i] for x in b) for i in range(3)]; hi = [max(x["bbox"]["max"][i] for x in b) for i in range(3)]
-    th = sorted((round(t["start"], 3), round(t["end"], 3)) for t in (r[1]["threads"] if threads else []))
-    return {"bodies": len(b), "volume": m["total"]["volume_mm3"], "area": m["total"]["area_mm2"], "faces": m["total"]["faces"],
-            "bbox": [round(h - l, 4) for l, h in zip(lo, hi)], "threads": th, "names": [x["name"] for x in b]}
 
 def python_part(code, out):
     part, cmds = registry.build(code)
@@ -83,22 +69,12 @@ def code_row_cmds(code, res):
     vals = {f"param:{k}": v for k, v in res["parameters"].items()}
     return [{"command": "config.row", "params": {"name": code, "from": res["configuration"], "values": vals}}]
 
-def subst(o, old, new):
-    """The spec check names the body after the code (the Python build does); the inserted body keeps the model's own name, the component is
-    named after the code: rename the `body` references only."""
-    if isinstance(o, dict): return {k: (new if k == "body" and v == old else subst(v, old, new)) for k, v in o.items()}
-    if isinstance(o, list): return [subst(v, old, new) for v in o]
-    return o
+from runtime.parametric import subst
+
+from runtime.parametric import spec_check as check_inserted
 
 def spec_check(e, host_sc, out, body):
-    orig = pycheck.run_measure
-    pycheck.run_measure = lambda sc, cmds, o, name: orig(sc, subst(cmds, e.code, body), o, name)
-    try:
-        R = pycheck.check(e, host_sc, str(out))
-    finally:
-        pycheck.run_measure = orig
-    bad = [r for r in R.rows if not r[0]]
-    return {"rows": len(R.rows), "failed": [f"{r[1]}: spec {r[2]} got {r[3]}" for r in bad]}
+    return check_inserted(pycheck, e, host_sc, out, body, e.code)
 
 def insert_code(code, res, out, tag):
     """Working copy of the package model + a row for the code; a host design inserts it by `configuration`. -> host .sc path, body name"""

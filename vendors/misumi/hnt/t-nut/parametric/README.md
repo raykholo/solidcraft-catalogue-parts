@@ -1,5 +1,7 @@
 # misumi.hnt.t-nut as a parametric SolidCraft generator
 
+Using free parameters on inserted links, `component.set_link_parameters`, `generator.parse` / `generator.insert`, field templates, Rhai, and rules addressed by feature name needs #23175 (our draft, being finished). The exact command errors quoted below are observations from SolidCraft 0.50.0. The draft checks ranges on link overrides; ordinary source `parameters.change` still does not enforce range restrictions.
+
 The T-nut modelled ONCE in SolidCraft (`hnt-t-nut/hnt-t-nut.sc`), a configuration table of the catalogue rows, the ordering code as a field template
 and the logic as plain Rhai, following SolidCraft's generator interface (`docs/formats/generator.md`, version 2, issue 22331). The Python generator
 in `../src` is untouched and is the reference every code below is compared with.
@@ -13,7 +15,7 @@ hnt-t-nut/                     the package layout of the interface document
 build.py                       builds the model with solidcraft-cli
 run_codes.py  report.py        the end-to-end proof (results.json) and the tables below
 faithfulness.py  ci.sh         faithfulness.json for tools/parametric-verdict (what the `parametric` workflow runs)
-../../../../runtime/pharness.py  helpers shared by the harnesses (solidcraft-cli, the Rhai host, measuring, the spec check on an inserted part)
+../../../../runtime/parametric/  helpers shared by the harnesses (solidcraft-cli, the Rhai host, measuring, the spec check on an inserted part)
 ```
 
 ## How the model is built (all of it worked on SolidCraft 0.50.0)
@@ -122,3 +124,5 @@ compares the thread span.
    engine refuses a dangling separator at the end of a code, and a catch-all second template `{raw: text 1..128 [A-Za-z0-9._ /-]}` lets the script give
    Python's `expected <type>-<M>` refusal. `HNTT5-`, `HNTT5-4-4`, `HNTT5--4`, `HNTT5-4-` and `HNTT` are in the compared rejects. The engine change leaves the
    HFS, MG and shaft results unchanged.
+
+This package has no free ordering parameter, so it adds no optional link-parameter checks. Internal dimension rebuild probes remain as recorded above.

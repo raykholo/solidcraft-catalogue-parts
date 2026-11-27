@@ -1,5 +1,7 @@
 # misumi.hbl.bracket as a parametric SolidCraft generator
 
+Using free parameters on inserted links, `component.set_link_parameters`, `generator.parse` / `generator.insert`, field templates, Rhai, and rules addressed by feature name needs #23175 (our draft, being finished). The exact command errors quoted below are observations from SolidCraft 0.50.0. The draft checks ranges on link overrides; ordinary source `parameters.change` still does not enforce range restrictions.
+
 The MISUMI 5 series extruded brackets modelled ONCE in SolidCraft (`hbl-bracket/hbl-bracket.sc`), a configuration table of the 19 catalogue rows, the ordering
 code as a field template and the logic as plain Rhai, following SolidCraft's generator interface (`docs/formats/generator.md`, version 2, issue 22331).
 The Python generator in `../src` is untouched and is the reference every code below is compared with.
@@ -134,13 +136,13 @@ There is no free parameter in a code, but the model is parametric all the same: 
 hole diameter set to 4.5 mm is an HBLTS5-4, in volume, area, bbox and faces. The probe `tabs = 1` on an HBLTS5 row shows the rules switching the two tab
 features on (volume 4684.9 = HBKTS5).
 
-## What SolidCraft 0.50.0 cannot express (exact errors) and the workarounds
+## SolidCraft 0.50.0 observations (exact errors) and workarounds
 
-1. **A free parameter value on an inserted part.** `component.insert_design {path, configuration: "HBLTS5", parameters: {width: "19 mm"}}` is accepted and the key
+1. **A free parameter value on an inserted part needs #23175 (our draft, being finished).** `component.insert_design {path, configuration: "HBLTS5", parameters: {width: "19 mm"}}` is accepted and the key
    ignored (the new occurrence has the volume of the HBLTS5, not of a 19 mm wide plate; no error); `component.set_link_parameters` -> `unknown command`;
    `generator.parse` -> `unknown command`. This generator needs none for its codes, so nothing is worked around; a user who wants a different width edits the
-   configured design. Listed under "blocked" in `faithfulness.json` (needs tangency-labs/solidcraft#23175).
-2. **Rules name features by integer id** (`config.rule` `feature` is an integer), so `build.py` builds the model in two passes (the ids come from the replies of the first).
+   configured design. Listed under "blocked" in `faithfulness.json` (needs #23175 (our draft, being finished)).
+2. **Rules addressed by feature name need #23175 (our draft, being finished).** In 0.50.0, rules name features by integer id (`config.rule` `feature` is an integer), so `build.py` builds the model in two passes (the ids come from the replies of the first).
 3. **A suppressed feature still holds its inputs.** The tab boxes of the rows without tabs keep `tab_w = 6`, `tab_h = 1` (inert, switched off by `tabs = 0`): a size
    of 0 would be an invalid box, and a row must not rebuild an invalid feature. A conditional or a "zero means absent" feature would remove the placeholder.
 4. **Face-picked features.** The Python builder picks nothing here (boxes and cylinders by corner and base), so the model needed no re-picking.
@@ -153,3 +155,5 @@ features on (volume 4684.9 = HBKTS5).
 | `resolve` return | description, material, surface per code | `properties: #{...}` written to the component's properties by `generator.insert` (done here, as in the HFS proof) |
 | inverse | `generator.code {parameters}` needs parameters -> fields; an alteration is not a parameter | optional `fn fields(configuration, parameters)`; an alteration text parameter would let it print `-SET` |
 | rules | name a feature by name | `feature` by name in `config.rule` |
+
+This package has no free ordering parameter, so it adds no optional link-parameter checks. Internal dimension rebuild probes remain as recorded above.

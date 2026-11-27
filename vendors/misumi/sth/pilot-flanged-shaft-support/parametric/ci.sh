@@ -3,3 +3,6 @@
 set -eu; P=vendors/misumi/sth/pilot-flanged-shaft-support/parametric; O=$1; mkdir -p "$O"
 python3 $P/build.py
 python3 $P/run_codes.py --out "$O"
+
+# Optional link proof: release CLIs retain the legacy verdict unchanged.
+python3 -m runtime.parametric.links "vendors/misumi/sth/pilot-flanged-shaft-support" "$O"

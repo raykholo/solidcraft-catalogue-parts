@@ -10,7 +10,7 @@ import sys
 from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parents[4]))
-from runtime import paramkit as pk
+from runtime.parametric import kit as pk
 
 def part_from_result(R, res, code):
     """The object src/check.py takes, built from the Rhai result and the package tables (never from the Python parser)."""
@@ -28,7 +28,7 @@ GEN = pk.Gen(
             "centre height 15 mm on dr 30 in a configuration row (allowed 30, 40, 50)": lambda res: [
                 {"command": "config.row", "params": {"name": "bad", "from": "G-30", "values": {"param:hc": "15 mm"}}}]},
     free_param="hc", free_value="25 mm",
-    blocked=[{"what": "free parameter values on an inserted link (insert_design parameters ignored; set_link_parameters unknown)", "needs": "tangency-labs/solidcraft#23175"}])
+    blocked=[{"what": "free parameter values on an inserted link (insert_design parameters ignored; set_link_parameters unknown)", "needs": "needs #23175 (our draft, being finished)"}])
 
 if __name__ == "__main__":
     pk.main(GEN)

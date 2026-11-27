@@ -7,9 +7,7 @@ from vendors.misumi.hfs.extrusion.src import ext
 
 TEMPLATE = "[K:fixed]{part_type: text 3..8 [A-Za-z0-9]}-{profile: text 4..6 [0-9]}[-{length: decimal}][-{alts: text 1..80 [A-Za-z0-9-]}]"
 
-def write_csv(path, header, rows):
-    with open(path, "w", newline="") as f:
-        w = csv.writer(f, lineterminator="\n"); w.writerow(header); w.writerows(rows)
+from runtime.parametric.kit import write_csv
 
 def write_tables(pkg: Path, data: Path):
     t = pkg / "tables"; t.mkdir(parents=True, exist_ok=True)

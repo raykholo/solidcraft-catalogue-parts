@@ -1,0 +1,11 @@
+{
+  "package": "hfs-extrusion",
+  "checks": [
+    {
+      "parameter": "length",
+      "insert": "HFS5-2020-300-LTP-RTP",
+      "change": "HFS5-2020-1000-LTP-RTP",
+      "outside": "4001 mm"
+    }
+  ]
+}

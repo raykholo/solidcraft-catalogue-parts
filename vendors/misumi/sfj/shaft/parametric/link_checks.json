@@ -1,0 +1,11 @@
+{
+  "package": "sfj-shaft",
+  "checks": [
+    {
+      "parameter": "L",
+      "insert": "E-PSFJT12-100-M6",
+      "change": "E-PSFJT12-60-M6",
+      "outside": "1501 mm"
+    }
+  ]
+}

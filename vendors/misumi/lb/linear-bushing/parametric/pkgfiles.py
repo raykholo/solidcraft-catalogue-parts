@@ -9,9 +9,7 @@ import rows as rw
 TEMPLATES = ["E-LB[{shape: F|K|H}[{variant: PM|CM|Z|M|P|C}]]{dr: text 1..2 [0-9]}{suffix: TUU|DMUU|DUU|LUU|UU}",
              "{raw: text 1..80 [A-Za-z0-9 _./-]}"]
 
-def write_csv(path, header, data):
-    with open(path, "w", newline="") as f:
-        w = csv.writer(f, lineterminator="\n"); w.writerow(header); w.writerows(data)
+from runtime.parametric.kit import write_csv
 
 def ilist(vals):
     return "|".join(str(v) for v in sorted(vals))

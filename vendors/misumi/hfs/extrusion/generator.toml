@@ -1,6 +1,6 @@
 id = "misumi.hfs.extrusion"
 name = "MISUMI aluminium extrusions, 5 series 2020 / 2040 / 4040 and 6 series 3030"
-version = "0.1.0"
+version = "0.2.0"
 kind = "generator"
 min_host_version = "0.49.1"
 preview_code = "HFS5-2020-120-LTP-RTP-LCH"

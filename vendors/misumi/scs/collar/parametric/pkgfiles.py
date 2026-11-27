@@ -10,9 +10,7 @@ TEMPLATES = [r"C-{type: SCSAW|SCNPAW|SCSMAW|SCSGAW}{d: int 0..99}\-{b: int 0..99
              r"E-[{plat: P|S}]{fam: SCDJ}{d: int 0..99}[\-{b: int 0..99}]",
              "{raw: text 1..64 [A-Za-z0-9-]}"]
 
-def write_csv(path, header, rows):
-    with open(path, "w", newline="") as f:
-        w = csv.writer(f, lineterminator="\n"); w.writerow(header); w.writerows(rows)
+from runtime.parametric.kit import write_csv
 
 def keyed(path, rows, key):
     write_csv(path, ["key"] + list(rows[0]), [[key(r)] + list(r.values()) for r in rows])

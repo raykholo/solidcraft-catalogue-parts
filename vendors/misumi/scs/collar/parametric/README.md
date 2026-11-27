@@ -1,5 +1,7 @@
 # misumi.scs.collar as a parametric SolidCraft generator
 
+Using free parameters on inserted links, `component.set_link_parameters`, `generator.parse` / `generator.insert`, field templates, Rhai, and rules addressed by feature name needs #23175 (our draft, being finished). The exact command errors quoted below are observations from SolidCraft 0.50.0. The draft checks ranges on link overrides; ordinary source `parameters.change` still does not enforce range restrictions.
+
 The MISUMI Economy Series shaft collars modelled ONCE in SolidCraft (`scs-collar/scs-collar.sc`), a configuration table of the 102 catalogue rows, the ordering
 code as field templates and the logic as plain Rhai, following SolidCraft's generator interface (`docs/formats/generator.md`, version 2, issue 22331). The Python
 generator in `../src` is untouched and is the reference every code below is compared with. Four bodies are one design: the aluminium ring (slit, split, two
@@ -157,7 +159,7 @@ tools/parametric-verdict OUTDIR/faithfulness.json                # the verdict C
 A catalogue row is activated and the width (`ring_h` and `ht`) changed on the configured design with `parameters.change`; compared with the other width of the same
 type built directly and with the Python part (table above, last block): C-SCSAW16-10 at 12 mm is C-SCSAW16-12, and the same for the split C-SCNPAW16.
 
-## What SolidCraft 0.50.0 cannot express (exact errors) and the workarounds
+## SolidCraft 0.50.0 observations (exact errors) and workarounds
 
 1. **A hole picks its face, and the pick does not survive a change of topology.** The clamp screw hole of the ring (`solid.hole {position}` on the outer cylinder)
    drawn on the slit ring fails when a row switches the slit to the through gap of the split type: `configuration C-SCNPAW-6-8 would fail to rebuild: RThr_M3_1: RThr_M3_1:
@@ -169,12 +171,12 @@ type built directly and with the Python part (table above, last block): C-SCSAW1
 3. **The tapped half of a split collar is a body name.** The kernel names the halves `Collar (1)` and `Collar (2)`, and the urethane builder taps `Collar (1)`; a
    feature's `targets` is fixed in the feature, so the split types have their own tapped-hole features (`UThrAs`, `UThrBs`) targeting `Collar (1)`, and the slit types
    target `Collar`.
-4. **A free parameter value on an inserted part.** `component.insert_design {parameters: {...}}` is accepted and the key ignored; `component.set_link_parameters` and
+4. **A free parameter value on an inserted part needs #23175 (our draft, being finished).** `component.insert_design {parameters: {...}}` is accepted and the key ignored; `component.set_link_parameters` and
    `generator.parse` -> `unknown command` (probes in the table above). There is no free parameter in a code here (B follows from D, the plating is text), so nothing
    is worked around; the width changes in "It stays parametric" are made on the configured design, not on a link. Listed under "blocked" in `faithfulness.json`
-   (needs tangency-labs/solidcraft#23175).
+   (needs #23175 (our draft, being finished)).
 5. **The working "Default" row** made by `config.configure` is dropped before the rules are added (see the shaft-holder README for the error it gives otherwise).
-6. **Rules name features by integer id**, so `build.py` builds the model in two passes; **a suppressed feature still holds its inputs**, so the rows without a boss,
+6. **Rules addressed by feature name need #23175 (our draft, being finished).** In 0.50.0, rules name features by integer id, so `build.py` builds the model in two passes; **a suppressed feature still holds its inputs**, so the rows without a boss,
    fixing holes or damper keep inert positive sizes for them.
 7. **One conditional-free slit/gap box.** The slit and the split gap are one box whose length is `(1 + split) * (od / 2 + 1 mm)`, because the expression language
    has no conditional.
@@ -187,3 +189,5 @@ type built directly and with the Python part (table above, last block): C-SCSAW1
 | field template | a catch-all for the shape error message | a second `[[template]]` of free text (done), or `fn no_match(raw)` |
 | model | a feature that keeps its face pick across a slit -> gap change | re-pick by position on rebuild (a `position` hole already has the point), or accept a `position` hole without a stored face |
 | rules | name a feature by name | `feature` by name in `config.rule` |
+
+This package has no free ordering parameter, so it adds no optional link-parameter checks. Internal dimension rebuild probes remain as recorded above.

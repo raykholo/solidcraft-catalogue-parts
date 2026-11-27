@@ -18,9 +18,10 @@ PKG = HERE / "oil-free-bushing"
 RHAI = os.environ.get("RHAI_RUN", "rhai-run")
 TEMPLATES = ft.load(PKG)
 
+from runtime.parametric import rhai as call_rhai
+
 def rhai(fn, *args):
-    r = subprocess.run([RHAI, str(PKG), fn, *[json.dumps(a) for a in args]], capture_output=True, text=True, env=dict(os.environ, FT_ROOT=str(ROOT)))
-    return json.loads(r.stdout) if r.stdout.strip() else {"ok": False, "reason": "script_error", "message": r.stderr}
+    return call_rhai(PKG, fn, *args)
 
 def norm(v):
     if isinstance(v, tuple): return [norm(x) for x in v]

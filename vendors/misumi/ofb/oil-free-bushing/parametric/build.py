@@ -34,21 +34,10 @@ DERIVED = [("hr", "pcd / 2", "radius of the holes on the P.C.D."), ("ha", "cp_a 
 def cell(v):
     return f"{v:g}" if isinstance(v, float) else str(v)
 
+from runtime.parametric.process import run_build
+
 def run(cmds, src=None, save=None, workdir=None):
-    wd = Path(workdir)
-    script = wd / "step.json"; res = wd / "step.res.json"
-    script.write_text(json.dumps({"commands": cmds}))
-    a = [CLI, "run", str(script), "--results", "--json-out", str(res), "--quiet"]
-    if src: a += ["--in", str(src)]
-    if save: a += ["--save", str(save)]
-    r = subprocess.run(a, capture_output=True, text=True)
-    out = json.loads(res.read_text()) if res.exists() else {}
-    if r.returncode != 0 or (isinstance(out, dict) and out.get("error")):
-        err = out.get("error") if isinstance(out, dict) else out
-        done = len(out.get("results", [])) if isinstance(out, dict) else 0
-        where = cmds[done] if done < len(cmds) else None
-        sys.exit(f"solidcraft-cli failed after {done} commands, at {json.dumps(where)[:600]}:\n{r.stderr[-1500:]}\n{json.dumps(err)[:1500]}")
-    return out if isinstance(out, list) else out["results"]
+    return run_build(cmds, src, save, workdir, detailed=True, executable=CLI)
 
 # ---- the geometry: every coordinate an expression over the parameters ----------------------------------------------
 R_ = "od / 2"
@@ -169,11 +158,8 @@ def build(out: Path):
     cfg.append({"command": "config.activate", "params": {"row": R[0]["name"]}})
     run(cfg, src=wd / "stage1.sc", save=wd / "stage2.sc", workdir=wd)
     # config.configure made a "Default" row from the current values: it is not a catalogue row, drop it (the table keeps only catalogue rows)
-    (wd / "del.json").write_text(json.dumps({"commands": [{"command": "config.row", "params": {"name": "Default", "delete": True}}]}))
-    r = subprocess.run([CLI, "run", str(wd / "del.json"), "--in", str(wd / "stage2.sc"), "--save", str(pkg / f"{PKG}.sc"), "--quiet"], capture_output=True, text=True)
-    if r.returncode != 0:
-        print("note: the Default row stays:", r.stderr[-300:], file=sys.stderr)
-        shutil.copy(wd / "stage2.sc", pkg / f"{PKG}.sc")
+    from runtime.parametric.process import drop_default
+    drop_default(wd / "stage2.sc", pkg / f"{PKG}.sc", wd, CLI)
     pkgfiles.write_tables(pkg, HERE.parent / "data", R); pkgfiles.write_toml(pkg, R)
     shutil.rmtree(wd, ignore_errors=True)
     return ids, R

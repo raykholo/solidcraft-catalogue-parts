@@ -1,6 +1,6 @@
 id = "misumi.sth.flanged-shaft-support"
 name = "MISUMI Economy flanged shaft supports, steel and stainless: standard and long sleeve (E-STHRB / E-STHSB / E-STHCB / E-SSTHC and ...L), thickened (E-STHRBN / E-STHCBN), end mounting (E-STHXRB / E-STHXCB), flanged with slit (E-STHWRB / E-STHWSB / E-STHWCB) and compact clamp (E-STHMRB)"
-version = "0.2.0"
+version = "0.2.1"
 kind = "generator"
 min_host_version = "0.49.1"
 preview_code = "E-STHRB12"

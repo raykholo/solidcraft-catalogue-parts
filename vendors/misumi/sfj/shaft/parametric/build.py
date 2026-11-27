@@ -15,7 +15,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[4]
 sys.path.insert(0, str(ROOT))
 from runtime.table import read_csv
-from runtime.pharness import cli
+from runtime.parametric import cli
 
 sh = importlib.import_module("vendors.misumi.sfj.shaft.src.shaft")
 PKG = "sfj-shaft"

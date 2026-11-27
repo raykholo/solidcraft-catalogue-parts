@@ -1,5 +1,7 @@
 # misumi.ofb.oil-free-bushing as a parametric SolidCraft generator
 
+Using free parameters on inserted links, `component.set_link_parameters`, `generator.parse` / `generator.insert`, field templates, Rhai, and rules addressed by feature name needs #23175 (our draft, being finished). The exact command errors quoted below are observations from SolidCraft 0.50.0. The draft checks ranges on link overrides; ordinary source `parameters.change` still does not enforce range restrictions.
+
 The bushing modelled ONCE in SolidCraft (`oil-free-bushing/oil-free-bushing.sc`), 159 configuration rows (one per type and table row), the ordering code as a field
 template and the logic as plain Rhai, following SolidCraft's generator interface (`docs/formats/generator.md`, version 2, issue 22331). The Python generator in `../src` is
 untouched and is the reference everything below is compared with.
@@ -948,10 +950,10 @@ Sweep of every other valid code of the generator: 755 codes, identical to the Py
    `configuration X would fail to rebuild: <Hole>: the reference `F8:side:l4` no longer exists as it was picked; reselect it`. Workaround
    (labelled): one set of hole features per body variant (a suppression column each). Proposal: a hole whose position expression is re-resolved
    to the face at that position on every rebuild (the doc says the position is followed; the face reference is what breaks).
-2. **A free parameter value on an inserted part.** `component.insert_design {configuration, parameters}` is accepted and the key ignored,
+2. **A free parameter value on an inserted part needs #23175 (our draft, being finished).** `component.insert_design {configuration, parameters}` is accepted and the key ignored,
    `component.set_link_parameters` and `generator.parse|insert` are `unknown command` (see the probe table). Workaround (labelled): a row for
    the code in a working copy of the model (`config.row {from: <catalogue row>, values: {...}}`), inserted by `configuration`; to change the
-   length, change it in the working copy and insert again. Listed as blocked: tangency-labs/solidcraft#23175.
+   length, change it in the working copy and insert again. needs #23175 (our draft, being finished).
 3. **A rule cannot name a configuration row.** The per-row allowed lengths and the hole-set switches need a condition; there is none on the row, so
    each row carries a unitless `rowno` (and `kind` for the body variant) and the rules test that. Proposal: a `row` condition.
 4. **Expression depth.** The sandbox allows a depth of 16 inside a function; a `refuse` call with a message built from `${}` interpolation or an
@@ -963,3 +965,5 @@ Sweep of every other valid code of the generator: 755 codes, identical to the Py
    it and `resolve` raises the Python message. Proposal: an optional `fn no_match(raw)`.
 7. **Arcs and point expressions.** Arc points come from `sketch.point` ids with expression coordinates so that the arcs follow the
    parameters (the arc's centre is solved, not stored).
+
+The optional link proof is declared in `link_checks.json` and run by `ci.sh` through `runtime.parametric.links`. It adds insertion, link-edit, and out-of-range refusal rows only when the command catalogue lists `component.set_link_parameters`. Release builds retain their existing rows and link dependency item.

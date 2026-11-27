@@ -9,50 +9,23 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[5]
 sys.path.insert(0, str(ROOT)); sys.path.insert(0, str(HERE))
-from stub import Package
+from runtime.parametric.package import Package
+from runtime.parametric.absolute import AbsoluteHarness, c, fmt, same
 from runtime import registry, sc
 import runtime.check as rc
 
 OUT = Path(sys.argv[1]).resolve(); OUT.mkdir(parents=True, exist_ok=True)
+io = AbsoluteHarness(OUT)
+run, measure = io.run, io.measure
 PKGDIR = HERE.parent / "mg-rail-set"
 PKG = Package(PKGDIR)
 TEMPLATE = str((PKGDIR / "mg-rail-set.sc").resolve())
 GEN = registry.find("MGN12H2R300Z0C")
 cat, build, chk = GEN.module("catalogue"), GEN.module("build"), GEN.module("check")
-def c(command, **p): return {"command": command, "params": p}
 
-def run(cmds, name, base=None, save=None, allow_fail=False):
-    """solidcraft-cli run on `base` (a design) with these commands; -> (results or None, error or None)"""
-    script = OUT / f"{name}.json"; res = OUT / f"{name}.res.json"
-    script.write_text(json.dumps({"commands": cmds}))
-    args = [sc.CLI, "run", str(script), "--results", "--json-out", str(res), "--quiet"]
-    if base: args += ["--in", str(base)]
-    if save: args += ["--save", str(save)]
-    r = subprocess.run(args, capture_output=True, text=True)
-    try: j = json.load(open(res))
-    except Exception: j = None
-    if r.returncode != 0:
-        err = (j or {}).get("error") if isinstance(j, dict) else None
-        return None, (err or {"error": (r.stdout + r.stderr)[-600:]})
-    return j, None
 
-def measure(path, name):
-    j, err = run([c("inspect.measure")], name, base=path)
-    if err: return {"error": err}
-    m = j[0]; b = m["bodies"]
-    lo = [min(x["bbox"]["min"][i] for x in b) for i in range(3)]; hi = [max(x["bbox"]["max"][i] for x in b) for i in range(3)]
-    return dict(vol=m["total"]["volume_mm3"], area=m["total"]["area_mm2"], faces=m["total"]["faces"], bodies=len(b), lo=lo, hi=hi)
 
-def fmt(m):
-    if "error" in m: return "ERROR " + json.dumps(m["error"])[:120]
-    r = lambda v: f"{v:.3f}"
-    return f"{m['vol']:.2f} / {m['area']:.2f} / [{r(m['lo'][0])}..{r(m['hi'][0])}] x [{r(m['lo'][1])}..{r(m['hi'][1])}] x [{r(m['lo'][2])}..{r(m['hi'][2])}] / {m['faces']}f {m['bodies']}b"
 
-def same(a, b, tol=1e-6):
-    if "error" in a or "error" in b: return False
-    close = lambda x, y: abs(x - y) <= tol * max(1.0, abs(x), abs(y))
-    return close(a["vol"], b["vol"]) and close(a["area"], b["area"]) and a["faces"] == b["faces"] and a["bodies"] == b["bodies"] \
-        and all(close(a["lo"][i], b["lo"][i]) and close(a["hi"][i], b["hi"][i]) for i in range(3))
 
 def python_part(code, caps, tag):
     s = cat.parse(code)

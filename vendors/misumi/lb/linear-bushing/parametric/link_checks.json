@@ -1,0 +1,11 @@
+{
+  "package": "linear-bushing",
+  "checks": [
+    {
+      "parameter": "blen",
+      "insert": "E-LBF20LUU",
+      "change": "E-LBF20UU",
+      "outside": "9999 mm"
+    }
+  ]
+}

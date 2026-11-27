@@ -1,0 +1,130 @@
+#!/usr/bin/env python3
+"""Targeted harness contract tests; never starts SolidCraft or the Rhai host."""
+import json
+import subprocess
+import sys
+import tempfile
+import unittest
+from pathlib import Path
+from types import SimpleNamespace
+from unittest.mock import patch
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from runtime import fieldtemplate, registry
+from runtime.parametric import supports_link_parameters
+from runtime.parametric import links
+from runtime.parametric.results import convert, convert_hiwin
+
+M = {"volume": 42, "area": 20, "bbox": [3, 4, 5], "faces": 6, "bodies": 1}
+
+
+class HarnessContracts(unittest.TestCase):
+    def tearDown(self):
+        supports_link_parameters.cache_clear()
+
+    def test_command_catalogue_cached_and_feature_gated(self):
+        for catalogue, expected in [([{"name": "component.set_link_parameters"}], True),
+                                    ({"commands": ["component.insert_design"]}, False)]:
+            supports_link_parameters.cache_clear()
+            with patch("runtime.parametric.subprocess.run", return_value=SimpleNamespace(stdout=json.dumps(catalogue))) as call:
+                self.assertEqual(supports_link_parameters(), expected)
+                self.assertEqual(supports_link_parameters(), expected)
+                self.assertEqual(call.call_count, 1)
+
+    def test_unsupported_build_leaves_bytes_unchanged(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "faithfulness.json"
+            path.write_text('{"untouched": true}\n')
+            with patch.object(links, "supports_link_parameters", return_value=False), patch.object(links, "link_rows") as run:
+                links.check_links(ROOT / "vendors/misumi/hfs/extrusion", tmp)
+                self.assertEqual(path.read_text(), '{"untouched": true}\n')
+                run.assert_not_called()
+
+    def test_no_free_parameter_does_not_probe_commands(self):
+        with patch.object(links, "supports_link_parameters") as support:
+            links.check_links(ROOT / "vendors/misumi/hnt/t-nut", "unused")
+            support.assert_not_called()
+
+    def test_supported_build_appends_without_replacing_existing_rows(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "faithfulness.json"
+            original = {"valid": [{"code": "kept"}], "rebuild": [{"label": "kept"}], "blocked": [
+                {"what": "free parameter values on an inserted link", "needs": "draft"},
+                {"what": "thread follow-up", "needs": "follow-up"}]}
+            path.write_text(json.dumps(original))
+            with patch.object(links, "supports_link_parameters", return_value=True), \
+                    patch.object(links, "link_rows", return_value=[{"label": "link test"}]) as run:
+                links.check_links("vendors/misumi/hfs/extrusion", tmp)
+                result = json.loads(path.read_text())
+                self.assertEqual(result["valid"], original["valid"])
+                self.assertEqual(result["rebuild"], original["rebuild"] + [{"label": "link test"}])
+                self.assertEqual(result["blocked"], original["blocked"][1:])
+                run.assert_called_once()
+
+    def rows(self, refusal):
+        a = {"configuration": "row", "parameters": {"length": "400 mm", "caps": "0"}}
+        b = {"configuration": "row", "parameters": {"length": "300 mm", "caps": "0"}}
+        with tempfile.TemporaryDirectory() as tmp, patch.object(links, "resolve", side_effect=[a, b]), \
+                patch.object(links, "direct", return_value=M), patch.object(links, "measure", return_value=M), \
+                patch.object(links, "cli", side_effect=[([{"component": 73}], None), ([], None), (None, refusal)]) as call:
+            rows = links.link_rows(None, Path(tmp), Path(tmp) / "part.sc",
+                                   {"parameter": "length", "insert": "A", "change": "B", "outside": "3000 mm"}, Path(tmp))
+            calls = call.call_args_list
+            self.assertNotIn("src", calls[0].kwargs)  # empty assembly
+            self.assertEqual(calls[0].args[0][0]["params"]["parameters"], a["parameters"])
+            self.assertEqual(calls[1].args[0][0]["params"], {"component": 73, "parameters": {"length": "300 mm"}, "merge": True})
+            self.assertEqual(calls[1].kwargs["src"], calls[0].kwargs["save"])
+            self.assertEqual(calls[2].args[0][0]["params"]["parameters"], {"length": "3000 mm"})
+            return rows
+
+    def test_refusal_must_name_parameter_and_limit(self):
+        self.assertTrue(self.rows("rule length range restricts the final value")[-1]["changed"]["refused"])
+        for failure in (None, "unknown command component.set_link_parameters", "length: geometry failed", "rule width range restricts final value"):
+            self.assertFalse(self.rows(failure)[-1]["changed"]["refused"])
+
+    def test_verdict_refusals_and_existing_geometry_rules(self):
+        valid = {"code": "sample", "python": M, "parametric": M, "spec_python": "1/1", "spec_parametric": "1/1"}
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "faithfulness.json"
+            for changed, expected in [({"refused": True}, 0), ({"refused": False}, 1), ({"error": "failed"}, 1)]:
+                path.write_text(json.dumps({"valid": [valid], "rebuild": [{"label": "link: out-of-range refused", "direct": {"refused": True}, "changed": changed}]}))
+                result = subprocess.run([str(ROOT / "tools/parametric-verdict"), str(path)], capture_output=True)
+                self.assertEqual(result.returncode, expected)
+            for key, value in (("volume", 100), ("area", 100), ("faces", 7), ("bodies", 2), ("bbox", [1, 2, 3])):
+                row = dict(valid, parametric=dict(M, **{key: value}))
+                path.write_text(json.dumps({"valid": [row]}))
+                self.assertEqual(subprocess.run([str(ROOT / "tools/parametric-verdict"), str(path)], capture_output=True).returncode, 1)
+
+    def test_all_link_fixture_codes_build_without_cli(self):
+        fixtures = list((ROOT / "vendors").glob("*/*/*/parametric/link_checks.json"))
+        self.assertEqual(len(fixtures), 9)
+        for path in fixtures:
+            data = json.loads(path.read_text())
+            gen = registry.Generator(path.parents[1])
+            templates = fieldtemplate.load(path.parent / data["package"])
+            for check in data["checks"]:
+                for code in (check["insert"], check["change"]):
+                    with self.subTest(generator=gen.id, code=code):
+                        self.assertIsNotNone(templates.match(code))
+                        part, commands = gen.build(code, **check.get("build_options", {}))
+                        self.assertTrue(commands)
+
+    def test_nut_converter_ignores_rebuilds_and_preserves_extra_rows(self):
+        row = {"code": "X", "python": M, "parametric": M, "python_spec": {"rows": 1, "failed": []}, "parametric_spec": {"rows": 1, "failed": []}}
+        result = convert({"codes": [row], "refusals": [], "parametric": [{"unused": True}],
+                          "all_rows": [row, dict(row, code="Y")]}, "nut", [], "nut")
+        self.assertEqual(result["rebuild"], [])
+        self.assertEqual([r["code"] for r in result["valid"]], ["X", "Y"])
+        self.assertEqual(result["valid"][1]["note"], "row of the types table that codes.txt does not list")
+
+    def test_hiwin_absolute_bounds_unchanged(self):
+        raw = {"vol": 42, "area": 20, "faces": 6, "bodies": 1, "lo": [-2, 0, 1], "hi": [1, 4, 6]}
+        with tempfile.TemporaryDirectory() as tmp:
+            (Path(tmp) / "report.json").write_text(json.dumps([{"code": "MGN", "python_m": raw, "param_m": raw, "pycheck": "1/1", "check": "1/1"}]))
+            out = convert_hiwin(tmp)
+            self.assertEqual(out["valid"][0]["python"]["bbox"], [-2, 0, 1, 1, 4, 6])
+
+
+if __name__ == "__main__":
+    unittest.main()

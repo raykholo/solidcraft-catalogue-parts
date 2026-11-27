@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""End-to-end proof for misumi.sth.flanged-shaft-support: every codes.txt code both ways (the harness is runtime/parametric_harness.py).
+"""End-to-end proof for misumi.sth.flanged-shaft-support: every codes.txt code both ways (the harness is runtime/parametric/harness.py).
 
     SC_CLI=<solidcraft-cli> RHAI_RUN=<rhai-run binary> python3 run_codes.py --out DIR [--only CODE]     # writes DIR/results.json and DIR/faithfulness.json
 """
@@ -9,7 +9,7 @@ HERE = Path(__file__).resolve().parent
 GEN = HERE.parent
 ROOT = HERE.parents[4]
 sys.path.insert(0, str(ROOT))
-from runtime.parametric_harness import Harness, main, table_row, with_description
+from runtime.parametric.harness import Harness, main, table_row, with_description
 
 PKG = HERE / "flanged-shaft-support"
 GEN_ID = "misumi.sth.flanged-shaft-support"
@@ -18,9 +18,9 @@ EXTRA_REFUSALS = ["E-STHRB8-", "E-STHRB0", "E-STHRB100", "E-STHRB6X", "E-STHRBN"
 REBUILD = [("E-STHRB6", "E-STHWCBL50"), ("E-STHWCBL50", "E-STHMRL16"), ("E-STHMRB8", "E-STHXC16"), ("E-STHXR40", "E-STHSBL16"),
            ("E-STHCNL35", "E-STHRBN8"), ("E-STHWSB8", "E-STHCBL30")]
 BLOCKED = [{"what": "a code that matches no template gets the engine's message, not the generator's (the stand-in asks an optional fn no_match(raw))",
-            "needs": "tangency-labs/solidcraft#23175 (optional no_match(raw) in generator.rhai)"},
+            "needs": "needs #23175 (our draft, being finished) (optional no_match(raw) in generator.rhai)"},
            {"what": "a thread designation cannot come from a parameter: one thread feature per screw size (set screws M3 M4 M5 M6 M8; clamp screws M4 M5 M6 M8 M10), per station and screw, suppressed per row",
-            "needs": "tangency-labs/solidcraft#23175 (solid.hole thread designation as an expression)"}]
+            "needs": 'follow-up: parameter-driven threads and persistent thread references (outside #23175)'}]
 
 def sweep_codes():
     """a code for every configuration row that codes.txt does not reach: the first type of that (series, shape, sleeve) the table allows"""
