@@ -1,0 +1,124 @@
+format = "solidcraft-generator/2"
+id = "hbl-bracket"
+name = "MISUMI 5 series extruded brackets (HBLTS, HBLTV, HBLTSW, HBLTVW, HBLTF, HBKTS, HBKUS, HBLUS, HBLTH)"
+license = "CC0-1.0"
+model = "hbl-bracket.sc"
+
+# The code is the type (one configuration row per type, -4 included) and at most one alteration. The alteration only adds accessory text,
+# so there is no free parameter. Both fields are plain text: generator.rhai answers every Python refusal with its own message.
+[[template]]
+pattern = '{base: text 1..24 [A-Za-z0-9]}[-{rest: text 1..40 [A-Za-z0-9-]}]'
+
+[rows."HBLTS5"]
+source = "MISUMI FA catalogue 2014 S40 (sources.toml), p.539 HBLTS5 drawing and tables"
+page = "p.539"
+status = "verified"
+note = "plain flat arms: the inner-corner web, its ribs and the tab length are not drawn (README, not guaranteed)"
+
+[rows."HBLTS5-4"]
+source = "MISUMI FA catalogue 2014 S40 (sources.toml), p.539 HBLTS5 drawing note \"O4.5 for HBLTS5-4\""
+page = "p.539"
+status = "verified"
+note = "plain flat arms: the inner-corner web, its ribs and the tab length are not drawn (README, not guaranteed)"
+
+[rows."HBLTSB5"]
+source = "MISUMI FA catalogue 2014 S40 (sources.toml), p.539 tables"
+page = "p.539"
+status = "verified"
+note = "plain flat arms: the inner-corner web, its ribs and the tab length are not drawn (README, not guaranteed)"
+
+[rows."CHBLTS5"]
+source = "MISUMI FA catalogue 2014 S40 (sources.toml), p.539 tables"
+page = "p.539"
+status = "verified"
+note = "plain flat arms: the inner-corner web, its ribs and the tab length are not drawn (README, not guaranteed)"
+
+[rows."NBLTS5"]
+source = "MISUMI FA catalogue 2014 S40 (sources.toml), p.539 tables"
+page = "p.539"
+status = "verified"
+note = "plain flat arms: the inner-corner web, its ribs and the tab length are not drawn (README, not guaranteed)"
+
+[rows."HBLTV5"]
+source = "MISUMI FA catalogue 2014 S40 (sources.toml), p.539 HBLTV5 drawing and tables"
+page = "p.539"
+status = "verified"
+note = "plain flat arms: the inner-corner web, its ribs and the tab length are not drawn (README, not guaranteed)"
+
+[rows."HBLTVB5"]
+source = "MISUMI FA catalogue 2014 S40 (sources.toml), p.539 tables"
+page = "p.539"
+status = "verified"
+note = "plain flat arms: the inner-corner web, its ribs and the tab length are not drawn (README, not guaranteed)"
+
+[rows."HBLTSW5"]
+source = "MISUMI FA catalogue 2014 S40 (sources.toml), p.540 HBLTSW5 drawing and tables"
+page = "p.540"
+status = "verified"
+note = "plain flat arms: the inner-corner web, its ribs and the tab length are not drawn (README, not guaranteed)"
+
+[rows."HBLTVW5"]
+source = "MISUMI FA catalogue 2014 S40 (sources.toml), p.540 HBLTVW5 drawing and tables"
+page = "p.540"
+status = "verified"
+note = "plain flat arms: the inner-corner web, its ribs and the tab length are not drawn (README, not guaranteed)"
+
+[rows."HBLTF5"]
+source = "MISUMI FA catalogue 2014 S40 (sources.toml), p.540 HBLTF5 drawing and tables"
+page = "p.540"
+status = "verified"
+note = "plain flat arms: the inner-corner web, its ribs and the tab length are not drawn (README, not guaranteed)"
+
+[rows."HBKTST5"]
+source = "MISUMI FA catalogue 2014 S40 (sources.toml), p.539 HBKTS5 drawing and tables"
+page = "p.539"
+status = "verified"
+note = "plain flat arms: the inner-corner web, its ribs and the tab length are not drawn (README, not guaranteed)"
+
+[rows."HBKTS5"]
+source = "MISUMI FA catalogue 2014 S40 (sources.toml), p.539 HBKTS5 drawing and tables"
+page = "p.539"
+status = "verified"
+note = "plain flat arms: the inner-corner web, its ribs and the tab length are not drawn (README, not guaranteed)"
+
+[rows."HBKTSB5"]
+source = "MISUMI FA catalogue 2014 S40 (sources.toml), p.539 HBKTS5 drawing and tables"
+page = "p.539"
+status = "verified"
+note = "plain flat arms: the inner-corner web, its ribs and the tab length are not drawn (README, not guaranteed)"
+
+[rows."HBKUS5"]
+source = "MISUMI FA catalogue 2014 S40 (sources.toml), p.539 HBKUS5 drawing and tables"
+page = "p.539"
+status = "verified"
+note = "plain flat arms: the inner-corner web, its ribs and the tab length are not drawn (README, not guaranteed)"
+
+[rows."HBKUSB5"]
+source = "MISUMI FA catalogue 2014 S40 (sources.toml), p.539 HBKUS5 drawing and tables"
+page = "p.539"
+status = "verified"
+note = "plain flat arms: the inner-corner web, its ribs and the tab length are not drawn (README, not guaranteed)"
+
+[rows."NBLUS5"]
+source = "MISUMI FA catalogue 2014 S40 (sources.toml), p.539 NBLUS5 drawing and tables"
+page = "p.539"
+status = "verified"
+note = "plain flat arms: the inner-corner web, its ribs and the tab length are not drawn (README, not guaranteed)"
+
+[rows."HBLUS5"]
+source = "MISUMI FA catalogue 2014 S40 (sources.toml), p.539 NBLUS5 drawing and tables"
+page = "p.539"
+status = "verified"
+note = "plain flat arms: the inner-corner web, its ribs and the tab length are not drawn (README, not guaranteed)"
+
+[rows."HBLTH5"]
+source = "MISUMI FA catalogue 2014 S40 (sources.toml), p.539 HBLTH5 drawing and tables"
+page = "p.539"
+status = "verified"
+note = "plain flat arms: the inner-corner web, its ribs and the tab length are not drawn (README, not guaranteed)"
+
+[rows."HBLTHB5"]
+source = "MISUMI FA catalogue 2014 S40 (sources.toml), p.539 HBLTH5 drawing and tables"
+page = "p.539"
+status = "verified"
+note = "plain flat arms: the inner-corner web, its ribs and the tab length are not drawn (README, not guaranteed)"

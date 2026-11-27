@@ -1,0 +1,20 @@
+type,family,width,foot,wall,foot_holes,wall_holes,hole_d,material,surface,mass_g,screw,nut,allowable_n,square,foot_t,wall_t,wall_t_approx,tab_w,tab_h,hole_x,perp_k,alt_c,source,page,status
+HBLTS5,thick,14,35,35,25,25,5.5,A6N01SS-T5,Anodize,15,CBM5-10,HNTT5-5,833,20,5,5,0,0,0,,,1,S40,p.539 HBLTS5 drawing and tables,labelled
+HBLTS5-4,thick,14,35,35,25,25,4.5,A6N01SS-T5,Anodize,15,CBM4-10,HNTT5-4,833,20,5,5,0,0,0,,,1,S40,"p.539 HBLTS5 drawing note ""O4.5 for HBLTS5-4""",labelled
+HBLTSB5,thick,14,35,35,25,25,5.5,A6N01SS-T5,Black Anodize,15,CBM5-10,HNTT5-5,833,20,5,5,0,0,0,,,0,S40,p.539 tables,labelled
+CHBLTS5,thick,14,35,35,25,25,5.5,A6N01SS-T5,Clear Paint (Anodize + Clear Paint),15,CBM5-10,HNTT5-5,833,20,5,5,0,0,0,,,1,S40,p.539 tables,labelled
+NBLTS5,thick,14,35,35,25,25,5.5,A6063S-T5,Anodize (both sides and screw holes not anodized),15,CBM5-10,HNTT5-5,833,20,5,5,0,0,0,,,1,S40,p.539 tables,labelled
+HBLTV5,thick,19,35,35,25,25,5.5,A6N01SS-T5,Anodize,20,CBM5-10,HNTT5-5,833,25,5,5,0,0,0,,,1,S40,p.539 HBLTV5 drawing and tables,labelled
+HBLTVB5,thick,19,35,35,25,25,5.5,A6N01SS-T5,Black Anodize,20,CBM5-10,HNTT5-5,833,25,5,5,0,0,0,,,1,S40,p.539 tables,labelled
+HBLTSW5,thick,14,57,57,30|50,30|50,5.5,A6N01SS-T5,Anodize,26,CBM5-10,HNTT5-5,1176,20,5,5,0,0,0,,,1,S40,p.540 HBLTSW5 drawing and tables,labelled
+HBLTVW5,thick,19,57,57,30|50,30|50,5.5,A6N01SS-T5,Anodize,36,CBM5-10,HNTT5-5,1176,25,5,5,0,0,0,,,1,S40,p.540 HBLTVW5 drawing and tables,labelled
+HBLTF5,scalene,14,37,57,30,30|50,5.5,A6N01SS-T5,Anodize,21,CBM5-10,HNTT5-5,1004,20,5,5,0,0,0,,,1,S40,p.540 HBLTF5 drawing and tables,labelled
+HBKTST5,thick tabbed,14,35,35,25,25,5.5,A6N01SS-T5,Anodize,15,CBM5-10,HNTT5-5,833,20,5,5,0,6,1,,0.03,0,S40,p.539 HBKTS5 drawing and tables,labelled
+HBKTS5,thick tabbed,14,35,35,25,25,5.5,A6N01SS-T5,Anodize,15,CBM5-10,HNTT5-5,833,20,5,5,0,6,1,,0.06,1,S40,p.539 HBKTS5 drawing and tables,labelled
+HBKTSB5,thick tabbed,14,35,35,25,25,5.5,A6N01SS-T5,Black Anodize,15,CBM5-10,HNTT5-5,833,20,5,5,0,6,1,,0.06,0,S40,p.539 HBKTS5 drawing and tables,labelled
+HBKUS5,ultra thick tabbed,14,51,51,41,41,5.5,A6N01SS-T5,Anodize,31,CBM5-14,HNTT5-5,833,20,9,9,1,6,1,,0.06,1,S40,p.539 HBKUS5 drawing and tables,labelled
+HBKUSB5,ultra thick tabbed,14,51,51,41,41,5.5,A6N01SS-T5,Black Anodize,31,CBM5-14,HNTT5-5,833,20,9,9,1,6,1,,0.06,0,S40,p.539 HBKUS5 drawing and tables,labelled
+NBLUS5,ultra thick,14,51,51,41,41,5.5,A6063S-T5,Anodize (both sides and screw holes not anodized),31,CBM5-14,HNTT5-5,833,20,9,9,1,0,0,,,1,S40,p.539 NBLUS5 drawing and tables,labelled
+HBLUS5,ultra thick,14,51,51,41,41,5.5,A6N01SS-T5,Anodize,31,CBM5-14,HNTT5-5,833,20,9,9,1,0,0,,,1,S40,p.539 NBLUS5 drawing and tables,labelled
+HBLTH5,eccentric,12,35,35,25,25,5.5,A6N01SS-T5,Anodize,15,CBM5-10,HNTT5-5,833,20,5,5,0,0,0,5,,1,S40,p.539 HBLTH5 drawing and tables,labelled
+HBLTHB5,eccentric,12,35,35,25,25,5.5,A6N01SS-T5,Black Anodize,15,CBM5-10,HNTT5-5,833,20,5,5,0,0,0,5,,1,S40,p.539 HBLTH5 drawing and tables,labelled
