@@ -6,3 +6,5 @@ cp $P/eg-guideway/eg-guideway.sc "$O/eg-guideway.sc.json"         # the model (a
 python3 $G/gw_harness.py EG $P "$O/harness"
 cp "$O/harness/report.json" "$O/harness/rebuild.json" "$O/build/build.json" "$O/"
 python3 $G/gw_faith.py EG "$O/harness" "$O/faithfulness.json"
+
+python3 -m runtime.parametric.links "vendors/hiwin/eg/guideway" "$O"

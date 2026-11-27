@@ -9,14 +9,14 @@ Result of the CI run: **21/21 valid codes identical** (volume, area, bbox, faces
 ```
 parametric/
   eg-guideway/                  the package (docs/formats/generator.md, "Generators: interface (version 2)")
-    generator.toml          [parameters], three [[template]] (rail, set, block), [rows.*] provenance (generated from ../data/*.csv)
+    generator.toml          [parameters], four [[template]] (rail, set, block, raw refusal), [rows.*] provenance (generated from ../data/*.csv)
     eg-guideway.sc          the parametric model + configuration table + rules (built by gw_build.py)
     generator.rhai          resolve(fields), describe(fields): plain Rhai with table() and refuse()
     tables/                 rails.csv, blocks.csv, params.csv (the catalogue rows, with source / page / status)
   package.toml.head         the hand-written head of generator.toml
   ci.sh OUTDIR              build the model, run every code both ways, write OUTDIR/faithfulness.json (tools/parametric-verdict)
 ../../guideway-parametric/   what the EG, HG and RG generators share: gw_model.py (the model as a command list), gw_package.py, gw_build.py,
-                            gw_harness.py (codes both ways), gw_faith.py, gw_stub.py (template + Rhai host), gw_parity.py (local Rhai test)
+                            gw_harness.py / gw_faith.py / gw_stub.py delegate to runtime/parametric/; gw_parity.py tests Rhai
 ```
 
 Commands, from the repository root (`SC_CLI` = solidcraft-cli 0.50.0, `RHAI_RUN` = `runtime/rhai-run` built with cargo):
@@ -36,13 +36,13 @@ python3 vendors/hiwin/guideway-parametric/gw_parity.py EG 3000   # no SolidCraft
 - **Rows: 65**, three products of the catalogue rows. 30 rail-with-blocks rows `<block>-<size>` (e.g. `EGH-SA-15`), 30 block-alone rows `<block>-<size>-block` (rail features suppressed, `rail = 0` puts the block at x = 0 as the Python part does), 5 rail-alone rows (`EGR-15`: block features suppressed).
 - **Suppression columns** (17 features): per row, the hole alternatives that do not apply are suppressed. Block holes: `Block threads M4 col 1`, `Block threads M5 col 1`, `Block threads M6 col 1`, `Block threads M8 col 1`, `Block threads M10 col 1`, `Block through holes col 1`, `Block threads M4 col 2`, `Block threads M5 col 2`, `Block threads M6 col 2`, `Block threads M8 col 2`, `Block threads M10 col 2`, `Block through holes col 2`. The thread designation is not a parameter in 0.50.0, hence one feature per designation.
 - **Rules (`config.rule`).** `length` within the catalogue minimum and the largest single rail (columns `minlen`, `maxlen`); `blocks` from 1 to the number that fits (`floor((length + gap) / (L + gap))`, the Python refusal "do not fit"). Checked when a row is activated (0.50.0): see "Where the limits apply".
-- **Templates.** Three, tried in order: rail, set, block (`generator.toml`). Size (two digits), block kind, load, mounting, `E` flags, number of blocks, rail mounting, `length` (decimal), preload, accuracy, material, rails and a `+` option tail are fields; everything the catalogue refuses is refused in `generator.rhai` so that the message is the Python generator's, in the same order.
+- **Templates.** Rail, set, block, then a raw refusal catcher (`generator.toml`). Size (two digits), block kind, load, mounting, `E` flags, number of blocks, rail mounting, `length` (decimal), preload, accuracy, material, rails and a `+` option tail are fields; everything the catalogue refuses is refused in `generator.rhai` so that the message is the Python generator's, in the same order.
 - **Dimensioned geometry only:** no appearance bodies (chamfers, grooves, end caps and seals, nipple, screws, looks). The Python generator is run with `appearance=False` for the comparison (`build.commands(s, appearance=False)`, `check.check(..., appearance=False)`); the default output of both is unchanged.
 
 ## Documented deviations from the Python generator
 
 - Separators (space, `-`, `_`, `/`, `.`) inside a code are ignored by the field-template engine by design; the Python regular expressions allow optional spaces only. A code with extra separators is accepted here where Python may refuse it (not in the reject battery).
-- The generic refusal of a code that no Python regular expression accepts quotes the code (`'EGW25CAZB': expected a set ...`). Rhai does not see the typed text, only the fields, so it quotes the canonical spelling (upper case, no separators, the length without a trailing `.0`). Identical for every code of `codes.txt`; it differs only for a code typed with separators, lower case or a decimal length such as `1000.0`.
+- Generic shape refusals use a final `{raw: ...}` catch-all template, and the shared host passes the typed code as `raw_code` to Rhai. The message retains decimal spelling such as `1000.0`; the reject battery includes one such case per series. Accepted codes still use the original rail, set and block templates.
 - `U` for the top-mounted rail (EG) and the `E` flags are parsed like Python (modelled as standard).
 
 ## Side by side: every code of codes.txt
@@ -104,12 +104,14 @@ A free parameter changed on a built part (`parameters.change` on the instance) a
 - row with 40 blocks on 400 mm, config.activate: REFUSED {"command": "config.row", "error": "invalid parameters for `config.row`: invalid parameters for `config.activate`: configuration rules: rule `Blocks that fit on the rail with the gap between them` restricts the final value", "step": 1}
 - row with length 30 mm, config.activate: REFUSED {"command": "config.row", "error": "invalid parameters for `config.row`: invalid parameters for `config.activate`: configuration rules: rule `Rail length: the catalogue minimum and the largest single rail` restricts the final value", "step": 1}
 
-## What 0.50.0 could not express (the `blocked` list of faithfulness.json)
+## SolidCraft 0.50.0 observations and draft dependencies
 
 | Wanted | Result on 0.50.0 | Workaround used (labelled) |
 |---|---|---|
-| Free parameter values on insert | `component.insert_design` accepts a `parameters` key and ignores it silently; `component.set_link_parameters` is unknown (see the measured lines above) | the instance file: `config.activate` + `parameters.change` on a copy of the model, which is then the file that gets inserted |
+| Free parameter values on insert: needs #23175 (our draft, being finished) | `component.insert_design` accepts a `parameters` key and ignores it silently; `component.set_link_parameters` is unknown (see the measured lines above) | the instance file: `config.activate` + `parameters.change` on a copy of the model, which is then the file that gets inserted |
 | Thread designation from a parameter | `thread: "M5"` is a literal | one hole feature per designation (M4, M5, M6, M8, M10), the row suppresses all but its own |
 | Names of pattern copies | the copies of a feature pattern are named `Body<N>` | the harness renames them `Block 1..n` by position before `src/check.py` reads them |
 
-What SolidCraft needs (proposals): `component.insert_design {parameters}` stored and applied, `component.set_link_parameters`; `solid.pattern.rectangular {body_names}`; a thread designation that can come from a parameter or a choice; rules by feature name; range rules enforced on `parameters.change` with an opt-in. See tangency-labs/solidcraft#23175.
+Using free parameters on inserted links, `component.set_link_parameters`, `generator.parse` / `generator.insert`, field templates, Rhai and rules by feature name needs #23175 (our draft, being finished). Historical 0.50.0 errors above remain quoted verbatim. The draft checks link overrides against source range rules; ordinary source `parameters.change` still does not enforce restrictions. Parameter-driven thread designations and named pattern copies remain follow-ups outside #23175.
+
+The optional link proof in `link_checks.json` runs through `runtime.parametric.links` after the legacy conversion. Only a command catalogue containing `component.set_link_parameters` enables its insertion, link-edit and out-of-range refusal rows. Unsupported builds retain the legacy faithfulness rows and dependency item.

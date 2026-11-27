@@ -8,7 +8,8 @@ from runtime.fieldtemplate import Template, TemplateSet, Refusal
 
 
 class Package:
-    def __init__(self, folder, no_match=None):
+    def __init__(self, folder, no_match=None, no_match_reason="invalid", typed_code_field=None):
+        self.no_match_reason, self.typed_code_field = no_match_reason, typed_code_field
         self.no_match = no_match or (lambda code: f"not an MGN set code: {code!r}")
         self.dir = Path(folder); self.toml = tomllib.loads((self.dir / "generator.toml").read_text())
         ch = {k: v["values"] for k, v in self.toml.get("parameters", {}).items() if v.get("type") == "choice"}
@@ -21,14 +22,17 @@ class Package:
         """-> {ok, parameters, configuration, template, fields, provenance} or {ok: False, reason, message}"""
         m = self.templates.match(code)
         if m is None:
-            return {"ok": False, "reason": "invalid", "message": self.no_match(code)}
+            return {"ok": False, "reason": self.no_match_reason, "message": self.no_match(code)}
         idx, fields = m
-        res = self.rhai("resolve", {k: v for k, v in fields.items() if v is not None})
+        args = {k: v for k, v in fields.items() if v is not None}
+        if self.typed_code_field:
+            args[self.typed_code_field] = code
+        res = self.rhai("resolve", args)
         if not res["ok"]:
             return res
         v = res["value"]
         prov = self.toml.get("rows", {}).get(v["configuration"])
         return {"ok": True, "parameters": v["parameters"], "configuration": v["configuration"], "template": idx, "fields": fields, "provenance": prov}
 
-    def code(self, fields):
-        return self.templates.print(fields)
+    def code(self, fields, index=0):
+        return self.templates.print(fields, index)

@@ -26,6 +26,10 @@ escape  = "[A-Za-z0-9+/]+"
 description = "HG{kind}{size}{load}{mount} with {n} block(s) on a {length} mm rail"
 
 [[template]]
-pattern = "HG{kind: H|W|L}{size: text 2..2 [0-9]}{load: C|H}{mount: A|B|C}[E:eblock][{preload: Z0|ZA|ZB}][{prec: SP|UP|C|H|P}][{mat: M}][+{opt: text 1..64}]"
+pattern = "HG{kind: H|W|L}{size: text 2..2 [0-9]}{load: C|H}{mount: A|B|C}[E:eblock][{preload: Z0|ZA}][{prec: C|H|P}][{mat: M}][+{opt: text 1..64}]"
 escape  = "[A-Za-z0-9+/]+"
 description = "HG{kind}{size}{load}{mount} block"
+
+# Preserve malformed ordering codes, including decimal spelling, for the Python shape refusal.
+[[template]]
+pattern = "{raw: text 1..128 [A-Za-z0-9.+/_ -]}"

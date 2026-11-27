@@ -41,10 +41,6 @@ def main(key, n=3000, seed=7):
         r = pkg.parse(code)
         if py is not None:
             if r["ok"]: bad += 1; print("ACCEPTED but Python refuses:", code, "|", py); continue
-            if r.get("reason") == "no_template":
-                stats["notemplate"] += 1
-                if "expected a set" not in py: bad += 1; print("NO TEMPLATE but Python gives a specific message:", code, "|", py)
-                continue
             stats["refused"] += 1
             if r["message"] != py: bad += 1; print("MESSAGE", code, "\n   py :", py, "\n   rhai:", r["message"])
             continue

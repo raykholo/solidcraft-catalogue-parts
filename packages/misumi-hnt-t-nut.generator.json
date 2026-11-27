@@ -7,7 +7,7 @@
  "license": "Apache-2.0",
  "author": "raykholo",
  "guarantee": "reviewed",
- "provenance": "Generated from the catalogue generator misumi.hnt.t-nut 0.1.0 of raykholo/solidcraft-catalogue-parts; every number is a row of a table below with its source, page and status. Verified by: automatic spec check of every code in codes.txt on SolidCraft 0.51.1; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person. Not guaranteed (appearance, approximate): The flank from the 5.8 mm bottom to the 10 mm body (measured from the vector side view, about 35 degrees from the nut axis); The edge rounds of the side view (R0.3, R1.0 reduced on the E 3.3 types, R0.2; none is dimensioned on the page); The tap drill (pilot bore O2.5 / O3.3 / O4.2 for M3 / M4 / M5) is the ISO coarse one: the page prints none; the thread is cosmetic (solid.thread) thro",
+ "provenance": "Generated from the catalogue generator misumi.hnt.t-nut 0.1.1 of raykholo/solidcraft-catalogue-parts; every number is a row of a table below with its source, page and status. Verified by: automatic spec check of every code in codes.txt on SolidCraft 0.51.1; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person. Not guaranteed (appearance, approximate): The flank from the 5.8 mm bottom to the 10 mm body (measured from the vector side view, about 35 degrees from the nut axis); The edge rounds of the side view (R0.3, R1.0 reduced on the E 3.3 types, R0.2; none is dimensioned on the page); The tap drill (pilot bore O2.5 / O3.3 / O4.2 for M3 / M4 / M5) is the ISO coarse one: the page prints none; the thread is cosmetic (solid.thread) thro",
  "sources": [
   {
    "id": "S9",
@@ -496,7 +496,7 @@
  ],
  "x-generator": {
   "id": "misumi.hnt.t-nut",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "sources_hash": "sha256:4bd8910c2240776d980f5e53a7ebcb8279895ed6e8259c49ce3affca4acb122c",
   "level": "Reviewed",
   "checked_on": "0.51.1",

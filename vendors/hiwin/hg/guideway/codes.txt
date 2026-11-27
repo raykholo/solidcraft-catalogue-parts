@@ -14,3 +14,4 @@ HGW45CB
 !HGH20CA1R10  # rail length 10 mm below 2 x Es = 40 mm
 !HGR15R5000  # rail length 5000 mm above the maximum 4000 mm
 !HGH20CB  # HGH is mounted from the top only: HGH20CA (the catalogue lists HGH-CA / HGH-HA)
+!HGH20CA2R1000.0ZAHX  # preserve the typed decimal length in the generic shape refusal

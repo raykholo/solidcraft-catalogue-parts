@@ -4,7 +4,7 @@
   {
    "id": "hiwin.eg.guideway",
    "name": "HIWIN EG low-profile linear guideway: rail, block or rail with blocks",
-   "version": "0.1.0",
+   "version": "0.2.0",
    "kind": "generator",
    "min_host_version": "0.49.1",
    "vendor": "HIWIN",
@@ -103,7 +103,7 @@
   {
    "id": "hiwin.hg.guideway",
    "name": "HIWIN HG heavy-load linear guideway: rail, block or rail with blocks",
-   "version": "0.1.0",
+   "version": "0.2.0",
    "kind": "generator",
    "min_host_version": "0.49.1",
    "vendor": "HIWIN",
@@ -252,7 +252,7 @@
   {
    "id": "hiwin.rg.guideway",
    "name": "HIWIN RG high-rigidity roller type linear guideway: rail, block or rail with blocks",
-   "version": "0.1.0",
+   "version": "0.2.0",
    "kind": "generator",
    "min_host_version": "0.49.1",
    "vendor": "HIWIN",

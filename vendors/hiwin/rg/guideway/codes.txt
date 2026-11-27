@@ -45,3 +45,4 @@ RGR65R1270P
 !RGW35CC2R240  # two 124 mm blocks with the 10 mm gap do not fit on a 240 mm rail
 !RGL25CA1R640  # RGL (square, low) is valid HIWIN grammar; its table is not drawn here
 !RGH20CAM  # the RG chapter has no stainless option
+!RGH20CA2R1000.0ZAHM  # preserve the typed decimal length in the generic shape refusal

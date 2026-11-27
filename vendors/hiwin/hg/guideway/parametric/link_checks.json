@@ -1,0 +1,23 @@
+{
+  "package": "hg-guideway",
+  "checks": [
+    {
+      "parameter": "length",
+      "insert": "HGH20CA2R1240ZAH",
+      "change": "HGH20CA2R1000ZAH",
+      "outside": "4001 mm",
+      "build_options": {
+        "appearance": false
+      }
+    },
+    {
+      "parameter": "blocks",
+      "insert": "HGW25CC2R640ZAP",
+      "change": "HGW25CC1R640ZAP",
+      "outside": "100",
+      "build_options": {
+        "appearance": false
+      }
+    }
+  ]
+}

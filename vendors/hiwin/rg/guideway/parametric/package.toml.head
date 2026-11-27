@@ -17,16 +17,20 @@ length = { type = "decimal", min = 100, max = 4000, unit = "mm" }
 blocks = { type = "int", min = 1, max = 99, default = 1 }
 
 [[template]]
-pattern = "RGR{size: text 2..2 [0-9]}{rm: R|T}{length: decimal 0..99999}[E:erail][{prec: SP|UP|C|H|P}][{mat: M}][+{opt: text 1..64}]"
+pattern = "RGR{size: text 2..2 [0-9]}{rm: R|T}{length: decimal 0..99999}[E:erail][{prec: SP|UP|C|H|P}][+{opt: text 1..64}]"
 escape  = "[A-Za-z0-9+/]+"
 description = "RGR{size} rail, {length} mm"
 
 [[template]]
-pattern = "RG{kind: H|W|L|S|F}{size: text 2..2 [0-9]}{load: C|H}{mount: A|C}[E:eblock]{n: int 0..9999}{rm: R|T}{length: decimal 0..99999}[E:erail][{preload: Z0|ZA|ZB}][{prec: SP|UP|C|H|P}][{mat: M}][{rails: I|II|III|IIII}][+{opt: text 1..64}]"
+pattern = "RG{kind: H|W|L|S|F}{size: text 2..2 [0-9]}{load: C|H}{mount: A|C}[E:eblock]{n: int 0..9999}{rm: R|T}{length: decimal 0..99999}[E:erail][{preload: Z0|ZA|ZB}][{prec: SP|UP|C|H|P}][{rails: I|II|III|IIII}][+{opt: text 1..64}]"
 escape  = "[A-Za-z0-9+/]+"
 description = "RG{kind}{size}{load}{mount} with {n} block(s) on a {length} mm rail"
 
 [[template]]
-pattern = "RG{kind: H|W|L|S|F}{size: text 2..2 [0-9]}{load: C|H}{mount: A|C}[E:eblock][{preload: Z0|ZA|ZB}][{prec: SP|UP|C|H|P}][{mat: M}][+{opt: text 1..64}]"
+pattern = "RG{kind: H|W|L|S|F}{size: text 2..2 [0-9]}{load: C|H}{mount: A|C}[E:eblock][{preload: Z0|ZA|ZB}][{prec: SP|UP|C|H|P}][+{opt: text 1..64}]"
 escape  = "[A-Za-z0-9+/]+"
 description = "RG{kind}{size}{load}{mount} block"
+
+# Preserve malformed ordering codes, including decimal spelling, for the Python shape refusal.
+[[template]]
+pattern = "{raw: text 1..128 [A-Za-z0-9.+/_ -]}"

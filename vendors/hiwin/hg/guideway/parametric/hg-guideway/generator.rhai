@@ -92,6 +92,7 @@ fn block_generic(f) {
     if "prec" in f { code += f.prec; }
     if "mat" in f { code += "M"; }
     if "opt" in f { code += "+" + f.opt; }
+    if "raw_code" in f { shape_error(f.raw_code); }
     refuse("invalid", `'${code}': expected a set HG<H|W><size><C|H><A|B|C><n>R<length>[Z0|ZA|ZB][C|H|P], e.g. HGH20CA2R1000ZAH, a rail HGR<size>R<length>, e.g. HGR25R1600, or a block HGW25CC`);
 }
 
@@ -139,6 +140,7 @@ fn resolve_rail(f) {                                // HGR<size><R|T><length>...
 }
 
 fn resolve(f) {
+    if "raw" in f { shape_error(if "raw_code" in f { f.raw_code } else { f.raw }); }
     if "n" in f { resolve_set(f) } else if "kind" in f { resolve_block(f) } else { resolve_rail(f) }
 }
 
@@ -148,4 +150,8 @@ fn describe(f) {
     let h = holes(f.length, rail);
     let blocks = if "n" in f { `; ${f.n} HG${f.kind}${f.size}${f.load}${f.mount} block(s)` } else { "" };
     `HGR${f.size}${f.rm} rail of ${g(f.length)} mm: ${h.n} holes at pitch ${g(rail.P)} mm, end distance ${g(h.e)} mm${blocks}`
+}
+
+fn shape_error(code) {
+    refuse("invalid", `'${code}': expected a set HG<H|W><size><C|H><A|B|C><n>R<length>[Z0|ZA|ZB][C|H|P], e.g. HGH20CA2R1000ZAH, a rail HGR<size>R<length>, e.g. HGR25R1600, or a block HGW25CC`);
 }

@@ -1,0 +1,23 @@
+{
+  "package": "eg-guideway",
+  "checks": [
+    {
+      "parameter": "length",
+      "insert": "EGH20CA2R1240ZAH",
+      "change": "EGH20CA2R1000ZAH",
+      "outside": "4001 mm",
+      "build_options": {
+        "appearance": false
+      }
+    },
+    {
+      "parameter": "blocks",
+      "insert": "EGW25CA2R640ZAP",
+      "change": "EGW25CA1R640ZAP",
+      "outside": "100",
+      "build_options": {
+        "appearance": false
+      }
+    }
+  ]
+}

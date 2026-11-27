@@ -26,9 +26,13 @@ escape  = "[A-Za-z0-9+/]+"
 description = "EG{kind}{size}{load}{mount} with {n} block(s) on a {length} mm rail"
 
 [[template]]
-pattern = "EG{kind: H|W}{size: text 2..2 [0-9]}{load: C|S}{mount: A|B}[E:eblock][{preload: Z0|ZA|ZB}][{prec: SP|UP|C|H|P}][{mat: M}][+{opt: text 1..64}]"
+pattern = "EG{kind: H|W}{size: text 2..2 [0-9]}{load: C|S}{mount: A|B}[E:eblock][{preload: Z0|ZA}][{prec: C|H|P}][{mat: M}][+{opt: text 1..64}]"
 escape  = "[A-Za-z0-9+/]+"
 description = "EG{kind}{size}{load}{mount} block"
+
+# Preserve malformed ordering codes, including decimal spelling, for the Python shape refusal.
+[[template]]
+pattern = "{raw: text 1..128 [A-Za-z0-9.+/_ -]}"
 
 [rows."EGR-15"]
 source = "HIWIN Linear Guideway catalogue G99TE24-2410, S15 p.57-59 rail columns; p.56 Table 2-2-22 (P and Es)"

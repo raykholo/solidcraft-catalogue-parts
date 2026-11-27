@@ -30,3 +30,4 @@ EGR15R160M
 !EGW20SAM  # stainless steel exists for EG15C only
 !EGW25CAZB  # the interchangeable block form has preload Z0 or ZA only (p.45, p.49)
 !EGW25CA2R640ZAP+DD  # dust-protection code DD changes the block length, not drawn
+!EGH20CA2R1000.0ZAHX  # preserve the typed decimal length in the generic shape refusal

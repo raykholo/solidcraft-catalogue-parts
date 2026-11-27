@@ -116,6 +116,7 @@ fn block_generic(f) {
     if "prec" in f { code += f.prec; }
     if "mat" in f { code += "M"; }
     if "opt" in f { code += "+" + f.opt; }
+    if "raw_code" in f { shape_error(f.raw_code); }
     refuse("invalid", `'${code}': expected a set EG<H|W><size><C|S><A|B><n>R<length>[Z0|ZA|ZB][C|H|P], e.g. EGH20CA2R1000ZAH, a rail EGR<size>R<length>, e.g. EGR25R1600, or a block EGW25CA`);
 }
 
@@ -169,6 +170,7 @@ fn resolve_rail(f) {                                // EGR<size>R<length>...
 }
 
 fn resolve(f) {
+    if "raw" in f { shape_error(if "raw_code" in f { f.raw_code } else { f.raw }); }
     if "n" in f { resolve_set(f) } else if "kind" in f { resolve_block(f) } else { resolve_rail(f) }
 }
 
@@ -178,4 +180,8 @@ fn describe(f) {
     let h = holes(f.length, rail);
     let blocks = if "n" in f { `; ${f.n} EG${f.kind}${f.size}${f.load}${f.mount} block(s)` } else { "" };
     `EGR${f.size} rail of ${g(f.length)} mm: ${h.n} holes at pitch ${g(rail.P)} mm, end distance ${g(h.e)} mm${blocks}`
+}
+
+fn shape_error(code) {
+    refuse("invalid", `'${code}': expected a set EG<H|W><size><C|S><A|B><n>R<length>[Z0|ZA|ZB][C|H|P], e.g. EGH20CA2R1000ZAH, a rail EGR<size>R<length>, e.g. EGR25R1600, or a block EGW25CA`);
 }

@@ -80,10 +80,10 @@ def convert(results, gid, blocked, layout="standard"):
     return out
 
 
-def convert_hiwin(directory):
+def convert_hiwin(directory, gid="hiwin.mg.rail-set", blocked=None, guideway=False):
     """Convert HIWIN report.json and rebuild.json with their original absolute bounding boxes."""
     directory = Path(directory)
-    out = {"generator": "hiwin.mg.rail-set", "valid": [], "rejects": [], "rebuild": [], "blocked": [dict(LINK_BLOCKED)]}
+    out = {"generator": gid, "valid": [], "rejects": [], "rebuild": [], "blocked": dependencies(blocked) if blocked is not None else [dict(LINK_BLOCKED)]}
     for row in json.loads((directory / "report.json").read_text()):
         if row["code"].startswith("!"):
             message = row["param"]
@@ -96,6 +96,17 @@ def convert_hiwin(directory):
                                  "spec_parametric": (row.get("check") or "").split(" ")[0] or None})
     path = directory / "rebuild.json"
     rb = json.loads(path.read_text()) if path.exists() else {}
+    if guideway:
+        for row in rb.get("rebuild", []):
+            if "error" in row:
+                out["rebuild"].append({"label": row["label"], "direct": {"error": True}, "changed": {"error": True}})
+                continue
+            for label, key in (("the fresh parametric instance", "fresh"), ("the Python part", "python")):
+                out["rebuild"].append({"label": row["label"] + f" ({label})", "direct": measurement(row[key], True), "changed": measurement(row["rebuilt"], True)})
+        if rb.get("insert"):
+            row = rb["insert"]
+            out["rebuild"].append({"label": row["label"], "direct": measurement(row["direct"], True), "changed": measurement(row["changed"], True)})
+        return out
     if rb:
         out["rebuild"] = [{"label": "MGN12H2R300Z0C length 300 -> 400 vs MGN12H2R400Z0C",
                            "direct": measurement(rb.get("fresh"), True), "changed": measurement(rb.get("rebuilt"), True)},
@@ -106,6 +117,11 @@ def convert_hiwin(directory):
 
 def write_faithfulness(source, target, gid, blocked, layout="standard"):
     """Read results and write the common verdict schema; performs no CLI calls."""
-    result = convert_hiwin(source) if layout == "hiwin" else convert(json.loads(Path(source).read_text()), gid, blocked, layout)
+    if layout == "guideway":
+        result = convert_hiwin(source, gid, blocked, guideway=True)
+    elif layout == "hiwin":
+        result = convert_hiwin(source)
+    else:
+        result = convert(json.loads(Path(source).read_text()), gid, blocked, layout)
     Path(target).write_text(json.dumps(result, indent=1))
     return result
