@@ -7,3 +7,5 @@ MGN15H1R200Z0C caps
 MGN9C1R195ZFH
 !MGN12H2R3000  # MGNR12 max single length is 2000 mm
 !MGN7C1R700  # MGNR7 max single length is 600 mm
+!MGN12H2R15  # rail shorter than two end distances: no mounting hole fits
+!MGN12H0R300  # 0 blocks: this generator draws 1 to 4 blocks per rail

@@ -3828,6 +3828,16 @@
    "code": "MGN7C1R700",
    "invalid": true,
    "message_contains": "MGNR7 max single length is 600 mm"
+  },
+  {
+   "code": "MGN12H2R15",
+   "invalid": true,
+   "message_contains": "rail length 15 leaves end distance 20.00 < 10 mm (L = (n - 1) P + 2 E, E at least Es)"
+  },
+  {
+   "code": "MGN12H0R300",
+   "invalid": true,
+   "message_contains": "0 blocks: this generator draws 1 to 4 blocks on a rail"
   }
  ],
  "x-generator": {

@@ -68,9 +68,8 @@ Only for `hiwin.mg.rail-set` (the sweep of `tools/package-equiv` stays inside wh
    part is named with the code as typed, so a code with one space per gap and no `caps` keeps its spaces in the name, as the Python one does.
 8. The free-text tail `+ SS/U/EL+RC/-O` (HIWIN's own options, ignored by the Python generator) is refused: the grammar has no token for
    arbitrary text (spec gap 18).
-9. The package draws 1 to 4 blocks (`n_blocks` rule; the Python generator takes any number, its `[inputs]` say 1 to 4, and builds a rail alone
-   for 0), and refuses a rail shorter than two end distances (the Python generator builds a rail with no hole and a hole sketch beyond the
-   rail end; `holes_for` accepts it). Both look like gaps of the Python generator: the package states what the manifest already says.
+9. (Resolved.) The Python generator now refuses what the package refuses: 0 or more than 4 blocks, and a rail shorter than two end
+   distances (it used to build a rail with no hole); both are reject cases in codes.txt.
 10. The build option `caps` of `codes.txt` (bolt caps in the rail holes, no symbol in the HIWIN model number) is the trailing word ` caps` of
     the package code (`runtime/package_export/hiwin_mg_rail_set.py` `code_with_options`; `tools/package-equiv` and the export hand the package
     that text). With it the part is named by the fields (`concat`), because the typed text would include the word (spec gap 16).

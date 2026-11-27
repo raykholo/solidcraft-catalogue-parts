@@ -56,7 +56,9 @@ class MgnSet:
 def holes_for(length: float, P: float, Es: float) -> tuple[int, float]:
     """L = (n-1)P + 2E (Eq. 2.4). Standard E when it fits exactly; otherwise the most holes with
     E_min <= E <= P/2 per section 2-4-17 (E <= P/2 recommended; E >= E_min to avoid a broken hole;
-    we use Es as E_min here: conservative)."""
+    we use Es as E_min here: conservative). A rail shorter than 2 Es holds no hole with both end distances kept: refused."""
+    if length < 2 * Es - 1e-9:
+        raise ValueError(f"rail length {length:g} is shorter than two end distances (2 x {Es:g} mm): no mounting hole fits")
     n = int((length - 2 * Es) // P) + 1
     E = (length - (n - 1) * P) / 2
     while E > P / 2 + 1e-9 and E - P / 2 >= Es:
@@ -73,6 +75,8 @@ def parse(code: str) -> MgnSet:
     size, block = m["size"], m["block"].upper()
     if (size, block) not in BLOCKS:
         raise ValueError(f"MGN{size}{block}: size not in this table (have 7, 9, 12, 15)")
+    if not 1 <= int(m["n_blocks"]) <= 4:
+        raise ValueError(f"{m['n_blocks']} blocks per rail: this generator draws 1 to 4")
     rail = RAILS[size]
     L = float(m["length"])
     if L > rail["max_len"]:

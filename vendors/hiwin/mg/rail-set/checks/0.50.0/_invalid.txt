@@ -1,2 +1,4 @@
 MGN12H2R3000	ValueError: MGNR12 max single length is 2000 mm
 MGN7C1R700	ValueError: MGNR7 max single length is 600 mm
+MGN12H2R15	ValueError: rail length 15 is shorter than two end distances (2 x 10 mm): no mounting hole fits
+MGN12H0R300	ValueError: 0 blocks per rail: this generator draws 1 to 4

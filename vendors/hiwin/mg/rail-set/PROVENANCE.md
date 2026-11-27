@@ -56,7 +56,7 @@ Sources hash: `sha256:6ff5d57a3813d897b01f9627dd87de888e0a251acf36ecddc34b7d567c
    | `MGN15H1R200Z0C` | caps | 51/51 | `checks/0.50.0/MGN15H1R200Z0C-caps.txt` |
    | `MGN9C1R195ZFH` | - | 48/48 | `checks/0.50.0/MGN9C1R195ZFH.txt` |
 
-   Invalid codes that must be rejected with a message (`!` lines in codes.txt): 2.
+   Invalid codes that must be rejected with a message (`!` lines in codes.txt): 4.
 
 2. **Independent review:** `review.toml`, by AI review lane (Claude Sonnet), independent of the authoring lane on 2026-11-27 (14 rows agree, 0 corrected). Valid for the current sources.
 3. **Drawing match** (only where the vendor allows it): none yet.
