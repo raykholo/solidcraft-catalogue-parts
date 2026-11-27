@@ -8,6 +8,8 @@ repeat, `${}` substitution, checks) over the package JSON, with no code in the p
 Where the spec cannot express what a generator needs, the package carries an `x-` key and this evaluator implements it, marked
 "x-" below and listed in docs/generator-package.md ("Gaps for the spec"):
   x-early-rules   rules run BEFORE the lookups (same shape as `rules`), so a code can be refused `not_modelled` although it has no table row.
+  x-lists         numeric / text lists built by a loop (one `each` template per index), usable as `${name}` in parameters: the spec has
+                  `repeat` per command but nothing that builds an array parameter (the rail screw positions, the cap body names).
   x-generator     the generator this package was exported from (id, version, sources hash, review evidence).
 """
 from __future__ import annotations
@@ -196,6 +198,10 @@ class Package:
             ex(v["expr"], f"vars[{i}] {v['name']}"); scope[v["name"]] = None
         for i, r in enumerate(d.get("rules", [])):
             ex(r["when"], f"rules[{i}].when"); text_names(r["refuse"], f"rules[{i}].refuse")
+        for i, xl in enumerate(d.get("x-lists", [])):
+            rp = xl["repeat"]; ex(rp["count"], f"x-lists[{i}].repeat.count")
+            scope[rp["var"]] = None; self._params(xl["each"], ex, f"x-lists[{i}].each", e); del scope[rp["var"]]
+            scope[xl["name"]] = None
         if "refuse" in g: text_names(g["refuse"], "grammar.refuse")
         for i, st in enumerate(d["steps"]):
             w = f"steps[{i}]"
@@ -355,6 +361,17 @@ class Package:
                 raise Refusal("invalid", f"rule condition is not a boolean: {r['when']}")
             if w:
                 raise Refusal(r.get("kind", "invalid"), self._subst_text(r["refuse"], env))
+        for xl in d.get("x-lists", []):
+            rp = xl["repeat"]
+            n = ev(rp["count"], f"list {xl['name']} count")
+            if not isinstance(n, float) or n != int(n) or not 0 <= n <= min(rp["max"], MAX_REPEAT):
+                raise Refusal("invalid", f"list {xl['name']}: count {text(n)} is not a whole number from 0 to {rp['max']}")
+            items = []
+            for i in range(int(n)):
+                env[rp["var"]] = float(i)
+                items.append(self._value(xl["each"], env, budget))
+            env.pop(rp["var"], None)
+            env[xl["name"]] = items
         cmds: list = []
         ins = d.get("insert", {}).get("component", "${code}")
         cmds.append({"command": "component.create", "params": {"name": self._value(ins, env, budget)}})

@@ -42,6 +42,13 @@ def measured(gen) -> dict:
             return json.loads(f.read_text())
     return {}
 
+def package_code(gen, line) -> str:
+    """The text handed to the package for a codes.txt line: its code, plus whatever the export description says an option becomes
+    (`code_with_options(code, opts)`), because a package takes nothing but the code."""
+    mod = importlib.import_module("runtime.package_export." + gen.id.replace(".", "_").replace("-", "_"))
+    f = getattr(mod, "code_with_options", None)
+    return f(line.code, line.opts) if f else line.code
+
 def export(gen) -> dict:
     mod = importlib.import_module("runtime.package_export." + gen.id.replace(".", "_").replace("-", "_"))
     body = mod.describe(gen)
@@ -83,17 +90,18 @@ def export(gen) -> dict:
     meas = measured(gen)
     checks, bad = [], []
     for c in gen.codes():
+        pc = package_code(gen, c)
         try:
-            env, _ = probe.run(c.code)
+            env, _ = probe.run(pc)
         except Refusal as r:
             if c.valid:
-                raise SystemExit(f"{gen.id}: the package refuses the valid code {c.code}: {r}")
-            bad.append({"code": c.code, "invalid": True, "message_contains": str(r)})
+                raise SystemExit(f"{gen.id}: the package refuses the valid code {pc}: {r}")
+            bad.append({"code": pc, "invalid": True, "message_contains": str(r)})
             continue
         if not c.valid:
             raise SystemExit(f"{gen.id}: the package accepts {c.code}, which codes.txt says must be rejected")
-        ck = {"code": c.code, "dimensions": {k: env[k] for k in body["dimension_vars"]}}
-        ck.update(meas.get(c.code, {}))
+        ck = {"code": pc, "dimensions": {k: env[k] for k in body["dimension_vars"]}}
+        ck.update(meas.get(pc, {}))
         checks.append(ck)
     pkg["checks"] = checks + bad
     pkg["x-generator"] = {"id": gen.id, "version": m["version"], "sources_hash": provenance.sources_hash(gen), "level": level,

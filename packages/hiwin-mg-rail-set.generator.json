@@ -1,0 +1,3847 @@
+{
+ "format": "solidcraft-generator/1",
+ "min_solidcraft": "0.49.1",
+ "id": "hiwin-mg-rail-set",
+ "name": "HIWIN MG miniature linear guide: rail with blocks",
+ "description": "HIWIN MG miniature linear guide: rail with blocks. Part of the catalogue-parts library; not made, endorsed or checked by the manufacturer, no manufacturer CAD, logo or photo used.",
+ "license": "Apache-2.0",
+ "author": "raykholo",
+ "guarantee": "reviewed",
+ "provenance": "Generated from the catalogue generator hiwin.mg.rail-set 0.1.0 of raykholo/solidcraft-catalogue-parts; every number is a row of a table below with its source, page and status. Verified by: automatic spec check of every code in codes.txt on SolidCraft 0.50.0; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person. Not guaranteed (appearance, approximate): Rail top chamfers (0.025 x rail width) and the two side ball grooves (a circular approximation: the catalogue draws no groove profile); Block top chamfers and the 0.2 mm black top insert between the mounting holes; End cap / end seal split of (L - L1) / 2, their 0.3 mm inset, colours (green cap, red seal as HIWIN's photo shows) and plastic material; Retainer strips, the four cross-head end screws (only their projection (L Max - L) / 2 is catalogue) and the grease nipple shape (only M3 and G are ca; Rail screws: SolidCraft's ISO 4762 standard part of the catalogue bolt size (the screw model is SolidCraft's, not HIWIN's); Rail hole caps (option `caps`, MGN12 / MGN15): thickness 1.2 is catalogue, the diameter is the counterbore diameter (the catalogue O6.15 is a press fi; Materials and PBR looks of every body (SolidCraft appearance-library entries: ground top and side faces, raceway faces, satin body, plastics, brass; b",
+ "sources": [
+  {
+   "id": "S4",
+   "title": "HIWIN \"Linear Guideways\" catalogue, form G99TE24-2410 (c) 2024, MG Series chapter 2-4 (hiwin.com, HIWIN-Linear-Guideway-Catalog-1.pdf, 245 PDF pages)",
+   "url": "https://hiwin.com/wp-content/uploads/2026/08/HIWIN-Linear-Guideway-Catalog-1.pdf",
+   "pages": "printed page numbers (PDF page = printed + 3): p.76 (2-4-2 construction), p.78 (2-4-10 model number), p.85 (2-4-17, Table 2-4-15), p.82 (Table 2-4-9 bolt caps), p.88 2-4-19 dimension tables MGN-C / MGN-H (incl. L Max, G, Gn, H2)"
+  },
+  {
+   "id": "S6",
+   "title": "HIWIN \"MG Series\" product page photo (visual reference only)",
+   "url": "https://hiwin.com/products/linear-guideways/mg-series/",
+   "pages": "one product image, row 40"
+  }
+ ],
+ "declares": {
+  "labels": [
+   "Linear guide",
+   "Linear rail",
+   "Miniature guide",
+   "MGN",
+   "Block"
+  ],
+  "keywords": [
+   "linear guideway",
+   "miniature rail",
+   "carriage",
+   "slider",
+   "HIWIN MGN rail set"
+  ],
+  "vendor": "HIWIN",
+  "matches": [
+   {
+    "id": "mgn-set",
+    "generator": "rail-set",
+    "pattern": "^MGN\\s*(?P<size>7|9|12|15)\\s*(?P<block>[CH])\\s*E?\\s*(?P<blocks>\\d+)\\s*R\\s*(?P<length>\\d{2,4})",
+    "flags": "i",
+    "confidence": "exact",
+    "params": {
+     "size": "{size}",
+     "block": "{block}",
+     "blocks": "{blocks}",
+     "length_mm": "{length}"
+    },
+    "examples": [
+     "MGN12H2R300Z0C",
+     "MGN9C1R195ZFH",
+     "MGN 12 C E 2 R1600 E Z1 P M II"
+    ],
+    "negative": [
+     "MGN12",
+     "MGW12H2R300",
+     "MGNR12",
+     "MGN12H"
+    ]
+   }
+  ]
+ },
+ "grammar": {
+  "alternatives": [
+   [
+    {
+     "lit": "MGN"
+    },
+    {
+     "optional": [
+      {
+       "lit": " "
+      }
+     ]
+    },
+    {
+     "field": "size",
+     "enum": [
+      "7",
+      "9",
+      "12",
+      "15"
+     ]
+    },
+    {
+     "optional": [
+      {
+       "lit": " "
+      }
+     ]
+    },
+    {
+     "field": "block",
+     "enum": [
+      "C",
+      "H"
+     ]
+    },
+    {
+     "optional": [
+      {
+       "optional": [
+        {
+         "lit": " "
+        }
+       ]
+      },
+      {
+       "field": "eblock",
+       "enum": [
+        "E"
+       ]
+      }
+     ],
+     "default": {
+      "eblock": ""
+     }
+    },
+    {
+     "optional": [
+      {
+       "lit": " "
+      }
+     ]
+    },
+    {
+     "field": "n_blocks",
+     "int": {
+      "min": 0,
+      "max": 99999
+     }
+    },
+    {
+     "optional": [
+      {
+       "lit": " "
+      }
+     ]
+    },
+    {
+     "lit": "R"
+    },
+    {
+     "optional": [
+      {
+       "lit": " "
+      }
+     ]
+    },
+    {
+     "field": "length",
+     "int": {
+      "min": 0,
+      "max": 99999
+     }
+    },
+    {
+     "optional": [
+      {
+       "optional": [
+        {
+         "lit": " "
+        }
+       ]
+      },
+      {
+       "field": "erail",
+       "enum": [
+        "E"
+       ]
+      }
+     ],
+     "default": {
+      "erail": ""
+     }
+    },
+    {
+     "optional": [
+      {
+       "optional": [
+        {
+         "lit": " "
+        }
+       ]
+      },
+      {
+       "field": "preload",
+       "enum": [
+        "ZF",
+        "Z0",
+        "Z1"
+       ]
+      }
+     ],
+     "default": {
+      "preload": ""
+     }
+    },
+    {
+     "optional": [
+      {
+       "optional": [
+        {
+         "lit": " "
+        }
+       ]
+      },
+      {
+       "field": "precision",
+       "enum": [
+        "C",
+        "H",
+        "P"
+       ]
+      }
+     ],
+     "default": {
+      "precision": ""
+     }
+    },
+    {
+     "optional": [
+      {
+       "optional": [
+        {
+         "lit": " "
+        }
+       ]
+      },
+      {
+       "field": "material",
+       "enum": [
+        "M",
+        "HC",
+        "NC"
+       ]
+      }
+     ],
+     "default": {
+      "material": ""
+     }
+    },
+    {
+     "optional": [
+      {
+       "optional": [
+        {
+         "lit": " "
+        }
+       ]
+      },
+      {
+       "field": "rails",
+       "enum": [
+        "I",
+        "II",
+        "III",
+        "IIII"
+       ]
+      }
+     ],
+     "default": {
+      "rails": ""
+     }
+    },
+    {
+     "optional": [
+      {
+       "optional": [
+        {
+         "lit": " "
+        }
+       ]
+      },
+      {
+       "field": "caps",
+       "enum": [
+        "caps"
+       ]
+      }
+     ],
+     "default": {
+      "caps": ""
+     }
+    }
+   ],
+   [
+    {
+     "lit": "MGN"
+    },
+    {
+     "optional": [
+      {
+       "lit": " "
+      }
+     ]
+    },
+    {
+     "field": "size",
+     "enum": [
+      "7",
+      "9",
+      "12",
+      "15"
+     ]
+    },
+    {
+     "optional": [
+      {
+       "lit": " "
+      }
+     ]
+    },
+    {
+     "field": "block",
+     "enum": [
+      "C",
+      "H"
+     ]
+    },
+    {
+     "optional": [
+      {
+       "optional": [
+        {
+         "lit": " "
+        }
+       ]
+      },
+      {
+       "field": "eblock",
+       "enum": [
+        "E"
+       ]
+      }
+     ],
+     "default": {
+      "eblock": ""
+     }
+    },
+    {
+     "optional": [
+      {
+       "lit": " "
+      }
+     ]
+    },
+    {
+     "field": "n_blocks",
+     "int": {
+      "min": 0,
+      "max": 99999
+     }
+    },
+    {
+     "optional": [
+      {
+       "lit": " "
+      }
+     ]
+    },
+    {
+     "lit": "R"
+    },
+    {
+     "optional": [
+      {
+       "lit": " "
+      }
+     ]
+    },
+    {
+     "field": "length",
+     "int": {
+      "min": 0,
+      "max": 99999
+     }
+    },
+    {
+     "optional": [
+      {
+       "optional": [
+        {
+         "lit": " "
+        }
+       ]
+      },
+      {
+       "field": "erail",
+       "enum": [
+        "E"
+       ]
+      }
+     ],
+     "default": {
+      "erail": ""
+     }
+    },
+    {
+     "optional": [
+      {
+       "optional": [
+        {
+         "lit": " "
+        }
+       ]
+      },
+      {
+       "field": "preload",
+       "enum": [
+        "ZF",
+        "Z0",
+        "Z1"
+       ]
+      }
+     ],
+     "default": {
+      "preload": ""
+     }
+    },
+    {
+     "field": "precision",
+     "chars": "digits",
+     "min_len": 0,
+     "max_len": 0
+    },
+    {
+     "optional": [
+      {
+       "optional": [
+        {
+         "lit": " "
+        }
+       ]
+      },
+      {
+       "field": "material",
+       "enum": [
+        "M",
+        "HC",
+        "NC"
+       ]
+      }
+     ],
+     "default": {
+      "material": ""
+     }
+    },
+    {
+     "optional": [
+      {
+       "optional": [
+        {
+         "lit": " "
+        }
+       ]
+      },
+      {
+       "field": "rails",
+       "enum": [
+        "I",
+        "II",
+        "III",
+        "IIII"
+       ]
+      }
+     ],
+     "default": {
+      "rails": ""
+     }
+    },
+    {
+     "optional": [
+      {
+       "optional": [
+        {
+         "lit": " "
+        }
+       ]
+      },
+      {
+       "field": "caps",
+       "enum": [
+        "caps"
+       ]
+      }
+     ],
+     "default": {
+      "caps": ""
+     }
+    }
+   ]
+  ],
+  "refuse": "{code}: expected MGN<size 7, 9, 12 or 15><C or H><blocks>R<rail length in mm>, e.g. MGN12H2R300Z0C (optional: E, preload ZF / Z0 / Z1, precision C / H / P, material M / HC / NC, rails I to IIII, ` caps`)"
+ },
+ "tables": {
+  "rails": {
+   "columns": {
+    "size": "text",
+    "WR": "number",
+    "HR": "number",
+    "D": "number",
+    "h": "number",
+    "d": "number",
+    "P": "number",
+    "Es": "number",
+    "max_std": "number",
+    "max_len": "number",
+    "bolt": "text",
+    "bolt_m": "text",
+    "bolt_len": "number",
+    "cap_d": "number",
+    "cap_h": "number",
+    "source": "text",
+    "page": "text",
+    "status": "text",
+    "note": "text"
+   },
+   "key": [
+    "size"
+   ],
+   "csv": "size,WR,HR,D,h,d,P,Es,max_std,max_len,bolt,bolt_m,bolt_len,cap_d,cap_h,source,page,status,note\n7,7,4.8,4.2,2.3,2.4,15,5,595,600,M2x6,M2,6,0,0,S4,\"p.88 table 2-4-19 (1); p.85 Table 2-4-15 (Es, max lengths)\",labelled,bolt_m and bolt_len are the two halves of bolt; cap_d and cap_h are the row of data/caps.csv for this size (0 = the catalogue lists no bolt caps); both derived by tools/export-package\n9,9,6.5,6,3.5,3.5,20,7.5,1195,1200,M3x8,M3,8,0,0,S4,\"p.88 table 2-4-19 (1); p.85 Table 2-4-15 (Es, max lengths)\",labelled,bolt_m and bolt_len are the two halves of bolt; cap_d and cap_h are the row of data/caps.csv for this size (0 = the catalogue lists no bolt caps); both derived by tools/export-package\n12,12,8,6,4.5,3.5,25,10,1995,2000,M3x8,M3,8,6.15,1.2,S4,\"p.88 table 2-4-19 (1); p.85 Table 2-4-15 (Es, max lengths); p.82 Table 2-4-9 (cap_d, cap_h)\",labelled,bolt_m and bolt_len are the two halves of bolt; cap_d and cap_h are the row of data/caps.csv for this size (0 = the catalogue lists no bolt caps); both derived by tools/export-package\n15,15,10,6,4.5,3.5,40,15,1990,2000,M3x10,M3,10,6.15,1.2,S4,\"p.88 table 2-4-19 (1); p.85 Table 2-4-15 (Es, max lengths); p.82 Table 2-4-9 (cap_d, cap_h)\",labelled,bolt_m and bolt_len are the two halves of bolt; cap_d and cap_h are the row of data/caps.csv for this size (0 = the catalogue lists no bolt caps); both derived by tools/export-package\n"
+  },
+  "blocks": {
+   "columns": {
+    "size": "text",
+    "block": "text",
+    "H": "number",
+    "H1": "number",
+    "N": "number",
+    "W": "number",
+    "B": "number",
+    "C": "number",
+    "L1": "number",
+    "L": "number",
+    "M": "text",
+    "M_depth": "number",
+    "Lmax": "number",
+    "H2": "number",
+    "Gn": "number",
+    "G": "number",
+    "source": "text",
+    "page": "text",
+    "status": "text",
+    "note": "text"
+   },
+   "key": [
+    "size",
+    "block"
+   ],
+   "csv": "size,block,H,H1,N,W,B,C,L1,L,M,M_depth,Lmax,H2,Gn,G,source,page,status,note\n7,C,8,1.5,5,17,12,8,13.5,22.5,M2,2.5,23.1,1.5,1.2,0,S4,p.88 table 2-4-19 (1),labelled,\"Gn and G are 0 where the cell of data/blocks.csv is blank (the catalogue has a lube hole or a grease nipple, not both)\"\n7,H,8,1.5,5,17,12,13,21.8,30.8,M2,2.5,31.4,1.5,1.2,0,S4,p.88 table 2-4-19 (1),labelled,\"Gn and G are 0 where the cell of data/blocks.csv is blank (the catalogue has a lube hole or a grease nipple, not both)\"\n9,C,10,2,5.5,20,15,10,18.9,28.9,M3,3,29.9,1.8,1.4,0,S4,p.88 table 2-4-19 (1),labelled,\"Gn and G are 0 where the cell of data/blocks.csv is blank (the catalogue has a lube hole or a grease nipple, not both)\"\n9,H,10,2,5.5,20,15,16,29.9,39.9,M3,3,40.9,1.8,1.4,0,S4,p.88 table 2-4-19 (1),labelled,\"Gn and G are 0 where the cell of data/blocks.csv is blank (the catalogue has a lube hole or a grease nipple, not both)\"\n12,C,13,3,7.5,27,20,15,21.7,34.7,M3,3.5,35.1,2.5,2,0,S4,p.88 table 2-4-19 (1),labelled,\"Gn and G are 0 where the cell of data/blocks.csv is blank (the catalogue has a lube hole or a grease nipple, not both)\"\n12,H,13,3,7.5,27,20,20,32.4,45.4,M3,3.5,45.8,2.5,2,0,S4,p.88 table 2-4-19 (1),labelled,\"Gn and G are 0 where the cell of data/blocks.csv is blank (the catalogue has a lube hole or a grease nipple, not both)\"\n15,C,16,4,8.5,32,25,20,26.7,42.1,M3,4,42.7,3,0,4.5,S4,p.88 table 2-4-19 (1),labelled,\"Gn and G are 0 where the cell of data/blocks.csv is blank (the catalogue has a lube hole or a grease nipple, not both)\"\n15,H,16,4,8.5,32,25,25,43.4,58.8,M3,4,59.4,3,0,4.5,S4,p.88 table 2-4-19 (1),labelled,\"Gn and G are 0 where the cell of data/blocks.csv is blank (the catalogue has a lube hole or a grease nipple, not both)\"\n"
+  }
+ },
+ "lookups": [
+  {
+   "table": "rails",
+   "as": "r",
+   "key": {
+    "size": "size"
+   }
+  },
+  {
+   "table": "blocks",
+   "as": "b",
+   "key": {
+    "size": "size",
+    "block": "block"
+   }
+  }
+ ],
+ "vars": [
+  {
+   "name": "holes",
+   "expr": "floor((length - 2 * r.Es) / r.P) + 1"
+  },
+  {
+   "name": "end_d",
+   "expr": "(length - (holes - 1) * r.P) / 2"
+  },
+  {
+   "name": "end_txt",
+   "expr": "fmt(end_d, 2)"
+  },
+  {
+   "name": "mat",
+   "expr": "material == \"M\" ? \"stainless\" : (material == \"HC\" ? \"carbon steel + hard chrome\" : (material == \"NC\" ? \"carbon steel + coating\" : \"carbon steel\"))"
+  },
+  {
+   "name": "ss",
+   "expr": "material == \"M\""
+  },
+  {
+   "name": "matname",
+   "expr": "ss ? \"Stainless Steel\" : \"Steel\""
+  },
+  {
+   "name": "rail_app",
+   "expr": "ss ? \"starter.metal.stainless-soft-satin\" : \"Steel - Satin PBR\""
+  },
+  {
+   "name": "ground_app",
+   "expr": "ss ? \"starter.metal.silver-cool\" : \"starter.metal.carbon-steel-polished\""
+  },
+  {
+   "name": "code",
+   "expr": "caps == \"\" ? code_in : concat(\"MGN\", size, block, eblock, n_blocks, \"R\", length, erail, preload, precision, material, rails)"
+  },
+  {
+   "name": "endw",
+   "expr": "(b.L - b.L1) / 2"
+  },
+  {
+   "name": "seal_t",
+   "expr": "(0.3 * endw) * 100"
+  },
+  {
+   "name": "seal",
+   "expr": "(floor(seal_t) + (seal_t - floor(seal_t) > 0.5 || (seal_t - floor(seal_t) == 0.5 && floor(seal_t) % 2 == 1) ? 1 : 0)) / 100"
+  },
+  {
+   "name": "capw_t",
+   "expr": "(endw - seal) * 100"
+  },
+  {
+   "name": "capw",
+   "expr": "(floor(capw_t) + (capw_t - floor(capw_t) > 0.5 || (capw_t - floor(capw_t) == 0.5 && floor(capw_t) % 2 == 1) ? 1 : 0)) / 100"
+  },
+  {
+   "name": "lip_t",
+   "expr": "((b.Lmax - b.L) / 2) * 1000"
+  },
+  {
+   "name": "lip",
+   "expr": "(floor(lip_t) + (lip_t - floor(lip_t) > 0.5 || (lip_t - floor(lip_t) == 0.5 && floor(lip_t) % 2 == 1) ? 1 : 0)) / 1000"
+  },
+  {
+   "name": "rch_t",
+   "expr": "(0.025 * r.WR) * 1000"
+  },
+  {
+   "name": "rch",
+   "expr": "(floor(rch_t) + (rch_t - floor(rch_t) > 0.5 || (rch_t - floor(rch_t) == 0.5 && floor(rch_t) % 2 == 1) ? 1 : 0)) / 1000"
+  },
+  {
+   "name": "grr_t",
+   "expr": "(r.WR / 16) * 1000"
+  },
+  {
+   "name": "grr",
+   "expr": "(floor(grr_t) + (grr_t - floor(grr_t) > 0.5 || (grr_t - floor(grr_t) == 0.5 && floor(grr_t) % 2 == 1) ? 1 : 0)) / 1000"
+  },
+  {
+   "name": "grz_t",
+   "expr": "(0.62 * r.HR) * 1000"
+  },
+  {
+   "name": "grz",
+   "expr": "(floor(grz_t) + (grz_t - floor(grz_t) > 0.5 || (grz_t - floor(grz_t) == 0.5 && floor(grz_t) % 2 == 1) ? 1 : 0)) / 1000"
+  },
+  {
+   "name": "bch_t",
+   "expr": "(0.03 * b.W) * 1000"
+  },
+  {
+   "name": "bch",
+   "expr": "(floor(bch_t) + (bch_t - floor(bch_t) > 0.5 || (bch_t - floor(bch_t) == 0.5 && floor(bch_t) % 2 == 1) ? 1 : 0)) / 1000"
+  },
+  {
+   "name": "scd_t",
+   "expr": "(0.075 * b.W) * 1000"
+  },
+  {
+   "name": "scd",
+   "expr": "(floor(scd_t) + (scd_t - floor(scd_t) > 0.5 || (scd_t - floor(scd_t) == 0.5 && floor(scd_t) % 2 == 1) ? 1 : 0)) / 1000"
+  },
+  {
+   "name": "scz_t",
+   "expr": "(0.17 * b.H) * 1000"
+  },
+  {
+   "name": "scz",
+   "expr": "(floor(scz_t) + (scz_t - floor(scz_t) > 0.5 || (scz_t - floor(scz_t) == 0.5 && floor(scz_t) % 2 == 1) ? 1 : 0)) / 1000"
+  },
+  {
+   "name": "wc",
+   "expr": "b.W - 2 * 0.3"
+  },
+  {
+   "name": "hc",
+   "expr": "b.H - b.H1 - 2 * 0.3"
+  },
+  {
+   "name": "bx",
+   "expr": "max(b.C / 2 - 3.0, 1.0)"
+  },
+  {
+   "name": "by",
+   "expr": "b.W / 2 - bch"
+  },
+  {
+   "name": "zl",
+   "expr": "b.H - b.H2"
+  },
+  {
+   "name": "xf",
+   "expr": "holes > 1 ? end_d + r.P / 2 : end_d"
+  },
+  {
+   "name": "span",
+   "expr": "(n_blocks - 1) * (b.L + 10)"
+  },
+  {
+   "name": "cx0",
+   "expr": "length / 2 - span / 2 + 0 * (b.L + 10)"
+  },
+  {
+   "name": "cx1",
+   "expr": "length / 2 - span / 2 + 1 * (b.L + 10)"
+  },
+  {
+   "name": "cx2",
+   "expr": "length / 2 - span / 2 + 2 * (b.L + 10)"
+  },
+  {
+   "name": "cx3",
+   "expr": "length / 2 - span / 2 + 3 * (b.L + 10)"
+  },
+  {
+   "name": "lube",
+   "expr": "b.G > 0 ? concat(\"grease nipple M3, projection G \", b.G, \" mm, on the +X end of each block\") : concat(\"lube hole O\", b.Gn, \" at \", b.H2, \" mm below the block top, in both end faces\")"
+  },
+  {
+   "name": "desc0",
+   "expr": "concat(\"HIWIN MGN\", size, block, \" linear guide set: rail MGNR\", size, \" L=\", length, \" mm (\", holes, \" holes, end distance \", end_d, \" mm) with \", n_blocks, \" block(s).\nDIMENSIONED (catalogue values, HIWIN MG Series catalogue G99TE24-2410): rail \", r.WR, \" x \", r.HR, \" mm, counterbored holes O\", r.D, \" x \", r.h, \" deep, through O\", r.d, \", pitch \", r.P, \"; block \", b.W, \" wide, \", b.L, \" long with end seals (steel body \", b.L1, \"), H \", b.H, \", H1 \", b.H1)"
+  },
+  {
+   "name": "desc1",
+   "expr": "concat(\", four \", b.M, \"x\", b.M_depth, \" threads at B \", b.B, \" x C \", b.C, \"; \", lube, \"; L Max \", b.Lmax, \" mm. The 10 mm gap between blocks is an illustration choice.\", \"\nAPPEARANCE (approximate, not a catalogue dimension; shapes from HIWIN's published drawings and photo): rail top chamfers (\", rch, \" mm) and two side ball grooves (radius \", grr)"
+  },
+  {
+   "name": "desc2",
+   "expr": "concat(\" mm, a circular approximation of the groove, which the catalogue does not dimension); block top chamfers; a black top insert 0.2 mm deep between the mounting holes (HIWIN's photo shows a black middle band between metal ends); plastic end caps (\", capw, \" mm) and end seals (\", seal)"
+  },
+  {
+   "name": "desc3",
+   "expr": "concat(\" mm) per end, the cap / seal split is an estimate; retainer strips; two cross-head end screws per end; the grease nipple shape. All these bodies are named '(appearance, approximate)'.\", caps == \"caps\" ? concat(\" Bolt caps in the rail holes: catalogue O\", r.cap_d, \" x \", r.cap_h, \" thick (Table 2-4-9, a press fit), modelled flush at the counterbore diameter.\") : \"\", \" Rail screws: ISO 4762 \", r.bolt)"
+  },
+  {
+   "name": "desc4",
+   "expr": "concat(\" from SolidCraft's standard parts (the catalogue gives the bolt size, not the screw model).\")"
+  },
+  {
+   "name": "desc",
+   "expr": "concat(desc0, desc1, desc2, desc3, desc4)"
+  }
+ ],
+ "rules": [
+  {
+   "when": "length > r.max_len",
+   "refuse": "MGNR{size} max single length is {r.max_len} mm"
+  },
+  {
+   "when": "holes < 1 || end_d < r.Es - 0.000000001",
+   "refuse": "rail length {length} leaves end distance {end_txt} < {r.Es} mm (L = (n - 1) P + 2 E, E at least Es)"
+  },
+  {
+   "when": "n_blocks < 1 || n_blocks > 4",
+   "refuse": "{n_blocks} blocks: this generator draws 1 to 4 blocks on a rail"
+  },
+  {
+   "when": "caps == \"caps\" && r.cap_d == 0",
+   "refuse": "MGN{size}: the catalogue lists bolt caps for MGN12 and MGN15 only (S4 Table 2-4-9)"
+  }
+ ],
+ "x-lists": [
+  {
+   "name": "screw_at",
+   "repeat": {
+    "var": "j",
+    "count": "holes",
+    "max": 128
+   },
+   "each": [
+    "${end_d + j * r.P + r.d / 2}",
+    0,
+    "${r.HR - r.h - 0.5}"
+   ]
+  },
+  {
+   "name": "cap_names",
+   "repeat": {
+    "var": "j",
+    "count": "holes",
+    "max": 128
+   },
+   "each": "Rail cap ${j + 1} (appearance, approximate)"
+  }
+ ],
+ "steps": [
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${length}",
+    "width": "${r.WR}",
+    "height": "${r.HR}",
+    "corner": [
+     0,
+     "${-r.WR / 2}",
+     0
+    ],
+    "operation": "new",
+    "body_name": "Rail",
+    "name": "Rail"
+   }
+  },
+  {
+   "command": "solid.chamfer",
+   "params": {
+    "edges": [
+     [
+      "${length / 2}",
+      "${-r.WR / 2}",
+      "${r.HR}"
+     ],
+     [
+      "${length / 2}",
+      "${r.WR / 2}",
+      "${r.HR}"
+     ]
+    ],
+    "distance": "${rch}",
+    "body": "Rail",
+    "name": "Rail top chamfers (appearance, approximate)"
+   }
+  },
+  {
+   "command": "sketch.create",
+   "params": {
+    "plane": {
+     "origin": [
+      0,
+      0,
+      "${r.HR}"
+     ],
+     "x_dir": [
+      1,
+      0,
+      0
+     ],
+     "y_dir": [
+      0,
+      1,
+      0
+     ]
+    },
+    "name": "Rail hole"
+   }
+  },
+  {
+   "command": "sketch.point",
+   "params": {
+    "point": [
+     "${end_d}",
+     0
+    ]
+   }
+  },
+  {
+   "command": "sketch.finish",
+   "params": {}
+  },
+  {
+   "command": "solid.hole",
+   "params": {
+    "sketch": "Rail hole",
+    "diameter": "${r.d}",
+    "type": "counterbore",
+    "cb_diameter": "${r.D}",
+    "cb_depth": "${r.h}",
+    "name": "Rail hole 1"
+   }
+  },
+  {
+   "command": "solid.pattern.rectangular",
+   "params": {
+    "features": [
+     "Rail hole 1"
+    ],
+    "dir1": [
+     1,
+     0,
+     0
+    ],
+    "count1": "${holes}",
+    "spacing1": "${r.P}",
+    "name": "Rail holes"
+   },
+   "when": "holes > 1"
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "radius": "${grr}",
+    "height": "${length}",
+    "base": [
+     0,
+     "${(2 * i - 1) * r.WR / 2}",
+     "${grz}"
+    ],
+    "axis": "X",
+    "operation": "cut",
+    "targets": [
+     "Rail"
+    ],
+    "name": "${\"Rail ball groove \" + (i == 0 ? \"left\" : \"right\")} (appearance, approximate)"
+   },
+   "repeat": {
+    "var": "i",
+    "count": "2",
+    "max": 2
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${b.L1}",
+    "width": "${b.W}",
+    "height": "${b.H - b.H1}",
+    "corner": [
+     "${cx0 - b.L1 / 2}",
+     "${-b.W / 2}",
+     "${b.H1}"
+    ],
+    "operation": "new",
+    "body_name": "Block 1",
+    "name": "Block 1"
+   },
+   "when": "n_blocks > 0"
+  },
+  {
+   "command": "solid.chamfer",
+   "params": {
+    "edges": [
+     [
+      "${cx0}",
+      "${-b.W / 2}",
+      "${b.H}"
+     ],
+     [
+      "${cx0}",
+      "${b.W / 2}",
+      "${b.H}"
+     ]
+    ],
+    "distance": "${bch}",
+    "body": "Block 1",
+    "name": "Block 1 top chamfers (appearance, approximate)"
+   },
+   "when": "n_blocks > 0"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${b.L1 + 2}",
+    "width": "${r.WR}",
+    "height": "${r.HR - b.H1}",
+    "corner": [
+     "${cx0 - b.L1 / 2 - 1}",
+     "${-r.WR / 2}",
+     "${b.H1}"
+    ],
+    "operation": "cut",
+    "targets": [
+     "Block 1"
+    ],
+    "name": "Block 1 channel"
+   },
+   "when": "n_blocks > 0"
+  },
+  {
+   "command": "sketch.create",
+   "params": {
+    "plane": {
+     "origin": [
+      0,
+      0,
+      "${b.H}"
+     ],
+     "x_dir": [
+      1,
+      0,
+      0
+     ],
+     "y_dir": [
+      0,
+      1,
+      0
+     ]
+    },
+    "name": "Block 1 holes"
+   },
+   "when": "n_blocks > 0"
+  },
+  {
+   "command": "sketch.point",
+   "params": {
+    "point": [
+     "${cx0 + (floor(k / 2) * 2 - 1) * b.C / 2}",
+     "${((k % 2) * 2 - 1) * b.B / 2}"
+    ]
+   },
+   "when": "n_blocks > 0",
+   "repeat": {
+    "var": "k",
+    "count": "4",
+    "max": 4
+   }
+  },
+  {
+   "command": "sketch.finish",
+   "params": {},
+   "when": "n_blocks > 0"
+  },
+  {
+   "command": "solid.hole",
+   "params": {
+    "sketch": "Block 1 holes",
+    "thread": "${b.M}",
+    "depth": "${b.M_depth}",
+    "targets": [
+     "Block 1"
+    ],
+    "name": "Block 1 mounting threads"
+   },
+   "when": "n_blocks > 0"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${2 * bx}",
+    "width": "${2 * by}",
+    "height": "${0.2 + 1}",
+    "corner": [
+     "${cx0 - bx}",
+     "${-by}",
+     "${b.H - 0.2}"
+    ],
+    "operation": "cut",
+    "targets": [
+     "Block 1"
+    ],
+    "name": "Block 1 top pocket (appearance, approximate)"
+   },
+   "when": "n_blocks > 0"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${2 * bx}",
+    "width": "${2 * by}",
+    "height": 0.2,
+    "corner": [
+     "${cx0 - bx}",
+     "${-by}",
+     "${b.H - 0.2}"
+    ],
+    "operation": "new",
+    "body_name": "Block 1 top insert (appearance, approximate)",
+    "name": "Block 1 top insert (appearance, approximate)"
+   },
+   "when": "n_blocks > 0"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${capw}",
+    "width": "${wc}",
+    "height": "${hc}",
+    "corner": [
+     "${cx0 - b.L1 / 2 - 0 - capw}",
+     "${-wc / 2}",
+     "${b.H1 + 0.3}"
+    ],
+    "operation": "new",
+    "body_name": "Block 1 end cap A (appearance, approximate)",
+    "name": "Block 1 end cap A (appearance, approximate)"
+   },
+   "when": "n_blocks > 0"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${capw + 2}",
+    "width": "${r.WR}",
+    "height": "${r.HR - b.H1}",
+    "corner": [
+     "${cx0 - b.L1 / 2 - 0 - capw - 1}",
+     "${-r.WR / 2}",
+     "${b.H1}"
+    ],
+    "operation": "cut",
+    "targets": [
+     "Block 1 end cap A (appearance, approximate)"
+    ],
+    "name": "Block 1 end cap A (appearance, approximate) channel"
+   },
+   "when": "n_blocks > 0"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${seal}",
+    "width": "${wc}",
+    "height": "${hc}",
+    "corner": [
+     "${cx0 - b.L1 / 2 - capw - seal}",
+     "${-wc / 2}",
+     "${b.H1 + 0.3}"
+    ],
+    "operation": "new",
+    "body_name": "Block 1 end seal A (appearance, approximate)",
+    "name": "Block 1 end seal A (appearance, approximate)"
+   },
+   "when": "n_blocks > 0"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${seal + 2}",
+    "width": "${r.WR}",
+    "height": "${r.HR - b.H1}",
+    "corner": [
+     "${cx0 - b.L1 / 2 - capw - seal - 1}",
+     "${-r.WR / 2}",
+     "${b.H1}"
+    ],
+    "operation": "cut",
+    "targets": [
+     "Block 1 end seal A (appearance, approximate)"
+    ],
+    "name": "Block 1 end seal A (appearance, approximate) channel"
+   },
+   "when": "n_blocks > 0"
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "${b.Gn}",
+    "height": "${endw}",
+    "base": [
+     "${cx0 + -1 * b.L / 2}",
+     0,
+     "${zl}"
+    ],
+    "axis": "X",
+    "operation": "cut",
+    "targets": [
+     "Block 1 end cap A (appearance, approximate)",
+     "Block 1 end seal A (appearance, approximate)"
+    ],
+    "name": "Block 1 lube hole A"
+   },
+   "when": "n_blocks > 0 && b.Gn > 0"
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "${scd}",
+    "height": "${lip}",
+    "base": [
+     "${cx0 + -1 * b.L / 2 - lip}",
+     "${(2 * k - 1) * b.B / 2}",
+     "${b.H - scz}"
+    ],
+    "axis": "X",
+    "operation": "new",
+    "body_name": "Block 1 end screw A${k == 0 ? \"-\" : \"+\"} (appearance, approximate)",
+    "name": "Block 1 end screw A${k == 0 ? \"-\" : \"+\"} (appearance, approximate)"
+   },
+   "when": "n_blocks > 0",
+   "repeat": {
+    "var": "k",
+    "count": "2",
+    "max": 2
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${capw}",
+    "width": "${wc}",
+    "height": "${hc}",
+    "corner": [
+     "${cx0 + b.L1 / 2 + 0}",
+     "${-wc / 2}",
+     "${b.H1 + 0.3}"
+    ],
+    "operation": "new",
+    "body_name": "Block 1 end cap B (appearance, approximate)",
+    "name": "Block 1 end cap B (appearance, approximate)"
+   },
+   "when": "n_blocks > 0"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${capw + 2}",
+    "width": "${r.WR}",
+    "height": "${r.HR - b.H1}",
+    "corner": [
+     "${cx0 + b.L1 / 2 + 0 - 1}",
+     "${-r.WR / 2}",
+     "${b.H1}"
+    ],
+    "operation": "cut",
+    "targets": [
+     "Block 1 end cap B (appearance, approximate)"
+    ],
+    "name": "Block 1 end cap B (appearance, approximate) channel"
+   },
+   "when": "n_blocks > 0"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${seal}",
+    "width": "${wc}",
+    "height": "${hc}",
+    "corner": [
+     "${cx0 + b.L1 / 2 + capw}",
+     "${-wc / 2}",
+     "${b.H1 + 0.3}"
+    ],
+    "operation": "new",
+    "body_name": "Block 1 end seal B (appearance, approximate)",
+    "name": "Block 1 end seal B (appearance, approximate)"
+   },
+   "when": "n_blocks > 0"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${seal + 2}",
+    "width": "${r.WR}",
+    "height": "${r.HR - b.H1}",
+    "corner": [
+     "${cx0 + b.L1 / 2 + capw - 1}",
+     "${-r.WR / 2}",
+     "${b.H1}"
+    ],
+    "operation": "cut",
+    "targets": [
+     "Block 1 end seal B (appearance, approximate)"
+    ],
+    "name": "Block 1 end seal B (appearance, approximate) channel"
+   },
+   "when": "n_blocks > 0"
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "${b.Gn}",
+    "height": "${endw}",
+    "base": [
+     "${cx0 + 1 * b.L / 2 - endw}",
+     0,
+     "${zl}"
+    ],
+    "axis": "X",
+    "operation": "cut",
+    "targets": [
+     "Block 1 end cap B (appearance, approximate)",
+     "Block 1 end seal B (appearance, approximate)"
+    ],
+    "name": "Block 1 lube hole B"
+   },
+   "when": "n_blocks > 0 && b.Gn > 0"
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": 3,
+    "height": "${b.G * 0.6}",
+    "base": [
+     "${cx0 + 1 * b.L / 2}",
+     0,
+     "${zl}"
+    ],
+    "axis": "X",
+    "operation": "new",
+    "body_name": "Block 1 grease nipple (appearance, approximate)",
+    "name": "Block 1 grease nipple (appearance, approximate)"
+   },
+   "when": "n_blocks > 0 && b.Gn == 0 && b.G > 0"
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": 2.2,
+    "height": "${b.G * 0.4}",
+    "base": [
+     "${cx0 + 1 * b.L / 2 + b.G * 0.6}",
+     0,
+     "${zl}"
+    ],
+    "axis": "X",
+    "operation": "join",
+    "targets": [
+     "Block 1 grease nipple (appearance, approximate)"
+    ],
+    "name": "Block 1 grease nipple (appearance, approximate) head"
+   },
+   "when": "n_blocks > 0 && b.Gn == 0 && b.G > 0"
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "${scd}",
+    "height": "${lip}",
+    "base": [
+     "${cx0 + 1 * b.L / 2}",
+     "${(2 * k - 1) * b.B / 2}",
+     "${b.H - scz}"
+    ],
+    "axis": "X",
+    "operation": "new",
+    "body_name": "Block 1 end screw B${k == 0 ? \"-\" : \"+\"} (appearance, approximate)",
+    "name": "Block 1 end screw B${k == 0 ? \"-\" : \"+\"} (appearance, approximate)"
+   },
+   "when": "n_blocks > 0",
+   "repeat": {
+    "var": "k",
+    "count": "2",
+    "max": 2
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${b.L1}",
+    "width": 1.0,
+    "height": 0.4,
+    "corner": [
+     "${cx0 - b.L1 / 2}",
+     "${k == 1 ? r.WR / 2 : -r.WR / 2 - 1.0}",
+     "${b.H1 - 0.4}"
+    ],
+    "operation": "new",
+    "body_name": "Block 1 retainer strip ${k == 1 ? \"right\" : \"left\"} (appearance, approximate)",
+    "name": "Block 1 retainer strip ${k == 1 ? \"right\" : \"left\"} (appearance, approximate)"
+   },
+   "when": "n_blocks > 0",
+   "repeat": {
+    "var": "k",
+    "count": "2",
+    "max": 2
+   }
+  },
+  {
+   "command": "material.assign",
+   "params": {
+    "bodies": [
+     "Block 1"
+    ],
+    "material": "${matname}"
+   },
+   "when": "n_blocks > 0"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Block 1"
+    ],
+    "appearance": "${rail_app}"
+   },
+   "when": "n_blocks > 0"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "body": "Block 1",
+    "faces": [
+     [
+      "${cx0 - b.C / 2}",
+      0,
+      "${b.H}"
+     ],
+     [
+      "${cx0 + b.C / 2}",
+      0,
+      "${b.H}"
+     ],
+     [
+      "${cx0}",
+      "${-b.W / 2}",
+      "${(b.H + b.H1) / 2}"
+     ],
+     [
+      "${cx0}",
+      "${b.W / 2}",
+      "${(b.H + b.H1) / 2}"
+     ]
+    ],
+    "appearance": "${ground_app}"
+   },
+   "when": "n_blocks > 0"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "body": "Block 1",
+    "faces": [
+     [
+      "${cx0}",
+      0,
+      "${r.HR}"
+     ],
+     [
+      "${cx0}",
+      "${-r.WR / 2}",
+      "${(b.H1 + r.HR) / 2}"
+     ],
+     [
+      "${cx0}",
+      "${r.WR / 2}",
+      "${(b.H1 + r.HR) / 2}"
+     ]
+    ],
+    "appearance": "starter.metal.silver-cool"
+   },
+   "when": "n_blocks > 0"
+  },
+  {
+   "command": "material.assign",
+   "params": {
+    "bodies": [
+     "Block 1 end cap A (appearance, approximate)",
+     "Block 1 end cap B (appearance, approximate)",
+     "Block 1 end seal A (appearance, approximate)",
+     "Block 1 end seal B (appearance, approximate)"
+    ],
+    "material": "ABS Plastic"
+   },
+   "when": "n_blocks > 0"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Block 1 top insert (appearance, approximate)"
+    ],
+    "appearance": "starter.plastic.tpu-matte-black"
+   },
+   "when": "n_blocks > 0"
+  },
+  {
+   "command": "material.assign",
+   "params": {
+    "bodies": [
+     "Block 1 top insert (appearance, approximate)"
+    ],
+    "material": "Steel"
+   },
+   "when": "n_blocks > 0"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Block 1 end cap A (appearance, approximate)",
+     "Block 1 end cap B (appearance, approximate)"
+    ],
+    "color": "#349650",
+    "name": "ABS - Green",
+    "pbr": {
+     "metallic": 0.0,
+     "roughness": 0.45,
+     "dielectric_ior": 1.5
+    }
+   },
+   "when": "n_blocks > 0"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Block 1 end seal A (appearance, approximate)",
+     "Block 1 end seal B (appearance, approximate)"
+    ],
+    "color": "#c42828",
+    "name": "ABS - Red",
+    "pbr": {
+     "metallic": 0.0,
+     "roughness": 0.55,
+     "dielectric_ior": 1.5
+    }
+   },
+   "when": "n_blocks > 0"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Block 1 end screw A- (appearance, approximate)",
+     "Block 1 end screw A+ (appearance, approximate)",
+     "Block 1 end screw B- (appearance, approximate)",
+     "Block 1 end screw B+ (appearance, approximate)"
+    ],
+    "color": "#232427",
+    "name": "Steel - Black oxide (appearance, approximate)",
+    "pbr": {
+     "metallic": 0.9,
+     "roughness": 0.45,
+     "dielectric_ior": 1.5
+    }
+   },
+   "when": "n_blocks > 0"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Block 1 grease nipple (appearance, approximate)"
+    ],
+    "appearance": "starter.metal.brass-champagne"
+   },
+   "when": "n_blocks > 0 && b.Gn == 0 && b.G > 0"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Block 1 retainer strip left (appearance, approximate)",
+     "Block 1 retainer strip right (appearance, approximate)"
+    ],
+    "appearance": "starter.metal.stainless-soft-satin"
+   },
+   "when": "n_blocks > 0"
+  },
+  {
+   "command": "material.assign",
+   "params": {
+    "bodies": [
+     "Block 1 end screw A- (appearance, approximate)",
+     "Block 1 end screw A+ (appearance, approximate)",
+     "Block 1 end screw B- (appearance, approximate)",
+     "Block 1 end screw B+ (appearance, approximate)",
+     "Block 1 grease nipple (appearance, approximate)",
+     "Block 1 retainer strip left (appearance, approximate)",
+     "Block 1 retainer strip right (appearance, approximate)"
+    ],
+    "material": "Stainless Steel"
+   },
+   "when": "n_blocks > 0 && b.Gn == 0 && b.G > 0"
+  },
+  {
+   "command": "material.assign",
+   "params": {
+    "bodies": [
+     "Block 1 end screw A- (appearance, approximate)",
+     "Block 1 end screw A+ (appearance, approximate)",
+     "Block 1 end screw B- (appearance, approximate)",
+     "Block 1 end screw B+ (appearance, approximate)",
+     "Block 1 retainer strip left (appearance, approximate)",
+     "Block 1 retainer strip right (appearance, approximate)"
+    ],
+    "material": "Stainless Steel"
+   },
+   "when": "n_blocks > 0 && !(b.Gn == 0 && b.G > 0)"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${b.L1}",
+    "width": "${b.W}",
+    "height": "${b.H - b.H1}",
+    "corner": [
+     "${cx1 - b.L1 / 2}",
+     "${-b.W / 2}",
+     "${b.H1}"
+    ],
+    "operation": "new",
+    "body_name": "Block 2",
+    "name": "Block 2"
+   },
+   "when": "n_blocks > 1"
+  },
+  {
+   "command": "solid.chamfer",
+   "params": {
+    "edges": [
+     [
+      "${cx1}",
+      "${-b.W / 2}",
+      "${b.H}"
+     ],
+     [
+      "${cx1}",
+      "${b.W / 2}",
+      "${b.H}"
+     ]
+    ],
+    "distance": "${bch}",
+    "body": "Block 2",
+    "name": "Block 2 top chamfers (appearance, approximate)"
+   },
+   "when": "n_blocks > 1"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${b.L1 + 2}",
+    "width": "${r.WR}",
+    "height": "${r.HR - b.H1}",
+    "corner": [
+     "${cx1 - b.L1 / 2 - 1}",
+     "${-r.WR / 2}",
+     "${b.H1}"
+    ],
+    "operation": "cut",
+    "targets": [
+     "Block 2"
+    ],
+    "name": "Block 2 channel"
+   },
+   "when": "n_blocks > 1"
+  },
+  {
+   "command": "sketch.create",
+   "params": {
+    "plane": {
+     "origin": [
+      0,
+      0,
+      "${b.H}"
+     ],
+     "x_dir": [
+      1,
+      0,
+      0
+     ],
+     "y_dir": [
+      0,
+      1,
+      0
+     ]
+    },
+    "name": "Block 2 holes"
+   },
+   "when": "n_blocks > 1"
+  },
+  {
+   "command": "sketch.point",
+   "params": {
+    "point": [
+     "${cx1 + (floor(k / 2) * 2 - 1) * b.C / 2}",
+     "${((k % 2) * 2 - 1) * b.B / 2}"
+    ]
+   },
+   "when": "n_blocks > 1",
+   "repeat": {
+    "var": "k",
+    "count": "4",
+    "max": 4
+   }
+  },
+  {
+   "command": "sketch.finish",
+   "params": {},
+   "when": "n_blocks > 1"
+  },
+  {
+   "command": "solid.hole",
+   "params": {
+    "sketch": "Block 2 holes",
+    "thread": "${b.M}",
+    "depth": "${b.M_depth}",
+    "targets": [
+     "Block 2"
+    ],
+    "name": "Block 2 mounting threads"
+   },
+   "when": "n_blocks > 1"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${2 * bx}",
+    "width": "${2 * by}",
+    "height": "${0.2 + 1}",
+    "corner": [
+     "${cx1 - bx}",
+     "${-by}",
+     "${b.H - 0.2}"
+    ],
+    "operation": "cut",
+    "targets": [
+     "Block 2"
+    ],
+    "name": "Block 2 top pocket (appearance, approximate)"
+   },
+   "when": "n_blocks > 1"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${2 * bx}",
+    "width": "${2 * by}",
+    "height": 0.2,
+    "corner": [
+     "${cx1 - bx}",
+     "${-by}",
+     "${b.H - 0.2}"
+    ],
+    "operation": "new",
+    "body_name": "Block 2 top insert (appearance, approximate)",
+    "name": "Block 2 top insert (appearance, approximate)"
+   },
+   "when": "n_blocks > 1"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${capw}",
+    "width": "${wc}",
+    "height": "${hc}",
+    "corner": [
+     "${cx1 - b.L1 / 2 - 0 - capw}",
+     "${-wc / 2}",
+     "${b.H1 + 0.3}"
+    ],
+    "operation": "new",
+    "body_name": "Block 2 end cap A (appearance, approximate)",
+    "name": "Block 2 end cap A (appearance, approximate)"
+   },
+   "when": "n_blocks > 1"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${capw + 2}",
+    "width": "${r.WR}",
+    "height": "${r.HR - b.H1}",
+    "corner": [
+     "${cx1 - b.L1 / 2 - 0 - capw - 1}",
+     "${-r.WR / 2}",
+     "${b.H1}"
+    ],
+    "operation": "cut",
+    "targets": [
+     "Block 2 end cap A (appearance, approximate)"
+    ],
+    "name": "Block 2 end cap A (appearance, approximate) channel"
+   },
+   "when": "n_blocks > 1"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${seal}",
+    "width": "${wc}",
+    "height": "${hc}",
+    "corner": [
+     "${cx1 - b.L1 / 2 - capw - seal}",
+     "${-wc / 2}",
+     "${b.H1 + 0.3}"
+    ],
+    "operation": "new",
+    "body_name": "Block 2 end seal A (appearance, approximate)",
+    "name": "Block 2 end seal A (appearance, approximate)"
+   },
+   "when": "n_blocks > 1"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${seal + 2}",
+    "width": "${r.WR}",
+    "height": "${r.HR - b.H1}",
+    "corner": [
+     "${cx1 - b.L1 / 2 - capw - seal - 1}",
+     "${-r.WR / 2}",
+     "${b.H1}"
+    ],
+    "operation": "cut",
+    "targets": [
+     "Block 2 end seal A (appearance, approximate)"
+    ],
+    "name": "Block 2 end seal A (appearance, approximate) channel"
+   },
+   "when": "n_blocks > 1"
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "${b.Gn}",
+    "height": "${endw}",
+    "base": [
+     "${cx1 + -1 * b.L / 2}",
+     0,
+     "${zl}"
+    ],
+    "axis": "X",
+    "operation": "cut",
+    "targets": [
+     "Block 2 end cap A (appearance, approximate)",
+     "Block 2 end seal A (appearance, approximate)"
+    ],
+    "name": "Block 2 lube hole A"
+   },
+   "when": "n_blocks > 1 && b.Gn > 0"
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "${scd}",
+    "height": "${lip}",
+    "base": [
+     "${cx1 + -1 * b.L / 2 - lip}",
+     "${(2 * k - 1) * b.B / 2}",
+     "${b.H - scz}"
+    ],
+    "axis": "X",
+    "operation": "new",
+    "body_name": "Block 2 end screw A${k == 0 ? \"-\" : \"+\"} (appearance, approximate)",
+    "name": "Block 2 end screw A${k == 0 ? \"-\" : \"+\"} (appearance, approximate)"
+   },
+   "when": "n_blocks > 1",
+   "repeat": {
+    "var": "k",
+    "count": "2",
+    "max": 2
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${capw}",
+    "width": "${wc}",
+    "height": "${hc}",
+    "corner": [
+     "${cx1 + b.L1 / 2 + 0}",
+     "${-wc / 2}",
+     "${b.H1 + 0.3}"
+    ],
+    "operation": "new",
+    "body_name": "Block 2 end cap B (appearance, approximate)",
+    "name": "Block 2 end cap B (appearance, approximate)"
+   },
+   "when": "n_blocks > 1"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${capw + 2}",
+    "width": "${r.WR}",
+    "height": "${r.HR - b.H1}",
+    "corner": [
+     "${cx1 + b.L1 / 2 + 0 - 1}",
+     "${-r.WR / 2}",
+     "${b.H1}"
+    ],
+    "operation": "cut",
+    "targets": [
+     "Block 2 end cap B (appearance, approximate)"
+    ],
+    "name": "Block 2 end cap B (appearance, approximate) channel"
+   },
+   "when": "n_blocks > 1"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${seal}",
+    "width": "${wc}",
+    "height": "${hc}",
+    "corner": [
+     "${cx1 + b.L1 / 2 + capw}",
+     "${-wc / 2}",
+     "${b.H1 + 0.3}"
+    ],
+    "operation": "new",
+    "body_name": "Block 2 end seal B (appearance, approximate)",
+    "name": "Block 2 end seal B (appearance, approximate)"
+   },
+   "when": "n_blocks > 1"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${seal + 2}",
+    "width": "${r.WR}",
+    "height": "${r.HR - b.H1}",
+    "corner": [
+     "${cx1 + b.L1 / 2 + capw - 1}",
+     "${-r.WR / 2}",
+     "${b.H1}"
+    ],
+    "operation": "cut",
+    "targets": [
+     "Block 2 end seal B (appearance, approximate)"
+    ],
+    "name": "Block 2 end seal B (appearance, approximate) channel"
+   },
+   "when": "n_blocks > 1"
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "${b.Gn}",
+    "height": "${endw}",
+    "base": [
+     "${cx1 + 1 * b.L / 2 - endw}",
+     0,
+     "${zl}"
+    ],
+    "axis": "X",
+    "operation": "cut",
+    "targets": [
+     "Block 2 end cap B (appearance, approximate)",
+     "Block 2 end seal B (appearance, approximate)"
+    ],
+    "name": "Block 2 lube hole B"
+   },
+   "when": "n_blocks > 1 && b.Gn > 0"
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": 3,
+    "height": "${b.G * 0.6}",
+    "base": [
+     "${cx1 + 1 * b.L / 2}",
+     0,
+     "${zl}"
+    ],
+    "axis": "X",
+    "operation": "new",
+    "body_name": "Block 2 grease nipple (appearance, approximate)",
+    "name": "Block 2 grease nipple (appearance, approximate)"
+   },
+   "when": "n_blocks > 1 && b.Gn == 0 && b.G > 0"
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": 2.2,
+    "height": "${b.G * 0.4}",
+    "base": [
+     "${cx1 + 1 * b.L / 2 + b.G * 0.6}",
+     0,
+     "${zl}"
+    ],
+    "axis": "X",
+    "operation": "join",
+    "targets": [
+     "Block 2 grease nipple (appearance, approximate)"
+    ],
+    "name": "Block 2 grease nipple (appearance, approximate) head"
+   },
+   "when": "n_blocks > 1 && b.Gn == 0 && b.G > 0"
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "${scd}",
+    "height": "${lip}",
+    "base": [
+     "${cx1 + 1 * b.L / 2}",
+     "${(2 * k - 1) * b.B / 2}",
+     "${b.H - scz}"
+    ],
+    "axis": "X",
+    "operation": "new",
+    "body_name": "Block 2 end screw B${k == 0 ? \"-\" : \"+\"} (appearance, approximate)",
+    "name": "Block 2 end screw B${k == 0 ? \"-\" : \"+\"} (appearance, approximate)"
+   },
+   "when": "n_blocks > 1",
+   "repeat": {
+    "var": "k",
+    "count": "2",
+    "max": 2
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${b.L1}",
+    "width": 1.0,
+    "height": 0.4,
+    "corner": [
+     "${cx1 - b.L1 / 2}",
+     "${k == 1 ? r.WR / 2 : -r.WR / 2 - 1.0}",
+     "${b.H1 - 0.4}"
+    ],
+    "operation": "new",
+    "body_name": "Block 2 retainer strip ${k == 1 ? \"right\" : \"left\"} (appearance, approximate)",
+    "name": "Block 2 retainer strip ${k == 1 ? \"right\" : \"left\"} (appearance, approximate)"
+   },
+   "when": "n_blocks > 1",
+   "repeat": {
+    "var": "k",
+    "count": "2",
+    "max": 2
+   }
+  },
+  {
+   "command": "material.assign",
+   "params": {
+    "bodies": [
+     "Block 2"
+    ],
+    "material": "${matname}"
+   },
+   "when": "n_blocks > 1"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Block 2"
+    ],
+    "appearance": "${rail_app}"
+   },
+   "when": "n_blocks > 1"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "body": "Block 2",
+    "faces": [
+     [
+      "${cx1 - b.C / 2}",
+      0,
+      "${b.H}"
+     ],
+     [
+      "${cx1 + b.C / 2}",
+      0,
+      "${b.H}"
+     ],
+     [
+      "${cx1}",
+      "${-b.W / 2}",
+      "${(b.H + b.H1) / 2}"
+     ],
+     [
+      "${cx1}",
+      "${b.W / 2}",
+      "${(b.H + b.H1) / 2}"
+     ]
+    ],
+    "appearance": "${ground_app}"
+   },
+   "when": "n_blocks > 1"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "body": "Block 2",
+    "faces": [
+     [
+      "${cx1}",
+      0,
+      "${r.HR}"
+     ],
+     [
+      "${cx1}",
+      "${-r.WR / 2}",
+      "${(b.H1 + r.HR) / 2}"
+     ],
+     [
+      "${cx1}",
+      "${r.WR / 2}",
+      "${(b.H1 + r.HR) / 2}"
+     ]
+    ],
+    "appearance": "starter.metal.silver-cool"
+   },
+   "when": "n_blocks > 1"
+  },
+  {
+   "command": "material.assign",
+   "params": {
+    "bodies": [
+     "Block 2 end cap A (appearance, approximate)",
+     "Block 2 end cap B (appearance, approximate)",
+     "Block 2 end seal A (appearance, approximate)",
+     "Block 2 end seal B (appearance, approximate)"
+    ],
+    "material": "ABS Plastic"
+   },
+   "when": "n_blocks > 1"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Block 2 top insert (appearance, approximate)"
+    ],
+    "appearance": "starter.plastic.tpu-matte-black"
+   },
+   "when": "n_blocks > 1"
+  },
+  {
+   "command": "material.assign",
+   "params": {
+    "bodies": [
+     "Block 2 top insert (appearance, approximate)"
+    ],
+    "material": "Steel"
+   },
+   "when": "n_blocks > 1"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Block 2 end cap A (appearance, approximate)",
+     "Block 2 end cap B (appearance, approximate)"
+    ],
+    "color": "#349650",
+    "name": "ABS - Green",
+    "pbr": {
+     "metallic": 0.0,
+     "roughness": 0.45,
+     "dielectric_ior": 1.5
+    }
+   },
+   "when": "n_blocks > 1"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Block 2 end seal A (appearance, approximate)",
+     "Block 2 end seal B (appearance, approximate)"
+    ],
+    "color": "#c42828",
+    "name": "ABS - Red",
+    "pbr": {
+     "metallic": 0.0,
+     "roughness": 0.55,
+     "dielectric_ior": 1.5
+    }
+   },
+   "when": "n_blocks > 1"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Block 2 end screw A- (appearance, approximate)",
+     "Block 2 end screw A+ (appearance, approximate)",
+     "Block 2 end screw B- (appearance, approximate)",
+     "Block 2 end screw B+ (appearance, approximate)"
+    ],
+    "color": "#232427",
+    "name": "Steel - Black oxide (appearance, approximate)",
+    "pbr": {
+     "metallic": 0.9,
+     "roughness": 0.45,
+     "dielectric_ior": 1.5
+    }
+   },
+   "when": "n_blocks > 1"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Block 2 grease nipple (appearance, approximate)"
+    ],
+    "appearance": "starter.metal.brass-champagne"
+   },
+   "when": "n_blocks > 1 && b.Gn == 0 && b.G > 0"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Block 2 retainer strip left (appearance, approximate)",
+     "Block 2 retainer strip right (appearance, approximate)"
+    ],
+    "appearance": "starter.metal.stainless-soft-satin"
+   },
+   "when": "n_blocks > 1"
+  },
+  {
+   "command": "material.assign",
+   "params": {
+    "bodies": [
+     "Block 2 end screw A- (appearance, approximate)",
+     "Block 2 end screw A+ (appearance, approximate)",
+     "Block 2 end screw B- (appearance, approximate)",
+     "Block 2 end screw B+ (appearance, approximate)",
+     "Block 2 grease nipple (appearance, approximate)",
+     "Block 2 retainer strip left (appearance, approximate)",
+     "Block 2 retainer strip right (appearance, approximate)"
+    ],
+    "material": "Stainless Steel"
+   },
+   "when": "n_blocks > 1 && b.Gn == 0 && b.G > 0"
+  },
+  {
+   "command": "material.assign",
+   "params": {
+    "bodies": [
+     "Block 2 end screw A- (appearance, approximate)",
+     "Block 2 end screw A+ (appearance, approximate)",
+     "Block 2 end screw B- (appearance, approximate)",
+     "Block 2 end screw B+ (appearance, approximate)",
+     "Block 2 retainer strip left (appearance, approximate)",
+     "Block 2 retainer strip right (appearance, approximate)"
+    ],
+    "material": "Stainless Steel"
+   },
+   "when": "n_blocks > 1 && !(b.Gn == 0 && b.G > 0)"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${b.L1}",
+    "width": "${b.W}",
+    "height": "${b.H - b.H1}",
+    "corner": [
+     "${cx2 - b.L1 / 2}",
+     "${-b.W / 2}",
+     "${b.H1}"
+    ],
+    "operation": "new",
+    "body_name": "Block 3",
+    "name": "Block 3"
+   },
+   "when": "n_blocks > 2"
+  },
+  {
+   "command": "solid.chamfer",
+   "params": {
+    "edges": [
+     [
+      "${cx2}",
+      "${-b.W / 2}",
+      "${b.H}"
+     ],
+     [
+      "${cx2}",
+      "${b.W / 2}",
+      "${b.H}"
+     ]
+    ],
+    "distance": "${bch}",
+    "body": "Block 3",
+    "name": "Block 3 top chamfers (appearance, approximate)"
+   },
+   "when": "n_blocks > 2"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${b.L1 + 2}",
+    "width": "${r.WR}",
+    "height": "${r.HR - b.H1}",
+    "corner": [
+     "${cx2 - b.L1 / 2 - 1}",
+     "${-r.WR / 2}",
+     "${b.H1}"
+    ],
+    "operation": "cut",
+    "targets": [
+     "Block 3"
+    ],
+    "name": "Block 3 channel"
+   },
+   "when": "n_blocks > 2"
+  },
+  {
+   "command": "sketch.create",
+   "params": {
+    "plane": {
+     "origin": [
+      0,
+      0,
+      "${b.H}"
+     ],
+     "x_dir": [
+      1,
+      0,
+      0
+     ],
+     "y_dir": [
+      0,
+      1,
+      0
+     ]
+    },
+    "name": "Block 3 holes"
+   },
+   "when": "n_blocks > 2"
+  },
+  {
+   "command": "sketch.point",
+   "params": {
+    "point": [
+     "${cx2 + (floor(k / 2) * 2 - 1) * b.C / 2}",
+     "${((k % 2) * 2 - 1) * b.B / 2}"
+    ]
+   },
+   "when": "n_blocks > 2",
+   "repeat": {
+    "var": "k",
+    "count": "4",
+    "max": 4
+   }
+  },
+  {
+   "command": "sketch.finish",
+   "params": {},
+   "when": "n_blocks > 2"
+  },
+  {
+   "command": "solid.hole",
+   "params": {
+    "sketch": "Block 3 holes",
+    "thread": "${b.M}",
+    "depth": "${b.M_depth}",
+    "targets": [
+     "Block 3"
+    ],
+    "name": "Block 3 mounting threads"
+   },
+   "when": "n_blocks > 2"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${2 * bx}",
+    "width": "${2 * by}",
+    "height": "${0.2 + 1}",
+    "corner": [
+     "${cx2 - bx}",
+     "${-by}",
+     "${b.H - 0.2}"
+    ],
+    "operation": "cut",
+    "targets": [
+     "Block 3"
+    ],
+    "name": "Block 3 top pocket (appearance, approximate)"
+   },
+   "when": "n_blocks > 2"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${2 * bx}",
+    "width": "${2 * by}",
+    "height": 0.2,
+    "corner": [
+     "${cx2 - bx}",
+     "${-by}",
+     "${b.H - 0.2}"
+    ],
+    "operation": "new",
+    "body_name": "Block 3 top insert (appearance, approximate)",
+    "name": "Block 3 top insert (appearance, approximate)"
+   },
+   "when": "n_blocks > 2"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${capw}",
+    "width": "${wc}",
+    "height": "${hc}",
+    "corner": [
+     "${cx2 - b.L1 / 2 - 0 - capw}",
+     "${-wc / 2}",
+     "${b.H1 + 0.3}"
+    ],
+    "operation": "new",
+    "body_name": "Block 3 end cap A (appearance, approximate)",
+    "name": "Block 3 end cap A (appearance, approximate)"
+   },
+   "when": "n_blocks > 2"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${capw + 2}",
+    "width": "${r.WR}",
+    "height": "${r.HR - b.H1}",
+    "corner": [
+     "${cx2 - b.L1 / 2 - 0 - capw - 1}",
+     "${-r.WR / 2}",
+     "${b.H1}"
+    ],
+    "operation": "cut",
+    "targets": [
+     "Block 3 end cap A (appearance, approximate)"
+    ],
+    "name": "Block 3 end cap A (appearance, approximate) channel"
+   },
+   "when": "n_blocks > 2"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${seal}",
+    "width": "${wc}",
+    "height": "${hc}",
+    "corner": [
+     "${cx2 - b.L1 / 2 - capw - seal}",
+     "${-wc / 2}",
+     "${b.H1 + 0.3}"
+    ],
+    "operation": "new",
+    "body_name": "Block 3 end seal A (appearance, approximate)",
+    "name": "Block 3 end seal A (appearance, approximate)"
+   },
+   "when": "n_blocks > 2"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${seal + 2}",
+    "width": "${r.WR}",
+    "height": "${r.HR - b.H1}",
+    "corner": [
+     "${cx2 - b.L1 / 2 - capw - seal - 1}",
+     "${-r.WR / 2}",
+     "${b.H1}"
+    ],
+    "operation": "cut",
+    "targets": [
+     "Block 3 end seal A (appearance, approximate)"
+    ],
+    "name": "Block 3 end seal A (appearance, approximate) channel"
+   },
+   "when": "n_blocks > 2"
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "${b.Gn}",
+    "height": "${endw}",
+    "base": [
+     "${cx2 + -1 * b.L / 2}",
+     0,
+     "${zl}"
+    ],
+    "axis": "X",
+    "operation": "cut",
+    "targets": [
+     "Block 3 end cap A (appearance, approximate)",
+     "Block 3 end seal A (appearance, approximate)"
+    ],
+    "name": "Block 3 lube hole A"
+   },
+   "when": "n_blocks > 2 && b.Gn > 0"
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "${scd}",
+    "height": "${lip}",
+    "base": [
+     "${cx2 + -1 * b.L / 2 - lip}",
+     "${(2 * k - 1) * b.B / 2}",
+     "${b.H - scz}"
+    ],
+    "axis": "X",
+    "operation": "new",
+    "body_name": "Block 3 end screw A${k == 0 ? \"-\" : \"+\"} (appearance, approximate)",
+    "name": "Block 3 end screw A${k == 0 ? \"-\" : \"+\"} (appearance, approximate)"
+   },
+   "when": "n_blocks > 2",
+   "repeat": {
+    "var": "k",
+    "count": "2",
+    "max": 2
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${capw}",
+    "width": "${wc}",
+    "height": "${hc}",
+    "corner": [
+     "${cx2 + b.L1 / 2 + 0}",
+     "${-wc / 2}",
+     "${b.H1 + 0.3}"
+    ],
+    "operation": "new",
+    "body_name": "Block 3 end cap B (appearance, approximate)",
+    "name": "Block 3 end cap B (appearance, approximate)"
+   },
+   "when": "n_blocks > 2"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${capw + 2}",
+    "width": "${r.WR}",
+    "height": "${r.HR - b.H1}",
+    "corner": [
+     "${cx2 + b.L1 / 2 + 0 - 1}",
+     "${-r.WR / 2}",
+     "${b.H1}"
+    ],
+    "operation": "cut",
+    "targets": [
+     "Block 3 end cap B (appearance, approximate)"
+    ],
+    "name": "Block 3 end cap B (appearance, approximate) channel"
+   },
+   "when": "n_blocks > 2"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${seal}",
+    "width": "${wc}",
+    "height": "${hc}",
+    "corner": [
+     "${cx2 + b.L1 / 2 + capw}",
+     "${-wc / 2}",
+     "${b.H1 + 0.3}"
+    ],
+    "operation": "new",
+    "body_name": "Block 3 end seal B (appearance, approximate)",
+    "name": "Block 3 end seal B (appearance, approximate)"
+   },
+   "when": "n_blocks > 2"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${seal + 2}",
+    "width": "${r.WR}",
+    "height": "${r.HR - b.H1}",
+    "corner": [
+     "${cx2 + b.L1 / 2 + capw - 1}",
+     "${-r.WR / 2}",
+     "${b.H1}"
+    ],
+    "operation": "cut",
+    "targets": [
+     "Block 3 end seal B (appearance, approximate)"
+    ],
+    "name": "Block 3 end seal B (appearance, approximate) channel"
+   },
+   "when": "n_blocks > 2"
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "${b.Gn}",
+    "height": "${endw}",
+    "base": [
+     "${cx2 + 1 * b.L / 2 - endw}",
+     0,
+     "${zl}"
+    ],
+    "axis": "X",
+    "operation": "cut",
+    "targets": [
+     "Block 3 end cap B (appearance, approximate)",
+     "Block 3 end seal B (appearance, approximate)"
+    ],
+    "name": "Block 3 lube hole B"
+   },
+   "when": "n_blocks > 2 && b.Gn > 0"
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": 3,
+    "height": "${b.G * 0.6}",
+    "base": [
+     "${cx2 + 1 * b.L / 2}",
+     0,
+     "${zl}"
+    ],
+    "axis": "X",
+    "operation": "new",
+    "body_name": "Block 3 grease nipple (appearance, approximate)",
+    "name": "Block 3 grease nipple (appearance, approximate)"
+   },
+   "when": "n_blocks > 2 && b.Gn == 0 && b.G > 0"
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": 2.2,
+    "height": "${b.G * 0.4}",
+    "base": [
+     "${cx2 + 1 * b.L / 2 + b.G * 0.6}",
+     0,
+     "${zl}"
+    ],
+    "axis": "X",
+    "operation": "join",
+    "targets": [
+     "Block 3 grease nipple (appearance, approximate)"
+    ],
+    "name": "Block 3 grease nipple (appearance, approximate) head"
+   },
+   "when": "n_blocks > 2 && b.Gn == 0 && b.G > 0"
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "${scd}",
+    "height": "${lip}",
+    "base": [
+     "${cx2 + 1 * b.L / 2}",
+     "${(2 * k - 1) * b.B / 2}",
+     "${b.H - scz}"
+    ],
+    "axis": "X",
+    "operation": "new",
+    "body_name": "Block 3 end screw B${k == 0 ? \"-\" : \"+\"} (appearance, approximate)",
+    "name": "Block 3 end screw B${k == 0 ? \"-\" : \"+\"} (appearance, approximate)"
+   },
+   "when": "n_blocks > 2",
+   "repeat": {
+    "var": "k",
+    "count": "2",
+    "max": 2
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${b.L1}",
+    "width": 1.0,
+    "height": 0.4,
+    "corner": [
+     "${cx2 - b.L1 / 2}",
+     "${k == 1 ? r.WR / 2 : -r.WR / 2 - 1.0}",
+     "${b.H1 - 0.4}"
+    ],
+    "operation": "new",
+    "body_name": "Block 3 retainer strip ${k == 1 ? \"right\" : \"left\"} (appearance, approximate)",
+    "name": "Block 3 retainer strip ${k == 1 ? \"right\" : \"left\"} (appearance, approximate)"
+   },
+   "when": "n_blocks > 2",
+   "repeat": {
+    "var": "k",
+    "count": "2",
+    "max": 2
+   }
+  },
+  {
+   "command": "material.assign",
+   "params": {
+    "bodies": [
+     "Block 3"
+    ],
+    "material": "${matname}"
+   },
+   "when": "n_blocks > 2"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Block 3"
+    ],
+    "appearance": "${rail_app}"
+   },
+   "when": "n_blocks > 2"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "body": "Block 3",
+    "faces": [
+     [
+      "${cx2 - b.C / 2}",
+      0,
+      "${b.H}"
+     ],
+     [
+      "${cx2 + b.C / 2}",
+      0,
+      "${b.H}"
+     ],
+     [
+      "${cx2}",
+      "${-b.W / 2}",
+      "${(b.H + b.H1) / 2}"
+     ],
+     [
+      "${cx2}",
+      "${b.W / 2}",
+      "${(b.H + b.H1) / 2}"
+     ]
+    ],
+    "appearance": "${ground_app}"
+   },
+   "when": "n_blocks > 2"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "body": "Block 3",
+    "faces": [
+     [
+      "${cx2}",
+      0,
+      "${r.HR}"
+     ],
+     [
+      "${cx2}",
+      "${-r.WR / 2}",
+      "${(b.H1 + r.HR) / 2}"
+     ],
+     [
+      "${cx2}",
+      "${r.WR / 2}",
+      "${(b.H1 + r.HR) / 2}"
+     ]
+    ],
+    "appearance": "starter.metal.silver-cool"
+   },
+   "when": "n_blocks > 2"
+  },
+  {
+   "command": "material.assign",
+   "params": {
+    "bodies": [
+     "Block 3 end cap A (appearance, approximate)",
+     "Block 3 end cap B (appearance, approximate)",
+     "Block 3 end seal A (appearance, approximate)",
+     "Block 3 end seal B (appearance, approximate)"
+    ],
+    "material": "ABS Plastic"
+   },
+   "when": "n_blocks > 2"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Block 3 top insert (appearance, approximate)"
+    ],
+    "appearance": "starter.plastic.tpu-matte-black"
+   },
+   "when": "n_blocks > 2"
+  },
+  {
+   "command": "material.assign",
+   "params": {
+    "bodies": [
+     "Block 3 top insert (appearance, approximate)"
+    ],
+    "material": "Steel"
+   },
+   "when": "n_blocks > 2"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Block 3 end cap A (appearance, approximate)",
+     "Block 3 end cap B (appearance, approximate)"
+    ],
+    "color": "#349650",
+    "name": "ABS - Green",
+    "pbr": {
+     "metallic": 0.0,
+     "roughness": 0.45,
+     "dielectric_ior": 1.5
+    }
+   },
+   "when": "n_blocks > 2"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Block 3 end seal A (appearance, approximate)",
+     "Block 3 end seal B (appearance, approximate)"
+    ],
+    "color": "#c42828",
+    "name": "ABS - Red",
+    "pbr": {
+     "metallic": 0.0,
+     "roughness": 0.55,
+     "dielectric_ior": 1.5
+    }
+   },
+   "when": "n_blocks > 2"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Block 3 end screw A- (appearance, approximate)",
+     "Block 3 end screw A+ (appearance, approximate)",
+     "Block 3 end screw B- (appearance, approximate)",
+     "Block 3 end screw B+ (appearance, approximate)"
+    ],
+    "color": "#232427",
+    "name": "Steel - Black oxide (appearance, approximate)",
+    "pbr": {
+     "metallic": 0.9,
+     "roughness": 0.45,
+     "dielectric_ior": 1.5
+    }
+   },
+   "when": "n_blocks > 2"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Block 3 grease nipple (appearance, approximate)"
+    ],
+    "appearance": "starter.metal.brass-champagne"
+   },
+   "when": "n_blocks > 2 && b.Gn == 0 && b.G > 0"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Block 3 retainer strip left (appearance, approximate)",
+     "Block 3 retainer strip right (appearance, approximate)"
+    ],
+    "appearance": "starter.metal.stainless-soft-satin"
+   },
+   "when": "n_blocks > 2"
+  },
+  {
+   "command": "material.assign",
+   "params": {
+    "bodies": [
+     "Block 3 end screw A- (appearance, approximate)",
+     "Block 3 end screw A+ (appearance, approximate)",
+     "Block 3 end screw B- (appearance, approximate)",
+     "Block 3 end screw B+ (appearance, approximate)",
+     "Block 3 grease nipple (appearance, approximate)",
+     "Block 3 retainer strip left (appearance, approximate)",
+     "Block 3 retainer strip right (appearance, approximate)"
+    ],
+    "material": "Stainless Steel"
+   },
+   "when": "n_blocks > 2 && b.Gn == 0 && b.G > 0"
+  },
+  {
+   "command": "material.assign",
+   "params": {
+    "bodies": [
+     "Block 3 end screw A- (appearance, approximate)",
+     "Block 3 end screw A+ (appearance, approximate)",
+     "Block 3 end screw B- (appearance, approximate)",
+     "Block 3 end screw B+ (appearance, approximate)",
+     "Block 3 retainer strip left (appearance, approximate)",
+     "Block 3 retainer strip right (appearance, approximate)"
+    ],
+    "material": "Stainless Steel"
+   },
+   "when": "n_blocks > 2 && !(b.Gn == 0 && b.G > 0)"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${b.L1}",
+    "width": "${b.W}",
+    "height": "${b.H - b.H1}",
+    "corner": [
+     "${cx3 - b.L1 / 2}",
+     "${-b.W / 2}",
+     "${b.H1}"
+    ],
+    "operation": "new",
+    "body_name": "Block 4",
+    "name": "Block 4"
+   },
+   "when": "n_blocks > 3"
+  },
+  {
+   "command": "solid.chamfer",
+   "params": {
+    "edges": [
+     [
+      "${cx3}",
+      "${-b.W / 2}",
+      "${b.H}"
+     ],
+     [
+      "${cx3}",
+      "${b.W / 2}",
+      "${b.H}"
+     ]
+    ],
+    "distance": "${bch}",
+    "body": "Block 4",
+    "name": "Block 4 top chamfers (appearance, approximate)"
+   },
+   "when": "n_blocks > 3"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${b.L1 + 2}",
+    "width": "${r.WR}",
+    "height": "${r.HR - b.H1}",
+    "corner": [
+     "${cx3 - b.L1 / 2 - 1}",
+     "${-r.WR / 2}",
+     "${b.H1}"
+    ],
+    "operation": "cut",
+    "targets": [
+     "Block 4"
+    ],
+    "name": "Block 4 channel"
+   },
+   "when": "n_blocks > 3"
+  },
+  {
+   "command": "sketch.create",
+   "params": {
+    "plane": {
+     "origin": [
+      0,
+      0,
+      "${b.H}"
+     ],
+     "x_dir": [
+      1,
+      0,
+      0
+     ],
+     "y_dir": [
+      0,
+      1,
+      0
+     ]
+    },
+    "name": "Block 4 holes"
+   },
+   "when": "n_blocks > 3"
+  },
+  {
+   "command": "sketch.point",
+   "params": {
+    "point": [
+     "${cx3 + (floor(k / 2) * 2 - 1) * b.C / 2}",
+     "${((k % 2) * 2 - 1) * b.B / 2}"
+    ]
+   },
+   "when": "n_blocks > 3",
+   "repeat": {
+    "var": "k",
+    "count": "4",
+    "max": 4
+   }
+  },
+  {
+   "command": "sketch.finish",
+   "params": {},
+   "when": "n_blocks > 3"
+  },
+  {
+   "command": "solid.hole",
+   "params": {
+    "sketch": "Block 4 holes",
+    "thread": "${b.M}",
+    "depth": "${b.M_depth}",
+    "targets": [
+     "Block 4"
+    ],
+    "name": "Block 4 mounting threads"
+   },
+   "when": "n_blocks > 3"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${2 * bx}",
+    "width": "${2 * by}",
+    "height": "${0.2 + 1}",
+    "corner": [
+     "${cx3 - bx}",
+     "${-by}",
+     "${b.H - 0.2}"
+    ],
+    "operation": "cut",
+    "targets": [
+     "Block 4"
+    ],
+    "name": "Block 4 top pocket (appearance, approximate)"
+   },
+   "when": "n_blocks > 3"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${2 * bx}",
+    "width": "${2 * by}",
+    "height": 0.2,
+    "corner": [
+     "${cx3 - bx}",
+     "${-by}",
+     "${b.H - 0.2}"
+    ],
+    "operation": "new",
+    "body_name": "Block 4 top insert (appearance, approximate)",
+    "name": "Block 4 top insert (appearance, approximate)"
+   },
+   "when": "n_blocks > 3"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${capw}",
+    "width": "${wc}",
+    "height": "${hc}",
+    "corner": [
+     "${cx3 - b.L1 / 2 - 0 - capw}",
+     "${-wc / 2}",
+     "${b.H1 + 0.3}"
+    ],
+    "operation": "new",
+    "body_name": "Block 4 end cap A (appearance, approximate)",
+    "name": "Block 4 end cap A (appearance, approximate)"
+   },
+   "when": "n_blocks > 3"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${capw + 2}",
+    "width": "${r.WR}",
+    "height": "${r.HR - b.H1}",
+    "corner": [
+     "${cx3 - b.L1 / 2 - 0 - capw - 1}",
+     "${-r.WR / 2}",
+     "${b.H1}"
+    ],
+    "operation": "cut",
+    "targets": [
+     "Block 4 end cap A (appearance, approximate)"
+    ],
+    "name": "Block 4 end cap A (appearance, approximate) channel"
+   },
+   "when": "n_blocks > 3"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${seal}",
+    "width": "${wc}",
+    "height": "${hc}",
+    "corner": [
+     "${cx3 - b.L1 / 2 - capw - seal}",
+     "${-wc / 2}",
+     "${b.H1 + 0.3}"
+    ],
+    "operation": "new",
+    "body_name": "Block 4 end seal A (appearance, approximate)",
+    "name": "Block 4 end seal A (appearance, approximate)"
+   },
+   "when": "n_blocks > 3"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${seal + 2}",
+    "width": "${r.WR}",
+    "height": "${r.HR - b.H1}",
+    "corner": [
+     "${cx3 - b.L1 / 2 - capw - seal - 1}",
+     "${-r.WR / 2}",
+     "${b.H1}"
+    ],
+    "operation": "cut",
+    "targets": [
+     "Block 4 end seal A (appearance, approximate)"
+    ],
+    "name": "Block 4 end seal A (appearance, approximate) channel"
+   },
+   "when": "n_blocks > 3"
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "${b.Gn}",
+    "height": "${endw}",
+    "base": [
+     "${cx3 + -1 * b.L / 2}",
+     0,
+     "${zl}"
+    ],
+    "axis": "X",
+    "operation": "cut",
+    "targets": [
+     "Block 4 end cap A (appearance, approximate)",
+     "Block 4 end seal A (appearance, approximate)"
+    ],
+    "name": "Block 4 lube hole A"
+   },
+   "when": "n_blocks > 3 && b.Gn > 0"
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "${scd}",
+    "height": "${lip}",
+    "base": [
+     "${cx3 + -1 * b.L / 2 - lip}",
+     "${(2 * k - 1) * b.B / 2}",
+     "${b.H - scz}"
+    ],
+    "axis": "X",
+    "operation": "new",
+    "body_name": "Block 4 end screw A${k == 0 ? \"-\" : \"+\"} (appearance, approximate)",
+    "name": "Block 4 end screw A${k == 0 ? \"-\" : \"+\"} (appearance, approximate)"
+   },
+   "when": "n_blocks > 3",
+   "repeat": {
+    "var": "k",
+    "count": "2",
+    "max": 2
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${capw}",
+    "width": "${wc}",
+    "height": "${hc}",
+    "corner": [
+     "${cx3 + b.L1 / 2 + 0}",
+     "${-wc / 2}",
+     "${b.H1 + 0.3}"
+    ],
+    "operation": "new",
+    "body_name": "Block 4 end cap B (appearance, approximate)",
+    "name": "Block 4 end cap B (appearance, approximate)"
+   },
+   "when": "n_blocks > 3"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${capw + 2}",
+    "width": "${r.WR}",
+    "height": "${r.HR - b.H1}",
+    "corner": [
+     "${cx3 + b.L1 / 2 + 0 - 1}",
+     "${-r.WR / 2}",
+     "${b.H1}"
+    ],
+    "operation": "cut",
+    "targets": [
+     "Block 4 end cap B (appearance, approximate)"
+    ],
+    "name": "Block 4 end cap B (appearance, approximate) channel"
+   },
+   "when": "n_blocks > 3"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${seal}",
+    "width": "${wc}",
+    "height": "${hc}",
+    "corner": [
+     "${cx3 + b.L1 / 2 + capw}",
+     "${-wc / 2}",
+     "${b.H1 + 0.3}"
+    ],
+    "operation": "new",
+    "body_name": "Block 4 end seal B (appearance, approximate)",
+    "name": "Block 4 end seal B (appearance, approximate)"
+   },
+   "when": "n_blocks > 3"
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${seal + 2}",
+    "width": "${r.WR}",
+    "height": "${r.HR - b.H1}",
+    "corner": [
+     "${cx3 + b.L1 / 2 + capw - 1}",
+     "${-r.WR / 2}",
+     "${b.H1}"
+    ],
+    "operation": "cut",
+    "targets": [
+     "Block 4 end seal B (appearance, approximate)"
+    ],
+    "name": "Block 4 end seal B (appearance, approximate) channel"
+   },
+   "when": "n_blocks > 3"
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "${b.Gn}",
+    "height": "${endw}",
+    "base": [
+     "${cx3 + 1 * b.L / 2 - endw}",
+     0,
+     "${zl}"
+    ],
+    "axis": "X",
+    "operation": "cut",
+    "targets": [
+     "Block 4 end cap B (appearance, approximate)",
+     "Block 4 end seal B (appearance, approximate)"
+    ],
+    "name": "Block 4 lube hole B"
+   },
+   "when": "n_blocks > 3 && b.Gn > 0"
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": 3,
+    "height": "${b.G * 0.6}",
+    "base": [
+     "${cx3 + 1 * b.L / 2}",
+     0,
+     "${zl}"
+    ],
+    "axis": "X",
+    "operation": "new",
+    "body_name": "Block 4 grease nipple (appearance, approximate)",
+    "name": "Block 4 grease nipple (appearance, approximate)"
+   },
+   "when": "n_blocks > 3 && b.Gn == 0 && b.G > 0"
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": 2.2,
+    "height": "${b.G * 0.4}",
+    "base": [
+     "${cx3 + 1 * b.L / 2 + b.G * 0.6}",
+     0,
+     "${zl}"
+    ],
+    "axis": "X",
+    "operation": "join",
+    "targets": [
+     "Block 4 grease nipple (appearance, approximate)"
+    ],
+    "name": "Block 4 grease nipple (appearance, approximate) head"
+   },
+   "when": "n_blocks > 3 && b.Gn == 0 && b.G > 0"
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "${scd}",
+    "height": "${lip}",
+    "base": [
+     "${cx3 + 1 * b.L / 2}",
+     "${(2 * k - 1) * b.B / 2}",
+     "${b.H - scz}"
+    ],
+    "axis": "X",
+    "operation": "new",
+    "body_name": "Block 4 end screw B${k == 0 ? \"-\" : \"+\"} (appearance, approximate)",
+    "name": "Block 4 end screw B${k == 0 ? \"-\" : \"+\"} (appearance, approximate)"
+   },
+   "when": "n_blocks > 3",
+   "repeat": {
+    "var": "k",
+    "count": "2",
+    "max": 2
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "${b.L1}",
+    "width": 1.0,
+    "height": 0.4,
+    "corner": [
+     "${cx3 - b.L1 / 2}",
+     "${k == 1 ? r.WR / 2 : -r.WR / 2 - 1.0}",
+     "${b.H1 - 0.4}"
+    ],
+    "operation": "new",
+    "body_name": "Block 4 retainer strip ${k == 1 ? \"right\" : \"left\"} (appearance, approximate)",
+    "name": "Block 4 retainer strip ${k == 1 ? \"right\" : \"left\"} (appearance, approximate)"
+   },
+   "when": "n_blocks > 3",
+   "repeat": {
+    "var": "k",
+    "count": "2",
+    "max": 2
+   }
+  },
+  {
+   "command": "material.assign",
+   "params": {
+    "bodies": [
+     "Block 4"
+    ],
+    "material": "${matname}"
+   },
+   "when": "n_blocks > 3"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Block 4"
+    ],
+    "appearance": "${rail_app}"
+   },
+   "when": "n_blocks > 3"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "body": "Block 4",
+    "faces": [
+     [
+      "${cx3 - b.C / 2}",
+      0,
+      "${b.H}"
+     ],
+     [
+      "${cx3 + b.C / 2}",
+      0,
+      "${b.H}"
+     ],
+     [
+      "${cx3}",
+      "${-b.W / 2}",
+      "${(b.H + b.H1) / 2}"
+     ],
+     [
+      "${cx3}",
+      "${b.W / 2}",
+      "${(b.H + b.H1) / 2}"
+     ]
+    ],
+    "appearance": "${ground_app}"
+   },
+   "when": "n_blocks > 3"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "body": "Block 4",
+    "faces": [
+     [
+      "${cx3}",
+      0,
+      "${r.HR}"
+     ],
+     [
+      "${cx3}",
+      "${-r.WR / 2}",
+      "${(b.H1 + r.HR) / 2}"
+     ],
+     [
+      "${cx3}",
+      "${r.WR / 2}",
+      "${(b.H1 + r.HR) / 2}"
+     ]
+    ],
+    "appearance": "starter.metal.silver-cool"
+   },
+   "when": "n_blocks > 3"
+  },
+  {
+   "command": "material.assign",
+   "params": {
+    "bodies": [
+     "Block 4 end cap A (appearance, approximate)",
+     "Block 4 end cap B (appearance, approximate)",
+     "Block 4 end seal A (appearance, approximate)",
+     "Block 4 end seal B (appearance, approximate)"
+    ],
+    "material": "ABS Plastic"
+   },
+   "when": "n_blocks > 3"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Block 4 top insert (appearance, approximate)"
+    ],
+    "appearance": "starter.plastic.tpu-matte-black"
+   },
+   "when": "n_blocks > 3"
+  },
+  {
+   "command": "material.assign",
+   "params": {
+    "bodies": [
+     "Block 4 top insert (appearance, approximate)"
+    ],
+    "material": "Steel"
+   },
+   "when": "n_blocks > 3"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Block 4 end cap A (appearance, approximate)",
+     "Block 4 end cap B (appearance, approximate)"
+    ],
+    "color": "#349650",
+    "name": "ABS - Green",
+    "pbr": {
+     "metallic": 0.0,
+     "roughness": 0.45,
+     "dielectric_ior": 1.5
+    }
+   },
+   "when": "n_blocks > 3"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Block 4 end seal A (appearance, approximate)",
+     "Block 4 end seal B (appearance, approximate)"
+    ],
+    "color": "#c42828",
+    "name": "ABS - Red",
+    "pbr": {
+     "metallic": 0.0,
+     "roughness": 0.55,
+     "dielectric_ior": 1.5
+    }
+   },
+   "when": "n_blocks > 3"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Block 4 end screw A- (appearance, approximate)",
+     "Block 4 end screw A+ (appearance, approximate)",
+     "Block 4 end screw B- (appearance, approximate)",
+     "Block 4 end screw B+ (appearance, approximate)"
+    ],
+    "color": "#232427",
+    "name": "Steel - Black oxide (appearance, approximate)",
+    "pbr": {
+     "metallic": 0.9,
+     "roughness": 0.45,
+     "dielectric_ior": 1.5
+    }
+   },
+   "when": "n_blocks > 3"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Block 4 grease nipple (appearance, approximate)"
+    ],
+    "appearance": "starter.metal.brass-champagne"
+   },
+   "when": "n_blocks > 3 && b.Gn == 0 && b.G > 0"
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Block 4 retainer strip left (appearance, approximate)",
+     "Block 4 retainer strip right (appearance, approximate)"
+    ],
+    "appearance": "starter.metal.stainless-soft-satin"
+   },
+   "when": "n_blocks > 3"
+  },
+  {
+   "command": "material.assign",
+   "params": {
+    "bodies": [
+     "Block 4 end screw A- (appearance, approximate)",
+     "Block 4 end screw A+ (appearance, approximate)",
+     "Block 4 end screw B- (appearance, approximate)",
+     "Block 4 end screw B+ (appearance, approximate)",
+     "Block 4 grease nipple (appearance, approximate)",
+     "Block 4 retainer strip left (appearance, approximate)",
+     "Block 4 retainer strip right (appearance, approximate)"
+    ],
+    "material": "Stainless Steel"
+   },
+   "when": "n_blocks > 3 && b.Gn == 0 && b.G > 0"
+  },
+  {
+   "command": "material.assign",
+   "params": {
+    "bodies": [
+     "Block 4 end screw A- (appearance, approximate)",
+     "Block 4 end screw A+ (appearance, approximate)",
+     "Block 4 end screw B- (appearance, approximate)",
+     "Block 4 end screw B+ (appearance, approximate)",
+     "Block 4 retainer strip left (appearance, approximate)",
+     "Block 4 retainer strip right (appearance, approximate)"
+    ],
+    "material": "Stainless Steel"
+   },
+   "when": "n_blocks > 3 && !(b.Gn == 0 && b.G > 0)"
+  },
+  {
+   "command": "material.assign",
+   "params": {
+    "bodies": [
+     "Rail"
+    ],
+    "material": "${matname}"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Rail"
+    ],
+    "appearance": "${rail_app}"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "body": "Rail",
+    "appearance": "${ground_app}",
+    "faces": [
+     [
+      "${xf}",
+      "${(r.D / 2 + r.WR / 2) / 2}",
+      "${r.HR}"
+     ],
+     [
+      "${xf}",
+      "${-r.WR / 2}",
+      "${r.HR * 0.25}"
+     ],
+     [
+      "${xf}",
+      "${-r.WR / 2}",
+      "${r.HR * 0.88}"
+     ],
+     [
+      "${xf}",
+      "${r.WR / 2}",
+      "${r.HR * 0.25}"
+     ],
+     [
+      "${xf}",
+      "${r.WR / 2}",
+      "${r.HR * 0.88}"
+     ]
+    ]
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "body": "Rail",
+    "appearance": "starter.metal.silver-cool",
+    "faces": [
+     [
+      "${xf}",
+      "${-(r.WR / 2 - grr)}",
+      "${grz}"
+     ],
+     [
+      "${xf}",
+      "${r.WR / 2 - grr}",
+      "${grz}"
+     ]
+    ]
+   }
+  },
+  {
+   "command": "parts.insert",
+   "params": {
+    "family": "socket_head_cap_screw",
+    "size": "${r.bolt_m}",
+    "length": "${r.bolt_len}",
+    "at": "${screw_at}",
+    "name": "Rail screws ${r.bolt}"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "components": [
+     "Rail screws ${r.bolt}"
+    ],
+    "color": "#232427",
+    "name": "Steel - Black oxide (appearance, approximate)",
+    "pbr": {
+     "metallic": 0.9,
+     "roughness": 0.45,
+     "dielectric_ior": 1.5
+    }
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "${r.D}",
+    "height": "${r.cap_h}",
+    "base": [
+     "${end_d + j * r.P}",
+     0,
+     "${r.HR - r.cap_h}"
+    ],
+    "axis": "Z",
+    "operation": "new",
+    "body_name": "Rail cap ${j + 1} (appearance, approximate)",
+    "name": "Rail cap ${j + 1} (appearance, approximate)"
+   },
+   "when": "caps == \"caps\"",
+   "repeat": {
+    "var": "j",
+    "count": "holes",
+    "max": 128
+   }
+  },
+  {
+   "command": "material.assign",
+   "params": {
+    "bodies": "${cap_names}",
+    "material": "ABS Plastic"
+   },
+   "when": "caps == \"caps\""
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": "${cap_names}",
+    "color": "#349650",
+    "name": "ABS - Green",
+    "pbr": {
+     "metallic": 0.0,
+     "roughness": 0.45,
+     "dielectric_ior": 1.5
+    }
+   },
+   "when": "caps == \"caps\""
+  },
+  {
+   "command": "browser.visibility",
+   "params": {
+    "items": [
+     "Rail hole",
+     "Block 1 holes"
+    ],
+    "visible": false
+   },
+   "when": "n_blocks == 1"
+  },
+  {
+   "command": "browser.visibility",
+   "params": {
+    "items": [
+     "Rail hole",
+     "Block 1 holes",
+     "Block 2 holes"
+    ],
+    "visible": false
+   },
+   "when": "n_blocks == 2"
+  },
+  {
+   "command": "browser.visibility",
+   "params": {
+    "items": [
+     "Rail hole",
+     "Block 1 holes",
+     "Block 2 holes",
+     "Block 3 holes"
+    ],
+    "visible": false
+   },
+   "when": "n_blocks == 3"
+  },
+  {
+   "command": "browser.visibility",
+   "params": {
+    "items": [
+     "Rail hole",
+     "Block 1 holes",
+     "Block 2 holes",
+     "Block 3 holes",
+     "Block 4 holes"
+    ],
+    "visible": false
+   },
+   "when": "n_blocks == 4"
+  },
+  {
+   "command": "component.metadata.set",
+   "params": {
+    "component": "${code}",
+    "part_number": "${code}",
+    "description": "${desc}",
+    "material": "${mat}"
+   }
+  },
+  {
+   "command": "document.metadata.set",
+   "params": {
+    "values": {
+     "part_number": "${code}",
+     "description": "${desc}"
+    }
+   }
+  }
+ ],
+ "insert": {
+  "component": "${code}"
+ },
+ "checks": [
+  {
+   "code": "MGN12H2R300Z0C",
+   "dimensions": {
+    "holes": 12.0,
+    "end_d": 12.5,
+    "seal": 1.95,
+    "capw": 4.55,
+    "lip": 0.2
+   },
+   "volume_mm3": 46150.511621,
+   "bbox_mm": [
+    300.0,
+    27.0,
+    17.5
+   ],
+   "faces": 393
+  },
+  {
+   "code": "MGN12H2R300Z0C caps",
+   "dimensions": {
+    "holes": 12.0,
+    "end_d": 12.5,
+    "seal": 1.95,
+    "capw": 4.55,
+    "lip": 0.2
+   },
+   "volume_mm3": 46557.662029,
+   "bbox_mm": [
+    300.0,
+    27.0,
+    17.5
+   ],
+   "faces": 429
+  },
+  {
+   "code": "MGN15H1R200Z0C",
+   "dimensions": {
+    "holes": 5.0,
+    "end_d": 20.0,
+    "seal": 2.31,
+    "capw": 5.39,
+    "lip": 0.3
+   },
+   "volume_mm3": 46095.94348,
+   "bbox_mm": [
+    200.0,
+    32.0,
+    20.5
+   ],
+   "faces": 189
+  },
+  {
+   "code": "MGN15H1R200Z0C caps",
+   "dimensions": {
+    "holes": 5.0,
+    "end_d": 20.0,
+    "seal": 2.31,
+    "capw": 5.39,
+    "lip": 0.3
+   },
+   "volume_mm3": 46265.589483,
+   "bbox_mm": [
+    200.0,
+    32.0,
+    20.5
+   ],
+   "faces": 204
+  },
+  {
+   "code": "MGN9C1R195ZFH",
+   "dimensions": {
+    "holes": 10.0,
+    "end_d": 7.5,
+    "seal": 1.5,
+    "capw": 3.5,
+    "lip": 0.5
+   },
+   "volume_mm3": 14387.475814,
+   "bbox_mm": [
+    195.0,
+    20.0,
+    15.0
+   ],
+   "faces": 263
+  },
+  {
+   "code": "MGN12H2R3000",
+   "invalid": true,
+   "message_contains": "MGNR12 max single length is 2000 mm"
+  },
+  {
+   "code": "MGN7C1R700",
+   "invalid": true,
+   "message_contains": "MGNR7 max single length is 600 mm"
+  }
+ ],
+ "x-generator": {
+  "id": "hiwin.mg.rail-set",
+  "version": "0.1.0",
+  "sources_hash": "sha256:6ff5d57a3813d897b01f9627dd87de888e0a251acf36ecddc34b7d567cffeb26",
+  "level": "Reviewed",
+  "checked_on": "0.50.0",
+  "review": {
+   "reviewer_kind": "ai",
+   "reviewer": "AI review lane (Claude Sonnet), independent of the authoring lane",
+   "author": "AI authoring lanes (Claude)",
+   "date": "2026-11-27",
+   "sources_hash": "sha256:6ff5d57a3813d897b01f9627dd87de888e0a251acf36ecddc34b7d567cffeb26"
+  }
+ }
+}

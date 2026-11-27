@@ -17,7 +17,7 @@ then `runtime/package.py` does, over the same JSON.
 | `packages/*.generator.json` | the exported packages (committed; CI fails when they differ from the exporter's output) |
 | `schema/generator-package.schema.json` | the upstream draft schema, unchanged |
 | `runtime/expr.py` | the spec's expression language (section 4): tokenizer and parser written by hand, no `eval`, no `ast`, bounded (512 characters, depth 32, 10000 steps per expression, 1,000,000 per build) |
-| `runtime/package.py` | the evaluator: grammar tokens, defaults, lookups, vars, rules, steps with `when` / `repeat`, `${}` substitution, checks, limits; plus `validate()` (schema, expression names and order, RFC 0019 examples, steps) |
+| `runtime/package.py` | the evaluator (and `x-lists`): grammar tokens, defaults, lookups, vars, rules, steps with `when` / `repeat`, `${}` substitution, checks, limits; plus `validate()` (schema, expression names and order, RFC 0019 examples, steps) |
 | `runtime/package_export/<id>.py` | the per-generator export description (hand-written): what the Python logic is, said declaratively |
 | `tools/export-package GENERATOR_DIR --out packages` | writes the package; `--check` validates and fails on a stale or orphaned file |
 | `tools/package-equiv [GENERATOR_DIR ...]` | for every code in `codes.txt` (and a seeded sweep) the package must give the Python generator's command list, and refuse what it refuses; `--build` also builds both with solidcraft-cli |
@@ -62,6 +62,19 @@ The package is checked against the Python generator on every `codes.txt` code an
 6. The package's own checks cover the geometry the spec can state (volume, bounding box, faces, dimensions = variables). The
    dimension-by-dimension spec check stays the Python `src/check.py` and is run on the package-built part by `--build`.
 
+Only for `hiwin.mg.rail-set` (the sweep of `tools/package-equiv` stays inside what is not listed here):
+
+7. Several spaces, tabs and leading or trailing blanks between the parts of an MGN code are not read (one optional space per gap is); the
+   part is named with the code as typed, so a code with one space per gap and no `caps` keeps its spaces in the name, as the Python one does.
+8. The free-text tail `+ SS/U/EL+RC/-O` (HIWIN's own options, ignored by the Python generator) is refused: the grammar has no token for
+   arbitrary text (spec gap 18).
+9. The package draws 1 to 4 blocks (`n_blocks` rule; the Python generator takes any number, its `[inputs]` say 1 to 4, and builds a rail alone
+   for 0), and refuses a rail shorter than two end distances (the Python generator builds a rail with no hole and a hole sketch beyond the
+   rail end; `holes_for` accepts it). Both look like gaps of the Python generator: the package states what the manifest already says.
+10. The build option `caps` of `codes.txt` (bolt caps in the rail holes, no symbol in the HIWIN model number) is the trailing word ` caps` of
+    the package code (`runtime/package_export/hiwin_mg_rail_set.py` `code_with_options`; `tools/package-equiv` and the export hand the package
+    that text). With it the part is named by the fields (`concat`), because the typed text would include the word (spec gap 16).
+
 ## Gaps for the spec
 
 Each is something these two generators needed that spec v0 cannot say. Where noted, the evaluator implements it under an `x-` key so
@@ -100,3 +113,39 @@ the equivalence runs; the rest were worked around inside the format.
 12. **Small things.** The `decimal` `step` is taken relative to `min`; `chars` takes at most `max_len` characters and needs at least
     `min_len`; `flags` options are matched longest first and `max` counts options given; `{code}` in `grammar.refuse` is the code as typed;
     `x-` keys are accepted at the top level only (the schema closes every inner object), so `x-early-rules` and `x-generator` live there.
+
+Found with `hiwin.mg.rail-set` (the rail with N blocks). Gaps 1 to 12 above were met again where the MG generator needed them: 3 (number
+to text), 4 (blank Gn / G cells as 0), 6 (a block of about 40 steps copied four times under `when n_blocks > i`; 175 of the 256 steps, at
+most 261 of the 512 commands), 7 (the order the lookups need), 8 (the allow-list now also needs `appearance.assign`, `material.assign` and
+`parts.insert`; `package.validate()` notes each), 9 (per-column status: the derived `cap_d` / `cap_h` / `bolt_*` columns share the row's
+`labelled`), 11 (`faces`). New:
+
+13. **Lists built by a loop. NEW, `x-lists`, implemented.** `parts.insert` takes all screw positions as one `at` array and `material.assign`
+    takes all cap body names as one `bodies` array; their length is the hole count (up to 80). `repeat` emits one command per index, so it
+    cannot build an array parameter, the expression language has no list literal or `map`, and a table cannot hold a length that depends on
+    the typed rail length. Wanted: a list-valued `repeat` in a template, or `range(n)` plus `map`. Used (top level, the evaluator runs it
+    after the rules, the result is a variable): `"x-lists": [{"name": "screw_at", "repeat": {"var": "j", "count": "holes", "max": 128},
+    "each": ["${end_d + j * r.P + r.d / 2}", 0, "${r.HR - r.h - 0.5}"]}]` and then `"at": "${screw_at}"`.
+14. **Round to n digits. NEW.** `round(x)` is whole numbers only; the Python generator rounds its estimated sizes with `round(x, 2)` / `round(x, 3)`
+    (half to even, so `round(0.5625, 3)` is 0.562). Expressed in the format with two variables per value (`t = x * 1000`, then floor and the
+    half-even test, nine times). Wanted: `round(x, digits)` with the rule written down (half to even or half up: the two differ here).
+15. **Split text, text to number. NEW.** The table cell `M3x8` gives the screw size `M3` and the length 8; there is no `split`, `substr` or
+    `num(text)`. Worked around with derived columns `bolt_m`, `bolt_len` next to `bolt` (same row, split by the exporter). Wanted:
+    `at(split(r.bolt, "x"), 0)` and `num(text)`.
+16. **Options beside the code. NEW.** A generator may take a build option that is not part of the ordering code (here `caps`). The package has the
+    code only, so it is a trailing optional token of the grammar (`{"optional": [{"lit": " "}, {"field": "caps", "enum": ["caps"]}], "default": {"caps": ""}}`),
+    and because `code_in` then contains the word, the part name needs "the code without that token": Used `caps == "" ? code_in : concat(<fields>)`.
+    Wanted: `inputs` (name, type, default) next to the grammar, or a way to name the text a group of tokens matched (`"capture": "base"`).
+17. **Grammar: whitespace, optional groups with defaults, backtracking. NEW.** (a) The MGN code allows blanks between every part, which is
+    an optional-space token before each of 12 tokens; wanted `{"ws": true}`. (b) An alternative that has no `optional` for a field has no value
+    for it; a zero-length `chars` token (`{"field": "precision", "chars": "digits", "min_len": 0, "max_len": 0}`) was used to set it to "". Wanted:
+    `"defaults"` on the grammar, or say that a `default` outside `optional` is allowed. (c) The tokens are greedy with no backtracking: the
+    precision letter `H` and the material `HC` are both prefixes of `HC`; solved with two alternatives (one with, one without the precision).
+    Please state that alternatives are tried in order and each must consume the whole code (the evaluator does that).
+18. **Free text token. NEW.** `+ SS/U/EL+RC/-O` is "the rest of the code, any characters"; `chars` only has `digits` / `alpha` / `alnum`.
+    Wanted `{"field": "options", "chars": "any", "min_len": 0}` (or `rest`). Not expressed: the package refuses a code with that tail.
+19. **Newline in a text.** An expression string literal has no escape for a newline (`\n` reads as `n` in our tokenizer, since the spec says
+    a backslash quotes the next character). The description has two paragraph breaks; they are a real line feed inside the literal in the JSON
+    (`"concat(\"...\n...\")"`, JSON-escaped). Wanted: `\n` in string literals, or say that a raw newline is allowed. (Unlisted before: NEW.)
+20. **512 characters per expression.** The part description is about 2,000 characters; it is built as 6 variables of at most 460 characters and one
+    `concat` of them. Wanted: raise the limit for `concat`, or a `text` var type that is a list of parts. (NEW, workaround in the format.)
