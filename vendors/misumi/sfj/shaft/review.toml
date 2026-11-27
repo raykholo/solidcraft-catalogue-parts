@@ -1,6 +1,6 @@
 reviewer_kind = "ai"
 reviewer = "AI review lane (Claude Sonnet), independent of the authoring lane"
-author = "AI authoring lanes (Claude) for raykholo"
+author = "AI authoring lanes (Claude)"
 date = "2026-11-26"
 commit = "03b87ed"
 sources_hash = "sha256:c548450b5e0d6b73de3d6fdb0cbb933a6869ab7f09b40686dcbf938b3bc79eb8"
