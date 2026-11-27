@@ -1,0 +1,137 @@
+reviewer_kind = "ai"
+reviewer = "AI review lane (Claude Sonnet), independent of the authoring lane"
+author = "AI authoring lanes (Claude)"
+date = "2026-11-27"
+commit = "0272c9cdc87d7e35ac5bcec4714d840780abb60f"
+sources_hash = "sha256:98a780a0454499bc8cc11e6b5d3680e1423b678fb038011923c41a81b486d32c"
+method = "Downloaded catalogue pages 543-547 (page images, kept outside the repository), cropped and enlarged every table and view, resolved merged cells against the thin row lines, and compared each dimension text and every sizes.csv / bearing.csv / urethane.csv / types.csv / params.csv value cell by cell (all rows of all seven tables); re-checked B = B1 + t, the Y / R / X readings against the front and side views, the stainless asterisks and notes, and the codes.txt reject cases. No value needed correction."
+
+[[row]]
+id = 300
+verdict = "agree"
+note = "p.544 and p.545 material tables: 6000 series aluminium alloy, clear anodized, for C-SCSAW, C-SCNPAW, C-SCSMAW, C-SCSGAW; matches types.csv."
+
+[[row]]
+id = 301
+verdict = "agree"
+note = "Ordering examples C-SCSAW12-10, C-SCNPAW12-10, C-SCSMAW12-10, C-SCSGAW12-10 printed on p.544/p.545; code form type + D + -B confirmed."
+
+[[row]]
+id = 302
+verdict = "agree"
+note = "Enlarged p.544 slit table, merged D1 / M / width cells resolved against the thin row lines: all 17 rows of sizes.csv agree (the width 10 cell is shared by D12 and D15, D1 30 / 34 split at the D12/D15 line; D16-12 and D20-12 share a width cell, D1 35 / 40; D25-15 / D30-15 D1 50 / 55)."
+
+[[row]]
+id = 303
+verdict = "agree"
+note = "Enlarged p.544 split table: all 16 rows agree; D6 only in width 8 (D6-8 D1 20 M3); D1 and M agree with the slit table."
+
+[[row]]
+id = 304
+verdict = "agree"
+note = "Enlarged p.545 through-hole table, merged cells resolved (D8-10 and D10-10 share the width 10 cell, P 18 then 20; D12 P22; D16-12 and D20-12 share a width cell): all 15 rows agree in D1, P, S, M (e.g. D12-10 30/22/5.5/M4, D15-10 34/23/4.5, D20-12 40/30/5.5, D30-15 55/44/6.6)."
+
+[[row]]
+id = 305
+verdict = "agree"
+note = "Enlarged p.545 counterbored table, merged cells resolved: all 13 rows agree in D1, M, P, d1, d2, t (e.g. D12-10 35/M4/24/5.5/9.5/5.4, D8-10 28/M4/18/4.5/8/4.4, D30-15 55/43/6.6/11/6.5). Side view: t is dimensioned from the face to the counterbore step, so counterbore depth from the face is right."
+
+[[row]]
+id = 306
+verdict = "agree"
+note = "Bore note D +0.05/+0.01 before cutting printed on p.544 and p.545 views and notes; bore drawn at nominal is a stated modelling choice."
+
+[[row]]
+id = 307
+verdict = "agree"
+note = "p.545 front views: two holes on pitch P across the bore on the horizontal line, slit vertical; P printed. Agrees."
+
+[[row]]
+id = 308
+verdict = "agree"
+note = "Column M (Coarse) on p.544 and p.545 matches sizes.csv for every row re-read in 302-305."
+
+[[row]]
+id = 309
+verdict = "agree"
+note = "Approximate row (no source): the front views mark M at the slit and give no position or depth; labelled approximate in the generator. Acceptable as appearance."
+
+[[row]]
+id = 310
+verdict = "agree"
+note = "Approximate row: slit and split gap widths are not printed on p.544 or p.545; correctly kept as appearance parameters (slit_width, split_gap, approximate)."
+
+[[row]]
+id = 311
+verdict = "agree"
+note = "Approximate row: plain ring, no chamfers or screws; consistent with the pages (none dimensioned)."
+
+[[row]]
+id = 1400
+verdict = "agree"
+note = "p.546 and p.547 material tables: C-SCSBNAW 6000 series aluminium clear anodized; E-SCSPD/E-SCD/E-SCDJ general structural or carbon steel, black oxide, SCM435-equivalent screws; P variants electroless nickel with stainless screws; S variants stainless with stainless screws; urethane Shore A70 (A90 for No.8-50 of the standard type), 70 deg C. Screw counts: 2 for split compact, 1 for slit types. All agree with types.csv."
+
+[[row]]
+id = 1401
+verdict = "agree"
+note = "Ordering examples read: C-SCSBNAW12-16 (Ds suffix), E-SCSPD6 (no suffix), E-SCDJ12-10 (B suffix); E-SCD takes only D. Agree with the codes.txt rules."
+
+[[row]]
+id = 1402
+verdict = "agree"
+note = "Enlarged p.546 bearing inner mount table, merged b / B / D1 / M cells resolved: all 8 rows agree (D6 Ds9 b8 B9 D1 20 M3; D8 11/10/11.5/25/M4; D10 14/30; D12 16/30; D15 18/34; D20 24/12/14/40/M5; D25 29/45; D30 35/15/17.5/55/M6). B is one value per D and Ds is the ordering suffix."
+
+[[row]]
+id = 1403
+verdict = "agree"
+note = "p.546 side view: ring of width b with the step of diameter Ds, total width B, bore D through both, b/2 dimension seen. The page does not fix which face carries the boss; the author states +Z as a drawing choice. Agree."
+
+[[row]]
+id = 1404
+verdict = "agree"
+note = "Enlarged p.546 split compact table (D 6, 8, 10, 12, 13, 15, 16, 20, 25, 30), every cell incl. merged B 18 / 20, D1 35 / 40, t 2 / 3 / 5, W 1 / 1.5, X, Y re-read against the row lines: all 10 rows agree with urethane.csv. Y: 4, 5, 6 (D10-13), 8 (merged D15, D16, D20), 10 (merged D25, D30): the author's reading of the merged cells is right. Stainless only D15, 16, 20, 25 per the page note."
+
+[[row]]
+id = 1405
+verdict = "agree"
+note = "Enlarged p.547 standard table, 15 rows: B 10/12/18/20/23/27, D1, B1, t (2 for D4-6, 3 for D8-16, 5 from D20), M, d, R, W (1 / 1.5 / 2 from D35), X, Y (8 for D15, D16, D20; 10 for D25, D30; 12 for D35; 13; 16) and Z all agree with urethane.csv. Asterisks on 6, 10, 12, 16, 20, 25, 30, 35 give stainless = 1 exactly as in the CSV; D4, 5, 8, 13, 15, 40, 50 are 0."
+
+[[row]]
+id = 1406
+verdict = "agree"
+note = "Enlarged p.547 compact table, 8 rows: B selection 10 (D8, 10, 12), 12 (D16), 13 (D20), 15 (D25, 30, 40) is one value per D from the merged cells; D1, B1 (8, 10, 12), t (2 then 3 from D20), M3 / M5, d, R, W (2 only for D40), X, Y (5, 6, 7, 6), Z all agree. D25 not stainless per the note."
+
+[[row]]
+id = 1407
+verdict = "agree"
+note = "Checked B = B1 + t on all 33 rows of the three tables (e.g. 8+2=10, 15+3=18, 15+5=20, 18+5=23, 22+5=27, 10+2=12, 10+3=13, 12+3=15). Side views hatch a strip of width t on the left face over the full D1 height: the urethane damper on one face. Agree."
+
+[[row]]
+id = 1408
+verdict = "agree"
+note = "W is a column of the tables and is shown in the front views as the slit width at the centre line (narrow cut on the standard type, a W-wide gap on the split type). Agree."
+
+[[row]]
+id = 1409
+verdict = "agree"
+note = "Front and side views: screw at X from the axis, Y measured from the slit centre line to a dashed line (head seat floor), side view shows a U-shaped seat of width 2xR around the screw, open to the outside, centred on B1. Split type has two screws (X above and below). Slit types have one screw below the bore, slit on the opposite side. The tapped half and clearance half reading is consistent with M and d. Agree as an interpretation of the views."
+
+[[row]]
+id = 1410
+verdict = "agree"
+note = "p.546 note (split compact stainless only D15, 16, 20, 25); p.547 asterisk on 6, 10, 12, 16, 20, 25, 30, 35 of the standard table; p.547 compact note 'When D = 25, stainless is not applicable' so all other compact D are available; p.547 note 'When D = 4, only electroless nickel plating' so D4 is E-PSCD4 only (E-SCD4 and E-SSCD4 correctly refused). Agree with the stainless column."
+
+[[row]]
+id = 1411
+verdict = "agree"
+note = "Notes read: split compact and bearing mount D +0.05/+0.01; slit with urethane views D +0.06/+0.01; E-SCD note +0.01~+0.08; D1 +-0.1 on the E types. Agree with params.csv."
+
+[[row]]
+id = 1412
+verdict = "agree"
+note = "Approximate row: slit width and screw hole position of C-SCSBNAW are not dimensioned; the diagonal notch at the top of its front view is seen on p.546 and is correctly noted as not drawn."
+
+[[row]]
+id = 1413
+verdict = "agree"
+note = "Approximate row: damper as a plain disc, the tapped half and its length are not dimensioned on the pages; Z is printed in brackets as a reference on p.547 (read, matches the CSV) and is not used. Acceptable."

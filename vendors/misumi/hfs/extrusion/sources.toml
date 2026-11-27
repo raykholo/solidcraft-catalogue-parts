@@ -1,0 +1,753 @@
+# Where every number of this generator comes from. One [[source]] per vendor document, one [[dimension]] per cited item.
+# status: labelled / published = printed in the catalogue; measured = read from the vertex coordinates of the published vector
+# drawing; derived = computed from labelled numbers; approximate = an estimate (appearance or an illustration choice); none.
+# source = [] is allowed only for approximate / none rows.
+
+[meta]
+clean_room = "Clean-room: only public catalogue pages and PDFs from the manufacturers' own sites. No vendor CAD (STEP/IGES/...) was downloaded or used, no other CAD program or generator was consulted. Where a value is not printed as a number, the table says how it was obtained. current web catalogue may differ; see \"Open questions\" in README.md."
+edition_note = "Catalogue edition: the MISUMI PDFs below are the 2014 FA catalogue, \"2nd\" edition pages (P.529, 755-760). The"
+
+[[source]]
+id = "S1"
+catalogue = "MISUMI FA catalogue, \"5 Series Aluminum Extrusions 20, 25, 40mm Square\""
+url = "https://in.misumi-ec.com/pdf/fa/2014/p2_529.pdf"
+pages = "2-529 (1 Slot: HFS5-2020 drawing and table), 2-530 (2 Slots: 2040 and 4040 drawings and tables; same PDF, double page)"
+
+[[source]]
+id = "S2"
+catalogue = "MISUMI FA catalogue, \"Tapping\" (end tapping LTP/RTP/TPW, LHP/RHP/HPW)"
+url = "https://in.misumi-ec.com/pdf/fa/2014/p2_757.pdf"
+pages = "2-757 (and 2-758: High Precision Cut SC, 45 degree cut)"
+
+[[source]]
+id = "S3"
+catalogue = "MISUMI FA catalogue, \"Fastening Location Wrench Access Hole Alterations\""
+url = "https://in.misumi-ec.com/pdf/fa/2014/p2_759.pdf"
+pages = "2-759 (hole position and size table, code method), 2-760 (FL/FR)"
+
+[[source]]
+id = "S5"
+catalogue = "MISUMI FA catalogue, \"Alterations for Aluminum Extrusions - Overview\""
+url = "https://in.misumi-ec.com/pdf/fa/2014/p2_513_755.pdf"
+pages = "2-755, 2-756 (code list, position convention, CW, labeling ZZZ, R0.3 / 5-R1 drawing)"
+
+[[source]]
+id = "S10"
+catalogue = "MISUMI FA catalogue, \"6 Series Aluminum Extrusions 30, 60 mm, 1 Slot\""
+url = "https://in.misumi-ec.com/pdf/fa/2014/p2_571.pdf"
+pages = "2-571 (HFS6-3030 drawing and table), 2-572"
+
+[[source]]
+id = "S22"
+catalogue = "MISUMI FA catalogue, \"5 Series Aluminum Extrusions 20, 25, 40mm Square\": the product tables (Mass kg/m, Sectional Area mm2, Cross Sectional Moment of Inertia lx / ly mm4) under the drawings"
+url = "https://in.misumi-ec.com/pdf/fa/2014/p2_529.pdf"
+pages = "2-529 (table 2020), 2-530 (tables 2040 and 4040): \"Configurable Length Extrusions\" (mass, area, lx, ly) and the two \"Fixed Length Extrusion\" tables (area, lx, ly again, same values)"
+
+[[source]]
+id = "S23"
+catalogue = "MISUMI FA catalogue, \"6 Series Aluminum Extrusions 30, 60 mm, 1 Slot\": the product tables (Mass kg/m, Sectional Area mm2, Cross Sectional Moment of Inertia lx / ly mm4)"
+url = "https://in.misumi-ec.com/pdf/fa/2014/p2_571.pdf"
+pages = "2-571 (table 3030): \"Configurable Length Extrusions\" (mass, area, lx, ly) and the two \"Fixed Length Extrusions\" tables (area, lx, ly again, same values)"
+
+[[dimension]]
+id = 1
+item = "Overall width and height"
+value = "20 x 20"
+source = ["S1"]
+source_text = "S1 p.529 drawing and table \"2020\""
+page = "p.529 drawing and table \"2020\""
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 2
+item = "Slot opening (mouth)"
+value = "6"
+source = ["S1"]
+source_text = "S1 p.529"
+page = "p.529"
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 3
+item = "Slot cavity width"
+value = "12"
+source = ["S1"]
+source_text = "S1 p.529"
+page = "p.529"
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 4
+item = "Core (centre block) width"
+value = "8"
+source = ["S1"]
+source_text = "S1 p.529 (bottom dimension row 2 / 4 / 8)"
+page = "p.529 (bottom dimension row 2 / 4 / 8)"
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 5
+item = "Outer leg thickness / first dimension of slot depth"
+value = "2"
+source = ["S1"]
+source_text = "S1 p.529"
+page = "p.529"
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 6
+item = "Slot side to core"
+value = "4"
+source = ["S1"]
+source_text = "S1 p.529"
+page = "p.529"
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 7
+item = "Slot depth (outer face to slot floor)"
+value = "6 (=2+4)"
+source = ["S1"]
+source_text = "S1 p.529"
+page = "p.529"
+status = "derived"
+note = "derived from 5 + 6; also drawn"
+
+[[dimension]]
+id = 8
+item = "Centre bore diameter"
+value = "4.2"
+source = ["S1"]
+source_text = "S1 p.529 \"O4.2\""
+page = "p.529 \"O4.2\""
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 9
+item = "Outer corner radius"
+value = "R1 (4x)"
+source = ["S1"]
+source_text = "S1 p.529 \"4-R1\""
+page = "p.529 \"4-R1\""
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 10
+item = "Lip thickness (outer face to cavity roof)"
+value = "2.0"
+source = ["S1"]
+source_text = "S1 p.529 drawing"
+page = "p.529 drawing"
+status = "measured"
+note = "measured"
+
+[[dimension]]
+id = 11
+item = "Depth where the 12 mm cavity ends and the 45 degree flank starts"
+value = "2.93"
+source = ["S1"]
+source_text = "S1 p.529 drawing"
+page = "p.529 drawing"
+status = "measured"
+note = "measured to 0.01 mm from the vertex coordinates of the drawing (the cavity wall is 0.94 long below the lip, so about 2.94; set to 2.93 so that the 45 degree flank closes exactly on the floor half width 2.93, row 12; the 4040 drawing gives 3.0, within the 0.05 mm measuring accuracy); earlier revisions rounded it to 3.0, which left the section 1 % light against the printed area (row 1900)"
+
+[[dimension]]
+id = 12
+item = "Flank angle"
+value = "45 degrees (slot floor half width 2.93, cavity 12 wide down to depth 2.93)"
+source = ["S1"]
+source_text = "S1 p.529 drawing"
+page = "p.529 drawing"
+status = "measured"
+note = "measured to 0.01 mm (floor half width 2.93; the drawn flank rise 3.06 against run 3.07 is 45 degrees within the measuring accuracy); closes exactly on dimensions 3, 4, 7 with row 11"
+
+[[dimension]]
+id = 13
+item = "Lip-tip outer corner radius"
+value = "R0.3 (8x)"
+source = ["S1", "S5"]
+source_text = "S1 p.529 drawing (arcs); R0.3 is labelled on a 5 series section in S5 p.756"
+page = "p.529 drawing (arcs); R0.3 is labelled on a 5 series section in S5 p.756"
+status = "measured"
+note = "measured, S5 confirms the value"
+
+[[dimension]]
+id = 14
+item = "Section area"
+value = "183 mm2 (published)"
+source = ["S1"]
+source_text = "S1 p.529 table \"Sectional Area\""
+page = "p.529 table \"Sectional Area\""
+status = "published"
+note = "published; checked against the built end face within 0.3 % (rows 1900, 1904); the model gives 182.8 (drawing-derived value before the 2.93 / 2.93 measurement: 181.13)"
+
+[[dimension]]
+id = 15
+item = "Moment of inertia Ix = Iy"
+value = "0.742 x 10^4 mm4"
+source = ["S1"]
+source_text = "S1 p.529 table"
+page = "p.529 table"
+status = "published"
+note = "published; checked within 1 % (rows 1900, 1904); the model gives 7430"
+
+[[dimension]]
+id = 16
+item = "Configurable length range and step"
+value = "50-4000 mm, 0.5 mm increment"
+source = ["S1"]
+source_text = "S1"
+page = "p.529 \"Configurable Length Extrusions\" table, column \"L / 0.5mm increment\""
+status = "published"
+note = ""
+
+[[dimension]]
+id = 17
+item = "Fixed lengths (K prefix)"
+value = "1000 mm; 4000 mm (effective length)"
+source = ["S1"]
+source_text = "S1"
+page = "p.529 \"Fixed Length Extrusion\" tables"
+status = "published"
+note = ""
+
+[[dimension]]
+id = 18
+item = "Type codes of the 5 series 20/25/40 square, 1 slot (four-slot)"
+value = "NFS5, NFSB5, HFS5, HFSB5, CAF5, HFSY5 (K prefix = fixed length)"
+source = ["S1"]
+source_text = "S1"
+page = "p.529 type table"
+status = "published"
+note = ""
+
+[[dimension]]
+id = 19
+item = "Material and surface per type"
+value = "NFS: A6063S-T5 on 2020 (p.529), A6063SS-T5 on 2040 and 4040 (p.530: the two pages print different grades); HFS/CAF/HFSY: A6N01SS-T5; clear anodize, black anodize (B), clear coating (CAF), baked yellow paint (Y)"
+source = ["S1"]
+source_text = "S1"
+page = "p.529 \"Material\" and \"Surface Treatment\" columns"
+status = "published"
+note = ""
+
+[[dimension]]
+id = 20
+item = "Ordering example"
+value = "\"HFS5-2020 - 800\", \"KHFS5-2020 - 1000\""
+source = ["S1"]
+source_text = "S1"
+page = "p.529 \"Ordering Example\""
+status = "published"
+note = ""
+
+[[dimension]]
+id = 21
+item = "Alteration code list (LTP/RTP/TPW, LHP/RHP/HPW, SC, L_T45/R_T45, LWP/RWP, FL/FR, CW, ZZZ ...)"
+value = "see GRAMMAR.md"
+source = ["S5"]
+source_text = "S5"
+page = "p.755-756 table"
+status = "published"
+note = ""
+
+[[dimension]]
+id = 22
+item = "Alteration order in a code"
+value = "`<part number>-<L>-<alt>-<alt>`: examples HFS6-3030-1250-LTP-RTP, HFS6-3030-500-LCH-X5, HFS8-4040-1000-SC, HFS6-3030-500-CW"
+source = ["S2", "S3", "S5"]
+source_text = "S2, S3, S5"
+page = "\"Ordering Example\" boxes, p.757 / 759 / 758 / 756"
+status = "published"
+note = ""
+
+[[dimension]]
+id = 23
+item = "End tapping, HFS5-2020"
+value = "M5, depth 15, 1 hole per end (centre bore), LTP left / RTP right / TPW both"
+source = ["S2"]
+source_text = "S2"
+page = "p.757 table, row HFS5/NFS5/CAF5/HFSY5 2020, column Tap Shape"
+status = "published"
+note = ""
+
+[[dimension]]
+id = 24
+item = "Heli-coil end tapping LHP/RHP/HPW, 2020"
+value = "M3 depth 6"
+source = ["S2"]
+source_text = "S2"
+page = "p.757 table (parsed, not modelled)"
+status = "published"
+note = ""
+
+[[dimension]]
+id = 25
+item = "Wrench access hole position, HFS5"
+value = "H = 10, J = 20, K = 20"
+source = ["S3"]
+source_text = "S3"
+page = "p.759 \"Hole Position and Size\""
+status = "published"
+note = ""
+
+[[dimension]]
+id = 26
+item = "Wrench access hole diameter, HFS5"
+value = "d = 7.35"
+source = ["S3"]
+source_text = "S3"
+page = "p.759 same table"
+status = "published"
+note = ""
+
+[[dimension]]
+id = 27
+item = "Wrench hole code method"
+value = "1st L/R, 2nd C/W/E = 1/2/3 lines, 3rd H/V/P"
+source = ["S3"]
+source_text = "S3"
+page = "p.759 \"Alteration Code Specification Method\""
+status = "published"
+note = ""
+
+[[dimension]]
+id = 28
+item = "FL / FR (move the hole 3 mm toward the end cap side)"
+value = "3 mm"
+source = ["S3"]
+source_text = "S3"
+page = "p.760 \"Available Alteration Combinations\""
+status = "published"
+note = ""
+
+[[dimension]]
+id = 29
+item = "High Precision Cut SC"
+value = "length tolerance L +-0.5 becomes L +-0.2, L <= 1500"
+source = ["S5", "S2"]
+source_text = "S5, S2"
+page = "p.755 table, p.758"
+status = "published"
+note = ""
+
+[[dimension]]
+id = 30
+item = "End face C chamfer CW"
+value = "thread chamfer C0.2-0.3 (not modelled)"
+source = ["S5"]
+source_text = "S5"
+page = "p.756"
+status = "published"
+note = ""
+
+[[dimension]]
+id = 45
+item = "2040 overall"
+value = "20 x 40"
+source = ["S1"]
+source_text = "S1 p.530"
+page = "p.530"
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 46
+item = "2040 slots"
+value = "6 slots: one on each 20 side, two on each 40 side, centres 10 / 20 / 10"
+source = ["S1"]
+source_text = "S1 p.530"
+page = "p.530"
+status = "labelled"
+note = "labelled (10, 20, 10)"
+
+[[dimension]]
+id = 47
+item = "2040 slot (mouth 6, cavity 12, lip 2, depth 2+4, flank 45 degrees, floor 6)"
+value = "same as 2020"
+source = ["S1"]
+source_text = "S1 p.530"
+page = "p.530"
+status = "labelled"
+note = "labelled 20, 12, 6, 2, 4, 8 on the drawing"
+
+[[dimension]]
+id = 48
+item = "2040 bore blocks"
+value = "8 wide, bore O4.2 at (0, +-10)"
+source = ["S1"]
+source_text = "S1 p.530"
+page = "p.530"
+status = "labelled"
+note = "labelled 8, \"2-O4.2\"; position from the 10 / 20 / 10"
+
+[[dimension]]
+id = 49
+item = "2040 centre void"
+value = "hexagon: flats 4 wide, 2 mm behind the left and right faces, 1 mm run, 45 degree webs to the bore blocks (flat at +-3 on the block face)"
+source = ["S1"]
+source_text = "S1 p.530 drawing"
+page = "p.530 drawing"
+status = "measured"
+note = "measured"
+
+[[dimension]]
+id = 50
+item = "2040 outer corner"
+value = "R1 (4x)"
+source = ["S1"]
+source_text = "S1 p.530 \"4-R1\""
+page = "p.530 \"4-R1\""
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 51
+item = "2040 section area / moments"
+value = "324 mm2; Ix 1.358 x 10^4, Iy 5.13 x 10^4"
+source = ["S1"]
+source_text = "S1 p.530 table"
+page = "p.530 table"
+status = "published"
+note = "published; checked, area within 0.3 % and moments within 1 % (rows 1901, 1904); the model gives 323.8, 13551, 51344"
+
+[[dimension]]
+id = 52
+item = "4040 overall"
+value = "40 x 40"
+source = ["S1"]
+source_text = "S1 p.530"
+page = "p.530"
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 53
+item = "4040 slots"
+value = "8 slots, two per side, centres 10 / 20 / 10"
+source = ["S1"]
+source_text = "S1 p.530"
+page = "p.530"
+status = "labelled"
+note = "labelled (10, 20, 10)"
+
+[[dimension]]
+id = 54
+item = "4040 slot dimensions"
+value = "as 2020 (mouth 6, lip 2, cavity 12, floor 6)"
+source = ["S1"]
+source_text = "S1 p.530"
+page = "p.530"
+status = "labelled"
+note = "labelled 6, 8, 12, 8, 6 along the foot of the drawing, 2"
+
+[[dimension]]
+id = 55
+item = "4040 bore blocks"
+value = "8 x 8, bore O4.2 at (+-10, +-10)"
+source = ["S1"]
+source_text = "S1 p.530 \"4-O4.2\""
+page = "p.530 \"4-O4.2\""
+status = "labelled"
+note = "labelled 8 and the 10 / 20 / 10 grid"
+
+[[dimension]]
+id = 56
+item = "4040 central void"
+value = "four arms: flat 4 wide, 2 mm behind each outer face (labelled \"2\"), 1 mm run, 45 degree webs to the bore blocks' inner faces (x = 6)"
+source = ["S1"]
+source_text = "S1 p.530 drawing"
+page = "p.530 drawing"
+status = "measured"
+note = "measured"
+
+[[dimension]]
+id = 57
+item = "4040 web thickness (slot flank to void)"
+value = "1.5"
+source = ["S1"]
+source_text = "S1 p.530 \"1.5\""
+page = "p.530 \"1.5\""
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 58
+item = "4040 bore block inner-corner notch"
+value = "a 3.6 mm square (fitted, drawing 3.0 to 3.4) at the block's inner corner, open into the O4.2 bore (so the bore is a 3/4 circle arc of the void)"
+source = ["S1"]
+source_text = "S1 p.530 drawing"
+page = "p.530 drawing"
+status = "derived"
+note = "the notch is the measured inner-corner opening of the bore blocks (about 3.0 to 3.4 mm square on the drawing, bores 3/4 open); its side is fitted to 3.6 so that the section area meets the printed 472 mm2 within 0.3 % (row 1902). Fitted value, not read from the page: listed in not_guaranteed"
+
+[[dimension]]
+id = 59
+item = "4040 outer corner"
+value = "R1 (4x)"
+source = ["S1"]
+source_text = "S1 p.530 \"4-R1\""
+page = "p.530 \"4-R1\""
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 60
+item = "4040 section area / moments"
+value = "472 mm2; Ix = Iy = 8.89 x 10^4"
+source = ["S1"]
+source_text = "S1 p.530 table"
+page = "p.530 table"
+status = "published"
+note = "published; checked, area within 0.3 % and moments within 1 % (rows 1902, 1904); the model gives 472.4, 88658"
+
+[[dimension]]
+id = 61
+item = "2040 / 4040 types"
+value = "NFS5, NFSB5, HFS5, HFSB5, CAF5 (no HFSY5)"
+source = ["S1"]
+source_text = "S1 p.530 type table"
+page = "p.530 type table"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 62
+item = "3030 overall"
+value = "30 x 30"
+source = ["S10"]
+source_text = "S10 p.571"
+page = "p.571"
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 63
+item = "3030 slot: mouth 8, cavity 16.5, lip 2, depth 9, core 12"
+value = "8, 16.5, 2, 9, 12"
+source = ["S10"]
+source_text = "S10 p.571"
+page = "p.571"
+status = "labelled"
+note = "labelled (8, 16.5, 2, \"2 7 12\", 9)"
+
+[[dimension]]
+id = 64
+item = "3030 slot: where the cavity wall ends and the 45 degree flank starts"
+value = "depth 5.31; floor half width 4.56"
+source = ["S10"]
+source_text = "S10 p.571 drawing"
+page = "p.571 drawing"
+status = "derived"
+note = "floor half width 4.56 measured to 0.01 mm from the drawing; the depth 5.31 follows from the 45 degree flank closing on the printed 16.5 cavity and 9 depth (9 - (8.25 - 4.56)); the drawing's own wall end (5.46) belongs to its narrower drawn cavity (16.2). With these the section area is 333.1 against the printed 333 (row 1903)"
+
+[[dimension]]
+id = 65
+item = "3030 lip-tip round"
+value = "R0.3"
+source = ["S10"]
+source_text = "S10 p.571 drawing"
+page = "p.571 drawing"
+status = "approximate"
+note = "approximate (the page shows a tip round but does not size it; 5 series value used)"
+
+[[dimension]]
+id = 66
+item = "3030 outer corner"
+value = "R2 (4x)"
+source = ["S10"]
+source_text = "S10 p.571 \"4-R2\""
+page = "p.571 \"4-R2\""
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 67
+item = "3030 corner holes"
+value = "4 x O4.2 at (+-11.6, +-11.6), not tapped"
+source = ["S10"]
+source_text = "S10 p.571 \"4-O4.2\", \"23.2\""
+page = "p.571 \"4-O4.2\", \"23.2\""
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 68
+item = "3030 centre bore"
+value = "O6.8"
+source = ["S10"]
+source_text = "S10 p.571 \"O6.8\""
+page = "p.571 \"O6.8\""
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 69
+item = "3030 section area / moments"
+value = "333 mm2; Ix = Iy = 2.83 x 10^4"
+source = ["S10"]
+source_text = "S10 p.571 table"
+page = "p.571 table"
+status = "published"
+note = "published; checked, area within 0.3 % and moments within 1 % (rows 1903, 1904); the model gives 333.1, 28453"
+
+[[dimension]]
+id = 70
+item = "3030 types"
+value = "HFS6, HFSB6, CAF6, HFSY6 (A6N01SS-T5; black anodize for HFSB6, clear coating CAF6, baked yellow HFSY6). NEFS6 / EFS6 (296 mm2), GFS6 (377), NFSL6 / HFSL6 (280) are different sections on the same page: refused"
+source = ["S10"]
+source_text = "S10 p.571"
+page = "p.571"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 71
+item = "6 series length range, step, fixed lengths"
+value = "50-4000 in 0.5 steps; K = 1000 or 4000"
+source = ["S10"]
+source_text = "S10 p.571 tables"
+page = "p.571 tables"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 72
+item = "End tapping 2040 / 4040 / 3030"
+value = "2040: 2 holes per end, 4040: 4 holes, both M5 depth 15; 3030: 1 hole (the O6.8 centre bore), M8 depth 24"
+source = ["S2"]
+source_text = "S2 p.757 (tapping table, row \"Four-Side Slots\")"
+page = "p.757 (tapping table, row \"Four-Side Slots\")"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 73
+item = "Wrench access hole, 6 series (HFS6)"
+value = "H 15, J 30, K 30; d = 5 or 8, chosen with `-X5` / `-X8` (no default is printed, so the code must say which)"
+source = ["S3"]
+source_text = "S3 p.759 \"Hole Position and Size\" and its footnote, ordering example \"HFS6-3030-500-LCH-X5\""
+page = "p.759 \"Hole Position and Size\" and its footnote, ordering example \"HFS6-3030-500-LCH-X5\""
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 74
+item = "Wrench access hole, 5 series 2040 / 4040"
+value = "H 10, J 20, K 20, d 7.35 (the HFS5 row)"
+source = ["S3"]
+source_text = "S3 p.759"
+page = "p.759"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 75
+item = "Wrench hole axis on 2040"
+value = "H = along Y (the 20 mm width), V = along Z (the 40 mm height), through the whole section at its centre"
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate (the catalogue's \"horizontal\" depends on how the extrusion is laid out)"
+
+[[dimension]]
+id = 1900
+item = "HFS5-2020 table values: mass per metre, sectional area, moments of inertia"
+value = "0.5 kg/m; 183 mm2; lx = ly = 0.742 x 10^4 mm4"
+source = ["S22"]
+source_text = "S22 p.529 table \"Configurable Length Extrusions\", row 2020 (NFS5 / NFSB5 / HFS5 / HFSB5 / CAF5 / HFSY5): Mass kg/m 0.5, Sectional Area 183, lx 0.742x10^4, ly 0.742x10^4"
+page = "p.529 table \"Configurable Length Extrusions\" row 2020; repeated in the two Fixed Length tables (183, 0.742x10^4)"
+status = "published"
+note = "published; area and moments to 3 figures, mass to 1 decimal. Before: model area 181.13 (-1.0 %), Ix = Iy 7386 (-0.5 %, moment of the outline with the round-offs; 7476 without them). After: 182.8 (-0.09 %), 7430 (+0.13 %). Checked by check.py: area within 0.3 % (never below half a unit, 0.5 mm2), moments within 1 %"
+
+[[dimension]]
+id = 1901
+item = "HFS5-2040 table values: mass per metre, sectional area, moments of inertia"
+value = "0.88 kg/m; 324 mm2; lx = 1.358 x 10^4, ly = 5.13 x 10^4 mm4"
+source = ["S22"]
+source_text = "S22 p.530 table \"Configurable Length Extrusions\", row 2040: Mass 0.88, Sectional Area 324, lx 1.358x10^4, ly 5.13x10^4"
+page = "p.530 table \"Configurable Length Extrusions\" row 2040; repeated in the Fixed Length tables"
+status = "published"
+note = "published. Before: area 321.2 (-0.86 %), I 13480 / 50934 (-0.7 % / -0.7 %). After: 323.8 (-0.08 %), 13551 (-0.21 %) / 51344 (+0.09 %)"
+
+[[dimension]]
+id = 1902
+item = "HFS5-4040 table values: mass per metre, sectional area, moments of inertia"
+value = "1.28 kg/m; 472 mm2; lx = ly = 8.89 x 10^4 mm4"
+source = ["S22"]
+source_text = "S22 p.530 table \"Configurable Length Extrusions\", row 4040: Mass 1.28, Sectional Area 472, lx 8.89x10^4, ly 8.89x10^4"
+page = "p.530 table \"Configurable Length Extrusions\" row 4040; repeated in the Fixed Length tables"
+status = "published"
+note = "published. Before: area 476.0 (+0.85 %), I 88640 (-0.3 %). After: 472.4 (+0.09 %), 88658 (-0.27 %); the bore-block notch (row 58) is the fitted value that gets there"
+
+[[dimension]]
+id = 1903
+item = "HFS6-3030 table values: mass per metre, sectional area, moments of inertia"
+value = "0.9 kg/m; 333 mm2; lx = ly = 2.83 x 10^4 mm4"
+source = ["S23"]
+source_text = "S23 p.571 table \"Configurable Length Extrusions\", row 3030 (HFS6 / HFSB6 / CAF6 / HFSY6): Mass 0.9, Sectional Area 333, lx 2.83x10^4, ly 2.83x10^4"
+page = "p.571 table \"Configurable Length Extrusions\" row 3030 (the HFS6 line); repeated in the Fixed Length tables (333, 2.83x10^4)"
+status = "published"
+note = "published. Before: area 331.97 (-0.31 %), I 28391 (+0.32 %). After: 333.1 (+0.04 %), 28453 (+0.54 %)"
+
+[[dimension]]
+id = 1904
+item = "Tolerance of the section-property check (area, mass, Ix / Iy)"
+value = "area: 0.3 % of the printed value, never below 0.5 mm2; Ix, Iy: 1 %; mass: half a unit of the last printed digit"
+source = ["S22", "S23"]
+source_text = "S22 p.529-530, S23 p.571 tables"
+page = "tables of rows 1900-1903"
+status = "derived"
+note = "The tables round: area to 3 figures (183 stands for 182.5 to 183.5, 0.27 %), moments to 3 figures (0.742 = 7415 to 7425), mass to 1 or 2 decimals. The area band 0.3 % is therefore at the printed precision, and the check uses the larger of 0.3 % and half a unit (0.5 mm2: 0.3 % is the larger for every profile here). The 1 % moment band absorbs the 3-figure rounding and the approximate tip round R0.3 (about 0.1 %). Mass is compared as area x 2.71 g/cm3 (aluminium extrusion alloy density: A6063 / A6N01 are 2.69 to 2.72; the catalogue prints no density, 2.71 is the mean of the density implied by the four printed pairs, 2.73 / 2.72 / 2.71 / 2.70) and only to half a unit of the printed digit (0.05 or 0.005 kg/m). SolidCraft's inertia tensor of the plain bar gives the polar moment Ix + Iy (I_xx / (rho L), planar faces exact) and is checked against the sum of the printed moments; Ix and Iy separately cannot be read from the tensor of a long bar (the A L^2 / 12 term is 10^3 times larger), so they are computed from the profile geometry in check.py (profiles.expected_moments: outline, voids, bores, and the corner and lip-tip round-offs)"
+
+[[dimension]]
+id = 1905
+item = "Tapped end holes: what is modelled (tap drill and nominal thread)"
+value = "the printed pilot bore (5 series O4.2, 3030 O6.8) is the modelled hole; a cosmetic thread of the catalogue's nominal size (M5 depth 15, M8 depth 24) is laid on it"
+source = ["S2", "S1", "S10"]
+source_text = "S2 p.757 tapping table (M5 Depth 15, M8 Depth 24; note: \"the number of pilot hole for tapping in the end\", \"Heli-coil is inserted into the pilot holes\"); S1 p.529-530 \"O4.2\", S10 p.571 \"O6.8\""
+page = "p.757 table and notes; p.529, p.530, p.571 drawings"
+status = "derived"
+note = "The catalogue calls the profile bores pilot holes for end tapping: O4.2 is the ISO tap drill of M5 (5 - 0.8) and O6.8 that of M8 (8 - 1.25, rounded to the drill 6.8). Convention used (same as SolidCraft's own tapped hole, solid.hole with thread, which takes the tap drill): the geometry is the printed pilot bore, never the nominal diameter; the thread is cosmetic (solid.thread, extent length, listed by model.threads) with the nominal designation and the catalogue depth, starting at the end face. check.py checks that the cylinder carrying each thread has the printed pilot diameter, that the thread designation is the catalogue's and that its depth is the printed depth (interrupted only by a wrench hole). The four O4.2 corner holes of the 3030 are not tapped (one tapped hole per end, p.757). Heli-coil LHP / RHP / HPW (M3 depth 6) are not modelled"
+
+[[note]]
+text = "\"Labelled\" = printed as a number on the drawing. \"Measured\" = read from the vertex coordinates of the"
+
+[[note]]
+text = "vector outline of that same drawing (public page, no CAD file), accuracy about 0.05 mm, rounded to the"
+
+[[note]]
+text = "nearest 0.1 mm that is consistent with the labelled dimensions."
+
+[[note]]
+text = "Source count for the MISUMI generator: 30 rows (5 documents counting S4 below)."
+
+[[note]]
+text = "Added with `misumi/profiles.py`. New document S10: MISUMI FA catalogue \"6 Series Aluminum Extrusions 30, 60 mm, 1 Slot\","
+
+[[note]]
+text = "https://in.misumi-ec.com/pdf/fa/2014/p2_571.pdf (pages 2-571, 2-572; drawing \"HFS6-3030 HFSB6-3030 CAF6-3030 HFSY6-3030\" on 2-571). S1's PDF"
+
+[[note]]
+text = "(`p2_529.pdf`) is the double page 2-529 / 2-530; 2040 and 4040 are on 2-530. \"Labelled\" = printed on the drawing; \"measured\" = read from the"
+
+[[note]]
+text = "vector outline of the same drawing (the gray fill and white cut-out paths of the page, scaled so the labelled overall size comes out exact,"
+
+[[note]]
+text = "about 0.05 mm); \"approximate\" = neither printed nor separable on the page. Everything was checked as a whole against the published"
+
+[[note]]
+text = "section area and moments of inertia in the same table (check.py rows \"area vs published\", \"moment of inertia\")."
+
+[[note]]
+text = "Source count for family 1: 31 new rows (45-75): 16 labelled, 9 published, 4 measured, 2 approximate; one new document (S10)."

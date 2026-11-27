@@ -1,0 +1,78 @@
+reviewer_kind = "ai"
+reviewer = "AI review lane (Claude Sonnet), independent of the authoring lane"
+author = "AI authoring lanes (Claude)"
+date = "2026-11-27"
+commit = "e81395f"
+sources_hash = "sha256:6ff5d57a3813d897b01f9627dd87de888e0a251acf36ecddc34b7d567cffeb26"
+amended = "2026-11-27, coordinator: row 35 citation text pointed at the pre-restructure file hiwin/mgn_build.py; it now names data/blocks.csv columns Lmax, G, Gn, H2, which is where the reviewed values live. No value changed; hash re-pinned. Previous: sha256:f79a459b68d0e2293974b573ef6ee769f618436c96e14021aab053278b966114"
+method = "Downloaded the cited HIWIN catalogue G99TE24-2410 PDF, extracted the text layer of each cited page (printed page = PDF page - 3) and looked at the rendered pages; compared every CSV cell and every sources.toml claim with the page cell by cell; re-derived rail hole counts for the codes.txt cases with L = (n-1)P + 2E; ran tools/check on every code. No value needed correcting."
+
+[[row]]
+id = 31
+verdict = "agree"
+note = "p.78 grammar: MGN size C/H, E special block, number of blocks, R length, E special rail, preload ZF/Z0/Z1, precision C/H/P, material none/M/HC/NC, rails I-IV, + SS/U/EL/RC/-O options all as printed and as parsed by src/catalogue.py."
+
+[[row]]
+id = 32
+verdict = "agree"
+note = "p.85 Table 2-4-15, MGNR7/9/12/15 columns: pitch 15/20/25/40, Es 5/7.5/10/15, max standard 595/1195/1995/1990, max length 600/1200/2000/2000 all equal rails.csv; Eq. 2.4 and E <= P/2 rule match."
+
+[[row]]
+id = 33
+verdict = "agree"
+note = "p.88 table (1): H, H1, N, W, B, C, L1, L and Mxl of MGN 7/9/12/15 C and H match blocks.csv cell by cell (B1 not used)."
+
+[[row]]
+id = 34
+verdict = "agree"
+note = "p.88 table (1): WR, HR, D, h, d, P, E and mounting bolt (M2x6, M3x8, M3x8, M3x10) match rails.csv."
+
+[[row]]
+id = 35
+verdict = "agree"
+note = "p.88: L Max 23.1/31.4, 29.9/40.9, 35.1/45.8, 42.7/59.4; G 4.5 only for MGN15 (with M3 nipple thread); Gn 1.2/1.4/2; H2 1.5/1.8/2.5/3 match blocks.csv. The cited code path text hiwin/mgn_build.py in sources.toml is a stale file name but harmless."
+
+[[row]]
+id = 36
+verdict = "agree"
+note = "p.76 section 2-4-2: component list (block, end cap, end seal, retainer, bottom seal, cap, ball, grease nipple) and the lubrication sentence (nipple for MGN15; MGN7, 9, 12 by the end-cap side hole) as printed."
+
+[[row]]
+id = 37
+verdict = "agree"
+note = "p.88 end-view drawings of MGN7/9/12 and MGN15 show chamfered block top corners, two cross-head screws in the end cap, the lube hole on the centre line, rail side ball notch; shapes only, consistent."
+
+[[row]]
+id = 38
+verdict = "agree"
+note = "Approximate (sizes chosen by the author, no catalogue number); correctly status approximate, source empty, and listed in generator.toml not_guaranteed (rail chamfers, ball grooves, block top chamfers)."
+
+[[row]]
+id = 39
+verdict = "agree"
+note = "Approximate (end cap / seal split, insets, retainer strips, screw and nipple shapes); correctly approximate and listed in not_guaranteed. The catalogue parts of it (L Max, G, H2) are row 35, verified."
+
+[[row]]
+id = 40
+verdict = "agree"
+note = "Looked at the hiwin.com MG product photo (private reference, nothing kept): green end cap, red end seal, metal rail and block, plastic ends; matches. No measurement taken from it."
+
+[[row]]
+id = 41
+verdict = "agree"
+note = "p.88 mounting bolts M2x6, M3x8, M3x8, M3x10 match; the screw model is SolidCraft's and is listed as not guaranteed."
+
+[[row]]
+id = 42
+verdict = "agree"
+note = "p.82 Table 2-4-9: MGN12 and MGN15, bolt M3, D 6.15, H 1.2 equal caps.csv; text says caps are included with the rail package; the flush modelling choice is declared and listed in not_guaranteed."
+
+[[row]]
+id = 43
+verdict = "agree"
+note = "Approximate; the photo shows a black middle band on the block top between the metal ends. Correctly approximate and listed in not_guaranteed (0.2 mm black top insert)."
+
+[[row]]
+id = 44
+verdict = "agree"
+note = "Status none, illustration only (base plate in the screenshots, not in the part); nothing to check against the catalogue."

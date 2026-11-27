@@ -1,0 +1,44 @@
+id = "misumi.sth.pilot-flanged-shaft-support"
+name = "MISUMI Economy pilot flanged shaft supports, steel: round flanged (E-STHWIRB) and compact flanged (E-STHWICB), with pilot spigot, slit and clamp screw"
+version = "0.1.0"
+kind = "generator"
+min_host_version = "0.49.1"
+preview_code = "E-STHWIRB12"
+
+[entry]
+build  = "pilot:parse_build"
+check  = "check:check"
+shots  = "shots"
+
+[declares]
+labels   = ["Pilot flanged shaft support", "Shaft support pilot flange", "Round pilot flanged shaft support", "Compact pilot flanged shaft support", "E-STHWIR", "E-STHWIC"]
+keywords = ["pilot flanged shaft support", "pilot flange shaft holder", "spigot flange shaft support", "round pilot flange shaft support", "compact pilot flange shaft support", "linear shaft support with pilot", "clamp flange shaft support"]
+vendor   = "MISUMI"
+
+[[declares.matches]]
+id         = "sth-pilot-flanged"
+generator  = "pilot-flanged-shaft-support"
+pattern    = '^E-STHWI(?:RB|CB)(?P<d>\d{1,2})$'
+flags      = "i"
+confidence = "exact"
+params     = { hole_diameter_mm = "{d}" }
+examples          = ["E-STHWIRB8", "E-STHWIRB40", "E-STHWICB16", "E-STHWICB30"]
+negative_examples = ["E-STHWIRB", "E-STHWIRB8-", "E-STHWISB10", "E-STHWRB10", "E-STHWIRBL12", "E-SHSTM8-25"]
+
+[inputs]
+type = { choices = ["E-STHWIRB", "E-STHWICB"] }
+hole_diameter_mm = { min = 8, max = 40 }
+
+[guarantee]
+not_guaranteed = [
+  "Corner radii of the compact flange (the figure shows rounded corners without a dimension; drawn as W / 4) (appearance, approximate)",
+  "Pilot length: the figure marks two T dimensions either side of the flange back face; the pilot spigot (O D1 h8) is drawn T long and the flange T thick, which makes the printed L1 equal to the L of the slit table (p.539) plus T in every row. The h8 tolerance of D1 is printed as a class only and is not modelled",
+  "Groove depth (S1 wide, position from L1 - B - S1) is not dimensioned: read from the figure as the cut from the top down to the bottom of the shaft bore; the radial slit is drawn over the ring length B only, from the shaft axis up through the outside on +Y (the stub below the bore is read from the figure) (appearance, approximate)",
+  "Clamp screw side: the screw is drawn on +Y at height X with the clearance hole and counterbore on -X and the tapped hole on +X, read from the figure (appearance, approximate)",
+  "Hole angular position: the 4 mounting holes of the round flange are drawn on the X and Y axes; the figure does not dimension the angle relative to the slit (appearance, approximate)",
+  "Both types are built for every D of the table: the page prints one table for the round and the compact type and no per-type size restriction",
+  "Surface treatment: the page prints 'Stainless steel' in the Surface Treatment column for both types next to a steel material; it is recorded as printed and not modelled",
+  "No chamfers or fillets, and the hex socket head cap screw supplied is not modelled",
+  "Thickness (N): printed, and equal to (D1 - D) / 2 in every row; checked as the sleeve wall, not modelled as a separate feature",
+  "The T-shaped aluminium alloy support C-SHA printed on the same page is not part of this generator (it is in misumi.shf.shaft-holder)"
+]

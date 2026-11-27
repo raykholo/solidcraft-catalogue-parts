@@ -1,0 +1,26 @@
+== E-STHWICB40
+PASS  one closed body                                                            spec         1  got          1           [S18 p.540 table]
+PASS  overall length L1 (bbox Z, pilot face to sleeve end)                       spec        67  got    67.0000  +-0.005  [S18 p.540 table L1]
+PASS  pilot face at z = 0                                                        spec         0  got     0.0000  +-0.005  [S18 p.540 table L1, T]
+PASS  pilot length T = 12 (flange back face at z = T)                            spec       yes  got        yes           [S18 p.540 table T]
+PASS  flange thickness T = 12 (flange front face at z = 2 T)                     spec       yes  got        yes           [S18 p.540 table T]
+PASS  shaft hole O40 (axis along Z, on the axis)                                 spec       yes  got        yes           [S18 p.540 table D]
+PASS  D tolerance (H8) upper/lower                                               spec (0.039, 0)  got (0.039, 0)           [S18 p.540 table DH8] echoed into the description
+PASS  tolerance written in the part description                                  spec       yes  got        yes           [S18 p.540 table DH8]
+PASS  pilot and sleeve outside diameter D1 = 70 (h8)                             spec       yes  got        yes           [S18 p.540 table D1]
+PASS  Thickness (N) = (D1 - D) / 2                                               spec        15  got    15.0000  +-1e-09  [S18 p.540 table N, D1, D] derived from the table: N is the sleeve wall
+PASS  compact flange width W (bbox X)                                            spec        76  got    76.0000  +-0.005  [S18 p.540 table W]
+PASS  compact flange height H (bbox Y)                                           spec       104  got   104.0000  +-0.005  [S18 p.540 table H]
+PASS  mounting holes O9: count                                                   spec         4  got          4           [S18 p.540 table 4-d]
+PASS  mounting hole positions (F, P1)                                            spec       yes  got        yes           [S18 p.540 table P1, F]
+PASS  groove: start z = 47 (L1 - B - S1)                                         spec       yes  got        yes           [S18 p.540 table L1, B, S1] depth is not printed
+PASS  groove: width S1 = 2 (end z = 49, ring B = 18 to the sleeve end)           spec       yes  got        yes           [S18 p.540 table B, S1]
+PASS  radial slit width S = 1.5                                                  spec       yes  got        yes           [S18 p.540 table S]
+PASS  clamp screw counterbore floor Y = 13 from the slit centre                  spec       yes  got        yes           [S18 p.540 table Y]
+PASS  clamp screw clearance hole O9 on the clamp axis (y = X = 26, z = 58)       spec       yes  got        yes           [S18 p.540 table d2, X, B]
+PASS  clamp screw counterbore O14 on the clamp axis (y = X = 26, z = 58)         spec       yes  got        yes           [S18 p.540 table d1, X, B]
+PASS  clamp screw thread M8 count                                                spec         1  got          1           [S18 p.540 table M]
+PASS  clamp screw thread axis at y = X = 26, z = 58 (B / 2 from the sleeve end)  spec       yes  got        yes           [S18 p.540 table X, B]
+PASS  part number metadata                                                       spec E-STHWICB40  got E-STHWICB40           [-]
+PASS  design part number                                                         spec E-STHWICB40  got E-STHWICB40           [-]
+24/24 passed

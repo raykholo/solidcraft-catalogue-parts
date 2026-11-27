@@ -1,0 +1,117 @@
+reviewer_kind = "ai"
+reviewer = "AI review lane (Claude Sonnet), independent of the authoring lane"
+author = "AI authoring lanes (Claude)"
+date = "2026-11-27"
+commit = "53d67d5"
+sources_hash = "sha256:c98a191213d83fe5342a86ba63b85a08fe990bdb8b8f6631ea49218d106df098"
+method = "Downloaded the S40 PDF (double page 2-539/2-540), rendered it at 300-700 dpi with pymupdf and read get_text(); re-read every dimension row 500-508 and 1500-1512 and compared every cell of types.csv, params.csv and alterations.csv with the drawings, type tables, part tables and alterations tables; checked the tab centring and protrusion, the ultra thick wall, the eccentric 5 | 12 | 7, the alteration C applicability list, the one-alteration ordering example and the K values; checked the codes.txt rejects against the page. No value needed correction."
+
+[[row]]
+id = 500
+verdict = "agree"
+note = "Type tables p.539/540: NBLTS5 A6063S-T5 anodize; HBLTS5(-4), HBLTSB5 black, CHBLTS5 clear paint (anodize + clear paint) A6N01SS-T5; HBLTSW5/VW5/F5 material and surface printed beside their drawings (A6N01SS-T5, anodize). HBLTV5/HBLTVB5 have no type table (only a 25 Square drawing and the part table); the row text correctly says these are inferred from the HBLTS5 family. Matches types.csv and the previous correction."
+
+[[row]]
+id = 501
+verdict = "agree"
+note = "7+14+7 (HBLTS5/SW5/F5 and the new 14 wide types), 9.5+19+9.5 (HBLTV5/VW5) read on the 300 dpi render; widths in types.csv match."
+
+[[row]]
+id = 502
+verdict = "agree"
+note = "Dimension 5 on the HBLTS5, HBLTV5, HBKTS5, HBLTH5, SW5, VW5 and F5 drawings; params.csv thickness 5."
+
+[[row]]
+id = 503
+verdict = "agree"
+note = "35 arms, 25 from the outer face of the other arm, 2-O5.5, note O4.5 for HBLTS5-4 (HBLTS5 drawing and the 25 Square HBLTV5 drawing). CSV foot/wall 35, holes 25, hole_d 5.5 / 4.5."
+
+[[row]]
+id = 504
+verdict = "agree"
+note = "HBLTSW5/HBLTVW5: 57 arms, holes at 30 and 50, 4-O5.5, 20 between holes. CSV 30|50 on both arms."
+
+[[row]]
+id = 505
+verdict = "agree"
+note = "HBLTF5: wall 57 with holes 30 and 50, foot 37 with one hole at 30, 3-O5.5. CSV foot 37, wall 57, foot_holes 30, wall_holes 30|50."
+
+[[row]]
+id = 506
+verdict = "agree"
+note = "O4.2 and 12 / 12 on the HBLTS5, HBLTV5, SW5, VW5, F5 drawings; params.csv relief_d 4.2, relief_at 12."
+
+[[row]]
+id = 507
+verdict = "agree"
+note = "Mass 15/20/26/36/21 g, CBM5-10 / HNTT5-5 (CBM4-10 / HNTT5-4 for HBLTS5-4), quantities 2/4/3, loads 833/1176/1004 N; all cells match types.csv."
+
+[[row]]
+id = 508
+verdict = "agree"
+note = "Appearance only; the drawings show a web with ribs and no dimensions, approximate is the right status."
+
+[[row]]
+id = 1500
+verdict = "agree"
+note = "Type tables p.539: HBKTST5/HBKTS5 anodize, HBKTSB5 black anodize (A6N01SS-T5); HBKUS5 anodize, HBKUSB5 black anodize; NBLUS5 A6063S-T5 anodize (both sides and screw holes not anodized), HBLUS5 A6N01SS-T5 anodize; HBLTH5 anodize, HBLTHB5 black anodize. All match types.csv material and surface."
+
+[[row]]
+id = 1501
+verdict = "agree"
+note = "HBKTS5 drawing: 7 | 14 | 7, thickness 5, 35 and 35, 25 and 25 to the holes, 2-O5.5, O4.2 at 12. Same as HBLTS5; CSV rows HBKTST5/TS5/TSB5 agree."
+
+[[row]]
+id = 1502
+verdict = "agree"
+note = "Re-read at 700 dpi. The 6 on the HBKUS5 drawing sits under the foot end face with extension lines about 22 px from the left corner and 20 px from the right corner of the 77 px wide face: centred on the width (same 6 on the HBKTS5 drawing). The 1 appears as a horizontal dimension at the wall top and a vertical one at the foot in the section views, with the note 'Protrusions are provided on the bracket bottom'. tab_w 6, tab_h 1 agree. The reading of the 1 as proud of each arm's outer face is the natural one; the 0.4 callouts and datum A are tolerance annotations, not geometry, and are correctly left uninterpreted. Tab length and end shape are covered by 1511."
+
+[[row]]
+id = 1503
+verdict = "agree"
+note = "Perpendicularity K table: HBKTST5 0.03, HBKTS5 and HBKTSB5 0.06 (merged cell); the HBKUS5 block says 'Perpendicularity K: 0.06' and covers HBKUSB5. perp_k column matches. The 0.4 values sit with datum A and the M5 callout and are not used."
+
+[[row]]
+id = 1504
+verdict = "agree"
+note = "HBKUS5 and NBLUS5 drawings: 7 | 14 | 7, arms 51 and 51, holes at 41 and 41 from the outer face of the other arm, 9 at the foot, 2-O5.5. CSV foot/wall 51, holes 41, foot_t 9 agree."
+
+[[row]]
+id = 1505
+verdict = "agree"
+note = "No number is printed for the wall; the HBKUS5 section view shows wall and foot of equal thickness, so 9 for the wall is a sound reading and the row is correctly approximate, listed under not_guaranteed with wall_t_approx = 1."
+
+[[row]]
+id = 1506
+verdict = "agree"
+note = "HBLTH5 drawing: 5 and 7 split the 12 width at the hole centre mark (dot on the top edge), 35 arms, 25 to the holes, 2-O5.5, O4.2 at 12. Wall and foot holes lie on one common centre line, so hole_x 5 on both arms is right. Which side the 5 is on is unstated; the mirror image is the same part."
+
+[[row]]
+id = 1507
+verdict = "agree"
+note = "Part tables p.539: HBKTST5/TS5/TSB5 15 g CBM5-10 x2 HNTT5-5 x2 833 N; HBKUS5/USB5 31 g CBM5-14 x2 HNTT5-5 x2 833 N; NBLUS5/HBLUS5 31 g CBM5-14 HNTT5-5 833 N; HBLTH5/THB5 15 g CBM5-10 HNTT5-5 833 N. All CSV cells match."
+
+[[row]]
+id = 1508
+verdict = "agree"
+note = "O4.2 with the two 12 dimensions on the HBKTS5, HBKUS5, NBLUS5 and HBLTH5 drawings; same as params.csv."
+
+[[row]]
+id = 1509
+verdict = "agree"
+note = "Alteration C table on p.540 lists NBLTS5, HBLTS5, HBLTS5-4, CHBLTS5, HBLTV5, HBLTVB5, NBLUS5, HBLUS5, HBKTS5, HBKUS5, HBLUS5 (printed twice), HBLTH5, HBLTHB5, HBLTSW5, HBLTVW5, HBLTF5. Absent: HBLTSB5, HBKTST5, HBKTSB5, HBKUSB5, as stated. alt_c in types.csv is 1 for exactly the listed types and 0 for the four absent ones; the codes.txt rejects are right. Spec (M5 on both sides, mounting screw HCBM P.754) matches."
+
+[[row]]
+id = 1510
+verdict = "agree"
+note = "SET/SST/SEU/SSU/SEP/SSP/SEC table on p.540: contents printed only for 'When HBLTS5 is specified' (SET CBM5-10/HNTT5-5, SST SCB5-10/HNTTBS5-5, SEU CBM5-10/HNTU5-5, SSU SCB5-10/SHNTU5-5, SEP CBM5-10/HNTP5-5, SSP SCB5-10/SHNTP5-5, SEC HCBST5-12/HNTT5-5); other brackets: check the applicable screws and nuts. All 19 types listed as applicable. HCBMTB footnote for black brackets present. alterations.csv matches cell by cell. The ordering example shows a single alteration slot ('Part Number - (C, SET, ...)', HBLTF5-SET), supporting at most one per code."
+
+[[row]]
+id = 1511
+verdict = "agree"
+note = "Not dimensioned on the page beyond 6 and 1; approximate status and appearance naming are right."
+
+[[row]]
+id = 1512
+verdict = "agree"
+note = "Web, ribs, triangular cut-outs and the M5 tap recess are drawn without dimensions; approximate and not drawn, correctly stated."

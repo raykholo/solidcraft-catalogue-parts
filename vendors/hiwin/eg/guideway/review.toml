@@ -1,0 +1,82 @@
+reviewer_kind = "ai"
+reviewer = "AI review lane (Claude Sonnet), independent of the authoring lane"
+author = "AI authoring lanes (Claude)"
+date = "2026-11-27"
+commit = "87e23a3558fd741acec2604040b72f659d80ed48"
+sources_hash = "sha256:9dfc0bc0ff6dfbdce189fa6fd26464bd2f68acfe082543b8e7687427c653fbfe"
+method = "Downloaded G99TE24-2410 and re-read printed pp.44, 45, 46, 49, 54, 56, 57, 58, 59 (PDF page = printed + 3) from the text layer and rendered page images; compared every cell of egh.csv, egw.csv, rails.csv and params.csv with the dimension tables, and every grammar and refusal claim with the model number block, Tables 2-2-1, 2-2-2, 2-2-8, 2-2-9, 2-2-18, 2-2-19, 2-2-22 and their notes; checked the 2-/4-hole legends in the drawings; re-ran tools/check on every code after the correction."
+
+[[row]]
+id = 1200
+verdict = "agree"
+note = "p.45 model number block: W/H, 15-35, C heavy / S medium, A top / B bottom, E, blocks per rail, R/U top / T bottom, Z0/ZA/ZB, C/H/P/SP/UP, M, roman numerals, interchangeable block (Z0/ZA, C/H/P) and rail (C/H/P) forms all as stated. The standalone EGR rail pattern also accepts SP/UP, which the interchangeable rail form (C/H/P) does not list; not a dimension, left."
+
+[[row]]
+id = 1201
+verdict = "agree"
+note = "Table 2-2-1: EGH-SA/CA, EGW-SA/CA, EGW-SB/CB, height 24-48, rail 100-4000; Table 2-2-2: top and bottom mounting rails. EGH has only the A form in table (1)."
+
+[[row]]
+id = 1202
+verdict = "agree"
+note = "All EGH cells re-read for sizes 15-35, SA and CA: H 24/28/33/42/48, H1 4.5/6/7/10/11, N 9.5/11/12.5/16/18, W 34/42/48/60/70, B 26/32/35/40/50, B1 4/5/6.5/10/10, L1 SA 23.1/29/35.5/41.5/45, L SA 40.1/50/59.1/69.5/75, K1 SA 14.8/18.75/21.9/26.75/28.5, C 26/32/35/40/50, L1 CA 39.8/48.1/59/70.1/78, L CA 56.8/69.1/82.6/98.1/108, K1 CA 10.15/12.3/16.15/21.05/20, K2 3.5/4.15/4.55/6/7, G 5.7/12/12/12/12, H2 5.5/6/8/8/8.5, H3 6/6/8/9/8.5. C is printed - for SA. H, H1, N, W, B, B1, K2, G, H2, H3 are single merged cells spanning SA and CA (rendered page checked), so the shared use is right."
+
+[[row]]
+id = 1203
+verdict = "agree"
+note = "Mxl: M4x6, M5x7, M6x9, M8x12, M8x12 match M and l in egh.csv; the drawing legend is 4-MxL / 2-MxL so l is the tapped depth. T 6/7.5/8/9/10 matches the T column and is unused."
+
+[[row]]
+id = 1204
+verdict = "agree"
+note = "EGW SA/CA (p.58) and SB/CB (p.59) cells re-read: N 18.5/19.5/25/31/33, W 52/59/73/90/100, B 41/49/60/72/82, B1 5.5/5/6.5/9/9 and all L1, L, K1, C, K2, G, H2, H3 as in egw.csv. H, H1 and the dimensions shared by S and C are merged cells. B-type blocks print exactly the same values as A-type."
+
+[[row]]
+id = 1205
+verdict = "agree"
+note = "M5/M6/M8/M10/M10, T 5/7/7.5/7/10, T1 7/9/10/10/13 match the p.58 columns. T is the dimension drawn at the flange (the same T and T1 are printed for the B through-hole blocks, so T is probably flange thickness rather than a thread depth); using T as the tapped depth is a modelling choice the row already states, and the cell values are read correctly."
+
+[[row]]
+id = 1206
+verdict = "agree"
+note = "p.59 M column: O4.5, O5.5, O7, O9, O9 match hole_d_b. Through the full height is stated as approximate."
+
+[[row]]
+id = 1207
+verdict = "agree"
+note = "Drawings on pp.57-59 show 4-MxL / 4-M for the CA/CB blocks and 2-MxL / 2-M for the SA/SB blocks; C is - for S. Hole at mid-length for the 2-hole block is consistent with the drawing."
+
+[[row]]
+id = 1208
+verdict = "agree"
+note = "WR 15/20/23/28/34, HR 12.5/15.5/18/23/27.5, D 6/9.5/11/11/14, h 4.5/8.5/9/9/12, d 3.5/6/7/7/9, bolts M3x16/M5x16/M6x20/M6x25/M8x25 identical on pp.57, 58 and 59 and in rails.csv. R and U are both Mounting From Top (p.45), so treating U as R is right; T (bottom) has no printed hole dimensions, refusing it is conservative and correct."
+
+[[row]]
+id = 1209
+verdict = "agree"
+note = "Table 2-2-22: P 60/60/60/80/80, Es 20 for all sizes; Eq. 2.2 L = (n-1)P + 2E; text: E no greater than P/2."
+
+[[row]]
+id = 1210
+verdict = "agree"
+note = "Table 2-2-22 max length 4000 for all sizes; note 4 EGR15 stainless max 2000; Table 2-2-1 rail length 100-4000, so a 100 mm minimum is the printed lower bound (the EGR standard lengths start at 160, but 100 is the stated range)."
+
+[[row]]
+id = 1211
+verdict = "agree"
+note = "p.45 note 4: stainless steel is available for EG15C. The note is attached to the Material marker of both the block and rail model numbers, so M for the EG15 heavy-load block and EGR15 rail only is right; EG15S with M refused is consistent."
+
+[[row]]
+id = 1212
+verdict = "corrected"
+note = "Wrong: ZB was refused for EG15 by reading the - in the EG15 ZB column of Tables 2-2-18 / 2-2-19 as not offered. Table 2-2-9 (p.49) prints ZB radial stiffness for EG15S (246) and EG15C (429) and Table 2-2-8 lists ZB as a standard preload with no size exclusion; the - only means no tolerance value. Fixed: removed no_zb_sizes from params.csv and the refusal from src/catalogue.py, reworded the row in sources.toml and README, moved the reject case !EGH15CA1R280ZB out of codes.txt (replaced by !EGW25CAZB, the interchangeable block form accepts Z0/ZA only, p.45) and added the valid code EGH15CA1R280ZBP. Interchangeable Z0, ZA and non-interchangeable Z0, ZA, ZB otherwise as stated."
+
+[[row]]
+id = 1213
+verdict = "agree"
+note = "Approximate envelope, no catalogue value claimed; consistent with the drawings (WR x HR rail, W x L1 x (H - H1) block)."
+
+[[row]]
+id = 1214
+verdict = "agree"
+note = "Illustration choice, not a catalogue value, correctly marked approximate."

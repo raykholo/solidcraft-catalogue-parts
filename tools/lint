@@ -1,0 +1,119 @@
+#!/usr/bin/env python3
+"""tools/lint: the repository rules that no spec check can see.
+  - every generator folder is complete (generator.toml, README.md, PROVENANCE.md, icon.svg, preview.png, src/, data/, sources.toml,
+    codes.txt, checks/) and PROVENANCE.md is exactly what tools/provenance writes;
+  - every row of every data/*.csv names a source id that exists in sources.toml and has a page and a status; every source has a URL;
+  - no vendor CAD, logo or photo files (CAD extensions anywhere; images only as icon.svg, preview.png and shots/*.png; no <image> in an svg);
+  - no personal paths in any file, inflate-aware: PNG chunks and their zlib streams are scanned too.
+Exit 1 when anything is found."""
+import csv, re, struct, sys, tomllib, zlib
+from pathlib import Path
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+from runtime import registry, provenance
+
+CAD = {".step", ".stp", ".iges", ".igs", ".x_t", ".x_b", ".sldprt", ".sldasm", ".ipt", ".iam", ".catpart", ".prt", ".3dm", ".dwg", ".dxf", ".stl", ".sat", ".f3d"}
+IMG = {".png", ".jpg", ".jpeg", ".gif", ".bmp", ".webp", ".tif", ".tiff", ".ico", ".svg", ".pdf"}
+PERSONAL = re.compile(rb"(/home/[A-Za-z0-9_.-]+|/var/home/|/Users/[A-Za-z0-9_.-]+|[A-Za-z]:\\Users\\|/root/|\bray@)")
+SKIP_DIRS = {".git", "out", "dist", ".claude", "__pycache__"}
+problems: list[str] = []
+def bad(msg): problems.append(msg)
+
+def files():
+    """What the repository holds: git's tracked plus untracked-not-ignored files (so a file about to be committed is linted, and a
+    downloaded tool or build output that .gitignore or the CI temp dir keeps out is not). Without git: every file."""
+    import subprocess
+    r = subprocess.run(["git", "-C", str(ROOT), "ls-files", "-z", "--cached", "--others", "--exclude-standard"], capture_output=True)
+    if r.returncode == 0:
+        for rel in sorted(set(x for x in r.stdout.decode().split("\0") if x)):
+            p = ROOT / rel
+            if p.is_file() and not (set(Path(rel).parts) & SKIP_DIRS) and not p.name.endswith(".pyc"):
+                yield p
+        return
+    for p in sorted(ROOT.rglob("*")):
+        if p.is_file() and not (set(p.relative_to(ROOT).parts) & SKIP_DIRS) and not p.name.endswith(".pyc"):
+            yield p
+
+def png_blobs(data: bytes):
+    """Yield the bytes inside a PNG that a plain byte search cannot see: inflated IDAT and zTXt / iTXt text."""
+    if not data.startswith(b"\x89PNG\r\n\x1a\n"):
+        return
+    pos, idat = 8, b""
+    while pos + 8 <= len(data):
+        n, typ = struct.unpack(">I4s", data[pos:pos + 8]); body = data[pos + 8:pos + 8 + n]; pos += 12 + n
+        if typ == b"IDAT": idat += body
+        elif typ == b"tEXt": yield body
+        elif typ == b"zTXt":
+            try: yield zlib.decompress(body.split(b"\0", 1)[1][1:])
+            except Exception: pass
+        elif typ == b"iTXt":
+            try:
+                kw, rest = body.split(b"\0", 1); comp = rest[0]; rest = rest[2:]
+                _, rest = rest.split(b"\0", 1); _, text = rest.split(b"\0", 1)
+                yield zlib.decompress(text) if comp else text
+            except Exception: pass
+    if idat:
+        try: yield zlib.decompress(idat)
+        except Exception: pass
+
+for p in files():
+    rel = p.relative_to(ROOT); ext = p.suffix.lower(); parts = rel.parts
+    if ext in CAD:
+        bad(f"{rel}: vendor CAD / geometry file")
+    if ext in IMG:
+        ok = (p.name in ("icon.svg", "preview.png") and len(parts) == 5) or (ext == ".png" and "shots" in parts) or p.name == "LICENSE"
+        if not ok: bad(f"{rel}: image or document file outside icon.svg / preview.png / shots/ (no vendor logos or photos)")
+    data = p.read_bytes()
+    if ext == ".svg" and b"<image" in data:
+        bad(f"{rel}: svg embeds a raster image")
+    if rel == Path("tools/lint"):
+        continue                                  # this file spells out the patterns it looks for
+    for blob in [data, *png_blobs(data)]:
+        m = PERSONAL.search(blob)
+        if m:
+            bad(f"{rel}: personal path or address {m.group(0).decode(errors='replace')!r}"); break
+
+need = ["generator.toml", "README.md", "PROVENANCE.md", "icon.svg", "preview.png", "sources.toml", "codes.txt"]
+for g in registry.generators():
+    rel = g.dir.relative_to(ROOT)
+    for n in need:
+        if not (g.dir / n).is_file(): bad(f"{rel}: missing {n}")
+    for n in ("src", "data", "checks"):
+        if not (g.dir / n).is_dir(): bad(f"{rel}: missing {n}/")
+    if (g.dir / "sources.toml").is_file():
+        src = tomllib.loads((g.dir / "sources.toml").read_text())
+        ids = {s["id"] for s in src.get("source", [])}
+        for s in src.get("source", []):
+            if not s.get("url"): bad(f"{rel}/sources.toml: source {s['id']} has no url")
+        for d in src.get("dimension", []):
+            if not d.get("source") and d.get("status") not in ("approximate", "none"):
+                bad(f"{rel}/sources.toml: row {d['id']} cites no source but is {d.get('status')}")
+            for sid in d.get("source", []):
+                if sid not in ids: bad(f"{rel}/sources.toml: row {d['id']} cites unknown source {sid}")
+        for csvf in sorted((g.dir / "data").glob("*.csv")):
+            with open(csvf, newline="") as f:
+                rows = list(csv.DictReader(f))
+            for i, r in enumerate(rows, 2):
+                cited = r.get("source") or r.get("cite") or ""
+                sids = re.findall(r"S\d+", cited)
+                if not sids: bad(f"{rel}/data/{csvf.name}:{i}: no source id")
+                for sid in sids:
+                    if sid not in ids: bad(f"{rel}/data/{csvf.name}:{i}: unknown source {sid}")
+                if "source" in r and (not r.get("page") or not r.get("status")):
+                    bad(f"{rel}/data/{csvf.name}:{i}: page and status are required")
+    if (g.dir / "PROVENANCE.md").is_file() and (g.dir / "PROVENANCE.md").read_text() != provenance.render(g):
+        bad(f"{rel}/PROVENANCE.md: out of date (run tools/provenance)")
+# library.toml must make a manifest the parts index accepts (tools/release writes it; checked here so it fails on every commit)
+import json, tomllib
+from runtime.schema import validate
+lib = tomllib.loads((ROOT / "library.toml").read_text())
+probe = {"manifest_version": lib["manifest_version"], "id": f"{lib['publisher']}.{lib['library']}", "name": lib["name"],
+         "publisher": lib["publisher"], "repo": lib["repo"], "release": {"tag": f"v{lib['version']}", "asset": f"{lib['library']}-{lib['version']}.zip",
+         "sha256": "0" * 64}, "format": "folder", "format_version": 1, "min_solidcraft": "0.0.0", "license": lib["license"],
+         "description": lib["description"], "tags": lib["tags"], "homepage": lib["homepage"], "tier": "unverified"}
+for e in validate(probe, json.loads((ROOT / "schema" / "parts-library.schema.json").read_text())):
+    bad(f"library.toml: {e}")
+for x in problems:
+    print("LINT  " + x)
+print(f"{len(problems)} problem(s)" if problems else "lint: clean")
+sys.exit(1 if problems else 0)

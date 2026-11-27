@@ -1,0 +1,14 @@
+== E-LBHG20-30
+PASS  one closed body                                  spec         1  got          1           [S14]
+PASS  flange width L (bbox X)                          spec        72  got    72.0000  +-0.005  [S14 p.491 L]
+PASS  length T (bbox Y)                                spec        52  got    52.0000  +-0.005  [S14 p.491 T]
+PASS  total height H1 = H + 22 (bbox Z)                spec        52  got    52.0000  +-0.005  [S14 p.491 H1] tolerance 0 / -0.5
+PASS  shaft bore dr 20 (axis along Y)                  spec       yes  got        yes           [S14 p.491 dr] nominal
+PASS  bore axis H = 30 above the base, centred at L/2  spec       yes  got        yes           [S14 p.491 H, L/2] H +-0.05, L/2 +-0.05
+PASS  flange thickness S = 12                          spec       yes  got        yes           [S14 p.491 S]
+PASS  body width W = 44                                spec       yes  got        yes           [S14 p.491 W]
+PASS  4 mounting holes d 5.5 on L1 = 60 x T1 = 35      spec       yes  got        yes           [S14 p.491 4-d, L1, T1] through the flange
+PASS  tolerances written in the part description       spec       yes  got        yes           [S14 p.491] echoed, not drawn
+PASS  part number metadata                             spec E-LBHG20-30  got E-LBHG20-30           [-]
+PASS  design part number                               spec E-LBHG20-30  got E-LBHG20-30           [-]
+12/12 passed

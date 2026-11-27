@@ -1,0 +1,19 @@
+== E-SHTNZ10-25
+PASS  one closed body                             spec         1  got          1           [S16]
+PASS  overall length L (X)                        spec        25  got    25.0000  +-0.005  [S16 p.520 L]
+PASS  flange width D+6 (bbox Y)                   spec        20  got    20.0000  +-0.005  [S16 p.520 D+6]
+PASS  flange extent H (bbox Z)                    spec        29  got    29.0000  +-0.005  [S16 p.520 H]
+PASS  outside cylinder D 14                       spec       yes  got        yes           [S16 p.520 D]
+PASS  bore cylinder d 10                          spec       yes  got        yes           [S16 p.520 d]
+PASS  tolerances written in the part description  spec       yes  got        yes           [S16 p.520] echoed, not drawn
+PASS  flange thickness T = 4                      spec       yes  got        yes           [S16 p.520 T]
+PASS  flange end arcs H 29                        spec       yes  got        yes           [S16 p.520 H]
+PASS  compact flange flats                        spec         2  got          2           [S16 p.520 D+6]
+PASS  flats at (D+6)/2 from the axis              spec       yes  got        yes           [S16 p.520 D+6]
+PASS  2 mounting holes d1 3.5                     spec         2  got          2           [S16 p.520 d1]
+PASS  2 counterbores d2 6                         spec         2  got          2           [S16 p.520 d2]
+PASS  holes at A / F                              spec       yes  got        yes           [S16 p.520 A F]
+PASS  counterbore floors at depth t = 2.2         spec         2  got          2           [S16 p.520 t] counterbore on the outer flange face: figure reading
+PASS  part number metadata                        spec E-SHTNZ10-25  got E-SHTNZ10-25           [-]
+PASS  design part number                          spec E-SHTNZ10-25  got E-SHTNZ10-25           [-]
+17/17 passed

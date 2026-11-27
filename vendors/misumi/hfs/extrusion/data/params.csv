@@ -1,0 +1,5 @@
+name,value,unit,source,page,status
+fixed_lengths,1000|4000,mm,S1;S10,p.529 / p.571,labelled
+l_min,50.0,mm,S1;S10,p.529 / p.571,labelled
+l_max,4000.0,mm,S1;S10,p.529 / p.571,labelled
+l_step,0.5,mm,S1;S10,p.529 / p.571,labelled

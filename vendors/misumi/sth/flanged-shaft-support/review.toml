@@ -1,0 +1,147 @@
+reviewer_kind = "ai"
+reviewer = "AI review lane (Claude Sonnet), independent of the authoring lane"
+author = "AI authoring lanes (Claude)"
+date = "2026-11-27"
+commit = "e81395ff8472d19fb70a1aab8e4ea6e0d47ebfcb"
+sources_hash = "sha256:fc9c94f21c5b12686d32e65fc4b2914bd9ed2918a2ea0298225e8c6dad37a3f8"
+method = "Downloaded catalogue pages 532-539, enlarged the tables and figures, re-read every cell of every table (p.532, 533, 535, 536, 539, merged cells resolved) against the CSVs and every figure (p.532-534, 536, 538) against the modelled placement; re-derived L = T+S+B, L = l1+E and N = (D1-D)/2 in every row; checked the codes.txt reject cases against the notes. Two geometry readings were corrected (square flange H/K, slit long sleeve clamp screws); tools/check passes for every code."
+
+[[row]]
+id = 800
+verdict = "agree"
+note = "p.534 type table: types, materials, surface treatments, hole range 6~50 (long 12~30); E-SSTHC stainless with '-' surface."
+
+[[row]]
+id = 801
+verdict = "agree"
+note = "H8 tolerances re-read on p.535 for all 12 D (6: +0.018; 8-10: +0.022; 12-16: +0.027; 20-30: +0.033; 35-50: +0.039); CSV matches, and the same bands on p.532, 533, 536, 539."
+
+[[row]]
+id = 802
+verdict = "agree"
+note = "p.535 L and D1 for all 12 rows and L1 for 12, 16, 20, 25, 30 compared cell by cell (merged cells resolved); equal to dims.csv."
+
+[[row]]
+id = 803
+verdict = "agree"
+note = "p.535 H, T, W for all 12 rows compared; equal."
+
+[[row]]
+id = 804
+verdict = "agree"
+note = "p.535 P, K, P1, F, d1 for all 12 rows compared; F blank for D6-15 (2-hole compact), 4 holes from D16; d1 matches. Hole layout read from the p.534 figures."
+
+[[row]]
+id = 805
+verdict = "agree"
+note = "p.534 standard figure: l and L both end on the flange face opposite the sleeve (the face T is measured from); 2-M at l. p.535 M (M3/M4/M5/M6) and l for all rows equal."
+
+[[row]]
+id = 806
+verdict = "corrected"
+note = "Square flange: the authors' reading (H the side before cutting, K the remaining straight edge, extent (H+K)/sqrt 2) contradicts the page. p.538 draws H horizontally, tip to tip of the cut corners, and K along an edge; on p.534 the drawn H equals the tip-to-tip extent (measured on the image: H/P = 1.4 = 28/20) and K is the side of the square. Now K = side of the square, H = extent across the cut corners (corner flats at +-H/2). The old flange was about 25% too large, and larger than the round flange of the same H. Code (src/support.py, src/check.py) and texts changed; the numbers in dims.csv and slit.csv are unchanged."
+
+[[row]]
+id = 807
+verdict = "agree"
+note = "p.535 note: E-STHS D6, E-STHR D15, E-SSTHC D50, applied to the named type only (E-STHSB6 and E-STHRB15 valid); codes.txt rejects all three."
+
+[[row]]
+id = 808
+verdict = "agree"
+note = "Thickness (N) read in every row of p.535, 533, 536, 539; (D1-D)/2 holds in every row."
+
+[[row]]
+id = 809
+verdict = "agree"
+note = "Appearance only (compact corner radius, set screw angle): not dimensioned on the page, correctly approximate."
+
+[[row]]
+id = 810
+verdict = "agree"
+note = "Not modelled (chamfers, fillets, screws, surface): nothing dimensioned on p.534-535."
+
+[[row]]
+id = 1100
+verdict = "agree"
+note = "p.535 L1 and l1 per D: 12: 30/15, 16: 48/16, 20: 48/16, 25: 57/19, 30: 57/19; long only for the * marked D (12, 16, 20, 25, 30); the footnote says L1 and l1 are product dimensions."
+
+[[row]]
+id = 1101
+verdict = "agree"
+note = "p.534 long figures: D12 shows 2-M at l1 from the flange back face, with L1; D16-30 shows 4-M at l1 and l1 + l1 = 2 l1 from the flange back face (T at the flange), as modelled."
+
+[[row]]
+id = 1102
+verdict = "agree"
+note = "p.536 table, all 11 rows (N, L, L1, D1, H, T, l, l1, M, P, W, P1, F, d1) compared against thick.csv; equal. Long sleeve * on 12, 16, 20, 25, 30, 35, 40, 50 (not 15). D12 2-M at l1, D16-50 4-M per the p.536 figures."
+
+[[row]]
+id = 1103
+verdict = "agree"
+note = "p.536 note: E-STHRN D8 and D35, E-STHCN D10, E-STHRBN D35; applied to the standard types only, so E-STHRNL35 is valid (added to codes.txt)."
+
+[[row]]
+id = 1104
+verdict = "agree"
+note = "p.532 table, all 8 rows (L, L1, H, B, T, T1, P, d1, d2, S, X, Y, M, d, R) compared against mr.csv; equal. Long sleeve * on 12, 15, 16, 20, 25, 30."
+
+[[row]]
+id = 1105
+verdict = "agree"
+note = "p.532 figure: T, then groove S, then ring B; L = T+S+B and L1 = T1+S+B hold in all 8 rows (e.g. 3.5+1.5+11 = 16; 12.5+1.5+11 = 25; 8+2+14 = 24, 24+2+14 = 40). D16 counterbore: X 13.5 + R/2 6 = 19.5 = H/2, tangent to the body edge as the figure shows."
+
+[[row]]
+id = 1106
+verdict = "agree"
+note = "p.532 figure: M at X above the axis, at B/2 from the sleeve end, counterbore R on one side with its floor Y from the slit centre, clearance d, tapped hole on the other side, slit 1.5 wide from the figure label."
+
+[[row]]
+id = 1107
+verdict = "agree"
+note = "p.532 note: E-STHMRBL not applicable at D25; E-STHMRL25 is valid and in codes.txt."
+
+[[row]]
+id = 1108
+verdict = "agree"
+note = "p.533 table, all 9 rows (N, L, D1, H, T, l, l1, E, P, W, P1, F, d, d1, d2, screw) compared against xend.csv; equal. E-STHXRB D8 not applicable."
+
+[[row]]
+id = 1109
+verdict = "agree"
+note = "p.533 figure: flange back face at the left, l (counterbore d1 depth) and l1 (bore floor) both from it, d2 through hole between; E = L - l1 in all 9 rows (e.g. 8+8 = 16; 21+25 = 46; 28+30 = 58)."
+
+[[row]]
+id = 1110
+verdict = "agree"
+note = "p.539 Slit Standard table, all 11 rows (D1, H, N, L, T, B, S1, X, P, K, W, P1, F, S, Y, d1, d2, d, M) compared against slit.csv, merged cells resolved (d1, d2, d, M, S1, S); equal."
+
+[[row]]
+id = 1111
+verdict = "agree"
+note = "p.539 Slit Long Sleeve table, all 8 rows compared against slit_long.csv, merged cells resolved (B, S1, T, d1, d2, d, M); equal."
+
+[[row]]
+id = 1112
+verdict = "corrected"
+note = "p.538 long sleeve figure dimensions two clamp screws (2-d1) at B/4 from the sleeve end and B/4 from the groove side, so at B/4 and 3B/4; the authors drew one at B/2 and called the second undimensioned. Now two clamp screws (clearance, counterbore, tapped) at B/4 and 3B/4 on the slit long sleeve; the standard sleeve keeps one at B/2 (p.538 figure). Groove S1 at B from the sleeve end, radial slit S, X, Y and the counterbore side re-read and agree. src/support.py, src/check.py and texts updated."
+
+[[row]]
+id = 1113
+verdict = "agree"
+note = "p.539 notes: E-SSTHWR D35, E-SSTHWS D40 and D50, E-SSTHWSL D12; applied to the named type only; all three rejected in codes.txt."
+
+[[row]]
+id = 1114
+verdict = "agree"
+note = "(D1-D)/2 equals the printed N in every row of p.535, 533, 536, 539 (standard and long)."
+
+[[row]]
+id = 1115
+verdict = "agree"
+note = "Approximate readings (groove depth, slit stub, E-STHMR counterbore depth, clamp screw side) are not dimensioned on the pages; the second clamp screw of the slit long sleeve is dimensioned and moved to row 1112."
+
+[[row]]
+id = 1116
+verdict = "agree"
+note = "Not modelled (chamfering, bore floor R, supplied screws, H tolerance 0/-0.2 of E-STHMR); nothing printed as a value to model."

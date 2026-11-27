@@ -1,0 +1,20 @@
+name: index
+# Rebuilds index/catalog.json on main and publishes it to the Workshop. NOT RUN YET: there is no repository and no Workshop endpoint.
+on:
+  push:
+    branches: [main]
+    paths: ["vendors/**/generator.toml", "vendors/**/sources.toml", "vendors/**/data/**", "schema/**", "tools/build-index"]
+concurrency:
+  group: index-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: tools/build-index          # refuses any generator below the Checked level
+      - uses: actions/upload-artifact@v4
+        with: { name: catalog, path: index/catalog.json }
+      # Placeholder: POST index/catalog.json to the Workshop once its endpoint and signing key exist.

@@ -1,0 +1,47 @@
+# Codes CI builds and checks. `CODE [option ...]` = valid (built, then every dimension checked); `!CODE  # why` = must be rejected with a message.
+
+RGH15CA1R340ZAP
+RGH20HA2R1000ZAH
+RGH25CA1R640Z0H
+RGH30HA1R1000ZBP
+RGH35CA2R840ZAUP
+RGH45HA1R885ZBSP
+RGH55CA1R780ZAP
+RGH65HA1R1270ZAP
+RGH20CA1R340ZAP+ZZ
+RGH45CA1R570ZAP+KK/E2+RC
+RGW15CC1R160ZAP
+RGW20HC2R820ZBP
+RGW25CC2R640ZAH
+RGW30HC1R760ZAP
+RGW35CC1R840ZAP
+RGW45HC1R1200ZAP
+RGW55CC1R780ZAP
+RGW65HC1R1270ZAP
+RGW25CC1R640ZAP+DD
+RGW45CC
+RGH20CA
+RGW65HC
+RGW25CCEZAP+ZZ
+RGR15R160
+RGR25R990
+RGR35R1000H
+RGR45R570P
+RGR55R780
+RGR65R1270P
+!RGH20CC  # RGH is mounted from the top only: RGH20CA (the catalogue lists RGH-CA / RGH-HA)
+!RGW20CA  # RGW has mounting code C (top or bottom): RGW20CC (the catalogue lists RGW-CC / RGW-HC)
+!RGH15HA  # no RGH15HA row in the catalogue table (the RG15 tables list the heavy load C block only)
+!RGW15HC1R160  # no RGW15HC row in the catalogue table
+!RGR20T640  # bottom-mounted rail: the catalogue prints no tapped-hole dimensions for it
+!RGR25R4500  # rail length 4500 mm above the maximum 4000 mm
+!RGR25R60  # rail length 60 mm below the catalogue minimum 100 mm
+!RGR25R1010  # rail length 1010 leaves end distance 25.00 mm, above P/2 = 15 mm and not the standard Es = 20
+!RGR25R995  # end distance 17.5 mm: above the text rule E <= P/2 = 15 mm and not the standard E = 20 (p.165)
+!RGR30R1020  # rail length 1020 leaves end distance 30.00 mm (P = 40: only 40 + 40n is within E = 20)
+!RGW25CCZB  # the interchangeable block form has preload Z0 or ZA only (p.152)
+!RGR25R640SP  # a rail ordered alone is the interchangeable rail: accuracy H or P only (p.153)
+!RGH25CA1R640ZAC  # accuracy class C does not exist for RG (H, P, SP, UP)
+!RGW35CC2R240  # two 124 mm blocks with the 10 mm gap do not fit on a 240 mm rail
+!RGL25CA1R640  # RGL (square, low) is valid HIWIN grammar; its table is not drawn here
+!RGH20CAM  # the RG chapter has no stainless option

@@ -1,0 +1,35 @@
+id = "hiwin.mg.rail-set"
+name = "HIWIN MG miniature linear guide: rail with blocks"
+version = "0.1.0"
+kind = "generator"
+min_host_version = "0.49.1"
+preview_code = "MGN12H2R300Z0C"
+
+[entry]
+build  = "build:parse_build"
+check  = "check:check"
+shots  = "shots"
+
+[declares]
+labels   = ["Linear guide", "Linear rail", "Miniature guide", "MGN", "Block"]
+keywords = ["linear guideway", "miniature rail", "carriage", "slider", "HIWIN MGN rail set"]
+vendor   = "HIWIN"
+
+[[declares.matches]]
+id         = "mgn-set"
+generator  = "rail-set"
+pattern    = '^MGN\s*(?P<size>7|9|12|15)\s*(?P<block>[CH])\s*E?\s*(?P<blocks>\d+)\s*R\s*(?P<length>\d{2,4})'
+flags      = "i"
+confidence = "exact"
+params     = { size = "{size}", block = "{block}", blocks = "{blocks}", length_mm = "{length}" }
+examples          = ["MGN12H2R300Z0C", "MGN9C1R195ZFH", "MGN 12 C E 2 R1600 E Z1 P M II"]
+negative_examples = ["MGN12", "MGW12H2R300", "MGNR12", "MGN12H"]
+
+[inputs]
+size  = { choices = ["7", "9", "12", "15"] }
+block = { choices = ["C", "H"] }
+blocks = { min = 1, max = 4 }
+length_mm = { min = 40, max = 2000 }
+
+[guarantee]
+not_guaranteed = ["Rail top chamfers (0.025 x rail width) and the two side ball grooves (a circular approximation: the catalogue draws no groove profile)", "Block top chamfers and the 0.2 mm black top insert between the mounting holes", "End cap / end seal split of (L - L1) / 2, their 0.3 mm inset, colours (green cap, red seal as HIWIN's photo shows) and plastic material", "Retainer strips, the four cross-head end screws (only their projection (L Max - L) / 2 is catalogue) and the grease nipple shape (only M3 and G are catalogue)", "Rail screws: SolidCraft's ISO 4762 standard part of the catalogue bolt size (the screw model is SolidCraft's, not HIWIN's)", "Rail hole caps (option `caps`, MGN12 / MGN15): thickness 1.2 is catalogue, the diameter is the counterbore diameter (the catalogue O6.15 is a press fit)", "Materials and PBR looks of every body (SolidCraft appearance-library entries: ground top and side faces, raceway faces, satin body, plastics, brass; black oxide and the green / red plastics carry their own pbr); the 10 mm gap between neighbouring blocks (illustration)"]

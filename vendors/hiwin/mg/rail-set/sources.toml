@@ -1,0 +1,178 @@
+# Where every number of this generator comes from. One [[source]] per vendor document, one [[dimension]] per cited item.
+# status: labelled / published = printed in the catalogue; measured = read from the vertex coordinates of the published vector
+# drawing; derived = computed from labelled numbers; approximate = an estimate (appearance or an illustration choice); none.
+# source = [] is allowed only for approximate / none rows.
+
+[meta]
+clean_room = "Clean-room: only public catalogue pages and PDFs from the manufacturers' own sites. No vendor CAD (STEP/IGES/...) was downloaded or used, no other CAD program or generator was consulted. Where a value is not printed as a number, the table says how it was obtained. current web catalogue may differ; see \"Open questions\" in README.md."
+
+[[source]]
+id = "S4"
+catalogue = "HIWIN \"Linear Guideways\" catalogue, form G99TE24-2410 (c) 2024, MG Series chapter 2-4 (hiwin.com, HIWIN-Linear-Guideway-Catalog-1.pdf, 245 PDF pages)"
+url = "https://hiwin.com/wp-content/uploads/2026/08/HIWIN-Linear-Guideway-Catalog-1.pdf"
+pages = "printed page numbers (PDF page = printed + 3): p.76 (2-4-2 construction), p.78 (2-4-10 model number), p.85 (2-4-17, Table 2-4-15), p.82 (Table 2-4-9 bolt caps), p.88 2-4-19 dimension tables MGN-C / MGN-H (incl. L Max, G, Gn, H2)"
+
+[[source]]
+id = "S6"
+catalogue = "HIWIN \"MG Series\" product page photo (visual reference only)"
+url = "https://hiwin.com/products/linear-guideways/mg-series/"
+pages = "one product image, row 40"
+private_reference = true
+
+[[dimension]]
+id = 31
+item = "Model number grammar \"MGN 12 C E 2 R1600 E Z1 P M II + SS/U/EL+RC/-O\""
+value = ""
+source = ["S4"]
+source_text = "S4 section 2-4-10, p.78"
+page = "section 2-4-10, p.78"
+status = "published"
+note = ""
+
+[[dimension]]
+id = 32
+item = "Rail standard and maximum length, pitch P, end distance Es, L = (n-1)P + 2E"
+value = ""
+source = ["S4"]
+source_text = "S4 section 2-4-17, Table 2-4-15, p.85"
+page = "section 2-4-17, Table 2-4-15, p.85"
+status = "published"
+note = ""
+
+[[dimension]]
+id = 33
+item = "Block dimensions H, H1, N, W, B, C, L1, L, mounting thread M x depth, for MGN7/9/12/15 C and H"
+value = ""
+source = ["S4"]
+source_text = "S4 section 2-4-19 table (1) MGN-C / MGN-H"
+page = "section 2-4-19 table (1) MGN-C / MGN-H"
+status = "published"
+note = ""
+
+[[dimension]]
+id = 34
+item = "Rail WR, HR, D, h, d, bolt"
+value = ""
+source = ["S4"]
+source_text = "S4 section 2-4-19 table"
+page = "section 2-4-19 table"
+status = "published"
+note = ""
+
+[[dimension]]
+id = 35
+item = "L Max (block with end-seal lips and screws), G (grease nipple projection, MGN15 4.5), Gn (lube hole diameter, MGN7 1.2, MGN9 1.4, MGN12 2), H2 (lube hole / nipple centre below block top: 1.5, 1.8, 2.5, 3)"
+value = ""
+source = ["S4"]
+source_text = "S4 table 2-4-19 (1), p.88, columns L Max, G, Gn, H2 (values in `data/blocks.csv` columns Lmax, G, Gn, H2)"
+page = "table 2-4-19 (1), p.88, columns L Max, G, Gn, H2 (values in `data/blocks.csv` columns Lmax, G, Gn, H2)"
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 36
+item = "Construction: block, end cap, end seal, retainer, bottom seal, cap; \"grease nipple is available for MGN15; MGN7, 9, 12 are lubricated by the hole at the side of the end cap\"; two ball grooves per rail side not drawn separately"
+value = ""
+source = ["S4"]
+source_text = "S4 section 2-4-2, p.76"
+page = "section 2-4-2, p.76"
+status = "labelled"
+note = "labelled (text and drawing)"
+
+[[dimension]]
+id = 37
+item = "End view: block top corners chamfered, two cross-head screws in the end cap at the B spacing, lube hole Gn on the centre line, rail side ball notch, rail top corners"
+value = ""
+source = ["S4"]
+source_text = "S4 p.88, MGN7/9/12 end view"
+page = "p.88, MGN7/9/12 end view"
+status = "measured"
+note = "measured (drawing shapes, no numbers); p.88 of the hiwin.com PDF is a vector drawing, shapes re-looked at there and unchanged"
+
+[[dimension]]
+id = 38
+item = "Rail top chamfer 0.025 WR, ball groove (circular approximation, radius WR/16, centre 0.62 HR above the rail bottom, one per side), block top chamfer 0.03 W"
+value = ""
+source = []
+source_text = "shapes from rows 36-37; sizes mine"
+page = "shapes from rows 36-37; sizes mine"
+status = "approximate"
+note = "approximate"
+
+[[dimension]]
+id = 39
+item = "End cap / end seal split of (L - L1) / 2: seal 30 %; caps and seals inset 0.3 mm from the block outline; retainer strips 1.0 x 0.4 mm under the block beside the rail; end screws O0.075 W with a head projection of (L Max - L) / 2; grease nipple shape (O3 body, O2.2 head, total projection G)"
+value = ""
+source = []
+source_text = "row 35 plus sizes mine"
+page = "row 35 plus sizes mine"
+status = "approximate"
+note = "approximate (L Max, G and H2 are row 35)"
+
+[[dimension]]
+id = 40
+item = "Colours: end cap green, end seal red, metal rail and block, plastic ABS"
+value = ""
+source = ["S6"]
+source_text = "HIWIN \"MG Series\" product photo, https://hiwin.com/products/linear-guideways/mg-series/ (image `linear-guideway-mg-800x800.png`, an MG15 with grease nipple). Looked at only; kept outside the repo; no geometry or measurement taken from it"
+page = "HIWIN \"MG Series\" product photo, https://hiwin.com/products/linear-guideways/mg-series/ (image `linear-guideway-mg-800x800.png`, an MG15 with grease nipple). Looked at only; kept outside the repo; no geometry or measurement taken from it"
+status = "measured"
+note = "measured: private visual reference only"
+
+[[dimension]]
+id = 41
+item = "Rail screws: ISO 4762 of the catalogue bolt size (M3x8, M3x10, M2x6), from SolidCraft's `parts.insert` family `socket_head_cap_screw`, seated on the counterbore hole"
+value = ""
+source = ["S4"]
+source_text = "S4 table 2-4-19; the screw model is SolidCraft's"
+page = "table 2-4-19; the screw model is SolidCraft's"
+status = "labelled"
+note = "labelled bolt size (row 34)"
+
+[[dimension]]
+id = 42
+item = "Bolt caps for the rail mounting holes, MGN12 and MGN15: O6.15, thickness 1.2, \"included with the rail package\"; no model-number symbol"
+value = ""
+source = ["S4"]
+source_text = "S4 p.82, Table 2-4-9 and its text. Modelled flush, thickness 1.2, diameter = counterbore D (the O6.15 is a 0.15 press fit; the model avoids a false interference), colour as the photo's green dots; default off (`--caps`, `caps=True`, `SC_MGN_CAPS=1`)"
+page = "p.82, Table 2-4-9 and its text. Modelled flush, thickness 1.2, diameter = counterbore D (the O6.15 is a 0.15 press fit; the model avoids a false interference), colour as the photo's green dots; default off (`--caps`, `caps=True`, `SC_MGN_CAPS=1`)"
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 43
+item = "Black middle band on the block top between the metal ends (insert 0.2 mm deep, flush with H, between the mounting holes)"
+value = ""
+source = ["S6"]
+source_text = "S6 photo, looked at only"
+page = "photo, looked at only"
+status = "approximate"
+note = "approximate"
+
+[[dimension]]
+id = 44
+item = "Base plate under the rail in the shots (rail length + 30, WR + 50 wide, bolt length + 3 thick): screenshots only, not in the generated part"
+value = ""
+source = []
+source_text = "illustration"
+page = "illustration"
+status = "none"
+note = "none"
+
+[[note]]
+text = "The 10 mm gap between two blocks on one rail and the block channel (cut to the rail envelope) are illustration"
+
+[[note]]
+text = "choices, not catalogue values."
+
+[[note]]
+text = "\"labelled\" = a number printed in the catalogue; \"measured\" = read off a published drawing; \"approximate\" = an estimate"
+
+[[note]]
+text = "of mine, shown only as appearance and never checked against a dimension."
+
+[[note]]
+text = "Not modelled: bottom seal (optional, sizes 9/12/15), the lower rail notch seen in the photo, balls and ball"
+
+[[note]]
+text = "re-circulation, the HIWIN lettering."

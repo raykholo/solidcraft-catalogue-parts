@@ -1,0 +1,9 @@
+# Codes CI builds and checks. `CODE [option ...]` = valid (built, then every dimension checked); `!CODE  # why` = must be rejected with a message.
+
+MGN12H2R300Z0C
+MGN12H2R300Z0C caps
+MGN15H1R200Z0C
+MGN15H1R200Z0C caps
+MGN9C1R195ZFH
+!MGN12H2R3000  # MGNR12 max single length is 2000 mm
+!MGN7C1R700  # MGNR7 max single length is 600 mm

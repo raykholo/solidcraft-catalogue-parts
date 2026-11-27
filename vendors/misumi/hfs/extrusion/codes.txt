@@ -1,0 +1,24 @@
+# Codes CI builds and checks. `CODE [option ...]` = valid (built, then every dimension checked); `!CODE  # why` = must be rejected with a message.
+
+HFS5-2020-1000-LTP-RTP
+HFS5-2020-120-LTP-RTP-LCH
+HFS5-2020-300-TPW-RWV
+HFS5-2020-497.5-TPW-LEV-REH
+HFS5-2040-1000-TPW-RWV
+HFS5-2040-300-LTP-RTP-LCH
+HFS5-4040-300-TPW
+HFS5-4040-497.5-LTP-RCV
+HFS6-3030-500-LCH-X5-TPW
+HFSB6-3030-120-LTP-RTP-RWV-X8
+KHFS5-2020-1000
+KHFS5-2040-1000
+KHFS6-3030-1000
+NFSB5-2020-250
+NFSB5-4040-250
+NFS5-2040-300  # NFS on 2040: A6063SS-T5 (p.530), not the 2020 grade A6063S-T5 (p.529)
+!HFS5-2020-49-LTP  # length 49 mm outside 50-4000 mm
+!KHFS5-2020-800  # fixed-length (K) extrusions come only in [1000, 4000] mm, not 800
+!HFS5-2020-100-LTP-LTP  # alteration LTP given twice
+!HFS5-2020-100-ZZZ  # unknown or unsupported alteration 'ZZZ'
+!HFS5-2020-100.3  # length 100.3 mm is not a multiple of 0.5 mm
+!HFS6-3030-100-LTP-RWV-X7  # unknown or unsupported alteration 'X7'

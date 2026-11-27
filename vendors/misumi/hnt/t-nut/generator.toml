@@ -1,0 +1,33 @@
+id = "misumi.hnt.t-nut"
+name = "MISUMI 5 series pre-assembly T-nuts (HNTT family)"
+version = "0.1.0"
+kind = "generator"
+min_host_version = "0.49.1"
+preview_code = "HNTT5-4"
+
+[entry]
+build  = "nut:parse_build"
+check  = "check:check"
+shots  = "shots"
+
+[declares]
+labels   = ["T-nut", "Insertion nut", "Slot nut", "Pre-assembly nut", "HNTT"]
+keywords = ["slot nut", "drop-in nut", "extrusion nut", "M5 nut", "6 mm slot"]
+vendor   = "MISUMI"
+
+[[declares.matches]]
+id         = "hnt-tnut"
+generator  = "t-nut"
+pattern    = '^HNT(?:T|TV|TZ|TSN|TSS)5(?:-(?P<m>\d+(?:\.\d)?))?$'
+flags      = "i"
+confidence = "exact"
+params     = { thread = "M{m}" }
+examples          = ["HNTT5-4", "HNTT5", "HNTTSN5-3", "HNTTV5-5", "HNTTSS5-5"]
+negative_examples = ["HNTT", "HNTU5", "HNTT6-4", "HNTT5-"]
+
+[inputs]
+type = { choices = ["HNTT5", "HNTTV5", "HNTTZ5", "HNTTSN5", "HNTTSS5"] }
+thread = { choices = ["M3", "M4", "M5"] }
+
+[guarantee]
+not_guaranteed = ["The flank from the 5.8 mm bottom to the 10 mm body (measured from the vector side view, about 35 degrees from the nut axis)", "The thread is drawn through the whole thickness T (a tapped hole with the tap-drill size)"]

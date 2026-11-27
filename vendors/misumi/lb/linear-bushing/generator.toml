@@ -1,0 +1,34 @@
+id = "misumi.lb.linear-bushing"
+name = "MISUMI Economy linear bushings: straight (E-LB), round (E-LBF), square (E-LBK) and compact (E-LBH) flanged, with pilot and centre flanged"
+version = "0.1.0"
+kind = "generator"
+min_host_version = "0.49.1"
+preview_code = "E-LBF20LUU"
+
+[entry]
+build  = "bushing:parse_build"
+check  = "check:check"
+shots  = "shots"
+
+[declares]
+labels   = ["Linear bushing", "Flanged linear bushing", "Compact flanged linear bushing", "Ball bushing", "E-LB", "E-LBF", "E-LBK", "E-LBH"]
+keywords = ["linear ball bushing", "round flange bushing", "square flange bushing", "linear motion bushing", "shaft bearing", "compact flange bushing", "flanged bushing with pilot", "center flanged bushing"]
+vendor   = "MISUMI"
+
+[[declares.matches]]
+id         = "lb-bushing"
+generator  = "linear-bushing"
+pattern    = '^E-(?:LB[FKH](?:PM|CM|[ZMPC])?|LB)(?P<dr>\d{1,2})(?:TUU|DMUU|DUU|LUU|UU)$'
+flags      = "i"
+confidence = "exact"
+params     = { shaft_diameter_mm = "{dr}" }
+examples          = ["E-LB10TUU", "E-LB30DMUU", "E-LBF20LUU", "E-LBFZ10UU", "E-LBKM35LUU", "E-LBK12DMUU", "E-LBH5UU", "E-LBHZ20UU", "E-LBH30DMUU", "E-LBFP20LUU", "E-LBKPM40LUU", "E-LBHP25DMUU", "E-LBFC30DMUU", "E-LBKCM16LUU", "E-LBHCM40LUU"]
+negative_examples = ["E-LB", "E-LB10", "E-LBX10UU", "E-LBF20LU", "E-LBF20-UU", "E-LBHS20UU", "E-LBHZP10UU", "E-LBFCZ10LUU", "E-LBHPC20UU"]
+
+[inputs]
+type = { choices = ["E-LB", "E-LBF", "E-LBFZ", "E-LBFM", "E-LBK", "E-LBKZ", "E-LBKM", "E-LBH", "E-LBHZ", "E-LBHM", "E-LBFP", "E-LBFPM", "E-LBKP", "E-LBKPM", "E-LBHP", "E-LBHPM", "E-LBFC", "E-LBFCM", "E-LBKC", "E-LBKCM", "E-LBHC", "E-LBHCM"] }
+shaft_diameter_mm = { choices = [5, 6, 8, 10, 12, 13, 16, 20, 25, 30, 35, 40, 50] }
+suffix = { choices = ["TUU", "DUU", "DMUU", "UU", "LUU"] }
+
+[guarantee]
+not_guaranteed = ["Balls, ball tracks, retainer and end seals (appearance, approximate): not drawn, the catalogue gives no dimensions for them", "The bore is a plain cylinder at the nominal shaft diameter dr; tolerances are written into the description, not drawn", "Which flange face carries the counterbores: barrel side as standard, outer face for the Z types (read from the figure)", "Corner orientation of the square flange (corners on the mounting-hole axes) and its corner clipping by the circle H (appearance, approximate)", "No chamfers or edge breaks are drawn (the catalogue gives none)", "Position of the two ring grooves of the medium straight bushing: B read as the clear distance between them, centred on the length", "Compact flange (E-LBH series): outline read as the circle H clipped by two flats D+6 / D+8 / D+10 apart, the long axis along the holes A apart (and F across from dr 16); the two-hole or four-hole pattern follows the figure", "Pilot and centre flanged bushings (E-LBFP, E-LBKP, E-LBHP, E-LBFC, E-LBKC, E-LBHC): l read as the distance from the end of the barrel to the flange face nearer that end; counterbores on the flange face on the long barrel side (figure reading)", "Stainless steel linear bushings (type E-LBHS) are mentioned on p.470 but no table is printed: not generated"]

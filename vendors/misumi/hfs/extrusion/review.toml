@@ -1,0 +1,313 @@
+reviewer_kind = "ai"
+reviewer = "AI review lane (Claude Sonnet), independent of the authoring lane"
+author = "AI authoring lanes (Claude)"
+date = "2026-11-27"
+commit = "9c8b5fa"
+sources_hash = "sha256:490030618ffbc4646fc67c640dda1cf902d5e49bbe085828055a067b13b8f323"
+amended = "2026-11-27, coordinator: row 19 corrected after the re-read. The reviewer noted p.530 prints A6063SS-T5 for NFS while the data had A6063S-T5 for every profile; the page text shows p.529 (2020) prints A6063S-T5 and p.530 (2040, 4040) prints A6063SS-T5. types.csv now carries the grade per profile (new column profiles) and ext.py looks it up by (type, profile); NFS5-2040-300 added to codes.txt; tools/check passes. Previous hash: sha256:100ab05ff352da0556bb40efde5342f4fec14e22a08fbb2d8d9ea3447d450a96"
+method = "Downloaded the five cited MISUMI 2014 FA catalogue PDFs, rendered the pages at 300 dpi and re-read every labelled and published value cell by cell. Re-measured the measured rows from the PDF vector paths (page.get_drawings(): 2020, 2040, 4040 and 3030 section outlines, scaled on the labelled overall size). Checked the codes.txt reject cases against the catalogue text (length range, K lengths, X5/X8, ZZZ). No vendor CAD was used. No value needed correcting."
+
+[[row]]
+id = 1
+verdict = "agree"
+note = "Re-read p.529 2020 drawing: 20x20, 6, 12, 8, 2, 4, 4.2, 4-R1 all printed as stated; 6=2+4."
+
+[[row]]
+id = 2
+verdict = "agree"
+note = "Re-read p.529 2020 drawing: 20x20, 6, 12, 8, 2, 4, 4.2, 4-R1 all printed as stated; 6=2+4."
+
+[[row]]
+id = 3
+verdict = "agree"
+note = "Re-read p.529 2020 drawing: 20x20, 6, 12, 8, 2, 4, 4.2, 4-R1 all printed as stated; 6=2+4."
+
+[[row]]
+id = 4
+verdict = "agree"
+note = "Re-read p.529 2020 drawing: 20x20, 6, 12, 8, 2, 4, 4.2, 4-R1 all printed as stated; 6=2+4."
+
+[[row]]
+id = 5
+verdict = "agree"
+note = "Re-read p.529 2020 drawing: 20x20, 6, 12, 8, 2, 4, 4.2, 4-R1 all printed as stated; 6=2+4."
+
+[[row]]
+id = 6
+verdict = "agree"
+note = "Re-read p.529 2020 drawing: 20x20, 6, 12, 8, 2, 4, 4.2, 4-R1 all printed as stated; 6=2+4."
+
+[[row]]
+id = 7
+verdict = "agree"
+note = "Re-read p.529 2020 drawing: 20x20, 6, 12, 8, 2, 4, 4.2, 4-R1 all printed as stated; 6=2+4."
+
+[[row]]
+id = 8
+verdict = "agree"
+note = "Re-read p.529 2020 drawing: 20x20, 6, 12, 8, 2, 4, 4.2, 4-R1 all printed as stated; 6=2+4."
+
+[[row]]
+id = 9
+verdict = "agree"
+note = "Re-read p.529 2020 drawing: 20x20, 6, 12, 8, 2, 4, 4.2, 4-R1 all printed as stated; 6=2+4."
+
+[[row]]
+id = 10
+verdict = "agree"
+note = "Re-measured from the vector paths of the 2020 drawing (scale from the 20 mm overall): cavity roof at depth 2.06, cavity wall ends at depth 3.0 (+-6), floor depth 6.03 half width 2.92, 45 degree flank. Matches 2.0 / 3.0 / 45 deg."
+
+[[row]]
+id = 11
+verdict = "agree"
+note = "Re-measured from the vector paths of the 2020 drawing (scale from the 20 mm overall): cavity roof at depth 2.06, cavity wall ends at depth 3.0 (+-6), floor depth 6.03 half width 2.92, 45 degree flank. Matches 2.0 / 3.0 / 45 deg."
+
+[[row]]
+id = 12
+verdict = "agree"
+note = "Re-measured from the vector paths of the 2020 drawing (scale from the 20 mm overall): cavity roof at depth 2.06, cavity wall ends at depth 3.0 (+-6), floor depth 6.03 half width 2.92, 45 degree flank. Matches 2.0 / 3.0 / 45 deg."
+
+[[row]]
+id = 13
+verdict = "agree"
+note = "The 4040 drawing vector outline shows the lip-tip round (small arc, about 0.3-0.4); the 2020 path is polygonal there. S5 p.756 prints R0.3 on a 5 series section. Value agrees."
+
+[[row]]
+id = 14
+verdict = "agree"
+note = "p.529 table: 183 mm2 (2020 row)."
+
+[[row]]
+id = 15
+verdict = "agree"
+note = "p.529 table: 0.742x10^4 for Ix and Iy."
+
+[[row]]
+id = 16
+verdict = "agree"
+note = "p.529 'Configurable Length' table: 50-4000, 0.5mm increment."
+
+[[row]]
+id = 17
+verdict = "agree"
+note = "p.529 fixed length tables: KHFS5 1000 and 4000 (effective length)."
+
+[[row]]
+id = 18
+verdict = "agree"
+note = "p.529 type table: NFS5, NFSB5, HFS5, HFSB5, CAF5, HFSY5 and K-prefixed fixed-length names."
+
+[[row]]
+id = 19
+verdict = "corrected"
+note = "p.529 Material and Surface columns: NFS A6063S-T5; HFS/CAF/HFSY A6N01SS-T5; clear, black, clear coating, baked yellow. Corrected: NFS grade is per profile, A6063S-T5 on 2020 (p.529) and A6063SS-T5 on 2040 / 4040 (p.530); was A6063S-T5 for all."
+
+[[row]]
+id = 20
+verdict = "agree"
+note = "p.529 ordering example: HFS5-2020-800, KHFS5-2020-1000, KHFSF5-2020-4000."
+
+[[row]]
+id = 21
+verdict = "agree"
+note = "p.755-756 alteration table lists LTP/RTP/TPW, LHP/RHP/HPW, SC, L_T45/R_T45, LWP/RWP (wrench family), FL/FR, CW, ZZZ."
+
+[[row]]
+id = 22
+verdict = "agree"
+note = "Ordering examples read: HFS6-3030-1250-LTP-RTP-ZZZ (p.756), HFS8-4040-1000-SC (p.758), HFS6-3030-500-CW (p.756), HFS6-3030-500-LCH-X5 (p.759)."
+
+[[row]]
+id = 23
+verdict = "agree"
+note = "p.757 table row HFS5 2020: M5 Depth 15, 1 tapped hole per end."
+
+[[row]]
+id = 24
+verdict = "agree"
+note = "p.757 table row 2020: heli-coil M3 Depth 6."
+
+[[row]]
+id = 25
+verdict = "agree"
+note = "p.759 Hole Position and Size, HFS5: H 10, J 20, K 20."
+
+[[row]]
+id = 26
+verdict = "agree"
+note = "p.759: d 7.35 for HFS5."
+
+[[row]]
+id = 27
+verdict = "agree"
+note = "p.759 Meaning of Option Symbols: L/R; C one row, W two rows, E three rows; H horizontal, V vertical, P crisscross."
+
+[[row]]
+id = 28
+verdict = "agree"
+note = "p.760: FL/FR shift the wrench hole 3 mm toward the end cap."
+
+[[row]]
+id = 29
+verdict = "agree"
+note = "p.755 and p.758: SC changes length tolerance L+-0.5 to L+-0.2, only for L<=1500."
+
+[[row]]
+id = 30
+verdict = "agree"
+note = "p.756: End Face C chamfering CW, thread chamfering C0.2-0.3."
+
+[[row]]
+id = 45
+verdict = "agree"
+note = "p.530 2040 drawing: 20 wide, 40 high, 10/20/10 printed."
+
+[[row]]
+id = 46
+verdict = "agree"
+note = "p.530 2040 drawing: 20 wide, 40 high, 10/20/10 printed."
+
+[[row]]
+id = 47
+verdict = "agree"
+note = "p.530 2040 drawing: 20, 12, 6, 2, 4, 8 printed; slot vector measured (lip 2.04, wall end depth 3.0, floor depth 6.04, floor half width 2.9)."
+
+[[row]]
+id = 48
+verdict = "agree"
+note = "p.530: 8 and 2-O4.2 printed. Vector circles centred (0, +-10) diameter 4.2."
+
+[[row]]
+id = 49
+verdict = "agree"
+note = "Re-measured the 2040 vector paths: hexagon with flats x=+-8 spanning y=-2..2, 1 mm run to x=+-7, 45 degree webs to y=+-6 flats of half width 3 (code points (3,-6),(7,-2),(8,-2) etc). Matches the profile code."
+
+[[row]]
+id = 50
+verdict = "agree"
+note = "p.530: 4-R1 printed."
+
+[[row]]
+id = 51
+verdict = "agree"
+note = "p.530 2040 row: 324 mm2, 1.358x10^4, 5.13x10^4."
+
+[[row]]
+id = 52
+verdict = "agree"
+note = "p.530 4040 drawing: 40 square, 10/20/10 printed."
+
+[[row]]
+id = 53
+verdict = "agree"
+note = "p.530 4040 drawing: 40 square, 10/20/10 printed."
+
+[[row]]
+id = 54
+verdict = "agree"
+note = "p.530 4040: 6, 8, 12, 8, 6 along the foot and 2 printed; slot vector measured (lip depth 2.0, wall end 3.0, floor depth 6, floor half width 3, mouth 7..13)."
+
+[[row]]
+id = 55
+verdict = "agree"
+note = "p.530: 8 and 4-O4.2 printed; bore circles at (+-10,+-10)."
+
+[[row]]
+id = 56
+verdict = "agree"
+note = "Re-measured the 4040 void path: arm flat at +-18 (2 mm behind the face) half width 2, 45 degree web from (16.9,2) to (12.9,6), block inner face at 6. Matches _void_4040."
+
+[[row]]
+id = 57
+verdict = "agree"
+note = "p.530 4040 drawing prints 1.5 at a web; 45 degree web distance reproduced by the vector path."
+
+[[row]]
+id = 58
+verdict = "agree"
+note = "Vector path shows the block inner corner open to the bore: edges at about 9.3 (measured 9.25-9.46 and 9.0-9.36) from the centre against 6, i.e. a 3.3 mm square. Matches NOTCH."
+
+[[row]]
+id = 59
+verdict = "agree"
+note = "p.530: 4-R1 printed."
+
+[[row]]
+id = 60
+verdict = "agree"
+note = "p.530 4040 row: 472 mm2, 8.89x10^4 both axes."
+
+[[row]]
+id = 61
+verdict = "agree"
+note = "p.530 type table: NFS5, NFSB5, HFS5, HFSB5, CAF5 (no HFSY5)."
+
+[[row]]
+id = 62
+verdict = "agree"
+note = "p.571 HFS6-3030 drawing: 30 printed."
+
+[[row]]
+id = 63
+verdict = "agree"
+note = "p.571 drawing: 30, 16.5, 8, 2, 7, 12, 9 printed; vector gives lip 2.0 and depth 9.0."
+
+[[row]]
+id = 64
+verdict = "agree"
+note = "Vector measure of the 3030 slot: floor at depth 9.0, floor half width 4.55, wall end at depth 5.43-5.51 (cavity half width measures 8.1 against the printed 8.25, so the drawing is not exactly to scale). Stored d0 5.35 and floor half 4.6 are the 45 degree flank closed on the labelled 16.5 and 9; within about 0.1 mm of the drawing. Agree, not corrected."
+
+[[row]]
+id = 65
+verdict = "agree"
+note = "Approximate by its own status: page shows a small round at the lip tips, not sized. Nothing to verify; value is flagged approximate and not guaranteed."
+
+[[row]]
+id = 66
+verdict = "agree"
+note = "p.571: 4-R2 printed."
+
+[[row]]
+id = 67
+verdict = "agree"
+note = "p.571: 4-O4.2 and 23.2 printed (11.6 each side)."
+
+[[row]]
+id = 68
+verdict = "agree"
+note = "p.571: O6.8 printed."
+
+[[row]]
+id = 69
+verdict = "agree"
+note = "p.571 HFS6 row: 333 mm2, 2.83x10^4."
+
+[[row]]
+id = 70
+verdict = "agree"
+note = "p.571 type table and rows: HFS6, HFSB6, CAF6, HFSY6 with A6N01SS-T5 and surfaces as stated; NEFS6/EFS6 296, GFS6 377, NFSL6/HFSL6 280 are other sections."
+
+[[row]]
+id = 71
+verdict = "agree"
+note = "p.571: 50-4000, 0.5mm increment; KHFS6 1000 and 4000."
+
+[[row]]
+id = 72
+verdict = "agree"
+note = "p.757 table: 2040 2 holes, 4040 4 holes, M5 Depth 15; 3030 one hole, M8 Depth 24."
+
+[[row]]
+id = 73
+verdict = "agree"
+note = "p.759: HFS6 H 15, J 30, K 30, d 5 or 8 with footnote 'select with X5 or X8'; ordering example HFS6-3030-500-LCH-X5."
+
+[[row]]
+id = 74
+verdict = "agree"
+note = "p.759 HFS5 row: 10, 20, 20, 7.35; 2040 and 4040 rows in the availability table allow the H and V wrench codes."
+
+[[row]]
+id = 75
+verdict = "agree"
+note = "Approximate by its own status (convention, source empty); nothing in the catalogue to compare. Not guaranteed."

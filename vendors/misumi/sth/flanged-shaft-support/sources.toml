@@ -1,0 +1,302 @@
+# Where every number of this generator comes from. One [[source]] per vendor document, one [[dimension]] per cited item.
+# status: labelled / published = printed in the catalogue; measured = read from the vertex coordinates of the published vector
+# drawing; derived = computed from labelled numbers; approximate = an estimate (appearance or an illustration choice); none.
+# source = [] is allowed only for approximate / none rows.
+
+[meta]
+clean_room = "Clean-room: only public catalogue pages from the manufacturer's own site. No vendor CAD (STEP/IGES/...) was downloaded or used, no other CAD program or generator was consulted. Where a value is not printed as a number, the table says how it was obtained. The current web catalogue may differ."
+
+[[source]]
+id = "S51"
+catalogue = "MISUMI Economy Series catalogue 2025, \"Shaft Supports\": Flanged, Standard / Long Sleeves, Steel (04-149, 04-150)"
+url = "https://th.c.misumi-ec.com/book/THA_EconomySeries_e-catalog2025/files/basic-html/page534.html and page535.html (page images files/mobile/534.jpg and 535.jpg)"
+pages = "p.534, p.535"
+
+[[source]]
+id = "S52"
+catalogue = "MISUMI Economy Series catalogue 2025, \"Shaft Supports\": Compact Standard / Long Sleeves (04-147), Flanged End Mounting (04-148), Flanged Thickened (04-151, upper half), Flanged with Slit, Standard / Long Sleeves (04-153, 04-154)"
+url = "https://th.c.misumi-ec.com/book/THA_EconomySeries_e-catalog2025/files/basic-html/page532.html, page533.html, page536.html, page538.html and page539.html (page images files/mobile/<N>.jpg)"
+pages = "p.532, p.533, p.536, p.538, p.539"
+
+[[dimension]]
+id = 800
+item = "Types E-STHRB / E-STHR (round flanged), E-STHSB / E-STHS (square flanged), E-STHCB / E-STHC / E-SSTHC (compact flanged), standard sleeve: material, surface treatment, hole diameter range D6-50"
+value = ""
+source = ["S51"]
+source_text = "S51 p.534 type table"
+page = "p.534 type table"
+status = "published"
+note = "published; E-SSTHC is stainless steel with no surface treatment printed"
+
+[[dimension]]
+id = 801
+item = "Hole diameter D (H8) and its tolerance: D6 +0.018/0; D8, 10 +0.022/0; D12, 15, 16 +0.027/0; D20, 25, 30 +0.033/0; D35, 40, 50 +0.039/0"
+value = ""
+source = ["S51"]
+source_text = "S51 p.535 DH8 column"
+page = "p.535 table"
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 802
+item = "Sleeve: overall length L (flange back face to sleeve end) and sleeve outside diameter D1 per D"
+value = ""
+source = ["S51"]
+source_text = "S51 p.535 L, D1 columns"
+page = "p.535 table"
+status = "labelled"
+note = "labelled; the long sleeve columns L1 and l1 are in rows 1100-1101"
+
+[[dimension]]
+id = 803
+item = "Flange: thickness T, round diameter / square side / compact length H, compact width W"
+value = ""
+source = ["S51"]
+source_text = "S51 p.535 H, T, W columns"
+page = "p.535 table"
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 804
+item = "Mounting holes: d1 through hole, pitch circle P (round and square, 4 holes at 90 degrees), P1 (compact, along the length), F (compact D16-50, 4 holes; D6-15 have 2 holes)"
+value = ""
+source = ["S51"]
+source_text = "S51 p.534 figures, p.535 P, P1, F, d1 columns"
+page = "p.534 figures, p.535 table"
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 805
+item = "Set screws: 2-M (coarse) per D, position l from the flange back face (the face opposite the sleeve, z = 0) to the screw axis, 90 degrees apart"
+value = ""
+source = ["S51"]
+source_text = "S51 p.534 standard figure (2-M, l), p.535 M, l columns"
+page = "p.534 figure, p.535 table"
+status = "labelled"
+note = "labelled; thread length is taken as the sleeve wall (D1 - D) / 2; l is read from the flange face opposite the sleeve (the extension line of l ends on the same face as L and T)"
+
+[[dimension]]
+id = 806
+item = "Square flange: K is the side of the square, H the extent across the cut corners (tip to tip along the hole axes)"
+value = ""
+source = ["S51"]
+source_text = "S51 p.534 square figure (H, K along the edge), p.535 H, K columns"
+page = "p.534 figure, p.535 table"
+status = "derived"
+note = "derived: corrected at independent review. p.538 draws H horizontally tip to tip and K along an edge; measured on the page images, H / P matches the drawn tip-to-tip extent (p.534 D6: 28 / 20 = 1.4; p.538 D8: 39 / 32) and K is the side of the uncut square. The size of the cut follows from H and K"
+
+[[dimension]]
+id = 807
+item = "Not-applicable combinations: E-STHS D6, E-STHR D15, E-SSTHC D50"
+value = ""
+source = ["S51"]
+source_text = "S51 p.535 note"
+page = "p.535 note"
+status = "published"
+note = "published; applied literally to the named type only (E-STHSB6 and E-STHRB15 are valid)"
+
+[[dimension]]
+id = 808
+item = "Thickness (N) column"
+value = ""
+source = ["S51"]
+source_text = "S51 p.535 Thickness (N)"
+page = "p.535 table"
+status = "labelled"
+note = "labelled; stored in data/dims.csv. Its meaning is not explained on the page; it equals (D1 - D) / 2 in every row of every table, so it is checked as the sleeve wall (row 1114)"
+
+[[dimension]]
+id = 809
+item = "Compact flange corner radius (W / 4); rotation of the two set screws about the axis"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate: the figure shows rounded corners without a dimension and the set screw angle is not given"
+
+[[dimension]]
+id = 810
+item = "Chamfers and fillets of sleeve and flange, the set screws themselves, surface treatment"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "none"
+note = "not modelled; none of it is dimensioned"
+
+[[dimension]]
+id = 1100
+item = "Long sleeve types E-STHRBL / E-STHRL, E-STHSBL / E-STHSL, E-STHCBL / E-STHCL: only for the D marked * (12, 16, 20, 25, 30); overall length L1 and set screw position l1 per D (12: 30 / 15; 16: 48 / 16; 20: 48 / 16; 25: 57 / 19; 30: 57 / 19)"
+value = ""
+source = ["S51"]
+source_text = "S51 p.534 type table, p.535 L1, l1 columns"
+page = "p.534 type table, p.535 table"
+status = "labelled"
+note = "labelled; the page note says L1 and l1 are product dimensions of long sleeve shaft supports"
+
+[[dimension]]
+id = 1101
+item = "Long sleeve set screws: D12 2-M at l1 from the flange back face; D16-30 4-M, two stations at l1 and 2 x l1 (two screws 90 degrees apart per station)"
+value = ""
+source = ["S51"]
+source_text = "S51 p.534 long sleeve figures (2-M, l1; 4-M, l1 l1, T, L1)"
+page = "p.534 figures"
+status = "derived"
+note = "derived: the figure draws l1 twice in series from the flange back face; the two screws per station are read as 90 degrees apart like the standard type"
+
+[[dimension]]
+id = 1102
+item = "Thickened types E-STHRBN / E-STHRN, E-STHCBN / E-STHCN and long sleeve ...NL: N, L, L1, D1, H, T, l, l1, M, P, W, P1, F, d1 per D (8-50), long sleeve only for the D marked * (12, 16, 20, 25, 30, 35, 40, 50)"
+value = ""
+source = ["S52"]
+source_text = "S52 p.536 thickened table"
+page = "p.536 table"
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 1103
+item = "Thickened types: not applicable D = 8 and 35 for E-STHRN, D = 10 for E-STHCN, D = 35 for E-STHRBN"
+value = ""
+source = ["S52"]
+source_text = "S52 p.536 note"
+page = "p.536 note"
+status = "published"
+note = "published; applied literally to the named standard type only, the long sleeve variants (...NL) are not excluded"
+
+[[dimension]]
+id = 1104
+item = "Compact standard / long sleeves E-STHMRB / E-STHMR / E-STHMRBL / E-STHMRL: L, L1, H, B, T, T1, P, d1, d2, S, X, Y, M, d, R per D (8-30), long sleeve only for the D marked * (12, 15, 16, 20, 25, 30)"
+value = ""
+source = ["S52"]
+source_text = "S52 p.532 table"
+page = "p.532 table"
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 1105
+item = "E-STHMR geometry: cylinder O H x L (L1) with the shaft bore, two through holes d1 on P with counterbore d2 on the X axis, a groove S wide after the first T (T1) of length, and a ring of length B; L = T + S + B (L1 = T1 + S + B) in every row"
+value = ""
+source = ["S52"]
+source_text = "S52 p.532 figures and table"
+page = "p.532 figures, table"
+status = "derived"
+note = "derived: T, S, B read from the side view of the figure; the identity L = T + S + B holds for every printed row and is checked"
+
+[[dimension]]
+id = 1106
+item = "E-STHMR clamp screw: M (coarse) at height X above the shaft axis, at B / 2 from the sleeve end; clearance hole d with counterbore R on one side, its floor Y from the slit centre; radial slit 1.5 wide (figure label) over the ring"
+value = ""
+source = ["S52"]
+source_text = "S52 p.532 figure (X, Y, 1.5, d, R, M, B/2), table"
+page = "p.532 figures, table"
+status = "labelled"
+note = "labelled; the side of the counterbore (-X) and the tapped hole (+X) are read from the figure"
+
+[[dimension]]
+id = 1107
+item = "E-STHMRBL is not applicable when D = 25"
+value = ""
+source = ["S52"]
+source_text = "S52 p.532 note"
+page = "p.532 note"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 1108
+item = "End mounting types E-STHXRB / E-STHXR (round), E-STHXCB / E-STHXC (compact): N, L, D1, H, T, l, l1, E, P, W, P1, F, d, d1, d2, mounting screw per D (8, 10, 12, 15, 16, 20, 25, 30, 40); E-STHXRB is not applicable when D = 8"
+value = ""
+source = ["S52"]
+source_text = "S52 p.533 table and note"
+page = "p.533 table, note"
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 1109
+item = "End mounting geometry: flange T on the back face, sleeve D1 to L, blind shaft hole D from the sleeve end down to l1 from the flange face (depth E = L - l1), mounting screw hole d2 through to the bore floor, counterbore d1 deep l from the flange face, 4-d / 2-d flange holes"
+value = ""
+source = ["S52"]
+source_text = "S52 p.533 figure (l, l1, E, L, T, d1, d2, d)"
+page = "p.533 figure, table"
+status = "derived"
+note = "derived: the figure draws l and l1 from the flange face; E = L - l1 holds for every printed row and is checked"
+
+[[dimension]]
+id = 1110
+item = "Flanged with slit, standard sleeve E-STHWRB / E-STHWR / E-SSTHWR, E-STHWSB / E-STHWS / E-SSTHWS, E-STHWCB / E-STHWC / E-SSTHWC: D1, H, N, L, T, B, S1, X, P, K, W, P1, F, S, Y, d1, d2, d, M per D (8-50)"
+value = ""
+source = ["S52"]
+source_text = "S52 p.539 Slit Standard table"
+page = "p.539 table"
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 1111
+item = "Flanged with slit, long sleeve (...L, D 12-50): the same columns with their own L, T, B, S1, Y values"
+value = ""
+source = ["S52"]
+source_text = "S52 p.539 Slit Long Sleeve table"
+page = "p.539 table"
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 1112
+item = "Slit type geometry: flange T, sleeve D1 to L, groove S1 wide at B from the sleeve end (z = L - B - S1 .. L - B), radial slit S wide over the ring B on the +Y axis, clamp screw M at height X and B / 2 from the sleeve end (long sleeve: two, at B / 4 and 3 B / 4), clearance hole d2 with counterbore d1 whose floor is Y from the slit centre, 4-d flange holes on P (round, square) or P1 and F (compact)"
+value = ""
+source = ["S52"]
+source_text = "S52 p.538 figures (B/2, B, S1, X, Y, S, d1, d2, M, 4-d), p.539 tables"
+page = "p.538 figures, p.539 tables"
+status = "derived"
+note = "derived: the figure reading is an interpretation; corrected at independent review: the long sleeve figure draws two clamp screws (2-d1) at B / 4 and 3 B / 4 from the sleeve end (B/4 is dimensioned twice), now drawn as two (the standard sleeve has one at B / 2)"
+
+[[dimension]]
+id = 1113
+item = "Slit types not applicable: E-SSTHWR D = 35; E-SSTHWS D = 40, 50; E-SSTHWSL D = 12"
+value = ""
+source = ["S52"]
+source_text = "S52 p.539 notes"
+page = "p.539 notes"
+status = "published"
+note = "published; applied literally to the named type only"
+
+[[dimension]]
+id = 1114
+item = "Thickness (N) = (D1 - D) / 2 in every row of every table of S51 p.535 and S52 p.533, p.536, p.539"
+value = ""
+source = ["S51", "S52"]
+source_text = "S51 p.535, S52 p.533 / p.536 / p.539 Thickness (N) column and the figures (N points at the sleeve wall)"
+page = "tables"
+status = "derived"
+note = "derived: checked as the sleeve wall"
+
+[[dimension]]
+id = 1115
+item = "Groove depth, the stub of the radial slit below the bore, the E-STHMR mounting hole counterbore depth and the side of the clamp screw"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate: read from the figures, not dimensioned; the E-STHMR counterbore is named (appearance, approximate)"
+
+[[dimension]]
+id = 1116
+item = "Chamfering and the bore floor radius R of E-STHX, the hex socket head cap screws supplied with the slit and compact types, the H tolerance 0 / -0.2 of E-STHMR"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "none"
+note = "not modelled; none of it is dimensioned as a value"
+
+[[note]]
+text = "Source count: 28 rows (800-810, 1100-1116): printed or labelled numbers, derived readings of the figures (rows 806, 1101, 1105, 1109, 1112, 1114), 2 approximate (809, 1115), 2 not modelled (810, 1116); two documents (S51, S52). Not covered: the aluminium types and the positioning hole (p.536 lower half, p.537), the slit short sleeve E-ATHW.. (p.536)."

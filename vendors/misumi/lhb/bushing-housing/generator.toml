@@ -1,0 +1,35 @@
+id = "misumi.lhb.bushing-housing"
+name = "MISUMI Economy linear bushing housing units, wide blocks: single / medium (E-LBHN) and double / medium long / long (E-LBHNW), with or without dowel holes"
+version = "0.1.0"
+kind = "generator"
+min_host_version = "0.49.1"
+preview_code = "E-LBHN16D-P"
+
+[entry]
+build  = "housing:parse_build"
+check  = "check:check"
+shots  = "shots"
+
+[declares]
+labels   = ["Linear bushing housing unit", "Bushing housing", "Wide block housing unit", "E-LBHN", "E-LBHNW"]
+keywords = ["linear bushing housing", "housing unit", "linear bushing block", "linear ball bushing housing", "pillow block linear", "linear shaft block"]
+vendor   = "MISUMI"
+
+[[declares.matches]]
+id         = "lhb-housing-wide"
+generator  = "bushing-housing"
+pattern    = '^E-LBHN(?:W)?(?P<dr>\d{1,2})(?:D|L)?(?:-P)?$'
+flags      = "i"
+confidence = "exact"
+params     = { shaft_diameter_mm = "{dr}" }
+examples          = ["E-LBHN16", "E-LBHN16D-P", "E-LBHN50", "E-LBHNW8", "E-LBHNW20L-P", "E-LBHNW30D"]
+negative_examples = ["E-LBHN", "E-LBHNW-P", "E-LBHN16X", "E-LBHN16-X", "E-LBHP20LUU", "E-LBHS16"]
+
+[inputs]
+type = { choices = ["E-LBHN", "E-LBHNW"] }
+shaft_diameter_mm = { choices = [6, 8, 10, 12, 13, 16, 20, 25, 30, 35, 40, 50] }
+length = { choices = ["", "D", "L"] }
+dowel_holes = { choices = ["", "-P"] }
+
+[guarantee]
+not_guaranteed = ["The built-in linear bushing is not drawn: the bore is an empty plain cylinder at the nominal shaft diameter dr (the catalogue gives no inner dimensions of the unit); dr tolerances are written into the description, not drawn", "Cross-section outline (appearance, approximate): the narrower lower wall (1 mm behind the top shoulders), the foot width (0.16 W) and the 3-point chamfer shape are not printed; only W, H, H1 (from the top face) and H2 (shoulder height) are", "Dowel hole positions (appearance, approximate): no coordinates are printed; read from the figures (mid-length on the mounting-hole rows for single / medium / double, on the centre line at the end mounting holes for medium long / long). P and depth l2 are dimensioned; C1 is printed without a clear meaning and is not drawn", "The mounting threads: M and thread depth l are printed; the pilot hole d is drawn through the full height H (read from the figure)", "Grease nipple hole (A-MT6M1) of the E-LBHNW types, the 2-C datum edge chamfers, the shallow recess between the top shoulders, and the printed columns A, B, N, P (second table of p.487) and C are not drawn", "dr tolerance of the medium E-LBHN as printed (0 / -0.12 for dr 6-16, 0 / -0.15 for dr 20-30): recorded as read, only echoed in the description", "Load ratings, allowable moments and masses are not modelled"]

@@ -1,0 +1,17 @@
+== HGR25T640
+PASS  bodies                       spec         1  got          1           [S7 code]
+PASS  rail length                  spec       640  got   640.0000  +-0.005  [S7 p.38]
+PASS  rail width WR                spec        23  got    23.0000  +-0.005  [S7 p.39-43]
+PASS  rail height HR               spec        22  got    22.0000  +-0.005  [S7 p.39-43]
+PASS  rail tapped hole count       spec        11  got         11           [S7 p.43 table (6)]
+PASS  rail thread M6               spec        M6  got         M6           [S7 p.43 table (6)]
+PASS  rail thread depth h          spec        12  got    12.0000  +-0.01   [S7 p.43 table (6)]
+PASS  rail hole 1 position         spec        20  got    20.0000  +-0.005  [S7 p.38 E, P]
+PASS  rail hole 2 position         spec        80  got    80.0000  +-0.005  [S7 p.38 E, P]
+PASS  rail hole 11 position        spec       620  got   620.0000  +-0.005  [S7 p.38 E, P]
+PASS  rail hole pitch P            spec        60  got    60.0000  +-0.005  [S7 p.38]
+PASS  end distance E (first hole)  spec        20  got    20.0000  +-0.005  [S7 p.38 Es / P/2 rule]
+PASS  end distance within Es..P/2  spec       yes  got        yes           [S7 p.38]
+PASS  part number metadata         spec HGR25T640  got  HGR25T640           [-]
+PASS  design part number           spec HGR25T640  got  HGR25T640           [-]
+15/15 passed

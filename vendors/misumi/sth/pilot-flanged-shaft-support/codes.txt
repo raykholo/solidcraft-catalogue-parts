@@ -1,0 +1,32 @@
+# Codes CI builds and checks. `CODE [option ...]` = valid (built, then every dimension checked); `!CODE  # why` = must be rejected with a message.
+
+# round flanged pilot type (S18 p.540)
+E-STHWIRB8
+E-STHWIRB10
+E-STHWIRB12
+E-STHWIRB15
+E-STHWIRB16
+E-STHWIRB20
+E-STHWIRB25
+E-STHWIRB30
+E-STHWIRB40
+
+# compact flanged pilot type (S18 p.540)
+E-STHWICB8
+E-STHWICB10
+E-STHWICB12
+E-STHWICB15
+E-STHWICB16
+E-STHWICB20
+E-STHWICB25
+E-STHWICB30
+E-STHWICB40
+
+!E-STHWIRB6  # D6 is not in the pilot table (8 10 12 15 16 20 25 30 40)
+!E-STHWICB35  # D35 is not in the pilot table (8 10 12 15 16 20 25 30 40)
+!E-STHWIRB50  # D50 is not in the pilot table
+!E-STHWIRB  # the hole diameter D is missing
+!E-STHWISB10  # no square pilot flanged type (only round E-STHWIRB and compact E-STHWICB)
+!E-STHWIRBL16  # no long sleeve pilot type is printed
+!E-STHWRB10  # not a pilot type: E-STHWRB is the flanged with slit type (misumi.sth.flanged-shaft-support)
+!E-STHWIRB9  # D9 is not a catalogue size

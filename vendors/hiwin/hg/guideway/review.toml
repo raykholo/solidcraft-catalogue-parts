@@ -1,0 +1,72 @@
+reviewer_kind = "ai"
+reviewer = "AI review lane (Claude Sonnet), independent of the authoring lane"
+author = "AI authoring lanes (Claude)"
+date = "2026-11-27"
+commit = "e81395f"
+sources_hash = "sha256:efde57d123ac29fb2d6f88a0ef5924d930e7ebc1401a3ae665ab2fefe529a707"
+method = "Downloaded the cited HIWIN catalogue G99TE24-2410 PDF, extracted the text layer of each cited page (printed page = PDF page - 3) and looked at the rendered pages; compared every CSV cell and every sources.toml claim with the page cell by cell; re-derived rail hole counts for the codes.txt cases with L = (n-1)P + 2E; ran tools/check on every code. No value needed correcting."
+
+[[row]]
+id = 76
+verdict = "agree"
+note = "p.22-23: block grammar (W/H/L, size 15-65, C/H load, A/B/C mounting, E special block, number of blocks, R/T, length, E rail, preload Z0/ZA/ZB, accuracy C/H/P/SP/UP, material M, rails I-IV, dust options, RC) and the interchangeable block and rail forms as printed."
+
+[[row]]
+id = 77
+verdict = "agree"
+note = "p.38 table (1) HGH-CA/HA: H, H1, N, W, B, B1, C, L1, L for all 8 sizes, CA and HA, equal hgh.csv; HG15 lists only CA."
+
+[[row]]
+id = 78
+verdict = "agree"
+note = "p.38 Mxl: M4x5, M5x6, M6x8, M8x10, M8x12, M10x17, M12x18, M16x20 equal M and l in hgh.csv."
+
+[[row]]
+id = 79
+verdict = "agree"
+note = "p.40-42 tables (3)-(5) HGW: H, H1, N, W, B, B1, C, L1, L for CA/HA identical across CA, CB and CC pages and equal hgw.csv (including HGW20-65 HA C = CA C)."
+
+[[row]]
+id = 80
+verdict = "agree"
+note = "p.40 and p.42 M/T: M5/6, M6/8, M8/8, M10/8.5, M10/10.1, M12/15.1, M14/17.5, M16/25 equal hgw.csv."
+
+[[row]]
+id = 81
+verdict = "agree"
+note = "p.41 table (4) M column: O4.5, 6, 7, 9, 9, 11, 14, 16 equal hole_d_cb; the through-the-envelope drilling is a declared approximation."
+
+[[row]]
+id = 82
+verdict = "agree"
+note = "p.38-43 rail columns: WR, HR, D, h, d, P, E and bolt (M4x16 ... M16x50) of HGR15-65 equal rails.csv."
+
+[[row]]
+id = 83
+verdict = "agree"
+note = "p.43 table (6) HGR-T: S M5/M6/M6/M8/M8/M12/M14/M20 and depth h 8/10/12/15/17/24/24/30 equal S and hT in rails.csv; WR, HR, P, E equal the R rail."
+
+[[row]]
+id = 84
+verdict = "agree"
+note = "p.37 Table 2-1-27: pitch 60/60/60/80/80/105/120/150, Es 20/20/20/20/20/22.5/30/35 equal rails.csv; Eq. 2.1 and the E <= P/2 recommendation as printed. The reject case HGW20HC1R500 (E 40 > P/2 30 for n=8, E 10 < Es for n=9) is correct."
+
+[[row]]
+id = 85
+verdict = "agree"
+note = "p.37: max length 4000 for all sizes; note 4 stainless HGR15/20/25 max 2000 equal params.csv."
+
+[[row]]
+id = 86
+verdict = "agree"
+note = "p.23 note 5: stainless available for HG15C, HG20C, HG25C equals stainless_sizes 15|20|25."
+
+[[row]]
+id = 87
+verdict = "agree"
+note = "Approximate envelope modelling; correctly approximate, source empty, and listed in not_guaranteed."
+
+[[row]]
+id = 88
+verdict = "agree"
+note = "Approximate illustration choice (10 mm gap); correctly approximate and listed in not_guaranteed."

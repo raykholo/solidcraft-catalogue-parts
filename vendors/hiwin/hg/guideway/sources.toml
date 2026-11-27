@@ -1,0 +1,155 @@
+# Where every number of this generator comes from. One [[source]] per vendor document, one [[dimension]] per cited item.
+# status: labelled / published = printed in the catalogue; measured = read from the vertex coordinates of the published vector
+# drawing; derived = computed from labelled numbers; approximate = an estimate (appearance or an illustration choice); none.
+# source = [] is allowed only for approximate / none rows.
+
+[meta]
+clean_room = "Clean-room: only public catalogue pages and PDFs from the manufacturers' own sites. No vendor CAD (STEP/IGES/...) was downloaded or used, no other CAD program or generator was consulted. Where a value is not printed as a number, the table says how it was obtained. sources re-cited to HIWIN's own catalogue PDF on hiwin.com; every value re-read against it."
+
+[[source]]
+id = "S7"
+catalogue = "HIWIN \"Linear Guideway\" catalogue, form G99TE24-2410 (2024), HG Series, Heavy Load Ball Type (section 2-1); page numbers are the printed ones, PDF page = printed + 3"
+url = "https://hiwin.com/wp-content/uploads/2026/08/HIWIN-Linear-Guideway-Catalog-1.pdf"
+pages = "p.22-23 (2-1-3 model number), p.37 (2-1-12, Table 2-1-27 rail lengths, Eq. 2.1), p.38-43 (2-1-13 dimension tables (1), (3), (4), (5), (6); (2) HGL on p.39 is not used)"
+
+[[dimension]]
+id = 76
+item = "Model number grammar \"HG W 25 C A E 2 R 1600 E ZA P M II + DD/E2+RC\": block type W/H/L, size, load C/H, mounting A/B/C, E special block, **number of blocks per rail** (the digit before R), R/T rail mounting, rail length, E special rail, preload Z0/ZA/ZB, accuracy C/H/P/SP/UP, M stainless, I-IV rails per axis. Also the interchangeable block (\"HGW25CAEZAPM+DD\") and rail (\"HGR25R1600EPM+RC\") forms"
+value = ""
+source = ["S7"]
+source_text = "S7 2-1-3 p.22-23"
+page = "2-1-3 p.22-23"
+status = "published"
+note = "published; re-read cell by cell against HIWIN catalogue G99TE24-2410, unchanged"
+
+[[dimension]]
+id = 77
+item = "Block H, H1, N, W, B, B1 (and C, L1, L per load class C/H) for HGH 15-65 (table (1), HGH-CA/HA; HG15 has CA only)"
+value = ""
+source = ["S7"]
+source_text = "S7 p.38"
+page = "p.38"
+status = "published"
+note = "published; re-read cell by cell against HIWIN catalogue G99TE24-2410, unchanged"
+
+[[dimension]]
+id = 78
+item = "Block thread M x depth l for HGH (M4x5 ... M16x20)"
+value = ""
+source = ["S7"]
+source_text = "S7 p.38 \"Mxl\""
+page = "p.38 \"Mxl\""
+status = "published"
+note = "published; re-read cell by cell against HIWIN catalogue G99TE24-2410, unchanged"
+
+[[dimension]]
+id = 79
+item = "Block H, H1, N, W, B, B1, C, L1, L for HGW 15-65 (tables (3)-(5), flange)"
+value = ""
+source = ["S7"]
+source_text = "S7 p.40-42"
+page = "p.40-42"
+status = "published"
+note = "published; re-read cell by cell against HIWIN catalogue G99TE24-2410, unchanged"
+
+[[dimension]]
+id = 80
+item = "HGW-CA / HGW-CC mounting thread M and its length T (M5/6 ... M16/25)"
+value = ""
+source = ["S7"]
+source_text = "S7 p.40, p.42 \"M\", \"T\""
+page = "p.40, p.42 \"M\", \"T\""
+status = "published"
+note = "published; used as the tapped depth; re-read cell by cell against HIWIN catalogue G99TE24-2410, unchanged"
+
+[[dimension]]
+id = 81
+item = "HGW-CB mounting through-hole diameter (O4.5 ... O16, the \"M\" column of table (4))"
+value = ""
+source = ["S7"]
+source_text = "S7 p.41"
+page = "p.41"
+status = "published"
+note = "published; drilled through the whole envelope height (approximate: the flange thickness is not dimensioned apart from T, T1, T2 whose meaning is not defined in the text); re-read cell by cell against HIWIN catalogue G99TE24-2410, unchanged"
+
+[[dimension]]
+id = 82
+item = "Rail WR, HR, D, h, d, P, E and the mounting bolt for HGR-R 15-65"
+value = ""
+source = ["S7"]
+source_text = "S7 p.38-43 rail columns"
+page = "p.38-43 rail columns"
+status = "published"
+note = "published; re-read cell by cell against HIWIN catalogue G99TE24-2410, unchanged"
+
+[[dimension]]
+id = 83
+item = "Rail HGR-T: tapped hole S (M5 ... M20) and depth h, same WR, HR, P, E"
+value = ""
+source = ["S7"]
+source_text = "S7 p.43 table (6)"
+page = "p.43 table (6)"
+status = "published"
+note = "published; re-read cell by cell against HIWIN catalogue G99TE24-2410, unchanged"
+
+[[dimension]]
+id = 84
+item = "Rail standard end distance Es, pitch P, L = (n-1)P + 2E, E recommended no greater than P/2"
+value = ""
+source = ["S7"]
+source_text = "S7 p.37 Table 2-1-27, Eq. 2.1"
+page = "p.37 Table 2-1-27, Eq. 2.1"
+status = "published"
+note = "published; Es is used as the smallest E; re-read cell by cell against HIWIN catalogue G99TE24-2410, unchanged"
+
+[[dimension]]
+id = 85
+item = "Maximum rail length 4000; stainless HGR15/20/25 2000"
+value = ""
+source = ["S7"]
+source_text = "S7 p.37 Table 2-1-27 and note 4"
+page = "p.37 Table 2-1-27 and note 4"
+status = "published"
+note = "published; re-read cell by cell against HIWIN catalogue G99TE24-2410, unchanged"
+
+[[dimension]]
+id = 86
+item = "Stainless steel only for HG15C, HG20C, HG25C"
+value = ""
+source = ["S7"]
+source_text = "S7 p.23 note 5"
+page = "p.23 note 5"
+status = "published"
+note = "published; re-read cell by cell against HIWIN catalogue G99TE24-2410, unchanged"
+
+[[dimension]]
+id = 87
+item = "Block envelope W x L x (H - H1) with the rail channel cut to the rail envelope WR x (HR - H1); rail drawn as a WR x HR box"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate (no ball-groove, flange or end-cap outline is dimensioned)"
+
+[[dimension]]
+id = 88
+item = "Gap of 10 mm between two blocks on one rail"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate (an illustration choice, as for MGN)"
+
+[[note]]
+text = "\"Published\" = printed in a catalogue table or text. All dimensions below are published numbers; the two \"approximate\" rows are"
+
+[[note]]
+text = "modelling choices where the catalogue gives no dimension."
+
+[[note]]
+text = "Source count for family 2: 13 rows (76-88): 11 published, 2 approximate (rows 81 and 87 carry an approximate part too); one new document (S7)."
+
+[[note]]
+text = "Not drawn: HGL (low square type, table (2); refused as not modelled), end seals / scrapers / bolt caps, accuracy and preload effects (recorded in the code only)."

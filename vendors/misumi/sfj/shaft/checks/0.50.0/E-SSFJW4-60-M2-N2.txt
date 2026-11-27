@@ -1,0 +1,14 @@
+== E-SSFJW4-60-M2-N2
+PASS  one closed body                            spec         1  got          1           [S30]
+PASS  length (X)                                 spec        60  got    60.0000  +-0.005  [S30 p.436 L] 1 mm steps
+PASS  diameter D (bbox Y)                        spec         4  got     4.0000  +-0.005  [S30 p.436 D4]
+PASS  diameter D (bbox Z)                        spec         4  got     4.0000  +-0.005  [S30 p.436 D4]
+PASS  cylinder face O4                           spec       yes  got        yes           [S30 p.436]
+PASS  D tolerance g7 upper/lower                 spec (-0.004, -0.016)  got (-0.004, -0.016)           [S8 p.432 spec table] echoed into the description
+PASS  tolerance written in the part description  spec       yes  got        yes           [S8 p.432]
+PASS  L inside the table range 20-300            spec       yes  got        yes           [S30 p.436]
+PASS  left end: M2 thread, depth 4, x 0..4       spec       yes  got        yes           [S30 p.436 M / N selection] tap depth M x 2 (MD: M x 3)
+PASS  right end: M2 thread, depth 4, x 56..60    spec       yes  got        yes           [S30 p.436 M / N selection] tap depth M x 2 (MD: M x 3)
+PASS  part number metadata                       spec E-SSFJW4-60-M2-N2  got E-SSFJW4-60-M2-N2           [-]
+PASS  design part number                         spec E-SSFJW4-60-M2-N2  got E-SSFJW4-60-M2-N2           [-]
+12/12 passed

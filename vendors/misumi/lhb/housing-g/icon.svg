@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Linear bushing housing unit">
+<title>Linear bushing housing unit</title>
+<rect width="64" height="64" rx="8" fill="#f2f4f7"/>
+<path d="M8 50h48V20H8z" fill="#aab2bb"/><rect x="8" y="20" width="48" height="6" fill="#d5dae0"/>
+<circle cx="32" cy="36" r="9" fill="#f2f4f7"/><circle cx="32" cy="36" r="5" fill="#aab2bb"/>
+<circle cx="14" cy="23" r="1.6" fill="#f2f4f7"/><circle cx="50" cy="23" r="1.6" fill="#f2f4f7"/>
+</svg>

@@ -1,0 +1,28 @@
+# Codes CI builds and checks. `CODE [option ...]` = valid (built, then every dimension checked); `!CODE  # why` = must be rejected with a message.
+
+E-LBHS5
+E-LBHS10
+E-LBHS16-P
+E-LBHS30-P
+E-LBHS6D
+E-LBHS12D
+E-LBHS12S
+E-LBHS20S
+E-LBHS13L
+E-LBHS8L
+E-LBHS16L-P
+E-LBHS30L-P
+E-LBHSW5
+E-LBHSW10
+E-LBHSW20-P
+E-LBHSW30-P
+!E-LBHS5-P  # no dowel hole version for dr 5 (the dowel table starts at dr 8)
+!E-LBHSW6-P  # no dowel hole version for dr 6 (the dowel table starts at dr 8)
+!E-LBHS14  # dr 14 is not a catalogue size
+!E-LBHS6S  # medium long is offered for dr 12, 16, 20, 25, 30
+!E-LBHS13D  # dr 13 is long only (p.490)
+!E-LBHS12D-P  # dowel holes are available on the long type only
+!E-LBHS12L-P  # long type dowel holes start at dr 16
+!E-LBHSW10L  # E-LBHSW (double) has no length suffix
+!E-LBHS5L  # dr 5 is single only
+!E-LBHS16X  # only D, S or L may follow the dr

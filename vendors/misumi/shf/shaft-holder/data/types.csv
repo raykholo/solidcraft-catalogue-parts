@@ -1,0 +1,9 @@
+type,family,material,surface,accessory,tolerance_class,source,page,status
+E-SHSTB,slit,General structural steel or carbon steel,Stainless steel (as printed),1 hex socket head cap screw,H8,S50,p.541 type table,labelled
+E-SHSTM,slit,General structural steel or carbon steel,Electroless nickel plating,1 hex socket head cap screw,H8,S50,p.541 type table,labelled
+E-SHSTA,slit,Aluminum alloy,Clear anodized,1 hex socket head cap screw (stainless steel),H8,S50,p.541 type table,labelled
+E-SHWTB,side,General structural steel or carbon steel,Stainless steel (as printed),1 hex socket head cap screw,H8,S50,p.541 type table,labelled
+E-SHWTA,side,Aluminum alloy,Clear anodized,1 hex socket head cap screw (stainless steel),H8,S50,p.541 type table,labelled
+E-SHSTBN,thick,General structural steel or carbon steel,Black oxide film,1 hex socket head cap screw (D30-50: 2 screws),H8,S50,p.542 type table,labelled
+E-SHSTMN,thick,General structural steel or carbon steel,Electroless nickel plating,1 hex socket head cap screw (D30-50: 2 screws),H8,S50,p.542 type table,labelled
+C-SHA,csha,Aluminum alloy,Clear anodized,1 hex socket head cap screw,H7,S50,p.540 T-shaped table,labelled

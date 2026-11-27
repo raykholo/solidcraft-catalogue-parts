@@ -1,0 +1,117 @@
+reviewer_kind = "ai"
+reviewer = "AI review lane (Claude Sonnet), independent of the authoring lane"
+author = "AI authoring lanes (Claude)"
+date = "2026-11-27"
+commit = "e36ee8375c931174cd0b71443d313307250b737c"
+sources_hash = "sha256:777b18353e7ceae33f17ab5c04ed70cedeba2f446d3222aa9c0a99937da26fba"
+method = "Downloaded catalogue pages 464-480 (page images, kept outside the repo), cropped and upscaled the table blocks and figures, compared every dimension row cell by cell against data/*.csv including merged cells, checked the codes.txt rejects against the page rules, and re-ran tools/check after the correction."
+
+[[row]]
+id = 200
+verdict = "agree"
+note = "Type names and suffixes (E-LB, E-LBF/FZ/FM, E-LBK/KZ/KM; Z opposite counterbore, M nickel plated) match the p.464-469 headers; case SUJ2-equivalent, 58HRC~."
+
+[[row]]
+id = 201
+verdict = "agree"
+note = "p.464: all 7 rows (dr 6-20) compared cell by cell: D, D tol, L (25 shared by dr 10/12/13), L tol -0.3 / -0.35 for dr 20, dr tol -0.01/-0.012/-0.015/-0.018. No difference."
+
+[[row]]
+id = 202
+verdict = "agree"
+note = "p.465: dr 6-30 D, D tol (plain / nickel), L, L tol (-0.3 up to dr 16, -0.35 from dr 20), dr tol. L 47 for dr 10 and 12 is one merged cell. No difference."
+
+[[row]]
+id = 203
+verdict = "agree"
+note = "p.465: W, B, B tol (-0.5 up to dr 16, -0.8 from dr 20), D1 for all 8 rows. Figure labels W B W with B between the grooves, so B as the clear distance is a fair reading; B 71.3 + 2 W stays inside L 90 for dr 30."
+
+[[row]]
+id = 204
+verdict = "agree"
+note = "p.466 and p.468 (identical tables): all 12 rows. D tolerances re-read in a 1.6x crop including the merged cells (single no-treatment -0.015 runs over dr 6/8/10; double -0.016 only dr 6/8; surface-treated single -0.015 only dr 6/8). L single/double, L tol +-0.3 for dr 6/8 and +-0.6 from dr 10, dr tol +0.003/-0.013 (6-16), -0.015 (20-30), -0.016 (35-50). No difference."
+
+[[row]]
+id = 205
+verdict = "agree"
+note = "p.466 and p.468: H, T, d, d1, t (3.1/4.1/5.1/6.1/8.1), P.C.D., W (22 25 30 32 34 37 42 50 58 64 75 92) all rows. t = 3.1 for dr 6/8 here. No difference."
+
+[[row]]
+id = 206
+verdict = "corrected"
+note = "p.467 / p.469 medium flanged: dr 20 D tolerance was -0.018 / -0.025 in data/flanged_medium.csv; the page prints -0.021 / -0.028 for dr 20 (one merged cell with dr 25 and 30; the -0.018/-0.025 cell ends at dr 16). Corrected -0.018 -> -0.021 and -0.025 -> -0.028 (data/flanged_medium.csv, sources.toml note, new code E-LBF20DUU). All other cells (D, L, L tol +-0.4, H, T, d, d1, t, P.C.D., W, dr tol) agree on both pages."
+
+[[row]]
+id = 207
+verdict = "agree"
+note = "p.466 figure: L is drawn from the flange outer face through the barrel end, including T. Numbers (e.g. dr 20 single 42) are consistent with the plain-flange table."
+
+[[row]]
+id = 208
+verdict = "agree"
+note = "approximate (p.468 figure): W drawn along an edge of a corner-standing square flange; the corner shape is an illustration choice, not a catalogue dimension and not dimension-checked. Status approximate is right."
+
+[[row]]
+id = 209
+verdict = "agree"
+note = "approximate (p.466 figure): mounting-direction arrow points right with the flange on the left, i.e. screws enter from the barrel side; the Z types show the reverse arrow. Reading agrees with the figure."
+
+[[row]]
+id = 210
+verdict = "agree"
+note = "approximate: no catalogue dimension; balls, retainer and seal are not drawn from numbers."
+
+[[row]]
+id = 211
+verdict = "agree"
+note = "approximate: no chamfer is dimensioned anywhere on p.464-480."
+
+[[row]]
+id = 900
+verdict = "agree"
+note = "Type names on p.470-p.480 (E-LBH/HZ/HM, FP/FPM, KP/KPM, HP/HPM, FC/FCM, KC/KCM, HC/HCM; medium DUU/DMUU or DMUU only) match. p.473/475/477 list only E-LBFP/KP/HP<dr>DMUU and the medium centre pages only DMUU, which agrees with the codes.txt rejects. E-LBHS is only a note on p.470."
+
+[[row]]
+id = 901
+verdict = "agree"
+note = "p.470 in 1.6x and 2.4x crops, all 13 rows: D, the four D tolerances, L single/double, L tol (+-0.3 for dr 5/6/8, +-0.6 from dr 10), dr tol, H, T, d, d1, t, A, F. t = 3.3 for dr 5, 6, 8 confirmed as printed on p.470 (one shared cell), not 3.1. dr 5 single only, double cells '-'. D+6/8/10 widths in the CSV (16 18 21 25 27 29 34 38 46 51 60 70 90) agree with the footnote."
+
+[[row]]
+id = 902
+verdict = "agree"
+note = "p.471, 8 rows: D, D tol (dr 20 -0.021/-0.028, merged with dr 25), L, L tol +-0.4, H, T, d, d1, t = 3.1 for dr 6/8, F and A (page order F, A: dr 16 F22 A31, dr 20 24/36, dr 25 32/40, dr 30 35/49), dr tol. dr 6-12 two holes. No difference."
+
+[[row]]
+id = 903
+verdict = "agree"
+note = "p.472, p.474, p.476: 9 rows each (dr 6-40). D tol no-treatment -0.025 / with -0.020 (dr 6-16) and -0.035 / -0.030 (dr 20-40), L single/double, L tol +-0.3, l (5 5 6 6 6 8 8 10 13), H, T, d, d1, t, P.C.D., W (22 25 30 32 37 42 50 58 75), A, F, dr tol single/double (-0.009/-0.010, -0.010/-0.012, -0.012/-0.015). No difference."
+
+[[row]]
+id = 904
+verdict = "agree"
+note = "p.473, p.475, p.477: 8 rows each. D tol -0.021 (dr 6, 8), -0.023 (dr 10, 12, 16: one merged cell, confirmed in the crop) and -0.028 (dr 20-30); the -0.023 for dr 16 is as printed here (p.467 prints -0.025 for the non-pilot medium, a different table). L, L tol +-0.3, l, H, T, d, d1, t, P.C.D., W, A, F, dr tol -0.01/-0.012. No difference."
+
+[[row]]
+id = 905
+verdict = "agree"
+note = "p.478 (round), p.479 (square), p.480 (compact), double tables, 9 rows each: D, D tol (-0.025/-0.020, -0.035/-0.030), L 35 45 55 57 70 80 112 123 151, L tol +-0.3, l (15 20 24.5 25.5 32 36 52 56.5 69), H, T, d, d1, t, P.C.D., W, A, F, dr tol (-0.010, -0.012, -0.014 for dr 40; the pilot series prints -0.015). l + T/2 = L/2 holds in every row (dr 10: 24.5 + 3 = 27.5; dr 40: 69 + 6.5 = 75.5)."
+
+[[row]]
+id = 906
+verdict = "agree"
+note = "p.478, p.479, p.480 medium tables, 8 rows each: D, D tol -0.021/-0.023/-0.028, L 29 37 47 47 56 65 83 90, L tol +-0.3, l (12 16 20.5 20.5 25 28.5 37.5 40), H, T, d, d1, t, P.C.D., W, A, F, dr tol. l + T/2 = L/2 holds in every row."
+
+[[row]]
+id = 907
+verdict = "agree"
+note = "p.470 figure and footnote read at 3x: dr 5-13 two holes, A is the hole pitch along the long (vertical) axis, outline is circle H clipped by two flats D+6 apart; dr 16-50 four holes, F across, A along; flats D+6 (dr 16-30), D+8 (dr 35), D+10 (dr 40, 50). Same on p.471, p.476, p.477, p.480 (dr 6-12 two holes, 16+ four)."
+
+[[row]]
+id = 908
+verdict = "agree"
+note = "p.472 figure at 3x: l and T dimension lines start at the same barrel end, L covers the whole length; l is barrel end to flange face. The centre figure p.478 is the same, and every row satisfies l + T/2 = L/2, so the flange is centred."
+
+[[row]]
+id = 909
+verdict = "agree"
+note = "approximate (p.470, p.472, p.478 figures): pilot and centre figures carry a leftward mounting arrow with the screw head towards the barrel side; the Z type shows the opposite arrow on p.470. Reading agrees."

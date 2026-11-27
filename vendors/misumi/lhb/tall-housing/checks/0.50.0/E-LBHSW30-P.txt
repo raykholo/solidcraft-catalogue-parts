@@ -1,0 +1,22 @@
+== E-LBHSW30-P
+PASS  one closed body                                   spec         1  got          1           [S14]
+PASS  overall length L (bbox Y)                         spec       138  got   138.0000  +-0.005  [S14 p.489 L]
+PASS  width W (bbox X)                                  spec        58  got    58.0000  +-0.005  [S14 p.489 W]
+PASS  height H (bbox Z)                                 spec        71  got    71.0000  +-0.005  [S14 p.489 H]
+PASS  shaft bore dr 30 (axis along Y)                   spec       yes  got        yes           [S14 p.489 dr] nominal, tolerance echoed in the description
+PASS  bore axis h = 40 above the base                   spec       yes  got        yes           [S14 p.489 h] h +-0.05
+PASS  2 vertical threads M10 (M1)                       spec         2  got          2           [S14 p.489 2-M1]
+PASS  M1 holes L1 = 90 apart                            spec       yes  got        yes           [S14 p.489 L1] x offset is appearance
+PASS  M1 effective length 17.5 from the top face        spec       yes  got        yes           [S14 p.489 M1 (effective length)]
+PASS  2 horizontal threads M10 (M2)                     spec         2  got          2           [S14 p.489 2-M2]
+PASS  M2 holes L2 = 110 apart                           spec       yes  got        yes           [S14 p.489 L2] middle hole of the long type at mid-length is appearance
+PASS  M2 effective length 48, l = 9 below the top face  spec       yes  got        yes           [S14 p.489 M2, l] drawn from the +X face (appearance)
+PASS  2 counterbores d1 = 14                            spec       yes  got        yes           [S14 p.489 d1 x t] side and coaxial placement are appearance
+PASS  counterbore depth t = 10                          spec       yes  got        yes           [S14 p.489 d1 x t]
+PASS  2 dowel holes P 5                                 spec         2  got          2           [S14 p.489 dowel table] positions are appearance
+PASS  dowel hole depth l2 = 6                           spec       yes  got        yes           [S14 p.489 dowel table]
+PASS  dowel holes E = 68 apart along L                  spec       yes  got        yes           [S14 p.489 dowel table E]
+PASS  tolerances written in the part description        spec       yes  got        yes           [S14 p.489] echoed, not drawn
+PASS  part number metadata                              spec E-LBHSW30-P  got E-LBHSW30-P           [-]
+PASS  design part number                                spec E-LBHSW30-P  got E-LBHSW30-P           [-]
+20/20 passed

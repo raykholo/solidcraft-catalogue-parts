@@ -1,0 +1,175 @@
+# Where every number of this generator comes from. One [[source]] per vendor document, one [[dimension]] per cited item.
+# status: labelled / published = printed in the catalogue; measured = read from the vertex coordinates of the published vector
+# drawing; derived = computed from labelled numbers; approximate = an estimate (appearance or an illustration choice); none.
+# source = [] is allowed only for approximate / none rows.
+
+[meta]
+clean_room = "Clean-room: only public catalogue pages and PDFs from the manufacturers' own sites. No vendor CAD (STEP/IGES/...) was downloaded or used, no other CAD program or generator was consulted. Where a value is not printed as a number, the table says how it was obtained. Every value was read from HIWIN's own catalogue PDF on hiwin.com (text layer and rendered pages)."
+
+[[source]]
+id = "S15"
+catalogue = "HIWIN \"Linear Guideway\" catalogue, form G99TE24-2410 (2024), EG Series, Low Profile Ball Type (section 2-2); the same document as S7 (HG series generator), cited separately for this generator; page numbers are the printed ones, PDF page = printed + 3"
+url = "https://hiwin.com/wp-content/uploads/2026/08/HIWIN-Linear-Guideway-Catalog-1.pdf"
+pages = "p.44-45 (2-2-3 model number), p.46 (2-2-4 Tables 2-2-1 and 2-2-2), p.49 (2-2-6 preload), p.54 (Tables 2-2-18, 2-2-19), p.56 (2-2-12, Table 2-2-22, Eq. 2.2), p.57-59 (2-2-13 dimension tables (1) EGH-SA/CA, (2) EGW-SA/CA, (3) EGW-SB/CB)"
+
+[[dimension]]
+id = 1200
+item = "Model number grammar \"EG W 25 C A E 2 R 1600 E ZA P M II + DD/E2+RC\": block type W (flange) / H (square), size 15-35, load C (heavy) / S (medium), mounting A (top) / B (bottom), E special block, number of blocks per rail (the digit before R), rail mounting R/U (top) / T (bottom), rail length, E special rail, preload Z0/ZA/ZB, accuracy C/H/P/SP/UP, M stainless, I-IV rails per axis. Also the interchangeable block (\"EGW25CAEZAPM+DD/E2\", preload Z0/ZA, accuracy C/H/P) and rail (\"EGR25R1600EPM+RC\") forms"
+value = ""
+source = ["S15"]
+source_text = "S15 2-2-3 p.44-45"
+page = "2-2-3 p.44-45"
+status = "published"
+note = "published; the second letter of a block name is the load class and the third the mounting, as in the model number block and in the table row names (EGH-SA, EGH-CA, EGW-SB, EGW-CB)"
+
+[[dimension]]
+id = 1201
+item = "Block types EGH-SA, EGH-CA, EGW-SA, EGW-CA, EGW-SB, EGW-CB (heights 24-48); rail types R/U (top) and T (bottom)"
+value = ""
+source = ["S15"]
+source_text = "S15 Table 2-2-1, 2-2-2 p.46"
+page = "p.46 Tables 2-2-1, 2-2-2"
+status = "published"
+note = "published; EGH has the A (top) mounting only, EGW both A and B"
+
+[[dimension]]
+id = 1202
+item = "Block H, H1, N, W, B, B1, L1, L, K1, K2, G, H2, H3 for EGH 15-35 (table (1), EGH-SA short block and EGH-CA long block; C is printed \"-\" for SA)"
+value = ""
+source = ["S15"]
+source_text = "S15 p.57 table (1)"
+page = "p.57"
+status = "published"
+note = "published; H to H3, N, W, B, B1 are shared by SA and CA (merged cells); the CA row adds C, L1, L, K1"
+
+[[dimension]]
+id = 1203
+item = "EGH block thread M x depth l (M4x6 ... M8x12) and T"
+value = ""
+source = ["S15"]
+source_text = "S15 p.57 \"Mxl\", \"T\""
+page = "p.57 \"Mxl\", \"T\""
+status = "published"
+note = "published; the tapped depth is l of Mxl; T is printed but its meaning is not defined in the text and is not used"
+
+[[dimension]]
+id = 1204
+item = "Block H, H1, N, W, B, B1, L1, L, K1, K2, G, H2, H3 for EGW 15-35 (tables (2)-(3), flange; SA / SB short block, CA / CB long block, C printed \"-\" for the short block)"
+value = ""
+source = ["S15"]
+source_text = "S15 p.58-59"
+page = "p.58-59"
+status = "published"
+note = "published; identical for A (tapped) and B (through-hole) mounting"
+
+[[dimension]]
+id = 1205
+item = "EGW-SA / EGW-CA mounting thread M and its length T (M5/5 ... M10/10), T1"
+value = ""
+source = ["S15"]
+source_text = "S15 p.58 \"M\", \"T\", \"T1\""
+page = "p.58 \"M\", \"T\", \"T1\""
+status = "published"
+note = "published; T is used as the tapped depth (as for the HG flange blocks); T1 is printed without a definition and is not used"
+
+[[dimension]]
+id = 1206
+item = "EGW-SB / EGW-CB mounting through-hole diameter (O4.5 ... O9, the \"M\" column of table (3))"
+value = ""
+source = ["S15"]
+source_text = "S15 p.59"
+page = "p.59"
+status = "published"
+note = "published; drilled through the whole envelope height (approximate: the flange thickness is not dimensioned as a drilling depth)"
+
+[[dimension]]
+id = 1207
+item = "Number of mounting holes: 2 for the short S blocks (\"2-MxL\", \"2-M\", C printed \"-\"), 4 for the long C blocks (\"4-MxL\", \"4-M\")"
+value = ""
+source = ["S15"]
+source_text = "S15 p.57-59 drawings and C column"
+page = "p.57-59 drawings"
+status = "published"
+note = "published in the drawing legends; the S block holes sit on the block centre line at B apart (the drawing shows them at mid-length)"
+
+[[dimension]]
+id = 1208
+item = "Rail WR, HR, D, h, d and the mounting bolt for EGR 15-35 (top-mounted R rail)"
+value = ""
+source = ["S15"]
+source_text = "S15 p.57-59 rail columns"
+page = "p.57-59 rail columns"
+status = "published"
+note = "published; the same rail values in all three tables"
+
+[[dimension]]
+id = 1209
+item = "Rail standard pitch P (60, 60, 60, 80, 80), distance to end Es (20), L = (n-1)P + 2E (Eq. 2.2), E no greater than P/2"
+value = ""
+source = ["S15"]
+source_text = "S15 p.56 Table 2-2-22, Eq. 2.2"
+page = "p.56 Table 2-2-22, Eq. 2.2"
+status = "published"
+note = "published; Es is used as the smallest E, as in the HG generator"
+
+[[dimension]]
+id = 1210
+item = "Maximum rail length 4000; stainless EGR15 2000; minimum rail length 100 (rail length column of Table 2-2-1)"
+value = ""
+source = ["S15"]
+source_text = "S15 p.56 Table 2-2-22 and note 4; p.46 Table 2-2-1"
+page = "p.56 Table 2-2-22 and note 4; p.46 Table 2-2-1"
+status = "published"
+note = "published; the 100 mm lower end of the printed 100 ~ 4000 range is used as the minimum"
+
+[[dimension]]
+id = 1211
+item = "Stainless steel only for EG15C"
+value = ""
+source = ["S15"]
+source_text = "S15 p.45 note 4"
+page = "p.45 note 4"
+status = "published"
+note = "published; note 4 sits under the block and rail model numbers, so M is accepted for the EG15 heavy load (C) block and the EGR15 rail"
+
+[[dimension]]
+id = 1212
+item = "Preload classes: interchangeable Z0, ZA; non-interchangeable Z0, ZA, ZB, for all sizes 15-35 (Table 2-2-9 prints ZB stiffness for EG15S and EG15C; the \"-\" in the EG15 ZB column of the tolerance tables only means no tolerance value)"
+value = ""
+source = ["S15"]
+source_text = "S15 p.49 Table 2-2-8, 2-2-9; p.54 Tables 2-2-18, 2-2-19"
+page = "p.49; p.54 Tables 2-2-18, 2-2-19"
+status = "published"
+note = "published; corrected in independent review: ZB is accepted for EG15 (it was refused on the strength of the \"-\" in Tables 2-2-18 / 2-2-19, which only lack a tolerance value; Table 2-2-9 lists ZB stiffness 246 and 429 N/um for EG15S / EG15C)"
+
+[[dimension]]
+id = 1213
+item = "Block envelope W x L1 x (H - H1) with the rail channel cut to the rail envelope WR x (HR - H1); rail drawn as a WR x HR box"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate (no ball-groove, flange or end-cap outline is dimensioned)"
+
+[[dimension]]
+id = 1214
+item = "Gap of 10 mm between two blocks on one rail"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate (an illustration choice, as for HG)"
+
+[[note]]
+text = "\"Published\" = printed in a catalogue table or text. All dimensions are published numbers; the two \"approximate\" rows are"
+
+[[note]]
+text = "modelling choices where the catalogue gives no dimension."
+
+[[note]]
+text = "Source count for family EG: 15 rows (1200-1214): 13 published, 2 approximate (rows 1206 and 1213 carry an approximate part too); one document (S15, the same catalogue as S7)."
+
+[[note]]
+text = "Not drawn: the bottom-mounted T rail (no tapped-hole dimensions are printed), the dust-protection block lengths ZZ / DD / KK (p.53), end seals / scrapers / bolt caps, accuracy and preload effects (recorded in the code only)."

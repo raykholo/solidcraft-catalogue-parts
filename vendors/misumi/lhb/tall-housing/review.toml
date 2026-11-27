@@ -1,0 +1,67 @@
+reviewer_kind = "ai"
+reviewer = "AI review lane (Claude Sonnet), independent of the authoring lane"
+author = "AI authoring lanes (Claude)"
+date = "2026-11-27"
+commit = "e36ee8375c931174cd0b71443d313307250b737c"
+sources_hash = "sha256:6a6a3c5fe492feac57969e903e9571fee53b7a8dd1a3f61cdc95ca0c2d82f0b1"
+method = "Downloaded page images 488-490, cropped and upscaled the tables and figures; re-read every cell of blocks.csv (38 rows) and dowel.csv (20 rows) against the pages; re-derived the hole layout from the top, front and section views (M2 effective length + t = W holds for all 38 rows); checked every codes.txt reject case against the p.488-490 availability notes; tools/check passes for every code."
+
+[[row]]
+id = 1000
+verdict = "agree"
+note = "Types, ordering and availability checked against p.488-490 and the footnotes: single dr 5-30 (also the double), medium 6, 8, 10, 12, 16, 20, 25, 30 ((6) medium only), medium long 12-30, long 8, 10, 12, 13*, 16-30; dowel holes on single/double dr 8 and up and on long dr 16 and up only."
+
+[[row]]
+id = 1001
+verdict = "agree"
+note = "L for all five series re-read cell by cell; no tolerance printed."
+
+[[row]]
+id = 1002
+verdict = "agree"
+note = "W, H, h per dr for all series; h is dimensioned from the datum base in the section figure and W/2 +-0.05 centres the bore."
+
+[[row]]
+id = 1003
+verdict = "agree"
+note = "L1 and L2 per series: single L1 > L2, double / medium / medium long / long L1 < L2 (inner and outer dimension lines in the figures confirm which is which); merged cells (single L2 15 for dr 10 and 12, 18 for 16 and 20, 22 for 25 and 30; medium L1 25 and 42, L2 40 and 66) read correctly."
+
+[[row]]
+id = 1004
+verdict = "agree"
+note = "M1 and M2 with effective lengths, all 38 rows, including the merged M6(13) for dr 13 and 16 and the 3-M2 label in the Long figure."
+
+[[row]]
+id = 1005
+verdict = "agree"
+note = "l (5, 6, 7, 8, 9) and d1 x t (6x5, 8x6, 9x7, 11x8, 14x10) per dr. Reading confirmed: M2 effective length + t = W for every row, so the horizontal M2 hole is tapped from one side and counterbored from the opposite face through the full width; l is the depth of its axis below the top face."
+
+[[row]]
+id = 1006
+verdict = "agree"
+note = "Tolerances re-read: p.488 and p.489 +0.003/-0.012 (5-16) and -0.013 (20-30); p.490 +0.003/-0.012 (6-16 for medium, 12-16 for medium long, 8-16 for long) and -0.015 (20-30)."
+
+[[row]]
+id = 1007
+verdict = "agree"
+note = "Dowel tables p.488, p.489, p.490: P, C1, l2, E for every offered dr (single 8-30, double 8-30, long 16-30) and F single only; F = 20 is one merged cell over dr 13, 16 and 20 on p.488, as read."
+
+[[row]]
+id = 1008
+verdict = "agree"
+note = "Section shows a plain rectangle W x H with the bore at h above the base; the datum surfaces and 4-C chamfers are not dimensioned."
+
+[[row]]
+id = 1009
+verdict = "agree"
+note = "Layout confirmed from the figures: 2-M1 vertical in the top face (circles in the top views at L1 spacing, double: inner lines), 2-M2 / 3-M2 horizontal (dashed bands across the full width in the top view, circles in the side view at L2 spacing, at l below the top face, tapped from the +X side), d1 x t counterbore from the opposite face (section shows it at the left with t from that face). One difference to the page: the top views place the M1 circles on the centre line of the width, the generator offsets them to x = +-0.35 W (appearance). Correctly listed in not_guaranteed, and only the L1 spacing is checked."
+
+[[row]]
+id = 1010
+verdict = "agree"
+note = "The M1 x offset and the mid-length M2 hole on the long type are not printed; the figures show the M1 holes on the width centre line, so the offset is a stated appearance choice, listed in not_guaranteed."
+
+[[row]]
+id = 1011
+verdict = "agree"
+note = "E, F, P, l2 values verified. Placement: the double and long top views show the dowel holes on the width centre line E apart along L, as built. For the single housing the page shows the two red circles of the top view F/2 either side of the centre line at mid-length and, separately, red circles E apart along L in the side view; the diagonal pair (-F/2, -E/2), (F/2, E/2) is a synthesis of the two, not drawn on the page. E apart along L and F apart across W are each printed, but their combination on one pair is not; approximate, listed in not_guaranteed. Caveat for the owner: the check asserts both E and F on that pair."

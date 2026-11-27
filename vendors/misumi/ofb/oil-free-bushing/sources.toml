@@ -1,0 +1,176 @@
+# Where every number of this generator comes from. One [[source]] per vendor document, one [[dimension]] per cited item.
+# status: labelled / published = printed in the catalogue; measured = read from the vertex coordinates of the published vector
+# drawing; derived = computed from labelled numbers; approximate = an estimate (appearance or an illustration choice); none.
+# source = [] is allowed only for approximate / none rows.
+
+[meta]
+clean_room = "Clean-room: only public catalogue pages from the manufacturer's own site. No vendor CAD (STEP/IGES/...) was downloaded or used, no other CAD program or generator was consulted. Where a value is not printed as a number, the table says how it was obtained."
+
+[[source]]
+id = "S16"
+catalogue = "MISUMI Economy Series catalogue 2025, Oil Free Bushings: \"Copper Alloy, Straight I.D.F7/O.D.m6 / Shouldered I.D.E7/O.D.r6\" (04-129), \"Copper Alloy Flanged I.D.F7/O.D.h7\" (04-130), \"Copper Alloy Thrust Type\" (04-131), \"Special Brass Oil Free Bushings Straight / Shouldered\" (04-134), \"Round Flanged / Compact Flanged\" (04-135); overview p.512 (04-127) for the chamfer note"
+url = "https://th.c.misumi-ec.com/book/THA_EconomySeries_e-catalog2025/files/basic-html/page514.html to page520.html (page images files/mobile/514.jpg to 520.jpg)"
+pages = "p.514 to p.516, p.519 and p.520 (and p.512 for the chamfer note)"
+
+[[dimension]]
+id = 1300
+item = "Types C-MUBZ / C-MUBZU (straight, standard / thin wall), C-MUFZ / C-MUFZU (shouldered), C-MUTZ (round flanged), C-MUTSZ (square flanged), C-MUTNZ (compact flanged), E-MUGZ (thrust), E-SHBZ (straight), E-SHFZ (shouldered), E-SHTZ (round flanged), E-SHTNZ (compact flanged); materials high tensile brass alloy with embedded solid lubricant (C-MU.., E-MUGZ) and special brass (E-SH..); ordering code <type><d>-<L>"
+value = ""
+source = ["S16"]
+source_text = "S16 p.514, p.515, p.516, p.519, p.520 type tables and ordering examples"
+page = "p.514, p.515, p.516, p.519, p.520 type tables and ordering examples"
+status = "published"
+note = "published; the catalogue's own examples C-MUFZ5-10, C-MUTNZ6-15, E-SHBZ10-12, E-SHFZ8-10, E-SHTZ25-35, E-SHTNZ10-25, E-MUGZ10-15 are in codes.txt"
+
+[[dimension]]
+id = 1301
+item = "Copper alloy straight C-MUBZ / C-MUBZU, d 5-100 (25 sizes) with bore tolerance F7, O.D. Dm6 (standard and thin wall), wall thickness N and the offered L (bracketed L standard only, L with * thin wall only)"
+value = ""
+source = ["S16"]
+source_text = "S16 p.514 straight table"
+page = "p.514 straight table"
+status = "published"
+note = "published; the stopper screw sizes (M4x8 ... M8x16) are printed as reference and are not drawn"
+
+[[dimension]]
+id = 1302
+item = "Copper alloy shouldered C-MUFZ / C-MUFZU, d 5-100 (21 sizes) with bore tolerance E7, O.D. Dr6, wall N, flange H and t (standard and thin wall, thin d 5-30 without 18) and the offered L"
+value = ""
+source = ["S16"]
+source_text = "S16 p.514 shouldered table"
+page = "p.514 shouldered table"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 1303
+item = "Copper alloy flanged C-MUTZ / C-MUTSZ / C-MUTNZ, d 6-50 (12 sizes) with bore tolerance F7, O.D. Dh7, H, T, t, d1, d2, P.C.D., W (square), F and A (compact), applicable screw, and the offered L (bracketed L round and compact only)"
+value = ""
+source = ["S16"]
+source_text = "S16 p.515 table"
+page = "p.515 table"
+status = "published"
+note = "published; F printed from d 16 only (a dash for d 6-13)"
+
+[[dimension]]
+id = 1304
+item = "Copper alloy thrust E-MUGZ, d 6-50 (13 sizes) with bore tolerance E7, O.D. Dr6, flange H and t, and the offered L"
+value = ""
+source = ["S16"]
+source_text = "S16 p.516 E-MUGZ table"
+page = "p.516 E-MUGZ table"
+status = "published"
+note = "published; the countersunk and low-head-screw variants E-MUSZ / E-MUKZ on the same page are not generated"
+
+[[dimension]]
+id = 1305
+item = "Special brass straight E-SHBZ and shouldered E-SHFZ, d 5-30 (11 sizes) with bore tolerance F7 / E7, O.D. Dm6 / Dr6, wall N, flange H and t, the recommended housing diameter and the offered L"
+value = ""
+source = ["S16"]
+source_text = "S16 p.519 tables"
+page = "p.519 tables"
+status = "published"
+note = "published; the housing diameter and the stopper screw are recommended values and are not drawn"
+
+[[dimension]]
+id = 1306
+item = "Special brass round flanged E-SHTZ and compact flanged E-SHTNZ, d 6-30 (8 sizes) with bore tolerance F7, O.D. Dh7, H, T, t, d1, d2, P.C.D., F, A, applicable screw and the offered L"
+value = ""
+source = ["S16"]
+source_text = "S16 p.520 tables"
+page = "p.520 tables"
+status = "published"
+note = "published; the geometry columns equal the copper alloy flanged table for the same d"
+
+[[dimension]]
+id = 1307
+item = "Tolerances of overall length L (-0.1 / -0.3), flange thickness T (0 / -0.1) and thrust flange t (0 / -0.03)"
+value = ""
+source = ["S16"]
+source_text = "S16 p.514, p.515, p.516, p.519, p.520 figures"
+page = "p.514, p.515, p.516, p.519, p.520 figures"
+status = "published"
+note = "published; written into the part description, not drawn"
+
+[[dimension]]
+id = 1308
+item = "Overall length L is measured from the outer flange face (or the barrel end of a straight bushing) and includes the flange"
+value = ""
+source = ["S16"]
+source_text = "S16 p.514, p.515, p.519, p.520 figures"
+page = "p.514, p.515, p.519, p.520 figures"
+status = "published"
+note = "published figure: the L, T and t dimension lines start at the flange face"
+
+[[dimension]]
+id = 1309
+item = "Compact flange: two flats D + 6 apart, A along the long axis, F across (d 16 and up), end arcs on the circle H"
+value = ""
+source = ["S16"]
+source_text = "S16 p.515, p.520 figures"
+page = "p.515, p.520 figures"
+status = "published"
+note = "published figure (D+6, A, F printed); that the ends are arcs of the circle H is read from the figure"
+
+[[dimension]]
+id = 1310
+item = "Mounting holes: round and compact flanges 2 holes for d 6-13 and 4 holes for d 16 and up, square flange 4 holes for every d"
+value = ""
+source = ["S16"]
+source_text = "S16 p.515, p.520 figures"
+page = "p.515, p.520 figures"
+status = "published"
+note = "published figure labels (2-Mounting Holes d=6~13, 4-Mounting Holes d=16~50)"
+
+[[dimension]]
+id = 1311
+item = "Counterbored holes are drilled from the outer flange face (screw heads away from the barrel): counterbore d2 x t deep, through hole d1"
+value = ""
+source = ["S16"]
+source_text = "S16 p.515 section figure"
+page = "p.515 section figure"
+status = "approximate"
+note = "approximate: read from the section view, where the head pocket is at the outer face"
+
+[[dimension]]
+id = 1312
+item = "Round flange holes on the P.C.D. on the Z axis (2 holes) or on both axes (4 holes); square flange standing on its corner (holes and corners on the axes, W across flats, clipped by the circle H); compact flange long axis along Z"
+value = ""
+source = ["S16"]
+source_text = "S16 p.515 figures"
+page = "p.515 figures"
+status = "approximate"
+note = "approximate: orientation and corner clipping are illustration choices read from the figure"
+
+[[dimension]]
+id = 1313
+item = "Solid lubricant plugs / graphite inserts and any grooves (appearance, approximate)"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate: not drawn; the catalogue gives no dimensions for them"
+
+[[dimension]]
+id = 1314
+item = "Chamfers and edge breaks (R chamfer mentioned on p.512, no dimension printed), rotation stopper screw hole, housing and screws (appearance, approximate)"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate: not drawn"
+
+[[dimension]]
+id = 1315
+item = "Bore drawn as a plain cylinder at the nominal d; O.D. drawn at the nominal D (class m6 / r6 / h7 only named)"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate: no numeric O.D. deviation is printed, only the ISO class; bore tolerance numbers are printed and echoed in the description"
+
+[[note]]
+text = "Source count for this family: S16 16 rows (1300-1315): 11 published, 5 approximate. Not covered: the countersunk and low-head-screw thrust types E-MUSZ / E-MUKZ (p.516), the centre and pilot flanged types (p.517), the resin bushings (p.521-p.523), the special material overview, the bushing housing units from p.524, and load, speed and wear data."

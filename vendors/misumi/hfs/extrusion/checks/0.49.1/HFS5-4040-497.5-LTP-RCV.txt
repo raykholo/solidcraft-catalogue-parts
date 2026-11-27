@@ -1,0 +1,30 @@
+== HFS5-4040-497.5-LTP-RCV
+PASS  one closed body                                          spec         1  got          1           [S1 p.530]
+PASS  overall width (Y)                                        spec        40  got    40.0000  +-0.005  [S1 p.530 '40']
+PASS  overall height (Z)                                       spec        40  got    40.0000  +-0.005  [S1 p.530 '40']
+PASS  length (X)                                               spec     497.5  got   497.5000  +-0.005  [S1 p.530 L range] spec tol +-0.5
+PASS  slot mouth width                                         spec         6  got     6.0000  +-0.005  [S1 p.530 '6']
+PASS  slot cavity width                                        spec        12  got    12.0000  +-0.005  [S1 p.530 '12']
+PASS  lip thickness                                            spec         2  got     2.0000  +-0.005  [S1 p.530 '2']
+PASS  bore block width (slot floor to inner face)              spec         8  got     8.0000  +-0.005  [S1 p.530 '8']
+PASS  web thickness (flank to void)                            spec       1.5  got     1.5000  +-0.005  [S1 p.530 '1.5']
+PASS  slot depth (outer face to floor)                         spec         6  got     6.0000  +-0.005  [S1 p.530 depth '6']
+PASS  cross-section area vs drawing                            spec       476  got   476.0131  +-0.01   [S1 p.530 drawing] area from the dimensions
+PASS  cross-section area vs published 472                      spec       472  got   476.0131  +-7.08   [S1 p.530 table] published value rounded; 1.5% band
+PASS  moment of inertia (smaller) of the outline vs published  spec  8.89e+04  got 89054.2954  +-3556   [S1 p.530 table] derived from the dimensions, not measured
+PASS  moment of inertia (larger) of the outline vs published   spec  8.89e+04  got 89054.2954  +-3556   [S1 p.530 table] derived from the dimensions, not measured
+PASS  bore O4.2 at (-10, -10)                                  spec       yes  got        yes           [S1 p.530]
+PASS  bore O4.2 at (-10, 10)                                   spec       yes  got        yes           [S1 p.530]
+PASS  bore O4.2 at (10, -10)                                   spec       yes  got        yes           [S1 p.530]
+PASS  bore O4.2 at (10, 10)                                    spec       yes  got        yes           [S1 p.530]
+PASS  bores O4.2 (count)                                       spec         4  got          4           [S1 p.530]
+PASS  outer corners R1 (count)                                 spec         4  got          4           [S1 p.530] '4-R1'
+PASS  lip-tip rounds R0.3 (count)                              spec      >=16  got         16           [S1 p.530 drawing] measured
+PASS  tap L: M5 threads present                                spec         4  got          4           [S2 p.757] 4 tapped hole(s) per end
+PASS  tap L: depth                                             spec        15  got    15.0000  +-0.01   [S2 p.757 'M5 Depth 15']
+PASS  wrench R: diameter                                       spec      7.35  got     7.3500  +-0.001  [S3 p.759 'd']
+PASS  wrench R: hole count                                     spec         1  got          1           [S3 p.759 rows]
+PASS  wrench R: hole 1 position                                spec     487.5  got   487.5000  +-0.005  [S3 p.759 H/J/K from the end]
+PASS  part number metadata                                     spec HFS5-4040-497.5-LTP-RCV  got HFS5-4040-497.5-LTP-RCV           [-]
+PASS  design part number                                       spec HFS5-4040-497.5-LTP-RCV  got HFS5-4040-497.5-LTP-RCV           [-]
+28/28 passed

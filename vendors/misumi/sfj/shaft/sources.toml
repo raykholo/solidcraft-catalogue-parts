@@ -1,0 +1,285 @@
+# Where every number of this generator comes from. One [[source]] per vendor document, one [[dimension]] per cited item.
+# status: labelled / published = printed in the catalogue; measured = read from the vertex coordinates of the published vector
+# drawing; derived = computed from labelled numbers; approximate = an estimate (appearance or an illustration choice); none.
+# source = [] is allowed only for approximate / none rows.
+
+[meta]
+clean_room = "Clean-room: only public catalogue pages and PDFs from the manufacturers' own sites. No vendor CAD (STEP/IGES/...) was downloaded or used, no other CAD program or generator was consulted. Where a value is not printed as a number, the table says how it was obtained. current web catalogue may differ; see \"Open questions\" in README.md."
+
+[[source]]
+id = "S8"
+catalogue = "MISUMI Economy Series catalogue 2025, \"Linear Shafts Straight\" (04-047) and \"Linear Shafts One End Tapped\" (04-048)"
+url = "https://th.c.misumi-ec.com/book/THA_EconomySeries_e-catalog2025/files/basic-html/page432.html and page433.html (page images files/mobile/432.jpg, 433.jpg)"
+pages = "p.432, p.433"
+
+[[source]]
+id = "S30"
+catalogue = "MISUMI Economy Series catalogue 2025, \"Linear Shafts One End Tapped with Wrench Slot\" (04-049), \"Both Ends Tapped with Wrench Flat\" (04-050), \"Both Ends Tapped\" (04-051), \"One End Stepped and Tapped with Wrench Flats\" (04-052), \"Both Ends Stepped, Both Ends Tapped with Wrench Flats\" (04-053)"
+url = "https://th.c.misumi-ec.com/book/THA_EconomySeries_e-catalog2025/files/basic-html/page434.html to page438.html (page images files/mobile/434.jpg to 438.jpg)"
+pages = "p.434-p.438"
+
+[[dimension]]
+id = 89
+item = "Types E-SFJ, E-SSFJ, E-PSFJ, E-PSSFJ (D tolerance g7) and E-PSFG (f8), with material, hardness and surface treatment; T suffix = one end tapped"
+value = ""
+source = ["S8"]
+source_text = "S8 p.432 type table, p.433"
+page = "p.432 type table, p.433"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 90
+item = "D tolerance g7 per diameter (3: -0.002/-0.012 ... 35-50: -0.009/-0.034) for D 3, 4, 5, 6, 8, 10, 12, 13, 15, 16, 20, 25, 30, 35, 40, 50"
+value = ""
+source = ["S8"]
+source_text = "S8 p.432 spec table"
+page = "p.432 spec table"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 91
+item = "D tolerance f8 per diameter (6: -0.010/-0.028 ... 20-30: -0.020/-0.053), E-PSFG D 6-30 only"
+value = ""
+source = ["S8"]
+source_text = "S8 p.432"
+page = "p.432"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 92
+item = "Length range per diameter, g7 and f8 columns (e.g. D6: 20-800, D12: 20-1200 / 15-1200, D50: 65-1500)"
+value = ""
+source = ["S8"]
+source_text = "S8 p.432"
+page = "p.432"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 93
+item = "L in 1 mm steps; LKC: 0.1 mm steps and tolerance L+-0.03 (L<200), +-0.05 (200<=L<500), +-0.1 (L>=500)"
+value = ""
+source = ["S8"]
+source_text = "S8 p.432"
+page = "p.432"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 94
+item = "O.D. 35, 40, 50 only E-PSFJ; O.D. 3, 4, 5 not E-PSFG"
+value = ""
+source = ["S8"]
+source_text = "S8 p.432 notes"
+page = "p.432 notes"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 95
+item = "One end tapped: coarse M selection per D (D4: M2 ... D50: M10-M30), L range per D, thread depth \"M x 2\""
+value = ""
+source = ["S8"]
+source_text = "S8 p.433 table and figure"
+page = "p.433 table and figure"
+status = "published"
+note = "published (D35's list: a seventh value is printed but not legible in the page image; not accepted)"
+
+[[dimension]]
+id = 96
+item = "Which end is tapped"
+value = ""
+source = ["S8"]
+source_text = "S8 p.433 figure"
+page = "p.433 figure"
+status = "approximate"
+note = "approximate: the figure shows the left end; the text does not say"
+
+[[dimension]]
+id = 97
+item = "SC / WSC wrench flats: width across flats W and flat length l1 per D (D6: 5 / 8 ... D10: 8 / 8, D12: 10 / 10 ... D50: 41 / 20; l1 is 8 for D6-10, 10 for D12-25, 15 for D30-35, 20 for D40-50), D >= 6, SC = 0 or >= 1, SC + l1 <= L, WSC + X + 2 l1 < L, cannot combine SC with WSC"
+value = ""
+source = ["S8"]
+source_text = "S8 p.432"
+page = "p.432"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 98
+item = "FC / WFC flats: depth H by D (3-5: 0.5, 6-16: 1, 20-40: 2, 50: 3); FC <= 5 x D for D <= 30, \"FC >= 3 x D\" for D >= 35 (as printed, possibly a misprint for <=); 1.5 x D < FC needs FC <= L/2; A(E) = 0 or >= 2; FC not with WFC"
+value = ""
+source = ["S8"]
+source_text = "S8 p.432"
+page = "p.432"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 99
+item = "Second flat of WSC / WFC turned 90 degrees (\"orientation not coplanar\")"
+value = ""
+source = ["S8"]
+source_text = "S8 p.432 note"
+page = "p.432 note"
+status = "approximate"
+note = "approximate: the angle is not given"
+
+[[dimension]]
+id = 100
+item = "Shaft drawn as a plain cylinder at its nominal diameter, no end chamfer"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate: no chamfer is dimensioned; the tolerance goes into the description"
+
+[[dimension]]
+id = 101
+item = "Machined parts need more than 2 mm between them"
+value = ""
+source = ["S8"]
+source_text = "S8 p.432 note"
+page = "p.432 note"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 400
+item = "Types with the same material / hardness / surface as p.432: E-SFJC, E-SSFJC, E-PSFJC, E-PSSFJC (g7), E-PSFGC (f8) one end tapped with wrench slot; the Z types both ends tapped with wrench flat; the W types both ends tapped"
+value = ""
+source = ["S30"]
+source_text = "S30 p.434-436 type tables"
+page = "p.434-436 type tables"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 401
+item = "One end tapped with wrench slot (C): D 6-50, L range and coarse M selection per D (D6 20-800 M3 ... D50 65-1500 M12-M30); ordering code type-D-L-M-SC, SC mandatory; alterations LKC, FC, WFC, SX; O.D. 35, 40, 50 only E-PSFJC"
+value = ""
+source = ["S30"]
+source_text = "S30 p.434 table and ordering example"
+page = "p.434 table and ordering example"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 402
+item = "Both ends tapped with wrench flat (Z): D 6-50, L range (D6 25-600, D8-10 25-800, D12 20-1000, D13 25-1000, D15-20 30-1200, D25 35-1200, D30-35 35-1500, D40 50-1500, D50 65-1500) and coarse M / N selection; ordering code type-D-L-M-N-SC; overall length needs M x 2 + N x 2 <= L; alterations LKC, WSC, FC, WFC (WSC not with SC / SX)"
+value = ""
+source = ["S30"]
+source_text = "S30 p.435 table and ordering example"
+page = "p.435 table and ordering example"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 403
+item = "Both ends tapped (W): D 4-50 (D4, D5 only g7), L range (D4 20-300, D5 20-400, D6 20-800, D8-10 20-1000, D12 20-1200, D13-15 25-1200, D16-20 30-1200, D25 35-1200, D30-35 35-1500, D40 50-1500, D50 65-1500) and coarse M / N selection; ordering code type-D-L-M-N; M x 2 + N x 2 <= L; alterations LKC, SC, WSC, FC, WFC"
+value = ""
+source = ["S30"]
+source_text = "S30 p.436 table and ordering example"
+page = "p.436 table and ordering example"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 404
+item = "One end stepped and tapped with wrench flats (PG): types E-SFPG, E-SSFPG, E-PSFPG, E-PSSFPG (g7), D 8-30; L 25-998 (D8-10) / 25-1198 (D12-25) / 25-1498 (D30); step length 2 <= F <= P x 4; step diameter P (6 for D8, 6-8 D10, 6-10 D12, 6-11 D13, 6-13 D15, 6-14 D16, 8-17 D20, 8-22 D25, 9-27 D30); coarse M selection per D; overall length (Y) maximum 800 / 1000 / 1200 / 1500; ordering code type-D-L-F-P-M-SC"
+value = ""
+source = ["S30"]
+source_text = "S30 p.437 table and ordering example"
+page = "p.437 table and ordering example"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 405
+item = "Both ends stepped, both ends tapped with wrench flats (PH): types E-SFPH, E-SSFPH, E-PSFPH, E-PSSFPH (g7) and E-PFPGH (f8), D 8-30; L 25-996 / 25-1196 / 25-1496; 2 <= F, T <= P x 4; same P ranges, M selection and (Y) maxima as p.437; ordering code type-D-L-F-P-M-T-SC"
+value = ""
+source = ["S30"]
+source_text = "S30 p.438 table and ordering example"
+page = "p.438 table and ordering example"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 406
+item = "Wrench flat dimensions W and l1 per D (same table as p.432) and SC = 1 mm increments, SC >= 0, SC + l1 <= L; SX second set: SC + SX + 2 x l1 < L, SX >= 0, second set not coplanar"
+value = ""
+source = ["S30"]
+source_text = "S30 p.434, p.435, p.437, p.438 wrench flat tables"
+page = "p.434, p.435, p.437, p.438 wrench flat tables"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 407
+item = "Alterations of the stepped PG type: LKC (not when D - P <= 2), FC (E datum only, FC10-E8), WFC10-A8-E10, SX, LFC10-A0 (set screw flat on the stepped part, LFC + A <= F, depth h by P: 6-16 1 mm, 20-40 2 mm, 41~ 2 mm), MD (effective tap length M x 3, D 12-30 and M 6-20, MD x 3.5 + 4 <= L)"
+value = ""
+source = ["S30"]
+source_text = "S30 p.437 alteration tables"
+page = "p.437 alteration tables"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 408
+item = "FC / WFC / LKC rules on the tapped types (C, Z, W): FC <= 5 x D for D <= 30, 1.5 x D < FC needs FC <= L/2, A(E) = 0 or >= 2, FC not with WFC, machined parts more than 2 mm apart; LKC tolerance L+-0.03 / 0.05 / 0.1 and 0.1 mm steps"
+value = ""
+source = ["S30"]
+source_text = "S30 p.434-437 alteration tables"
+page = "p.434-437 alteration tables"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 409
+item = "Tap on the left (M) and the right (N) end, steps on the left (F) and right (T) end, as drawn in the page figures; the wrench flats are measured from the left end of the main body (the shoulder of a stepped shaft); the text does not say how the figures' datums are chosen"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate: the figures show the arrangement; the dimension datums for FC / WFC / SC on a stepped shaft follow the figure"
+
+[[dimension]]
+id = 410
+item = "Step diameter P drawn at its nominal value; its g7 tolerance is printed but no limits are given for P"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate: no P tolerance table is printed"
+
+[[dimension]]
+id = 411
+item = "Both-ends-tapped wrench flat type Z: WSC (two flats) is offered in place of the mandatory SC; the page says WSC is not available together with SC / SX, so WSC is read as an alternative to SC"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate: interpretation of the page"
+
+[[dimension]]
+id = 412
+item = "The end chamfers drawn in the figure of p.436 (both ends tapped) are not drawn: no chamfer is dimensioned"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate: no chamfer is dimensioned"
+
+[[note]]
+text = "Source count for family 3: 13 rows (89-101): 10 published, 3 approximate; one new document (S8). Not covered: other end options of the full catalogue (keyway, external thread; two-sided tap and stepped shafts are source S30), the older g6 \"SFJ\" series of the 2014 FA catalogue (not read; codes without the E- prefix are refused)."
+
+[[note]]
+text = "Pages p.434-p.438 (source S30), dimension ids 400-412: 9 published, 4 approximate. Not covered on these pages: nothing printed is left out except the pages' per-part-number web size lists; the pages say to refer to the website for the most up-to-date size range."

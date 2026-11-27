@@ -1,0 +1,56 @@
+id = "hiwin.hg.guideway"
+name = "HIWIN HG heavy-load linear guideway: rail, block or rail with blocks"
+version = "0.1.0"
+kind = "generator"
+min_host_version = "0.49.1"
+preview_code = "HGH20CA2R1000ZAH"
+
+[entry]
+build  = "build:parse_build"
+check  = "check:check"
+shots  = "shots"
+
+[declares]
+labels   = ["Linear guideway", "Linear rail", "HG rail", "HG block", "HGH", "HGW", "HGR"]
+keywords = ["heavy load guideway", "ball type linear guide", "flange block", "carriage"]
+vendor   = "HIWIN"
+
+[[declares.matches]]
+id         = "hg-set"
+generator  = "guideway"
+pattern    = '^HG(?P<kind>[HW])\s*(?P<size>15|20|25|30|35|45|55|65)\s*(?P<load>[CH])\s*(?P<mount>[ABC])\s*E?\s*(?P<blocks>\d+)\s*(?P<rm>[RT])\s*(?P<length>\d+(?:\.\d+)?)'
+flags      = "i"
+confidence = "exact"
+params     = { series = "HG{kind}", size = "{size}", load = "{load}", mount = "{mount}", blocks = "{blocks}", length_mm = "{length}" }
+examples          = ["HGH20CA2R1000ZAH", "HGW25CC1R640ZAP", "HGH65HA1R1270"]
+negative_examples = ["HGH20CA", "HGR15R160M", "HGH20CA2", "HG20"]
+
+[[declares.matches]]
+id         = "hg-block"
+generator  = "guideway"
+pattern    = '^HG(?P<kind>[HW])\s*(?P<size>15|20|25|30|35|45|55|65)\s*(?P<load>[CH])\s*(?P<mount>[ABC])\s*E?\s*(?:Z0|ZA)?\s*(?:[CHP])?\s*M?\s*$'
+flags      = "i"
+confidence = "exact"
+params     = { series = "HG{kind}", size = "{size}", load = "{load}", mount = "{mount}" }
+examples          = ["HGW45CB", "HGH20CA"]
+negative_examples = ["HGH20CA2R1000ZAH", "HGR15R160M", "HGH20", "HGW45"]
+
+[[declares.matches]]
+id         = "hg-rail"
+generator  = "guideway"
+pattern    = '^HGR\s*(?P<size>15|20|25|30|35|45|55|65)\s*(?P<rm>[RT])\s*(?P<length>\d+(?:\.\d+)?)'
+flags      = "i"
+confidence = "exact"
+params     = { size = "{size}", length_mm = "{length}" }
+examples          = ["HGR15R160M", "HGR25T640", "HGR20R1000"]
+negative_examples = ["HGR15", "HGH20CA", "HGR99R100"]
+
+[inputs]
+series = { choices = ["HGH", "HGW", "HGR"] }
+size = { choices = ["15", "20", "25", "30", "35", "45", "55", "65"] }
+load = { choices = ["C", "H"] }
+mount = { choices = ["A", "B", "C"] }
+length_mm = { min = 40, max = 4000 }
+
+[guarantee]
+not_guaranteed = ["The whole body shape: rails and blocks are the catalogue envelopes (WR x HR rail; W x L1 x (H - H1) steel block body with the rail channel cut out, end caps and seals to the length L); the ball grooves and the flange outline are not published as dimensions", "HGW-CB through holes are drilled through the whole envelope height (the flange thickness is not published)", "The 10 mm gap between neighbouring blocks (illustration)", "Rail top chamfers and the two side ball grooves (circular approximations), block top chamfers, the end cap / end seal split of (L - L1) / 2 with its 0.5 mm inset and black plastic, and the brass grease nipple (appearance bodies and features named (appearance, approximate))", "Rail screws (HGR-R): SolidCraft's ISO 4762 standard part of the catalogue bolt size", "Materials and PBR looks of every body (ground top and raceway faces, satin body, plastics, brass, black oxide): SolidCraft appearance-library entries, black oxide with its own pbr"]

@@ -1,0 +1,50 @@
+# Codes CI builds and checks. `CODE [option ...]` = valid (built, then every dimension checked); `!CODE  # why` = must be rejected with a message.
+
+C-SCSAW6-8
+C-SCSAW12-10
+C-SCSAW30-15
+C-SCNPAW6-8
+C-SCNPAW16-12
+C-SCNPAW25-15
+C-SCSMAW8-8
+C-SCSMAW20-15
+C-SCSMAW30-15
+C-SCSGAW8-10
+C-SCSGAW12-10
+C-SCSGAW30-15
+C-SCSBNAW6-9
+C-SCSBNAW12-16
+C-SCSBNAW30-35
+E-SCSPD6
+E-SCSPD13
+E-PSCSPD20
+E-SSCSPD25
+E-SCSPD30
+E-PSCD4
+E-SCD12
+E-SSCD16
+E-PSCD35
+E-SCD50
+E-SCDJ8-10
+E-SCDJ12-10
+E-PSCDJ20-13
+E-SSCDJ30-15
+E-SCDJ40-15
+!C-SCSAW7-10  # D7 is not in the slit type table (D 6, 8, 10, 12, 15, 16, 20, 25, 30)
+!C-SCSAW6-15  # width 15 is not offered for D6 (B 8 or 10)
+!C-SCNPAW6-10  # the split type is offered for D6 only in width 8 (p.544)
+!C-SCSMAW6-8  # the 2 through fixing holes type starts at D8 (p.545)
+!C-SCSGAW10-8  # D10 counterbored is offered in B 10 and 12, not 8 (p.545)
+!C-SCSAW12  # the width is missing: <type><D>-<B>
+!C-SCSBNAW12-10  # the bearing inner mount collar is ordered with its selection Ds (D12 -> Ds16), not a width (p.546)
+!C-SCSBNAW7-9  # D7 is not in the bearing inner mount table (D 6, 8, 10, 12, 15, 20, 25, 30)
+!E-SCSPD7  # D7 is not in the compact split table (D 6, 8, 10, 12, 13, 15, 16, 20, 25, 30)
+!E-SSCSPD6  # stainless steel compact split is only available for D 15, 16, 20 and 25 (p.546 note)
+!E-SCSPD6-10  # the compact split type has no width suffix
+!E-SCD4  # for D4 only the electroless nickel plated E-PSCD4 is available (p.547 note)
+!E-SSCD13  # stainless steel standard slit is only available for the * marked D (p.547)
+!E-SCD45  # D45 is not in the standard slit table (D 4, 5, 6, 8, 10, 12, 13, 15, 16, 20, 25, 30, 35, 40, 50)
+!E-SCDJ12  # the compact slit type needs the width selection B: E-SCDJ12-10
+!E-SCDJ12-12  # D12 compact slit is offered in B 10 only (p.547 B selection)
+!E-SSCDJ25-15  # D25 compact slit is not available in stainless steel (p.547 note)
+!E-XSCD12  # not a MISUMI type prefix (E-SCD, E-PSCD, E-SSCD)

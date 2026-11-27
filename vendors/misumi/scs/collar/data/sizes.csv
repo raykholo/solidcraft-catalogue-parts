@@ -1,0 +1,62 @@
+type,D,B,D1,M,P,S,d1,d2,t,source,page,status
+C-SCSAW,6,8,20,M3,,,,,,S20,p.544 slit type table,labelled
+C-SCSAW,6,10,20,M4,,,,,,S20,p.544 slit type table,labelled
+C-SCSAW,8,8,25,M3,,,,,,S20,p.544 slit type table,labelled
+C-SCSAW,8,10,25,M4,,,,,,S20,p.544 slit type table,labelled
+C-SCSAW,10,8,30,M3,,,,,,S20,p.544 slit type table,labelled
+C-SCSAW,10,10,30,M4,,,,,,S20,p.544 slit type table,labelled
+C-SCSAW,12,8,30,M3,,,,,,S20,p.544 slit type table,labelled
+C-SCSAW,12,10,30,M4,,,,,,S20,p.544 slit type table,labelled
+C-SCSAW,15,10,34,M4,,,,,,S20,p.544 slit type table,labelled
+C-SCSAW,15,12,35,M5,,,,,,S20,p.544 slit type table,labelled
+C-SCSAW,16,10,35,M5,,,,,,S20,p.544 slit type table,labelled
+C-SCSAW,16,12,35,M5,,,,,,S20,p.544 slit type table,labelled
+C-SCSAW,20,12,40,M5,,,,,,S20,p.544 slit type table,labelled
+C-SCSAW,20,15,45,M6,,,,,,S20,p.544 slit type table,labelled
+C-SCSAW,25,12,45,M5,,,,,,S20,p.544 slit type table,labelled
+C-SCSAW,25,15,50,M6,,,,,,S20,p.544 slit type table,labelled
+C-SCSAW,30,15,55,M6,,,,,,S20,p.544 slit type table,labelled
+C-SCNPAW,6,8,20,M3,,,,,,S20,p.544 split type table,labelled
+C-SCNPAW,8,8,25,M3,,,,,,S20,p.544 split type table,labelled
+C-SCNPAW,8,10,25,M4,,,,,,S20,p.544 split type table,labelled
+C-SCNPAW,10,8,30,M3,,,,,,S20,p.544 split type table,labelled
+C-SCNPAW,10,10,30,M4,,,,,,S20,p.544 split type table,labelled
+C-SCNPAW,12,8,30,M3,,,,,,S20,p.544 split type table,labelled
+C-SCNPAW,12,10,30,M4,,,,,,S20,p.544 split type table,labelled
+C-SCNPAW,15,10,34,M4,,,,,,S20,p.544 split type table,labelled
+C-SCNPAW,15,12,35,M5,,,,,,S20,p.544 split type table,labelled
+C-SCNPAW,16,10,35,M5,,,,,,S20,p.544 split type table,labelled
+C-SCNPAW,16,12,35,M5,,,,,,S20,p.544 split type table,labelled
+C-SCNPAW,20,12,40,M5,,,,,,S20,p.544 split type table,labelled
+C-SCNPAW,20,15,45,M6,,,,,,S20,p.544 split type table,labelled
+C-SCNPAW,25,12,45,M5,,,,,,S20,p.544 split type table,labelled
+C-SCNPAW,25,15,50,M6,,,,,,S20,p.544 split type table,labelled
+C-SCNPAW,30,15,55,M6,,,,,,S20,p.544 split type table,labelled
+C-SCSMAW,8,8,25,M3,14,3.5,,,,S20,p.545 2 through fixing holes table,labelled
+C-SCSMAW,8,10,25,M4,18,4.5,,,,S20,p.545 2 through fixing holes table,labelled
+C-SCSMAW,10,10,30,M4,20,5.5,,,,S20,p.545 2 through fixing holes table,labelled
+C-SCSMAW,10,12,30,M5,20,5.5,,,,S20,p.545 2 through fixing holes table,labelled
+C-SCSMAW,12,10,30,M4,22,5.5,,,,S20,p.545 2 through fixing holes table,labelled
+C-SCSMAW,12,12,30,M5,22,5.5,,,,S20,p.545 2 through fixing holes table,labelled
+C-SCSMAW,15,10,34,M4,23,4.5,,,,S20,p.545 2 through fixing holes table,labelled
+C-SCSMAW,15,12,35,M5,26,5.5,,,,S20,p.545 2 through fixing holes table,labelled
+C-SCSMAW,16,10,35,M5,24,4.5,,,,S20,p.545 2 through fixing holes table,labelled
+C-SCSMAW,16,12,35,M5,26,5.5,,,,S20,p.545 2 through fixing holes table,labelled
+C-SCSMAW,20,12,40,M5,30,5.5,,,,S20,p.545 2 through fixing holes table,labelled
+C-SCSMAW,20,15,45,M6,34,6.6,,,,S20,p.545 2 through fixing holes table,labelled
+C-SCSMAW,25,12,45,M5,36,5.5,,,,S20,p.545 2 through fixing holes table,labelled
+C-SCSMAW,25,15,50,M6,38,6.6,,,,S20,p.545 2 through fixing holes table,labelled
+C-SCSMAW,30,15,55,M6,44,6.6,,,,S20,p.545 2 through fixing holes table,labelled
+C-SCSGAW,8,8,25,M3,17,,3.5,6.5,3.3,S20,p.545 2 counterbored fixing holes table,labelled
+C-SCSGAW,8,10,28,M4,18,,4.5,8,4.4,S20,p.545 2 counterbored fixing holes table,labelled
+C-SCSGAW,10,10,33,M4,22,,5.5,9.5,5.4,S20,p.545 2 counterbored fixing holes table,labelled
+C-SCSGAW,10,12,33,M5,22,,5.5,9.5,5.4,S20,p.545 2 counterbored fixing holes table,labelled
+C-SCSGAW,12,10,35,M4,24,,5.5,9.5,5.4,S20,p.545 2 counterbored fixing holes table,labelled
+C-SCSGAW,12,12,35,M5,24,,5.5,9.5,5.4,S20,p.545 2 counterbored fixing holes table,labelled
+C-SCSGAW,15,12,38,M5,27,,5.5,9.5,5.4,S20,p.545 2 counterbored fixing holes table,labelled
+C-SCSGAW,16,10,36,M5,26,,4.5,8,4.4,S20,p.545 2 counterbored fixing holes table,labelled
+C-SCSGAW,16,12,38,M5,28,,5.5,9.5,5.4,S20,p.545 2 counterbored fixing holes table,labelled
+C-SCSGAW,20,12,42,M5,32,,5.5,9.5,5.4,S20,p.545 2 counterbored fixing holes table,labelled
+C-SCSGAW,20,15,45,M6,33,,6.6,11,6.5,S20,p.545 2 counterbored fixing holes table,labelled
+C-SCSGAW,25,15,50,M6,38,,6.6,11,6.5,S20,p.545 2 counterbored fixing holes table,labelled
+C-SCSGAW,30,15,55,M6,43,,6.6,11,6.5,S20,p.545 2 counterbored fixing holes table,labelled

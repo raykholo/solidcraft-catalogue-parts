@@ -1,0 +1,4 @@
+name,value,unit,source,page,status
+thickness,5,mm,S40,p.539 and p.540 drawings (dimension 5),labelled
+relief_d,4.2,mm,S40,p.539 and p.540 drawings (O4.2),published
+relief_at,12,mm,S40,p.539 and p.540 drawings (dimension 12),published

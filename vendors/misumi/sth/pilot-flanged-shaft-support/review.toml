@@ -1,0 +1,57 @@
+reviewer_kind = "ai"
+reviewer = "AI review lane (Claude Sonnet), independent of the authoring lane"
+author = "AI authoring lanes (Claude)"
+date = "2026-11-27"
+commit = "e668352259b429cab18b1fe6abc034c09900619a"
+sources_hash = "sha256:744ab4a616de575a8f5d510947fdbd532bbb4c75b1596c2b3e345a70b9575eb6"
+method = "Downloaded the p.540 page image, enlarged the pilot flanged table and the three figures, re-read every cell of all 9 rows (D8-D40, 18 columns each) against dims.csv and types.csv; re-derived N = (D1 - D) / 2 in every row; checked the merged cells (T, B, d, S1, d1/d2/Y, M, tolerance bands); compared the modelled geometry (pilot T + flange T about the back face, groove S1 and ring B, slit S, clamp screw at X / B/2, round holes on P at 90 degrees, compact W x H with F x P1 holes) with the figures; checked codes.txt against the page (the type column is one merged cell, so both types exist for all nine sizes) and added the missing E-STHWICB15. No dimension value needed correcting; tools/check passes for every code including the new one."
+
+[[row]]
+id = 1700
+verdict = "agree"
+note = "p.540 type table: E-STHWIRB round flanged and E-STHWICB compact flanged; material general structural steel or carbon steel; surface treatment printed 'Stainless steel'; accessory 1 hex socket head cap screw; ordering example E-STHWIRB8."
+
+[[row]]
+id = 1701
+verdict = "agree"
+note = "p.540 DH8 column: 8, 10 +0.022/0; 12, 15, 16 +0.027/0; 20, 25, 30 +0.033/0; 40 +0.039/0. All nine sizes equal tol_upper/tol_lower in dims.csv."
+
+[[row]]
+id = 1702
+verdict = "agree"
+note = "p.540 L1 (23 25 28 33 36 40 46 50 67) and D1 (25 30 32 35 35 40 45 55 70) for D8-D40 compared cell by cell; equal. Figure shows L1 from the pilot end face to the sleeve end and D1 h8 on both pilot and sleeve."
+
+[[row]]
+id = 1703
+verdict = "agree"
+note = "p.540 H (39 49 52 56 56 64 69 79 104), T (5 5 6 6 6 8 8 10 12, merged cells resolved: 5 for D8-10, 6 for D12-16, 8 for D20-25) and W (27 32 34 37 37 42 47 57 76) compared; equal."
+
+[[row]]
+id = 1704
+verdict = "agree"
+note = "p.540 side figure: the bottom dimension line has T then T about the flange back face, L1 spans both plus the sleeve; the model has the pilot at z 0..T, the flange T..2T, the sleeve on to L1, and tools/check verifies both planes."
+
+[[row]]
+id = 1705
+verdict = "agree"
+note = "p.540 P (32 40 42 46 46 52 57 67 87), P1 (25 33 35 37 37 43 46 50 67), F (20 23 25 27 27 30 34 45 55), d (3.5 4.5 4.5 5.5 5.5 6.6 6.6 6.6 9; merged cells resolved) equal. Round figure: 4 holes on P on the axes with the slit at the top hole; compact figure: F in X and P1 in Y; the model matches."
+
+[[row]]
+id = 1706
+verdict = "agree"
+note = "p.540 B (10 10 10 12 12 12 15 15 18), S 1.5 all rows, S1 (1.5 for D8-16, 2 for D20-40; merged cells resolved), X (7.5 10 11 12 12 14 17 20 26), Y (3.5 3 4 5 5 6 6 10 13), d1 (7.5, 9 for D10-25, 12, 14), d2 (4.6, 5.6 for D10-25, 6.6, 9), M (M4, M5 for D10-25, M6, M8) equal. Figure: screw at B/2 from the sleeve end and height X, groove S1 before ring B; the model matches."
+
+[[row]]
+id = 1707
+verdict = "agree"
+note = "p.540 Thickness (N) column: 8.5 10 10 10 9.5 10 10 12.5 15; each equals (D1 - D) / 2, re-derived for all nine rows."
+
+[[row]]
+id = 1708
+verdict = "agree"
+note = "Groove depth, slit stub, screw side and compact corner radius are not dimensioned on p.540; correctly labelled appearance, approximate. The figures are consistent with the modelled choices."
+
+[[row]]
+id = 1709
+verdict = "agree"
+note = "Chamfering, the supplied screw, the numeric h8 tolerance of D1 and the numeric surface treatment are not given as values on p.540; not modelled."

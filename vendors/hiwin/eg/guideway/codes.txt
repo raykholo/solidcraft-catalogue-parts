@@ -1,0 +1,32 @@
+# Codes CI builds and checks. `CODE [option ...]` = valid (built, then every dimension checked); `!CODE  # why` = must be rejected with a message.
+
+EGH15SA1R280ZAC
+EGH15CA1R280ZBP
+EGH20CA2R1000ZAH
+EGH25SA2R460ZBP
+EGH30CA1R640Z0C
+EGH35CA1R840ZAP
+EGW15CB1R160
+EGW20SA1R220ZAC
+EGW25CA2R640ZAP
+EGW25SB1R340
+EGW30CA1R760ZAH
+EGW35CB2R1000ZBH
+EGW35SA
+EGW15CBZAP
+EGH20CA
+EGR15R160
+EGR20R1000
+EGR25R640
+EGR30R1000
+EGR35R840
+EGR15R160M
+!EGW35CA2R220  # two 108 mm blocks with the 10 mm gap do not fit on a 220 mm rail
+!EGH20CB  # EGH is mounted from the top only: EGH20CA (the catalogue lists EGH-SA / EGH-CA)
+!EGR20T640  # bottom-mounted rail: the catalogue prints no tapped-hole dimensions for it
+!EGR15R5000  # rail length 5000 mm above the maximum 4000 mm
+!EGR25R60  # rail length 60 mm below the catalogue minimum 100 mm
+!EGW20SA1R500  # rail length 500 leaves end distance 40.00 mm, above P/2 = 30 mm
+!EGW20SAM  # stainless steel exists for EG15C only
+!EGW25CAZB  # the interchangeable block form has preload Z0 or ZA only (p.45, p.49)
+!EGW25CA2R640ZAP+DD  # dust-protection code DD changes the block length, not drawn

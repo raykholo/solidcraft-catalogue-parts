@@ -1,0 +1,42 @@
+name: generator
+# On a pull request: the vendors/<vendor>/<series>/<generator>/ folders it touches (all of them when runtime/, schema/ or tools/ change).
+# On a push to main, or by hand: every generator.
+on:
+  pull_request:
+    paths: ["vendors/**", "runtime/**", "schema/**", "tools/**"]
+  push:
+    branches: [main]
+    paths: ["vendors/**", "runtime/**", "schema/**", "tools/**", ".github/workflows/generator.yml"]
+  workflow_dispatch:
+env:
+  SC_VER: "0.50.0"
+concurrency:
+  group: generator-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: SolidCraft CLI
+        # the official release tarball for $SC_VER (bin/solidcraft-cli inside)
+        run: |
+          gh release download "v${SC_VER}" --repo tangency-labs/solidcraft --pattern "solidcraft-${SC_VER}-linux-x86_64.tar.gz" --dir "$RUNNER_TEMP/sc"
+          tar -xzf "$RUNNER_TEMP/sc/solidcraft-${SC_VER}-linux-x86_64.tar.gz" -C "$RUNNER_TEMP/sc"
+          echo "SC_CLI=$RUNNER_TEMP/sc/solidcraft-${SC_VER}-linux-x86_64/bin/solidcraft-cli" >> "$GITHUB_ENV"
+        env: { GH_TOKEN: "${{ github.token }}" }
+      - name: Changed generators
+        id: changed
+        run: |
+          if [ "${{ github.event_name }}" != "pull_request" ]; then echo "dirs=" >> "$GITHUB_OUTPUT"; exit 0; fi
+          base=$(git merge-base origin/${{ github.base_ref }} HEAD)
+          if git diff --name-only "$base" HEAD | grep -qE '^(runtime|schema|tools)/'; then dirs=$(ls -d vendors/*/*/*/); else
+            dirs=$(git diff --name-only "$base" HEAD | grep -E '^vendors/[^/]+/[^/]+/[^/]+/' | cut -d/ -f1-4 | sort -u); fi
+          echo "dirs=$(echo $dirs)" >> "$GITHUB_OUTPUT"
+      - run: tools/check ${{ steps.changed.outputs.dirs }}
+      - run: tools/provenance --check
+      - run: tools/lint
+      - run: tools/build-index --check

@@ -1,0 +1,5 @@
+E-PSFG3-50	CodeError: E-PSFG has no D3: E-PSFG is listed for D 6-30 (p.432 note: D3, 4, 5 not applicable, 35/40/50 only E-PSFJ)
+E-SFJ6-5	CodeError: length 5 mm outside 20-800 mm for E-SFJ6 (p.432 table)
+E-SFJ6-900	CodeError: length 900 mm outside 20-800 mm for E-SFJ6 (p.432 table)
+E-SFJ6-20-WSC5	CodeError: WSC needs the distance between the two flats: WSC12-X8
+E-PSFJT6-20-M9	CodeError: M9 is not offered for D6 (coarse selection: M3)

@@ -1,0 +1,13 @@
+== E-SHBZ13-20
+PASS  one closed body                             spec         1  got          1           [S16]
+PASS  overall length L (X)                        spec        20  got    20.0000  +-0.005  [S16 p.519 L]
+PASS  outer extent (bbox Y)                       spec        19  got    19.0000  +-0.005  [S16 p.519 D]
+PASS  outer extent (bbox Z)                       spec        19  got    19.0000  +-0.005  [S16 p.519 D]
+PASS  outside cylinder D 19                       spec       yes  got        yes           [S16 p.519 D]
+PASS  bore cylinder d 13                          spec       yes  got        yes           [S16 p.519 d]
+PASS  wall thickness N = (D - d) / 2              spec         3  got     3.0000  +-1e-06  [S16 p.519 N] derived: the printed N, D and d agree
+PASS  tolerances written in the part description  spec       yes  got        yes           [S16 p.519] echoed, not drawn
+PASS  volume = pi/4 (D^2 - d^2) L                 spec      3016  got  3015.9289  +-0.567057 [derived]
+PASS  part number metadata                        spec E-SHBZ13-20  got E-SHBZ13-20           [-]
+PASS  design part number                          spec E-SHBZ13-20  got E-SHBZ13-20           [-]
+11/11 passed

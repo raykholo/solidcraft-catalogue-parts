@@ -1,0 +1,8 @@
+dr,D,D_tol,L,L_tol,dr_tol,source,page,status
+6,12,-0.011,16,-0.3,-0.01,S11,p.464 table,labelled
+8,15,-0.011,20,-0.3,-0.01,S11,p.464 table,labelled
+10,19,-0.016,25,-0.3,-0.012,S11,p.464 table,labelled
+12,21,-0.016,25,-0.3,-0.012,S11,p.464 table,labelled
+13,23,-0.018,25,-0.3,-0.015,S11,p.464 table,labelled
+16,28,-0.018,30,-0.3,-0.015,S11,p.464 table,labelled
+20,32,-0.02,35,-0.35,-0.018,S11,p.464 table,labelled

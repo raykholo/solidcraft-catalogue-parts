@@ -1,0 +1,14 @@
+== E-PSFJW6-50-M3-N3-LKC
+PASS  one closed body                            spec         1  got          1           [S30]
+PASS  length (X)                                 spec        50  got    50.0000  +-0.005  [S30 p.436 L] 1 mm steps, LKC L+-0.03
+PASS  diameter D (bbox Y)                        spec         6  got     6.0000  +-0.005  [S30 p.436 D6]
+PASS  diameter D (bbox Z)                        spec         6  got     6.0000  +-0.005  [S30 p.436 D6]
+PASS  cylinder face O6                           spec       yes  got        yes           [S30 p.436]
+PASS  D tolerance g7 upper/lower                 spec (-0.004, -0.016)  got (-0.004, -0.016)           [S8 p.432 spec table] echoed into the description
+PASS  tolerance written in the part description  spec       yes  got        yes           [S8 p.432]
+PASS  L inside the table range 20-800            spec       yes  got        yes           [S30 p.436]
+PASS  left end: M3 thread, depth 6, x 0..6       spec       yes  got        yes           [S30 p.436 M / N selection] tap depth M x 2 (MD: M x 3)
+PASS  right end: M3 thread, depth 6, x 44..50    spec       yes  got        yes           [S30 p.436 M / N selection] tap depth M x 2 (MD: M x 3)
+PASS  part number metadata                       spec E-PSFJW6-50-M3-N3-LKC  got E-PSFJW6-50-M3-N3-LKC           [-]
+PASS  design part number                         spec E-PSFJW6-50-M3-N3-LKC  got E-PSFJW6-50-M3-N3-LKC           [-]
+12/12 passed

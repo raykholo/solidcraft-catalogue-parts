@@ -1,0 +1,5 @@
+HGH15HA2R200	CodeError: HGH15HA is not in the catalogue table (HG15 has the heavy load C block only)
+HGW20HC1R500	CodeError: rail length 500 leaves end distance 40.00 mm, above P/2 = 30 mm (unstable rail end, p.38)
+HGH20CA1R10	CodeError: rail length 10 mm below 2 x Es = 40 mm
+HGR15R5000	CodeError: rail length 5000 mm above the maximum 4000 mm
+HGH20CB	CodeError: HGH is mounted from the top only: HGH20CA (the catalogue lists HGH-CA / HGH-HA)

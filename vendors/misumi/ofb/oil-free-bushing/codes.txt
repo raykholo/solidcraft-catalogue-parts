@@ -1,0 +1,47 @@
+# Codes CI builds and checks. `CODE [option ...]` = valid (built, then every dimension checked); `!CODE  # why` = must be rejected with a message.
+# S16: copper alloy straight / shouldered (p.514), flanged (p.515), thrust (p.516); special brass straight / shouldered (p.519), flanged (p.520)
+
+C-MUBZ5-10
+C-MUBZ20-30
+C-MUBZ100-100
+C-MUBZU35-15
+C-MUBZU12-20
+C-MUFZ5-10
+C-MUFZ100-100
+C-MUFZ18-20
+C-MUFZU30-30
+C-MUFZU12-15
+C-MUTZ6-10
+C-MUTZ16-30
+C-MUTZ50-100
+C-MUTSZ6-10
+C-MUTSZ16-40
+C-MUTSZ50-100
+C-MUTNZ6-15
+C-MUTNZ13-25
+C-MUTNZ30-70
+C-MUTNZ50-80
+E-MUGZ10-15
+E-MUGZ50-60
+E-SHBZ10-12
+E-SHBZ13-20
+E-SHFZ8-10
+E-SHFZ30-50
+E-SHTZ25-35
+E-SHTNZ10-25
+E-SHTNZ16-40
+!C-MUBZ5-20  # d 5 is offered in L 6* (thin only), 8, (9), 10, 12, (15): no L 20 (p.514)
+!C-MUBZ5-6  # L 6 for d 5 is marked * (thin wall type only); the standard wall type has no L 6
+!C-MUBZU5-9  # L 9 is bracketed: standard wall type only, not the thin wall type (p.514)
+!C-MUBZU32-30  # no thin wall version for d 32 (thin wall d 5-30, 35, 40, 50; p.514)
+!C-MUBZ110-100  # the straight type is offered up to d 100
+!C-MUFZU18-20  # no thin wall shouldered bushing for d 18 (p.514)
+!C-MUFZ14-10  # no d 14: the shouldered type is offered for d 5, 6, 8, 10, 12, 13, 15, 16, 18, 20, 25, 30, 35, 40, 45, 50, 60, 70, 80, 90, 100
+!C-MUTSZ6-15  # L 15 for d 6 is bracketed: round and compact flanged only, not the square flange (p.515)
+!C-MUTZ60-50  # flanged bushings are offered up to d 50 (p.515)
+!E-SHTZ35-40  # special brass flanged bushings are offered for d 6-30 only (p.520)
+!E-SHBZ32-30  # special brass straight bushings are offered for d 5-30 (p.519)
+!E-SHFZ18-20  # no d 18 in the special brass shouldered table (p.519)
+!E-MUGZ6-10  # d 6 is offered in L 12 only (p.516)
+!E-MUSZ10-15  # the countersunk thrust type is not generated
+!C-MUFZ10  # an ordering code needs <type><d>-<L>

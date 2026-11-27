@@ -1,0 +1,137 @@
+reviewer_kind = "ai"
+reviewer = "AI review lane (Claude Sonnet), independent of the authoring lane"
+author = "AI authoring lanes (Claude) for raykholo"
+date = "2026-11-26"
+commit = "03b87ed"
+sources_hash = "sha256:c548450b5e0d6b73de3d6fdb0cbb933a6869ab7f09b40686dcbf938b3bc79eb8"
+method = "Downloaded catalogue pages 432-438 (page images), enlarged each table, and re-read every dimension row cell by cell, including merged cells; compared item text and every CSV value; checked the codes.txt reject cases against the page rules; one correction made and tools/check re-run (all codes pass)."
+
+[[row]]
+id = 89
+verdict = "agree"
+note = "p.432 type table (5 types, materials, hardness, surface) and p.433 T types re-read; types.csv rows for all p.432-438 types match their pages."
+
+[[row]]
+id = 90
+verdict = "agree"
+note = "g7 limits for D3-50 compared cell by cell against p.432 and the tolerance columns of p.433-438 (diameters.csv)."
+
+[[row]]
+id = 91
+verdict = "agree"
+note = "f8 limits D6-30 compared with p.432; same values on p.433-436 and p.438."
+
+[[row]]
+id = 92
+verdict = "agree"
+note = "g7/f8 length ranges per D read cell by cell incl. merged cells (12:20, 13-15:25, 16-20:30, 25:35, 30-35:35-1500; f8 12-15:15-1200)."
+
+[[row]]
+id = 93
+verdict = "agree"
+note = "1 mm steps and LKC 0.1 mm / L+-0.03, 0.05, 0.1 on p.432 match params.csv."
+
+[[row]]
+id = 94
+verdict = "agree"
+note = "p.432 notes: O.D. 35, 40, 50 only E-PSFJ; O.D. 3, 4, 5 not E-PSFG."
+
+[[row]]
+id = 95
+verdict = "agree"
+note = "p.433 table: L ranges and coarse M lists for D4-50 match tap.csv; D35's seventh value is printed as a second 20 (likely a misprint for 30), not accepted, as the row says; thread depth M x 2 per figure."
+
+[[row]]
+id = 96
+verdict = "agree"
+note = "approximate row; p.433 figure draws the tap on the left end, text silent; the approximate label is right."
+
+[[row]]
+id = 97
+verdict = "corrected"
+note = "wrench.csv D10 l1 was 10 but p.432 (and the wrench tables on p.433-438) merge l1 = 8 over D6, 8 and 10, and 10 over D12-16; corrected D10 l1 10 -> 8, sources.toml text extended with the l1 bands. All other W / l1 values agree. SC rules (SC+l1<=L, SC=0 or >=1, WSC+X+2 l1<L, no SC with WSC, D>=6) agree."
+
+[[row]]
+id = 98
+verdict = "agree"
+note = "FC/WFC depth table (3-5:0.5, 6-16:1, 20-40:2, 50:3), D<=30 FC<=5D, D>=35 FC>=3D as printed, 1.5D<FC needs FC<=L/2, A(E)=0 or >=2, FC not with WFC all match p.432."
+
+[[row]]
+id = 99
+verdict = "agree"
+note = "approximate row; page says orientation of the set screw flats is not coplanar, no angle given."
+
+[[row]]
+id = 100
+verdict = "agree"
+note = "approximate row without source; no chamfer is dimensioned on the p.432 figure."
+
+[[row]]
+id = 101
+verdict = "agree"
+note = "p.432 footnote: machined parts spaced by more than 2 mm."
+
+[[row]]
+id = 400
+verdict = "agree"
+note = "p.434-436 type tables: C, Z, W types with the same material/hardness/surface as p.432, E-PSFGC/Z/W f8 rows present."
+
+[[row]]
+id = 401
+verdict = "agree"
+note = "p.434 table: D6-50, L ranges, coarse M (D50 12-30), ordering code type-D-L-M-SC, alterations LKC FC WFC SX, O.D. 35/40/50 only E-PSFJC match tap_jc.csv."
+
+[[row]]
+id = 402
+verdict = "agree"
+note = "p.435 table: L ranges (6:25-600, 8-10:25-800, 12:20-1000, 13:25-1000, 15-20:30-1200, 25:35-1200, ...) and M/N lists match tap_jz.csv; L requires M*2+N*2<=L; WSC not with SC/SX."
+
+[[row]]
+id = 403
+verdict = "agree"
+note = "p.436 table: D4-50 L ranges and M/N lists match tap_jw.csv; D4, D5 g7 only; ordering code type-D-L-M-N; alterations LKC SC WSC FC WFC."
+
+[[row]]
+id = 404
+verdict = "agree"
+note = "p.437 table: types, D8-30, L 25-998/1198/1498, F range, P ranges, M lists, (Y) max 800/1000/1200/1500 match stepped_pg.csv; ordering code type-D-L-F-P-M-SC."
+
+[[row]]
+id = 405
+verdict = "agree"
+note = "p.438 table: types incl. E-PFPGH f8, L 25-996/1196/1496, F and T 2<=x<=Px4, P ranges, M lists, (Y) max match stepped_ph.csv; ordering code with T."
+
+[[row]]
+id = 406
+verdict = "agree"
+note = "wrench flat W/l1 tables on p.434, 435, 437, 438 (D10 l1 = 8, see row 97); SC>=0, SC+l1<=L, SX rule SC+SX+2 l1<L, SX>=0 agree."
+
+[[row]]
+id = 407
+verdict = "agree"
+note = "p.437 alteration tables: LKC not when D-P<=2, FC10-E8, WFC10-A8-E10, SX, LFC10-A0 with LFC+A<=F and h by P (6-16:1, 20-40:2, 41~:2), MD (M x 3, D12-30, M6-20, MD x 3.5+4<=L) agree."
+
+[[row]]
+id = 408
+verdict = "agree"
+note = "FC/WFC/LKC rules repeated on p.434-437 match the p.432 values."
+
+[[row]]
+id = 409
+verdict = "agree"
+note = "approximate row; figures on p.434-438 show M left, N right, F left, T right; the datum choice is not stated."
+
+[[row]]
+id = 410
+verdict = "agree"
+note = "approximate row; p.437/438 show P g7 in the figure but give no P limit table."
+
+[[row]]
+id = 411
+verdict = "agree"
+note = "approximate row; p.435 says WSC is not available with SC/SX, so reading WSC as an alternative to SC is fair."
+
+[[row]]
+id = 412
+verdict = "agree"
+note = "approximate row; the p.436 figure draws end chamfers, none is dimensioned."

@@ -1,0 +1,22 @@
+== E-STHXR40
+PASS  one closed body                                   spec         1  got          1           [S52 p.533 table]
+PASS  overall length (bbox Z)                           spec        70  got    70.0000  +-0.005  [S52 p.533 table L]
+PASS  flange thickness T = 10                           spec       yes  got        yes           [S52 p.533 table T]
+PASS  shaft hole O40 (axis along Z, on the axis)        spec       yes  got        yes           [S52 p.533 table D]
+PASS  D tolerance (H8) upper/lower                      spec (0.039, 0)  got (0.039, 0)           [S52 p.533 table DH8] echoed into the description
+PASS  tolerance written in the part description         spec       yes  got        yes           [S52 p.533 table DH8]
+PASS  sleeve outside diameter D1 = 54                   spec       yes  got        yes           [S52 p.533 table D1]
+PASS  Thickness (N) = (D1 - D) / 2                      spec         7  got     7.0000  +-1e-09  [S52 p.533 table N, D1, D] derived from the table: N is the sleeve wall
+PASS  flange diameter H (bbox X)                        spec        88  got    88.0000  +-0.005  [S52 p.533 table H]
+PASS  flange diameter H (bbox Y)                        spec        88  got    88.0000  +-0.005  [S52 p.533 table H]
+PASS  flange cylinder O88                               spec       yes  got        yes           [S52 p.533 table H]
+PASS  mounting holes O9: count                          spec         4  got          4           [S52 p.533 table 4-d / 2-d / 2-Hole / 4-Hole]
+PASS  mounting hole positions (P)                       spec       yes  got        yes           [S52 p.533 table P]
+PASS  bore depth E = L - l1 (printed numbers)           spec        40  got    40.0000  +-1e-09  [S52 p.533 table E, l1, L] derived from the table
+PASS  blind bore floor at l1 = 30 from the flange face  spec       yes  got        yes           [S52 p.533 table l1]
+PASS  counterbore floor at l = 17 from the flange face  spec       yes  got        yes           [S52 p.533 table l]
+PASS  mounting screw hole O17 (d2) on the axis          spec       yes  got        yes           [S52 p.533 table d2]
+PASS  mounting screw counterbore O26 (d1) on the axis   spec       yes  got        yes           [S52 p.533 table d1]
+PASS  part number metadata                              spec E-STHXR40  got  E-STHXR40           [-]
+PASS  design part number                                spec E-STHXR40  got  E-STHXR40           [-]
+20/20 passed

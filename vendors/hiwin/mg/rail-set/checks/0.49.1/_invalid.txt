@@ -1,0 +1,2 @@
+MGN12H2R3000	ValueError: MGNR12 max single length is 2000 mm
+MGN7C1R700	ValueError: MGNR7 max single length is 600 mm

@@ -1,0 +1,27 @@
+== E-STHWCBK30
+PASS  one closed body                                                              spec         1  got          1           [S19 p.537 table]
+PASS  overall length L (bbox Z, flange back face to sleeve end)                    spec        40  got    40.0000  +-0.005  [S19 p.537 table L]
+PASS  flange back face at z = 0                                                    spec         0  got     0.0000  +-0.005  [S19 p.537 table L, T]
+PASS  flange thickness T = 10 (flange front face at z = T)                         spec       yes  got        yes           [S19 p.537 table T]
+PASS  shaft hole O30 (axis along Z, on the axis)                                   spec       yes  got        yes           [S19 p.537 table D]
+PASS  D tolerance (H8) upper/lower                                                 spec (0.033, 0)  got (0.033, 0)           [S19 p.537 table DH8] echoed into the description
+PASS  tolerance written in the part description                                    spec       yes  got        yes           [S19 p.537 table DH8]
+PASS  sleeve outside diameter D1 = 55                                              spec       yes  got        yes           [S19 p.537 table D1]
+PASS  Thickness (N) = (D1 - D) / 2                                                 spec      12.5  got    12.5000  +-1e-09  [S19 p.537 table N, D1, D] derived from the table: N is the sleeve wall
+PASS  compact flange width W (bbox X)                                              spec        57  got    57.0000  +-0.005  [S19 p.537 table W]
+PASS  compact flange height H (bbox Y)                                             spec        79  got    79.0000  +-0.005  [S19 p.537 table H]
+PASS  mounting holes O6.6: count                                                   spec         4  got          4           [S19 p.537 table 4-d]
+PASS  mounting hole positions (F, P1)                                              spec       yes  got        yes           [S19 p.537 table P1, F]
+PASS  positioning holes O6: count                                                  spec         2  got          2           [S19 p.537 table 2-Q]
+PASS  positioning hole positions (P apart on the Y axis)                           spec       yes  got        yes           [S19 p.537 table P, Q]
+PASS  groove: start z = 23 (L - B - S1)                                            spec       yes  got        yes           [S19 p.537 table L, B, S1] depth is not printed
+PASS  groove: width S1 = 2 (end z = 25, ring B = 15 to the sleeve end)             spec       yes  got        yes           [S19 p.537 table B, S1]
+PASS  radial slit width S = 1.5                                                    spec       yes  got        yes           [S19 p.537 table S]
+PASS  clamp screw counterbore floor Y = 10 from the slit centre                    spec       yes  got        yes           [S19 p.537 table Y]
+PASS  clamp screw clearance hole O6.6 on the clamp axis (y = X = 20, z = 32.5)     spec       yes  got        yes           [S19 p.537 table d2, X, B]
+PASS  clamp screw counterbore O12 on the clamp axis (y = X = 20, z = 32.5)         spec       yes  got        yes           [S19 p.537 table d1, X, B]
+PASS  clamp screw thread M6 count                                                  spec         1  got          1           [S19 p.537 table M]
+PASS  clamp screw thread axis at y = X = 20, z = 32.5 (B / 2 from the sleeve end)  spec       yes  got        yes           [S19 p.537 table X, B]
+PASS  part number metadata                                                         spec E-STHWCBK30  got E-STHWCBK30           [-]
+PASS  design part number                                                           spec E-STHWCBK30  got E-STHWCBK30           [-]
+25/25 passed

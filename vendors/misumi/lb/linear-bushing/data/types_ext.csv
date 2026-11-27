@@ -1,0 +1,16 @@
+type,family,layout,counterbore,plated,source,page,status
+E-LBH,compact,standard,standard,no,S13,p.470 p.471 type tables,labelled
+E-LBHZ,compact,standard,opposite,no,S13,p.470 type table,labelled
+E-LBHM,compact,standard,standard,yes,S13,p.470 type table,labelled
+E-LBFP,round,pilot,standard,no,S13,p.472 p.473 type tables,labelled
+E-LBFPM,round,pilot,standard,yes,S13,p.472 type table,labelled
+E-LBKP,square,pilot,standard,no,S13,p.474 p.475 type tables,labelled
+E-LBKPM,square,pilot,standard,yes,S13,p.474 type table,labelled
+E-LBHP,compact,pilot,standard,no,S13,p.476 p.477 type tables,labelled
+E-LBHPM,compact,pilot,standard,yes,S13,p.476 type table,labelled
+E-LBFC,round,center,standard,no,S13,p.478 type tables,labelled
+E-LBFCM,round,center,standard,yes,S13,p.478 type table,labelled
+E-LBKC,square,center,standard,no,S13,p.479 type tables,labelled
+E-LBKCM,square,center,standard,yes,S13,p.479 type table,labelled
+E-LBHC,compact,center,standard,no,S13,p.480 type tables,labelled
+E-LBHCM,compact,center,standard,yes,S13,p.480 type table,labelled

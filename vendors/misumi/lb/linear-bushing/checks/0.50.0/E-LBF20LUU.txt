@@ -1,0 +1,17 @@
+== E-LBF20LUU
+PASS  one closed body                             spec         1  got          1           [S11]
+PASS  overall length L (X)                        spec        80  got    80.0000  +-0.005  [S11 p.466 L]
+PASS  flange extent H (bbox Y)                    spec        54  got    54.0000  +-0.005  [S11 p.466 H]
+PASS  flange extent H (bbox Z)                    spec        54  got    54.0000  +-0.005  [S11 p.466 H]
+PASS  outside cylinder D 32                       spec       yes  got        yes           [S11 p.466 D]
+PASS  bore cylinder dr 20                         spec       yes  got        yes           [S11 p.466 dr]
+PASS  tolerances written in the part description  spec       yes  got        yes           [S11 p.466] echoed, not drawn
+PASS  flange thickness T = 8                      spec       yes  got        yes           [S11 p.466 T]
+PASS  flange cylinder H 54                        spec       yes  got        yes           [S11 p.466 H]
+PASS  4 mounting holes d 5.5                      spec         4  got          4           [S11 p.466 d]
+PASS  4 counterbores d1 9                         spec         4  got          4           [S11 p.466 d1]
+PASS  holes on P.C.D.                             spec       yes  got        yes           [S11 p.466 P.C.D.]
+PASS  counterbore floors at depth t = 5.1         spec         4  got          4           [S11 p.466 t] counterbore side: figure reading
+PASS  part number metadata                        spec E-LBF20LUU  got E-LBF20LUU           [-]
+PASS  design part number                          spec E-LBF20LUU  got E-LBF20LUU           [-]
+15/15 passed

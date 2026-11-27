@@ -1,0 +1,16 @@
+== E-PSFG16-250-FC20-A10
+PASS  one closed body                            spec         1  got          1           [S8]
+PASS  length (X)                                 spec       250  got   250.0000  +-0.005  [S8 p.432 L] 1 mm steps
+PASS  diameter D (bbox Y)                        spec        16  got    16.0000  +-0.005  [S8 p.432 D16]
+PASS  diameter D (bbox Z)                        spec        16  got    16.0000  +-0.005  [S8 p.432 D16]
+PASS  cylinder face O16                          spec       yes  got        yes           [S8 p.432]
+PASS  D tolerance f8 upper/lower                 spec (-0.016, -0.043)  got (-0.016, -0.043)           [S8 p.432 spec table] echoed into the description
+PASS  tolerance written in the part description  spec       yes  got        yes           [S8 p.432]
+PASS  L inside the table range 30-1200           spec       yes  got        yes           [S8 p.432]
+PASS  flat 1: flat face                          spec         1  got          1           [S8 p.432 FC/WFC]
+PASS  flat 1: flat depth H                       spec         1  got     1.0000  +-0.005  [S8 p.432 H table]
+PASS  flat 1: start x = 10                       spec       yes  got        yes           [S8 p.432 SC/FC/A]
+PASS  flat 1: end x = 30                         spec       yes  got        yes           [S8 p.432 l1/FC]
+PASS  part number metadata                       spec E-PSFG16-250-FC20-A10  got E-PSFG16-250-FC20-A10           [-]
+PASS  design part number                         spec E-PSFG16-250-FC20-A10  got E-PSFG16-250-FC20-A10           [-]
+14/14 passed

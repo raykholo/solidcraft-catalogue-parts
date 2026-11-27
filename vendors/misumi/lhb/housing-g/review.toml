@@ -1,0 +1,37 @@
+reviewer_kind = "ai"
+reviewer = "AI review lane (Claude Sonnet), independent of the authoring lane"
+author = "AI authoring lanes (Claude)"
+date = "2026-11-27"
+commit = "e36ee8375c931174cd0b71443d313307250b737c"
+sources_hash = "sha256:3c31a3b4dadce8c1fb3df6b34a4a1b51ff5fb58a421de9c82df079fd8e9b5cab"
+method = "Downloaded page image 491, cropped and upscaled the table and the single / double figures; re-read every cell of housing-g.csv (5 rows) against the page and the figure labels (H from the datum surface, H1 total height, L flange width with L/2 +-0.05, S flange thickness, W body width, L1 across the shaft, T1 along it); checked every codes.txt reject case against the H selection; tools/check passes for every code."
+
+[[row]]
+id = 1020
+verdict = "agree"
+note = "Types E-LBHG / E-LBHGW and the H selection per dr: 12 (15, 20, 25), 16 (20, 25, 30), 20 (20, 25, 30), 25 (25, 30, 40), 30 (30, 40, 50); aluminium, clear anodized, -20 to 80 C."
+
+[[row]]
+id = 1021
+verdict = "agree"
+note = "H (+-0.05, datum to bore centre in the figure), H1 = H + 15 / 20 / 22 / 27.5 / 32.5 with 0 / -0.5, and L (58, 68, 72, 90, 105; centre at L/2 +-0.05) re-read."
+
+[[row]]
+id = 1022
+verdict = "agree"
+note = "T single / double 40/70, 47/84, 52/94, 69/128, 74/138 and T1 single / double 25/50, 30/55, 35/60, 50/90, 55/100 re-read; T1 is the hole spacing along the shaft in the right-hand view."
+
+[[row]]
+id = 1023
+verdict = "agree"
+note = "S 8, 10, 12, 15, 20; W 30, 40, 44, 55, 65; L1 46, 56, 60, 75, 85 (between the 4-d holes across the shaft in the front view); d 5.5 is one merged cell over dr 12, 16 and 20, then 6.6 and 9."
+
+[[row]]
+id = 1024
+verdict = "agree"
+note = "Front view: rectangular flange L x S below a body of width W up to H1, as built."
+
+[[row]]
+id = 1025
+verdict = "agree"
+note = "C1 (8.5, 11.5, 12.5, 16, 18) is printed; its meaning as the upper corner chamfer is read from the figure, whose top is cut at both corners; approximate, listed in not_guaranteed and not checked."

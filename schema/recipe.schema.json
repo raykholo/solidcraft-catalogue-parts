@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "The recipe stored on a placed part",
+  "type": "object",
+  "required": [
+    "generator",
+    "version",
+    "code",
+    "sources_hash"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "generator": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "code": {
+      "type": "string"
+    },
+    "params": {
+      "type": "object"
+    },
+    "sources_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    }
+  }
+}

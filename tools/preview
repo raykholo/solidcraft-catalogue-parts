@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+"""tools/preview [GENERATOR_DIR ...]: render preview.png of each generator from its reference code (generator.toml preview_code) with
+solidcraft-cli snapshot, using the generator's first view (src/shots.py `preview(code)` if it has one, else `scene(code)`). Never a vendor image."""
+import argparse, json, subprocess, sys, tempfile
+from pathlib import Path
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+from runtime import registry, sc
+
+ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+ap.add_argument("dirs", nargs="*"); ap.add_argument("--width", type=int, default=640); ap.add_argument("--height", type=int, default=400)
+a = ap.parse_args()
+gens = registry.generators()
+if a.dirs:
+    want = {Path(d).resolve() for d in a.dirs}
+    gens = [g for g in gens if g.dir.resolve() in want]
+for g in gens:
+    code = g.manifest["preview_code"]
+    sm = g.module("shots")
+    part, cmds = getattr(sm, "preview", sm.scene)(code)      # a generator may show the part alone (no shots-only extras)
+    cam = sm.views(part)[0][1]
+    with tempfile.TemporaryDirectory() as td:
+        path, _ = sc.run_script(cmds, td, sc.slug(code))
+        r = subprocess.run([sc.CLI, "snapshot", "--in", path, "--out", str(g.dir / "preview.png"), "--width", str(a.width),
+                            "--height", str(a.height), "--camera", json.dumps(cam)], capture_output=True, text=True)
+    if r.returncode:
+        raise SystemExit(f"{g.id}: snapshot failed: {r.stderr[-500:]}")
+    print(f"wrote {(g.dir / 'preview.png').relative_to(ROOT)} from {code}")

@@ -1,0 +1,1437 @@
+{
+ "schema": 1,
+ "generators": [
+  {
+   "id": "hiwin.eg.guideway",
+   "name": "HIWIN EG low-profile linear guideway: rail, block or rail with blocks",
+   "version": "0.1.0",
+   "kind": "generator",
+   "min_host_version": "0.49.1",
+   "vendor": "HIWIN",
+   "labels": [
+    "Linear guideway",
+    "Linear rail",
+    "EG rail",
+    "EG block",
+    "EGH",
+    "EGW",
+    "EGR",
+    "Low profile guideway"
+   ],
+   "keywords": [
+    "low profile guideway",
+    "low profile ball type linear guide",
+    "flange block",
+    "carriage"
+   ],
+   "matches": [
+    {
+     "id": "eg-set",
+     "generator": "guideway",
+     "pattern": "^EG(?P<kind>[HW])\\s*(?P<size>15|20|25|30|35)\\s*(?P<load>[CS])\\s*(?P<mount>[AB])\\s*E?\\s*(?P<blocks>\\d+)\\s*(?P<rm>[RUT])\\s*(?P<length>\\d+(?:\\.\\d+)?)",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "series": "EG{kind}",
+      "size": "{size}",
+      "load": "{load}",
+      "mount": "{mount}",
+      "blocks": "{blocks}",
+      "length_mm": "{length}"
+     },
+     "examples": [
+      "EGH20CA2R1000ZAH",
+      "EGW25CB1R640ZAP",
+      "EGH15SA1R280"
+     ],
+     "negative_examples": [
+      "EGH20CA",
+      "EGR15R160M",
+      "EGH20CA2",
+      "EG20"
+     ]
+    },
+    {
+     "id": "eg-block",
+     "generator": "guideway",
+     "pattern": "^EG(?P<kind>[HW])\\s*(?P<size>15|20|25|30|35)\\s*(?P<load>[CS])\\s*(?P<mount>[AB])\\s*E?\\s*(?:Z0|ZA)?\\s*(?:[CHP])?\\s*M?\\s*$",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "series": "EG{kind}",
+      "size": "{size}",
+      "load": "{load}",
+      "mount": "{mount}"
+     },
+     "examples": [
+      "EGW35CA",
+      "EGH20SA"
+     ],
+     "negative_examples": [
+      "EGH20CA2R1000ZAH",
+      "EGR15R160M",
+      "EGH20",
+      "EGW35"
+     ]
+    },
+    {
+     "id": "eg-rail",
+     "generator": "guideway",
+     "pattern": "^EGR\\s*(?P<size>15|20|25|30|35)\\s*(?P<rm>[RUT])\\s*(?P<length>\\d+(?:\\.\\d+)?)",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "size": "{size}",
+      "length_mm": "{length}"
+     },
+     "examples": [
+      "EGR15R160",
+      "EGR25R640",
+      "EGR30R1000"
+     ],
+     "negative_examples": [
+      "EGR15",
+      "EGH20CA",
+      "EGR99R100"
+     ]
+    }
+   ],
+   "path": "vendors/hiwin/eg/guideway",
+   "level": "Reviewed",
+   "sources_hash": "sha256:9dfc0bc0ff6dfbdce189fa6fd26464bd2f68acfe082543b8e7687427c653fbfe"
+  },
+  {
+   "id": "hiwin.hg.guideway",
+   "name": "HIWIN HG heavy-load linear guideway: rail, block or rail with blocks",
+   "version": "0.1.0",
+   "kind": "generator",
+   "min_host_version": "0.49.1",
+   "vendor": "HIWIN",
+   "labels": [
+    "Linear guideway",
+    "Linear rail",
+    "HG rail",
+    "HG block",
+    "HGH",
+    "HGW",
+    "HGR"
+   ],
+   "keywords": [
+    "heavy load guideway",
+    "ball type linear guide",
+    "flange block",
+    "carriage"
+   ],
+   "matches": [
+    {
+     "id": "hg-set",
+     "generator": "guideway",
+     "pattern": "^HG(?P<kind>[HW])\\s*(?P<size>15|20|25|30|35|45|55|65)\\s*(?P<load>[CH])\\s*(?P<mount>[ABC])\\s*E?\\s*(?P<blocks>\\d+)\\s*(?P<rm>[RT])\\s*(?P<length>\\d+(?:\\.\\d+)?)",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "series": "HG{kind}",
+      "size": "{size}",
+      "load": "{load}",
+      "mount": "{mount}",
+      "blocks": "{blocks}",
+      "length_mm": "{length}"
+     },
+     "examples": [
+      "HGH20CA2R1000ZAH",
+      "HGW25CC1R640ZAP",
+      "HGH65HA1R1270"
+     ],
+     "negative_examples": [
+      "HGH20CA",
+      "HGR15R160M",
+      "HGH20CA2",
+      "HG20"
+     ]
+    },
+    {
+     "id": "hg-block",
+     "generator": "guideway",
+     "pattern": "^HG(?P<kind>[HW])\\s*(?P<size>15|20|25|30|35|45|55|65)\\s*(?P<load>[CH])\\s*(?P<mount>[ABC])\\s*E?\\s*(?:Z0|ZA)?\\s*(?:[CHP])?\\s*M?\\s*$",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "series": "HG{kind}",
+      "size": "{size}",
+      "load": "{load}",
+      "mount": "{mount}"
+     },
+     "examples": [
+      "HGW45CB",
+      "HGH20CA"
+     ],
+     "negative_examples": [
+      "HGH20CA2R1000ZAH",
+      "HGR15R160M",
+      "HGH20",
+      "HGW45"
+     ]
+    },
+    {
+     "id": "hg-rail",
+     "generator": "guideway",
+     "pattern": "^HGR\\s*(?P<size>15|20|25|30|35|45|55|65)\\s*(?P<rm>[RT])\\s*(?P<length>\\d+(?:\\.\\d+)?)",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "size": "{size}",
+      "length_mm": "{length}"
+     },
+     "examples": [
+      "HGR15R160M",
+      "HGR25T640",
+      "HGR20R1000"
+     ],
+     "negative_examples": [
+      "HGR15",
+      "HGH20CA",
+      "HGR99R100"
+     ]
+    }
+   ],
+   "path": "vendors/hiwin/hg/guideway",
+   "level": "Reviewed",
+   "sources_hash": "sha256:efde57d123ac29fb2d6f88a0ef5924d930e7ebc1401a3ae665ab2fefe529a707"
+  },
+  {
+   "id": "hiwin.mg.rail-set",
+   "name": "HIWIN MG miniature linear guide: rail with blocks",
+   "version": "0.1.0",
+   "kind": "generator",
+   "min_host_version": "0.49.1",
+   "vendor": "HIWIN",
+   "labels": [
+    "Linear guide",
+    "Linear rail",
+    "Miniature guide",
+    "MGN",
+    "Block"
+   ],
+   "keywords": [
+    "linear guideway",
+    "miniature rail",
+    "carriage",
+    "slider",
+    "HIWIN MGN rail set"
+   ],
+   "matches": [
+    {
+     "id": "mgn-set",
+     "generator": "rail-set",
+     "pattern": "^MGN\\s*(?P<size>7|9|12|15)\\s*(?P<block>[CH])\\s*E?\\s*(?P<blocks>\\d+)\\s*R\\s*(?P<length>\\d{2,4})",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "size": "{size}",
+      "block": "{block}",
+      "blocks": "{blocks}",
+      "length_mm": "{length}"
+     },
+     "examples": [
+      "MGN12H2R300Z0C",
+      "MGN9C1R195ZFH",
+      "MGN 12 C E 2 R1600 E Z1 P M II"
+     ],
+     "negative_examples": [
+      "MGN12",
+      "MGW12H2R300",
+      "MGNR12",
+      "MGN12H"
+     ]
+    }
+   ],
+   "path": "vendors/hiwin/mg/rail-set",
+   "level": "Reviewed",
+   "sources_hash": "sha256:6ff5d57a3813d897b01f9627dd87de888e0a251acf36ecddc34b7d567cffeb26"
+  },
+  {
+   "id": "hiwin.rg.guideway",
+   "name": "HIWIN RG high-rigidity roller type linear guideway: rail, block or rail with blocks",
+   "version": "0.1.0",
+   "kind": "generator",
+   "min_host_version": "0.49.1",
+   "vendor": "HIWIN",
+   "labels": [
+    "Linear guideway",
+    "Linear rail",
+    "RG rail",
+    "RG block",
+    "RGH",
+    "RGW",
+    "RGR",
+    "Roller type guideway"
+   ],
+   "keywords": [
+    "roller type linear guide",
+    "high rigidity guideway",
+    "flange block",
+    "carriage"
+   ],
+   "matches": [
+    {
+     "id": "rg-set",
+     "generator": "guideway",
+     "pattern": "^RG(?P<kind>[HW])\\s*(?P<size>15|20|25|30|35|45|55|65)\\s*(?P<load>[CH])\\s*(?P<mount>[AC])\\s*E?\\s*(?P<blocks>\\d+)\\s*(?P<rm>[RT])\\s*(?P<length>\\d+(?:\\.\\d+)?)",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "series": "RG{kind}",
+      "size": "{size}",
+      "load": "{load}",
+      "mount": "{mount}",
+      "blocks": "{blocks}",
+      "length_mm": "{length}"
+     },
+     "examples": [
+      "RGH20CA2R1000ZAH",
+      "RGW25CC1R640ZAP",
+      "RGH65HA1R1270"
+     ],
+     "negative_examples": [
+      "RGH20CA",
+      "RGR15R160",
+      "RGH20CA2",
+      "RG20"
+     ]
+    },
+    {
+     "id": "rg-block",
+     "generator": "guideway",
+     "pattern": "^RG(?P<kind>[HW])\\s*(?P<size>15|20|25|30|35|45|55|65)\\s*(?P<load>[CH])\\s*(?P<mount>[AC])\\s*E?\\s*(?:Z0|ZA)?\\s*(?:[HP])?\\s*(?:\\+.*)?$",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "series": "RG{kind}",
+      "size": "{size}",
+      "load": "{load}",
+      "mount": "{mount}"
+     },
+     "examples": [
+      "RGW45CC",
+      "RGH20CA",
+      "RGW25CCZAP",
+      "RGW25CCEZAP+ZZ"
+     ],
+     "negative_examples": [
+      "RGH20CA2R1000ZAH",
+      "RGR15R160",
+      "RGH20",
+      "RGW45"
+     ]
+    },
+    {
+     "id": "rg-rail",
+     "generator": "guideway",
+     "pattern": "^RGR\\s*(?P<size>15|20|25|30|35|45|55|65)\\s*(?P<rm>[RT])\\s*(?P<length>\\d+(?:\\.\\d+)?)",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "size": "{size}",
+      "length_mm": "{length}"
+     },
+     "examples": [
+      "RGR15R160",
+      "RGR25R640",
+      "RGR65R1270"
+     ],
+     "negative_examples": [
+      "RGR15",
+      "RGH20CA",
+      "RGR99R100"
+     ]
+    }
+   ],
+   "path": "vendors/hiwin/rg/guideway",
+   "level": "Reviewed",
+   "sources_hash": "sha256:0cdf2d70c40bfca7ba62f3c99e24247ee87be451449e586111192429bdcd00dc"
+  },
+  {
+   "id": "misumi.hbl.bracket",
+   "name": "MISUMI 5 series extruded brackets (HBLTS, HBLTV, HBLTSW, HBLTVW, HBLTF, HBKTS, HBKUS, HBLUS, HBLTH)",
+   "version": "0.2.0",
+   "kind": "generator",
+   "min_host_version": "0.49.1",
+   "vendor": "MISUMI",
+   "labels": [
+    "Extrusion bracket",
+    "L bracket",
+    "Angle bracket",
+    "Thick bracket",
+    "Ultra thick bracket",
+    "Scalene bracket",
+    "Eccentric bracket",
+    "HBLTS",
+    "HBLTF",
+    "HBKTS",
+    "HBKUS"
+   ],
+   "keywords": [
+    "aluminium extrusion bracket",
+    "corner bracket",
+    "profile bracket",
+    "6 mm slot bracket",
+    "T-slot bracket",
+    "5 series bracket",
+    "perpendicularly machined bracket",
+    "bracket with tabs"
+   ],
+   "matches": [
+    {
+     "id": "hbl-bracket",
+     "generator": "bracket",
+     "pattern": "^(?:HBLTS5(?:-(?P<m>4))?|(?:NBLTS|HBLTSB|CHBLTS|HBLTV|HBLTVB|HBLTSW|HBLTVW|HBLTF|HBKTST|HBKTS|HBKTSB|HBKUS|HBKUSB|NBLUS|HBLUS|HBLTH|HBLTHB)5)(?P<alteration>-(?:C|SET|SST|SEU|SSU|SEP|SSP|SEC))?$",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "screw": "M{m}"
+     },
+     "examples": [
+      "HBLTS5",
+      "HBLTS5-4",
+      "HBLTSB5",
+      "CHBLTS5",
+      "NBLTS5",
+      "HBLTV5",
+      "HBLTSW5",
+      "HBLTVW5",
+      "HBLTF5",
+      "HBKTST5",
+      "HBKTS5",
+      "HBKTSB5",
+      "HBKUS5",
+      "HBKUSB5",
+      "NBLUS5",
+      "HBLUS5",
+      "HBLTH5",
+      "HBLTHB5",
+      "HBLTS5-C",
+      "HBKUS5-C",
+      "HBLTSW5-SET",
+      "HBLTF5-SEC"
+     ],
+     "negative_examples": [
+      "HBLTS",
+      "HBLTX5",
+      "HBLTS5-",
+      "HBLTS6",
+      "HBLTS5-5",
+      "HBLTV5-4",
+      "HBKUS5-4",
+      "HBLTS5-XYZ",
+      "HBLTS5-SET-C",
+      "HBLFSN5"
+     ]
+    }
+   ],
+   "path": "vendors/misumi/hbl/bracket",
+   "level": "Reviewed",
+   "sources_hash": "sha256:c98a191213d83fe5342a86ba63b85a08fe990bdb8b8f6631ea49218d106df098"
+  },
+  {
+   "id": "misumi.hfs.extrusion",
+   "name": "MISUMI aluminium extrusions, 5 series 2020 / 2040 / 4040 and 6 series 3030",
+   "version": "0.1.0",
+   "kind": "generator",
+   "min_host_version": "0.49.1",
+   "vendor": "MISUMI",
+   "labels": [
+    "Aluminium extrusion",
+    "T-slot profile",
+    "Aluminum profile",
+    "HFS5",
+    "HFS6",
+    "2020",
+    "4040"
+   ],
+   "keywords": [
+    "slot profile",
+    "extrusion",
+    "aluminium frame",
+    "MISUMI 5 series",
+    "MISUMI 6 series",
+    "end tapping",
+    "wrench access hole"
+   ],
+   "matches": [
+    {
+     "id": "hfs5",
+     "generator": "extrusion",
+     "pattern": "^K?(?:NFS|NFSB|HFS|HFSB|CAF|HFSY)5-(?P<profile>2020|2040|4040)-(?P<length>\\d+(?:\\.\\d+)?)(?P<alterations>(?:-[A-Z0-9]+)*)$",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "profile": "{profile}",
+      "length_mm": "{length}"
+     },
+     "examples": [
+      "HFS5-2020-120-LTP-RTP-LCH",
+      "KHFS5-2040-1000",
+      "NFSB5-4040-250",
+      "HFS5-2020-497.5-TPW-LEV-REH"
+     ],
+     "negative_examples": [
+      "HFS5-2020",
+      "HFS5-3030-100",
+      "HFS6-2020-100",
+      "MGN12H2R300Z0C"
+     ]
+    },
+    {
+     "id": "hfs6",
+     "generator": "extrusion",
+     "pattern": "^K?(?:HFS|HFSB|CAF|HFSY)6-(?P<profile>3030)-(?P<length>\\d+(?:\\.\\d+)?)(?P<alterations>(?:-[A-Z0-9]+)*)$",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "profile": "{profile}",
+      "length_mm": "{length}"
+     },
+     "examples": [
+      "HFS6-3030-500-LCH-X5-TPW",
+      "KHFS6-3030-1000",
+      "HFSB6-3030-120-LTP-RTP-RWV-X8"
+     ],
+     "negative_examples": [
+      "HFS6-3030",
+      "HFS6-6060-100",
+      "HFS5-3030-100"
+     ]
+    }
+   ],
+   "path": "vendors/misumi/hfs/extrusion",
+   "level": "Checked",
+   "sources_hash": "sha256:274bfe0aa89087b251e4d256d43a6ec3a8c10fef0d6176f332831e0bb82d9c88"
+  },
+  {
+   "id": "misumi.hnt.t-nut",
+   "name": "MISUMI 5 series pre-assembly T-nuts (HNTT family)",
+   "version": "0.1.0",
+   "kind": "generator",
+   "min_host_version": "0.49.1",
+   "vendor": "MISUMI",
+   "labels": [
+    "T-nut",
+    "Insertion nut",
+    "Slot nut",
+    "Pre-assembly nut",
+    "HNTT"
+   ],
+   "keywords": [
+    "slot nut",
+    "drop-in nut",
+    "extrusion nut",
+    "M5 nut",
+    "6 mm slot"
+   ],
+   "matches": [
+    {
+     "id": "hnt-tnut",
+     "generator": "t-nut",
+     "pattern": "^HNT(?:T|TV|TZ|TSN|TSS)5(?:-(?P<m>\\d+(?:\\.\\d)?))?$",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "thread": "M{m}"
+     },
+     "examples": [
+      "HNTT5-4",
+      "HNTT5",
+      "HNTTSN5-3",
+      "HNTTV5-5",
+      "HNTTSS5-5"
+     ],
+     "negative_examples": [
+      "HNTT",
+      "HNTU5",
+      "HNTT6-4",
+      "HNTT5-"
+     ]
+    }
+   ],
+   "path": "vendors/misumi/hnt/t-nut",
+   "level": "Reviewed",
+   "sources_hash": "sha256:d68657bfbd05c2d7f5274907f15c5f36952ce72e975f07d0ed7314d48963a9d1"
+  },
+  {
+   "id": "misumi.lb.linear-bushing",
+   "name": "MISUMI Economy linear bushings: straight (E-LB), round (E-LBF), square (E-LBK) and compact (E-LBH) flanged, with pilot and centre flanged",
+   "version": "0.1.0",
+   "kind": "generator",
+   "min_host_version": "0.49.1",
+   "vendor": "MISUMI",
+   "labels": [
+    "Linear bushing",
+    "Flanged linear bushing",
+    "Compact flanged linear bushing",
+    "Ball bushing",
+    "E-LB",
+    "E-LBF",
+    "E-LBK",
+    "E-LBH"
+   ],
+   "keywords": [
+    "linear ball bushing",
+    "round flange bushing",
+    "square flange bushing",
+    "linear motion bushing",
+    "shaft bearing",
+    "compact flange bushing",
+    "flanged bushing with pilot",
+    "center flanged bushing"
+   ],
+   "matches": [
+    {
+     "id": "lb-bushing",
+     "generator": "linear-bushing",
+     "pattern": "^E-(?:LB[FKH](?:PM|CM|[ZMPC])?|LB)(?P<dr>\\d{1,2})(?:TUU|DMUU|DUU|LUU|UU)$",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "shaft_diameter_mm": "{dr}"
+     },
+     "examples": [
+      "E-LB10TUU",
+      "E-LB30DMUU",
+      "E-LBF20LUU",
+      "E-LBFZ10UU",
+      "E-LBKM35LUU",
+      "E-LBK12DMUU",
+      "E-LBH5UU",
+      "E-LBHZ20UU",
+      "E-LBH30DMUU",
+      "E-LBFP20LUU",
+      "E-LBKPM40LUU",
+      "E-LBHP25DMUU",
+      "E-LBFC30DMUU",
+      "E-LBKCM16LUU",
+      "E-LBHCM40LUU"
+     ],
+     "negative_examples": [
+      "E-LB",
+      "E-LB10",
+      "E-LBX10UU",
+      "E-LBF20LU",
+      "E-LBF20-UU",
+      "E-LBHS20UU",
+      "E-LBHZP10UU",
+      "E-LBFCZ10LUU",
+      "E-LBHPC20UU"
+     ]
+    }
+   ],
+   "path": "vendors/misumi/lb/linear-bushing",
+   "level": "Reviewed",
+   "sources_hash": "sha256:777b18353e7ceae33f17ab5c04ed70cedeba2f446d3222aa9c0a99937da26fba"
+  },
+  {
+   "id": "misumi.lhb.bushing-housing",
+   "name": "MISUMI Economy linear bushing housing units, wide blocks: single / medium (E-LBHN) and double / medium long / long (E-LBHNW), with or without dowel holes",
+   "version": "0.1.0",
+   "kind": "generator",
+   "min_host_version": "0.49.1",
+   "vendor": "MISUMI",
+   "labels": [
+    "Linear bushing housing unit",
+    "Bushing housing",
+    "Wide block housing unit",
+    "E-LBHN",
+    "E-LBHNW"
+   ],
+   "keywords": [
+    "linear bushing housing",
+    "housing unit",
+    "linear bushing block",
+    "linear ball bushing housing",
+    "pillow block linear",
+    "linear shaft block"
+   ],
+   "matches": [
+    {
+     "id": "lhb-housing-wide",
+     "generator": "bushing-housing",
+     "pattern": "^E-LBHN(?:W)?(?P<dr>\\d{1,2})(?:D|L)?(?:-P)?$",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "shaft_diameter_mm": "{dr}"
+     },
+     "examples": [
+      "E-LBHN16",
+      "E-LBHN16D-P",
+      "E-LBHN50",
+      "E-LBHNW8",
+      "E-LBHNW20L-P",
+      "E-LBHNW30D"
+     ],
+     "negative_examples": [
+      "E-LBHN",
+      "E-LBHNW-P",
+      "E-LBHN16X",
+      "E-LBHN16-X",
+      "E-LBHP20LUU",
+      "E-LBHS16"
+     ]
+    }
+   ],
+   "path": "vendors/misumi/lhb/bushing-housing",
+   "level": "Reviewed",
+   "sources_hash": "sha256:b38730baa338814678c1d23c910bae0288fcb78ee39d0ecd0322cad76a00a0d8"
+  },
+  {
+   "id": "misumi.lhb.housing-g",
+   "name": "MISUMI Economy linear bushing housing units, center hole height optional: single (E-LBHG) and double (E-LBHGW)",
+   "version": "0.1.0",
+   "kind": "generator",
+   "min_host_version": "0.49.1",
+   "vendor": "MISUMI",
+   "labels": [
+    "Linear bushing housing unit, center hole height optional",
+    "Pillow block bushing housing",
+    "E-LBHG",
+    "E-LBHGW"
+   ],
+   "keywords": [
+    "linear bushing housing",
+    "housing unit",
+    "flanged linear bushing housing",
+    "linear ball bushing housing",
+    "pillow block linear",
+    "linear shaft block"
+   ],
+   "matches": [
+    {
+     "id": "lhb-housing-g",
+     "generator": "housing-g",
+     "pattern": "^E-LBHG(?:W)?(?P<dr>\\d{1,2})-(?P<h>\\d{1,2})$",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "shaft_diameter_mm": "{dr}",
+      "center_height_mm": "{h}"
+     },
+     "examples": [
+      "E-LBHG12-15",
+      "E-LBHG30-50",
+      "E-LBHGW20-25",
+      "E-LBHGW16-30"
+     ],
+     "negative_examples": [
+      "E-LBHG",
+      "E-LBHG12",
+      "E-LBHGW-25",
+      "E-LBHG12-15-P",
+      "E-LBHG12X",
+      "E-LBHS16",
+      "E-LBHN16"
+     ]
+    }
+   ],
+   "path": "vendors/misumi/lhb/housing-g",
+   "level": "Reviewed",
+   "sources_hash": "sha256:3c31a3b4dadce8c1fb3df6b34a4a1b51ff5fb58a421de9c82df079fd8e9b5cab"
+  },
+  {
+   "id": "misumi.lhb.tall-housing",
+   "name": "MISUMI Economy linear bushing housing units with dowel holes, tall blocks: single / medium / medium long / long (E-LBHS) and double (E-LBHSW)",
+   "version": "0.1.0",
+   "kind": "generator",
+   "min_host_version": "0.49.1",
+   "vendor": "MISUMI",
+   "labels": [
+    "Linear bushing housing unit, tall block",
+    "Tall block housing unit",
+    "Bushing housing with dowel holes",
+    "E-LBHS",
+    "E-LBHSW"
+   ],
+   "keywords": [
+    "linear bushing housing",
+    "housing unit",
+    "tall block linear bushing housing",
+    "linear ball bushing housing",
+    "linear bushing block",
+    "linear shaft block"
+   ],
+   "matches": [
+    {
+     "id": "lhb-housing-tall",
+     "generator": "tall-housing",
+     "pattern": "^E-LBHS(?:W)?(?P<dr>\\d{1,2})(?:D|S|L)?(?:-P)?$",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "shaft_diameter_mm": "{dr}"
+     },
+     "examples": [
+      "E-LBHS10",
+      "E-LBHS12S",
+      "E-LBHS16L-P",
+      "E-LBHS30-P",
+      "E-LBHSW5",
+      "E-LBHSW20-P",
+      "E-LBHS6D"
+     ],
+     "negative_examples": [
+      "E-LBHS",
+      "E-LBHSW-P",
+      "E-LBHS16X",
+      "E-LBHS16-X",
+      "E-LBHS20UU",
+      "E-LBHN16",
+      "E-LBHG12-15"
+     ]
+    }
+   ],
+   "path": "vendors/misumi/lhb/tall-housing",
+   "level": "Reviewed",
+   "sources_hash": "sha256:6a6a3c5fe492feac57969e903e9571fee53b7a8dd1a3f61cdc95ca0c2d82f0b1"
+  },
+  {
+   "id": "misumi.ofb.oil-free-bushing",
+   "name": "MISUMI Economy oil free bushings: copper alloy straight, shouldered, flanged (round, square, compact) and thrust type, and special brass straight, shouldered, round and compact flanged",
+   "version": "0.1.0",
+   "kind": "generator",
+   "min_host_version": "0.49.1",
+   "vendor": "MISUMI",
+   "labels": [
+    "Oil free bushing",
+    "Oil-free bushing",
+    "Flanged oil free bushing",
+    "Shouldered bushing",
+    "C-MUBZ",
+    "C-MUFZ",
+    "C-MUTZ",
+    "E-MUGZ",
+    "E-SHBZ",
+    "E-SHFZ",
+    "E-SHTZ"
+   ],
+   "keywords": [
+    "oil free bushing",
+    "oilless bushing",
+    "self lubricating bushing",
+    "solid lubricant bushing",
+    "copper alloy bushing",
+    "special brass bushing",
+    "shouldered bushing",
+    "flanged bushing",
+    "thrust bushing",
+    "plain bearing"
+   ],
+   "matches": [
+    {
+     "id": "ofb-oil-free-bushing",
+     "generator": "oil-free-bushing",
+     "pattern": "^(?:C-MU(?:BZU?|FZU?|TZ|TSZ|TNZ)|E-MUGZ|E-SH(?:BZ|FZ|TZ|TNZ))(?P<d>\\d{1,3})-(?P<l>\\d{1,3})$",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "inner_diameter_mm": "{d}",
+      "length_mm": "{l}"
+     },
+     "examples": [
+      "C-MUFZ5-10",
+      "C-MUBZ20-30",
+      "C-MUBZU35-15",
+      "C-MUFZU12-20",
+      "C-MUTZ16-30",
+      "C-MUTSZ6-10",
+      "C-MUTNZ6-15",
+      "E-MUGZ10-15",
+      "E-SHBZ10-12",
+      "E-SHFZ8-10",
+      "E-SHTZ25-35",
+      "E-SHTNZ10-25"
+     ],
+     "negative_examples": [
+      "C-MUFZ5",
+      "C-MUFZ-10",
+      "C-MUFZ5-",
+      "C-MUTXZ10-20",
+      "E-SHBZU10-12",
+      "E-SHSTM8-25",
+      "E-LBF20LUU",
+      "C-SHA10",
+      "E-MUGZ10-15-X"
+     ]
+    }
+   ],
+   "path": "vendors/misumi/ofb/oil-free-bushing",
+   "level": "Reviewed",
+   "sources_hash": "sha256:1f3e2269bf6fb2c4bb58af3664060d4bece229ac0e28f57548276c1bf779a5c8"
+  },
+  {
+   "id": "misumi.scs.collar",
+   "name": "MISUMI Economy Series shaft collars: aluminium slit, split, slit with 2 through or 2 counterbored fixing holes, slit for bearing inner mount; steel / stainless slit and split collars with urethane",
+   "version": "0.2.0",
+   "kind": "generator",
+   "min_host_version": "0.49.1",
+   "vendor": "MISUMI",
+   "labels": [
+    "Shaft collar",
+    "Collar",
+    "Slit collar",
+    "Split collar",
+    "C-SCSAW",
+    "C-SCNPAW",
+    "C-SCSMAW",
+    "C-SCSGAW",
+    "C-SCSBNAW",
+    "E-SCD",
+    "E-PSCD",
+    "E-SSCD",
+    "E-SCDJ",
+    "E-PSCDJ",
+    "E-SSCDJ",
+    "E-SCSPD",
+    "E-PSCSPD",
+    "E-SSCSPD"
+   ],
+   "keywords": [
+    "clamping collar",
+    "shaft stopper",
+    "slit type collar",
+    "split type collar",
+    "counterbored fixing holes",
+    "aluminium collar",
+    "bearing inner mount collar",
+    "collar with urethane",
+    "urethane damper collar",
+    "stainless steel collar"
+   ],
+   "matches": [
+    {
+     "id": "scs-collar",
+     "generator": "collar",
+     "pattern": "^C-(?:SCSAW|SCNPAW|SCSMAW|SCSGAW)(?P<d>\\d{1,2})-(?P<b>\\d{1,2})$",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "inner_diameter_mm": "{d}",
+      "width_mm": "{b}"
+     },
+     "examples": [
+      "C-SCSAW12-10",
+      "C-SCNPAW6-8",
+      "C-SCSMAW20-15",
+      "C-SCSGAW12-10"
+     ],
+     "negative_examples": [
+      "C-SCSAW",
+      "C-SCSAW12",
+      "C-SCSAW12-",
+      "C-XYZ12-10",
+      "E-SCSAW12-10"
+     ]
+    },
+    {
+     "id": "scs-collar-bearing",
+     "generator": "collar",
+     "pattern": "^C-SCSBNAW(?P<d>\\d{1,2})-(?P<ds>\\d{1,2})$",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "inner_diameter_mm": "{d}",
+      "boss_diameter_mm": "{ds}"
+     },
+     "examples": [
+      "C-SCSBNAW12-16",
+      "C-SCSBNAW6-9"
+     ],
+     "negative_examples": [
+      "C-SCSBNAW",
+      "C-SCSBNAW12",
+      "C-SCSBNAW12-",
+      "C-SCSAW12-16"
+     ]
+    },
+    {
+     "id": "scs-collar-urethane-split",
+     "generator": "collar",
+     "pattern": "^E-(?:P|S)?SCSPD(?P<d>\\d{1,2})$",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "inner_diameter_mm": "{d}"
+     },
+     "examples": [
+      "E-SCSPD6",
+      "E-PSCSPD13",
+      "E-SSCSPD20"
+     ],
+     "negative_examples": [
+      "E-SCSPD",
+      "E-SCSPD6-10",
+      "E-XSCSPD6",
+      "C-SCNPAW6-8"
+     ]
+    },
+    {
+     "id": "scs-collar-urethane-slit",
+     "generator": "collar",
+     "pattern": "^E-(?:P|S)?SCD(?P<d>\\d{1,2})$",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "inner_diameter_mm": "{d}"
+     },
+     "examples": [
+      "E-SCD12",
+      "E-PSCD4",
+      "E-SSCD16"
+     ],
+     "negative_examples": [
+      "E-SCD",
+      "E-SCD12-10",
+      "E-SCDX12",
+      "E-SCSAW12"
+     ]
+    },
+    {
+     "id": "scs-collar-urethane-slit-compact",
+     "generator": "collar",
+     "pattern": "^E-(?:P|S)?SCDJ(?P<d>\\d{1,2})-(?P<b>\\d{1,2})$",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "inner_diameter_mm": "{d}",
+      "width_mm": "{b}"
+     },
+     "examples": [
+      "E-SCDJ12-10",
+      "E-PSCDJ20-13",
+      "E-SSCDJ30-15"
+     ],
+     "negative_examples": [
+      "E-SCDJ",
+      "E-SCDJ12",
+      "E-SCDJ12-",
+      "E-SCD12-10"
+     ]
+    }
+   ],
+   "path": "vendors/misumi/scs/collar",
+   "level": "Reviewed",
+   "sources_hash": "sha256:98a780a0454499bc8cc11e6b5d3680e1423b678fb038011923c41a81b486d32c"
+  },
+  {
+   "id": "misumi.sfj.shaft",
+   "name": "MISUMI Economy Series linear shafts (E- prefix, ASEAN catalogue 2025; g7 / f8): plain, tapped, stepped, with wrench flats and flat surfaces",
+   "version": "0.2.0",
+   "kind": "generator",
+   "min_host_version": "0.49.1",
+   "vendor": "MISUMI",
+   "labels": [
+    "Linear shaft",
+    "Shaft",
+    "Precision shaft",
+    "E-SFJ",
+    "E-PSFJ"
+   ],
+   "keywords": [
+    "round shaft",
+    "hard chrome plated shaft",
+    "stainless shaft",
+    "tapped shaft",
+    "both ends tapped shaft",
+    "stepped shaft",
+    "wrench flat",
+    "wrench slot"
+   ],
+   "matches": [
+    {
+     "id": "sfj-shaft",
+     "generator": "shaft",
+     "pattern": "^E-(?:(?:PSSFJ|PSFJ|PSFG|SSFJ|SFJ)[TCZW]?|(?:PSSFPG|PSFPG|SSFPG|SFPG|PSSFPH|PSFPH|SSFPH|SFPH|PFPGH))(?P<d>\\d{1,2})-(?P<length>\\d+(?:\\.\\d+)?)(?P<options>(?:-[A-Z0-9.]+)*)$",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "diameter_mm": "{d}",
+      "length_mm": "{length}"
+     },
+     "examples": [
+      "E-PSFJ6-20",
+      "E-SSFJ10-123.4-LKC-WSC12-X8",
+      "E-PSFJT50-200-M30",
+      "E-PSFG16-250-FC20-A10",
+      "E-PSFJC6-40-M3-SC0",
+      "E-PSFJZ6-50-M3-N3-SC0",
+      "E-PSFJW6-50-M3-N3",
+      "E-PSFPG8-200-F4-P6-M3-SC0",
+      "E-PSFPH8-200-F5-P6-M3-T5-SC0",
+      "E-PFPGH30-800-F30-P20-M16-T25-SC40"
+     ],
+     "negative_examples": [
+      "E-SFJ",
+      "E-SFJ20",
+      "E-XYZ20-300",
+      "E-SFJ20-",
+      "E-PSFJX6-20",
+      "E-PFPG8-200",
+      "E-SFPK8-200-F4-P6-M3-SC0"
+     ]
+    }
+   ],
+   "path": "vendors/misumi/sfj/shaft",
+   "level": "Reviewed",
+   "sources_hash": "sha256:c548450b5e0d6b73de3d6fdb0cbb933a6869ab7f09b40686dcbf938b3bc79eb8"
+  },
+  {
+   "id": "misumi.shf.shaft-holder",
+   "name": "MISUMI Economy shaft supports: T-shaped with slit, with side slit, thickened, and T-shaped aluminium (C-SHA)",
+   "version": "0.1.0",
+   "kind": "generator",
+   "min_host_version": "0.49.1",
+   "vendor": "MISUMI",
+   "labels": [
+    "Shaft support",
+    "Shaft holder",
+    "T-shaped shaft support",
+    "E-SHST",
+    "E-SHWT",
+    "C-SHA"
+   ],
+   "keywords": [
+    "shaft support",
+    "shaft holder",
+    "linear shaft support",
+    "slit shaft holder",
+    "clamp shaft support",
+    "T-shaped shaft support"
+   ],
+   "matches": [
+    {
+     "id": "shf-shaft-holder",
+     "generator": "shaft-holder",
+     "pattern": "^(?:E-SH(?:STBN|STMN|STB|STM|STA|WTB|WTA)(?P<d>\\d{1,2})-(?P<height>\\d+)|C-SHA(?P<d_fixed>\\d{1,2}))$",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "hole_diameter_mm": "{d}",
+      "height_mm": "{height}"
+     },
+     "examples": [
+      "E-SHSTM8-25",
+      "E-SHSTBN10-10",
+      "E-SHWTA10-15",
+      "E-SHSTA16-20",
+      "C-SHA10"
+     ],
+     "negative_examples": [
+      "E-SHSTM",
+      "E-SHSTM8",
+      "E-SHSTM8-",
+      "E-SHSTX8-25",
+      "C-SHA",
+      "E-PSFJ6-20"
+     ]
+    }
+   ],
+   "path": "vendors/misumi/shf/shaft-holder",
+   "level": "Reviewed",
+   "sources_hash": "sha256:a9e60275f34511a1d0870e3e97b7546065d38dc125c9ee18613df06e38797e0c"
+  },
+  {
+   "id": "misumi.sth.dowel-flanged-shaft-support",
+   "name": "MISUMI Economy flanged shaft supports with slit and positioning holes, steel: round (E-STHWRBK, E-STHWRK, E-SSTHWRK) and compact (E-STHWCBK, E-SSTHWCK), with 2 dowel holes and clamp screw",
+   "version": "0.1.0",
+   "kind": "generator",
+   "min_host_version": "0.49.1",
+   "vendor": "MISUMI",
+   "labels": [
+    "Flanged shaft support with positioning hole",
+    "Shaft support dowel holes",
+    "Round flanged shaft support, positioning hole",
+    "Compact flanged shaft support, positioning hole",
+    "E-STHWRBK",
+    "E-STHWCBK",
+    "E-SSTHWRK",
+    "E-SSTHWCK"
+   ],
+   "keywords": [
+    "flanged shaft support positioning hole",
+    "flanged shaft support dowel hole",
+    "shaft support slit dowel pin hole",
+    "round flange shaft holder positioning holes",
+    "compact flange shaft holder positioning holes",
+    "stainless steel flanged shaft support",
+    "clamp flange shaft support with dowel holes"
+   ],
+   "matches": [
+    {
+     "id": "sth-dowel-flanged",
+     "generator": "dowel-flanged-shaft-support",
+     "pattern": "^(?:E-STHW(?:RBK|RK|CBK)|E-SSTHW(?:RK|CK))(?P<d>\\d{1,2})$",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "hole_diameter_mm": "{d}"
+     },
+     "examples": [
+      "E-STHWRBK12",
+      "E-STHWRBK30",
+      "E-STHWRK20",
+      "E-SSTHWRK16",
+      "E-STHWCBK25",
+      "E-SSTHWCK30"
+     ],
+     "negative_examples": [
+      "E-STHWRBK",
+      "E-STHWRBK12-",
+      "E-STHWCK20",
+      "E-STHWSBK12",
+      "E-STHWRB12",
+      "E-STHWIRB12",
+      "E-SSTHWCBK12"
+     ]
+    }
+   ],
+   "path": "vendors/misumi/sth/dowel-flanged-shaft-support",
+   "level": "Reviewed",
+   "sources_hash": "sha256:ce8f0008db783702afbd47ff5cb95b732f15774dbdff6be3d28d4811798b54d2"
+  },
+  {
+   "id": "misumi.sth.flanged-shaft-support",
+   "name": "MISUMI Economy flanged shaft supports, steel and stainless: standard and long sleeve (E-STHRB / E-STHSB / E-STHCB / E-SSTHC and ...L), thickened (E-STHRBN / E-STHCBN), end mounting (E-STHXRB / E-STHXCB), flanged with slit (E-STHWRB / E-STHWSB / E-STHWCB) and compact clamp (E-STHMRB)",
+   "version": "0.2.0",
+   "kind": "generator",
+   "min_host_version": "0.49.1",
+   "vendor": "MISUMI",
+   "labels": [
+    "Flanged shaft support",
+    "Shaft support flange",
+    "Round flanged shaft support",
+    "Square flanged shaft support",
+    "Compact flanged shaft support",
+    "Long sleeve flanged shaft support",
+    "Thickened flanged shaft support",
+    "End mounting flanged shaft support",
+    "Flanged shaft support with slit",
+    "Compact clamp shaft support",
+    "E-STHR",
+    "E-STHS",
+    "E-STHC",
+    "E-STHX",
+    "E-STHW",
+    "E-STHMR"
+   ],
+   "keywords": [
+    "flanged shaft support",
+    "flange shaft holder",
+    "round flange shaft support",
+    "square flange shaft support",
+    "compact flange shaft support",
+    "linear shaft support",
+    "long sleeve shaft support",
+    "thickened shaft support",
+    "end mounting shaft support",
+    "slit flanged shaft support",
+    "clamp shaft support"
+   ],
+   "matches": [
+    {
+     "id": "sth-flanged-shaft-support",
+     "generator": "flanged-shaft-support",
+     "pattern": "^(?:E-STH(?:RB|R|SB|S|CB|C)|E-SSTHC)(?P<d>\\d{1,2})$",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "hole_diameter_mm": "{d}"
+     },
+     "examples": [
+      "E-STHRB8",
+      "E-STHSB30",
+      "E-STHCB16",
+      "E-SSTHC25",
+      "E-STHC6"
+     ],
+     "negative_examples": [
+      "E-STHRB",
+      "E-STHRB8-",
+      "E-STHSBN10",
+      "E-STHMC8",
+      "E-STHXSB8",
+      "E-SHSTM8-25",
+      "C-SHA10"
+     ]
+    },
+    {
+     "id": "sth-flanged-long-sleeve",
+     "generator": "flanged-shaft-support",
+     "pattern": "^E-STH(?:RB|R|SB|S|CB|C)L(?P<d>\\d{1,2})$",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "hole_diameter_mm": "{d}",
+      "sleeve": "long"
+     },
+     "examples": [
+      "E-STHRBL12",
+      "E-STHSL16",
+      "E-STHCBL25",
+      "E-STHCL30"
+     ],
+     "negative_examples": [
+      "E-STHRBL",
+      "E-STHRLL12",
+      "E-SSTHCL12",
+      "E-STHRBL12-"
+     ]
+    },
+    {
+     "id": "sth-thickened",
+     "generator": "flanged-shaft-support",
+     "pattern": "^E-STH(?:RB|R|CB|C)N(?:L)?(?P<d>\\d{1,2})$",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "hole_diameter_mm": "{d}"
+     },
+     "examples": [
+      "E-STHRBN8",
+      "E-STHCN30",
+      "E-STHRBNL16",
+      "E-STHCBNL35"
+     ],
+     "negative_examples": [
+      "E-STHSBN10",
+      "E-STHSN10",
+      "E-STHRBN",
+      "E-STHRBNN12",
+      "E-STHRBLN12"
+     ]
+    },
+    {
+     "id": "sth-end-mounting",
+     "generator": "flanged-shaft-support",
+     "pattern": "^E-STHX(?:RB|R|CB|C)(?P<d>\\d{1,2})$",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "hole_diameter_mm": "{d}"
+     },
+     "examples": [
+      "E-STHXRB10",
+      "E-STHXR40",
+      "E-STHXCB16",
+      "E-STHXC25"
+     ],
+     "negative_examples": [
+      "E-STHXRB",
+      "E-STHXSB8",
+      "E-STHXRBL12",
+      "E-STHXR8-"
+     ]
+    },
+    {
+     "id": "sth-slit-flanged",
+     "generator": "flanged-shaft-support",
+     "pattern": "^E-(?:STHW(?:RB|R|SB|S|CB|C)|SSTHW[RSC])L?(?P<d>\\d{1,2})$",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "hole_diameter_mm": "{d}"
+     },
+     "examples": [
+      "E-STHWRB10",
+      "E-STHWS25",
+      "E-SSTHWC40",
+      "E-STHWRBL16",
+      "E-SSTHWCL12"
+     ],
+     "negative_examples": [
+      "E-STHWRB",
+      "E-STHWXB10",
+      "E-SSTHWRB10",
+      "E-ATHWSB8",
+      "E-STHWRBLL12"
+     ]
+    },
+    {
+     "id": "sth-compact-clamp",
+     "generator": "flanged-shaft-support",
+     "pattern": "^E-STHMR(?:BL|B|L)?(?P<d>\\d{1,2})$",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "hole_diameter_mm": "{d}"
+     },
+     "examples": [
+      "E-STHMRB8",
+      "E-STHMR20",
+      "E-STHMRBL12",
+      "E-STHMRL30"
+     ],
+     "negative_examples": [
+      "E-STHMRB",
+      "E-STHMC8",
+      "E-STHMRLB12",
+      "E-STHMRB8-"
+     ]
+    }
+   ],
+   "path": "vendors/misumi/sth/flanged-shaft-support",
+   "level": "Reviewed",
+   "sources_hash": "sha256:fc9c94f21c5b12686d32e65fc4b2914bd9ed2918a2ea0298225e8c6dad37a3f8"
+  },
+  {
+   "id": "misumi.sth.pilot-flanged-shaft-support",
+   "name": "MISUMI Economy pilot flanged shaft supports, steel: round flanged (E-STHWIRB) and compact flanged (E-STHWICB), with pilot spigot, slit and clamp screw",
+   "version": "0.1.0",
+   "kind": "generator",
+   "min_host_version": "0.49.1",
+   "vendor": "MISUMI",
+   "labels": [
+    "Pilot flanged shaft support",
+    "Shaft support pilot flange",
+    "Round pilot flanged shaft support",
+    "Compact pilot flanged shaft support",
+    "E-STHWIR",
+    "E-STHWIC"
+   ],
+   "keywords": [
+    "pilot flanged shaft support",
+    "pilot flange shaft holder",
+    "spigot flange shaft support",
+    "round pilot flange shaft support",
+    "compact pilot flange shaft support",
+    "linear shaft support with pilot",
+    "clamp flange shaft support"
+   ],
+   "matches": [
+    {
+     "id": "sth-pilot-flanged",
+     "generator": "pilot-flanged-shaft-support",
+     "pattern": "^E-STHWI(?:RB|CB)(?P<d>\\d{1,2})$",
+     "flags": "i",
+     "confidence": "exact",
+     "params": {
+      "hole_diameter_mm": "{d}"
+     },
+     "examples": [
+      "E-STHWIRB8",
+      "E-STHWIRB40",
+      "E-STHWICB16",
+      "E-STHWICB30"
+     ],
+     "negative_examples": [
+      "E-STHWIRB",
+      "E-STHWIRB8-",
+      "E-STHWISB10",
+      "E-STHWRB10",
+      "E-STHWIRBL12",
+      "E-SHSTM8-25"
+     ]
+    }
+   ],
+   "path": "vendors/misumi/sth/pilot-flanged-shaft-support",
+   "level": "Reviewed",
+   "sources_hash": "sha256:744ab4a616de575a8f5d510947fdbd532bbb4c75b1596c2b3e345a70b9575eb6"
+  }
+ ]
+}

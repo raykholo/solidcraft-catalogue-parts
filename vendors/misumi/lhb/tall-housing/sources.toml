@@ -1,0 +1,136 @@
+# Where every number of this generator comes from. One [[source]] per vendor document, one [[dimension]] per cited item.
+# status: labelled / published = printed in the catalogue; measured = read from the vertex coordinates of the published vector
+# drawing; derived = computed from labelled numbers; approximate = an estimate (appearance or an illustration choice); none.
+# source = [] is allowed only for approximate / none rows.
+
+[meta]
+clean_room = "Clean-room: only public catalogue pages from the manufacturer's own site. No vendor CAD (STEP/IGES/...) was downloaded or used, no other CAD program or generator was consulted. Where a value is not printed as a number, the table says how it was obtained. The current web catalogue may differ."
+
+[[source]]
+id = "S14"
+catalogue = "MISUMI Economy Series catalogue 2025, \"Linear Bushing Housing Units with Dowel Holes - Tall Blocks, Single\" (04-103), \"... Double\" (04-104), \"... Medium / Medium Long / Long\" (04-105)"
+url = "https://th.c.misumi-ec.com/book/THA_EconomySeries_e-catalog2025/files/basic-html/page488.html, page489.html and page490.html (page images files/mobile/488.jpg ... 490.jpg)"
+pages = "p.488, p.489, p.490"
+
+[[dimension]]
+id = 1000
+item = "Types E-LBHS (tall block, single / medium D / medium long S / long L) and E-LBHSW (tall block, double); ordering E-LBHS<dr>[D|S|L][-P], E-LBHSW<dr>[-P] (P = with dowel holes, delivered with 2 dowel pins, tolerance g6); housing aluminium alloy, clear anodized, -20 to 80 C"
+value = ""
+source = ["S14"]
+source_text = "S14 p.488, p.489, p.490"
+page = "p.488, p.489, p.490"
+status = "published"
+note = "published; single dr 5, 6, 8, 10, 12, 13, 16, 20, 25, 30 (also the double); medium dr 6, 8, 10, 12, 16, 20, 25, 30; medium long dr 12, 16, 20, 25, 30; long dr 8, 10, 12, 13, 16, 20, 25, 30; dowel holes: single / double dr 8 and up, long dr 16 and up only"
+
+[[dimension]]
+id = 1001
+item = "Overall length L (single, double, medium, medium long, long) per dr"
+value = ""
+source = ["S14"]
+source_text = "S14 p.488, p.489, p.490 tables"
+page = "p.488, p.489, p.490 tables"
+status = "published"
+note = "published; L has no printed tolerance"
+
+[[dimension]]
+id = 1002
+item = "Width W, total height H and bore centre height h above the base (h +-0.05; the bore is centred in the width, W/2 +-0.05) per dr"
+value = ""
+source = ["S14"]
+source_text = "S14 p.488, p.489, p.490 tables and figures"
+page = "p.488, p.489, p.490 tables and figures"
+status = "published"
+note = "published; h is dimensioned from the base (datum surface) in the figures"
+
+[[dimension]]
+id = 1003
+item = "Hole spacings L1 and L2 (+-0.5) along the length per series and dr"
+value = ""
+source = ["S14"]
+source_text = "S14 p.488, p.489, p.490 tables"
+page = "p.488, p.489, p.490 tables"
+status = "published"
+note = "published; on the single housing L1 > L2, on the double, medium, medium long and long housings L1 < L2"
+
+[[dimension]]
+id = 1004
+item = "Tapped holes 2-M1 (3-M2 on the long type, 2-M2 otherwise) with effective length in brackets, per dr: M1 M4(8) ... M10(17.5), M2 M4(10) ... M10(48)"
+value = ""
+source = ["S14"]
+source_text = "S14 p.488, p.489, p.490 tables"
+page = "p.488, p.489, p.490 tables"
+status = "published"
+note = "published; the 3-M2 label is printed in the figure of the long type"
+
+[[dimension]]
+id = 1005
+item = "Dimension l (5 ... 9) and counterbore d1 x t (6x5 for M3 bolts ... 14x10 for M8 bolts) per dr"
+value = ""
+source = ["S14"]
+source_text = "S14 p.488, p.489, p.490 tables"
+page = "p.488, p.489, p.490 tables"
+status = "published"
+note = "published; l is read as the depth of the M2 axis below the top face, d1 x t as the counterbore of the opposite face (figure reading, see 1010)"
+
+[[dimension]]
+id = 1006
+item = "dr tolerance: +0.003 / -0.012 (dr 5-16), -0.013 (dr 20-30) on p.488 / p.489; +0.003 / -0.012 (dr 6-16), -0.015 (dr 20-30) on p.490 (medium, medium long, long)"
+value = ""
+source = ["S14"]
+source_text = "S14 p.488, p.489, p.490 tables"
+page = "p.488, p.489, p.490 tables"
+status = "published"
+note = "published; echoed in the description, not drawn"
+
+[[dimension]]
+id = 1007
+item = "Dowel hole table: P (diameter, +0.05 / 0), C1, l2 (depth), E (and F, single only) per dr (dr 8 and up on p.488 / p.489, dr 16 and up for the long type on p.490)"
+value = ""
+source = ["S14"]
+source_text = "S14 p.488, p.489, p.490 dowel tables"
+page = "p.488, p.489, p.490 dowel tables"
+status = "published"
+note = "published; C1 and the dimension B of the A view are not drawn; the F value 20 is read over a merged cell for dr 13, 16, 20 of the single table"
+
+[[dimension]]
+id = 1008
+item = "Block cross-section: rectangle W x H with the bore at h above the base"
+value = ""
+source = ["S14"]
+source_text = "S14 p.488, p.489, p.490 figures"
+page = "p.488, p.489, p.490 figures"
+status = "published"
+note = "published for W, H, h; the edges are drawn without chamfers (the 4-C chamfers and the datum surface markings are not dimensioned)"
+
+[[dimension]]
+id = 1009
+item = "Hole layout: which of M1 / M2 / counterbore sits on which face, and where: 2 vertical M1 in the top face L1 apart, 2 (3) horizontal M2 from the +X face L2 apart at l below the top face, d1 x t counterbores from the opposite face coaxial with M2"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate: the tables print sizes, depths and spacings; the figures are read for the sides, but cannot be read unambiguously. Not guaranteed"
+
+[[dimension]]
+id = 1010
+item = "x offset of the M1 holes (+-0.35 W on a diagonal), the middle M2 hole of the long type at mid-length, bolt clearance holes behind the counterbores not drawn"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate: not in the catalogue as dimensions"
+
+[[dimension]]
+id = 1011
+item = "Dowel hole positions: single on the diagonal (-F/2, -E/2), (F/2, E/2); double and long on the centre line E apart"
+value = ""
+source = ["S14"]
+source_text = "S14 p.488, p.489, p.490 figures"
+page = "p.488, p.489, p.490 figures"
+status = "approximate"
+note = "approximate: E and F are printed, their orientation (diagonal) and x = 0 for the double and long housings are read from the red circles of the figures"
+
+[[note]]
+text = "Source count for this family: 12 rows (1000-1011): 9 published (1000-1008), 3 approximate (1009-1011); one new document (S14, shared with the housing-g generator). Not covered: the centre-hole-height-optional units (E-LBHG, p.491, own generator), the wide blocks (E-LBHN / E-LBHNW, p.485-487), the oil free bushing housing units (p.524-528), load ratings, allowable moments, masses and the printed columns D, (S), P, Q and C (not modelled)."

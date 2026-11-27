@@ -1,0 +1,23 @@
+# Codes CI builds and checks. `CODE [option ...]` = valid (built, then every dimension checked); `!CODE  # why` = must be rejected with a message.
+
+E-LBHN6
+E-LBHN16
+E-LBHN16D-P
+E-LBHN20D
+E-LBHN13
+E-LBHN30-P
+E-LBHN50
+E-LBHNW8
+E-LBHNW12L
+E-LBHNW16D
+E-LBHNW20L-P
+E-LBHNW30D
+E-LBHNW50-P
+!E-LBHN6-P  # no dowel hole version for dr 6 (the dowel table starts at dr 8)
+!E-LBHN13D  # dr 13 is single only (no medium length)
+!E-LBHN16L  # E-LBHN has no Long length: L belongs to E-LBHNW
+!E-LBHN9  # dr 9 is not a catalogue size
+!E-LBHNW10D  # medium long starts at dr 16
+!E-LBHNW6  # the double housing starts at dr 8
+!E-LBHNW35L  # the long housing is offered for dr 12, 16, 20, 25, 30
+!E-LBHN16-X  # only -P may follow the length

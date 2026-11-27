@@ -1,0 +1,10 @@
+E-SHSTB15-25	CodeError: E-SHSTB15 is not available with H = 25 (p.541 note)
+E-SHSTM8-35	CodeError: height 35 is not offered for E-SHSTM8: H = [10, 15, 20, 25, 30, 40] (p.541)
+E-SHSTA8-20	CodeError: the aluminium type E-SHSTA is applicable only to * marked dimensions: for D8 no height (p.541)
+E-SHSTA10-25	CodeError: the aluminium type E-SHSTA is applicable only to * marked dimensions: for D10 only H = [20] (p.541)
+E-SHSTMN10-10	CodeError: E-SHSTMN is not applicable to the * marked D10 (p.542 note)
+E-SHSTM9-20	CodeError: E-SHSTM is not listed for D9: catalogue sizes are [8, 10, 12, 15, 16, 20, 25, 30] (p.541)
+E-SHSTM8	CodeError: E-SHSTM8 needs its height: E-SHSTM8-<H> with H from [10, 15, 20, 25, 30, 40] (p.541)
+C-SHA10-20	CodeError: C-SHA has one fixed height per hole diameter (no H in the part number): C-SHA10
+C-SHA8	CodeError: C-SHA is listed for hole D [10, 12, 16, 20, 25, 30], not 8 (p.540)
+E-SHWTB25-30	CodeError: E-SHWTB is not listed for D25: catalogue sizes are [8, 10, 12, 16, 20, 30] (p.541)

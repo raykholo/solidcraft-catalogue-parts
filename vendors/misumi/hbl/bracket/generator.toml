@@ -1,0 +1,32 @@
+id = "misumi.hbl.bracket"
+name = "MISUMI 5 series extruded brackets (HBLTS, HBLTV, HBLTSW, HBLTVW, HBLTF, HBKTS, HBKUS, HBLUS, HBLTH)"
+version = "0.2.0"
+kind = "generator"
+min_host_version = "0.49.1"
+preview_code = "HBLTSW5"
+
+[entry]
+build  = "bracket:parse_build"
+check  = "check:check"
+shots  = "shots"
+
+[declares]
+labels   = ["Extrusion bracket", "L bracket", "Angle bracket", "Thick bracket", "Ultra thick bracket", "Scalene bracket", "Eccentric bracket", "HBLTS", "HBLTF", "HBKTS", "HBKUS"]
+keywords = ["aluminium extrusion bracket", "corner bracket", "profile bracket", "6 mm slot bracket", "T-slot bracket", "5 series bracket", "perpendicularly machined bracket", "bracket with tabs"]
+vendor   = "MISUMI"
+
+[[declares.matches]]
+id         = "hbl-bracket"
+generator  = "bracket"
+pattern    = '^(?:HBLTS5(?:-(?P<m>4))?|(?:NBLTS|HBLTSB|CHBLTS|HBLTV|HBLTVB|HBLTSW|HBLTVW|HBLTF|HBKTST|HBKTS|HBKTSB|HBKUS|HBKUSB|NBLUS|HBLUS|HBLTH|HBLTHB)5)(?P<alteration>-(?:C|SET|SST|SEU|SSU|SEP|SSP|SEC))?$'
+flags      = "i"
+confidence = "exact"
+params     = { screw = "M{m}" }
+examples          = ["HBLTS5", "HBLTS5-4", "HBLTSB5", "CHBLTS5", "NBLTS5", "HBLTV5", "HBLTSW5", "HBLTVW5", "HBLTF5", "HBKTST5", "HBKTS5", "HBKTSB5", "HBKUS5", "HBKUSB5", "NBLUS5", "HBLUS5", "HBLTH5", "HBLTHB5", "HBLTS5-C", "HBKUS5-C", "HBLTSW5-SET", "HBLTF5-SEC"]
+negative_examples = ["HBLTS", "HBLTX5", "HBLTS5-", "HBLTS6", "HBLTS5-5", "HBLTV5-4", "HBKUS5-4", "HBLTS5-XYZ", "HBLTS5-SET-C", "HBLFSN5"]
+
+[inputs]
+type = { choices = ["HBLTS5", "HBLTS5-4", "HBLTSB5", "CHBLTS5", "NBLTS5", "HBLTV5", "HBLTVB5", "HBLTSW5", "HBLTVW5", "HBLTF5", "HBKTST5", "HBKTS5", "HBKTSB5", "HBKUS5", "HBKUSB5", "NBLUS5", "HBLUS5", "HBLTH5", "HBLTHB5"] }
+
+[guarantee]
+not_guaranteed = ["The arms are plain flat plates: the inner-corner web with its ribs, the triangular cut-outs of the ultra thick types and the edge rounds are not drawn, the catalogue gives no dimensions for them", "The O4.2 relief at the inner corner (12 mm from the outer faces) is published but not drawn", "The tabs of HBKTST5, HBKTS5, HBKTSB5, HBKUS5 and HBKUSB5 are drawn as 6 wide, 1 high strips (centred on the width, proud of the outer faces) over the whole arm length: width and height are published, the length and the end shape are appearance, approximate, and the 6 mm slot fit is not guaranteed", "The wall thickness of the ultra thick types (NBLUS5, HBLUS5, HBKUS5, HBKUSB5) is not labelled; the wall is drawn 9 thick like the labelled foot and is not dimension-checked", "The eccentric types HBLTH5 and HBLTHB5 put both holes 5 from the same side of the 12 wide plate (the page does not say which side); the mirror image is the same part", "Perpendicularity K of the machined types is only written into the description, nothing is checked against it", "Alteration C (M5 taps for cover mounting) and the screw sets SET, SST, SEU, SSU, SEP, SSP, SEC are accepted and recorded in the description only; neither the taps nor the screws and nuts are drawn", "Surface treatment and its colour are not drawn", "Mass is the catalogue value in the description; the drawn plates weigh less because the web is missing"]

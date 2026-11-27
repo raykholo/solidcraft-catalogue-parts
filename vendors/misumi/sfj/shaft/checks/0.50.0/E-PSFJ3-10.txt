@@ -1,0 +1,13 @@
+== E-PSFJ3-10
+PASS  one closed body                            spec         1  got          1           [S8]
+PASS  length (X)                                 spec        10  got    10.0000  +-0.005  [S8 p.432 L] 1 mm steps
+PASS  diameter D (bbox Y)                        spec         3  got     3.0000  +-0.005  [S8 p.432 D3]
+PASS  diameter D (bbox Z)                        spec         3  got     3.0000  +-0.005  [S8 p.432 D3]
+PASS  cylinder face O3                           spec       yes  got        yes           [S8 p.432]
+PASS  D tolerance g7 upper/lower                 spec (-0.002, -0.012)  got (-0.002, -0.012)           [S8 p.432 spec table] echoed into the description
+PASS  tolerance written in the part description  spec       yes  got        yes           [S8 p.432]
+PASS  L inside the table range 10-400            spec       yes  got        yes           [S8 p.432]
+PASS  volume = pi (D/2)^2 L                      spec     70.69  got    70.6858  +-0.0353429 [derived]
+PASS  part number metadata                       spec E-PSFJ3-10  got E-PSFJ3-10           [-]
+PASS  design part number                         spec E-PSFJ3-10  got E-PSFJ3-10           [-]
+11/11 passed

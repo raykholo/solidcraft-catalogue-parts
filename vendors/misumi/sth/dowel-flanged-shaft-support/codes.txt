@@ -1,0 +1,38 @@
+# Codes CI builds and checks. `CODE [option ...]` = valid (built, then every dimension checked); `!CODE  # why` = must be rejected with a message.
+
+# round flanged, positioning hole, black oxide (S19 p.537)
+E-STHWRBK12
+E-STHWRBK16
+E-STHWRBK20
+E-STHWRBK25
+E-STHWRBK30
+
+# round flanged, electroless nickel plating
+E-STHWRK12
+E-STHWRK20
+E-STHWRK30
+
+# round flanged, stainless steel
+E-SSTHWRK16
+E-SSTHWRK25
+
+# compact flanged, black oxide
+E-STHWCBK12
+E-STHWCBK16
+E-STHWCBK20
+E-STHWCBK25
+E-STHWCBK30
+
+# compact flanged, stainless steel
+E-SSTHWCK12
+E-SSTHWCK30
+
+!E-STHWRBK10  # D10 is not in the positioning-hole table (12 16 20 25 30)
+!E-STHWCBK8  # D8 is not in the positioning-hole table
+!E-STHWRBK40  # D40 is not in the positioning-hole table (the pilot type E-STHWIRB goes to 40)
+!E-STHWRBK  # the hole diameter D is missing
+!E-STHWCK20  # no electroless-nickel compact type: the type table prints '-' for it
+!E-SSTHWCBK20  # no black-oxide stainless compact type: the stainless compact type is E-SSTHWCK
+!E-STHWSBK16  # no square positioning-hole type (only round and compact)
+!E-STHWRB16  # not a positioning-hole type: E-STHWRB is the flanged with slit type (misumi.sth.flanged-shaft-support)
+!E-STHWRBK13  # D13 is not a catalogue size

@@ -1,0 +1,76 @@
+# Where every number of this generator comes from. One [[source]] per vendor document, one [[dimension]] per cited item.
+# status: labelled / published = printed in the catalogue; measured = read from the vertex coordinates of the published vector
+# drawing; derived = computed from labelled numbers; approximate = an estimate (appearance or an illustration choice); none.
+# source = [] is allowed only for approximate / none rows.
+
+[meta]
+clean_room = "Clean-room: only public catalogue pages from the manufacturer's own site. No vendor CAD (STEP/IGES/...) was downloaded or used, no other CAD program or generator was consulted. Where a value is not printed as a number, the table says how it was obtained. The current web catalogue may differ."
+
+[[source]]
+id = "S14"
+catalogue = "MISUMI Economy Series catalogue 2025, \"Linear Bushing Housing Units, Center Hole Height Optional, Single / Double\" (04-106)"
+url = "https://th.c.misumi-ec.com/book/THA_EconomySeries_e-catalog2025/files/basic-html/page491.html (page image files/mobile/491.jpg)"
+pages = "p.491"
+
+[[dimension]]
+id = 1020
+item = "Types E-LBHG (single) and E-LBHGW (double); ordering E-LBHG<dr>-<H> with H the centre height chosen from the H selection of the dr (dr 12: 15, 20, 25; dr 16: 20, 25, 30; dr 20: 20, 25, 30; dr 25: 25, 30, 40; dr 30: 30, 40, 50); housing aluminium alloy, clear anodized, -20 to 80 C"
+value = ""
+source = ["S14"]
+source_text = "S14 p.491 table"
+page = "p.491 table"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 1021
+item = "Centre height H (+-0.05, from the datum surface), total height H1 = H + 15 / 20 / 22 / 27.5 / 32.5 (0 / -0.5) and flange width L (bore centred at L/2 +-0.05) per dr"
+value = ""
+source = ["S14"]
+source_text = "S14 p.491 table and figure"
+page = "p.491 table and figure"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 1022
+item = "Length T (single / double) and mounting hole spacing along the shaft T1 (single / double) per dr"
+value = ""
+source = ["S14"]
+source_text = "S14 p.491 table"
+page = "p.491 table"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 1023
+item = "Flange thickness S, body width W, flange hole spacing L1 across the shaft and hole diameter d (4-d) per dr"
+value = ""
+source = ["S14"]
+source_text = "S14 p.491 table and figure"
+page = "p.491 table and figure"
+status = "published"
+note = "published; d is 5.5 for dr 12-20 (merged cell), 6.6 for dr 25, 9 for dr 30"
+
+[[dimension]]
+id = 1024
+item = "Cross-section: rectangular flange of width L and thickness S below a body of width W up to H1"
+value = ""
+source = ["S14"]
+source_text = "S14 p.491 figure"
+page = "p.491 figure"
+status = "published"
+note = "published for L, W, S, H1"
+
+[[dimension]]
+id = 1025
+item = "Upper corner chamfers of the body read as 45 degrees of size C1 (8.5 ... 18), plain rectangular flange without edge chamfers, mounting holes without counterbore, empty bore at the nominal dr"
+value = ""
+source = ["S14"]
+source_text = "S14 p.491 table, figure"
+page = "p.491 table, figure"
+status = "approximate"
+note = "approximate: C1 is printed but its meaning is read from the figure; the 2-C / 4-C chamfers and the (0.5) of column C are not drawn"
+
+[[note]]
+text = "Source count for this family: 6 rows (1020-1025): 5 published, 1 approximate; the document S14 is shared with the tall-housing generator. Not covered: the other housing units (p.485-490, p.524-528), load ratings, allowable moments and masses."

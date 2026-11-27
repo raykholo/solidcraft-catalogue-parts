@@ -1,0 +1,19 @@
+== E-LBHS8L
+PASS  one closed body                                   spec         1  got          1           [S14]
+PASS  overall length L (bbox Y)                         spec        80  got    80.0000  +-0.005  [S14 p.490 L]
+PASS  width W (bbox X)                                  spec        20  got    20.0000  +-0.005  [S14 p.490 W]
+PASS  height H (bbox Z)                                 spec        26  got    26.0000  +-0.005  [S14 p.490 H]
+PASS  shaft bore dr 8 (axis along Y)                    spec       yes  got        yes           [S14 p.490 dr] nominal, tolerance echoed in the description
+PASS  bore axis h = 16 above the base                   spec       yes  got        yes           [S14 p.490 h] h +-0.05
+PASS  2 vertical threads M5 (M1)                        spec         2  got          2           [S14 p.490 2-M1]
+PASS  M1 holes L1 = 48 apart                            spec       yes  got        yes           [S14 p.490 L1] x offset is appearance
+PASS  M1 effective length 8.5 from the top face         spec       yes  got        yes           [S14 p.490 M1 (effective length)]
+PASS  3 horizontal threads M4 (M2)                      spec         3  got          3           [S14 p.490 3-M2] 3-M2 on the long type
+PASS  M2 holes L2 = 60 apart                            spec       yes  got        yes           [S14 p.490 L2] middle hole of the long type at mid-length is appearance
+PASS  M2 effective length 15, l = 5 below the top face  spec       yes  got        yes           [S14 p.490 M2, l] drawn from the +X face (appearance)
+PASS  3 counterbores d1 = 6                             spec       yes  got        yes           [S14 p.490 d1 x t] side and coaxial placement are appearance
+PASS  counterbore depth t = 5                           spec       yes  got        yes           [S14 p.490 d1 x t]
+PASS  tolerances written in the part description        spec       yes  got        yes           [S14 p.490] echoed, not drawn
+PASS  part number metadata                              spec  E-LBHS8L  got   E-LBHS8L           [-]
+PASS  design part number                                spec  E-LBHS8L  got   E-LBHS8L           [-]
+17/17 passed

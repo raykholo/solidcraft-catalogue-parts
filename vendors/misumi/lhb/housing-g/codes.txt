@@ -1,0 +1,18 @@
+# Codes CI builds and checks. `CODE [option ...]` = valid (built, then every dimension checked); `!CODE  # why` = must be rejected with a message.
+
+E-LBHG12-15
+E-LBHG12-25
+E-LBHG16-20
+E-LBHG20-30
+E-LBHG25-40
+E-LBHG30-50
+E-LBHGW12-20
+E-LBHGW20-25
+E-LBHGW25-30
+E-LBHGW30-40
+!E-LBHG12-30  # centre height 30 is not offered for dr 12 (15, 20, 25)
+!E-LBHG30-25  # centre height 25 is not offered for dr 30 (30, 40, 50)
+!E-LBHG12  # the centre height option is part of the code
+!E-LBHGW16-15  # centre height 15 is not offered for dr 16
+!E-LBHG10-15  # dr 10 is not a catalogue size
+!E-LBHG12-15-P  # no dowel holes on the centre-hole-height types

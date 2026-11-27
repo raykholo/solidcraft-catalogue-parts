@@ -1,0 +1,13 @@
+type,series,profiles,material,surface,source,page,status
+NFS5,5,2020,A6063S-T5,Clear anodize,S1,p.529 type table (1 slot),labelled
+NFS5,5,2040|4040,A6063SS-T5,Clear anodize,S1,p.530 type table (2 slots: 2040 and 4040),labelled
+NFSB5,5,2020,A6063S-T5,Black anodize,S1,p.529 type table (1 slot),labelled
+NFSB5,5,2040|4040,A6063SS-T5,Black anodize,S1,p.530 type table (2 slots: 2040 and 4040),labelled
+HFS5,5,,A6N01SS-T5,Clear anodize,S1,p.529-530 type table,labelled
+HFSB5,5,,A6N01SS-T5,Black anodize,S1,p.529-530 type table,labelled
+CAF5,5,,A6N01SS-T5,Clear coating (anodize + clear paint),S1,p.529-530 type table,labelled
+HFSY5,5,,A6N01SS-T5,Baked paint (yellow),S1,p.529-530 type table,labelled
+HFS6,6,,A6N01SS-T5,Clear anodize,S10,p.571 type table,labelled
+HFSB6,6,,A6N01SS-T5,Black anodize,S10,p.571 type table,labelled
+CAF6,6,,A6N01SS-T5,Clear coating (anodize + clear paint),S10,p.571 type table,labelled
+HFSY6,6,,A6N01SS-T5,Baked paint (yellow),S10,p.571 type table,labelled

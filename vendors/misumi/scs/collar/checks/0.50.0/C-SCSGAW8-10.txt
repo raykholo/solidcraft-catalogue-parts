@@ -1,0 +1,19 @@
+== C-SCSGAW8-10
+PASS  1 closed body                                   spec         1  got          1           [S20]
+PASS  width B (Z)                                     spec        10  got    10.0000  +-0.005  [S20 p.545 width B]
+PASS  outer diameter D1 (X)                           spec        28  got    28.0000  +-0.01   [S20 table D1]
+PASS  outer diameter D1 (Y)                           spec     27.99  got    27.9911  +-0.005  [S20 table D1] slit / gap chord removed
+PASS  outer cylinder face O28                         spec       yes  got        yes           [S20 table D1]
+PASS  bore cylinder face I.D. 8                       spec       yes  got        yes           [S20 table I.D. D] nominal; +0.05/+0.01 is the tolerance before cutting
+PASS  bore tolerance written in the part description  spec       yes  got        yes           [S20 p.544 note]
+PASS  D1 larger than D                                spec       yes  got        yes           [derived]
+PASS  clamp screw thread M4 present                   spec       yes  got        yes           [S20 table M (coarse)] position and depth are appearance
+PASS  no other thread                                 spec       yes  got        yes           [S20 table M (coarse)]
+PASS  2 through holes diameter d1 = 4.5               spec       yes  got        yes           [S20 p.545 d1]
+PASS  2 counterbores diameter d2 = 8                  spec       yes  got        yes           [S20 p.545 d2]
+PASS  hole pitch P                                    spec        18  got    18.0000  +-0.005  [S20 p.545 P]
+PASS  counterbore floors at B - t = 5.6               spec         2  got          2           [S20 p.545 t] t = 4.4
+PASS  counterbores clear the outer diameter           spec       yes  got        yes           [derived from P, d2, D1]
+PASS  part number metadata                            spec C-SCSGAW8-10  got C-SCSGAW8-10           [-]
+PASS  design part number                              spec C-SCSGAW8-10  got C-SCSGAW8-10           [-]
+17/17 passed

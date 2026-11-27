@@ -1,0 +1,242 @@
+# Where every number of this generator comes from. One [[source]] per vendor document, one [[dimension]] per cited item.
+# status: labelled / published = printed in the catalogue; measured = read from the vertex coordinates of the published vector
+# drawing; derived = computed from labelled numbers; approximate = an estimate (appearance or an illustration choice); none.
+# source = [] is allowed only for approximate / none rows.
+
+[meta]
+clean_room = "Clean-room: only public catalogue pages and PDFs from the manufacturers' own sites. No vendor CAD (STEP/IGES/...) was downloaded or used, no other CAD program or generator was consulted. Where a value is not printed as a number, the table says how it was obtained. current web catalogue may differ; see \"Open questions\" in README.md."
+
+[[source]]
+id = "S11"
+catalogue = "MISUMI Economy Series catalogue 2025, \"Linear Bushings Straight Short\" (04-079), \"Straight Medium\" (04-080), \"Round Flanged Linear Bushings\" (04-081) and \"Medium\" (04-082), \"Square Flanged Linear Bushings\" (04-083) and \"Medium\" (04-084)"
+url = "https://th.c.misumi-ec.com/book/THA_EconomySeries_e-catalog2025/files/basic-html/page464.html to page469.html (page images files/mobile/464.jpg to 469.jpg)"
+pages = "p.464 to p.469"
+
+[[dimension]]
+id = 200
+item = "Types E-LB (straight), E-LBF / E-LBFZ / E-LBFM (round flange), E-LBK / E-LBKZ / E-LBKM (square flange); Z = opposite counterbored, M = electroless nickel plated case; case equivalent to SUJ2, 58HRC~"
+value = ""
+source = ["S11"]
+source_text = "S11 p.464-p.469 type tables"
+page = "p.464-p.469 type tables"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 201
+item = "Short straight E-LB<dr>TUU: dr 6, 8, 10, 12, 13, 16, 20 with O.D. D (12, 15, 19, 21, 23, 28, 32), D tolerance, L (16, 20, 25, 25, 25, 30, 35), L tolerance and dr tolerance"
+value = ""
+source = ["S11"]
+source_text = "S11 p.464 table"
+page = "p.464 table"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 202
+item = "Medium straight E-LB<dr>DUU / DMUU: dr 6-30 with D, D tolerance (plain / nickel plated), L, L tolerance, dr tolerance"
+value = ""
+source = ["S11"]
+source_text = "S11 p.465 table"
+page = "p.465 table"
+status = "published"
+note = "published (the L 47 and B 30 of dr 10 and 12 are one merged cell in the table)"
+
+[[dimension]]
+id = 203
+item = "Medium straight ring grooves: W (groove width), B (spacing, with tolerance), D1 (groove diameter) per dr"
+value = ""
+source = ["S11"]
+source_text = "S11 p.465 table and figure"
+page = "p.465 table and figure"
+status = "published"
+note = "published; B is read as the clear distance between the two grooves (figure labels W B W), centred on L"
+
+[[dimension]]
+id = 204
+item = "Round and square flanged, long: dr 6-50 (Z types 6-30), D and its tolerances (single / double, plain / plated), L single and double, L tolerance, dr tolerance"
+value = ""
+source = ["S11"]
+source_text = "S11 p.466 and p.468 tables"
+page = "p.466, p.468 tables"
+status = "published"
+note = "published; L tolerance +-0.3 read for dr 6 and 8, +-0.6 for dr 10 and up (merged cells)"
+
+[[dimension]]
+id = 205
+item = "Flange H, T, hole d, counterbore d1, counterbore depth t, P.C.D., square flange W per dr (long series)"
+value = ""
+source = ["S11"]
+source_text = "S11 p.466 and p.468 tables"
+page = "p.466, p.468 tables"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 206
+item = "Round and square flanged, medium E-LBF / E-LBK<dr>DUU / DMUU: dr 6-30 with D, D tolerance, L, L tolerance +-0.4, H, T, d, d1, t, P.C.D., W (square), dr tolerance"
+value = ""
+source = ["S11"]
+source_text = "S11 p.467 and p.469 tables"
+page = "p.467, p.469 tables"
+status = "published"
+note = "published; the D tolerance of dr 20 is -0.021 / -0.028 (one merged cell with dr 25 and 30), not the -0.018 / -0.025 of dr 16"
+
+[[dimension]]
+id = 207
+item = "Overall length L measured from the outer flange face and including T; single (UU) and double (LUU) lengths"
+value = ""
+source = ["S11"]
+source_text = "S11 p.466 figure"
+page = "p.466 figure"
+status = "published"
+note = "published figure: L starts at the flange face"
+
+[[dimension]]
+id = 208
+item = "Square flange: W across flats, H as the extent across the corners (corners clipped by the circle H), corners on the hole axes"
+value = ""
+source = ["S11"]
+source_text = "S11 p.468 figure"
+page = "p.468 figure"
+status = "approximate"
+note = "approximate: the figure shows a flange standing on its corner with W along an edge; the corner shape and orientation are an illustration choice"
+
+[[dimension]]
+id = 209
+item = "Which flange face carries the counterbores: barrel side as standard, outer face for the opposite counterbored Z types"
+value = ""
+source = ["S11"]
+source_text = "S11 p.466 figure"
+page = "p.466 figure"
+status = "approximate"
+note = "approximate: read from the mounting-direction arrows of the figure"
+
+[[dimension]]
+id = 210
+item = "Balls, ball tracks, retainer, end seals (nitrile rubber), resin colours (appearance, approximate)"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate: not drawn; the catalogue gives materials only"
+
+[[dimension]]
+id = 211
+item = "Bore drawn as a plain cylinder at the nominal dr, no chamfers or edge breaks"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate: no chamfer is dimensioned; the tolerance goes into the description"
+
+[[note]]
+text = "Source count for this family: S11 12 rows (200-211): 8 published, 4 approximate; S13 10 rows (900-909): 9 published, 1 approximate (compact, pilot and centre flanged bushings, p.470-p.480). Not covered: the stainless steel type E-LBHS (named on p.470, no table), the linear bushing housings and the other bushing pages of the catalogue (not read), load ratings and masses (not modelled)."
+
+[[source]]
+id = "S13"
+catalogue = "MISUMI Economy Series catalogue 2025, \"Compact Flanged Linear Bushings, Single / Double / Opposite Counterbored Hole\" (04-085) and \"Medium\" (04-086), \"Round Flanged Linear Bushings with Pilot\" (04-087, 04-088), \"Square Flanged Linear Bushings with Pilot\" (04-089, 04-090), \"Compact Flanged Linear Bushings with Pilot\" (04-091, 04-092), \"Round, Center Flanged\" (04-093), \"Square, Center Flanged\" (04-094) and \"Compact, Center Flanged\" (04-095) Linear Bushings, Double / Medium"
+url = "https://th.c.misumi-ec.com/book/THA_EconomySeries_e-catalog2025/files/basic-html/page470.html to page480.html (page images files/mobile/470.jpg to 480.jpg)"
+pages = "p.470 to p.480"
+
+[[dimension]]
+id = 900
+item = "Types E-LBH / E-LBHZ / E-LBHM (compact flange), E-LBFP / E-LBFPM, E-LBKP / E-LBKPM, E-LBHP / E-LBHPM (with pilot), E-LBFC / E-LBFCM, E-LBKC / E-LBKCM, E-LBHC / E-LBHCM (centre flange); Z = opposite counterbored, M = electroless nickel plated case; medium series E-LBH / E-LBFP / E-LBKP / E-LBHP / E-LBFC / E-LBKC / E-LBHC<dr>DMUU; case equivalent to SUJ2, 58HRC~"
+value = ""
+source = ["S13"]
+source_text = "S13 p.470-p.480 type tables"
+page = "p.470-p.480 type tables"
+status = "published"
+note = "published; the stainless type E-LBHS (p.470 note) has no table and is not covered"
+
+[[dimension]]
+id = 901
+item = "Compact flanged E-LBH / E-LBHZ / E-LBHM<dr>UU / LUU: dr 5-50 (Z 6-30; dr 5 plain and single only) with D and its four tolerances (single / double, plain / plated), L single and double, L tolerance, dr tolerance, H, T, d, d1, t (3.3 for dr 5-8), A, F"
+value = ""
+source = ["S13"]
+source_text = "S13 p.470 table"
+page = "p.470 table"
+status = "published"
+note = "published; read from a 2x magnification of the page image; t 3.3 (dr 5, 6, 8) differs from the 3.1 printed for dr 6 and 8 on p.471 and p.466"
+
+[[dimension]]
+id = 902
+item = "Compact flanged medium E-LBH<dr>DUU / DMUU: dr 6-30 with D, D tolerance (plain / plated), L, L tolerance +-0.4, H, T, d, d1, t, A, F, dr tolerance"
+value = ""
+source = ["S13"]
+source_text = "S13 p.471 table"
+page = "p.471 table"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 903
+item = "Round, square and compact flanged with pilot E-LBFP / E-LBKP / E-LBHP (and M) <dr>UU / LUU: dr 6, 8, 10, 12, 16, 20, 25, 30, 40 with D and its tolerances (no / with surface treatment), L single and double, L tolerance +-0.3, pilot length l, H, T, d, d1, t, P.C.D. (round, square), W (square), A and F (compact), dr tolerance single and double"
+value = ""
+source = ["S13"]
+source_text = "S13 p.472, p.474, p.476 tables"
+page = "p.472, p.474, p.476 tables"
+status = "published"
+note = "published; the D tolerance is printed per surface treatment and applies to single and double alike"
+
+[[dimension]]
+id = 904
+item = "Round, square and compact flanged with pilot, medium E-LBFP / E-LBKP / E-LBHP<dr>DMUU: dr 6-30 with D, D tolerance, L, L tolerance +-0.3, l, H, T, d, d1, t, P.C.D., W, A, F, dr tolerance"
+value = ""
+source = ["S13"]
+source_text = "S13 p.473, p.475, p.477 tables"
+page = "p.473, p.475, p.477 tables"
+status = "published"
+note = "published; D tolerance -0.023 is read for dr 10, 12 and 16 (merged cell), which differs from -0.025 for dr 16 on p.467"
+
+[[dimension]]
+id = 905
+item = "Round, square and compact centre flanged E-LBFC / E-LBKC / E-LBHC (and M) <dr>LUU: dr 6, 8, 10, 12, 16, 20, 25, 30, 40 with D and its tolerances (no / with surface treatment), L, L tolerance +-0.3, l, H, T, d, d1, t, P.C.D., W, A, F, dr tolerance"
+value = ""
+source = ["S13"]
+source_text = "S13 p.478, p.479, p.480 tables"
+page = "p.478, p.479, p.480 tables"
+status = "published"
+note = "published; l is the printed distance from the end to the flange, equal to (L - T) / 2 in every row"
+
+[[dimension]]
+id = 906
+item = "Round, square and compact centre flanged, medium E-LBFC / E-LBKC / E-LBHC<dr>DMUU: dr 6-30 with D, D tolerance, L, L tolerance +-0.3, l, H, T, d, d1, t, P.C.D., W, A, F, dr tolerance"
+value = ""
+source = ["S13"]
+source_text = "S13 p.478, p.479, p.480 tables"
+page = "p.478, p.479, p.480 tables"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 907
+item = "Compact flange outline: H along the long axis (circle H), two flats D+6 apart (D+8 for dr 35, D+10 for dr 40 and 50), holes A apart along the long axis and, from dr 16, F apart across"
+value = ""
+source = ["S13"]
+source_text = "S13 p.470, p.471, p.476, p.477, p.480 figures and footnote"
+page = "p.470, p.471, p.476, p.477, p.480 figures"
+status = "published"
+note = "published figure and footnote (D+6/8/10); the circle-clipped outline and which of A and F lies along H are read from the figure"
+
+[[dimension]]
+id = 908
+item = "Pilot series: l measured from the end of the barrel to the flange face; L overall including l and T. Centre series: flange centred on L"
+value = ""
+source = ["S13"]
+source_text = "S13 p.472 and p.478 figures"
+page = "p.472, p.478 figures"
+status = "published"
+note = "published figure: l, T and L dimension lines start at the same barrel end"
+
+[[dimension]]
+id = 909
+item = "Counterbore face of the pilot and centre series (the face towards the long barrel side) and of the opposite-counterbore E-LBHZ (the other face)"
+value = ""
+source = ["S13"]
+source_text = "S13 p.470 and p.472 figures"
+page = "p.470, p.472 figures"
+status = "approximate"
+note = "approximate: read from the mounting-direction arrows of the figures"

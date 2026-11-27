@@ -1,0 +1,22 @@
+== E-PSSFJZ16-300-M8-N6-WSC20-X30-LKC
+PASS  one closed body                             spec         1  got          1           [S30]
+PASS  length (X)                                  spec       300  got   300.0000  +-0.005  [S30 p.435 L] 1 mm steps, LKC L+-0.05
+PASS  diameter D (bbox Y)                         spec        16  got    16.0000  +-0.005  [S30 p.435 D16]
+PASS  diameter D (bbox Z)                         spec        16  got    16.0000  +-0.005  [S30 p.435 D16]
+PASS  cylinder face O16                           spec       yes  got        yes           [S30 p.435]
+PASS  D tolerance g7 upper/lower                  spec (-0.006, -0.024)  got (-0.006, -0.024)           [S8 p.432 spec table] echoed into the description
+PASS  tolerance written in the part description   spec       yes  got        yes           [S8 p.432]
+PASS  L inside the table range 30-1200            spec       yes  got        yes           [S30 p.435]
+PASS  left end: M8 thread, depth 16, x 0..16      spec       yes  got        yes           [S30 p.435 M / N selection] tap depth M x 2 (MD: M x 3)
+PASS  right end: M6 thread, depth 12, x 288..300  spec       yes  got        yes           [S30 p.435 M / N selection] tap depth M x 2 (MD: M x 3)
+PASS  flat 1: wrench flat faces (pair)            spec         2  got          2           [S30 p.435 SC/WSC/SX]
+PASS  flat 1: width across flats W                spec        14  got    14.0000  +-0.005  [S8 p.432 W table]
+PASS  flat 1: start x = 20                        spec       yes  got        yes           [S30 p.435 SC/FC/A]
+PASS  flat 1: end x = 30                          spec       yes  got        yes           [S30 p.435 l1/FC]
+PASS  flat 2: wrench flat faces (pair)            spec         2  got          2           [S30 p.435 SC/WSC/SX]
+PASS  flat 2: width across flats W                spec        14  got    14.0000  +-0.005  [S8 p.432 W table]
+PASS  flat 2: start x = 60                        spec       yes  got        yes           [S30 p.435 SC/FC/A]
+PASS  flat 2: end x = 70                          spec       yes  got        yes           [S30 p.435 l1/FC]
+PASS  part number metadata                        spec E-PSSFJZ16-300-M8-N6-WSC20-X30-LKC  got E-PSSFJZ16-300-M8-N6-WSC20-X30-LKC           [-]
+PASS  design part number                          spec E-PSSFJZ16-300-M8-N6-WSC20-X30-LKC  got E-PSSFJZ16-300-M8-N6-WSC20-X30-LKC           [-]
+20/20 passed

@@ -1,0 +1,195 @@
+# Where every number of this generator comes from. One [[source]] per vendor document, one [[dimension]] per cited item.
+# status: labelled / published = printed in the catalogue; measured = read from the vertex coordinates of the published vector
+# drawing; derived = computed from labelled numbers; approximate = an estimate (appearance or an illustration choice); none.
+# source = [] is allowed only for approximate / none rows.
+
+[meta]
+clean_room = "Clean-room: only public catalogue pages and PDFs from the manufacturers' own sites. No vendor CAD (STEP/IGES/...) was downloaded or used, no other CAD program or generator was consulted. Where a value is not printed as a number, the table says how it was obtained. Every value was read from HIWIN's own catalogue PDF on hiwin.com (text layer and rendered pages)."
+
+[[source]]
+id = "S17"
+catalogue = "HIWIN \"Linear Guideway\" catalogue, form G99TE24-2410 (2024), RG Series, High Rigidity Roller Type (section 2-9); the same document as S7 (HG series generator), cited separately for this generator; page numbers are the printed ones, PDF page = printed + 3"
+url = "https://hiwin.com/wp-content/uploads/2026/08/HIWIN-Linear-Guideway-Catalog-1.pdf"
+pages = "p.152-153 (2-9-3 model number), p.153-154 (2-9-4 Tables 2-9-2 and 2-9-3), p.154-156 (2-9-5 accuracy Tables 2-9-4 to 2-9-11), p.156-157 (2-9-6 preload, Tables 2-9-13, 2-9-14), p.160-161 (2-9-8 dust-proof accessories, Tables 2-9-18, 2-9-22), p.165 (2-9-12, Table 2-9-29), p.166 (2-9-13 table (1) RGH-CA/HA), p.168 (table (3) RGW-CC/HC); p.167, 169, 170 (RGL, RGS, RGF) read but not drawn"
+
+[[dimension]]
+id = 1600
+item = "Model number grammar \"RG W 35 C C E 2 R 1640 E ZA P II + KK/E2+RC\": block type W (flange) / H (square) (also L low square, S ultra low square, F ultra low flange), size 15-65, load C (heavy) / H (super heavy), block mounting A (top) / C (top or bottom), E special block, number of blocks per rail (the digit before R), rail mounting R (top) / T (bottom), rail length, E special rail, preload Z0/ZA/ZB, accuracy H/P/SP/UP, I-IV rails per matched set, then dust protection (ZZ, KK, DD or none), E2 self-lubricant, RC reinforced cap. Also the interchangeable block (\"RGW25CCEZAP+ZZ/E2\", preload Z0/ZA, accuracy H/P) and rail (\"RGR25R1240EP+RC\", accuracy H/P) forms"
+value = ""
+source = ["S17"]
+source_text = "S17 2-9-3 p.152-153"
+page = "2-9-3 p.152-153"
+status = "published"
+note = "published; the second letter of a block name is the load class and the third the mounting, as in the model number block and in the table row names (RGH-CA, RGH-HA, RGW-CC, RGW-HC)"
+
+[[dimension]]
+id = 1601
+item = "Block types RGH-CA, RGH-HA (square, height 28-90) and RGW-CC, RGW-HC (flange, height 24-90); rail types R (top) and T (bottom); rail length 100 ~ 4000"
+value = ""
+source = ["S17"]
+source_text = "S17 Table 2-9-2 p.153, Table 2-9-3 p.154, tables (1), (3) p.166, p.168"
+page = "p.153 Table 2-9-2; p.154 Table 2-9-3"
+status = "published"
+note = "published; RGH has the A (top) mounting only and RGW the C (top or bottom) mounting only, as the table row names print (RGH-CA / RGH-HA, RGW-CC / RGW-HC)"
+
+[[dimension]]
+id = 1602
+item = "Block H, H1, N, W, B, B1, C, L1, L, K2, G, H2, H3 for RGH 15-65 (table (1), RGH-CA heavy load and RGH-HA super heavy load; C, L1, L, K1 are printed per row, the other columns are shared by CA and HA); the RGH15 table has the CA row only"
+value = ""
+source = ["S17"]
+source_text = "S17 p.166 table (1)"
+page = "p.166"
+status = "published"
+note = "published; the table has no RGH15HA row (an absent row, not a '-' cell), so RGH15HA is refused as not in the table"
+
+[[dimension]]
+id = 1603
+item = "RGH block thread M x depth l (M4x8, M5x8, M6x8, M8x10, M8x12, M10x17, M12x18, M16x20) and T (printed, not used)"
+value = ""
+source = ["S17"]
+source_text = "S17 p.166 'Mxl', 'T'"
+page = "p.166 \"Mxl\", \"T\""
+status = "published"
+note = "published; the tapped depth is l of Mxl; T is printed but its meaning is not defined in the text and is not used"
+
+[[dimension]]
+id = 1604
+item = "Block H, H1, N, W, B, B1, C, C1, L1, L, K2, G, H2, H3 for RGW 15-65 (table (3), RGW-CC heavy load and RGW-HC super heavy load; L1, L, K1 are printed per row, the other columns are shared by CC and HC); the RGW15 table has the CC row only"
+value = ""
+source = ["S17"]
+source_text = "S17 p.168 table (3)"
+page = "p.168"
+status = "published"
+note = "published; the table has no RGW15HC row (an absent row, not a '-' cell), so RGW15HC is refused as not in the table"
+
+[[dimension]]
+id = 1605
+item = "RGW mounting thread M (M5 ... M16) and its length T (6 ... 22), T1"
+value = ""
+source = ["S17"]
+source_text = "S17 p.168 'M', 'T', 'T1'"
+page = "p.168 \"M\", \"T\", \"T1\""
+status = "published"
+note = "published; T is used as the tapped depth (as for the EG and HG flange blocks); T1 is printed without a definition and is not used. The mounting code C means top or bottom, so the real holes may run through the flange: the depth T is an interpretation (see the interpretation notes)"
+
+[[dimension]]
+id = 1606
+item = "Number and position of the block mounting holes: six (legend 6-Mxl on the RGH drawing, 6-M on the RGW drawing). RGH: two columns C apart times three rows (the flank rows B apart and one row on the rail axis); RGW: four flange holes at C x B and two holes on the rail axis C1 apart"
+value = ""
+source = ["S17"]
+source_text = "S17 p.166 and p.168 top-view drawings, legends and dimension lines C, B, C1"
+page = "p.166, p.168 drawings"
+status = "published"
+note = "published in the drawing legends and dimension lines; read from the rendered drawings: the RGH centre row aligns with the flank holes (C), the RGW centre pair is dimensioned C1. The same legend is printed for the short CA / CC and the long HA / HC block, so six holes are drawn for every block"
+
+[[dimension]]
+id = 1607
+item = "Rail WR, HR, D, h, d and the mounting bolt for RGR 15-65 (top-mounted R rail)"
+value = ""
+source = ["S17"]
+source_text = "S17 p.166 and p.168 rail columns"
+page = "p.166, p.168 rail columns"
+status = "published"
+note = "published; the same rail values in both tables"
+
+[[dimension]]
+id = 1608
+item = "Rail standard pitch P (30, 30, 30, 40, 40, 52.5, 60, 75), distance to end Es (20, 20, 20, 20, 20, 22.5, 30, 35), L = (n-1)P + 2E, E no greater than P/2 for non-standard lengths"
+value = ""
+source = ["S17"]
+source_text = "S17 p.165 Table 2-9-29 and 2-9-12 text"
+page = "p.165 Table 2-9-29"
+status = "published"
+note = "published; the text of 2-9-12 says E no greater than P/2 for non-standard lengths; Table 2-9-29 prints no smallest E. For RGR15 / 20 / 25 the printed standard Es = 20 is larger than P/2 = 15 (the standard lengths 160, 220, 340 ... all use E = 20), so a standard length (E = Es exactly) is accepted and any other length needs E <= P/2. Smallest E (not printed): Es, or P/2 when Es > P/2 (family convention). Corrected in the independent review: the earlier rule also accepted 15 < E < 20."
+
+[[dimension]]
+id = 1609
+item = "Maximum rail length 4000 (all sizes); minimum rail length 100 (rail length column of Table 2-9-2)"
+value = ""
+source = ["S17"]
+source_text = "S17 p.165 Table 2-9-29 (Max. Length); p.153 Table 2-9-2"
+page = "p.165 Table 2-9-29; p.153 Table 2-9-2"
+status = "published"
+note = "published; the 100 mm lower end of the printed 100 ~ 4000 range is used as the minimum"
+
+[[dimension]]
+id = 1610
+item = "Preload classes Z0, ZA, ZB (Table 2-9-13); interchangeable blocks Z0, ZA, non-interchangeable ZB as well, for all sizes 15-65 (Table 2-9-14 prints ZB stiffness for every size, RG15C included)"
+value = ""
+source = ["S17"]
+source_text = "S17 p.152 model number; p.156 Table 2-9-13; p.157 Table 2-9-14"
+page = "p.152; p.156 Table 2-9-13; p.157 Table 2-9-14"
+status = "published"
+note = "published; no size is excluded from ZB (a lesson of the EG review: a '-' is not 'not offered')"
+
+[[dimension]]
+id = 1611
+item = "Accuracy classes: non-interchangeable set H, P, SP, UP (Tables 2-9-4 to 2-9-7); interchangeable block and rail H, P (Tables 2-9-8 to 2-9-11)"
+value = ""
+source = ["S17"]
+source_text = "S17 p.152-153 model number; p.154-156 accuracy tables"
+page = "p.152-153; p.154-156"
+status = "published"
+note = "published; the accuracy only restricts which codes are valid, no tolerance is modelled"
+
+[[dimension]]
+id = 1612
+item = "Dust protection codes ZZ, KK, DD (no symbol = end seal and bottom seal) and the overall block length L they give: RG15C 68 / 70 / 72.4 / 74.4 (no symbol / ZZ / DD / KK) ... RG65H 295 / 298 / 303.8 / 306.8"
+value = ""
+source = ["S17"]
+source_text = "S17 p.160 Table 2-9-18; p.161 Table 2-9-22 (the SS column equals L of tables (1), (3))"
+page = "p.160 Table 2-9-18; p.161 Table 2-9-22"
+status = "published"
+note = "published; the unparenthesised value of each cell is used (the parenthesised value is the maximum block length with screws and lips of the end seals); the SS column equals the L column of the dimension tables"
+
+[[dimension]]
+id = 1613
+item = "No stainless-steel option: the RG model number notes (p.152-153) offer no M material code"
+value = ""
+source = ["S17"]
+source_text = "S17 p.152-153 model number and notes"
+page = "p.152-153"
+status = "published"
+note = "published as an absence: the RG model number has no material letter (unlike HG and EG), so a trailing M is refused with the grammar message"
+
+[[dimension]]
+id = 1614
+item = "RGL (square, low), RGS (square, ultra low) and RGF (flange, ultra low) blocks: valid grammar, tables on p.167, p.169, p.170 read but not drawn"
+value = ""
+source = ["S17"]
+source_text = "S17 p.153 Table 2-9-2; p.167, p.169, p.170"
+page = "p.153; p.167, p.169, p.170"
+status = "published"
+note = "published; refused as not modelled, not as invalid"
+
+[[dimension]]
+id = 1615
+item = "Block envelope W x L1 x (H - H1) with the rail channel cut to the rail envelope WR x (HR - H1); rail drawn as a WR x HR box"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate (no roller-track, flange or end-cap outline is dimensioned)"
+
+[[dimension]]
+id = 1616
+item = "Gap of 10 mm between two blocks on one rail"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate (an illustration choice, as for HG and EG)"
+
+[[note]]
+text = "\"Published\" = printed in a catalogue table or text. All dimensions are published numbers; the two \"approximate\" rows are"
+
+[[note]]
+text = "modelling choices where the catalogue gives no dimension."
+
+[[note]]
+text = "Source count for family RG: 17 rows (1600-1616): 15 published, 2 approximate (rows 1605 and 1615 carry an approximate part too); one document (S17, the same catalogue as S7 and S15)."
+
+[[note]]
+text = "Not drawn: the bottom-mounted T rail (no tapped-hole dimensions are printed), the RGL, RGS and RGF blocks, end seals / scrapers / bolt caps beyond the block length of the dust codes, accuracy and preload effects (recorded in the code only)."

@@ -1,0 +1,13 @@
+== C-MUBZU35-15
+PASS  one closed body                             spec         1  got          1           [S16]
+PASS  overall length L (X)                        spec        15  got    15.0000  +-0.005  [S16 p.514 L]
+PASS  outer extent (bbox Y)                       spec        40  got    40.0000  +-0.005  [S16 p.514 D]
+PASS  outer extent (bbox Z)                       spec        40  got    40.0000  +-0.005  [S16 p.514 D]
+PASS  outside cylinder D 40                       spec       yes  got        yes           [S16 p.514 D]
+PASS  bore cylinder d 35                          spec       yes  got        yes           [S16 p.514 d]
+PASS  wall thickness N = (D - d) / 2              spec       2.5  got     2.5000  +-1e-06  [S16 p.514 N] derived: the printed N, D and d agree
+PASS  tolerances written in the part description  spec       yes  got        yes           [S16 p.514] echoed, not drawn
+PASS  volume = pi/4 (D^2 - d^2) L                 spec      4418  got  4417.8647  +-1.88496 [derived]
+PASS  part number metadata                        spec C-MUBZU35-15  got C-MUBZU35-15           [-]
+PASS  design part number                          spec C-MUBZU35-15  got C-MUBZU35-15           [-]
+11/11 passed

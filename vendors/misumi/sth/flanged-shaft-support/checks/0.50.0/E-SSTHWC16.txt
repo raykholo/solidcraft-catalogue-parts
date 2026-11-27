@@ -1,0 +1,24 @@
+== E-SSTHWC16
+PASS  one closed body                                                                                      spec         1  got          1           [S52 p.539 Slit Standard table]
+PASS  overall length (bbox Z)                                                                              spec        30  got    30.0000  +-0.005  [S52 p.539 Slit Standard table L]
+PASS  flange thickness T = 6                                                                               spec       yes  got        yes           [S52 p.539 Slit Standard table T]
+PASS  shaft hole O16 (axis along Z, on the axis)                                                           spec       yes  got        yes           [S52 p.539 Slit Standard table D]
+PASS  D tolerance (H8) upper/lower                                                                         spec (0.027, 0)  got (0.027, 0)           [S52 p.539 Slit Standard table DH8] echoed into the description
+PASS  tolerance written in the part description                                                            spec       yes  got        yes           [S52 p.539 Slit Standard table DH8]
+PASS  sleeve outside diameter D1 = 35                                                                      spec       yes  got        yes           [S52 p.539 Slit Standard table D1]
+PASS  Thickness (N) = (D1 - D) / 2                                                                         spec       9.5  got     9.5000  +-1e-09  [S52 p.539 Slit Standard table N, D1, D] derived from the table: N is the sleeve wall
+PASS  compact flange width W (bbox X)                                                                      spec        37  got    37.0000  +-0.005  [S52 p.539 Slit Standard table W]
+PASS  compact flange height H (bbox Y)                                                                     spec        56  got    56.0000  +-0.005  [S52 p.539 Slit Standard table H]
+PASS  mounting holes O5.5: count                                                                           spec         4  got          4           [S52 p.539 Slit Standard table 4-d / 2-d / 2-Hole / 4-Hole]
+PASS  mounting hole positions (P1, F)                                                                      spec       yes  got        yes           [S52 p.539 Slit Standard table P1, F]
+PASS  groove: start z = 16.5                                                                               spec       yes  got        yes           [S52 p.539 Slit Standard table B, S1, L] depth is not printed
+PASS  groove: width 1.5 (end z = 18, ring B = 12 to the end)                                               spec       yes  got        yes           [S52 p.539 Slit Standard table B, S1]
+PASS  radial slit width 1.5                                                                                spec       yes  got        yes           [S52 p.539 Slit Standard table S]
+PASS  clamp screw counterbore floor Y = 5 from the slit centre                                             spec       yes  got        yes           [S52 p.539 Slit Standard table Y]
+PASS  clamp screw clearance hole O5.6 on the clamp axis (y = X = 12, z = 24)                               spec       yes  got        yes           [S52 p.539 Slit Standard table d2, X, B]
+PASS  clamp screw counterbore O9 on the clamp axis (y = X = 12, z = 24)                                    spec       yes  got        yes           [S52 p.539 Slit Standard table d1, X, B]
+PASS  clamp screw thread M5 count                                                                          spec         1  got          1           [S52 p.539 Slit Standard table M]
+PASS  clamp screw thread axes at y = X = 12, z = 24 (B / 2, or B / 4 and 3 B / 4 on the slit long sleeve)  spec       yes  got        yes           [S52 p.539 Slit Standard table X, B]
+PASS  part number metadata                                                                                 spec E-SSTHWC16  got E-SSTHWC16           [-]
+PASS  design part number                                                                                   spec E-SSTHWC16  got E-SSTHWC16           [-]
+22/22 passed

@@ -1,0 +1,8 @@
+type,family,counterbore,plated,source,page,status
+E-LB,straight,-,no,S11,p.464 p.465 type tables,labelled
+E-LBF,round,standard,no,S11,p.466 p.467 type tables,labelled
+E-LBFZ,round,opposite,no,S11,p.466 type table,labelled
+E-LBFM,round,standard,yes,S11,p.466 type table,labelled
+E-LBK,square,standard,no,S11,p.468 p.469 type tables,labelled
+E-LBKZ,square,opposite,no,S11,p.468 type table,labelled
+E-LBKM,square,standard,yes,S11,p.468 type table,labelled

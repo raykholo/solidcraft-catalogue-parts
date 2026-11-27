@@ -1,0 +1,85 @@
+#!/usr/bin/env python3
+"""tools/build-index [--check]: collect every generator.toml into index/catalog.json (id, name, version, kind, min host version,
+vendor, labels, keywords, match patterns, guarantee level, sources hash), validated against schema/generator.schema.json.
+
+Refused (exit 1, no entry written) for a generator that
+  - fails the schema, or whose [[declares.matches]] break the RFC 0019 rules: examples and negative_examples required and holding,
+    anchored patterns only may claim "exact", at most 400 characters per pattern, 32 patterns and 16 captures, params naming
+    captures that exist, keywords that repeat an input choice;
+  - claims an example that another generator also claims as exact (unless it declares supersedes or coexists);
+  - is below the "Checked" level (the automatic spec check must pass for every code in codes.txt).
+--check validates and compares with the committed index/catalog.json without writing."""
+import argparse, json, re, sys
+from pathlib import Path
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+from runtime import registry, provenance
+from runtime.schema import validate
+
+ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+ap.add_argument("--check", action="store_true")
+a = ap.parse_args()
+schema = json.loads((ROOT / "schema" / "generator.schema.json").read_text())
+gens = registry.generators()
+errors: list[str] = []
+entries = []
+for g in gens:
+    m = g.manifest; e: list[str] = []
+    e += validate(m, schema)
+    d = m.get("declares", {})
+    ms = d.get("matches", [])
+    if len(ms) > 32: e.append("more than 32 patterns")
+    inputs = {str(c).lower() for v in m.get("inputs", {}).values() if isinstance(v, dict) for c in v.get("choices", [])}
+    for kw in d.get("keywords", []):
+        if str(kw).lower() in inputs:
+            e.append(f"keyword {kw!r} repeats an input choice")
+    for pm in ms:
+        try:
+            rx = re.compile(pm["pattern"], re.I if "i" in pm.get("flags", "") else 0)
+        except re.error as ex:
+            e.append(f"{pm['id']}: bad pattern: {ex}"); continue
+        if len(pm["pattern"]) > 400: e.append(f"{pm['id']}: pattern over 400 characters")
+        if rx.groups > 16: e.append(f"{pm['id']}: more than 16 captures")
+        if re.search(r"\(\?[=!<]|\\[1-9]", pm["pattern"]): e.append(f"{pm['id']}: lookaround or backreference (not allowed)")
+        if pm.get("confidence") == "exact" and not pm["pattern"].startswith("^"): e.append(f"{pm['id']}: only an anchored pattern may claim exact")
+        if not pm.get("examples") or not pm.get("negative_examples"): e.append(f"{pm['id']}: examples and negative_examples are required")
+        for ex in pm.get("examples", []):
+            if not rx.search(ex): e.append(f"{pm['id']}: example {ex!r} does not match")
+        for ex in pm.get("negative_examples", []):
+            if rx.search(ex): e.append(f"{pm['id']}: negative example {ex!r} matches")
+        for k, v in pm.get("params", {}).items():
+            for nm in re.findall(r"\{(\w+)\}", v):
+                if nm not in rx.groupindex: e.append(f"{pm['id']}: params.{k} names capture {nm!r}, which the pattern lacks")
+    # codes.txt: every valid code must be claimed by this generator's patterns
+    for c in g.codes():
+        if c.valid and not g.matches(c.code):
+            e.append(f"codes.txt: {c.code!r} matches none of this generator's patterns")
+    level, why = provenance.badge(g)
+    if level is None:
+        e.append(f"below Checked, not publishable: {why}")
+    if e:
+        errors += [f"{g.id}: {x}" for x in e]; continue
+    entries.append({"id": g.id, "name": m["name"], "version": m["version"], "kind": m["kind"], "min_host_version": m["min_host_version"],
+                    "vendor": d.get("vendor", ""), "labels": d.get("labels", []), "keywords": d.get("keywords", []),
+                    "matches": ms, "path": str(g.dir.relative_to(ROOT)), "level": level, "sources_hash": provenance.sources_hash(g)})
+# one exact claim per example
+for g in gens:
+    for pm in g.manifest.get("declares", {}).get("matches", []):
+        if pm.get("confidence") != "exact": continue
+        for ex in pm.get("examples", []):
+            others = [o.id for o in gens if o is not g and any(x.get("confidence") == "exact" for x in o.matches(ex))]
+            if others and not g.manifest.get("declares", {}).get("supersedes") and not g.manifest.get("declares", {}).get("coexists"):
+                errors.append(f"{g.id}: example {ex!r} is also claimed exact by {', '.join(others)}")
+for x in errors:
+    print("REFUSED  " + x)
+if errors:
+    sys.exit(1)
+text = json.dumps({"schema": 1, "generators": entries}, indent=1, ensure_ascii=False) + "\n"
+f = ROOT / "index" / "catalog.json"
+if a.check:
+    if not f.exists() or f.read_text() != text:
+        print("STALE  index/catalog.json"); sys.exit(1)
+    print("index/catalog.json is up to date")
+else:
+    f.parent.mkdir(exist_ok=True); f.write_text(text)
+    print(f"wrote index/catalog.json: {len(entries)} generators")

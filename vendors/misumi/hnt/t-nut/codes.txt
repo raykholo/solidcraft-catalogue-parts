@@ -1,0 +1,10 @@
+# Codes CI builds and checks. `CODE [option ...]` = valid (built, then every dimension checked); `!CODE  # why` = must be rejected with a message.
+
+HNTT5
+HNTT5-4
+HNTTSN5-3
+HNTTSS5-5
+HNTTV5-5
+!HNTT5-6  # HNTT5 is offered in M3, M4, M5, not M6
+!HNTTV5-4  # HNTTV5 is offered in M5, not M4
+!HNTT5-3.5  # HNTT5 is offered in M3, M4, M5, not M3.5

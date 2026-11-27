@@ -1,0 +1,282 @@
+# Where every number of this generator comes from. One [[source]] per vendor document, one [[dimension]] per cited item.
+# status: labelled / published = printed in the catalogue; measured = read from the vertex coordinates of the published vector
+# drawing; derived = computed from labelled numbers; approximate = an estimate (appearance or an illustration choice); none.
+# source = [] is allowed only for approximate / none rows.
+
+[meta]
+clean_room = "Clean-room: only public catalogue pages from the manufacturer's own site. No vendor CAD (STEP/IGES/...) was downloaded or used, no other CAD program or generator was consulted. Where a value is not printed as a number, the table says how it was obtained. current web catalogue may differ; see \"Open questions\" in README.md."
+
+[[source]]
+id = "S20"
+catalogue = "MISUMI Economy Series catalogue 2025, \"Shaft Collars Slit Type / Split Type\" (04-159) and \"Shaft Collars Slit Type, 2 Through Fixing Holes / 2 Counterbored Fixing Holes\" (04-160); overview p.543 (04-158)"
+url = "https://th.c.misumi-ec.com/book/THA_EconomySeries_e-catalog2025/files/basic-html/page544.html and page545.html (page images files/mobile/544.jpg, 545.jpg)"
+pages = "p.544, p.545 (overview p.543)"
+
+[[dimension]]
+id = 300
+item = "Types C-SCSAW (slit), C-SCNPAW (split), C-SCSMAW (slit, 2 through fixing holes), C-SCSGAW (slit, 2 counterbored fixing holes), all 6000 series aluminium alloy, clear anodized"
+value = ""
+source = ["S20"]
+source_text = "S20 p.544 and p.545 material / surface treatment tables"
+page = "p.544, p.545"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 301
+item = "Ordering code <type><I.D. D>-<width B>, e.g. C-SCSAW12-10, C-SCSGAW12-10"
+value = ""
+source = ["S20"]
+source_text = "S20 p.544 / p.545 ordering examples"
+page = "p.544, p.545 ordering examples"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 302
+item = "C-SCSAW: I.D. D, width B, outer diameter D1 and clamp screw M (coarse) per row of the slit table (D 6-30, 17 combinations; e.g. D12-B10: D1 30, M4)"
+value = ""
+source = ["S20"]
+source_text = "S20 p.544 slit type table"
+page = "p.544 slit type table"
+status = "labelled"
+note = "published (merged cells of the table read row by row against the 17 table rows; D1 and M agree with the C-SCSMAW table of p.545 wherever the same D and B occur)"
+
+[[dimension]]
+id = 303
+item = "C-SCNPAW: the same rows as the slit type except D6 is offered only in width 8 (16 combinations)"
+value = ""
+source = ["S20"]
+source_text = "S20 p.544 split type table"
+page = "p.544 split type table"
+status = "labelled"
+note = "published"
+
+[[dimension]]
+id = 304
+item = "C-SCSMAW: D, B, D1, hole pitch P, through hole diameter S (column S) and M per row (D 8-30, 15 combinations; e.g. D12-B10: D1 30, P22, S5.5, M4)"
+value = ""
+source = ["S20"]
+source_text = "S20 p.545 2 through fixing holes table"
+page = "p.545 2 through fixing holes table"
+status = "labelled"
+note = "published (merged cells read row by row)"
+
+[[dimension]]
+id = 305
+item = "C-SCSGAW: D, B, D1, M, hole pitch P, through diameter d1, counterbore diameter d2 and counterbore depth t per row (D 8-30, 13 combinations; e.g. D12-B10: D1 35, M4, P24, d1 5.5, d2 9.5, t 5.4)"
+value = ""
+source = ["S20"]
+source_text = "S20 p.545 2 counterbored fixing holes table"
+page = "p.545 2 counterbored fixing holes table"
+status = "labelled"
+note = "published (merged cells read row by row); t is read as the counterbore depth from the face (the side view marks it at the counterbore step)"
+
+[[dimension]]
+id = 306
+item = "Bore D drawn at the nominal diameter; the printed D +0.05/+0.01 is the tolerance before cutting (written into the part description)"
+value = ""
+source = ["S20"]
+source_text = "S20 p.544 and p.545 note"
+page = "p.544, p.545 note"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 307
+item = "Two fixing holes on a pitch P across the bore, axial, on the centre line perpendicular to the slit"
+value = ""
+source = ["S20"]
+source_text = "S20 p.545 front views \"P\""
+page = "p.545 front views"
+status = "published"
+note = "published: P is printed; the holes on the line at right angles to the slit follows the front view"
+
+[[dimension]]
+id = 308
+item = "Clamp screw thread M (coarse) per row"
+value = ""
+source = ["S20"]
+source_text = "S20 p.544 / p.545 column M (Coarse)"
+page = "p.544, p.545 column M"
+status = "labelled"
+note = "published"
+
+[[dimension]]
+id = 309
+item = "Position and depth of the clamp screw hole (drawn on the mid-wall radius, at mid width, tapped right through; one hole per collar, two for the split type, one per half end)"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate: the front view marks M at the slit but gives no position"
+
+[[dimension]]
+id = 310
+item = "Slit width (drawn 1 mm) and gap between the two halves of the split type (drawn 0.5 mm)"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate: not printed"
+
+[[dimension]]
+id = 311
+item = "Collar drawn as a plain ring: no chamfers, no screws, no key notch of the split type"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate: none printed"
+
+[[source]]
+id = "S21"
+catalogue = "MISUMI Economy Series catalogue 2025, \"Shaft Collars Slit Type for Bearing Inner Mount / Split Type, Compact with Urethane\" (04-161) and \"Shaft Collars Slit Type with Urethane\" (04-162). These are the last collar pages: the next page (548) opens chapter 05, cable carriers"
+url = "https://th.c.misumi-ec.com/book/THA_EconomySeries_e-catalog2025/files/basic-html/page546.html and page547.html (page images files/mobile/546.jpg, 547.jpg)"
+pages = "p.546, p.547"
+
+[[dimension]]
+id = 1400
+item = "Materials: C-SCSBNAW 6000 series aluminium alloy, clear anodized; E-SCSPD / E-SCD / E-SCDJ general structural steel or carbon steel, black oxide film, 1 or 2 hex socket head cap screws equivalent to SCM435; E-PSCSPD / E-PSCD / E-PSCDJ the same steel, electroless nickel plating, stainless steel screws; E-SSCSPD / E-SSCD / E-SSCDJ stainless steel with stainless steel screws; urethane damper (Shore A70, or A90 for No.8-50 of the standard type), heat resistant temperature 70 deg C"
+value = ""
+source = ["S21"]
+source_text = "S21 p.546 and p.547 material / surface treatment / accessories / damper tables"
+page = "p.546, p.547"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 1401
+item = "Ordering codes: C-SCSBNAW<D>-<Ds> (example C-SCSBNAW12-16), E-SCSPD<D> (example E-SCSPD6), E-SCD<D> and E-SCDJ<D>-<B> (example E-SCDJ12-10); the P / S variants of the E types pick the plating or stainless steel"
+value = ""
+source = ["S21"]
+source_text = "S21 p.546 and p.547 ordering examples"
+page = "p.546, p.547 ordering examples"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 1402
+item = "C-SCSBNAW: I.D. D, selection Ds, ring width b, total width B, outer diameter D1 and clamp screw M per row (D 6-30, 8 rows; e.g. D12: Ds16, b10, B11.5, D1 30, M4)"
+value = ""
+source = ["S21"]
+source_text = "S21 p.546 slit type for bearing inner mount table"
+page = "p.546 slit type for bearing inner mount table"
+status = "labelled"
+note = "published (merged cells for b, D1 and M read against the row grid of an enlarged copy of the table)"
+
+[[dimension]]
+id = 1403
+item = "C-SCSBNAW shape: a ring of outer diameter D1 and width b with a boss of diameter Ds on one face (total width B), the bore D through both, the slit through ring and boss"
+value = ""
+source = ["S21"]
+source_text = "S21 p.546 side view (b/2, b, B, D1, Ds, D)"
+page = "p.546 side view"
+status = "published"
+note = "published: which face carries the boss is not fixed by the catalogue; drawn on the +Z side"
+
+[[dimension]]
+id = 1404
+item = "E-SCSPD / E-PSCSPD / E-SSCSPD (split type, compact with urethane): D, B, D1, B1, t, M, d, R, W, X and Y per D (D 6, 8, 10, 12, 13, 15, 16, 20, 25, 30; e.g. D12: B18, D1 35, B1 15, t 3, M6, d7, R6, W1.5, X11, Y6)"
+value = ""
+source = ["S21"]
+source_text = "S21 p.546 split type compact with urethane table"
+page = "p.546 split type, compact with urethane table"
+status = "labelled"
+note = "published (merged cells read row by row on an enlarged copy of the table)"
+
+[[dimension]]
+id = 1405
+item = "E-SCD / E-PSCD / E-SSCD (slit type with urethane, standard): D, B, D1, B1, t, M, d, R, W, X and Y per D (D 4, 5, 6, 8, 10, 12, 13, 15, 16, 20, 25, 30, 35, 40, 50; e.g. D12: B18, D1 35, B1 15, t 3, M6, d7, R6, W1.5, X11, Y6; D50: B27, D1 85, B1 22, t 5, M10, d11, R9, W2, X32, Y16)"
+value = ""
+source = ["S21"]
+source_text = "S21 p.547 standard type table"
+page = "p.547 standard type table"
+status = "labelled"
+note = "published (merged cells read row by row on an enlarged copy of the table)"
+
+[[dimension]]
+id = 1406
+item = "E-SCDJ / E-PSCDJ / E-SSCDJ (slit type with urethane, compact): B selection per D (D8, 10, 12: B10; D16: B12; D20: B13; D25, 30, 40: B15) and D1, B1, t, M, d, R, W, X, Y per D (8 rows; e.g. D12-B10: D1 30, B1 8, t 2, M3, d3.4, R3, W1.5, X10, Y5)"
+value = ""
+source = ["S21"]
+source_text = "S21 p.547 compact type table"
+page = "p.547 compact type table"
+status = "labelled"
+note = "published (B selection read as one value per D from the merged cells; the ordering example E-SCDJ12-10 agrees)"
+
+[[dimension]]
+id = 1407
+item = "Steel width B1 and urethane damper thickness t on one face; B = B1 + t in every row. The side view hatches a strip of width t at the left face over the full height D1"
+value = ""
+source = ["S21"]
+source_text = "S21 p.546 and p.547 side views (B, B1, t, hatched strip)"
+page = "p.546, p.547 side views and tables"
+status = "labelled"
+note = "published: B - B1 = t holds in all 33 rows; reading the hatched strip as the urethane damper (the catalogue gives the damper as accessory material, not by name in the view) is an interpretation"
+
+[[dimension]]
+id = 1408
+item = "Slit (E-SCD, E-SCDJ) or split gap (E-SCSPD) of printed width W, through the steel width B1, from the bore to the outside"
+value = ""
+source = ["S21"]
+source_text = "S21 p.546 and p.547 front views (W)"
+page = "p.546, p.547 front views"
+status = "labelled"
+note = "published: W is a column of the tables"
+
+[[dimension]]
+id = 1409
+item = "Clamp screw: axis across the slit at X from the collar axis (below the bore for the slit types, above and below for the split type), centred on B1; M thread in one half, clearance hole d in the other half from the slit to the head seat floor at Y, head seat of width 2R rounded at the screw axis and open to the outside"
+value = ""
+source = ["S21"]
+source_text = "S21 p.546 and p.547 front and side views (M, d, X, Y, R, 2xR)"
+page = "p.546, p.547 front and side views"
+status = "labelled"
+note = "published numbers; reading Y as the distance from the slit centre line to the head seat floor and R as the radius of the U-shaped seat is an interpretation of the views"
+
+[[dimension]]
+id = 1410
+item = "Stainless steel (E-SSxxx) is offered only for the D marked * in the standard slit table (6, 10, 12, 16, 20, 25, 30, 35), for D 15, 16, 20, 25 of the compact split type, and for all compact slit D except 25; D4 of the standard slit type only as electroless nickel plated E-PSCD4"
+value = ""
+source = ["S21"]
+source_text = "S21 p.546 note, p.547 notes"
+page = "p.546, p.547 notes"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 1411
+item = "Bore D drawn at the nominal diameter; printed +0.05/+0.01 (split compact, bearing inner mount) or +0.06/+0.01 (slit with urethane; E-SCD +0.01~+0.08 by note) is the tolerance before cutting (written into the part description); D1 +-0.1 printed on the E types"
+value = ""
+source = ["S21"]
+source_text = "S21 p.546 and p.547 notes and side views"
+page = "p.546, p.547"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 1412
+item = "C-SCSBNAW slit width (drawn 1 mm, the shared slit_width) and clamp screw hole position (mid-wall radius, mid ring width b, tapped right through); the diagonal notch drawn at the top of its front view is not drawn"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate: not printed"
+
+[[dimension]]
+id = 1413
+item = "Urethane damper drawn as a plain full disc of thickness t, outer diameter D1 and bore D (not slit); which half is tapped (drawn: the -X half), the tapped length (right through that half), chamfers, the screws, and the bracketed reference range Z of the slit (printed in the standard and compact slit tables, not drawn)"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate: not printed as dimensions (Z is printed in brackets as a reference and is not used)"
+
+[[note]]
+text = "Source count for family 20: 12 rows (300-311): 9 published, 3 approximate; one document (S20, p.544-545). Family 21 (rows 1400-1413, one document S21, p.546-547): 12 published or labelled, 2 approximate. The catalogue's collar pages end with p.547 (p.548 opens chapter 05); the aluminium family of p.543-545 and this one are the only collar pages with complete tables."

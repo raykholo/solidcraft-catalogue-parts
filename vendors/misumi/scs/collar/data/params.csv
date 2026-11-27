@@ -1,0 +1,8 @@
+name,value,unit,source,page,status
+bore_tol_upper,0.05,mm,S20,p.544 note (D +0.05/+0.01 before cutting),labelled
+bore_tol_lower,0.01,mm,S20,p.544 note (D +0.05/+0.01 before cutting),labelled
+slit_width,1.0,mm,S20,not printed on p.544 / p.545 (appearance),approximate
+split_gap,0.5,mm,S20,not printed on p.544 (appearance),approximate
+bore_tol_slit_urethane_upper,0.06,mm,S21,p.547 side views (D +0.06/+0.01 before cutting),labelled
+bore_tol_slit_urethane_lower,0.01,mm,S21,p.547 side views (D +0.06/+0.01 before cutting),labelled
+bore_tol_e_scd_upper,0.08,mm,S21,p.547 note (D tolerance of E-SCD is +0.01~+0.08),labelled

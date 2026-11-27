@@ -1,0 +1,61 @@
+# Codes CI builds and checks. `CODE [option ...]` = valid (built, then every dimension checked); `!CODE  # why` = must be rejected with a message.
+
+E-LB6TUU
+E-LB20TUU
+E-LB12DUU
+E-LB30DMUU
+E-LBF20LUU
+E-LBFZ10UU
+E-LBFM50UU
+E-LBK16LUU
+E-LBKZ6UU
+E-LBKM35LUU
+E-LBF25DUU
+E-LBF20DUU
+E-LBK12DMUU
+!E-LB25TUU  # the short straight bushing is offered for dr 6-20 (no dr 25 on p.464)
+!E-LB10UU  # E-LB is the straight bushing: suffix TUU, DUU or DMUU
+!E-LBFZ40UU  # the opposite-counterbore type is offered for dr 6-30 only
+!E-LBF10TUU  # flanged bushings have no short TUU version
+!E-LBFM20DUU  # medium flanged plating is DMUU on the plain type, not the M type
+!E-LBK35DUU  # the medium flanged bushing is offered for dr 6-30
+
+# S13: compact flanged (p.470-471), flanged with pilot (p.472-477), centre flanged (p.478-480)
+E-LBH5UU
+E-LBH10LUU
+E-LBHZ20UU
+E-LBHM50LUU
+E-LBH16DUU
+E-LBH30DMUU
+E-LBFP20LUU
+E-LBFPM10UU
+E-LBFP30DMUU
+E-LBKP6UU
+E-LBKPM40LUU
+E-LBKP12DMUU
+E-LBHP16LUU
+E-LBHPM8UU
+E-LBHP25DMUU
+E-LBFC20LUU
+E-LBFCM40LUU
+E-LBFC30DMUU
+E-LBKC12LUU
+E-LBKCM16LUU
+E-LBKC25DMUU
+E-LBHC10LUU
+E-LBHCM40LUU
+E-LBHC6DMUU
+!E-LBH5LUU  # dr 5 is offered as a single bushing (UU) only
+!E-LBHM5UU  # dr 5 exists only as the plain E-LBH5UU (p.470)
+!E-LBHZ35UU  # the opposite-counterbore compact type is offered for dr 6-30
+!E-LBH13DUU  # the medium compact bushing is offered for dr 6, 8, 10, 12, 16, 20, 25, 30 (no dr 13)
+!E-LBHM20DUU  # medium compact plating is DMUU on the plain E-LBH type
+!E-LBH20TUU  # no short (TUU) version of any flanged bushing
+!E-LBFP35UU  # the flanged bushing with pilot is offered for dr 6-30 and 40 (no dr 35)
+!E-LBFPM20DMUU  # the medium pilot bushing is E-LBFP<dr>DMUU, no M type letter
+!E-LBKP20DUU  # the medium pilot bushing is DMUU only
+!E-LBFC20UU  # the centre flanged bushing is double: LUU or DMUU
+!E-LBKCM20DMUU  # medium centre flanged plating is the DMUU suffix on the plain type
+!E-LBHC50LUU  # the centre flanged bushing is offered up to dr 40
+!E-LBHS20UU  # stainless steel bushings: p.470 prints no table
+!E-LBFP13LUU  # no dr 13 in the pilot series

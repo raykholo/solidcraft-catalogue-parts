@@ -1,0 +1,75 @@
+id = "misumi.scs.collar"
+name = "MISUMI Economy Series shaft collars: aluminium slit, split, slit with 2 through or 2 counterbored fixing holes, slit for bearing inner mount; steel / stainless slit and split collars with urethane"
+version = "0.2.0"
+kind = "generator"
+min_host_version = "0.49.1"
+preview_code = "C-SCSGAW12-10"
+
+[entry]
+build  = "collar:parse_build"
+check  = "check:check"
+shots  = "shots"
+
+[declares]
+labels   = ["Shaft collar", "Collar", "Slit collar", "Split collar", "C-SCSAW", "C-SCNPAW", "C-SCSMAW", "C-SCSGAW", "C-SCSBNAW", "E-SCD", "E-PSCD", "E-SSCD", "E-SCDJ", "E-PSCDJ", "E-SSCDJ", "E-SCSPD", "E-PSCSPD", "E-SSCSPD"]
+keywords = ["clamping collar", "shaft stopper", "slit type collar", "split type collar", "counterbored fixing holes", "aluminium collar", "bearing inner mount collar", "collar with urethane", "urethane damper collar", "stainless steel collar"]
+vendor   = "MISUMI"
+
+[[declares.matches]]
+id         = "scs-collar"
+generator  = "collar"
+pattern    = '^C-(?:SCSAW|SCNPAW|SCSMAW|SCSGAW)(?P<d>\d{1,2})-(?P<b>\d{1,2})$'
+flags      = "i"
+confidence = "exact"
+params     = { inner_diameter_mm = "{d}", width_mm = "{b}" }
+examples          = ["C-SCSAW12-10", "C-SCNPAW6-8", "C-SCSMAW20-15", "C-SCSGAW12-10"]
+negative_examples = ["C-SCSAW", "C-SCSAW12", "C-SCSAW12-", "C-XYZ12-10", "E-SCSAW12-10"]
+
+[[declares.matches]]
+id         = "scs-collar-bearing"
+generator  = "collar"
+pattern    = '^C-SCSBNAW(?P<d>\d{1,2})-(?P<ds>\d{1,2})$'
+flags      = "i"
+confidence = "exact"
+params     = { inner_diameter_mm = "{d}", boss_diameter_mm = "{ds}" }
+examples          = ["C-SCSBNAW12-16", "C-SCSBNAW6-9"]
+negative_examples = ["C-SCSBNAW", "C-SCSBNAW12", "C-SCSBNAW12-", "C-SCSAW12-16"]
+
+[[declares.matches]]
+id         = "scs-collar-urethane-split"
+generator  = "collar"
+pattern    = '^E-(?:P|S)?SCSPD(?P<d>\d{1,2})$'
+flags      = "i"
+confidence = "exact"
+params     = { inner_diameter_mm = "{d}" }
+examples          = ["E-SCSPD6", "E-PSCSPD13", "E-SSCSPD20"]
+negative_examples = ["E-SCSPD", "E-SCSPD6-10", "E-XSCSPD6", "C-SCNPAW6-8"]
+
+[[declares.matches]]
+id         = "scs-collar-urethane-slit"
+generator  = "collar"
+pattern    = '^E-(?:P|S)?SCD(?P<d>\d{1,2})$'
+flags      = "i"
+confidence = "exact"
+params     = { inner_diameter_mm = "{d}" }
+examples          = ["E-SCD12", "E-PSCD4", "E-SSCD16"]
+negative_examples = ["E-SCD", "E-SCD12-10", "E-SCDX12", "E-SCSAW12"]
+
+[[declares.matches]]
+id         = "scs-collar-urethane-slit-compact"
+generator  = "collar"
+pattern    = '^E-(?:P|S)?SCDJ(?P<d>\d{1,2})-(?P<b>\d{1,2})$'
+flags      = "i"
+confidence = "exact"
+params     = { inner_diameter_mm = "{d}", width_mm = "{b}" }
+examples          = ["E-SCDJ12-10", "E-PSCDJ20-13", "E-SSCDJ30-15"]
+negative_examples = ["E-SCDJ", "E-SCDJ12", "E-SCDJ12-", "E-SCD12-10"]
+
+[inputs]
+type = { choices = ["C-SCSAW", "C-SCNPAW", "C-SCSMAW", "C-SCSGAW", "C-SCSBNAW", "E-SCD", "E-PSCD", "E-SSCD", "E-SCDJ", "E-PSCDJ", "E-SSCDJ", "E-SCSPD", "E-PSCSPD", "E-SSCSPD"] }
+inner_diameter_mm = { min = 4, max = 50 }
+width_mm = { min = 8, max = 27 }
+boss_diameter_mm = { min = 9, max = 35 }
+
+[guarantee]
+not_guaranteed = ["The slit width (not printed; drawn 1 mm) and the gap between the two halves of C-SCNPAW (not printed; drawn 0.5 mm)", "Position and depth of the clamp screw hole (the catalogue prints only its thread size M; drawn on the mid-wall radius at mid width, tapped right through)", "Which half of C-SCNPAW is tapped and which has the clearance hole (both are drawn tapped)", "Chamfers and edge breaks (none printed)", "The clamp and fixing screws themselves (not drawn)", "The bore is drawn at the nominal D; the printed +0.05/+0.01 is the tolerance before cutting", "C-SCSBNAW and the urethane collars: the slit width of C-SCSBNAW (not printed; drawn 1 mm), the position of its clamp screw hole (mid-wall radius, mid ring width b, tapped right through), and the diagonal notch drawn on its front view (not drawn)", "E-xSCD / E-xSCDJ / E-xSCSPD: the urethane damper as a plain disc of thickness t, outer diameter D1 and bore D on the face z = 0 (the catalogue draws it as a hatched strip; its shape, hardness grade and fit are not dimensioned), and the damper is not slit or split", "E-xSCD / E-xSCDJ / E-xSCSPD: which half is tapped (drawn: the half at -X) and which has the clearance hole d, the length of the tapped hole (right through that half), the depth and flat floor of the head seat (drawn as a U-shaped slot of width 2R open to the outside, floor at the printed Y), and the reference range Z of the slit (not drawn; printed in brackets as a reference)", "E-xSCD / E-xSCDJ / E-xSCSPD: the screw positions along the axis (centred on the steel width B1), chamfers (printed 'Chamfering' without a size), the screws themselves (not drawn), the bore tolerance (drawn nominal; +0.06/+0.01 slit, +0.05/+0.01 split, E-SCD up to +0.08) and D1 +-0.1"]

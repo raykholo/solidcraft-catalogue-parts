@@ -1,0 +1,21 @@
+== HFS5-2020-1000-LTP-RTP
+PASS  one closed body                      spec         1  got          1           [S1]
+PASS  overall width (Y)                    spec        20  got    20.0000  +-0.005  [S1 p.529 '20']
+PASS  overall height (Z)                   spec        20  got    20.0000  +-0.005  [S1 p.529 '20']
+PASS  length (X)                           spec      1000  got  1000.0000  +-0.005  [S1 L range] spec tol +-0.5
+PASS  slot mouth width                     spec         6  got     6.0000  +-0.005  [S1 p.529 '6']
+PASS  slot cavity width                    spec        12  got    12.0000  +-0.005  [S1 p.529 '12']
+PASS  core width (slot floor to floor)     spec         8  got     8.0000  +-0.005  [S1 p.529 '8']
+PASS  slot depth (outer face to floor)     spec         6  got     6.0000  +-0.005  [S1 p.529 '2'+'4']
+PASS  cross-section area vs drawing        spec     181.1  got   181.1327  +-0.01   [S1 drawing] area from the dimensions
+PASS  cross-section area vs published 183  spec       183  got   181.1327  +-2.745  [S1 table] published value rounded; 1.5% band
+PASS  centre bore diameter                 spec       4.2  got     4.2000  +-0.001  [S1 p.529 'O4.2']
+PASS  outer corners R1 (count)             spec         4  got          4           [S1 p.529 '4-R1']
+PASS  lip-tip rounds R0.3 (count)          spec       >=8  got          8           [S1 drawing (measured)]
+PASS  tap L: M5 thread present             spec         1  got          1           [S2 p.757]
+PASS  tap L: depth                         spec        15  got    15.0000  +-0.01   [S2 p.757 'M5 Depth 15']
+PASS  tap R: M5 thread present             spec         1  got          1           [S2 p.757]
+PASS  tap R: depth                         spec        15  got    15.0000  +-0.01   [S2 p.757 'M5 Depth 15']
+PASS  part number metadata                 spec HFS5-2020-1000-LTP-RTP  got HFS5-2020-1000-LTP-RTP           [-]
+PASS  design part number                   spec HFS5-2020-1000-LTP-RTP  got HFS5-2020-1000-LTP-RTP           [-]
+19/19 passed

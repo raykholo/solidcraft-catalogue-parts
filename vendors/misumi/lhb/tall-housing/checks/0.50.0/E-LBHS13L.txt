@@ -1,0 +1,19 @@
+== E-LBHS13L
+PASS  one closed body                                   spec         1  got          1           [S14]
+PASS  overall length L (bbox Y)                         spec       106  got   106.0000  +-0.005  [S14 p.490 L]
+PASS  width W (bbox X)                                  spec        30  got    30.0000  +-0.005  [S14 p.490 W]
+PASS  height H (bbox Z)                                 spec        43  got    43.0000  +-0.005  [S14 p.490 H]
+PASS  shaft bore dr 13 (axis along Y)                   spec       yes  got        yes           [S14 p.490 dr] nominal, tolerance echoed in the description
+PASS  bore axis h = 25 above the base                   spec       yes  got        yes           [S14 p.490 h] h +-0.05
+PASS  2 vertical threads M6 (M1)                        spec         2  got          2           [S14 p.490 2-M1]
+PASS  M1 holes L1 = 64 apart                            spec       yes  got        yes           [S14 p.490 L1] x offset is appearance
+PASS  M1 effective length 13 from the top face          spec       yes  got        yes           [S14 p.490 M1 (effective length)]
+PASS  3 horizontal threads M6 (M2)                      spec         3  got          3           [S14 p.490 3-M2] 3-M2 on the long type
+PASS  M2 holes L2 = 80 apart                            spec       yes  got        yes           [S14 p.490 L2] middle hole of the long type at mid-length is appearance
+PASS  M2 effective length 23, l = 7 below the top face  spec       yes  got        yes           [S14 p.490 M2, l] drawn from the +X face (appearance)
+PASS  3 counterbores d1 = 9                             spec       yes  got        yes           [S14 p.490 d1 x t] side and coaxial placement are appearance
+PASS  counterbore depth t = 7                           spec       yes  got        yes           [S14 p.490 d1 x t]
+PASS  tolerances written in the part description        spec       yes  got        yes           [S14 p.490] echoed, not drawn
+PASS  part number metadata                              spec E-LBHS13L  got  E-LBHS13L           [-]
+PASS  design part number                                spec E-LBHS13L  got  E-LBHS13L           [-]
+17/17 passed

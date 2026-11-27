@@ -1,0 +1,30 @@
+== HFS5-2020-120-LTP-RTP-LCH
+PASS  one closed body                                                            spec         1  got          1           [S1 p.529]
+PASS  overall width (Y)                                                          spec        20  got    20.0000  +-0.005  [S1 p.529 '20']
+PASS  overall height (Z)                                                         spec        20  got    20.0000  +-0.005  [S1 p.529 '20']
+PASS  length (X)                                                                 spec       120  got   120.0000  +-0.005  [S1 p.529 L range] spec tol +-0.5
+PASS  slot mouth width                                                           spec         6  got     6.0000  +-0.005  [S1 p.529 '6']
+PASS  slot cavity width                                                          spec        12  got    12.0000  +-0.005  [S1 p.529 '12']
+PASS  lip thickness                                                              spec         2  got     2.0000  +-0.005  [S1 p.529 '2']
+PASS  core width (slot floor to floor)                                           spec         8  got     8.0000  +-0.005  [S1 p.529 core]
+PASS  slot depth (outer face to floor)                                           spec         6  got     6.0000  +-0.005  [S1 p.529 depth '6']
+PASS  cross-section area vs drawing                                              spec     182.8  got   182.8323  +-0.182832 [S1 p.529 drawing] area from the dimensions
+PASS  cross-section area vs published 183                                        spec       183  got   182.8323  +-0.549  [S22 p.529] published to 3 figures: band 0.3 % of the value, never below half a unit (0.5 mm2)
+PASS  mass per metre vs published 0.5 kg/m                                       spec       0.5  got     0.4955  +-0.05   [S22 p.529] area x 2.71 g/cm3 (aluminium extrusion alloy, not printed); band is half a unit of the printed digit
+PASS  moment of inertia (smaller) of the profile vs published                    spec      7420  got  7429.9117  +-74.2   [S22 p.529] computed from the profile geometry (sources.toml 1900-1999); 1 % band, the table prints 3 figures
+PASS  moment of inertia (larger) of the profile vs published                     spec      7420  got  7429.9117  +-74.2   [S22 p.529] computed from the profile geometry (sources.toml 1900-1999); 1 % band, the table prints 3 figures
+PASS  bore O4.2 at (0, 0)                                                        spec       yes  got        yes           [S1 p.529]
+PASS  bores O4.2 (count)                                                         spec         1  got          1           [S1 p.529]
+PASS  outer corners R1 (count)                                                   spec         4  got          4           [S1 p.529] '4-R1'
+PASS  lip-tip rounds R0.3 (count)                                                spec       >=8  got         12           [S1 p.529 drawing] measured
+PASS  tapped bore (0, 0): diameter of the M5 thread's hole = printed pilot bore  spec       4.2  got     4.2000  +-0.005  [S1 drawing, S2 p.757] tap drill, not the nominal thread diameter
+PASS  tap L: M5 threads present                                                  spec         1  got          1           [S2 p.757] 1 tapped hole(s) per end
+PASS  tap L: depth <= 15 (wrench hole interrupts)                                spec       yes  got        yes           [S2 p.757] 6.98
+PASS  tap R: M5 threads present                                                  spec         1  got          1           [S2 p.757] 1 tapped hole(s) per end
+PASS  tap R: depth                                                               spec        15  got    15.0000  +-0.01   [S2 p.757 'M5 Depth 15']
+PASS  wrench L: diameter                                                         spec      7.35  got     7.3500  +-0.001  [S3 p.759 'd']
+PASS  wrench L: hole count                                                       spec         1  got          1           [S3 p.759 rows]
+PASS  wrench L: hole 1 position                                                  spec        10  got    10.0000  +-0.005  [S3 p.759 H/J/K from the end]
+PASS  part number metadata                                                       spec HFS5-2020-120-LTP-RTP-LCH  got HFS5-2020-120-LTP-RTP-LCH           [-]
+PASS  design part number                                                         spec HFS5-2020-120-LTP-RTP-LCH  got HFS5-2020-120-LTP-RTP-LCH           [-]
+28/28 passed

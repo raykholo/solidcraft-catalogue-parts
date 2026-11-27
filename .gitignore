@@ -1,0 +1,10 @@
+out/
+__pycache__/
+*.pyc
+# built STEP files (and never any vendor CAD)
+*.step
+*.stp
+.work/
+dist/
+.claude/
+shots-out/

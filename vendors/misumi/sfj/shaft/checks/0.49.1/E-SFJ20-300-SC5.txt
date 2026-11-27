@@ -1,0 +1,16 @@
+== E-SFJ20-300-SC5
+PASS  one closed body                            spec         1  got          1           [S8]
+PASS  length (X)                                 spec       300  got   300.0000  +-0.005  [S8 p.432 L] 1 mm steps
+PASS  diameter D (bbox Y)                        spec        20  got    20.0000  +-0.005  [S8 p.432 D20]
+PASS  diameter D (bbox Z)                        spec        20  got    20.0000  +-0.005  [S8 p.432 D20]
+PASS  cylinder face O20                          spec       yes  got        yes           [S8 p.432]
+PASS  D tolerance g7 upper/lower                 spec (-0.007, -0.028)  got (-0.007, -0.028)           [S8 p.432 spec table] echoed into the description
+PASS  tolerance written in the part description  spec       yes  got        yes           [S8 p.432]
+PASS  L inside the table range 30-1200           spec       yes  got        yes           [S8 p.432]
+PASS  flat 1: wrench flat faces (pair)           spec         2  got          2           [S8 p.432 SC/WSC]
+PASS  flat 1: width across flats W               spec        17  got    17.0000  +-0.005  [S8 p.432 W table]
+PASS  flat 1: start x = 5                        spec       yes  got        yes           [S8 p.432 SC/FC/A]
+PASS  flat 1: end x = 15                         spec       yes  got        yes           [S8 p.432 l1/FC]
+PASS  part number metadata                       spec E-SFJ20-300-SC5  got E-SFJ20-300-SC5           [-]
+PASS  design part number                         spec E-SFJ20-300-SC5  got E-SFJ20-300-SC5           [-]
+14/14 passed

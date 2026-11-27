@@ -1,0 +1,38 @@
+# Codes CI builds and checks. `CODE [option ...]` = valid (built, then every dimension checked); `!CODE  # why` = must be rejected with a message.
+
+HBLTS5
+HBLTS5-4
+HBLTSB5
+CHBLTS5
+NBLTS5
+HBLTV5
+HBLTVB5
+HBLTSW5
+HBLTVW5
+HBLTF5
+HBKTST5
+HBKTS5
+HBKTSB5
+HBKUS5
+HBKUSB5
+NBLUS5
+HBLUS5
+HBLTH5
+HBLTHB5
+HBLTS5-C
+HBLTS5-4-C
+HBKUS5-C
+HBLTF5-SEC
+HBLTSW5-SET
+HBKTS5-SST
+!HBLTS5-5  # only HBLTS5 has a -4 version (M4 screw); the plain code is the M5 one
+!HBLTV5-4  # -4 (M4 screw) is offered for HBLTS5 only
+!HBKUS5-4  # -4 (M4 screw) is offered for HBLTS5 only
+!HBLTSWB5  # HBLTSW5 has no black anodized version in the catalogue
+!HBLTX5  # unknown bracket type
+!HBLTS6  # 6 series (slot 8 mm) brackets are not drawn
+!HBLTSB5-C  # alteration C (M5 taps) is not offered for HBLTSB5 on the catalogue page
+!HBKTSB5-C  # alteration C is not offered for the black HBKTSB5 (nor HBKTST5, HBKUSB5)
+!HBLTS5-SET-C  # one alteration at most
+!HBLTS5-XYZ  # not an alteration the catalogue lists (C, SET, SST, SEU, SSU, SEP, SSP, SEC)
+!HBLFSN5  # a valid tabbed reversal bracket of the same catalogue, not drawn here

@@ -1,0 +1,18 @@
+== C-SCSMAW8-8
+PASS  1 closed body                                   spec         1  got          1           [S20]
+PASS  width B (Z)                                     spec         8  got     8.0000  +-0.005  [S20 p.545 width B]
+PASS  outer diameter D1 (X)                           spec        25  got    25.0000  +-0.01   [S20 table D1]
+PASS  outer diameter D1 (Y)                           spec     24.99  got    24.9900  +-0.005  [S20 table D1] slit / gap chord removed
+PASS  outer cylinder face O25                         spec       yes  got        yes           [S20 table D1]
+PASS  bore cylinder face I.D. 8                       spec       yes  got        yes           [S20 table I.D. D] nominal; +0.05/+0.01 is the tolerance before cutting
+PASS  bore tolerance written in the part description  spec       yes  got        yes           [S20 p.544 note]
+PASS  D1 larger than D                                spec       yes  got        yes           [derived]
+PASS  clamp screw thread M3 present                   spec       yes  got        yes           [S20 table M (coarse)] position and depth are appearance
+PASS  no other thread                                 spec       yes  got        yes           [S20 table M (coarse)]
+PASS  2 fixing through holes diameter S = 3.5         spec       yes  got        yes           [S20 p.545 S]
+PASS  hole pitch P                                    spec        14  got    14.0000  +-0.005  [S20 p.545 P]
+PASS  holes are axial (along Z)                       spec       yes  got        yes           [S20 p.545]
+PASS  holes clear the bore and the outer diameter     spec       yes  got        yes           [derived from P, S, D, D1]
+PASS  part number metadata                            spec C-SCSMAW8-8  got C-SCSMAW8-8           [-]
+PASS  design part number                              spec C-SCSMAW8-8  got C-SCSMAW8-8           [-]
+16/16 passed

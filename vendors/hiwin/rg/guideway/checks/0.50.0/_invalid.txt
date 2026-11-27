@@ -1,0 +1,16 @@
+RGH20CC	CodeError: RGH is mounted from the top only: RGH20CA (the catalogue lists RGH-CA / RGH-HA)
+RGW20CA	CodeError: RGW has mounting code C (top or bottom): RGW20CC (the catalogue lists RGW-CC / RGW-HC)
+RGH15HA	CodeError: RGH15HA is not in the catalogue table (no row for it: the RG15 tables list the heavy load C block only)
+RGW15HC1R160	CodeError: RGW15HC is not in the catalogue table (no row for it: the RG15 tables list the heavy load C block only)
+RGR20T640	NotModelled: RGR rail mounted from the bottom (T) is valid HIWIN grammar, but the catalogue prints no tapped-hole dimensions for it (the rail columns on p.166-170 are the top-mounted R rail), so it is not drawn
+RGR25R4500	CodeError: rail length 4500 mm above the maximum 4000 mm (Table 2-9-29)
+RGR25R60	CodeError: rail length 60 mm below the catalogue minimum 100 mm (Table 2-9-2)
+RGR25R1010	CodeError: rail length 1010 leaves end distance 25.00 mm, above P/2 = 15 mm and not the standard Es = 20 mm (an unstable rail end, p.165)
+RGR25R995	CodeError: rail length 995 leaves end distance 17.50 mm, above P/2 = 15 mm and not the standard Es = 20 mm (an unstable rail end, p.165)
+RGR30R1020	CodeError: rail length 1020 leaves end distance 30.00 mm, above P/2 = 20 mm and not the standard Es = 20 mm (an unstable rail end, p.165)
+RGW25CCZB	CodeError: the interchangeable block form has preload Z0 or ZA only (model number, p.152); ZB belongs to a set (non-interchangeable)
+RGR25R640SP	CodeError: accuracy class SP is not offered for a rail ordered alone (interchangeable rail): the RG series has H, P there (model number, p.152-153)
+RGH25CA1R640ZAC	CodeError: accuracy class C is not offered for a rail with blocks (non-interchangeable set): the RG series has H, P, SP, UP there (model number, p.152-153)
+RGW35CC2R240	CodeError: 2 blocks of 124 mm with 10 mm gaps do not fit on a 240 mm rail
+RGL25CA1R640	NotModelled: RGL (square, low) is valid HIWIN grammar; its dimension table is not drawn here (RGH and RGW only)
+RGH20CAM	CodeError: 'RGH20CAM': expected a set RG<H|W><size><C|H><A|C><n>R<length>[Z0|ZA|ZB][H|P|SP|UP], e.g. RGH20CA2R1000ZAH, a rail RGR<size>R<length>, e.g. RGR25R1240, or a block RGW25CC

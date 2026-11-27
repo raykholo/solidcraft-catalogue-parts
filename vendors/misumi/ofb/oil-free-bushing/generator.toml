@@ -1,0 +1,43 @@
+id = "misumi.ofb.oil-free-bushing"
+name = "MISUMI Economy oil free bushings: copper alloy straight, shouldered, flanged (round, square, compact) and thrust type, and special brass straight, shouldered, round and compact flanged"
+version = "0.1.0"
+kind = "generator"
+min_host_version = "0.49.1"
+preview_code = "C-MUTNZ16-30"
+
+[entry]
+build  = "oilfree:parse_build"
+check  = "check:check"
+shots  = "shots"
+
+[declares]
+labels   = ["Oil free bushing", "Oil-free bushing", "Flanged oil free bushing", "Shouldered bushing", "C-MUBZ", "C-MUFZ", "C-MUTZ", "E-MUGZ", "E-SHBZ", "E-SHFZ", "E-SHTZ"]
+keywords = ["oil free bushing", "oilless bushing", "self lubricating bushing", "solid lubricant bushing", "copper alloy bushing", "special brass bushing", "shouldered bushing", "flanged bushing", "thrust bushing", "plain bearing"]
+vendor   = "MISUMI"
+
+[[declares.matches]]
+id         = "ofb-oil-free-bushing"
+generator  = "oil-free-bushing"
+pattern    = '^(?:C-MU(?:BZU?|FZU?|TZ|TSZ|TNZ)|E-MUGZ|E-SH(?:BZ|FZ|TZ|TNZ))(?P<d>\d{1,3})-(?P<l>\d{1,3})$'
+flags      = "i"
+confidence = "exact"
+params     = { inner_diameter_mm = "{d}", length_mm = "{l}" }
+examples          = ["C-MUFZ5-10", "C-MUBZ20-30", "C-MUBZU35-15", "C-MUFZU12-20", "C-MUTZ16-30", "C-MUTSZ6-10", "C-MUTNZ6-15", "E-MUGZ10-15", "E-SHBZ10-12", "E-SHFZ8-10", "E-SHTZ25-35", "E-SHTNZ10-25"]
+negative_examples = ["C-MUFZ5", "C-MUFZ-10", "C-MUFZ5-", "C-MUTXZ10-20", "E-SHBZU10-12", "E-SHSTM8-25", "E-LBF20LUU", "C-SHA10", "E-MUGZ10-15-X"]
+
+[inputs]
+type = { choices = ["C-MUBZ", "C-MUBZU", "C-MUFZ", "C-MUFZU", "C-MUTZ", "C-MUTSZ", "C-MUTNZ", "E-MUGZ", "E-SHBZ", "E-SHFZ", "E-SHTZ", "E-SHTNZ"] }
+inner_diameter_mm = { choices = [5, 6, 8, 10, 12, 13, 15, 16, 18, 20, 25, 30, 32, 35, 38, 40, 45, 50, 55, 60, 65, 70, 80, 90, 100] }
+length_mm = { min = 3, max = 100 }
+
+[guarantee]
+not_guaranteed = [
+  "Solid lubricant plugs (graphite / lubricant inserts) and any lubricating grooves (appearance, approximate): not drawn, the catalogue gives no dimensions for them",
+  "Chamfers and edge breaks (R chamfer mentioned on p.512, no dimension printed) (appearance, approximate): not drawn",
+  "The bore is a plain cylinder at the nominal I.D. d; the F7 / E7 tolerance, the O.D. class (m6, r6, h7) and the L, T and t deviations are written into the description, not drawn",
+  "The rotation stopper screw and its hole (M4x8 ... M8x16, reference only), the housing diameter with its H7 tolerance and the applicable hex socket cap screws (not provided) are not drawn",
+  "Which flange face carries the counterbores of the flanged types: the outer face away from the barrel (screw heads outside), read from the p.515 figure",
+  "Flanged types: round flange on the P.C.D. with 2 holes (d 6-13) or 4 holes (d 16 and up) on the axes; square flange standing on its corner (W across flats, clipped by the circle H, holes on the axes); compact flange as the circle H clipped by two flats D + 6 apart, A apart along H and F across (figure reading)",
+  "Length ranges and hole counts follow the printed tables; a bracketed L belongs to the standard wall type (straight, shouldered) or to the round and compact flanges (flanged); an L with * belongs to the thin wall type",
+  "Not generated: the countersunk and low-head-screw thrust types E-MUSZ and E-MUKZ (p.516), the centre and pilot flanged types (p.517), the resin bushings E-MJ.., E-MG.., E-MX.. (p.521-523), the thrust washers, bushing housing units (p.524 onward) and the load / speed data"
+]

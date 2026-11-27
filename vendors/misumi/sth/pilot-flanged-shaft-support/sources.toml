@@ -1,0 +1,116 @@
+# Where every number of this generator comes from. One [[source]] per vendor document, one [[dimension]] per cited item.
+# status: labelled / published = printed in the catalogue; measured = read from the vertex coordinates of the published vector
+# drawing; derived = computed from labelled numbers; approximate = an estimate (appearance or an illustration choice); none.
+# source = [] is allowed only for approximate / none rows.
+
+[meta]
+clean_room = "Clean-room: only public catalogue pages from the manufacturer's own site. No vendor CAD (STEP/IGES/...) was downloaded or used, no other CAD program or generator was consulted. Where a value is not printed as a number, the table says how it was obtained. The current web catalogue may differ."
+
+[[source]]
+id = "S18"
+catalogue = "MISUMI Economy Series catalogue 2025, \"Shaft Supports Pilot Flanged Type, Steel\" (04-155, upper half: Pilot Flanged Type E-STHWIRB / E-STHWICB)"
+url = "https://th.c.misumi-ec.com/book/THA_EconomySeries_e-catalog2025/files/basic-html/page540.html (page image files/mobile/540.jpg)"
+pages = "p.540"
+
+[[dimension]]
+id = 1700
+item = "Types E-STHWIRB (round flanged) and E-STHWICB (compact flanged), pilot flanged: material general structural steel or carbon steel, surface treatment printed as 'Stainless steel', accessory 1 hex socket head cap screw; ordering E-STHWIRB<D> / E-STHWICB<D>"
+value = ""
+source = ["S18"]
+source_text = "S18 p.540 type table and Ordering Example E-STHWIRB8"
+page = "p.540 type table"
+status = "published"
+note = "published; the surface treatment column prints 'Stainless steel' next to a steel material, recorded as printed"
+
+[[dimension]]
+id = 1701
+item = "Hole diameter D (H8) and its tolerance: D8, 10 +0.022/0; D12, 15, 16 +0.027/0; D20, 25, 30 +0.033/0; D40 +0.039/0; sizes 8 10 12 15 16 20 25 30 40"
+value = ""
+source = ["S18"]
+source_text = "S18 p.540 DH8 column"
+page = "p.540 table"
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 1702
+item = "Overall length L1 (pilot end face to sleeve end) and sleeve / pilot outside diameter D1 (h8) per D"
+value = ""
+source = ["S18"]
+source_text = "S18 p.540 figure (L1, D1 h8) and L1, D1 columns"
+page = "p.540 figure and table"
+status = "labelled"
+note = "labelled; the h8 class is printed on the figure, its numeric tolerance is not and is not modelled"
+
+[[dimension]]
+id = 1703
+item = "Flange: round diameter / compact length H, compact width W, thickness T"
+value = ""
+source = ["S18"]
+source_text = "S18 p.540 H, W, T columns"
+page = "p.540 table"
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 1704
+item = "Pilot spigot length and flange thickness: the figure's bottom dimension shows T twice about the flange back face (pilot T, flange T)"
+value = ""
+source = ["S18"]
+source_text = "S18 p.540 figure (T T either side of the flange back face), L1 and T columns"
+page = "p.540 figure"
+status = "derived"
+note = "derived: reading of the figure; L1 equals the L of the slit table (p.539, misumi.sth.flanged-shaft-support) plus T in every row"
+
+[[dimension]]
+id = 1705
+item = "Mounting holes: 4-d through holes on the pitch circle P (round, at 90 degrees) or on F by P1 (compact, 4 holes)"
+value = ""
+source = ["S18"]
+source_text = "S18 p.540 figures (4-d, P, F, P1) and P, P1, F, d columns"
+page = "p.540 figures and table"
+status = "labelled"
+note = "labelled; the angular position of the round holes relative to the slit is read from the figure (holes on the axes)"
+
+[[dimension]]
+id = 1706
+item = "Clamp: ring length B at the sleeve end, groove width S1, slit width S, clamp screw M (coarse) at height X above the axis and B / 2 from the sleeve end, counterbore floor Y from the slit centre, counterbore d1, clearance hole d2"
+value = ""
+source = ["S18"]
+source_text = "S18 p.540 figures (S1, B, B/2, d1, X, Y, S, d2, M) and B, S, S1, X, Y, d1, d2, M columns"
+page = "p.540 figures and table"
+status = "labelled"
+note = "labelled; M is printed M4 / M5 / M6 / M8 and stored as the number"
+
+[[dimension]]
+id = 1707
+item = "Thickness (N) = (D1 - D) / 2 in every row of the table (sleeve wall)"
+value = ""
+source = ["S18"]
+source_text = "S18 p.540 Thickness (N) column and figure (N at the sleeve wall)"
+page = "p.540 table"
+status = "derived"
+note = "derived: printed column, equal to (D1 - D) / 2 in every row, checked as the sleeve wall"
+
+[[dimension]]
+id = 1708
+item = "Groove depth, the stub of the radial slit below the bore, the side of the clamp screw, the compact flange corner radius"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate: read from the figures, not dimensioned (appearance, approximate)"
+
+[[dimension]]
+id = 1709
+item = "Chamfering, the hex socket head cap screw supplied, numeric h8 tolerance of D1, the numeric surface treatment"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "none"
+note = "not modelled; none of it is dimensioned as a value"
+
+[[note]]
+text = "Source count: 10 rows (1700-1709): printed or labelled numbers, 2 derived readings of the figure (1704, 1707), 1 approximate (1708), 1 not modelled (1709); one document (S18, p.540). The T-shaped aluminium support C-SHA on the same page is covered by misumi.shf.shaft-holder."

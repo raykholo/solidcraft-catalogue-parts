@@ -1,0 +1,57 @@
+reviewer_kind = "ai"
+reviewer = "AI review lane (Claude Sonnet), independent of the authoring lane"
+author = "AI authoring lanes (Claude)"
+date = "2026-11-27"
+commit = "3259f0d9079dcc78f7a5a9ff7e0dcb1c84c72cb4"
+sources_hash = "sha256:ce8f0008db783702afbd47ff5cb95b732f15774dbdff6be3d28d4811798b54d2"
+method = "Downloaded the p.537 page image, enlarged the lower-half table and both figures, re-read every cell of the 5 rows (D12-D30, 22 columns) against dims.csv and the type table against types.csv; re-derived N = (D1 - D) / 2 in every row; resolved the merged cells by position (d1: 9 for D12-25 and 12 for D30; S: 1.5 for all rows; S1: 1.5 for D12-16 and 2 for D20-30; Y: 4, 5, 6 merged over D20-25, 10; d: 6.6 merged over D20-30; M: M5 for D12-25, M6 for D30; tolerance bands +0.027/0 and +0.033/0); compared the modelled geometry (round flange with 4 holes d on the axes of P, 2-Q on the diagonal, compact flange as circle H cut flat at W with F x P1 holes and Q on the Y axis P apart, slit S at +Y with groove S1 and ring B, clamp screw at X) with the figures; checked codes.txt against the type table (E-STHWRK compact cell prints '-') and the single size table. No dimension value or geometry needed correcting; tools/check passes for all 17 codes and 9 reject cases."
+
+[[row]]
+id = 1800
+verdict = "agree"
+note = "p.537 type table: round E-STHWRBK / E-STHWRK / E-SSTHWRK, compact E-STHWCBK / '-' / E-SSTHWCK; material general structural steel or carbon steel (stainless steel for E-SSTHW); surface Black Oxide Film, Electroless Nickel Plating, '-' for stainless; accessory 1 hex socket head cap screw; I.D. DH8 12~30; ordering example E-STHWRBK12."
+
+[[row]]
+id = 1801
+verdict = "agree"
+note = "p.537 DH8 column: 12 and 16 +0.027/0; 20, 25 and 30 +0.033/0 (merged tolerance cells). Equal to tol_upper/tol_lower in dims.csv for all five sizes."
+
+[[row]]
+id = 1802
+verdict = "agree"
+note = "p.537 D1 (32 35 40 45 55) and L (22 30 32 38 40) compared cell by cell; equal. Side figure: L runs from the back face of the flange to the sleeve end, D1 is the sleeve diameter."
+
+[[row]]
+id = 1803
+verdict = "agree"
+note = "p.537 H (52 56 64 69 79), W (34 37 42 47 57) and T (6 6 8 8 10) compared; equal. Compact figure: H is the overall height, W the overall width."
+
+[[row]]
+id = 1804
+verdict = "agree"
+note = "p.537 P (42 46 52 57 67), P1 (35 37 43 46 50), F (25 27 30 34 45) and d (4.5 5.5 6.6 6.6 6.6; the 6.6 cell is merged over D20-D30) equal. Round figure: 4-d holes on the axes (top, bottom, left, right) on the pitch circle P; compact figure: F in X and P1 in Y. The model matches."
+
+[[row]]
+id = 1805
+verdict = "agree"
+note = "p.537 Q (4 5 5 6 6) equal. Round figure: 2-Q H8 on the pitch circle on the diagonal between the 4-d holes, upper right and lower left (measured about 39-48 degrees from the horizontal, so 45/225 degrees is a fair reading, already listed as appearance); compact figure: 2-Q on the Y axis, P/2 +-0.02 above and below the centre, P apart. The model matches."
+
+[[row]]
+id = 1806
+verdict = "agree"
+note = "p.537 B (10 12 12 15 15), S (1.5 in one merged cell for all rows), S1 (1.5 for D12-16, 2 for D20-30, merged), X (11 12 14 17 20), Y (4 5 6 6 10; 6 merged over D20-25), d1 (9 for D12-25 merged, 12 for D30), d2 (5.6 5.6 5.6 5.6 6.6), M (M5 for D12-25, M6 for D30). All match dims.csv. Figures: slit S at the top with Y measured from the slit centre line, S1 and B at the sleeve end, B/2 for the screw position, X the screw height."
+
+[[row]]
+id = 1807
+verdict = "agree"
+note = "p.537 Thickness (N) column 10 9.5 10 10 12.5 equals (D1 - D) / 2 for every row: (32-12)/2, (35-16)/2, (40-20)/2, (45-25)/2, (55-30)/2."
+
+[[row]]
+id = 1808
+verdict = "agree"
+note = "Appearance rows. Compact figure: the outline is a circle of diameter H with two flat sides W apart (the corner at x = W/2 lies on the circle O H, checked by measuring the figure); the round-flange dowel angle is about 45 degrees; the slit stub below the bore and the clamp side are drawn in the figures but not dimensioned. All correctly listed in not_guaranteed."
+
+[[row]]
+id = 1809
+verdict = "agree"
+note = "Nothing on p.537 gives a chamfer value, the screw is only listed as an accessory, Q's H8 and the P/2 +-0.02 are printed as classes or tolerances only; correctly not modelled."

@@ -1,0 +1,35 @@
+id = "misumi.lhb.tall-housing"
+name = "MISUMI Economy linear bushing housing units with dowel holes, tall blocks: single / medium / medium long / long (E-LBHS) and double (E-LBHSW)"
+version = "0.1.0"
+kind = "generator"
+min_host_version = "0.49.1"
+preview_code = "E-LBHS16L-P"
+
+[entry]
+build  = "housing:parse_build"
+check  = "check:check"
+shots  = "shots"
+
+[declares]
+labels   = ["Linear bushing housing unit, tall block", "Tall block housing unit", "Bushing housing with dowel holes", "E-LBHS", "E-LBHSW"]
+keywords = ["linear bushing housing", "housing unit", "tall block linear bushing housing", "linear ball bushing housing", "linear bushing block", "linear shaft block"]
+vendor   = "MISUMI"
+
+[[declares.matches]]
+id         = "lhb-housing-tall"
+generator  = "tall-housing"
+pattern    = '^E-LBHS(?:W)?(?P<dr>\d{1,2})(?:D|S|L)?(?:-P)?$'
+flags      = "i"
+confidence = "exact"
+params     = { shaft_diameter_mm = "{dr}" }
+examples          = ["E-LBHS10", "E-LBHS12S", "E-LBHS16L-P", "E-LBHS30-P", "E-LBHSW5", "E-LBHSW20-P", "E-LBHS6D"]
+negative_examples = ["E-LBHS", "E-LBHSW-P", "E-LBHS16X", "E-LBHS16-X", "E-LBHS20UU", "E-LBHN16", "E-LBHG12-15"]
+
+[inputs]
+type = { choices = ["E-LBHS", "E-LBHSW"] }
+shaft_diameter_mm = { choices = [5, 6, 8, 10, 12, 13, 16, 20, 25, 30] }
+length = { choices = ["", "D", "S", "L"] }
+dowel_holes = { choices = ["", "-P"] }
+
+[guarantee]
+not_guaranteed = ["The built-in linear bushing is not drawn: the bore is an empty plain cylinder at the nominal shaft diameter dr (the catalogue prints the dr tolerance and the bushing length D, but no inner dimensions of the unit); dr tolerances are written into the description, not drawn", "Hole layout (appearance, approximate): the tables print M1, M2 with effective lengths, d1 x t, l, L1 and L2, but the figures do not show unambiguously which hole sits where. Drawn as read: 2 vertical M1 holes in the top face L1 apart on a diagonal at x = +-0.35 W; 2 horizontal M2 holes (3 on the long type, the middle one at mid-length) from the +X face L2 apart at l below the top face; one d1 x t counterbore from the opposite face coaxial with each M2 hole. Only the sizes, depths and spacings are printed; the sides, the x offset and the coaxial placement are not", "Dowel hole positions (appearance, approximate): P and depth l2 and the distances E (and F, single only) are printed; the single housing is drawn with the diagonal pair (-F/2, -E/2), (F/2, E/2), the double and long housings on the centre line E apart. C1 and the dimension B of the A view are not drawn", "Through holes of the counterbores (bolt clearance holes), grease nipple hole (M5 x 0.8, dimension Q) of the medium long and long types, the datum edge chamfers, resin retainer colours and the MISUMI label are not drawn; the printed columns D, (S), P and C are not modelled", "dr tolerance as printed: +0.003 / -0.012 (dr 5-16) and -0.013 (dr 20-30) on p.488 and p.489; +0.003 / -0.012 (dr 6-16) and -0.015 (dr 20-30) on p.490: only echoed in the description", "Load ratings, allowable static moments and masses are not modelled"]

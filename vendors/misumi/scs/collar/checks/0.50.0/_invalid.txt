@@ -1,0 +1,18 @@
+C-SCSAW7-10	CodeError: C-SCSAW is offered for I.D. D in 6, 8, 10, 12, 15, 16, 20, 25, 30 mm, not 7 (p.544 table)
+C-SCSAW6-15	CodeError: C-SCSAW6 is offered in width B = 8, 10 mm, not 15 (p.544 table)
+C-SCNPAW6-10	CodeError: C-SCNPAW6 is offered in width B = 8 mm, not 10 (p.544 table)
+C-SCSMAW6-8	CodeError: C-SCSMAW is offered for I.D. D in 8, 10, 12, 15, 16, 20, 25, 30 mm, not 6 (p.545 table)
+C-SCSGAW10-8	CodeError: C-SCSGAW10 is offered in width B = 10, 12 mm, not 8 (p.545 table)
+C-SCSAW12	CodeError: 'C-SCSAW12': expected <type><I.D. D>-<width B>, e.g. C-SCSAW12-10 (types: C-SCSAW, C-SCNPAW, C-SCSMAW, C-SCSGAW); C-SCSBNAW<D>-<Ds>, E-SCD<D>, E-SCSPD<D> and E-SCDJ<D>-<B> (and their E-P.. / E-S.. variants) are the other forms
+C-SCSBNAW12-10	CodeError: C-SCSBNAW12 is offered with selection Ds = 16 mm only, not 10 (p.546 table; the ordering example is C-SCSBNAW12-16)
+C-SCSBNAW7-9	CodeError: C-SCSBNAW is offered for I.D. D in 6, 8, 10, 12, 15, 20, 25, 30 mm, not 7 (p.546 table)
+E-SCSPD7	CodeError: E-SCSPD is offered for D in 6, 8, 10, 12, 13, 15, 16, 20, 25, 30 mm, not 7 (p.546 table)
+E-SSCSPD6	CodeError: E-SSCSPD (stainless steel) is only available for D in 15, 16, 20, 25 mm, not 6 (p.546 note)
+E-SCSPD6-10	CodeError: 'E-SCSPD6-10': expected <type><I.D. D>-<width B>, e.g. C-SCSAW12-10 (types: C-SCSAW, C-SCNPAW, C-SCSMAW, C-SCSGAW); C-SCSBNAW<D>-<Ds>, E-SCD<D>, E-SCSPD<D> and E-SCDJ<D>-<B> (and their E-P.. / E-S.. variants) are the other forms
+E-SCD4	CodeError: E-SCD4: for D = 4 only the electroless nickel plated E-PSCD4 is available (p.547 note)
+E-SSCD13	CodeError: E-SSCD (stainless steel) is only available for D in 6, 10, 12, 16, 20, 25, 30, 35 mm, not 13 (p.547 standard type note)
+E-SCD45	CodeError: E-SCD is offered for D in 4, 5, 6, 8, 10, 12, 13, 15, 16, 20, 25, 30, 35, 40, 50 mm, not 45 (p.547 standard type table)
+E-SCDJ12	CodeError: 'E-SCDJ12': the compact slit type needs the width selection, <type><D>-<B>, e.g. E-SCDJ12-10 (p.547)
+E-SCDJ12-12	CodeError: E-SCDJ12 is offered in width B = 10 mm only, not 12 (p.547 compact type table, B selection)
+E-SSCDJ25-15	CodeError: E-SSCDJ (stainless steel) is only available for D in 8, 10, 12, 16, 20, 30, 40 mm, not 25 (p.547 compact type note)
+E-XSCD12	CodeError: 'E-XSCD12': expected <type><I.D. D>-<width B>, e.g. C-SCSAW12-10 (types: C-SCSAW, C-SCNPAW, C-SCSMAW, C-SCSGAW); C-SCSBNAW<D>-<Ds>, E-SCD<D>, E-SCSPD<D> and E-SCDJ<D>-<B> (and their E-P.. / E-S.. variants) are the other forms

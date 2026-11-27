@@ -1,0 +1,96 @@
+# Where every number of this generator comes from. One [[source]] per vendor document, one [[dimension]] per cited item.
+# status: labelled / published = printed in the catalogue; measured = read from the vertex coordinates of the published vector
+# drawing; derived = computed from labelled numbers; approximate = an estimate (appearance or an illustration choice); none.
+# source = [] is allowed only for approximate / none rows.
+
+[meta]
+clean_room = "Clean-room: only public catalogue pages and PDFs from the manufacturers' own sites. No vendor CAD (STEP/IGES/...) was downloaded or used, no other CAD program or generator was consulted. Where a value is not printed as a number, the table says how it was obtained. current web catalogue may differ; see \"Open questions\" in README.md."
+
+[[source]]
+id = "S9"
+catalogue = "MISUMI FA catalogue, \"Pre-Assembly Insertion Nuts / Stoppers for Aluminum Extrusions - Standard, For 5 Series (Slot Width 6mm)\""
+url = "https://in.misumi-ec.com/pdf/fa/2014/p2_559.pdf"
+pages = "2-559 (HNTT5 drawing and table), 2-557 (overview)"
+
+[[dimension]]
+id = 102
+item = "Types HNTT5 (S10C equivalent, M3/M4/M5), HNTTV5 (thread locking adhesive, M5), HNTTZ5 (thread locking resin coating, M5), HNTTSN5 (SUS316 equivalent sintered, M3/M4/M5), HNTTSS5 (SUS303 equivalent, M5) with material and surface (trivalent chromate on the S10C types)"
+value = ""
+source = ["S9"]
+source_text = "S9 p.559 table"
+page = "p.559 table"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 103
+item = "Plan 10 x 10, thread M at the plan centre"
+value = ""
+source = ["S9"]
+source_text = "S9 p.559 plan view \"10\", \"M\""
+page = "p.559 plan view \"10\", \"M\""
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 104
+item = "Width of the bottom face and of the neck 5.8 (the part that enters the 6 mm slot mouth)"
+value = ""
+source = ["S9"]
+source_text = "S9 p.559 side view \"5.8\""
+page = "p.559 side view \"5.8\""
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 105
+item = "E and T: HNTT5, HNTTV5, HNTTZ5, HNTTSS5: E 3.3, T 4.1; HNTTSN5: E 3.5, T 4.3"
+value = ""
+source = ["S9"]
+source_text = "S9 p.559 table"
+page = "p.559 table"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 106
+item = "Ordering \"HNTT5 - M\"; M omitted selects M5"
+value = ""
+source = ["S9"]
+source_text = "S9 p.559 ordering example and note"
+page = "p.559 ordering example and note"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 107
+item = "Reference tightening torque M5: 6.8 N m (written into the description)"
+value = ""
+source = ["S9"]
+source_text = "S9 p.559"
+page = "p.559"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 108
+item = "Flank from the 5.8 bottom to the 10 wide body: 3.0 high (about 35 degrees from the nut axis); body 10 wide from there to E, neck 5.8 wide from E to T; corner rounds left out"
+value = ""
+source = ["S9"]
+source_text = "S9 p.559 side view"
+page = "p.559 side view"
+status = "measured"
+note = "measured (vector outline of the side view, scale from the labelled 10 and 5.8)"
+
+[[dimension]]
+id = 109
+item = "Thread drawn through the whole thickness T (tapped hole with the tap-drill size)"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate (the catalogue gives no thread length)"
+
+[[note]]
+text = "Source count for family 4: 8 rows (102-109): 4 published, 2 labelled, 1 measured, 1 approximate; one new document (S9). Not drawn: spring-loaded nuts (HNTU, HNTP, HNTA), stoppers (HNST, SHNST), integrated nuts (HNTE5), insertion from the end only for the HNTT family, corner brackets."

@@ -1,0 +1,19 @@
+== E-LBHNW8
+PASS  one closed body                                           spec         1  got          1           [S12]
+PASS  overall length L (bbox Y)                                 spec        58  got    58.0000  +-0.005  [S12 p.487 L]
+PASS  width W (bbox X)                                          spec        34  got    34.0000  +-0.005  [S12 p.487 W]
+PASS  height H (bbox Z)                                         spec        22  got    22.0000  +-0.005  [S12 p.487 H]
+PASS  shaft bore dr 8 (axis along Y)                            spec       yes  got        yes           [S12 p.487 dr] nominal, tolerance echoed in the description
+PASS  bore axis h = 11 below the top face                       spec       yes  got        yes           [S12 p.487 h] h +-0.04
+PASS  shoulder height H2 = 6                                    spec       yes  got        yes           [S12 p.487 H2]
+PASS  H1 = 17.5 from the top face (lower end of the body wall)  spec       yes  got        yes           [S12 p.487 H1] wall step 1 mm is appearance; checked through the wall plane centre
+PASS  4 mounting threads M4                                     spec         4  got          4           [S12 p.487 4-M]
+PASS  threads on W1 = 24 and L1 = 42                            spec       yes  got        yes           [S12 p.487 W1, L1]
+PASS  thread depth l                                            spec         8  got     8.0000  +-0.01   [S12 p.487 l]
+PASS  thread starts at the top face                             spec        22  got    22.0000  +-0.01   [S12 p.487 l]
+PASS  pilot hole d 3.4 at every mounting hole                   spec       yes  got        yes           [S12 p.487 d] drawn through the base (read from the figure)
+PASS  no dowel holes                                            spec         0  got          0           [S12]
+PASS  tolerances written in the part description                spec       yes  got        yes           [S12 p.487] echoed, not drawn
+PASS  part number metadata                                      spec  E-LBHNW8  got   E-LBHNW8           [-]
+PASS  design part number                                        spec  E-LBHNW8  got   E-LBHNW8           [-]
+17/17 passed

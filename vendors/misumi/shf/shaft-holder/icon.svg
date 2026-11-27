@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="T-shaped shaft support">
+<title>T-shaped shaft support</title>
+<rect width="64" height="64" rx="8" fill="#f2f4f7"/>
+<path d="M8 52h48v-8h-14v-26h-20v26h-14z" fill="#aab2bb"/><rect x="22" y="18" width="20" height="6" fill="#d5dae0"/>
+<circle cx="32" cy="32" r="7" fill="#f2f4f7"/><rect x="31" y="18" width="2" height="14" fill="#f2f4f7"/>
+</svg>

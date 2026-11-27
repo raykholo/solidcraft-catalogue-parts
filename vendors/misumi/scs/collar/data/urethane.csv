@@ -1,0 +1,34 @@
+family,D,B,D1,B1,t,M,d,R,W,X,Y,Z,stainless,source,page,status
+slit,4,10,15,8,2,M3,3.4,3,1,4.5,3,3.5~6,0,S21,p.547 standard type table,labelled
+slit,5,12,20,10,2,M4,4.5,3.75,1,6,4,6~7,0,S21,p.547 standard type table,labelled
+slit,6,12,20,10,2,M4,4.5,3.75,1,6,4,6~6.5,1,S21,p.547 standard type table,labelled
+slit,8,18,30,15,3,M6,7,6,1.5,9,5,7~10,0,S21,p.547 standard type table,labelled
+slit,10,18,35,15,3,M6,7,6,1.5,10,6,8~12.5,1,S21,p.547 standard type table,labelled
+slit,12,18,35,15,3,M6,7,6,1.5,11,6,9~12.5,1,S21,p.547 standard type table,labelled
+slit,13,18,35,15,3,M6,7,6,1.5,11,6,10~12.5,0,S21,p.547 standard type table,labelled
+slit,15,18,40,15,3,M6,7,6,1.5,13,8,11~13,0,S21,p.547 standard type table,labelled
+slit,16,18,40,15,3,M6,7,6,1.5,13,8,11~13,1,S21,p.547 standard type table,labelled
+slit,20,20,45,15,5,M6,7,6,1.5,15,8,13~15,1,S21,p.547 standard type table,labelled
+slit,25,20,50,15,5,M6,7,6,1.5,18,10,16~18,1,S21,p.547 standard type table,labelled
+slit,30,20,55,15,5,M6,7,6,1.5,20,10,15~20,1,S21,p.547 standard type table,labelled
+slit,35,20,60,15,5,M6,7,6,2,23,12,17.5~21,1,S21,p.547 standard type table,labelled
+slit,40,23,70,18,5,M8,9,7,2,26,13,20~23,0,S21,p.547 standard type table,labelled
+slit,50,27,85,22,5,M10,11,9,2,32,16,25~28,0,S21,p.547 standard type table,labelled
+slit-compact,8,10,25,8,2,M3,3.4,3,1.5,8,5,7~9,1,S21,p.547 compact type table,labelled
+slit-compact,10,10,30,8,2,M3,3.4,3,1.5,9,5,8~10,1,S21,p.547 compact type table,labelled
+slit-compact,12,10,30,8,2,M3,3.4,3,1.5,10,5,9~10,1,S21,p.547 compact type table,labelled
+slit-compact,16,12,35,10,2,M5,5.5,4.5,1.5,12,6,11~12,1,S21,p.547 compact type table,labelled
+slit-compact,20,13,40,10,3,M5,5.5,4.5,1.5,14,7,13,1,S21,p.547 compact type table,labelled
+slit-compact,25,15,45,12,3,M5,5.5,4.5,1.5,17,7,16,0,S21,p.547 compact type table,labelled
+slit-compact,30,15,50,12,3,M5,5.5,4.5,1.5,20,6,18~20,1,S21,p.547 compact type table,labelled
+slit-compact,40,15,60,12,3,M5,5.5,4.5,2,25,6,23,1,S21,p.547 compact type table,labelled
+split-compact,6,12,20,10,2,M4,4.5,3.75,1,6,4,,0,S21,p.546 split type compact with urethane table,labelled
+split-compact,8,18,30,15,3,M6,7,6,1.5,9,5,,0,S21,p.546 split type compact with urethane table,labelled
+split-compact,10,18,35,15,3,M6,7,6,1.5,10,6,,0,S21,p.546 split type compact with urethane table,labelled
+split-compact,12,18,35,15,3,M6,7,6,1.5,11,6,,0,S21,p.546 split type compact with urethane table,labelled
+split-compact,13,18,35,15,3,M6,7,6,1.5,11,6,,0,S21,p.546 split type compact with urethane table,labelled
+split-compact,15,18,40,15,3,M6,7,6,1.5,13,8,,1,S21,p.546 split type compact with urethane table,labelled
+split-compact,16,18,40,15,3,M6,7,6,1.5,13,8,,1,S21,p.546 split type compact with urethane table,labelled
+split-compact,20,20,45,15,5,M6,7,6,1.5,15,8,,1,S21,p.546 split type compact with urethane table,labelled
+split-compact,25,20,50,15,5,M6,7,6,1.5,18,10,,1,S21,p.546 split type compact with urethane table,labelled
+split-compact,30,20,55,15,5,M6,7,6,1.5,20,10,,0,S21,p.546 split type compact with urethane table,labelled

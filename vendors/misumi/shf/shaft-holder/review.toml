@@ -1,0 +1,62 @@
+reviewer_kind = "ai"
+reviewer = "AI review lane (Claude Sonnet), independent of the authoring lane"
+author = "AI authoring lanes (Claude)"
+date = "2026-11-27"
+commit = "646042b"
+sources_hash = "sha256:a9e60275f34511a1d0870e3e97b7546065d38dc125c9ee18613df06e38797e0c"
+method = "Downloaded catalogue pages 540-542 (page images, outside the repo), enlarged the tables and re-read every cell of every row in dims.csv, csha.csv, tolerance.csv and types.csv against them, plus the * marks and notes; checked the reject cases in codes.txt against the page."
+
+[[row]]
+id = 600
+verdict = "agree"
+note = "Type tables p.540/541/542: materials, surface (B types printed Stainless steel, kept as printed; M Electroless Nickel; A Clear Anodized; BN Black Oxide; MN Electroless Nickel), accessory screws (stainless on A types, 2 screws for D30-50) all match types.csv."
+
+[[row]]
+id = 601
+verdict = "agree"
+note = "DH8 column p.541/542: D8,10 +0.022; 12,15,16 +0.027; 20,25,30 +0.033; 35,40,50 +0.039 match tolerance.csv; C-SHA D H7 on p.540."
+
+[[row]]
+id = 602
+verdict = "agree"
+note = "H selection lists read for every D of the slit (8 rows), side slit (6 rows) and thickened (9 rows) tables; all h_all lists match."
+
+[[row]]
+id = 603
+verdict = "agree"
+note = "L, H1 offset, T, S, W, L1, d, E, C compared cell by cell for all slit, side-slit and thickened rows plus the H +-0.02; no differences."
+
+[[row]]
+id = 604
+verdict = "agree"
+note = "M (through / depth n), d2, d1, l compared for every row (e.g. slit D12 through, D15/16 depth 8; side D20 M6 depth 12 with d 6.5; thickened D40 M8 depth 16, D50 M12 depth 24 with 14/20/13); no differences."
+
+[[row]]
+id = 605
+verdict = "agree"
+note = "Stars read: slit D10/H20, D16/H15 and H20, D25/H40; side D10/H15, D12/H20; thickened D10/H50. h_alu lists match; E-SHSTB15 H25 is absent from the table and noted. Refusing E-SHSTMN at all of D10 is stricter than a D10+H50-only reading of the star pair; accepted as a conservative refusal, not a wrong value."
+
+[[row]]
+id = 606
+verdict = "agree"
+note = "p.540 T-shaped table: H 20/23/27/31/35/42, T 11/11/14/16/18/20, L1 32/32/38/45/56/64, d 5.5/5.5/5.5/6.6/6.6/9, M4/M4/M4/M5/M6/M6 all match csha.csv."
+
+[[row]]
+id = 607
+verdict = "agree"
+note = "Reference values (H1) 35/39/45/51/60/70, (S) 6/6/6/8/10/10, (L) 42/42/48/58/70/80, (B) 14/14/18/20/24/28, (W) 18/20/25/30/38/44 match; parenthesised with the +-0.5 note on p.540, so approximate is right."
+
+[[row]]
+id = 608
+verdict = "agree"
+note = "The p.542 D30-50 figure shows T/2 between the two screws and between the base holes; the +-T/4 centring is an acceptable assumption, status approximate."
+
+[[row]]
+id = 609
+verdict = "agree"
+note = "C-SHA slit width and clamp screw position are not dimensioned on p.540; approximate and named appearance is right."
+
+[[row]]
+id = 610
+verdict = "agree"
+note = "Screw, chamfers, fillets and C-SHA corner radii are not dimensioned on the cited pages; not modelled is right."

@@ -1,0 +1,23 @@
+== KHFS5-2040-1000
+PASS  one closed body                                          spec         1  got          1           [S1 p.530]
+PASS  overall width (Y)                                        spec        20  got    20.0000  +-0.005  [S1 p.530 '20']
+PASS  overall height (Z)                                       spec        40  got    40.0000  +-0.005  [S1 p.530 '40']
+PASS  length (X)                                               spec      1000  got  1000.0000  +-0.005  [S1 p.530 L range] spec tol +-0.5
+PASS  slot mouth width                                         spec         6  got     6.0000  +-0.005  [S1 p.530 '6']
+PASS  slot cavity width                                        spec        12  got    12.0000  +-0.005  [S1 p.530 '12']
+PASS  lip thickness                                            spec         2  got     2.0000  +-0.005  [S1 p.530 '2']
+PASS  bore block width (slot floor to floor)                   spec         8  got     8.0000  +-0.005  [S1 p.530 '8']
+PASS  slot depth (outer face to floor)                         spec         6  got     6.0000  +-0.005  [S1 p.530 depth '6']
+PASS  cross-section area vs drawing                            spec     321.2  got   321.2010  +-0.01   [S1 p.530 drawing] area from the dimensions
+PASS  cross-section area vs published 324                      spec       324  got   321.2010  +-4.86   [S1 p.530 table] published value rounded; 1.5% band
+PASS  moment of inertia (smaller) of the outline vs published  spec 1.358e+04  got 13578.4510  +-543.2  [S1 p.530 table] derived from the dimensions, not measured
+PASS  moment of inertia (larger) of the outline vs published   spec  5.13e+04  got 51316.8996  +-2052   [S1 p.530 table] derived from the dimensions, not measured
+PASS  bore O4.2 at (0, -10)                                    spec       yes  got        yes           [S1 p.530]
+PASS  bore O4.2 at (0, 10)                                     spec       yes  got        yes           [S1 p.530]
+PASS  bores O4.2 (count)                                       spec         2  got          2           [S1 p.530]
+PASS  outer corners R1 (count)                                 spec         4  got          4           [S1 p.530] '4-R1'
+PASS  lip-tip rounds R0.3 (count)                              spec      >=12  got         12           [S1 p.530 drawing] measured
+PASS  volume = area x L                                        spec 3.212e+05  got 321200.9755  +-2      [derived]
+PASS  part number metadata                                     spec KHFS5-2040-1000  got KHFS5-2040-1000           [-]
+PASS  design part number                                       spec KHFS5-2040-1000  got KHFS5-2040-1000           [-]
+21/21 passed

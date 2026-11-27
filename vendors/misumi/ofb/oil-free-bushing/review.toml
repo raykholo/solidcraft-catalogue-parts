@@ -1,0 +1,87 @@
+reviewer_kind = "ai"
+reviewer = "AI review lane (Claude Sonnet), independent of the authoring lane"
+author = "AI authoring lanes (Claude)"
+date = "2026-11-27"
+commit = "0272c9cdc87d7e35ac5bcec4714d840780abb60f"
+sources_hash = "sha256:1f3e2269bf6fb2c4bb58af3664060d4bece229ac0e28f57548276c1bf779a5c8"
+method = "Downloaded catalogue page images p.511-523, cropped and upscaled the tables and figures of p.514, p.515, p.516, p.519 and p.520, and compared every dimension row cell by cell against data/*.csv (bore tolerance groups, O.D., N, thin wall columns, H, T, t, d1, d2, P.C.D., W, F, A, every L token with its bracket and asterisk marks); re-read the section and plan figures for the L datum, counterbore face, hole layout and compact flange; checked src/oilfree.py against them; tools/check passes for every code."
+
+[[row]]
+id = 1300
+verdict = "agree"
+note = "Type names, codes, materials and ordering examples re-read on p.514, 515, 516, 519, 520; O.D./bore classes m6/F7, r6/E7, h7/F7 match types.csv."
+
+[[row]]
+id = 1301
+verdict = "agree"
+note = "All 25 straight rows (d 5-100) re-read at 2x: F7 bore tolerance groups (5-6; 8-10; 12-18; 20-30; 32-50; 55-80; 90-100), Dm6, N, thin Dm6 and N, every L token with bracket and * marks. Copper straight lengths for d 20-30 and 35/40 agree (15* 16* on d 35/40, (9)(10) on d 20); thin wall O.D. columns agree."
+
+[[row]]
+id = 1302
+verdict = "agree"
+note = "All 21 shouldered rows re-read at 2x: E7 groups (60-80 share +0.090/+0.060, the span is centred on row 70 so d 80 belongs to it; 90-100 +0.107/+0.072), Dr6, N, H, t, thin Dr6/N/H/t for d 5-30 (d 18 dashes) and all L tokens. The d 25 row (15)(20)(25) 30 (35) 40 50 (60), D 35, H 45, t 5 agrees."
+
+[[row]]
+id = 1303
+verdict = "agree"
+note = "All 12 flanged rows re-read at 2x: F7 tolerances, Dh7, H, T, t, d1, d2, P.C.D., W, F (dash for d 6-13), A, screw and L tokens with round/compact-only brackets. Round, square (on its corner, W across flats) and compact (D+6 flats, A along the long axis) figures agree."
+
+[[row]]
+id = 1304
+verdict = "agree"
+note = "All 13 thrust rows re-read at 2x: E7 groups, Dr6, H, t (3/5/7/8) and L values by column position all agree."
+
+[[row]]
+id = 1305
+verdict = "agree"
+note = "All 11 straight rows and 11 shouldered rows re-read at 2x: F7/E7 tolerances, Dm6/Dr6, N, H, t and L lists agree."
+
+[[row]]
+id = 1306
+verdict = "agree"
+note = "All 8 rows of E-SHTZ and E-SHTNZ re-read: tolerances, Dh7, H, T, t, d1, d2, P.C.D., F, A, L lists agree; the geometry columns equal the copper p.515 columns for d 6-30 cell by cell, and the compact L list equals the round one. Figures: d 6-12 two holes, d 16-30 four holes."
+
+[[row]]
+id = 1307
+verdict = "agree"
+note = "L -0.1/-0.3 printed on p.514, 515, 516, 519, 520; T 0/-0.1 on p.515, 520; thrust t 0/-0.03 on p.516."
+
+[[row]]
+id = 1308
+verdict = "agree"
+note = "Figures on p.514, p.515 (section view: L, T and t dimension lines start at the outer flange face), p.519, p.520 agree."
+
+[[row]]
+id = 1309
+verdict = "agree"
+note = "Compact figures on p.515 and p.520: width D+6 across the flats, A along the other axis, F across for d 16 and up; agrees."
+
+[[row]]
+id = 1310
+verdict = "agree"
+note = "p.515 and p.520 figure labels: round and compact d 6-13 two mounting holes, d 16-50 four; square four holes; brass d 6-12 / 16-30. Agrees with hole_centres."
+
+[[row]]
+id = 1311
+verdict = "agree"
+note = "p.515 section view: the counterbore pockets (d2 x t) are on the left flange face, the same face L and T are measured from, away from the barrel. Agrees with the approximate reading."
+
+[[row]]
+id = 1312
+verdict = "agree"
+note = "p.515 figures: round holes on the vertical axis (2) or both axes (4); square flange on its corner with holes on the axes; compact long axis vertical with flats at the sides. Consistent with hole_centres and the flange sketches."
+
+[[row]]
+id = 1313
+verdict = "agree"
+note = "Appearance row, no source needed; lubricant plugs are shown without dimensions and not drawn."
+
+[[row]]
+id = 1314
+verdict = "agree"
+note = "Appearance row; no chamfer dimensions printed; stopper screw and housing not drawn."
+
+[[row]]
+id = 1315
+verdict = "agree"
+note = "Appearance row; only ISO classes printed for O.D.; numeric bore tolerances printed and echoed in the description."

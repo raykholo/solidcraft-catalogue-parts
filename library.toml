@@ -1,0 +1,16 @@
+# The parts-library release of this repository: what tools/release packs and the manifest it writes for the SolidCraft parts index
+# (tangency-labs/solidcraft-parts, docs/manifest.md there). The release holds one native design (.sc) and one STEP file per valid
+# code in each generator's codes.txt: only codes whose spec check passes on the SolidCraft release they were built with.
+# Not listed anywhere yet: the repository is private (see docs/parts-library.md).
+
+manifest_version = 1
+publisher = "raykholo"
+library = "catalogue-parts"                 # id = "<publisher>.<library>"; never changes once listed
+repo = "raykholo/solidcraft-catalogue-parts"
+version = "0.1.0"                           # release tag "v<version>", asset "<library>-<version>.zip"
+name = "Catalogue parts: linear motion and extrusion hardware"
+folder = "Catalogue parts"                  # the one top-level folder in the zip, as the Parts Library panel shows it
+license = "Apache-2.0"
+description = "Linear guides, rails, shafts, linear bushings, shaft holders, collars, aluminium extrusions, brackets and T-nuts generated from manufacturers' published catalogue dimensions (HIWIN, MISUMI ordering codes), each part spec-checked. Not affiliated with or endorsed by the manufacturers."
+tags = ["linear-motion", "linear-guide", "rail", "shaft", "linear-bushing", "oil-free-bushing", "bushing-housing", "shaft-collar", "shaft-support", "extrusions", "t-slot", "bracket"]                 # at most 12 (parts index schema)
+homepage = "https://github.com/raykholo/solidcraft-catalogue-parts"

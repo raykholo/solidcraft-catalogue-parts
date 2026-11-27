@@ -1,0 +1,18 @@
+E-PSFG3-50	CodeError: E-PSFG has no D3: the f8 type is listed for D 6-30 (p.432 note: D3, 4, 5 not applicable, 35/40/50 only E-PSFJ)
+E-SFJ6-5	CodeError: length 5 mm outside 20-800 mm for E-SFJ6 (p.432 table)
+E-SFJ6-900	CodeError: length 900 mm outside 20-800 mm for E-SFJ6 (p.432 table)
+E-SFJ6-20-WSC5	CodeError: WSC needs the distance between the two flats: WSC12-X8
+E-PSFJT6-20-M9	CodeError: M9 is not offered for D6 (coarse selection p.433: M3)
+E-PSFJC6-40-M3	CodeError: E-PSFJC6 needs its wrench flat position SC after the thread, e.g. ...-SC0 (p.434 ordering example)
+E-PSFJC5-40-M3-SC0	CodeError: E-PSFJC5: no such version of D5 in the p.434 table (D 6-50; D3 and D4/D5 are only on p.432-433/436)
+E-PSFJC50-100-M10-SC0	CodeError: M10 is not offered for D50 (coarse selection p.434: M12, M16, M20, M24, M30)
+E-PSFJZ6-50-M3-N3-SC0-SX10	CodeError: alteration SX is not offered for E-PSFJZ (p.435); offered: FC, LKC, SC, WFC, WSC
+E-PSFJZ6-20-M3-N3-SC0	CodeError: length 20 mm outside 25-600 mm for E-PSFJZ6 (p.435 table)
+E-PSFJW50-100-M30-N30	CodeError: overall length L = 100 requires M x 2 + N x 2 <= L = 120 (p.436 note)
+E-SFJW35-100-M8-N8	CodeError: O.D. 35 is applicable only to E-PSFJW (p.436 note)
+E-PSFPG8-200-F4-P7-M3-SC0	CodeError: P7 is outside P 6-6 for D8 (p.437 table)
+E-PSFPG8-200-F1-P6-M3-SC0	CodeError: F1 is outside 2 <= F <= P x 4 = 24 (p.437)
+E-PSFPG8-900-F4-P6-M3-SC0	CodeError: overall length (Y) = 904 mm exceeds the maximum 800 mm for D8 (p.437 table)
+E-PSFPG8-200-F4-P6-M3	CodeError: E-PSFPG8 needs its wrench flat position SC after the thread, e.g. ...-SC0 (p.437 ordering example)
+E-PSFPG16-300-F8-P14-M6-SC5-LKC	CodeError: LKC is not applicable when D - P <= 2 (D16, P14; p.437)
+E-PSFPH8-200-F5-P6-M3-SC0	CodeError: both ends stepped: the right step length T follows M, e.g. E-PSFPH8-200-F4-P6-M3-T4-SC0

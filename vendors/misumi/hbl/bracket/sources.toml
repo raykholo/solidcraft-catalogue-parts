@@ -1,0 +1,236 @@
+# Where every number of this generator comes from. One [[source]] per vendor document, one [[dimension]] per cited item.
+# status: labelled / published = printed in the catalogue; measured = read from the vertex coordinates of the published vector
+# drawing; derived = computed from labelled numbers; approximate = an estimate (appearance or an illustration choice); none.
+# source = [] is allowed only for approximate / none rows.
+
+[meta]
+clean_room = "Clean-room: only public catalogue pages and PDFs from the manufacturers' own sites. No vendor CAD (STEP/IGES/...) was downloaded or used, no other CAD program or generator was consulted. Where a value is not printed as a number, the table says how it was obtained. current web catalogue may differ; see \"Open questions\" in README.md."
+
+[[source]]
+id = "S40"
+catalogue = "MISUMI FA catalogue, \"Extruded Brackets - For 1 Slot, For 5 Series (Slot Width 6mm) Aluminum Extrusions\" (Thick Brackets, Scalene Brackets)"
+url = "https://in.misumi-ec.com/pdf/fa/2014/p2_539.pdf"
+pages = "2-539 (HBLTS5 family, HBLTV5 drawings and tables; the page is a double page with 2-540), 2-540 (HBLTSW5, HBLTVW5, HBLTF5 drawings and tables, alterations list)"
+
+[[dimension]]
+id = 500
+item = "Types and their material and surface: HBLTS5 (A6N01SS-T5, anodize), HBLTS5-4 (for M4 screw), HBLTSB5 (black anodize), CHBLTS5 (anodize + clear paint), NBLTS5 (A6063S-T5, anodize, both sides and screw holes not anodized), HBLTV5, HBLTVB5, HBLTSW5, HBLTVW5, HBLTF5 (A6N01SS-T5, anodize); material and surface of HBLTV5 and HBLTVB5 (black anodize by name) are not printed in any type table on p.539 and are taken as the HBLTS5 row, since the HBLTV5 drawing is its 25 square variant on the same page"
+value = ""
+source = ["S40"]
+source_text = "S40 p.539 and p.540 type tables"
+page = "p.539, p.540 type tables"
+status = "published"
+note = "published; except the HBLTV5/HBLTVB5 material and surface, which the page does not print (inferred from the HBLTS5 type table)"
+
+[[dimension]]
+id = 501
+item = "Width of the bracket: 14 (7 + 7 about the centre line) for the 20 square versions HBLTS5 family, HBLTSW5, HBLTF5; 19 (9.5 + 9.5, \"25 Square\") for HBLTV5, HBLTVB5, HBLTVW5"
+value = ""
+source = ["S40"]
+source_text = "S40 p.539 \"7 14 7\", \"9.5 19 9.5\"; p.540 same"
+page = "p.539, p.540 drawings"
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 502
+item = "Plate thickness of both arms: 5"
+value = ""
+source = ["S40"]
+source_text = "S40 p.539 and p.540 drawings, dimension \"5\""
+page = "p.539, p.540 drawings"
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 503
+item = "HBLTS5 family and HBLTV5 family: both arms 35 long (outer face to free end), one hole O5.5 per arm (2-O5.5; O4.5 for HBLTS5-4) at 25 from the outer face of the other arm"
+value = ""
+source = ["S40"]
+source_text = "S40 p.539 drawings \"35\", \"25\", \"2-O5.5\", note \"O4.5 for HBLTS5-4\""
+page = "p.539 drawings"
+status = "labelled"
+note = "labelled; the 25 dimension line runs from the outer face of the other arm to the hole, and the same line reads 30 and 50 on the 57 arms of HBLTSW5 (holes 7 and 27 from the free end)"
+
+[[dimension]]
+id = 504
+item = "HBLTSW5 and HBLTVW5: both arms 57 long, two holes O5.5 per arm (4-O5.5) at 30 and 50 from the outer face of the other arm"
+value = ""
+source = ["S40"]
+source_text = "S40 p.540 drawings \"57\", \"30\", \"50\", \"4-O5.5\""
+page = "p.540 drawings"
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 505
+item = "HBLTF5 (scalene): wall 57 high with two holes at 30 and 50, foot 37 long with one hole at 30 (3-O5.5), all O5.5"
+value = ""
+source = ["S40"]
+source_text = "S40 p.540 HBLTF5 drawing \"57\", \"50\", \"30\", \"37\", \"3-O5.5\""
+page = "p.540 HBLTF5 drawing"
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 506
+item = "O4.2 relief at the inner corner, 12 from the outer faces (published, not drawn)"
+value = ""
+source = ["S40"]
+source_text = "S40 p.539 and p.540 drawings \"O4.2\", \"12\""
+page = "p.539, p.540 drawings"
+status = "published"
+note = "published; the relief sits in the web between the arms, whose shape the catalogue does not dimension"
+
+[[dimension]]
+id = 507
+item = "Mass (HBLTS5 family 15 g, HBLTV5 family 20 g, HBLTSW5 26 g, HBLTVW5 36 g, HBLTF5 21 g), applicable screw and T nut (CBM5-10 and HNTT5-5; CBM4-10 and HNTT5-4 for HBLTS5-4), allowable load (833 N, 1176 N for HBLTSW5/VW5, 1004 N for HBLTF5); written into the part description"
+value = ""
+source = ["S40"]
+source_text = "S40 p.539 and p.540 part number tables"
+page = "p.539, p.540 tables"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 508
+item = "Inner-corner web with its two locating ribs (the tab that fits the 6 mm slot) and the edge rounds"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate (appearance, approximate): not drawn, the catalogue gives no dimensions for it"
+
+[[dimension]]
+id = 1500
+item = "Types of the second batch and their material and surface: HBKTST5, HBKTS5 (A6N01SS-T5, anodize), HBKTSB5 (black anodize), HBKUS5 (anodize), HBKUSB5 (black anodize), NBLUS5 (A6063S-T5, anodize, both sides and screw holes not anodized), HBLUS5 (A6N01SS-T5, anodize), HBLTH5 (anodize), HBLTHB5 (black anodize), all A6N01SS-T5 except NBLUS5"
+value = ""
+source = ["S40"]
+source_text = "S40 p.539 type tables of the HBKTS5, HBKUS5, NBLUS5 and HBLTH5 blocks"
+page = "p.539 type tables"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 1501
+item = "HBKTST5 / HBKTS5 / HBKTSB5 (thick, perpendicularly machined, with tabs): width 14 (7 + 7), plate thickness 5, both arms 35 long, one hole O5.5 per arm (2-O5.5) at 25 from the outer face of the other arm"
+value = ""
+source = ["S40"]
+source_text = "S40 p.539 HBKTS5 drawing \"7 14 7\", \"5\", \"35\", \"25\", \"2-O5.5\""
+page = "p.539 HBKTS5 drawing"
+status = "labelled"
+note = "labelled; same arms, holes and width as HBLTS5"
+
+[[dimension]]
+id = 1502
+item = "Tabs of the HBKTS5 and HBKUS5 families that fit the 6 mm slot: 6 wide (read as centred on the 14 width: the two extension lines of the 6 are symmetric about the centre) and 1 proud of the outer face of each arm (\"1\" in the section view and the 1-high protrusion callout, \"Protrusions are provided on the bracket bottom to be inserted into aluminum extrusion slots\")"
+value = ""
+source = ["S40"]
+source_text = "S40 p.539 HBKTS5 and HBKUS5 drawings \"6\", section view \"1\", note \"Protrusions are provided on the bracket bottom\""
+page = "p.539 HBKTS5 and HBKUS5 drawings and section views"
+status = "labelled"
+note = "labelled: 6 and 1; the centring is read from the extension lines, the 1 proud from the section view (the tab is added to the arm, the 35 / 51 arm lengths are taken to the outer face of the arm)"
+
+[[dimension]]
+id = 1503
+item = "Perpendicularity K of the machined brackets: 0.03 (HBKTST5), 0.06 (HBKTS5, HBKTSB5, HBKUS5, HBKUSB5), with the callout \"perpendicular, k, datum A\" and a 0.4 dimension in the section view; written into the part description, not drawn and not checked"
+value = ""
+source = ["S40"]
+source_text = "S40 p.539 HBKTS5 table \"Perpendicularity K 0.03 / 0.06\", HBKUS5 \"Perpendicularity K: 0.06\", section view \"0.4\""
+page = "p.539 HBKTS5 and HBKUS5 blocks"
+status = "published"
+note = "published; the 0.4 of the section view (next to the datum A and the M5 alteration C callout) is not interpreted and not used"
+
+[[dimension]]
+id = 1504
+item = "HBKUS5 / HBKUSB5 (ultra thick, perpendicularly machined, with tabs) and NBLUS5 / HBLUS5 (ultra thick): width 14 (7 + 7), both arms 51 long, foot thickness 9, one hole O5.5 per arm (2-O5.5) at 41 from the outer face of the other arm"
+value = ""
+source = ["S40"]
+source_text = "S40 p.539 HBKUS5 and NBLUS5 drawings \"7 14 7\", \"51\", \"9\", \"41\", \"2-O5.5\""
+page = "p.539 HBKUS5 and NBLUS5 drawings"
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 1505
+item = "Wall thickness of the ultra thick brackets: 9, equal to the foot thickness; the drawing labels 9 on the foot only, and the section view and the photograph show both arms equally thick (about 9.1 and 9.7 mm measured on the section view)"
+value = ""
+source = ["S40"]
+source_text = "S40 p.539 HBKUS5 section view and HBLUS5 photograph (no number printed for the wall)"
+page = "p.539 HBKUS5 section view"
+status = "approximate"
+note = "approximate: the wall thickness is not labelled, so the wall plate is drawn 9 thick and listed under not_guaranteed; it is not dimension-checked"
+
+[[dimension]]
+id = 1506
+item = "HBLTH5 / HBLTHB5 (eccentric): width 12 (5 + 7: the hole centre line is 5 from one side and 7 from the other), plate thickness 5, both arms 35 long, one hole O5.5 per arm (2-O5.5) at 25 from the outer face of the other arm"
+value = ""
+source = ["S40"]
+source_text = "S40 p.539 HBLTH5 drawing \"5\", \"12\", \"7\", \"35\", \"25\", \"2-O5.5\""
+page = "p.539 HBLTH5 drawing"
+status = "labelled"
+note = "labelled; which side the 5 is on is not stated, the 5 is drawn from the x = 0 side and on both arms (the drawing shows both holes on the same side), the mirror image is the same part"
+
+[[dimension]]
+id = 1507
+item = "Applicable screw and T nut, mass and allowable load of the second batch: HBKTST5 / HBKTS5 / HBKTSB5 15 g, CBM5-10, HNTT5-5, 833 N; HBKUS5 / HBKUSB5 31 g, CBM5-14, HNTT5-5, 833 N; NBLUS5 / HBLUS5 31 g, CBM5-14, HNTT5-5, 833 N; HBLTH5 / HBLTHB5 15 g, CBM5-10, HNTT5-5, 833 N (2 screws, 2 T nuts each); written into the part description"
+value = ""
+source = ["S40"]
+source_text = "S40 p.539 part number tables"
+page = "p.539 tables"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 1508
+item = "O4.2 relief at the inner corner, 12 from the outer faces, on all the second-batch drawings (published, not drawn)"
+value = ""
+source = ["S40"]
+source_text = "S40 p.539 drawings \"O4.2\", \"12\""
+page = "p.539 drawings"
+status = "published"
+note = "published; the relief sits in the web between the arms, whose shape the catalogue does not dimension"
+
+[[dimension]]
+id = 1509
+item = "Alteration C, \"Mounting Hole Alteration for Cover\": adds taps on a bracket for cover mounting (M5 on both sides, mounting screw HCBM); offered for NBLTS5, HBLTS5, HBLTS5-4, CHBLTS5, HBLTV5, HBLTVB5, NBLUS5, HBLUS5, HBKTS5, HBKUS5, HBLTH5, HBLTHB5, HBLTSW5, HBLTVW5, HBLTF5; not offered for HBLTSB5, HBKTST5, HBKTSB5, HBKUSB5. Written into the description, the taps are not drawn"
+value = ""
+source = ["S40"]
+source_text = "S40 p.540 alterations table (Code C, Applicable Bracket list), p.539 section view \"M5 (When specifying alteration C)\""
+page = "p.540 alterations table"
+status = "published"
+note = "published; the list prints HBLUS5 twice, read as one bracket; the tap positions are not dimensioned apart from the callout at the O4.2 corner hole"
+
+[[dimension]]
+id = 1510
+item = "Alterations SET, SST, SEU, SSU, SEP, SSP, SEC: the screws and nuts that fix the bracket on extrusions come in a set (added to the bracket price): SET CBM5-10 / HNTT5-5, SST SCB5-10 / HNTTBS5-5, SEU CBM5-10 / HNTU5-5, SSU SCB5-10 / SHNTU5-5, SEP CBM5-10 / HNTP5-5, SSP SCB5-10 / SHNTP5-5, SEC HCBST5-12 / HNTT5-5 (given \"when HBLTS5 is specified\"; for other brackets the page says to check the applicable screws and nuts); screws for black anodized brackets are HCBMTB; all 19 brackets of the page are listed as applicable. Accessory only: written into the description, not drawn"
+value = ""
+source = ["S40"]
+source_text = "S40 p.540 alterations table \"Applicable Screws and Nuts Set\" and its two footnotes"
+page = "p.540 alterations table"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 1511
+item = "Length of the tabs along the arms and their end shape (the section views only show the tab as a thin strip along the bottom of each arm): drawn as a rectangular tab over the full arm length, 6 wide and 1 high"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate (appearance, approximate): only the width 6 and the height 1 are dimensioned"
+
+[[dimension]]
+id = 1512
+item = "Web with ribs, the triangular cut-outs and the recess for the M5 tap of the ultra thick brackets, the web of the other new types and the edge rounds"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate (appearance, approximate): not drawn, the catalogue gives no dimensions for them"
+
+[[note]]
+text = "Source count for family 5: 9 rows (500-508): 4 published, 4 labelled, 1 approximate; one document (S40). Rows 1500-1512 (second batch, same document S40): HBKTST5 / HBKTS5 / HBKTSB5, HBKUS5 / HBKUSB5, NBLUS5 / HBLUS5, HBLTH5 / HBLTHB5, alterations C and the screw sets: 13 rows, 6 published, 4 labelled, 3 approximate (one of them, 1505, is geometry: the wall thickness of the ultra thick brackets). Not drawn: tabbed reversal brackets (HBLFS family), plate, block and thin brackets, angled and corner brackets, the 6 series brackets."

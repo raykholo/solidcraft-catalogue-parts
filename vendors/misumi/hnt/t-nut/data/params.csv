@@ -1,0 +1,6 @@
+name,value,unit,source,page,status
+plan,10.0,mm,S9,p.559 plan view,labelled
+neck,5.8,mm,S9,p.559 side view,labelled
+flank_h,3.0,mm,S9,p.559 side view vector outline,measured
+default_m,5,,S9,p.559 ordering example and note,labelled
+torque_m5,6.8,N m,S9,p.559,labelled

@@ -1,0 +1,37 @@
+name: release
+# On a tag v<version> (library.toml's version): re-check every generator, pack the parts-library zip (tools/release builds every
+# valid code, runs its spec check on the shipped file, and refuses on any failure), and attach the zip, its .sha256 and the
+# parts-index manifest to the GitHub release. Listing it in tangency-labs/solidcraft-parts stays a manual pull request
+# (docs/parts-library.md). NOT RUN YET: the repository is private and nothing is listed.
+on:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: write
+env:
+  SC_VER: "0.50.0"
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: SolidCraft CLI
+        run: |
+          gh release download "v${SC_VER}" --repo tangency-labs/solidcraft --pattern "solidcraft-${SC_VER}-linux-x86_64.tar.gz" --dir "$RUNNER_TEMP/sc"
+          tar -xzf "$RUNNER_TEMP/sc/solidcraft-${SC_VER}-linux-x86_64.tar.gz" -C "$RUNNER_TEMP/sc"
+          echo "SC_CLI=$RUNNER_TEMP/sc/solidcraft-${SC_VER}-linux-x86_64/bin/solidcraft-cli" >> "$GITHUB_ENV"
+        env: { GH_TOKEN: "${{ github.token }}" }
+      - run: tools/lint
+      - run: tools/provenance --check
+      - run: tools/build-index --check
+      - run: tools/release --tag "${GITHUB_REF_NAME}" --commit "${GITHUB_SHA}"
+      - name: GitHub release
+        run: |
+          ver="${GITHUB_REF_NAME#v}"
+          lib=$(python3 -c 'import tomllib;print(tomllib.load(open("library.toml","rb"))["library"])')
+          gh release create "${GITHUB_REF_NAME}" --title "${GITHUB_REF_NAME}" --notes-file <(cat dist/raykholo/*.json) \
+            "dist/${lib}-${ver}.zip" "dist/${lib}-${ver}.zip.sha256" "dist/raykholo/${lib}.json"
+        env: { GH_TOKEN: "${{ github.token }}" }

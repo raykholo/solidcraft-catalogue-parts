@@ -1,0 +1,58 @@
+#!/usr/bin/env python3
+"""tools/check [GENERATOR_DIR ...] [--code CODE] [--ver X] [--out DIR]: build every code in codes.txt with solidcraft-cli and run the
+spec check. Writes checks/<solidcraft version>/<code>.txt in each generator folder, prints PASS/FAIL per code, exit 1 on any failure.
+`!CODE` lines in codes.txt must be rejected with a message (recorded in checks/<ver>/_invalid.txt)."""
+import argparse, contextlib, io, os, sys
+from pathlib import Path
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+from runtime import registry, sc
+
+ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+ap.add_argument("dirs", nargs="*", help="generator folders (default: all)")
+ap.add_argument("--code", help="only this code")
+ap.add_argument("--ver", default=sc.VER, help="SolidCraft version the results are filed under (SC_VER)")
+ap.add_argument("--out", default=str(ROOT / "out"), help="scratch folder for built designs and measurements")
+a = ap.parse_args()
+
+gens = registry.generators()
+if a.dirs:
+    want = {Path(d).resolve() for d in a.dirs}
+    gens = [g for g in gens if g.dir.resolve() in want]
+    if not gens:
+        raise SystemExit("no generator folder matches " + ", ".join(a.dirs))
+bad = 0
+for g in gens:
+    cdir = g.dir / "checks" / a.ver
+    cdir.mkdir(parents=True, exist_ok=True)
+    invalid_lines = []
+    print(f"## {g.id}")
+    for c in g.codes():
+        if a.code and c.code != a.code:
+            continue
+        if not c.valid:
+            try:
+                g.build(c.code, **c.opts)
+                print(f"FAIL  !{c.code}: accepted but listed as invalid"); bad += 1
+            except ValueError as ex:
+                invalid_lines.append(f"{c.code}\t{type(ex).__name__}: {ex}")
+                print(f"PASS  !{c.code}: rejected ({type(ex).__name__})")
+            continue
+        try:
+            part, cmds = g.build(c.code, **c.opts)
+            path, _ = sc.run_script(cmds, a.out, c.name)
+            buf = io.StringIO()
+            with contextlib.redirect_stdout(buf):
+                print(f"== {c.code}")
+                R = g.check(part, path, a.out)
+                ok = R.print()
+        except (ValueError, SystemExit) as ex:
+            print(f"FAIL  {c.code}: {ex}"); bad += 1
+            continue
+        (cdir / (c.name + ".txt")).write_text(buf.getvalue())
+        print(f"{'PASS' if ok else 'FAIL'}  {c.code} {' '.join(c.opts)}  {buf.getvalue().splitlines()[-1]}")
+        bad += 0 if ok else 1
+    if invalid_lines and not a.code:
+        (cdir / "_invalid.txt").write_text("\n".join(invalid_lines) + "\n")
+print("all codes pass" if not bad else f"{bad} failure(s)")
+sys.exit(1 if bad else 0)

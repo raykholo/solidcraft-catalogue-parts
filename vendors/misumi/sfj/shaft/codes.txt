@@ -1,0 +1,42 @@
+# Codes CI builds and checks. `CODE [option ...]` = valid (built, then every dimension checked); `!CODE  # why` = must be rejected with a message.
+
+E-PSFG16-250-FC20-A10
+E-PSFJ3-10
+E-PSFJ6-20
+E-PSFJT12-60-M6
+E-PSFJT50-200-M30
+E-PSSFJ30-500-WFC40-A10-E20-LKC
+E-SFJ20-300-SC5
+E-SSFJ10-123.4-LKC-WSC12-X8
+!E-PSFG3-50  # E-PSFG has no D3: E-PSFG is listed for D 6-30 (p.432 note: D3, 4, 5 not applicable, 35/40/
+!E-SFJ6-5  # length 5 mm outside 20-800 mm for E-SFJ6 (p.432 table)
+!E-SFJ6-900  # length 900 mm outside 20-800 mm for E-SFJ6 (p.432 table)
+!E-SFJ6-20-WSC5  # WSC needs the distance between the two flats: WSC12-X8
+!E-PSFJT6-20-M9  # M9 is not offered for D6 (coarse selection: M3)
+E-PSFJC6-40-M3-SC0
+E-SFJC20-300-M10-SC5-FC40-E20
+E-PSFJC12-200-M6-SC0-SX20-LKC
+E-PSFJZ6-50-M3-N3-SC0
+E-PSSFJZ16-300-M8-N6-WSC20-X30-LKC
+E-PSFJW6-50-M3-N3-LKC
+E-SSFJW4-60-M2-N2
+E-PSFJW30-400-M20-N12-SC120-WFC30-A60-E60
+E-PSFPG8-200-F4-P6-M3-SC0
+E-PSSFPG20-500-F10-P12-M8-SC20-SX15-FC30-E50-LFC6-A2
+E-SFPG16-300-F8-P10-M6-SC5-LKC
+E-PSFPG25-400-F20-P16-MD10-SC30-WFC20-A50-E50
+E-PSFPH8-200-F5-P6-M3-T5-SC0
+E-PFPGH30-800-F30-P20-M16-T25-SC40
+!E-PSFJC6-40-M3  # the wrench slot SC is part of the ordering code of the C type (p.434 ordering example)
+!E-PSFJC5-40-M3-SC0  # no D5 on the one-end-tapped-with-wrench-slot table (p.434 lists D6-50)
+!E-PSFJC50-100-M10-SC0  # M10 is not offered for D50 on p.434 (12, 16, 20, 24, 30)
+!E-PSFJZ6-50-M3-N3-SC0-SX10  # SX is not an alteration of the both-ends-tapped wrench-flat type (p.435)
+!E-PSFJZ6-20-M3-N3-SC0  # L 20 is below the 25-600 range for D6 on p.435
+!E-PSFJW50-100-M30-N30  # M x 2 + N x 2 = 120 exceeds L = 100 (p.436 note)
+!E-SFJW35-100-M8-N8  # O.D. 35 is applicable only to E-PSFJW (p.436 note)
+!E-PSFPG8-200-F4-P7-M3-SC0  # P7 is outside P 6-6 for D8 (p.437 table)
+!E-PSFPG8-200-F1-P6-M3-SC0  # F1 is below 2 <= F <= P x 4 (p.437)
+!E-PSFPG8-900-F4-P6-M3-SC0  # overall length (Y) 904 exceeds the 800 maximum for D8 (p.437)
+!E-PSFPG8-200-F4-P6-M3  # the wrench flat position SC is part of the ordering code (p.437)
+!E-PSFPG16-300-F8-P14-M6-SC5-LKC  # LKC is not applicable when D - P <= 2 (p.437)
+!E-PSFPH8-200-F5-P6-M3-SC0  # both ends stepped needs the right step length T (p.438)

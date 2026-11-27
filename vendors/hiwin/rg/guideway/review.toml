@@ -1,0 +1,92 @@
+reviewer_kind = "ai"
+reviewer = "AI review lane (Claude Sonnet), independent of the authoring lane"
+author = "AI authoring lanes (Claude)"
+date = "2026-11-27"
+commit = "50a4feeec852e0e2d08ceb2908a84ff559c15f48"
+sources_hash = "sha256:0cdf2d70c40bfca7ba62f3c99e24247ee87be451449e586111192429bdcd00dc"
+method = "Downloaded the catalogue PDF (G99TE24-2410, printed page = PDF page - 3), read the text layer of PDF pages 152-176 and rendered pp.154, 166, 168 as images. Compared every cell of the RGH table (1) p.166, the RGW table (3) p.168, the rail columns, Table 2-9-29 (pitch, Es, standard lengths re-derived as (n-1)P+2E), Table 2-9-22 (all 60 dust-length cells), Tables 2-9-13/2-9-14 (preload, ZB for every size), accuracy Tables 2-9-4 to 2-9-11 and the model number pages against sources.toml and data/*.csv. Read the six-hole legends and dimension lines from the rendered drawings. Re-ran tools/check on every code after correcting the end-distance rule."
+
+[[row]]
+id = 1600
+verdict = "agree"
+note = "Model number figures p.152 (non-interchangeable set, interchangeable block, p.153 rail) re-read: block type W/H/L/S/F, sizes 15-65, load C/H, mounting A / C, E, rail R/T, Z0/ZA/ZB, H/P/SP/UP, I-IV, ZZ/KK/DD, E2, RC; interchangeable block Z0/ZA and H/P, interchangeable rail H/P."
+
+[[row]]
+id = 1601
+verdict = "agree"
+note = "Table 2-9-2 p.153: RGH-CA/HA height 28-90, RGW-CC/HC 24-90, rail length 100-4000; Table 2-9-3 p.154 top and bottom rail. Row names RGH-CA/HA and RGW-CC/HC match the tables p.166/168."
+
+[[row]]
+id = 1602
+verdict = "agree"
+note = "Compared every RGH cell of table (1) p.166 (rendered page and text layer) with rgh.csv: H, H1, N, W, B, B1 per size; C, L1, L for CA and HA rows (15CA 26/45/68 ... 65HA 120/223/295). All 8 CA and 7 HA rows match; no RGH15HA row exists in the table (absent row confirmed; Table 2-9-14 also has no RG15H)."
+
+[[row]]
+id = 1603
+verdict = "agree"
+note = "Mxl column M4x8, M5x8, M6x8, M8x10, M8x12, M10x17, M12x18, M16x20 match rgh.csv M and l; T column (6, 8, 9.5, 9.5, 12, 16, 17.5, 25) printed and unused, as stated."
+
+[[row]]
+id = 1604
+verdict = "agree"
+note = "Compared every RGW cell of table (3) p.168 with rgw.csv: H, H1, N, W, B, B1, C, C1 per size (C and C1 printed once per size, shared by CC and HC), L1 and L for CC and HC rows (15CC 45/68 ... 65HC 223/295). All match; no RGW15HC row in the table (absent row confirmed)."
+
+[[row]]
+id = 1605
+verdict = "agree"
+note = "M, T, T1 columns match rgw.csv (M5/6/6.95, M6/8/10, M8/9.5/10, M10/9.5/10, M10/12/13, M12/14/15, M14/16/17, M16/22/23). The drawing shows T and T1 as two flange-thickness brackets on the left flange without a text definition, so using T as the tapped depth stays a declared interpretation (README), not a catalogue statement; values themselves agree."
+
+[[row]]
+id = 1606
+verdict = "agree"
+note = "Rendered top views p.166 and p.168: legend 6-Mxl (RGH) and 6-M (RGW). RGH shows two columns C apart by three rows, the middle row on the rail axis aligned with the flank columns; RGW shows four flange holes at C x B and two axis holes dimensioned C1. One legend and one drawing serve CA/HA and CC/HC, so six holes for the long block as well is the page reading. The long block's hole pitch is C of its own row for RGH (HA row C is larger, e.g. 50 vs 36 for RGH20) and the shared C / C1 for RGW."
+
+[[row]]
+id = 1607
+verdict = "agree"
+note = "Rail columns WR, HR, D, h, d and the mounting bolt of both tables p.166 and p.168 compared for all 8 sizes with rails.csv (15: 15/16.5/7.5/5.7/4.5 M4x16 ... 65: 63/53/26/22/18 M16x50); the two tables agree with each other."
+
+[[row]]
+id = 1608
+verdict = "corrected"
+note = "P (30,30,30,40,40,52.5,60,75) and Es (20,20,20,20,20,22.5,30,35) agree with Table 2-9-29 p.165, and the standard-length examples reproduce L=(n-1)P+2E with E=Es for every size (e.g. RGR15 160 (5): 4x30+40; RGR65 1270 (17): 16x75+70). Rule corrected: the page text says only 'E no greater than 1/2 the pitch' for non-standard lengths; the author's bound min(Es,P/2) <= E <= max(Es,P/2) also admitted 15 < E < 20 for RGR15/20/25, which the text forbids. Now: E = Es exactly (standard length) or E <= P/2, smallest E = min(Es, P/2) (not printed; family convention). Old: upper bound max(Es,P/2) -> new: P/2 plus the standard Es. Code RGR25R995 (E=17.5) was therefore replaced by RGR25R990 (E=15) in codes.txt and 995 added as a refusal."
+
+[[row]]
+id = 1609
+verdict = "agree"
+note = "Table 2-9-29 'Max. Length' is 4,000 for all eight sizes; Table 2-9-2 gives rail length 100 ~ 4000, so 100 is the minimum."
+
+[[row]]
+id = 1610
+verdict = "agree"
+note = "Table 2-9-13 p.156 (Z0, ZA, ZB) and Table 2-9-14 p.157: ZB stiffness printed for every size including RG 15C (786), and for 20H-65H; no RG15H row exists. Model number p.152: ZB only in the non-interchangeable form; interchangeable block Z0/ZA."
+
+[[row]]
+id = 1611
+verdict = "agree"
+note = "Tables 2-9-4 to 2-9-7 (non-interchangeable) list H, P, SP, UP; Tables 2-9-8 to 2-9-11 (interchangeable) list H and P only; model number p.152-153 agrees. Accuracy limits in the code: rail alone H/P, block alone H/P, set H/P/SP/UP. No class C exists."
+
+[[row]]
+id = 1612
+verdict = "agree"
+note = "Table 2-9-22 p.161 re-read for all 15 size/load rows and 4 columns (SS, ZZ, DD, KK) against dust.csv: every unparenthesised value matches (e.g. 15C 68/70/72.4/74.4, 45C 153.2/156.2/160.4/163.4, 65C 232/235/240.8/243.8, 65H 295/298/303.8/306.8). SS equals L of tables (1) and (3). Codes per Table 2-9-18 p.160: none, ZZ, DD, KK."
+
+[[row]]
+id = 1613
+verdict = "agree"
+note = "Model number p.152-153 (all three forms) has no material letter; a word search of the RG pages 152-170 finds no stainless option (the only stainless mention is the CRG cover strip, p.172). Bottom-mounted rail T: Table 2-9-3 p.154 shows the type, but no rail drawing or dimension table gives its hole dimensions (all rail columns are the top R rail), so refusing T as not modelled is right."
+
+[[row]]
+id = 1614
+verdict = "agree"
+note = "Table 2-9-2 p.153 lists RGL, RGS, RGF as valid types with tables on p.167, 169, 170; they are refused as not modelled."
+
+[[row]]
+id = 1615
+verdict = "agree"
+note = "Approximate row, no source claimed; no roller-track, flange or end-cap outline is dimensioned on p.166/168, consistent with the note."
+
+[[row]]
+id = 1616
+verdict = "agree"
+note = "Approximate illustration choice, no source claimed; the catalogue gives no block gap."

@@ -1,0 +1,28 @@
+== HGH65HA1R1270
+PASS  bodies                                spec         2  got          2           [S7 code]
+PASS  rail length                           spec      1270  got  1270.0000  +-0.005  [S7 p.38]
+PASS  rail width WR                         spec        63  got    63.0000  +-0.005  [S7 p.39-43]
+PASS  rail height HR                        spec        53  got    53.0000  +-0.005  [S7 p.39-43]
+PASS  rail through-hole diameter d          spec        18  got    18.0000  +-0.001  [S7 p.39]
+PASS  rail counterbore diameter D           spec        26  got    26.0000  +-0.001  [S7 p.39]
+PASS  rail hole count                       spec         9  got          9           [S7 p.38 L=(n-1)P+2E]
+PASS  counterbore depth h (floors at HR-h)  spec         9  got          9           [S7 p.39] h=22
+PASS  rail hole 1 position                  spec        35  got    35.0000  +-0.005  [S7 p.38 E, P]
+PASS  rail hole 2 position                  spec       185  got   185.0000  +-0.005  [S7 p.38 E, P]
+PASS  rail hole 9 position                  spec      1235  got  1235.0000  +-0.005  [S7 p.38 E, P]
+PASS  rail hole pitch P                     spec       150  got   150.0000  +-0.005  [S7 p.38]
+PASS  end distance E (first hole)           spec        35  got    35.0000  +-0.005  [S7 p.38 Es / P/2 rule]
+PASS  end distance within Es..P/2           spec       yes  got        yes           [S7 p.38]
+PASS  Block 1 length L                      spec     259.6  got   259.6000  +-0.005  [S7 p.39-43]
+PASS  Block 1 width W                       spec       126  got   126.0000  +-0.005  [S7 p.39-43]
+PASS  Block 1 top height H                  spec        90  got    90.0000  +-0.005  [S7 p.39-43]
+PASS  Block 1 bottom H1                     spec        15  got    15.0000  +-0.005  [S7 p.39-43]
+PASS  Block 1 mounting threads              spec         4  got          4           [S7 p.39-43]
+PASS  Block 1 hole spacing B                spec        76  got    76.0000  +-0.005  [S7 p.39-43]
+PASS  Block 1 hole spacing C                spec       120  got   120.0000  +-0.005  [S7 p.39-43]
+PASS  Block 1 thread M16                    spec       M16  got        M16           [S7 p.39-43]
+PASS  Block 1 thread depth                  spec        20  got    20.0000  +-0.01   [S7 p.39-43] l (HGH) / T (HGW)
+PASS  rail/block interference count         spec         0  got          0           [-]
+PASS  part number metadata                  spec HGH65HA1R1270  got HGH65HA1R1270           [-]
+PASS  design part number                    spec HGH65HA1R1270  got HGH65HA1R1270           [-]
+26/26 passed

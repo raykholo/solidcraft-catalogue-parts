@@ -1,0 +1,15 @@
+== C-MUFZU30-30
+PASS  one closed body                                spec         1  got          1           [S16]
+PASS  overall length L (X)                           spec        30  got    30.0000  +-0.005  [S16 p.514 L]
+PASS  flange extent H (bbox Y)                       spec        42  got    42.0000  +-0.005  [S16 p.514 H]
+PASS  flange extent H (bbox Z)                       spec        42  got    42.0000  +-0.005  [S16 p.514 H]
+PASS  outside cylinder D 34                          spec       yes  got        yes           [S16 p.514 D]
+PASS  bore cylinder d 30                             spec       yes  got        yes           [S16 p.514 d]
+PASS  wall thickness N = (D - d) / 2                 spec         2  got     2.0000  +-1e-06  [S16 p.514 N] derived: the printed N, D and d agree
+PASS  tolerances written in the part description     spec       yes  got        yes           [S16 p.514] echoed, not drawn
+PASS  flange cylinder H 42                           spec       yes  got        yes           [S16 p.514 H]
+PASS  flange thickness t = 4                         spec       yes  got        yes           [S16 p.514 t]
+PASS  volume = pi/4 ((D^2 - d^2) L + (H^2 - D^2) t)  spec      7942  got  7941.9462  +-4.15633 [derived]
+PASS  part number metadata                           spec C-MUFZU30-30  got C-MUFZU30-30           [-]
+PASS  design part number                             spec C-MUFZU30-30  got C-MUFZU30-30           [-]
+13/13 passed

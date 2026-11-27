@@ -1,0 +1,11 @@
+HBLTS5-5	CodeError: HBLTS5-5: unknown alteration '5'; the catalogue lists C, SET, SST, SEU, SSU, SEP, SSP, SEC (no -5 or other suffix exists)
+HBLTV5-4	CodeError: HBLTV5-4: HBLTV5 has no -4 version (an M4 screw version exists for HBLTS5 only; the plain code is the M5 one)
+HBKUS5-4	CodeError: HBKUS5-4: HBKUS5 has no -4 version (an M4 screw version exists for HBLTS5 only; the plain code is the M5 one)
+HBLTSWB5	CodeError: 'HBLTSWB5': expected a bracket code such as HBLTS5 or HBKUS5; drawn: HBLTS5, HBLTSB5, CHBLTS5, NBLTS5, HBLTV5, HBLTVB5, HBLTSW5, HBLTVW5, HBLTF5, HBKTST5, HBKTS5, HBKTSB5, HBKUS5, HBKUSB5, NBLUS5, HBLUS5, HBLTH5, HBLTHB5
+HBLTX5	CodeError: 'HBLTX5': expected a bracket code such as HBLTS5 or HBKUS5; drawn: HBLTS5, HBLTSB5, CHBLTS5, NBLTS5, HBLTV5, HBLTVB5, HBLTSW5, HBLTVW5, HBLTF5, HBKTST5, HBKTS5, HBKTSB5, HBKUS5, HBKUSB5, NBLUS5, HBLUS5, HBLTH5, HBLTHB5
+HBLTS6	CodeError: HBLTS6: only the 5 series (slot width 6 mm) brackets are drawn, e.g. HBLTS5
+HBLTSB5-C	CodeError: HBLTSB5-C: alteration C (M5 taps for cover mounting) is not offered for HBLTSB5 on the catalogue page; offered for: HBLTS5, HBLTS5-4, CHBLTS5, NBLTS5, HBLTV5, HBLTVB5, HBLTSW5, HBLTVW5, HBLTF5, HBKTS5, HBKUS5, NBLUS5, HBLUS5, HBLTH5, HBLTHB5
+HBKTSB5-C	CodeError: HBKTSB5-C: alteration C (M5 taps for cover mounting) is not offered for HBKTSB5 on the catalogue page; offered for: HBLTS5, HBLTS5-4, CHBLTS5, NBLTS5, HBLTV5, HBLTVB5, HBLTSW5, HBLTVW5, HBLTF5, HBKTS5, HBKUS5, NBLUS5, HBLUS5, HBLTH5, HBLTHB5
+HBLTS5-SET-C	CodeError: HBLTS5-SET-C: one alteration at most (C, SET, SST, SEU, SSU, SEP, SSP, SEC); the catalogue lists them as alternatives
+HBLTS5-XYZ	CodeError: HBLTS5-XYZ: unknown alteration 'XYZ'; the catalogue lists C, SET, SST, SEU, SSU, SEP, SSP, SEC (no -5 or other suffix exists)
+HBLFSN5	NotModelled: HBLFSN5: a valid MISUMI 5 series bracket, not drawn here; drawn: HBLTS5, HBLTSB5, CHBLTS5, NBLTS5, HBLTV5, HBLTVB5, HBLTSW5, HBLTVW5, HBLTF5, HBKTST5, HBKTS5, HBKTSB5, HBKUS5, HBKUSB5, NBLUS5, HBLUS5, HBLTH5, HBLTHB5

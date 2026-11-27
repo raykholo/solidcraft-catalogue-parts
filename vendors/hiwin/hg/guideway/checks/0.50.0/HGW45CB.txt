@@ -1,0 +1,22 @@
+== HGW45CB
+PASS  bodies                                                                spec         1  got          1           [S7 code]
+PASS  Block 1 length L                                                      spec     139.4  got   139.4000  +-0.005  [S7 p.38-43]
+PASS  Block 1 width W                                                       spec       120  got   120.0000  +-0.005  [S7 p.38-43]
+PASS  Block 1 top height H                                                  spec        60  got    60.0000  +-0.005  [S7 p.38-43]
+PASS  Block 1 bottom H1                                                     spec       9.5  got     9.5000  +-0.005  [S7 p.38-43]
+PASS  Block 1 through holes O11                                             spec         4  got          4           [S7 p.41 table (4)]
+PASS  Block 1 hole spacing B                                                spec       100  got   100.0000  +-0.005  [S7 p.41 table (4)]
+PASS  Block 1 hole spacing C                                                spec        80  got    80.0000  +-0.005  [S7 p.41 table (4)]
+PASS  appearance bodies all named '(appearance, approximate)'               spec       yes  got        yes           [-]
+PASS  appearance bodies per block (2 end caps, 2 end seals, grease nipple)  spec         5  got          5           [-] appearance, approximate
+PASS  Block 1 steel body length L1                                          spec        97  got    97.0000  +-0.005  [S7 p.38-43]
+PASS  Block 1 end cap material                                              spec ABS Plastic  got ABS Plastic           [-] appearance, approximate
+PASS  appearance: Block 1 top faces finish (1 face(s))                      spec Metal - Polished Carbon Steel, roughness 0.16  got Metal - Polished Carbon Steel, roughness 0.16           [-] appearance, approximate; appearance.chain read-back per face
+PASS  appearance: Block 1 side faces finish (2 face(s))                     spec Metal - Polished Carbon Steel, roughness 0.16 | Metal - Polished Carbon Steel, roughness 0.16  got Metal - Polished Carbon Steel, roughness 0.16 | Metal - Polished Carbon Steel, roughness 0.16           [-] appearance, approximate; appearance.chain read-back per face
+PASS  appearance: Block 1 end faces (steel body) finish (2 face(s))         spec Steel - Satin PBR, roughness 0.4 | Steel - Satin PBR, roughness 0.4  got Steel - Satin PBR, roughness 0.4 | Steel - Satin PBR, roughness 0.4           [-] appearance, approximate; appearance.chain read-back per face
+PASS  appearance: Block 1 rail-channel top face finish (1 face(s))          spec Metal - Cool Reflective Silver, roughness 0.12  got Metal - Cool Reflective Silver, roughness 0.12           [-] appearance, approximate; appearance.chain read-back per face
+PASS  appearance: Block 1 rail-channel side faces finish (2 face(s))        spec Metal - Cool Reflective Silver, roughness 0.12 | Metal - Cool Reflective Silver, roughness 0.12  got Metal - Cool Reflective Silver, roughness 0.12 | Metal - Cool Reflective Silver, roughness 0.12           [-] appearance, approximate; appearance.chain read-back per face
+PASS  description has DIMENSIONED and APPEARANCE sections                   spec       yes  got        yes           [-]
+PASS  part number metadata                                                  spec   HGW45CB  got    HGW45CB           [-]
+PASS  design part number                                                    spec   HGW45CB  got    HGW45CB           [-]
+20/20 passed

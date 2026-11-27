@@ -1,0 +1,116 @@
+# Where every number of this generator comes from. One [[source]] per vendor document, one [[dimension]] per cited item.
+# status: labelled / published = printed in the catalogue; measured = read from the vertex coordinates of the published vector
+# drawing; derived = computed from labelled numbers; approximate = an estimate (appearance or an illustration choice); none.
+# source = [] is allowed only for approximate / none rows.
+
+[meta]
+clean_room = "Clean-room: only public catalogue pages from the manufacturer's own site. No vendor CAD (STEP/IGES/...) was downloaded or used, no other CAD program or generator was consulted. Where a value is not printed as a number, the table says how it was obtained. The current web catalogue may differ."
+
+[[source]]
+id = "S19"
+catalogue = "MISUMI Economy Series catalogue 2025, \"Shaft Supports Flanged with Slit, Positioning Hole, Steel\" (04-152, lower half: Round Flanged Type E-STHWRBK / E-STHWRK / E-SSTHWRK, Compact Flanged Type E-STHWCBK / E-SSTHWCK)"
+url = "https://th.c.misumi-ec.com/book/THA_EconomySeries_e-catalog2025/files/basic-html/page537.html (page image files/mobile/537.jpg)"
+pages = "p.537"
+
+[[dimension]]
+id = 1800
+item = "Types E-STHWRBK, E-STHWRK, E-SSTHWRK (round flanged) and E-STHWCBK, E-SSTHWCK (compact flanged): material general structural steel or carbon steel (E-STHW...) or stainless steel (E-SSTHW...), surface treatment black oxide film (E-STHWRBK, E-STHWCBK), electroless nickel plating (E-STHWRK) or none printed (stainless), accessory 1 hex socket head cap screw; ordering <type><D>, e.g. E-STHWRBK12"
+value = ""
+source = ["S19"]
+source_text = "S19 p.537 type table and Ordering Example E-STHWRBK12"
+page = "p.537 type table"
+status = "published"
+note = "published; the compact column prints '-' for E-STHWRK, so there is no compact electroless nickel type"
+
+[[dimension]]
+id = 1801
+item = "Hole diameter D (H8) and its tolerance: D12, 16 +0.027/0; D20, 25, 30 +0.033/0; sizes 12 16 20 25 30"
+value = ""
+source = ["S19"]
+source_text = "S19 p.537 DH8 column (I.D. DH8 12~30)"
+page = "p.537 table"
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 1802
+item = "Sleeve outside diameter D1 and overall length L (flange back face to sleeve end) per D"
+value = ""
+source = ["S19"]
+source_text = "S19 p.537 figure (D1, L) and D1, L columns"
+page = "p.537 figure and table"
+status = "labelled"
+note = "labelled; L is dimensioned from the back face of the flange to the sleeve end in the side view"
+
+[[dimension]]
+id = 1803
+item = "Flange: round diameter / compact length H, compact width W, thickness T"
+value = ""
+source = ["S19"]
+source_text = "S19 p.537 H, W, T columns"
+page = "p.537 table"
+status = "labelled"
+note = "labelled"
+
+[[dimension]]
+id = 1804
+item = "Mounting holes: 4-d through holes on the pitch circle P (round, at 90 degrees) or on F by P1 (compact)"
+value = ""
+source = ["S19"]
+source_text = "S19 p.537 figures (4-d, P, F, P1) and P, P1, F, d columns"
+page = "p.537 figures and table"
+status = "labelled"
+note = "labelled; the angular position of the round holes relative to the slit is read from the figure (holes on the axes)"
+
+[[dimension]]
+id = 1805
+item = "Positioning holes: 2-Q (H8) dowel holes, position P / 2 +-0.02 from the shaft axis on both sides (round: on the pitch circle P; compact: on the Y axis, P apart)"
+value = ""
+source = ["S19"]
+source_text = "S19 p.537 figures (2-Q H8, P / 2 +-0.02) and P, Q columns"
+page = "p.537 figures and table"
+status = "labelled"
+note = "labelled; the round-flange angle (45 / 225 degrees) is read from the figure and is appearance only"
+
+[[dimension]]
+id = 1806
+item = "Clamp: ring length B at the sleeve end, groove width S1, slit width S, clamp screw M (coarse) at height X above the axis and B / 2 from the sleeve end, counterbore floor Y from the slit centre, counterbore d1, clearance hole d2"
+value = ""
+source = ["S19"]
+source_text = "S19 p.537 figures (S1, B, B/2, d1, X, Y, S, d2, M) and B, S, S1, X, Y, d1, d2, M columns"
+page = "p.537 figures and table"
+status = "labelled"
+note = "labelled; M is printed M5 / M6 and stored as the number"
+
+[[dimension]]
+id = 1807
+item = "Thickness (N) = (D1 - D) / 2 in every row of the table (sleeve wall)"
+value = ""
+source = ["S19"]
+source_text = "S19 p.537 Thickness (N) column and figure (N at the sleeve wall)"
+page = "p.537 table"
+status = "derived"
+note = "derived: printed column, equal to (D1 - D) / 2 in every row, checked as the sleeve wall"
+
+[[dimension]]
+id = 1808
+item = "Groove depth, the stub of the radial slit below the bore, the side of the clamp screw, the compact flange outline (circle O H cut flat at W), the angle of the round flange's positioning holes"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate: read from the figures, not dimensioned (appearance, approximate)"
+
+[[dimension]]
+id = 1809
+item = "Chamfering, the hex socket head cap screw supplied, numeric H8 tolerance of Q, the +-0.02 position tolerance, the surface treatment"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "none"
+note = "not modelled; none of it is dimensioned as a value"
+
+[[note]]
+text = "Source count: 10 rows (1800-1809): printed or labelled numbers, 1 derived reading (1807), 1 approximate (1808), 1 not modelled (1809); one document (S19, p.537). The aluminium alloy long-sleeve flanged supports on the upper half of the same page are not covered."

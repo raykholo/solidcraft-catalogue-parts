@@ -1,0 +1,77 @@
+#!/usr/bin/env python3
+"""tools/render CODE [CODE ...] [--out-dir DIR] [--width 1280] [--height 800] [--budget studio] [--samples 128] [--max-depth 3] [--exposure 0.3]: a path-traced
+PBR image of each part (solidcraft-cli render), so the appearance work (per-face PBR finishes) can be seen; the snapshot preview is flat-shaded.
+
+Builds the generator's shots scene (src/shots.py `scene(code)` and the first of its `views(part)`), then appends shots-only render setup to
+that scene (never to the part a generator builds): a CPU path-tracing setup "parts-render" with the camera, size, exposure, samples per
+pixel and bounce depth; the library studio environment HDR-002 (white enveloping studio, which lights polished steel; without an
+environment, or with the raytrace default, metal draws nearly black); and a finite ground below the product. The samples and depth are
+saved in the setup (a typed setup refuses --samples on the command line, which would also need --progressive). Writes
+<generator>/shots/<code>-render.png (or into --out-dir). Cost grows with width x height x samples; a frame that exhausts the CPU ray work
+budget fails with "LimitExceeded" (and the compact CPU profile caps a frame at 1048576 pixels, e.g. 1280x800): tools/render then halves
+the samples until it fits (--timeout, default 3600 s, is how long the CLI waits; a frame that runs out writes no file). Renders are heavy:
+run them on a workstation or build machine. On a 32-thread desktop a frame costs about 7.5 s per sample per 400,000 pixels (800x500 at 32 samples: 4 min; 1280x800 at 48: about 15 min;
+1600x1000 at 128: about an hour), so plan batches by that."""
+import argparse, subprocess, sys, time
+from pathlib import Path
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+from runtime import registry, sc
+
+SETUP = "parts-render"
+# total camera samples (width x height x samples) each CPU resource profile admits
+CAMERA_SAMPLE_BUDGETS = {"compact": 16777216, "studio": 4294967296, "workstation": 8796093022208}
+STUDIO = "HDR-002"       # library environment: white enveloping studio
+
+def render_setup(cam, width, height, samples, max_depth, exposure, budget):
+    """Shots-only commands appended to the scene: setup, studio environment, ground."""
+    cam = dict(cam); cam.setdefault("fov", 0.6)
+    return [
+        {"command": "render.settings.set", "params": {"name": SETUP, "set": {
+            "width": width, "height": height, "camera": cam, "exposure_ev": exposure,
+            "job": {"method": "cpu_raytrace", "options": {"budget": budget, "shadows": True, "path": {"max_depth": max_depth},
+                                                           "progressive": {"samples_per_pixel": samples}}}}}},
+        {"command": "render.library.environment.apply", "params": {"id": STUDIO, "name": SETUP}},
+        {"command": "render.stage.ground", "params": {"name": SETUP}},
+    ]
+
+ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+ap.add_argument("codes", nargs="+"); ap.add_argument("--out-dir")
+ap.add_argument("--width", type=int, default=1280); ap.add_argument("--height", type=int, default=800)
+ap.add_argument("--samples", type=int, default=128); ap.add_argument("--max-depth", type=int, default=3)
+ap.add_argument("--exposure", type=float, default=0.3)
+ap.add_argument("--timeout", type=int, default=3600, help="seconds the CLI waits for the frame (its own default is 120); a frame that runs out writes no file")
+ap.add_argument("--budget", choices=sorted(CAMERA_SAMPLE_BUDGETS), default="studio",
+                help="SolidCraft CPU resource profile (docs/render-cpu-resource-profiles.md); studio needs a 64-bit build host")
+ap.add_argument("--work", default=str(ROOT / "out" / "render"))
+a = ap.parse_args()
+CAMERA_SAMPLE_BUDGET = CAMERA_SAMPLE_BUDGETS[a.budget]
+bad = 0
+for code in a.codes:
+    g = registry.find(code)
+    sm = g.module("shots")
+    part, cmds = sm.scene(code)
+    outdir = Path(a.out_dir) if a.out_dir else g.dir / "shots"
+    outdir.mkdir(parents=True, exist_ok=True)
+    out = (outdir / f"{sc.slug(code)}-render.png").resolve()
+    # the chosen CPU profile admits at most CAMERA_SAMPLE_BUDGET camera samples per frame (width x height x samples)
+    samples = max(1, min(a.samples, CAMERA_SAMPLE_BUDGET // (a.width * a.height)))
+    if samples < a.samples:
+        print(f"      {code}: {a.samples} samples exceed the {CAMERA_SAMPLE_BUDGET} camera-sample budget at {a.width}x{a.height}; using {samples}")
+    while True:
+        # SolidCraft refuses a frame whose ray work exceeds its CPU budget ("LimitExceeded"): halve the samples and try again
+        path, _ = sc.run_script(cmds + render_setup(sm.views(part)[0][1], a.width, a.height, samples, a.max_depth, a.exposure, a.budget),
+                                a.work, sc.slug(code))
+        t = time.time()
+        r = subprocess.run([sc.CLI, "render", path, "--setup", SETUP, "--out", str(out), "--overwrite", "--timeout", str(a.timeout)], capture_output=True, text=True)
+        msg = (r.stderr or r.stdout)
+        if r.returncode and "LimitExceeded" in msg and samples > 1:
+            print(f"      {code}: ray work budget exceeded at {samples} samples, retrying with {samples // 2}")
+            samples //= 2
+            continue
+        break
+    if r.returncode:
+        bad += 1; print(f"FAIL  {code}: {msg[-800:]}")
+    else:
+        print(f"OK    {code}  {out.name}  {a.width}x{a.height}, {samples} samples, {time.time() - t:.0f} s")
+sys.exit(1 if bad else 0)

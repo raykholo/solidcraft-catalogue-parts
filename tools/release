@@ -1,0 +1,176 @@
+#!/usr/bin/env python3
+"""tools/release [--out DIR] [--tag TAG] [--commit SHA] [--keep]: pack the parts-library release described in library.toml.
+
+For every generator at the Checked level or above, every valid code in its codes.txt is built with solidcraft-cli (SC_VER) into a
+native design (.sc) and a STEP file, and the generator's own spec check is run on that very design: a code that fails is not
+packed and the release is refused. Out come, in DIR (default dist/):
+  <library>-<version>.zip         the "folder" format, version 1, of the SolidCraft parts index (docs/library-format.md there):
+                                  <folder>/<Vendor>/<SERIES generator>/<code>.sc|.step, each generator's README.md (its
+                                  PROVENANCE.md) and preview.png, and a top-level README.md and LICENSE. No programs or scripts.
+  <library>-<version>.zip.sha256  sha256sum format
+  <publisher>/<library>.json      the manifest to add as libraries/<publisher>/<library>.json in tangency-labs/solidcraft-parts,
+                                  checked against schema/parts-library.schema.json
+The zip is reproducible for the same designs: sorted entries, fixed timestamps (the commit time) and modes.
+--tag must be v<version> when given (CI passes the pushed tag); --commit records the commit the tag points to."""
+import argparse, contextlib, datetime, hashlib, io, json, os, re, shutil, subprocess, sys, tomllib, zipfile
+from pathlib import Path
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+from runtime import registry, provenance, sc
+from runtime.schema import validate
+
+# The parts index's own rules for a "folder" asset (tangency-labs/solidcraft-parts scripts/check.py), checked before writing.
+PART_EXTS = {".sc", ".solidcraft", ".step", ".stp", ".stl", ".3mf", ".obj", ".glb", ".gltf"}
+SIDE_EXTS = {".png", ".jpg", ".jpeg", ".webp", ".svg", ".md", ".txt", ".pdf", ".json", ".bin", ".mtl"}
+SIDE_NAMES = {"license", "licence", "copying", "notice", "readme", "authors", "changelog"}
+
+ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+ap.add_argument("--out", default=str(ROOT / "dist"))
+ap.add_argument("--tag")
+ap.add_argument("--commit")
+ap.add_argument("--keep", action="store_true", help="keep the unpacked folder next to the zip")
+a = ap.parse_args()
+
+lib = tomllib.loads((ROOT / "library.toml").read_text())
+ver = lib["version"]
+tag = f"v{ver}"
+if a.tag and a.tag != tag:
+    raise SystemExit(f"tag {a.tag!r} does not match library.toml version {ver!r} (expected {tag})")
+asset = f"{lib['library']}-{ver}.zip"
+out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
+stage = out / f"{lib['library']}-{ver}"
+shutil.rmtree(stage, ignore_errors=True)
+top = stage / lib["folder"]
+work = out / ".work"
+
+def vendor_name(g) -> str:
+    vt = g.dir.parent.parent / "vendor.toml"
+    return tomllib.loads(vt.read_text())["name"] if vt.exists() else g.dir.parent.parent.name.upper()
+
+def folder_name(g) -> str:
+    return f"{g.dir.parent.name.upper()} {g.dir.name}"
+
+problems: list[str] = []
+rows = []
+for g in registry.generators():
+    level, why = provenance.badge(g)
+    if level is None:
+        print(f"SKIP  {g.id}: {why}")
+        continue
+    gdir = top / vendor_name(g) / folder_name(g)
+    gdir.mkdir(parents=True, exist_ok=True)
+    n = 0
+    for c in g.codes():
+        if not c.valid:
+            continue
+        opts = sorted(k for k, v in c.opts.items() if v is True)
+        fname = sc.slug(c.code) + "".join(f" ({o})" for o in opts)
+        try:
+            part, cmds = g.build(c.code, **c.opts)
+            step = work / (c.name + ".step")
+            path, _ = sc.run_script(cmds, work, c.name, ["--out", str(step)])
+            with contextlib.redirect_stdout(io.StringIO()) as buf:
+                R = g.check(part, path, str(work))
+                ok = R.print()
+        except (ValueError, SystemExit) as ex:
+            problems.append(f"{g.id} {c.code}: {ex}"); continue
+        last = buf.getvalue().strip().splitlines()[-1] if buf.getvalue().strip() else ""
+        if not ok:
+            problems.append(f"{g.id} {c.code}: spec check fails on the built design ({last})"); continue
+        shutil.copyfile(path, gdir / (fname + ".sc"))
+        shutil.copyfile(step, gdir / (fname + ".step"))
+        n += 1
+        print(f"PACK  {c.code} {' '.join(opts)}  {last}")
+    shutil.copyfile(g.dir / "PROVENANCE.md", gdir / "README.md")
+    if (g.dir / "preview.png").exists():
+        shutil.copyfile(g.dir / "preview.png", gdir / "preview.png")
+    rows.append((vendor_name(g), folder_name(g), g, level, n))
+
+if problems:
+    for p in problems:
+        print("REFUSED  " + p)
+    raise SystemExit(f"{len(problems)} code(s) failed: no release written")
+if not rows:
+    raise SystemExit("no generator is at the Checked level: nothing to release")
+
+# top-level README and LICENSE
+lines = [f"# {lib['name']}", "", lib["description"], "",
+         f"Version {ver}, built with SolidCraft {sc.VER}. Every part here is generated from the manufacturer's published catalogue",
+         "dimensions by the generators in " + lib["homepage"] + ", and each one passed its generator's automatic spec check on the very",
+         "file shipped. Each folder's README.md says which catalogue pages its numbers come from, how they were verified, and what is",
+         "not guaranteed (appearance details such as colours and unprinted chamfers).", "",
+         "| Folder | Generator | Level | Parts |", "|---|---|---|---|"]
+for v, f, g, level, n in rows:
+    lines.append(f"| {v}/{f} | `{g.id}` {g.manifest['version']} | {level} | {n} |")
+lines += ["", "Manufacturer names and ordering codes are used only to say what each part is. This library is not made, endorsed or",
+          "checked by the manufacturers. No manufacturer CAD file was used to make it.", "",
+          f"Licence: {lib['license']} (LICENSE)."]
+(top / "README.md").write_text("\n".join(lines) + "\n")
+shutil.copyfile(ROOT / "LICENSE", top / "LICENSE")
+
+# check the folder against the parts index's rules
+files = sorted(p for p in stage.rglob("*") if p.is_file())
+parts = 0
+for p in files:
+    rel = p.relative_to(stage).as_posix()
+    ext = p.suffix.lower()
+    if p.is_symlink() or rel.startswith("/") or ".." in rel.split("/"):
+        problems.append(f"unsafe path {rel}")
+    elif ext in PART_EXTS:
+        parts += 1
+    elif not (p.name[:1] in ".~" or ext in SIDE_EXTS or p.stem.lower() in SIDE_NAMES):
+        problems.append(f"{rel}: not a part, picture or note (the parts index refuses it)")
+if problems:
+    raise SystemExit("\n".join(problems))
+
+# reproducible zip: the commit time, sorted entries, fixed modes
+epoch = os.environ.get("SOURCE_DATE_EPOCH") or subprocess.run(["git", "-C", str(ROOT), "log", "-1", "--format=%ct"],
+                                                              capture_output=True, text=True).stdout.strip() or "315532800"
+when = datetime.datetime.fromtimestamp(max(int(epoch), 315532800), datetime.timezone.utc).timetuple()[:6]
+zpath = out / asset
+with zipfile.ZipFile(zpath, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as z:
+    dirs = sorted({p.relative_to(stage).parent for p in files} | {Path(lib["folder"])})
+    seen = set()
+    for d in dirs:
+        for i in range(1, len(d.parts) + 1):
+            dd = Path(*d.parts[:i]).as_posix() + "/"
+            if dd not in seen:
+                seen.add(dd)
+                zi = zipfile.ZipInfo(dd, when); zi.external_attr = (0o40755 << 16) | 0x10
+                z.writestr(zi, b"")
+    for p in files:
+        zi = zipfile.ZipInfo(p.relative_to(stage).as_posix(), when)
+        zi.external_attr = 0o100644 << 16; zi.compress_type = zipfile.ZIP_DEFLATED
+        z.writestr(zi, p.read_bytes(), compresslevel=9)
+digest = hashlib.sha256(zpath.read_bytes()).hexdigest()
+(out / (asset + ".sha256")).write_text(f"{digest}  {asset}\n")
+
+manifest = {
+    "$schema": "../../schema/library.schema.json",
+    "manifest_version": lib["manifest_version"],
+    "id": f"{lib['publisher']}.{lib['library']}",
+    "name": lib["name"],
+    "publisher": lib["publisher"],
+    "repo": lib["repo"],
+    "release": {"tag": tag, "asset": asset, "sha256": digest, "size": zpath.stat().st_size},
+    "format": "folder",
+    "format_version": 1,
+    "min_solidcraft": sc.VER,
+    "license": lib["license"],
+    "description": lib["description"],
+    "tags": lib["tags"],
+    "homepage": lib["homepage"],
+    "tier": "unverified",
+}
+if a.commit:
+    manifest["release"]["commit"] = a.commit
+errs = validate(manifest, json.loads((ROOT / "schema" / "parts-library.schema.json").read_text()))
+if errs:
+    raise SystemExit("manifest does not match the parts index schema:\n" + "\n".join(errs))
+mdir = out / lib["publisher"]; mdir.mkdir(exist_ok=True)
+(mdir / f"{lib['library']}.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n")
+shutil.rmtree(work, ignore_errors=True)
+if not a.keep:
+    shutil.rmtree(stage)
+print(f"wrote {zpath.relative_to(ROOT) if zpath.is_relative_to(ROOT) else zpath}: {parts} part files, {zpath.stat().st_size} bytes, sha256 {digest}")
+print(f"manifest: {(mdir / (lib['library'] + '.json'))}")

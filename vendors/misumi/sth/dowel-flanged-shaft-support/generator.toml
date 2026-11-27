@@ -1,0 +1,44 @@
+id = "misumi.sth.dowel-flanged-shaft-support"
+name = "MISUMI Economy flanged shaft supports with slit and positioning holes, steel: round (E-STHWRBK, E-STHWRK, E-SSTHWRK) and compact (E-STHWCBK, E-SSTHWCK), with 2 dowel holes and clamp screw"
+version = "0.1.0"
+kind = "generator"
+min_host_version = "0.49.1"
+preview_code = "E-STHWRBK20"
+
+[entry]
+build  = "dowel:parse_build"
+check  = "check:check"
+shots  = "shots"
+
+[declares]
+labels   = ["Flanged shaft support with positioning hole", "Shaft support dowel holes", "Round flanged shaft support, positioning hole", "Compact flanged shaft support, positioning hole", "E-STHWRBK", "E-STHWCBK", "E-SSTHWRK", "E-SSTHWCK"]
+keywords = ["flanged shaft support positioning hole", "flanged shaft support dowel hole", "shaft support slit dowel pin hole", "round flange shaft holder positioning holes", "compact flange shaft holder positioning holes", "stainless steel flanged shaft support", "clamp flange shaft support with dowel holes"]
+vendor   = "MISUMI"
+
+[[declares.matches]]
+id         = "sth-dowel-flanged"
+generator  = "dowel-flanged-shaft-support"
+pattern    = '^(?:E-STHW(?:RBK|RK|CBK)|E-SSTHW(?:RK|CK))(?P<d>\d{1,2})$'
+flags      = "i"
+confidence = "exact"
+params     = { hole_diameter_mm = "{d}" }
+examples          = ["E-STHWRBK12", "E-STHWRBK30", "E-STHWRK20", "E-SSTHWRK16", "E-STHWCBK25", "E-SSTHWCK30"]
+negative_examples = ["E-STHWRBK", "E-STHWRBK12-", "E-STHWCK20", "E-STHWSBK12", "E-STHWRB12", "E-STHWIRB12", "E-SSTHWCBK12"]
+
+[inputs]
+type = { choices = ["E-STHWRBK", "E-STHWRK", "E-SSTHWRK", "E-STHWCBK", "E-SSTHWCK"] }
+hole_diameter_mm = { min = 12, max = 30 }
+
+[guarantee]
+not_guaranteed = [
+  "Compact flange outline: the figure shows the round flange O H with two flat sides W apart; drawn as the circle O H cut at x = +-W / 2, read from the figure, the corner and arc shape is not dimensioned (appearance, approximate)",
+  "Angle of the two positioning holes on the round flange: drawn at 45 and 225 degrees on the pitch circle P (the figure shows them on the diagonal between the 4-d holes and marks 90 degrees without a dimension from the slit); the 4 mounting holes are drawn on the X and Y axes (appearance, approximate)",
+  "Positioning holes Q: the diameter is a catalogue value; the H8 tolerance is printed as a class only and is not modelled, and the +-0.02 on the position (P / 2) is a tolerance of the pitch, not modelled",
+  "Groove depth (S1 wide, position from L - B - S1) is not dimensioned: read from the figure as the cut from the top down to the bottom of the shaft bore; the radial slit is drawn over the ring length B only, from the shaft axis up through the outside on +Y (the stub below the bore is read from the figure) (appearance, approximate)",
+  "Clamp screw side: the screw is drawn on +Y at height X with the clearance hole and counterbore on -X and the tapped hole on +X, read from the figure (appearance, approximate)",
+  "Both flange types are built for every D of the table: the page prints one table for the round and the compact type and no per-type size restriction",
+  "Surface treatment: black oxide film, electroless nickel plating (E-STHWRK) and none printed (stainless steel types) are recorded as printed and not modelled; the stainless types are also given a stainless accessory screw in the catalogue",
+  "No chamfers or fillets, and the hex socket head cap screw supplied is not modelled",
+  "Thickness (N): printed, and equal to (D1 - D) / 2 in every row; checked as the sleeve wall, not modelled as a separate feature",
+  "The aluminium alloy long-sleeve flanged supports E-ATHWSBL / E-ATHWCBL printed in the upper half of the same page are not part of this generator"
+]

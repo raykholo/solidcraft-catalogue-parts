@@ -1,0 +1,96 @@
+id = "misumi.sth.flanged-shaft-support"
+name = "MISUMI Economy flanged shaft supports, steel and stainless: standard and long sleeve (E-STHRB / E-STHSB / E-STHCB / E-SSTHC and ...L), thickened (E-STHRBN / E-STHCBN), end mounting (E-STHXRB / E-STHXCB), flanged with slit (E-STHWRB / E-STHWSB / E-STHWCB) and compact clamp (E-STHMRB)"
+version = "0.2.0"
+kind = "generator"
+min_host_version = "0.49.1"
+preview_code = "E-STHRB12"
+
+[entry]
+build  = "support:parse_build"
+check  = "check:check"
+shots  = "shots"
+
+[declares]
+labels   = ["Flanged shaft support", "Shaft support flange", "Round flanged shaft support", "Square flanged shaft support", "Compact flanged shaft support", "Long sleeve flanged shaft support", "Thickened flanged shaft support", "End mounting flanged shaft support", "Flanged shaft support with slit", "Compact clamp shaft support", "E-STHR", "E-STHS", "E-STHC", "E-STHX", "E-STHW", "E-STHMR"]
+keywords = ["flanged shaft support", "flange shaft holder", "round flange shaft support", "square flange shaft support", "compact flange shaft support", "linear shaft support", "long sleeve shaft support", "thickened shaft support", "end mounting shaft support", "slit flanged shaft support", "clamp shaft support"]
+vendor   = "MISUMI"
+
+[[declares.matches]]
+id         = "sth-flanged-shaft-support"
+generator  = "flanged-shaft-support"
+pattern    = '^(?:E-STH(?:RB|R|SB|S|CB|C)|E-SSTHC)(?P<d>\d{1,2})$'
+flags      = "i"
+confidence = "exact"
+params     = { hole_diameter_mm = "{d}" }
+examples          = ["E-STHRB8", "E-STHSB30", "E-STHCB16", "E-SSTHC25", "E-STHC6"]
+negative_examples = ["E-STHRB", "E-STHRB8-", "E-STHSBN10", "E-STHMC8", "E-STHXSB8", "E-SHSTM8-25", "C-SHA10"]
+
+[[declares.matches]]
+id         = "sth-flanged-long-sleeve"
+generator  = "flanged-shaft-support"
+pattern    = '^E-STH(?:RB|R|SB|S|CB|C)L(?P<d>\d{1,2})$'
+flags      = "i"
+confidence = "exact"
+params     = { hole_diameter_mm = "{d}", sleeve = "long" }
+examples          = ["E-STHRBL12", "E-STHSL16", "E-STHCBL25", "E-STHCL30"]
+negative_examples = ["E-STHRBL", "E-STHRLL12", "E-SSTHCL12", "E-STHRBL12-"]
+
+[[declares.matches]]
+id         = "sth-thickened"
+generator  = "flanged-shaft-support"
+pattern    = '^E-STH(?:RB|R|CB|C)N(?:L)?(?P<d>\d{1,2})$'
+flags      = "i"
+confidence = "exact"
+params     = { hole_diameter_mm = "{d}" }
+examples          = ["E-STHRBN8", "E-STHCN30", "E-STHRBNL16", "E-STHCBNL35"]
+negative_examples = ["E-STHSBN10", "E-STHSN10", "E-STHRBN", "E-STHRBNN12", "E-STHRBLN12"]
+
+[[declares.matches]]
+id         = "sth-end-mounting"
+generator  = "flanged-shaft-support"
+pattern    = '^E-STHX(?:RB|R|CB|C)(?P<d>\d{1,2})$'
+flags      = "i"
+confidence = "exact"
+params     = { hole_diameter_mm = "{d}" }
+examples          = ["E-STHXRB10", "E-STHXR40", "E-STHXCB16", "E-STHXC25"]
+negative_examples = ["E-STHXRB", "E-STHXSB8", "E-STHXRBL12", "E-STHXR8-"]
+
+[[declares.matches]]
+id         = "sth-slit-flanged"
+generator  = "flanged-shaft-support"
+pattern    = '^E-(?:STHW(?:RB|R|SB|S|CB|C)|SSTHW[RSC])L?(?P<d>\d{1,2})$'
+flags      = "i"
+confidence = "exact"
+params     = { hole_diameter_mm = "{d}" }
+examples          = ["E-STHWRB10", "E-STHWS25", "E-SSTHWC40", "E-STHWRBL16", "E-SSTHWCL12"]
+negative_examples = ["E-STHWRB", "E-STHWXB10", "E-SSTHWRB10", "E-ATHWSB8", "E-STHWRBLL12"]
+
+[[declares.matches]]
+id         = "sth-compact-clamp"
+generator  = "flanged-shaft-support"
+pattern    = '^E-STHMR(?:BL|B|L)?(?P<d>\d{1,2})$'
+flags      = "i"
+confidence = "exact"
+params     = { hole_diameter_mm = "{d}" }
+examples          = ["E-STHMRB8", "E-STHMR20", "E-STHMRBL12", "E-STHMRL30"]
+negative_examples = ["E-STHMRB", "E-STHMC8", "E-STHMRLB12", "E-STHMRB8-"]
+
+[inputs]
+type = { choices = ["E-STHRB", "E-STHR", "E-STHSB", "E-STHS", "E-STHCB", "E-STHC", "E-SSTHC", "E-STHRBL", "E-STHRL", "E-STHSBL", "E-STHSL", "E-STHCBL", "E-STHCL", "E-STHRBN", "E-STHRN", "E-STHCBN", "E-STHCN", "E-STHRBNL", "E-STHRNL", "E-STHCBNL", "E-STHCNL", "E-STHXRB", "E-STHXR", "E-STHXCB", "E-STHXC", "E-STHMRB", "E-STHMR", "E-STHMRBL", "E-STHMRL", "E-STHWRB", "E-STHWR", "E-SSTHWR", "E-STHWSB", "E-STHWS", "E-SSTHWS", "E-STHWCB", "E-STHWC", "E-SSTHWC", "E-STHWRBL", "E-STHWRL", "E-SSTHWRL", "E-STHWSBL", "E-STHWSL", "E-SSTHWSL", "E-STHWCBL", "E-STHWCL", "E-SSTHWCL"] }
+hole_diameter_mm = { min = 6, max = 50 }
+
+[guarantee]
+not_guaranteed = [
+  "Corner radii of the compact flange (the figures show rounded corners without a dimension; drawn as W / 4)",
+  "Rotation of the set screw holes about the shaft axis (only the 90 degree spacing and the axial position are in the figure); the long sleeve D16 and up draw both stations at the same angles",
+  "The square flange cut corners: K is read as the side of the square and H as the extent across the cut corners (tip to tip along the hole axes); the size of the cut is derived from the two",
+  "No chamfers or fillets on the sleeve, the bore floor (R, E-STHX) or the flange edges, and the chamfering of E-STHX (none dimensioned); the screws themselves, the hex socket head cap screws supplied with the slit and compact clamp types are not modelled",
+  "Surface treatment: black oxide film (B types), electroless nickel plating, stainless steel are given as printed, not modelled",
+  "Which D the not-applicable notes exclude (E-STHS D6, E-STHR D15, E-SSTHC D50; E-STHRN D8 / D35, E-STHCN D10, E-STHRBN D35; E-STHXRB D8; E-STHMRBL D25; E-SSTHWR D35, E-SSTHWS D40 / D50, E-SSTHWSL D12) is taken literally from the page note and applied to the named type only (the long sleeve variants of a thickened type are not excluded)",
+  "Slit and clamp types (E-STHW.., E-STHMR..): the depth of the groove (S1 / S wide, z printed) is not dimensioned, read from the figure as the cut from the top down to the bottom of the shaft bore; the radial slit is drawn over the ring length B only, from the shaft axis up through the outside on +Y (the stub below the bore in the figure and the slit width of the E-STHMR figure, 1.5 mm, are read from the drawing); the clamp screw (two at B / 4 and 3 B / 4 on the slit long sleeve, as in its figure) is on +Y at height X, clearance hole and counterbore on -X, tapped hole on +X (the side is read from the figure)",
+  "E-STHMR: the counterbore depth of the two mounting holes (diameter d2 printed) is not printed: drawn B deep from the clamp end (appearance, approximate); the H tolerance 0 / -0.2 is not modelled",
+  "E-STHMR figure reading: T (T1 for the long sleeve) is the thickness of the part before the groove, S the groove width and B the ring; L = T + S + B holds for every row of the table",
+  "Thickness (N): printed, and equal to (D1 - D) / 2 in every row of every table; checked as the sleeve wall, not modelled as a separate feature",
+  "Set screw position l (standard) is measured from the flange face opposite the sleeve (z = 0; the extension line of l ends on the same face as L and T), release 0.1.0 had added T to l, corrected here; long sleeve l1 likewise, D16 and up at l1 and 2 x l1",
+  "Load ratings, masses and the O.D. comparison table of p.532 are not modelled"
+]

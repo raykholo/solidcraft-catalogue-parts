@@ -1,0 +1,44 @@
+== RGH15CA1R340ZAP
+PASS  bodies                                                                spec         2  got          2           [S17 code]
+PASS  rail length                                                           spec       340  got   340.0000  +-0.005  [S17 p.165]
+PASS  rail width WR                                                         spec        15  got    15.0000  +-0.005  [S17 p.166-168]
+PASS  rail height HR                                                        spec      16.5  got    16.5000  +-0.005  [S17 p.166-168]
+PASS  rail through-hole diameter d                                          spec       4.5  got     4.5000  +-0.001  [S17 p.166-168]
+PASS  rail counterbore diameter D                                           spec       7.5  got     7.5000  +-0.001  [S17 p.166-168]
+PASS  rail hole count                                                       spec        11  got         11           [S17 p.165 L=(n-1)P+2E]
+PASS  counterbore depth h (floors at HR-h)                                  spec        11  got         11           [S17 p.166-168] h=5.7
+PASS  rail hole 1 position                                                  spec        20  got    20.0000  +-0.005  [S17 p.165 E, P]
+PASS  rail hole 2 position                                                  spec        50  got    50.0000  +-0.005  [S17 p.165 E, P]
+PASS  rail hole 11 position                                                 spec       320  got   320.0000  +-0.005  [S17 p.165 E, P]
+PASS  rail hole pitch P                                                     spec        30  got    30.0000  +-0.005  [S17 p.165]
+PASS  end distance E (first hole)                                           spec        20  got    20.0000  +-0.005  [S17 p.165 Es / P/2 rule]
+PASS  end distance within the printed bounds (Es, P/2)                      spec       yes  got        yes           [S17 p.165]
+PASS  Block 1 length L                                                      spec        68  got    68.0000  +-0.005  [S17 p.166-168]
+PASS  Block 1 width W                                                       spec        34  got    34.0000  +-0.005  [S17 p.166-168]
+PASS  Block 1 top height H                                                  spec        28  got    28.0000  +-0.005  [S17 p.166-168]
+PASS  Block 1 bottom H1                                                     spec         4  got     4.0000  +-0.005  [S17 p.166-168]
+PASS  Block 1 mounting threads (legend 6-Mxl / 6-M)                         spec         6  got          6           [S17 p.166 table (1)]
+PASS  Block 1 hole spacing B                                                spec        26  got    26.0000  +-0.005  [S17 p.166 table (1)]
+PASS  Block 1 hole spacing C                                                spec        26  got    26.0000  +-0.005  [S17 p.166 table (1)]
+PASS  Block 1 holes on the rail axis                                        spec         2  got          2           [S17 p.166 table (1)]
+PASS  Block 1 thread M4                                                     spec        M4  got         M4           [S17 p.166 table (1)]
+PASS  Block 1 thread depth                                                  spec         8  got     8.0000  +-0.01   [S17 p.166 table (1)] l (RGH, Mxl) / T (RGW)
+PASS  rail/block interference count (all bodies)                            spec         0  got          0           [-]
+PASS  appearance bodies all named '(appearance, approximate)'               spec       yes  got        yes           [-]
+PASS  appearance bodies per block (2 end caps, 2 end seals, grease nipple)  spec         5  got          5           [-] appearance, approximate
+PASS  rail screws (one per rail hole)                                       spec        11  got         11           [S17 p.166-168 bolt M4x16]
+PASS  Block 1 steel body length L1                                          spec        45  got    45.0000  +-0.005  [S17 p.166-168]
+PASS  Block 1 end cap material                                              spec ABS Plastic  got ABS Plastic           [-] appearance, approximate
+PASS  appearance: rail top face finish (1 face(s))                          spec Metal - Polished Carbon Steel, roughness 0.16  got Metal - Polished Carbon Steel, roughness 0.16           [-] appearance, approximate; appearance.chain read-back per face
+PASS  appearance: rail side faces finish (4 face(s))                        spec Metal - Polished Carbon Steel, roughness 0.16 | Metal - Polished Carbon Steel, roughness 0.16 | Metal - Polished Carbon Steel, roughness 0.16 | Metal - Polished Carbon Steel, roughness 0.16  got Metal - Polished Carbon Steel, roughness 0.16 | Metal - Polished Carbon Steel, roughness 0.16 | Metal - Polished Carbon Steel, roughness 0.16 | Metal - Polished Carbon Steel, roughness 0.16           [-] appearance, approximate; appearance.chain read-back per face
+PASS  appearance: rail roller-track faces finish (3 face(s))                spec Metal - Cool Reflective Silver, roughness 0.12 | Metal - Cool Reflective Silver, roughness 0.12 | Metal - Cool Reflective Silver, roughness 0.12  got Metal - Cool Reflective Silver, roughness 0.12 | Metal - Cool Reflective Silver, roughness 0.12 | Metal - Cool Reflective Silver, roughness 0.12           [-] appearance, approximate; appearance.chain read-back per face
+PASS  appearance: rail bottom face finish (1 face(s))                       spec Steel - Satin PBR, roughness 0.4  got Steel - Satin PBR, roughness 0.4           [-] appearance, approximate; appearance.chain read-back per face
+PASS  appearance: Block 1 top faces finish (1 face(s))                      spec Metal - Polished Carbon Steel, roughness 0.16  got Metal - Polished Carbon Steel, roughness 0.16           [-] appearance, approximate; appearance.chain read-back per face
+PASS  appearance: Block 1 side faces finish (2 face(s))                     spec Metal - Polished Carbon Steel, roughness 0.16 | Metal - Polished Carbon Steel, roughness 0.16  got Metal - Polished Carbon Steel, roughness 0.16 | Metal - Polished Carbon Steel, roughness 0.16           [-] appearance, approximate; appearance.chain read-back per face
+PASS  appearance: Block 1 end faces (steel body) finish (2 face(s))         spec Steel - Satin PBR, roughness 0.4 | Steel - Satin PBR, roughness 0.4  got Steel - Satin PBR, roughness 0.4 | Steel - Satin PBR, roughness 0.4           [-] appearance, approximate; appearance.chain read-back per face
+PASS  appearance: Block 1 rail-channel top face finish (1 face(s))          spec Metal - Cool Reflective Silver, roughness 0.12  got Metal - Cool Reflective Silver, roughness 0.12           [-] appearance, approximate; appearance.chain read-back per face
+PASS  appearance: Block 1 rail-channel side faces finish (2 face(s))        spec Metal - Cool Reflective Silver, roughness 0.12 | Metal - Cool Reflective Silver, roughness 0.12  got Metal - Cool Reflective Silver, roughness 0.12 | Metal - Cool Reflective Silver, roughness 0.12           [-] appearance, approximate; appearance.chain read-back per face
+PASS  description has DIMENSIONED and APPEARANCE sections                   spec       yes  got        yes           [-]
+PASS  part number metadata                                                  spec RGH15CA1R340ZAP  got RGH15CA1R340ZAP           [-]
+PASS  design part number                                                    spec RGH15CA1R340ZAP  got RGH15CA1R340ZAP           [-]
+42/42 passed

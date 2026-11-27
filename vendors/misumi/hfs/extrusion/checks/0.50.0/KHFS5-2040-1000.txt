@@ -1,0 +1,25 @@
+== KHFS5-2040-1000
+PASS  one closed body                                                spec         1  got          1           [S1 p.530]
+PASS  overall width (Y)                                              spec        20  got    20.0000  +-0.005  [S1 p.530 '20']
+PASS  overall height (Z)                                             spec        40  got    40.0000  +-0.005  [S1 p.530 '40']
+PASS  length (X)                                                     spec      1000  got  1000.0000  +-0.005  [S1 p.530 L range] spec tol +-0.5
+PASS  slot mouth width                                               spec         6  got     6.0000  +-0.005  [S1 p.530 '6']
+PASS  slot cavity width                                              spec        12  got    12.0000  +-0.005  [S1 p.530 '12']
+PASS  lip thickness                                                  spec         2  got     2.0000  +-0.005  [S1 p.530 '2']
+PASS  bore block width (slot floor to floor)                         spec         8  got     8.0000  +-0.005  [S1 p.530 '8']
+PASS  slot depth (outer face to floor)                               spec         6  got     6.0000  +-0.005  [S1 p.530 depth '6']
+PASS  cross-section area vs drawing                                  spec     323.8  got   323.7504  +-0.32375 [S1 p.530 drawing] area from the dimensions
+PASS  cross-section area vs published 324                            spec       324  got   323.7504  +-0.972  [S22 p.530] published to 3 figures: band 0.3 % of the value, never below half a unit (0.5 mm2)
+PASS  mass per metre vs published 0.88 kg/m                          spec      0.88  got     0.8774  +-0.005  [S22 p.530] area x 2.71 g/cm3 (aluminium extrusion alloy, not printed); band is half a unit of the printed digit
+PASS  moment of inertia (smaller) of the profile vs published        spec 1.358e+04  got 13551.2048  +-135.8  [S22 p.530] computed from the profile geometry (sources.toml 1900-1999); 1 % band, the table prints 3 figures
+PASS  moment of inertia (larger) of the profile vs published         spec  5.13e+04  got 51344.2575  +-513    [S22 p.530] computed from the profile geometry (sources.toml 1900-1999); 1 % band, the table prints 3 figures
+PASS  polar moment Ix + Iy vs published (SolidCraft inertia tensor)  spec 6.488e+04  got 64522.5961  +-648.8  [S22 p.530] I_xx / (rho L) from component.properties; mesh integral, planar faces exact, bores within 0.1 %
+PASS  bore O4.2 at (0, -10)                                          spec       yes  got        yes           [S1 p.530]
+PASS  bore O4.2 at (0, 10)                                           spec       yes  got        yes           [S1 p.530]
+PASS  bores O4.2 (count)                                             spec         2  got          2           [S1 p.530]
+PASS  outer corners R1 (count)                                       spec         4  got          4           [S1 p.530] '4-R1'
+PASS  lip-tip rounds R0.3 (count)                                    spec      >=12  got         12           [S1 p.530 drawing] measured
+PASS  volume = area x L                                              spec 3.238e+05  got 323750.3755  +-2      [derived]
+PASS  part number metadata                                           spec KHFS5-2040-1000  got KHFS5-2040-1000           [-]
+PASS  design part number                                             spec KHFS5-2040-1000  got KHFS5-2040-1000           [-]
+23/23 passed

@@ -1,0 +1,87 @@
+# Codes CI builds and checks. `CODE [option ...]` = valid (built, then every dimension checked); `!CODE  # why` = must be rejected with a message.
+
+# standard sleeve (S51 p.534-535)
+E-STHRB6
+E-STHRB12
+E-STHR20
+E-STHRB50
+E-STHSB6
+E-STHSB16
+E-STHS30
+E-STHSB50
+E-STHCB6
+E-STHCB10
+E-STHC16
+E-STHCB25
+E-STHC40
+E-SSTHC12
+E-SSTHC35
+
+# long sleeve (S51 p.534-535, D marked *)
+E-STHRBL12
+E-STHRL20
+E-STHSBL16
+E-STHSL25
+E-STHCBL30
+E-STHCL16
+
+# compact standard / long sleeves (S52 p.532)
+E-STHMRB8
+E-STHMR15
+E-STHMRBL12
+E-STHMRL16
+E-STHMRL25
+E-STHMRL30
+
+# end mounting (S52 p.533)
+E-STHXRB10
+E-STHXR40
+E-STHXCB8
+E-STHXC16
+E-STHXCB30
+
+# thickened and its long sleeve (S52 p.536)
+E-STHRBN8
+E-STHRN50
+E-STHCBN10
+E-STHCN30
+E-STHRBNL16
+E-STHCNL35
+E-STHRNL35
+
+# flanged with slit and its long sleeve (S52 p.538-539)
+E-STHWRB10
+E-STHWR50
+E-SSTHWR30
+E-STHWSB8
+E-STHWS25
+E-STHWCB35
+E-SSTHWC16
+E-STHWRBL12
+E-STHWSL30
+E-STHWCBL50
+E-SSTHWCL12
+
+!E-STHR15  # p.535 note: E-STHR is not applicable when D = 15
+!E-STHS6  # p.535 note: E-STHS is not applicable when D = 6
+!E-SSTHC50  # p.535 note: E-SSTHC is not applicable when D = 50
+!E-STHRB9  # D9 is not a catalogue size (6 8 10 12 15 16 20 25 30 35 40 50)
+!E-STHCB45  # D45 is not a catalogue size
+!E-STHRB  # the hole diameter D is missing
+!E-STHRBL15  # long sleeve only for the D marked * (12 16 20 25 30)
+!E-STHCL10  # long sleeve only for the D marked *
+!E-STHRN35  # p.536 note: E-STHRN is not applicable when D = 8 or 35
+!E-STHCN10  # p.536 note: E-STHCN is not applicable when D = 10
+!E-STHRBN35  # p.536 note: E-STHRBN is not applicable when D = 35
+!E-STHSBN10  # no square flanged thickened type
+!E-STHXRB8  # p.533 note: E-STHXRB is not applicable when D = 8
+!E-STHXR35  # D35 is not in the end mounting table (8 10 12 15 16 20 25 30 40)
+!E-STHMRBL25  # p.532 note: E-STHMRBL is not applicable when D = 25
+!E-STHMR40  # D40 is not in the compact table (8 10 12 15 16 20 25 30)
+!E-STHMRL10  # long sleeve only for the D marked * (12 15 16 20 25 30)
+!E-SSTHWR35  # p.539 note: E-SSTHWR is not applicable when D = 35
+!E-SSTHWS40  # p.539 note: E-SSTHWS is not applicable when D = 40 or 50
+!E-SSTHWSL12  # p.539 note: E-SSTHWSL is not applicable when D = 12
+!E-STHWRBL10  # slit long sleeve table starts at D12
+!E-STHWRB6  # slit standard table starts at D8
+!E-STHWXB10  # unknown slit type

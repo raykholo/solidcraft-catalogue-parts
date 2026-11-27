@@ -1,0 +1,136 @@
+# Where every number of this generator comes from. One [[source]] per vendor document, one [[dimension]] per cited item.
+# status: labelled / published = printed in the catalogue; measured = read from the vertex coordinates of the published vector
+# drawing; derived = computed from labelled numbers; approximate = an estimate (appearance or an illustration choice); none.
+# source = [] is allowed only for approximate / none rows.
+
+[meta]
+clean_room = "Clean-room: only public catalogue pages from the manufacturer's own site. No vendor CAD (STEP/IGES/...) was downloaded or used, no other CAD program or generator was consulted. Where a value is not printed as a number, the table says how it was obtained. The current web catalogue may differ."
+
+[[source]]
+id = "S12"
+catalogue = "MISUMI Economy Series catalogue 2025, \"Linear Bushing Housing Units - Wide Blocks, Single / Medium\" (04-100), \"Double / Medium Long / Long\" (figures 04-101, tables 04-102)"
+url = "https://th.c.misumi-ec.com/book/THA_EconomySeries_e-catalog2025/files/basic-html/page485.html, page486.html and page487.html (page images files/mobile/485.jpg ... 487.jpg)"
+pages = "p.485, p.486, p.487"
+
+[[dimension]]
+id = 700
+item = "Types E-LBHN (wide block, single / medium) and E-LBHNW (wide block, double / medium long / long); ordering E-LBHN<dr>[D][-P], E-LBHNW<dr>[D|L][-P] (length: none = single or double, D = medium or medium long, L = long; P = with dowel holes); housing aluminium alloy, clear anodized, -20 to 80 C"
+value = ""
+source = ["S12"]
+source_text = "S12 p.485, p.486, p.487"
+page = "p.485, p.486, p.487"
+status = "published"
+note = "published; dr in brackets is single only (E-LBHN: 13, 35, 40, 50) or double only (E-LBHNW: 8, 10, 13, 35, 40, 50)"
+
+[[dimension]]
+id = 701
+item = "E-LBHN overall length L (single and medium, tolerance +-0.4) and mounting hole spacing L1 per dr"
+value = ""
+source = ["S12"]
+source_text = "S12 p.485 table"
+page = "p.485 table"
+status = "published"
+note = "published; dr 13, 35, 40, 50 have no medium length"
+
+[[dimension]]
+id = 702
+item = "E-LBHNW overall length L (double, medium long, long, tolerance +-0.4) and L1 per dr"
+value = ""
+source = ["S12"]
+source_text = "S12 p.487 table"
+page = "p.487 table"
+status = "published"
+note = "published; medium long dr 16-30, long dr 12-30 (dr 12 is marked *)"
+
+[[dimension]]
+id = 703
+item = "Bore centre h below the top face (+-0.04), overall height H, H1 (+-0.5, measured from the top face to the lower end of the body wall) and shoulder height H2 per dr, both families"
+value = ""
+source = ["S12"]
+source_text = "S12 p.485, p.487 tables and p.485 figure"
+page = "p.485, p.487 tables and p.485 figure"
+status = "published"
+note = "published; h, H1 and H2 are drawn from the top face in the figure; H2 is printed in parentheses in the figure (reference) and is used as the shoulder height"
+
+[[dimension]]
+id = 704
+item = "Width W (W/2 printed, +-0.2), mounting hole spacing W1 (+-0.4) and W2 per dr, both families"
+value = ""
+source = ["S12"]
+source_text = "S12 p.485, p.487 tables"
+page = "p.485, p.487 tables"
+status = "published"
+note = "published; W2 = (W - W1) / 2 is not used by the build"
+
+[[dimension]]
+id = 705
+item = "Mounting thread M and pilot hole diameter d per dr; thread depth l (the table of dimensions below the main table)"
+value = ""
+source = ["S12"]
+source_text = "S12 p.485, p.487 tables"
+page = "p.485, p.487 tables"
+status = "published"
+note = "published; 4 holes, 6 on the Long type (6-d in the figure)"
+
+[[dimension]]
+id = 706
+item = "dr tolerance: E-LBHN single +0.003/-0.012 (dr 6-16), -0.013 (20-30), -0.015 (35-50); medium 0/-0.12 (dr 6-16) and 0/-0.15 (20-30) as printed; E-LBHNW double 0/-0.01 (8-16), -0.012 (20-30), -0.015 (35-50); medium long 0/-0.015 (16), -0.018 (20-30); long 0/-0.012 (12), -0.015 (16), -0.018 (20-30)"
+value = ""
+source = ["S12"]
+source_text = "S12 p.485, p.487 tables"
+page = "p.485, p.487 tables"
+status = "published"
+note = "published; the medium E-LBHN values -0.12 / -0.15 are recorded as printed (a 0.12 mm lower deviation is unusually large, possibly a missing zero in the catalogue); echoed in the description, not drawn"
+
+[[dimension]]
+id = 707
+item = "Dowel hole dimensions P (diameter), l2 (depth) and C1 per dr (dr 8 and up); delivered with 2 dowel pins (tolerance g6) when the P option is chosen"
+value = ""
+source = ["S12"]
+source_text = "S12 p.485, p.487 dowel tables"
+page = "p.485, p.487 dowel tables"
+status = "published"
+note = "published; C1 is printed in the figure without a recognisable meaning and is not drawn"
+
+[[dimension]]
+id = 708
+item = "Cross-section: shoulders of width W and height H2 on top, narrower body below, chamfered foot starting at H1 from the top face (figure p.485: W, H, (H1), (H2), W/2, W1, W2, 4-M, 4-d)"
+value = ""
+source = ["S12"]
+source_text = "S12 p.485 figure"
+page = "p.485 figure"
+status = "published"
+note = "published for W, H, H1, H2; the wall step (1 mm) and the foot width (0.16 W) are approximate"
+
+[[dimension]]
+id = 709
+item = "Mounting hole pattern W1 x L1 (6 holes in three rows of two on the Long type, L1 between the outer holes)"
+value = ""
+source = ["S12"]
+source_text = "S12 p.485, p.486 figures"
+page = "p.485, p.486 figures"
+status = "published"
+note = "published; the Long middle row at L1 / 2 is read from the figure"
+
+[[dimension]]
+id = 710
+item = "Dowel hole positions: mid-length on the mounting-hole rows (single, medium, double), on the centre line at the end mounting holes (medium long, long)"
+value = ""
+source = ["S12"]
+source_text = "S12 p.485, p.486 figures"
+page = "p.485, p.486 figures"
+status = "approximate"
+note = "approximate: read from the red circles of the figures, no coordinates are printed"
+
+[[dimension]]
+id = 711
+item = "Wall step behind the top shoulders (1 mm), half foot width 0.16 W, no chamfers, empty bore at the nominal dr (the built-in bushing, retainer colours, the grease nipple hole A-MT6M1 of E-LBHNW and the 2-C datum chamfers are not drawn)"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate: not in the catalogue as dimensions"
+
+[[note]]
+text = "Source count for this family: 12 rows (700-711): 9 published, 3 approximate; one new document (S12). Not covered: the other housing units of p.488-491 (tall blocks with dowel holes E-LBHS / E-LBHSW, center hole height optional E-LBHG), the oil free bushing housing units (p.524-528), load ratings, masses and the A, B, N, P and C columns of the second tables (not modelled)."

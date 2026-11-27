@@ -1,0 +1,13 @@
+solidcraft-parts
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Third-party material in this repository:
+
+schema/parts-library.schema.json is copied unchanged from tangency-labs/solidcraft-parts
+(schema/library.schema.json), which is released under the MIT licence:
+Copyright (c) 2026 Tangency Labs. Permission is granted, free of charge, to use, copy, modify, merge, publish,
+distribute, sublicense and sell copies of that file, provided this copyright notice and the MIT permission notice
+(the LICENSE file of that repository) are included. The file is provided "as is", without warranty of any kind.
+
+Manufacturer names (HIWIN, MISUMI) and ordering codes are trademarks of their owners, used only to identify catalogue
+parts. This project is not affiliated with or endorsed by them.

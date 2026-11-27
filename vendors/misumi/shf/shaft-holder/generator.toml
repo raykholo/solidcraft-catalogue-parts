@@ -1,0 +1,34 @@
+id = "misumi.shf.shaft-holder"
+name = "MISUMI Economy shaft supports: T-shaped with slit, with side slit, thickened, and T-shaped aluminium (C-SHA)"
+version = "0.1.0"
+kind = "generator"
+min_host_version = "0.49.1"
+preview_code = "E-SHSTM12-25"
+
+[entry]
+build  = "holder:parse_build"
+check  = "check:check"
+shots  = "shots"
+
+[declares]
+labels   = ["Shaft support", "Shaft holder", "T-shaped shaft support", "E-SHST", "E-SHWT", "C-SHA"]
+keywords = ["shaft support", "shaft holder", "linear shaft support", "slit shaft holder", "clamp shaft support", "T-shaped shaft support"]
+vendor   = "MISUMI"
+
+[[declares.matches]]
+id         = "shf-shaft-holder"
+generator  = "shaft-holder"
+pattern    = '^(?:E-SH(?:STBN|STMN|STB|STM|STA|WTB|WTA)(?P<d>\d{1,2})-(?P<height>\d+)|C-SHA(?P<d_fixed>\d{1,2}))$'
+flags      = "i"
+confidence = "exact"
+params     = { hole_diameter_mm = "{d}", height_mm = "{height}" }
+examples          = ["E-SHSTM8-25", "E-SHSTBN10-10", "E-SHWTA10-15", "E-SHSTA16-20", "C-SHA10"]
+negative_examples = ["E-SHSTM", "E-SHSTM8", "E-SHSTM8-", "E-SHSTX8-25", "C-SHA", "E-PSFJ6-20"]
+
+[inputs]
+type = { choices = ["E-SHSTB", "E-SHSTM", "E-SHSTA", "E-SHWTB", "E-SHWTA", "E-SHSTBN", "E-SHSTMN", "C-SHA"] }
+hole_diameter_mm = { min = 8, max = 50 }
+height_mm = { min = 10, max = 80 }
+
+[guarantee]
+not_guaranteed = ["The hex socket head cap screw (accessory) is not modelled; only its clearance hole, counterbore and the tapped thread are", "Edge chamfers and fillets (none printed); the corners of C-SHA are not rounded", "C-SHA: overall height H1, foot thickness S, foot length L, foot width B and top width W are reference values (+-0.5 mm), the slit and the clamp screw hole are approximate", "Positions of the second base hole row and the second screw of the thickened types (drawn at T/4 from the centre plane)", "Which D / H combinations are aluminium (read from the * marks; D and H both marked)", "The surface treatment of the B types is printed as Stainless steel and is given as printed"]

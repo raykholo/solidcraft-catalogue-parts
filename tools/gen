@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+"""tools/gen CODE [--out DIR] [--step] [--opt NAME ...]: ordering code -> native SolidCraft design (.sc, optionally .step).
+
+The generator is found from the codes its generator.toml declares. `--opt caps` passes an option the generator documents
+(HIWIN MG: caps = plastic bolt caps in the rail holes, MGN12 / MGN15 only, appearance, default off).
+"""
+import argparse, os, sys
+from pathlib import Path
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+from runtime import registry, sc
+
+ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+ap.add_argument("code"); ap.add_argument("--out", default="out"); ap.add_argument("--step", action="store_true")
+ap.add_argument("--opt", action="append", default=[], help="generator option, e.g. caps")
+a = ap.parse_args()
+try:
+    g = registry.find(a.code)
+    part, cmds = g.build(a.code, **{o: True for o in a.opt})
+except ValueError as ex:
+    raise SystemExit(f"{type(ex).__name__}: {ex}")
+name = sc.slug(a.code)
+extra = ["--out", os.path.join(a.out, name + ".step")] if a.step else []
+path, _ = sc.run_script(cmds, a.out, name, extra)
+print(path)

@@ -1,0 +1,67 @@
+reviewer_kind = "ai"
+reviewer = "AI review lane (Claude Sonnet), independent of the authoring lane"
+author = "AI authoring lanes (Claude)"
+date = "2026-11-27"
+commit = "e36ee8375c931174cd0b71443d313307250b737c"
+sources_hash = "sha256:b38730baa338814678c1d23c910bae0288fcb78ee39d0ecd0322cad76a00a0d8"
+method = "Downloaded page images 485-487, cropped and upscaled the tables and figures; re-read every cell of single.csv, double.csv and both dowel tables against the pages, row by row; checked the figure readings (h, H1, H2, l measured from the top face; red dowel circles; 6 holes on the Long type) and every codes.txt reject case against the offered sizes; tools/check passes for every code."
+
+[[row]]
+id = 700
+verdict = "agree"
+note = "Type and ordering text, availability brackets: dr in brackets are single only on p.485 (13, 35, 40, 50) and double only on p.487 (8, 10, 13, 35, 40, 50); 12 marked * (double or long only); materials and temperature match."
+
+[[row]]
+id = 701
+verdict = "agree"
+note = "p.485 L single/medium and L1 single/medium for all 12 dr; merged cells read correctly (L medium 53 for dr 10 and 12, L1 single 26 for dr 12 and 13, 60 for dr 35 and 40); +-0.4."
+
+[[row]]
+id = 702
+verdict = "agree"
+note = "p.487 L and L1 double / medium long / long for all 11 dr; merged L1 50 for dr 12 and 13 and L1 120 only for dr 35; +-0.4; dr 12 long (96, 72) marked *."
+
+[[row]]
+id = 703
+verdict = "agree"
+note = "h, H, H1, H2 on p.485 and p.487 for every dr, both families, including the differing E-LBHNW H1 (dr 8 17.5, 10 21, 12 23, 35 52.3, against 18, 20.5, 23.5, 52.5 for E-LBHN) and H 66.6 vs 68 at dr 35; the figure draws h, H1, (H2) and l as dimensions from the top face; (H2) is in parentheses as reference."
+
+[[row]]
+id = 704
+verdict = "agree"
+note = "W, W/2 (+-0.2), W1 (+-0.4) and W2 for every dr on both pages; W2 = (W - W1) / 2 holds for every row (5.8 printed for 5.75)."
+
+[[row]]
+id = 705
+verdict = "agree"
+note = "M and d per dr; l from the second table (8 for dr 6-8, 12 for 10-20, 18 for 25-35, 25 for 40-50); 4-d in the single, medium, double and medium long figures and 6-d in the Long figure; the figure shows the thread depth l from the top face with the clearance d below it."
+
+[[row]]
+id = 706
+verdict = "agree"
+note = "Tolerance columns re-read: single +0.003/-0.012 (6-16 incl. 13), -0.013 (20-30), -0.015 (35-50); medium 0/-0.12 (6-12 and 16) and 0/-0.15 (20-30), printed exactly so on p.485; double 0/-0.01 (8-16), -0.012 (20-30), -0.015 (35-50); medium long -0.015 (16), -0.018 (20-30); long -0.012 (12), -0.015 (16), -0.018 (20-30)."
+
+[[row]]
+id = 707
+verdict = "agree"
+note = "Dowel tables of p.485 and p.487: P 3/4/5/6, l2 4/5/6/7, C1 4/5/6/7 with merged cells (P 4 for dr 10-16, 5 for 20-35, 6 for 40-50; l2 5 up to dr 20, 6 for 25-35; C1 5 for 10-16, 6 for 20-35), none for dr 6; both families identical."
+
+[[row]]
+id = 708
+verdict = "agree"
+note = "Figure p.485: W, H, (H1), (H2), h and l all run from the top face; the shoulders of width W run down to about H2 and the body below is narrower down to H1, as the section is built; the 1 mm step and the foot are stated as approximate."
+
+[[row]]
+id = 709
+verdict = "agree"
+note = "Top views: W1 across and L1 along; four holes, three rows of two on the Long figure of p.486 (holes at both ends and mid-length); the mid-length row at L1/2 is as drawn."
+
+[[row]]
+id = 710
+verdict = "agree"
+note = "Red circles read again: single, medium and double have them on the mounting-hole rows at mid-length (x = +-W1/2, y = 0); medium long and long on the centre line at the end mounting-hole positions (y = +-L1/2). Approximate, not dimension-checked, and listed in not_guaranteed."
+
+[[row]]
+id = 711
+verdict = "agree"
+note = "Appearance only (wall step, foot width, empty bore); no catalogue number is claimed; listed in not_guaranteed."

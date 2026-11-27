@@ -1,0 +1,21 @@
+series,dr,P,C1,l2,E,F,source,page,status
+single,8,3,4,4,22,12,S14,p.488 dowel table,labelled
+single,10,4,5,5,29,16,S14,p.488 dowel table,labelled
+single,12,4,5,5,29,18,S14,p.488 dowel table,labelled
+single,13,4,5,5,30,20,S14,p.488 dowel table,labelled
+single,16,4,5,5,32,20,S14,p.488 dowel table,labelled
+single,20,5,6,6,36,20,S14,p.488 dowel table,labelled
+single,25,5,6,6,42,26,S14,p.488 dowel table,labelled
+single,30,5,6,6,44,30,S14,p.488 dowel table,labelled
+double,8,3,4,4,16,,S14,p.489 dowel table,labelled
+double,10,4,5,5,20,,S14,p.489 dowel table,labelled
+double,12,4,5,5,20,,S14,p.489 dowel table,labelled
+double,13,4,5,5,26,,S14,p.489 dowel table,labelled
+double,16,4,5,5,36,,S14,p.489 dowel table,labelled
+double,20,5,6,6,38,,S14,p.489 dowel table,labelled
+double,25,5,6,6,58,,S14,p.489 dowel table,labelled
+double,30,5,6,6,68,,S14,p.489 dowel table,labelled
+long,16,4,5,5,50,,S14,p.490 dowel table,labelled
+long,20,5,6,6,60,,S14,p.490 dowel table,labelled
+long,25,5,6,6,90,,S14,p.490 dowel table,labelled
+long,30,5,6,6,100,,S14,p.490 dowel table,labelled

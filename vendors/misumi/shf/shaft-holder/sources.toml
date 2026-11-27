@@ -1,0 +1,126 @@
+# Where every number of this generator comes from. One [[source]] per vendor document, one [[dimension]] per cited item.
+# status: labelled / published = printed in the catalogue; measured = read from the vertex coordinates of the published vector
+# drawing; derived = computed from labelled numbers; approximate = an estimate (appearance or an illustration choice); none.
+# source = [] is allowed only for approximate / none rows.
+
+[meta]
+clean_room = "Clean-room: only public catalogue pages from the manufacturer's own site. No vendor CAD (STEP/IGES/...) was downloaded or used, no other CAD program or generator was consulted. Where a value is not printed as a number, the table says how it was obtained. The current web catalogue may differ."
+
+[[source]]
+id = "S50"
+catalogue = "MISUMI Economy Series catalogue 2025, \"Shaft Supports\": T-shaped with Slit / with Side Slit (04-156), Thickened Type T-shaped with Slit (04-157), T-Shaped Corners Rounded Aluminum Alloy (04-155)"
+url = "https://th.c.misumi-ec.com/book/THA_EconomySeries_e-catalog2025/files/basic-html/page540.html, page541.html and page542.html (page images files/mobile/540.jpg ... 542.jpg)"
+pages = "p.540, p.541, p.542"
+
+[[dimension]]
+id = 600
+item = "Types E-SHSTB / E-SHSTM / E-SHSTA (T-shaped with slit), E-SHWTB / E-SHWTA (with side slit), E-SHSTBN / E-SHSTMN (thickened), C-SHA (T-shaped aluminium): material, surface treatment, accessory screw"
+value = ""
+source = ["S50"]
+source_text = "S50 p.540 / p.541 / p.542 type tables"
+page = "p.540, p.541, p.542 type tables"
+status = "published"
+note = "published; the surface of E-SHSTB / E-SHWTB is printed as Stainless steel and is given as printed"
+
+[[dimension]]
+id = 601
+item = "Hole diameter D (H8) and its tolerance: D8, 10 +0.022/0; D12, 15, 16 +0.027/0; D20, 25, 30 +0.033/0; D35, 40, 50 +0.039/0; C-SHA hole tolerance class H7 (value not printed)"
+value = ""
+source = ["S50"]
+source_text = "S50 p.541 DH8, p.542 DH8, p.540 note"
+page = "p.540, p.541, p.542"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 602
+item = "Height H (bore centre above the foot), H +-0.02, selection per D (e.g. E-SHSTM D8: 10 15 20 25 30 40)"
+value = ""
+source = ["S50"]
+source_text = "S50 p.541, p.542 H selection column"
+page = "p.541, p.542 H selection"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 603
+item = "E-SHST / E-SHWT / E-SHSTN tables: L (foot length), H1 = H + offset (overall height), T (thickness), S (foot thickness), W (top width), L1 (hole pitch), d (foot hole), E (screw position), C (slit width)"
+value = ""
+source = ["S50"]
+source_text = "S50 p.541 and p.542 tables"
+page = "p.541, p.542 tables"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 604
+item = "Clamp screw: M (coarse) with Through Hole / Depth n, d2 through hole, d1 counterbore diameter, l counterbore depth"
+value = ""
+source = ["S50"]
+source_text = "S50 p.541, p.542 tables and figures"
+page = "p.541, p.542"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 605
+item = "Aluminium types (E-SHSTA, E-SHWTA) only for * marked dimensions; E-SHSTB15 not available with H = 25; E-SHSTMN not applicable to * marked dimensions"
+value = ""
+source = ["S50"]
+source_text = "S50 p.541, p.542 notes"
+page = "p.541, p.542 notes"
+status = "published"
+note = "published; which (D, H) pairs the * marks combine to is read as: D and H both marked (D10 H20, D16 H15/20, D25 H40 slit; D10 H15, D12 H20 side slit); E-SHSTMN D10 refused as a marked size"
+
+[[dimension]]
+id = 606
+item = "C-SHA: height H, T, L1, d, clamp screw M per hole diameter D10, 12, 16, 20, 25, 30 (no H in the part number)"
+value = ""
+source = ["S50"]
+source_text = "S50 p.540 T-shaped table"
+page = "p.540 T-shaped table"
+status = "published"
+note = "published"
+
+[[dimension]]
+id = 607
+item = "C-SHA reference values (H1), (S), (L), (B), (W): printed in parentheses, 'for reference only, tolerance +-0.5 mm'"
+value = ""
+source = ["S50"]
+source_text = "S50 p.540 note"
+page = "p.540 note"
+status = "approximate"
+note = "approximate: the catalogue calls them reference values; drawn as given, never dimension-checked"
+
+[[dimension]]
+id = 608
+item = "Two screws and four base holes of the thickened types D30-50: positions along the thickness (drawn at +-T/4; the figure gives T/2 between them)"
+value = ""
+source = ["S50"]
+source_text = "S50 p.542 figure"
+page = "p.542 figure"
+status = "approximate"
+note = "approximate: the figure dimensions T/2 between the two; the centring is assumed"
+
+[[dimension]]
+id = 609
+item = "C-SHA slit and clamp screw hole (slit 2 mm wide, screw at mid height between bore centre and top)"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "approximate"
+note = "approximate: neither slit width nor screw position is printed; named (appearance, approximate)"
+
+[[dimension]]
+id = 610
+item = "Hex socket head cap screw (accessory), edge chamfers and fillets, rounded corners of C-SHA"
+value = ""
+source = []
+source_text = "-"
+page = "-"
+status = "none"
+note = "not modelled; none of it is dimensioned"
+
+[[note]]
+text = "Source count: 11 rows (600-610): 7 published, 3 approximate, 1 none; one document (S50). Not covered: the flanged shaft supports (p.532-539), the pilot flanged types (p.540 top) and the shaft collars (p.543 onward)."

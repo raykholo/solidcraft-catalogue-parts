@@ -1,0 +1,48 @@
+reviewer_kind = "ai"
+reviewer = "AI review lane (Claude Sonnet), independent of the authoring lane"
+author = "AI authoring lanes (Claude) for raykholo"
+date = "2026-11-26"
+commit = "03b87edbe2ed3062036b8c001303618a064e0817"
+sources_hash = "sha256:d68657bfbd05c2d7f5274907f15c5f36952ce72e975f07d0ed7314d48963a9d1"
+amended = "2026-11-27: source URLs moved from stg0-my.misumi-ec.com to in.misumi-ec.com (MISUMI own host; the PDFs are byte-identical, sha256 compared). No value changed; sources_hash re-pinned. Previous: sha256:23c0d6fd12302f8b67718b1e0f3bfae5bc3a4df3326670c333a7eb817dea109f"
+method = "Downloaded the cited MISUMI catalogue page (2-559) from the URL in sources.toml, rendered it at 400-500 dpi and re-read every table cell, label and note; re-measured the side-view flank and neck from the PDF vector paths; checked the reject cases in codes.txt against the offered M ranges."
+
+[[row]]
+id = 102
+verdict = "agree"
+note = "Type list, M ranges (HNTT5 3/4/5; V5, Z5, SS5 only 5; SN5 3/4/5), materials and surface treatment match the p.559 type table and size table cell by cell."
+
+[[row]]
+id = 103
+verdict = "agree"
+note = "Plan view labelled 10 x 10 with M at the centre; matches."
+
+[[row]]
+id = 104
+verdict = "agree"
+note = "Side view dimension 5.8 on the bottom face and neck; matches (neck outline re-measured from the vector paths = 5.8 at the plan-10 scale)."
+
+[[row]]
+id = 105
+verdict = "agree"
+note = "E/T cells: T5, V5, Z5 3.3/4.1 (merged cell); SN5 3.5/4.3; SS5 3.3/4.1. Matches. Vector neck length T-E = 0.8 mm is consistent."
+
+[[row]]
+id = 106
+verdict = "agree"
+note = "Ordering example HNTT5 - M and the note that HNTT5-5 is selected when M is omitted; matches."
+
+[[row]]
+id = 107
+verdict = "agree"
+note = "Reference tightening torque table, M5 = 6.8 N m; matches."
+
+[[row]]
+id = 108
+verdict = "agree"
+note = "Re-measured from the vector outline of the side view (pymupdf get_drawings): flank slope 35.0 degrees from the nut axis; extended from 5.8 to 10 wide that is a 3.0 mm run; neck 5.8 wide from E to T. Matches."
+
+[[row]]
+id = 109
+verdict = "agree"
+note = "Approximate by design: the page gives no thread length; correctly flagged as an estimate with no source."

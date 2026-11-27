@@ -1,0 +1,15 @@
+== E-PSFJT50-200-M30
+PASS  one closed body                            spec         1  got          1           [S8]
+PASS  length (X)                                 spec       200  got   200.0000  +-0.005  [S8 p.432 L] 1 mm steps
+PASS  diameter D (bbox Y)                        spec        50  got    50.0000  +-0.005  [S8 p.432 D50]
+PASS  diameter D (bbox Z)                        spec        50  got    50.0000  +-0.005  [S8 p.432 D50]
+PASS  cylinder face O50                          spec       yes  got        yes           [S8 p.432]
+PASS  D tolerance g7 upper/lower                 spec (-0.009, -0.034)  got (-0.009, -0.034)           [S8 p.432 spec table] echoed into the description
+PASS  tolerance written in the part description  spec       yes  got        yes           [S8 p.432]
+PASS  L inside the table range 65-1500           spec       yes  got        yes           [S8 p.433]
+PASS  tapped end: M30 thread present             spec         1  got          1           [S8 p.433 M selection]
+PASS  tap depth = 2 x M                          spec        60  got    60.0000  +-0.01   [S8 p.433 'M x 2']
+PASS  tapped at the left end (x = 0)             spec       yes  got        yes           [S8 p.433 figure] end not stated in the text: left drawn
+PASS  part number metadata                       spec E-PSFJT50-200-M30  got E-PSFJT50-200-M30           [-]
+PASS  design part number                         spec E-PSFJT50-200-M30  got E-PSFJT50-200-M30           [-]
+13/13 passed

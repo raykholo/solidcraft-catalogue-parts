@@ -1,0 +1,9 @@
+size,WR,HR,D,h,d,P,Es,bolt,S,hT,source,page,status
+15,15,15,7.5,5.3,4.5,60,20,M4x16,M5,8,S7,p.38-43 rail columns; p.37 Table 2-1-27 (Es),labelled
+20,20,17.5,9.5,8.5,6,60,20,M5x16,M6,10,S7,p.38-43 rail columns; p.37 Table 2-1-27 (Es),labelled
+25,23,22,11,9,7,60,20,M6x20,M6,12,S7,p.38-43 rail columns; p.37 Table 2-1-27 (Es),labelled
+30,28,26,14,12,9,80,20,M8x25,M8,15,S7,p.38-43 rail columns; p.37 Table 2-1-27 (Es),labelled
+35,34,29,14,12,9,80,20,M8x25,M8,17,S7,p.38-43 rail columns; p.37 Table 2-1-27 (Es),labelled
+45,45,38,20,17,14,105,22.5,M12x35,M12,24,S7,p.38-43 rail columns; p.37 Table 2-1-27 (Es),labelled
+55,53,44,23,20,16,120,30,M14x45,M14,24,S7,p.38-43 rail columns; p.37 Table 2-1-27 (Es),labelled
+65,63,53,26,22,18,150,35,M16x50,M20,30,S7,p.38-43 rail columns; p.37 Table 2-1-27 (Es),labelled

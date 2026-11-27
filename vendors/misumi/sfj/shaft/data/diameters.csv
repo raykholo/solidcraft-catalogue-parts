@@ -1,0 +1,17 @@
+D,g7_upper,g7_lower,f8_upper,f8_lower,g7_lmin,g7_lmax,f8_lmin,f8_lmax,source,page,status
+3,-0.002,-0.012,,,10,400,,,S8,p.432 spec table,labelled
+4,-0.004,-0.016,,,10,400,,,S8,p.432 spec table,labelled
+5,-0.004,-0.016,,,10,400,,,S8,p.432 spec table,labelled
+6,-0.004,-0.016,-0.01,-0.028,20,800,15,800,S8,p.432 spec table,labelled
+8,-0.005,-0.02,-0.013,-0.035,20,1000,15,1000,S8,p.432 spec table,labelled
+10,-0.005,-0.02,-0.013,-0.035,20,1000,15,1000,S8,p.432 spec table,labelled
+12,-0.006,-0.024,-0.016,-0.043,20,1200,15,1200,S8,p.432 spec table,labelled
+13,-0.006,-0.024,-0.016,-0.043,25,1200,15,1200,S8,p.432 spec table,labelled
+15,-0.006,-0.024,-0.016,-0.043,25,1200,15,1200,S8,p.432 spec table,labelled
+16,-0.006,-0.024,-0.016,-0.043,30,1200,30,1200,S8,p.432 spec table,labelled
+20,-0.007,-0.028,-0.02,-0.053,30,1200,30,1200,S8,p.432 spec table,labelled
+25,-0.007,-0.028,-0.02,-0.053,35,1200,35,1200,S8,p.432 spec table,labelled
+30,-0.007,-0.028,-0.02,-0.053,35,1500,35,1500,S8,p.432 spec table,labelled
+35,-0.009,-0.034,,,35,1500,,,S8,p.432 spec table,labelled
+40,-0.009,-0.034,,,50,1500,,,S8,p.432 spec table,labelled
+50,-0.009,-0.034,,,65,1500,,,S8,p.432 spec table,labelled

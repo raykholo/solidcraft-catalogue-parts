@@ -1,0 +1,27 @@
+== KHFS6-3030-1000
+PASS  one closed body                                          spec         1  got          1           [S10 p.571]
+PASS  overall width (Y)                                        spec        30  got    30.0000  +-0.005  [S10 p.571 '30']
+PASS  overall height (Z)                                       spec        30  got    30.0000  +-0.005  [S10 p.571 '30']
+PASS  length (X)                                               spec      1000  got  1000.0000  +-0.005  [S10 p.571 L range] spec tol +-0.5
+PASS  slot mouth width                                         spec         8  got     8.0000  +-0.005  [S10 p.571 '8']
+PASS  slot cavity width                                        spec      16.5  got    16.5000  +-0.005  [S10 p.571 '16.5']
+PASS  lip thickness                                            spec         2  got     2.0000  +-0.005  [S10 p.571 '2']
+PASS  core width (slot floor to floor)                         spec        12  got    12.0000  +-0.005  [S10 p.571 core]
+PASS  slot depth (outer face to floor)                         spec         9  got     9.0000  +-0.005  [S10 p.571 depth '9']
+PASS  cross-section area vs drawing                            spec       332  got   331.9674  +-0.01   [S10 p.571 drawing] area from the dimensions
+PASS  cross-section area vs published 333                      spec       333  got   331.9674  +-4.995  [S10 p.571 table] published value rounded; 1.5% band
+PASS  moment of inertia (smaller) of the outline vs published  spec  2.83e+04  got 29136.9856  +-1132   [S10 p.571 table] derived from the dimensions, not measured
+PASS  moment of inertia (larger) of the outline vs published   spec  2.83e+04  got 29136.9856  +-1132   [S10 p.571 table] derived from the dimensions, not measured
+PASS  bore O4.2 at (11.6, 11.6)                                spec       yes  got        yes           [S10 p.571]
+PASS  bore O4.2 at (-11.6, 11.6)                               spec       yes  got        yes           [S10 p.571]
+PASS  bore O4.2 at (-11.6, -11.6)                              spec       yes  got        yes           [S10 p.571]
+PASS  bore O4.2 at (11.6, -11.6)                               spec       yes  got        yes           [S10 p.571]
+PASS  bore O6.8 at (0, 0)                                      spec       yes  got        yes           [S10 p.571]
+PASS  bores O4.2 (count)                                       spec         4  got          4           [S10 p.571]
+PASS  bores O6.8 (count)                                       spec         1  got          1           [S10 p.571]
+PASS  outer corners R2 (count)                                 spec         4  got          4           [S10 p.571] '4-R2'
+PASS  lip-tip rounds R0.3 (count)                              spec       >=8  got          8           [S10 p.571 drawing] approximate on the 6 series
+PASS  volume = area x L                                        spec  3.32e+05  got 331967.3518  +-2      [derived]
+PASS  part number metadata                                     spec KHFS6-3030-1000  got KHFS6-3030-1000           [-]
+PASS  design part number                                       spec KHFS6-3030-1000  got KHFS6-3030-1000           [-]
+25/25 passed
