@@ -314,3 +314,39 @@ def write_faithfulness(results_path, out_path, gid, blocked):
            "blocked": blocked}
     json.dump(out, open(out_path, "w"), indent=1)
     return out
+
+# ------------------------------------------------------------------------------------------------ the README tables
+def report_md(results_path):
+    """results.json -> the markdown tables of a parametric README (python | parametric | spec check | equal), the refusals, the rebuilds."""
+    R = json.loads(Path(results_path).read_text())
+    f = lambda m: f"{m['volume']:.1f} / {m['area']:.1f} / {m['bbox'][0]:g}x{m['bbox'][1]:g}x{m['bbox'][2]:g} / {m['faces']}"
+    close = lambda a, b: abs(a - b) <= 1e-6 * max(1.0, abs(a), abs(b))
+    eq = lambda a, b: (close(a["volume"], b["volume"]) and close(a["area"], b["area"]) and all(close(x, y) for x, y in zip(a["bbox"], b["bbox"]))
+                       and a["faces"] == b["faces"] and a["bodies"] == b["bodies"])
+    o = ["| code | python vol / area / bbox / faces | parametric vol / area / bbox / faces | spec check python | spec check parametric | equal |", "|---|---|---|---|---|---|"]
+    for c in R["codes"]:
+        p, q = c.get("python"), c.get("parametric", {})
+        if not p or "volume" not in q:
+            o.append(f"| {c['code']} | | {q} | | | no |"); continue
+        ps, qs = c["python_spec"], c.get("parametric_spec") or {"rows": 0, "failed": []}
+        o.append(f"| {c['code']} | {f(p)} | {f(q)} | {ps['rows'] - len(ps['failed'])}/{ps['rows']} | {qs['rows'] - len(qs['failed'])}/{qs['rows']} | {'yes' if eq(p, q) else 'NO'} |")
+    o += ["", "| rejected code | python message | parametric message | same |", "|---|---|---|---|"]
+    for r in R["refusals"]:
+        o.append(f"| {r['code']} | {r['python']} | {r['parametric']} | {'yes' if r['python'] == r['parametric'] else 'no'} |")
+    o += ["", "| change | to | changed-in-place vol / area / bbox / faces | direct code (inserted) | python | equal |", "|---|---|---|---|---|---|"]
+    for e in R["parametric"]:
+        if e.get("error"): o.append(f"| {e['base']} {e['param']} | {e['value']} | ERROR {e['error']} | | | |"); continue
+        a, b, c = e["changed"], e["direct_inserted"], e["python"]
+        o.append(f"| {e['base']}: {e['param']} | {e['value']} | {f(a)} | {f(b)} ({e['direct']}) | {f(c)} | {'yes' if eq(a, b) and eq(a, c) else 'NO'} |")
+    d = R.get("descriptions", [])
+    o += ["", f"Part descriptions (Rhai against Python): {sum(1 for x in d if x['same'])}/{len(d)} identical.", "",
+          "| probe | error | result |", "|---|---|---|"]
+    for k, v in R.get("limits", {}).items():
+        o.append(f"| {k} | {v.get('error') or ''} | {v.get('result') or ''} |")
+    return "\n".join(o)
+
+if __name__ == "__main__":      # python3 runtime/paramkit.py package-files PKG_DIR OUT.json
+    if len(sys.argv) == 4 and sys.argv[1] == "package-files":
+        package_files_json(Path(sys.argv[2]), Path(sys.argv[3]))
+    else:
+        sys.exit(__doc__)

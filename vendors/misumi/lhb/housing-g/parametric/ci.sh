@@ -4,3 +4,4 @@ set -eu; P=vendors/misumi/lhb/housing-g/parametric; O=$1; mkdir -p "$O"
 python3 $P/build.py
 python3 $P/run_codes.py --out "$O"
 python3 $P/faithfulness.py "$O/results.json" "$O/faithfulness.json"
+python3 runtime/paramkit.py package-files vendors/misumi/lhb/housing-g/parametric/housing-g "$O/package-files.json"
