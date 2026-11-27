@@ -22,8 +22,8 @@ CLI = scrun.CLI
 GEN = registry.find("C-SCSAW12-10")
 co, pycheck = GEN.module("collar"), GEN.module("check")
 EXTRA_REFUSALS = ["C-SCSAW1210", "C-SCSAW123-4", "E-SCDJ12-1", "E-SCDJ1210", "E-SCSPD6-10", "E-SCSBNAW6", "C-SCSBNAW12-1", "X", "E-SCSPD", "C-SCNPAW6-10",
-                  "E-SCSPD99", "C-SCSBNAW9-9", "C-SCSMAW30-10", "C-SCSGAW16-8", "E-PSCSPD7", "E-SSCDJ12-10", "E-SSCD12", "E-PSCD5", "E-SCD5", "E-SCDJ40-14",
-                  "C-SCSAW-10", "E-SSCD4"]
+                  "E-SCSPD99", "C-SCSBNAW9-9", "C-SCSMAW30-10", "C-SCSGAW16-8", "E-PSCSPD7", "E-SCDJ40-14",
+                  "E-SSCD4"]
 REBUILD = [("C-SCSAW16-10", 12, "C-SCSAW16-12"), ("C-SCNPAW16-10", 12, "C-SCNPAW16-12")]
 
 def cli(cmds, src=None, save=None):

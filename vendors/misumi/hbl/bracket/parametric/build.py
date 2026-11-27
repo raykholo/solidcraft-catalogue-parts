@@ -102,6 +102,9 @@ def build(out: Path):
         vals, sup = row_values(r)
         vals.update({f"suppress:{k}": v for k, v in sup.items()})
         cfg.append({"command": "config.row", "params": {"name": r["type"], "values": vals}})
+    # the "Default" row that config.configure makes from the current values is the stage-1 working state, not a catalogue row: drop it
+    cfg.append({"command": "config.activate", "params": {"row": rows[0]["type"]}})
+    cfg.append({"command": "config.row", "params": {"name": "Default", "delete": True}})
     rules = []
     def rule(rid, name, cond, eff): rules.append({"id": rid, "name": name, "condition": cond, "effect": eff})
     pc = lambda n, op, e: {"type": "parameter", "parameter": n, "operator": op, "expression": str(e)}
