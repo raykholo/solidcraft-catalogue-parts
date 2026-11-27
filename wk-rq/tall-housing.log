@@ -1,0 +1,47 @@
+valid E-LBHS5 description same roundtrip E-LBHS5
+valid E-LBHS10 description same roundtrip E-LBHS10
+valid E-LBHS16-P description same roundtrip E-LBHS16-P
+valid E-LBHS30-P description same roundtrip E-LBHS30-P
+valid E-LBHS6D description same roundtrip E-LBHS6D
+valid E-LBHS12D description same roundtrip E-LBHS12D
+valid E-LBHS12S description same roundtrip E-LBHS12S
+valid E-LBHS20S description same roundtrip E-LBHS20S
+valid E-LBHS13L description same roundtrip E-LBHS13L
+valid E-LBHS8L description same roundtrip E-LBHS8L
+valid E-LBHS16L-P description same roundtrip E-LBHS16L-P
+valid E-LBHS30L-P description same roundtrip E-LBHS30L-P
+valid E-LBHSW5 description same roundtrip E-LBHSW5
+valid E-LBHSW10 description same roundtrip E-LBHSW10
+valid E-LBHSW20-P description same roundtrip E-LBHSW20-P
+valid E-LBHSW30-P description same roundtrip E-LBHSW30-P
+reject E-LBHS5-P same
+reject E-LBHSW6-P same
+reject E-LBHS14 same
+reject E-LBHS6S same
+reject E-LBHS13D same
+reject E-LBHS12D-P same
+reject E-LBHS12L-P same
+reject E-LBHSW10L same
+reject E-LBHS5L same
+reject E-LBHS16X same
+reject E-LBHS same
+reject E-LBHSW-P same
+reject E-LBHS16-X same
+reject E-LBHS20UU same
+reject E-LBHS16LP same
+reject E-LBHS160 same
+reject E-LBHSW6L same
+reject E-LBHS5D same
+reject E-LBHS6S same
+reject E-LBHS6L same
+reject E-LBHSW14 same
+reject E-LBHSW5-P same
+reject E-LBHS8-P DIFFERS
+reject E-LBHS13S same
+reject E-LBHS20D-P same
+reject E-LBHS20S-P same
+reject E-LBHS8L-P same
+reject E-LBHSW10-P DIFFERS
+reject E-LBHN16 same
+reject E-LBHSW30D same
+wrote wk-rq/tall-housing/results.json

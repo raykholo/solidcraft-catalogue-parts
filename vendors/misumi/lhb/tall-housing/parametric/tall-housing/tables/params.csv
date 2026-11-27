@@ -1,0 +1,6 @@
+name,value,unit,source,page,status
+drs_single,5|6|8|10|12|13|16|20|25|30,,S14,p.488 p.489 p.490 tables,labelled
+drs_double,5|6|8|10|12|13|16|20|25|30,,S14,p.488 p.489 p.490 tables,labelled
+drs_medium,6|8|10|12|16|20|25|30,,S14,p.488 p.489 p.490 tables,labelled
+drs_medlong,12|16|20|25|30,,S14,p.488 p.489 p.490 tables,labelled
+drs_long,8|10|12|13|16|20|25|30,,S14,p.488 p.489 p.490 tables,labelled
