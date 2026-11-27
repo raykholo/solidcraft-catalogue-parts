@@ -11,6 +11,8 @@ Measures: volume mm3 / area mm2 / bbox / faces f, bodies b. Parametric = config 
 | MGN9C1R195ZFH | 12328.91 / 8520.93 / [0.000..195.000] x [-10.000..10.000] x [0.000..10.000] / 54f 2b | 12328.91 / 8520.93 / [0.000..195.000] x [-10.000..10.000] x [0.000..10.000] / 54f 2b | 22/23 FAIL: Block 1 length L | 22/23 FAIL: Block 1 length L | True |
 | !MGN12H2R3000 | MGNR12 max single length is 2000 mm | REFUSED: MGNR12 max single length is 2000 mm | - | - | True |
 | !MGN7C1R700 | MGNR7 max single length is 600 mm | REFUSED: MGNR7 max single length is 600 mm | - | - | True |
+| !MGN12H2R15 | rail length 15 is shorter than two end distances (2 x 10 mm): no mounting hole fits | REFUSED: rail length 15 is shorter than two end distances (2 x 10 mm): no mounting hole fits | - | - | True |
+| !MGN12H0R300 | 0 blocks per rail: this generator draws 1 to 4 | REFUSED: 0 blocks per rail: this generator draws 1 to 4 | - | - | True |
 
 ## Configuration row and parameters per code
 
