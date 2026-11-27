@@ -222,7 +222,7 @@ class Template:
                 if n[2]: a[n[2]] = True
                 return run(nodes, i + 1, p, a, k)
             if n[0] == "field":
-                for v, p in n[1].options(text, pos if (n[1].kind == "bag" or (i > 0 and nodes[i - 1][0] == "req")) else skip(pos), self.escape):
+                for v, p in n[1].options(text, pos if (n[1].kind == "bag" or (i > 0 and nodes[i - 1][0] == "lit" and nodes[i - 1][1] and nodes[i - 1][1][-1][1])) else skip(pos), self.escape):
                     r = run(nodes, i + 1, p, {**acc, n[1].name: v}, k)
                     if r is not None: return r
                 return None
