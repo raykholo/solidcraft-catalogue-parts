@@ -30,7 +30,7 @@ does not read still reaches `resolve` and gets the Python message (stainless E-L
 in Rhai too and equals the Python one for all 480.
 
 **Documented deviation.** The interface ignores the separators ` -_/.` when it reads a code, so `E-LBF20-UU` is read as `E-LBF20UU` where the Python regex refuses it
-(`rhai_equiv.json`: 2650 of 2652 agree, these 2 are the separator cases; they are not in the reject battery).
+(`rhai_equiv.json`: 2653 codes, 0 real disagreements; the 2 that are counted apart from the agreeing ones are exactly these two separator cases, Python refuses and the interface accepts, by design; they are not in the reject battery). A dangling trailing separator (`E-LBF20UU-`, `E-LB10TUU_`) is refused with the Python message and is in the battery.
 
 ## What was run
 

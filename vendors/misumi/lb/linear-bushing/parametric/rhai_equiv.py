@@ -38,7 +38,7 @@ def main():
     variants = ["", "PM", "CM", "Z", "M", "P", "C"]
     drs = ["1", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "20", "25", "30", "35", "40", "45", "50", "60", "99", "06"]
     sufs = ["TUU", "DMUU", "DUU", "LUU", "UU"]
-    extra = ["E-LBHS20UU", "E-LBS20UU", "E-LBFS5UU", "E-LBHZP10UU", "E-LBFCZ10LUU", "E-LB", "E-LB10", "E-LBX10UU", "E-LBF20LU", "E-LBF20-UU", "E-LBF20-LUU", "E-LB100TUU"]
+    extra = ["E-LBHS20UU", "E-LBS20UU", "E-LBFS5UU", "E-LBHZP10UU", "E-LBFCZ10LUU", "E-LB", "E-LB10", "E-LBX10UU", "E-LBF20LU", "E-LBF20-UU", "E-LBF20-LUU", "E-LB100TUU", "E-LBF20UU-", "E-LBF20UU.", "E-LB10TUU_"]
     codes = [f"E-LB{s}{v}{d}{x}" for s in shapes for v in variants if not (v and not s) for d in drs for x in sufs] + extra
     n = ok = bad = 0
     lenient = []

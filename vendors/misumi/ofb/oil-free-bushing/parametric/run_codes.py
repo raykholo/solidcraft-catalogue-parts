@@ -23,7 +23,7 @@ RHAI = os.environ.get("RHAI_RUN", "rhai-run")
 CLI = scrun.CLI
 SWEEP = os.environ.get("SWEEP", "1") != "0"      # every valid code of the generator, not only the codes.txt lines
 TEMPLATES = ft.load(PKG)
-EXTRA_REFUSALS = ["C-MUBZ110-100", "C-MUBZ5-3", "C-MUBZ5-11", "C-MUBZ5-100", "C-MUBZU32-30", "C-MUBZU14-10", "C-MUFZU18-20", "C-MUFZ14-10",
+EXTRA_REFUSALS = ["C-MUFZ5-10-", "E-MUGZ10-15_", "C-MUBZ110-100", "C-MUBZ5-3", "C-MUBZ5-11", "C-MUBZ5-100", "C-MUBZU32-30", "C-MUBZU14-10", "C-MUFZU18-20", "C-MUFZ14-10",
                   "C-MUFZ5-15", "C-MUFZU6-8", "C-MUTSZ6-15", "C-MUTZ60-50", "C-MUTNZ20-90", "C-MUTNZ18-20", "E-MUGZ6-10", "E-MUGZ6-13",
                   "E-MUGZ14-20", "E-SHTZ35-40", "E-SHTNZ35-40", "E-SHBZ32-30", "E-SHBZ5-9", "E-SHFZ18-20", "E-SHFZ5-11", "E-MUSZ10-15", "E-MUKZ10-15", "E-MUCTZ10-15",
                   "E-MUIZ10-15", "C-MUIZ10-15", "E-MJBZ10-15", "E-MGFZ10-15", "E-MXBZ10-15", "C-MUFZ10", "C-MUFZ-10", "C-MUFZ5-", "C-MUTXZ10-20", "E-SHBZU10-12",

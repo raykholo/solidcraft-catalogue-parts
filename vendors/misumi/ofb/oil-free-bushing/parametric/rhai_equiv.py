@@ -31,7 +31,7 @@ def main():
     types = list(ob.TYPES)
     ds = sorted({d for t in ob.TABLES.values() for d in t} | {1, 4, 7, 14, 17, 19, 99, 101})
     extra = ["E-MUSZ10-15", "E-MUKZ10-15", "E-MUCTZ10-15", "E-MJBZ10-15", "E-MGFZ10-15", "E-MXBZ10-15", "C-MUIZ10-15", "C-MUFZ10", "C-MUFZ-10", "C-MUFZ5-", "C-MUTXZ10-20",
-             "E-SHBZU10-12", "E-MUGZ10-15-X", "E-LBF20LUU", "C-SHA10", "C-MUFZ5-1000", "C-MUFZ1000-10", "c-mufz5-10", "C-MUFZ05-10", "C-MUFZ5-010", "C-MUFZ5 10", "E-MUGZ"]
+             "E-SHBZU10-12", "E-MUGZ10-15-X", "E-LBF20LUU", "C-SHA10", "C-MUFZ5-1000", "C-MUFZ1000-10", "c-mufz5-10", "C-MUFZ05-10", "C-MUFZ5-010", "C-MUFZ5 10", "E-MUGZ", "C-MUFZ5-10-", "C-MUFZ5-10.", "E-MUGZ10-15_"]
     codes = [(f"{t}{d}-{l}") for t in types for d in ds for l in range(3, 101) if str(l) in ("3", "6", "8", "9", "10", "12", "14", "15", "16", "19", "20", "25", "30", "35", "40", "50", "60", "70", "80", "90", "100", "11", "99")] + extra
     n = ok = bad = 0
     diffs, lenient = [], []
