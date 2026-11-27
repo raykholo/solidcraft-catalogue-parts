@@ -1,0 +1,48 @@
+type,series,family,long,material,surface,not_applicable_d,source,page,status
+E-STHRB,std,round,0,General structural steel or carbon steel,Black oxide film,,S51,p.534 type table,labelled
+E-STHR,std,round,0,General structural steel or carbon steel,Electroless nickel plating,15,S51,p.534 type table / p.535 note,labelled
+E-STHSB,std,square,0,General structural steel or carbon steel,Black oxide film,,S51,p.534 type table,labelled
+E-STHS,std,square,0,General structural steel or carbon steel,Electroless nickel plating,6,S51,p.534 type table / p.535 note,labelled
+E-STHCB,std,compact,0,General structural steel or carbon steel,Black oxide film,,S51,p.534 type table,labelled
+E-STHC,std,compact,0,General structural steel or carbon steel,Electroless nickel plating,,S51,p.534 type table,labelled
+E-SSTHC,std,compact,0,Stainless steel,None printed,50,S51,p.534 type table / p.535 note,labelled
+E-STHRBL,std,round,1,General structural steel or carbon steel,Black oxide film,,S51,"p.534 type table, p.535 note (long sleeve only for the * marked D)",labelled
+E-STHRL,std,round,1,General structural steel or carbon steel,Electroless nickel plating,,S51,"p.534 type table, p.535 note (long sleeve only for the * marked D)",labelled
+E-STHSBL,std,square,1,General structural steel or carbon steel,Black oxide film,,S51,"p.534 type table, p.535 note (long sleeve only for the * marked D)",labelled
+E-STHSL,std,square,1,General structural steel or carbon steel,Electroless nickel plating,,S51,"p.534 type table, p.535 note (long sleeve only for the * marked D)",labelled
+E-STHCBL,std,compact,1,General structural steel or carbon steel,Black oxide film,,S51,"p.534 type table, p.535 note (long sleeve only for the * marked D)",labelled
+E-STHCL,std,compact,1,General structural steel or carbon steel,Electroless nickel plating,,S51,"p.534 type table, p.535 note (long sleeve only for the * marked D)",labelled
+E-STHRBN,thick,round,0,General structural steel or carbon steel,Black oxide film,35,S52,p.536 type table / note,labelled
+E-STHRBNL,thick,round,1,General structural steel or carbon steel,Black oxide film,,S52,p.536 type table (long sleeve; the note names the standard types only),labelled
+E-STHRN,thick,round,0,General structural steel or carbon steel,Electroless nickel plating,8|35,S52,p.536 type table / note,labelled
+E-STHRNL,thick,round,1,General structural steel or carbon steel,Electroless nickel plating,,S52,p.536 type table (long sleeve; the note names the standard types only),labelled
+E-STHCBN,thick,compact,0,General structural steel or carbon steel,Black oxide film,,S52,p.536 type table / note,labelled
+E-STHCBNL,thick,compact,1,General structural steel or carbon steel,Black oxide film,,S52,p.536 type table (long sleeve; the note names the standard types only),labelled
+E-STHCN,thick,compact,0,General structural steel or carbon steel,Electroless nickel plating,10,S52,p.536 type table / note,labelled
+E-STHCNL,thick,compact,1,General structural steel or carbon steel,Electroless nickel plating,,S52,p.536 type table (long sleeve; the note names the standard types only),labelled
+E-STHXRB,xend,round,0,General structural steel or carbon steel,Black oxide film,8,S52,p.533 type table / note,labelled
+E-STHXR,xend,round,0,General structural steel or carbon steel,Electroless nickel plating,,S52,p.533 type table / note,labelled
+E-STHXCB,xend,compact,0,General structural steel or carbon steel,Black oxide film,,S52,p.533 type table / note,labelled
+E-STHXC,xend,compact,0,General structural steel or carbon steel,Electroless nickel plating,,S52,p.533 type table / note,labelled
+E-STHMRB,mr,collar,0,General structural steel or carbon steel,Black oxide film,,S52,p.532 type table,labelled
+E-STHMRBL,mr,collar,1,General structural steel or carbon steel,Black oxide film,25,S52,p.532 type table / note,labelled
+E-STHMR,mr,collar,0,General structural steel or carbon steel,Electroless nickel plating,,S52,p.532 type table,labelled
+E-STHMRL,mr,collar,1,General structural steel or carbon steel,Electroless nickel plating,,S52,p.532 type table / note,labelled
+E-STHWRB,slit,round,0,General structural steel or carbon steel,Black oxide film,,S52,p.538 type table,labelled
+E-STHWR,slit,round,0,General structural steel or carbon steel,Electroless nickel plating,,S52,p.538 type table,labelled
+E-SSTHWR,slit,round,0,Stainless steel,None printed,35,S52,p.538 type table / p.539 note,labelled
+E-STHWRBL,slit,round,1,General structural steel or carbon steel,Black oxide film,,S52,p.538 type table,labelled
+E-STHWRL,slit,round,1,General structural steel or carbon steel,Electroless nickel plating,,S52,p.538 type table,labelled
+E-SSTHWRL,slit,round,1,Stainless steel,None printed,,S52,p.538 type table / p.539 note,labelled
+E-STHWSB,slit,square,0,General structural steel or carbon steel,Black oxide film,,S52,p.538 type table,labelled
+E-STHWS,slit,square,0,General structural steel or carbon steel,Electroless nickel plating,,S52,p.538 type table,labelled
+E-SSTHWS,slit,square,0,Stainless steel,None printed,40|50,S52,p.538 type table / p.539 note,labelled
+E-STHWSBL,slit,square,1,General structural steel or carbon steel,Black oxide film,,S52,p.538 type table,labelled
+E-STHWSL,slit,square,1,General structural steel or carbon steel,Electroless nickel plating,,S52,p.538 type table,labelled
+E-SSTHWSL,slit,square,1,Stainless steel,None printed,12,S52,p.538 type table / p.539 note,labelled
+E-STHWCB,slit,compact,0,General structural steel or carbon steel,Black oxide film,,S52,p.538 type table,labelled
+E-STHWC,slit,compact,0,General structural steel or carbon steel,Electroless nickel plating,,S52,p.538 type table,labelled
+E-SSTHWC,slit,compact,0,Stainless steel,None printed,,S52,p.538 type table / p.539 note,labelled
+E-STHWCBL,slit,compact,1,General structural steel or carbon steel,Black oxide film,,S52,p.538 type table,labelled
+E-STHWCL,slit,compact,1,General structural steel or carbon steel,Electroless nickel plating,,S52,p.538 type table,labelled
+E-SSTHWCL,slit,compact,1,Stainless steel,None printed,,S52,p.538 type table / p.539 note,labelled
