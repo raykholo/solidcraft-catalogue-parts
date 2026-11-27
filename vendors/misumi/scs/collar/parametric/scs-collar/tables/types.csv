@@ -1,0 +1,15 @@
+type,kind,material,surface,accessory,damper,source,page,status
+C-SCSAW,slit type,6000 series aluminium alloy,Clear anodized,,,S20,p.544 slit type table,labelled
+C-SCNPAW,split type,6000 series aluminium alloy,Clear anodized,,,S20,p.544 split type table,labelled
+C-SCSMAW,slit type with 2 through fixing holes,6000 series aluminium alloy,Clear anodized,,,S20,p.545 2 through fixing holes table,labelled
+C-SCSGAW,slit type with 2 counterbored fixing holes,6000 series aluminium alloy,Clear anodized,,,S20,p.545 2 counterbored fixing holes table,labelled
+C-SCSBNAW,slit type for bearing inner mount,6000 series aluminium alloy,Clear anodized,,,S21,p.546 slit type for bearing inner mount material table,labelled
+E-SCSPD,"split type, compact with urethane",General structural steel or carbon steel,Black oxide film,2 hex socket head cap screws equivalent to SCM435,"Urethane, Shore A70 (heat resistant temperature 70 deg C)",S21,p.546 type table,labelled
+E-PSCSPD,"split type, compact with urethane",General structural steel or carbon steel,Electroless nickel plating,"2 hex socket head cap screws, stainless steel","Urethane, Shore A70 (heat resistant temperature 70 deg C)",S21,p.546 type table,labelled
+E-SSCSPD,"split type, compact with urethane",Stainless steel,-,"2 hex socket head cap screws, stainless steel","Urethane, Shore A70 (heat resistant temperature 70 deg C)",S21,p.546 type table,labelled
+E-SCD,"slit type with urethane, standard type",General structural steel or carbon steel,Black oxide film,1 hex socket head cap screw equivalent to SCM435,"Urethane, Shore A70 for No.3-6 (Esters), Shore A90 for No.8-50 (Ethers) (heat resistant temperature 70 deg C)",S21,p.547 type table,labelled
+E-PSCD,"slit type with urethane, standard type",General structural steel or carbon steel,Electroless nickel plating,"1 hex socket head cap screw, stainless steel","Urethane, Shore A70 for No.3-6 (Esters), Shore A90 for No.8-50 (Ethers) (heat resistant temperature 70 deg C)",S21,p.547 type table,labelled
+E-SSCD,"slit type with urethane, standard type",Stainless steel,-,"1 hex socket head cap screw, stainless steel","Urethane, Shore A70 for No.3-6 (Esters), Shore A90 for No.8-50 (Ethers) (heat resistant temperature 70 deg C)",S21,p.547 type table,labelled
+E-SCDJ,"slit type with urethane, compact type",General structural steel or carbon steel,Black oxide film,1 hex socket head cap screw equivalent to SCM435,"Urethane, Shore A70 (heat resistant temperature 70 deg C)",S21,p.547 type table,labelled
+E-PSCDJ,"slit type with urethane, compact type",General structural steel or carbon steel,Electroless nickel plating,"1 hex socket head cap screw, stainless steel","Urethane, Shore A70 (heat resistant temperature 70 deg C)",S21,p.547 type table,labelled
+E-SSCDJ,"slit type with urethane, compact type",Stainless steel,-,"1 hex socket head cap screw, stainless steel","Urethane, Shore A70 (heat resistant temperature 70 deg C)",S21,p.547 type table,labelled

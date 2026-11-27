@@ -161,6 +161,9 @@ def build(out: Path):
         on = alive(v)
         vals.update({f"suppress:{f}": f not in on for f in FEATS})
         cfg.append({"command": "config.row", "params": {"name": key, "values": vals}})
+    # the "Default" row that config.configure makes from the current values is the stage-1 working state, not a catalogue row: drop it before the rules check the rows
+    cfg.append({"command": "config.activate", "params": {"row": rows[0][0]}})
+    cfg.append({"command": "config.row", "params": {"name": "Default", "delete": True}})
     rules = []
     def rule(rid, name, cond, eff): rules.append({"id": rid, "name": name, "condition": cond, "effect": eff})
     pc = lambda n, op, e: {"type": "parameter", "parameter": n, "operator": op, "expression": str(e)}

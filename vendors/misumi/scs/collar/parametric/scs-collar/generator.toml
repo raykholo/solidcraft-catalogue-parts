@@ -1,0 +1,633 @@
+format = "solidcraft-generator/2"
+id = "scs-collar"
+name = "MISUMI Economy Series shaft collars: aluminium slit and split, with fixing holes, bearing inner mount, and with urethane damper"
+license = "CC0-1.0"
+model = "scs-collar.sc"
+
+# One configuration row per catalogue row; no free parameter (B follows from D in every table, and the plating E- / E-P / E-S only changes the text).
+# The numbers are one text field per template (`12-10`) so that a code without its `-` is refused, as the Python regular expressions do.
+# The last template takes anything else so that generator.rhai can give the Python generator's message for a code of the wrong shape.
+
+[[template]]
+pattern = 'C-{type: SCSAW|SCNPAW|SCSMAW|SCSGAW}{nums: text 1..8 [0-9-]}'
+
+[[template]]
+pattern = 'C-{kind: SCSBNAW}{nums: text 1..8 [0-9-]}'
+
+[[template]]
+pattern = 'E-[{plat: P|S}]{fam: SCSPD|SCDJ|SCD}{nums: text 1..8 [0-9-]}'
+
+[[template]]
+pattern = '{raw: text 1..64 [A-Za-z0-9-]}'
+
+[rows."C-SCSAW-6-8"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 slit type table"
+page = "p.544 slit type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSAW-6-10"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 slit type table"
+page = "p.544 slit type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSAW-8-8"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 slit type table"
+page = "p.544 slit type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSAW-8-10"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 slit type table"
+page = "p.544 slit type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSAW-10-8"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 slit type table"
+page = "p.544 slit type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSAW-10-10"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 slit type table"
+page = "p.544 slit type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSAW-12-8"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 slit type table"
+page = "p.544 slit type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSAW-12-10"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 slit type table"
+page = "p.544 slit type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSAW-15-10"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 slit type table"
+page = "p.544 slit type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSAW-15-12"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 slit type table"
+page = "p.544 slit type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSAW-16-10"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 slit type table"
+page = "p.544 slit type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSAW-16-12"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 slit type table"
+page = "p.544 slit type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSAW-20-12"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 slit type table"
+page = "p.544 slit type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSAW-20-15"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 slit type table"
+page = "p.544 slit type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSAW-25-12"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 slit type table"
+page = "p.544 slit type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSAW-25-15"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 slit type table"
+page = "p.544 slit type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSAW-30-15"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 slit type table"
+page = "p.544 slit type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCNPAW-6-8"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 split type table"
+page = "p.544 split type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCNPAW-8-8"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 split type table"
+page = "p.544 split type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCNPAW-8-10"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 split type table"
+page = "p.544 split type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCNPAW-10-8"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 split type table"
+page = "p.544 split type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCNPAW-10-10"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 split type table"
+page = "p.544 split type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCNPAW-12-8"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 split type table"
+page = "p.544 split type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCNPAW-12-10"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 split type table"
+page = "p.544 split type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCNPAW-15-10"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 split type table"
+page = "p.544 split type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCNPAW-15-12"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 split type table"
+page = "p.544 split type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCNPAW-16-10"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 split type table"
+page = "p.544 split type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCNPAW-16-12"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 split type table"
+page = "p.544 split type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCNPAW-20-12"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 split type table"
+page = "p.544 split type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCNPAW-20-15"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 split type table"
+page = "p.544 split type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCNPAW-25-12"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 split type table"
+page = "p.544 split type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCNPAW-25-15"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 split type table"
+page = "p.544 split type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCNPAW-30-15"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.544 split type table"
+page = "p.544 split type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSMAW-8-8"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.545 2 through fixing holes table"
+page = "p.545 2 through fixing holes table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSMAW-8-10"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.545 2 through fixing holes table"
+page = "p.545 2 through fixing holes table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSMAW-10-10"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.545 2 through fixing holes table"
+page = "p.545 2 through fixing holes table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSMAW-10-12"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.545 2 through fixing holes table"
+page = "p.545 2 through fixing holes table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSMAW-12-10"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.545 2 through fixing holes table"
+page = "p.545 2 through fixing holes table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSMAW-12-12"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.545 2 through fixing holes table"
+page = "p.545 2 through fixing holes table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSMAW-15-10"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.545 2 through fixing holes table"
+page = "p.545 2 through fixing holes table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSMAW-15-12"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.545 2 through fixing holes table"
+page = "p.545 2 through fixing holes table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSMAW-16-10"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.545 2 through fixing holes table"
+page = "p.545 2 through fixing holes table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSMAW-16-12"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.545 2 through fixing holes table"
+page = "p.545 2 through fixing holes table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSMAW-20-12"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.545 2 through fixing holes table"
+page = "p.545 2 through fixing holes table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSMAW-20-15"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.545 2 through fixing holes table"
+page = "p.545 2 through fixing holes table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSMAW-25-12"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.545 2 through fixing holes table"
+page = "p.545 2 through fixing holes table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSMAW-25-15"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.545 2 through fixing holes table"
+page = "p.545 2 through fixing holes table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSMAW-30-15"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.545 2 through fixing holes table"
+page = "p.545 2 through fixing holes table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSGAW-8-8"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.545 2 counterbored fixing holes table"
+page = "p.545 2 counterbored fixing holes table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSGAW-8-10"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.545 2 counterbored fixing holes table"
+page = "p.545 2 counterbored fixing holes table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSGAW-10-10"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.545 2 counterbored fixing holes table"
+page = "p.545 2 counterbored fixing holes table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSGAW-10-12"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.545 2 counterbored fixing holes table"
+page = "p.545 2 counterbored fixing holes table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSGAW-12-10"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.545 2 counterbored fixing holes table"
+page = "p.545 2 counterbored fixing holes table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSGAW-12-12"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.545 2 counterbored fixing holes table"
+page = "p.545 2 counterbored fixing holes table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSGAW-15-12"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.545 2 counterbored fixing holes table"
+page = "p.545 2 counterbored fixing holes table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSGAW-16-10"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.545 2 counterbored fixing holes table"
+page = "p.545 2 counterbored fixing holes table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSGAW-16-12"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.545 2 counterbored fixing holes table"
+page = "p.545 2 counterbored fixing holes table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSGAW-20-12"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.545 2 counterbored fixing holes table"
+page = "p.545 2 counterbored fixing holes table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSGAW-20-15"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.545 2 counterbored fixing holes table"
+page = "p.545 2 counterbored fixing holes table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSGAW-25-15"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.545 2 counterbored fixing holes table"
+page = "p.545 2 counterbored fixing holes table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSGAW-30-15"]
+source = "MISUMI Economy Series catalogue 2025 S20 (sources.toml), p.545 2 counterbored fixing holes table"
+page = "p.545 2 counterbored fixing holes table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSBNAW-6"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.546 slit type for bearing inner mount table"
+page = "p.546 slit type for bearing inner mount table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSBNAW-8"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.546 slit type for bearing inner mount table"
+page = "p.546 slit type for bearing inner mount table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSBNAW-10"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.546 slit type for bearing inner mount table"
+page = "p.546 slit type for bearing inner mount table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSBNAW-12"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.546 slit type for bearing inner mount table"
+page = "p.546 slit type for bearing inner mount table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSBNAW-15"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.546 slit type for bearing inner mount table"
+page = "p.546 slit type for bearing inner mount table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSBNAW-20"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.546 slit type for bearing inner mount table"
+page = "p.546 slit type for bearing inner mount table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSBNAW-25"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.546 slit type for bearing inner mount table"
+page = "p.546 slit type for bearing inner mount table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."C-SCSBNAW-30"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.546 slit type for bearing inner mount table"
+page = "p.546 slit type for bearing inner mount table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."slit-4"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.547 standard type table"
+page = "p.547 standard type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."slit-5"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.547 standard type table"
+page = "p.547 standard type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."slit-6"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.547 standard type table"
+page = "p.547 standard type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."slit-8"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.547 standard type table"
+page = "p.547 standard type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."slit-10"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.547 standard type table"
+page = "p.547 standard type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."slit-12"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.547 standard type table"
+page = "p.547 standard type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."slit-13"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.547 standard type table"
+page = "p.547 standard type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."slit-15"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.547 standard type table"
+page = "p.547 standard type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."slit-16"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.547 standard type table"
+page = "p.547 standard type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."slit-20"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.547 standard type table"
+page = "p.547 standard type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."slit-25"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.547 standard type table"
+page = "p.547 standard type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."slit-30"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.547 standard type table"
+page = "p.547 standard type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."slit-35"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.547 standard type table"
+page = "p.547 standard type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."slit-40"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.547 standard type table"
+page = "p.547 standard type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."slit-50"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.547 standard type table"
+page = "p.547 standard type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."slit-compact-8"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.547 compact type table"
+page = "p.547 compact type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."slit-compact-10"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.547 compact type table"
+page = "p.547 compact type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."slit-compact-12"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.547 compact type table"
+page = "p.547 compact type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."slit-compact-16"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.547 compact type table"
+page = "p.547 compact type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."slit-compact-20"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.547 compact type table"
+page = "p.547 compact type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."slit-compact-25"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.547 compact type table"
+page = "p.547 compact type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."slit-compact-30"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.547 compact type table"
+page = "p.547 compact type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."slit-compact-40"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.547 compact type table"
+page = "p.547 compact type table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."split-compact-6"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.546 split type compact with urethane table"
+page = "p.546 split type compact with urethane table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."split-compact-8"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.546 split type compact with urethane table"
+page = "p.546 split type compact with urethane table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."split-compact-10"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.546 split type compact with urethane table"
+page = "p.546 split type compact with urethane table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."split-compact-12"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.546 split type compact with urethane table"
+page = "p.546 split type compact with urethane table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."split-compact-13"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.546 split type compact with urethane table"
+page = "p.546 split type compact with urethane table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."split-compact-15"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.546 split type compact with urethane table"
+page = "p.546 split type compact with urethane table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."split-compact-16"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.546 split type compact with urethane table"
+page = "p.546 split type compact with urethane table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."split-compact-20"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.546 split type compact with urethane table"
+page = "p.546 split type compact with urethane table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."split-compact-25"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.546 split type compact with urethane table"
+page = "p.546 split type compact with urethane table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
+
+[rows."split-compact-30"]
+source = "MISUMI Economy Series catalogue 2025 S21 (sources.toml), p.546 split type compact with urethane table"
+page = "p.546 split type compact with urethane table"
+status = "verified"
+note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"
