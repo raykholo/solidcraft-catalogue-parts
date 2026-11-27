@@ -20,16 +20,16 @@ import pkgfiles, rows as rw
 PKG = "linear-bushing"
 CLI = os.environ.get("SC_CLI", "solidcraft-cli")
 MM = ("od", "blen", "bore", "fl_h", "fl_t", "hole_d", "cb_d", "cb_t", "pcd", "sq_w", "cp_a", "cp_f", "cp_w", "x0", "g_b", "g_w", "g_d1")
-UNITLESS = ("rowno", "opp", "plated")
-COLUMNS = ["rowno", "od", "blen", "bore", "opp", "plated", "fl_h", "fl_t", "hole_d", "cb_d", "cb_t", "pcd", "sq_w", "cp_a", "cp_f", "cp_w", "x0", "g_b", "g_w", "g_d1"]
-COMMENT = {"rowno": "number of the configuration row (the rules name it)", "od": "outside diameter D", "blen": "overall length L (single or double bushing)",
+UNITLESS = ("rowno", "kind", "opp", "plated")
+COLUMNS = ["rowno", "kind", "od", "blen", "bore", "opp", "plated", "fl_h", "fl_t", "hole_d", "cb_d", "cb_t", "pcd", "sq_w", "cp_a", "cp_f", "cp_w", "x0", "g_b", "g_w", "g_d1"]
+COMMENT = {"rowno": "number of the configuration row (the rules name it)", "kind": "0 straight, 1 round flange, 2 round flange with offset, 3 square flange, 4 compact flange (which hole sets exist)", "od": "outside diameter D", "blen": "overall length L (single or double bushing)",
            "bore": "bore at the nominal shaft diameter dr", "opp": "1 = counterbores on the flange face away from the barrel (Z types)",
            "plated": "1 = electroless nickel plated (tolerance text and material only)", "fl_h": "flange diameter H", "fl_t": "flange thickness T",
            "hole_d": "mounting hole d", "cb_d": "counterbore d1", "cb_t": "counterbore depth t", "pcd": "P.C.D. of the 4 holes (round, square flange)",
            "sq_w": "square flange across flats W", "cp_a": "compact flange hole pitch A (along H)", "cp_f": "compact flange hole pitch F (across; 0 = two holes)",
            "cp_w": "compact flange width across the flats", "x0": "x of the flange face nearest the start of the barrel (pilot / centre l)",
            "g_b": "distance B between the two ring grooves", "g_w": "ring groove width W", "g_d1": "ring groove diameter D1"}
-DERIVED = [("cbx", "x0 + fl_t * (1 - opp)", "x of the flange face that carries the counterbores"), ("hr", "pcd / 2", "radius of the holes on the P.C.D."),
+DERIVED = [("hr", "pcd / 2", "radius of the holes on the P.C.D."),
            ("ha", "cp_a / 2", "compact flange holes: half of A"), ("he", "cp_f / 2", "compact flange holes: half of F"),
            ("sq_a", "sq_w / sqrt(2)", "square flange stands on its corner: half-diagonal of the flats"),
            ("sq_s", "sqrt(2 * (fl_h / 2) * (fl_h / 2) - sq_a * sq_a)", "square flange: circle H cuts the corner at this offset"),
@@ -102,8 +102,8 @@ def compact_cmds():
     return c + [{"command": "sketch.finish", "params": {}},
                 {"command": "solid.extrude", "params": {"distance": "fl_t", "operation": "join", "name": "CompactFlange"}}]
 
-def hole_cmd(name, y, z):
-    return {"command": "solid.hole", "params": {"position": ["cbx", y, z], "diameter": "hole_d", "type": "counterbore", "cb_diameter": "cb_d",
+def hole_cmd(name, x, y, z):
+    return {"command": "solid.hole", "params": {"position": [x, y, z], "diameter": "hole_d", "type": "counterbore", "cb_diameter": "cb_d",
                                                 "cb_depth": "cb_t", "depth": "fl_t", "name": name}}
 
 AXIS = [("hr", 0), (0, "hr"), ("-hr", 0), (0, "-hr")]
@@ -146,10 +146,15 @@ def build(out: Path):
     make(compact_cmds(), ["CompactSketch", "CompactFlange"])
     state("short-6", {"ProfilePlain", "RevolvePlain"})
     add("solid.cylinder", diameter="bore", height="blen + 2", base=[-1, 0, 0], axis="X", operation="cut", name="Bore")
-    state("flanged_long-round-6", {"ProfileRound0", "RevolveRound0"})
-    make([hole_cmd(f"AxisHole{i + 1}", y, z) for i, (y, z) in enumerate(AXIS)], [f"AxisHole{i}" for i in (1, 2, 3, 4)])
-    state("compact_long-compact-16", {"ProfilePlain", "RevolvePlain", "CompactSketch", "CompactFlange"} | {f"AxisHole{i}" for i in ()})
-    make([hole_cmd(f"CompactHole{i + 1}", y, z) for i, (y, z) in enumerate(COMPACT)], [f"CompactHole{i}" for i in (1, 2, 3, 4)])
+    holes_at = {"Round0": ("flanged_long-round-6", {"ProfileRound0", "RevolveRound0"}), "RoundOff": ("pilot_long-round-6", {"ProfileRoundOff", "RevolveRoundOff"}),
+                "Square": ("flanged_long-square-6", {"ProfilePlain", "RevolvePlain", "SquareSketch", "SquareFlange"}),
+                "Compact": ("compact_long-compact-16", {"ProfilePlain", "RevolvePlain", "CompactSketch", "CompactFlange"})}
+    for v, _k in rw.HOLEVARS:
+        pos = COMPACT if v == "Compact" else AXIS
+        for side, x in (("Near", "x0 + fl_t"), ("Far", "x0")):
+            if v == "RoundOff" and side == "Far": continue
+            state(holes_at[v][0], holes_at[v][1])          # the other side's holes are suppressed: their bores would take the face away
+            make([hole_cmd(f"Hole{v}{side}{i + 1}", x, y, z) for i, (y, z) in enumerate(pos)], [f"Hole{v}{side}{i}" for i in (1, 2, 3, 4)])
     add("browser.visibility", items=[f"Profile{k}" for k in rw.REVOLVES] + ["SquareSketch", "CompactSketch"], visible=False)
     res = run(cmds, save=wd / "stage1.sc", workdir=wd)
     ids = {}
@@ -173,11 +178,17 @@ def build(out: Path):
         rule(f"len-{k}", f"L of {where}", cond, {"type": "allow_parameter_values", "parameter": "blen", "expressions": [f"{cell(v)} mm" for v in r["lengths"]]})
         rule(f"opp-{k}", f"counterbore side of {where}", cond, {"type": "allow_parameter_values", "parameter": "opp", "expressions": [str(v) for v in r["opp"]]})
         rule(f"plated-{k}", f"plating of {where}", cond, {"type": "allow_parameter_values", "parameter": "plated", "expressions": [str(v) for v in r["plated"]]})
-    for n in ("CompactHole2", "CompactHole3"):
-        if n in ids:
-            rule(f"{n}-off", f"{n} off when F is 0 (two holes)", pc("cp_f", "eq", "0 mm"), {"type": "drive_suppression", "feature": ids[n], "value": True})
-        else:
-            print(f"warning: no feature id for {n}: the F = 0 suppression rule is left to the row columns", file=sys.stderr)
+    # the hole sets: ON when the row's kind is this variant and the counterbore side (opp) is this set's; OFF otherwise (suppress-if)
+    kinds = dict(rw.HOLEVARS)
+    for v, k in rw.HOLEVARS:
+        for side, o in (("Near", 0), ("Far", 1)):
+            if v == "RoundOff" and side == "Far": continue
+            for i in (1, 2, 3, 4):
+                n = f"Hole{v}{side}{i}"
+                conds = [pc("kind", "eq", k), pc("opp", "eq", o)] + ([pc("cp_f", "gt", "0 mm")] if (v == "Compact" and i in (2, 3)) else [])
+                on = {"type": "all", "conditions": conds}
+                rule(f"{n}-on", f"{n} on", on, {"type": "drive_suppression", "feature": ids[n], "value": False})
+                rule(f"{n}-off", f"{n} off", {"type": "not", "condition": on}, {"type": "drive_suppression", "feature": ids[n], "value": True})
     cfg.append({"command": "config.rule", "params": {"rules": rules}})
     cfg.append({"command": "config.activate", "params": {"row": R[0]["name"]}})
     run(cfg, src=wd / "stage1.sc", save=wd / "stage2.sc", workdir=wd)

@@ -15,7 +15,10 @@ from runtime.table import read_csv, num
 # the variants of the model (revolve profiles and flange kinds) and the hole sets: feature names, in timeline order
 REVOLVES = ["Plain", "Grooved", "Round0", "RoundOff"]
 FLANGES = ["Square", "Compact"]
-HOLES = [f"AxisHole{i}" for i in (1, 2, 3, 4)] + [f"CompactHole{i}" for i in (1, 2, 3, 4)]
+# hole sets: a hole refers to the face it was picked on, so each variant of the body has its own sets: Near = counterbores on the flange face
+# toward the barrel (x0 + T, the standard side), Far = on the face away from the barrel (x0, the Z types); the `opp` parameter switches them
+HOLEVARS = [("Round0", 1), ("RoundOff", 2), ("Square", 3), ("Compact", 4)]      # the value of the `kind` parameter
+HOLES = [f"Hole{v}{side}{i}" for v, _ in HOLEVARS for side in ("Near", "Far") if not (v == "RoundOff" and side == "Far") for i in (1, 2, 3, 4)]
 def feature_names():
     f = []
     for v in REVOLVES: f += [f"Profile{v}", f"Revolve{v}"]
@@ -52,7 +55,7 @@ def make_rows():
                 L1 = r["L"] if r.get("L") is not None else r["L_single"]
                 L2 = r.get("L_double")
                 p = dict(REF)
-                p.update(rowno=n, od=r["D"], blen=L1, bore=dr, opp=0, plated=1 if (kind in ("pilot", "center") and series == "medium") else 0)
+                p.update(rowno=n, kind=0, od=r["D"], blen=L1, bore=dr, opp=0, plated=1 if (kind in ("pilot", "center") and series == "medium") else 0)
                 if kind != "straight":
                     p.update(fl_h=r["H"], fl_t=r["T"], hole_d=r["d"], cb_d=r["d1"], cb_t=r["t"])
                     if r.get("pcd") is not None: p["pcd"] = r["pcd"]
@@ -66,14 +69,16 @@ def make_rows():
                 elif shape == "round": on.add("Round0" if kind == "flanged" else "RoundOff")
                 else: on.add("Plain")
                 holes = set()
-                if shape in ("round", "square"): holes = {f"AxisHole{i}" for i in (1, 2, 3, 4)}
-                if shape == "compact": holes = {f"CompactHole{i}" for i in ((1, 2, 3, 4) if p["cp_f"] else (1, 4))}
+                hv = {"round": "Round0" if kind == "flanged" else "RoundOff", "square": "Square", "compact": "Compact"}.get(shape)
+                if hv:
+                    p["kind"] = dict(HOLEVARS)[hv]
+                    holes = {f"Hole{hv}Near{i}" for i in ((1, 2, 3, 4) if (shape != "compact" or p["cp_f"]) else (1, 4))}
                 feats = set(holes)
                 for v in on: feats |= {f"Profile{v}", f"Revolve{v}"}
                 for v in FLANGES:
                     if v.lower() == shape: feats |= {f"{v}Sketch", f"{v}Flange"}
                 z_ok = kind in ("flanged", "compact") and series == "long" and dr <= 30 and not (kind == "compact" and dr == 5)
-                out.append(dict(name=name, table=tab, shape=shape, dr=dr, kind=kind, series=series, params=p, features=feats,
+                out.append(dict(name=name, table=tab, shape=shape, dr=dr, kind=kind, holevar=hv, series=series, params=p, features=feats,
                                 lengths=[L1] + ([L2] if L2 is not None else []), opp=[0, 1] if z_ok else [0],
                                 plated=[0] if (kind == "straight" and series == "short") else ([1] if p["plated"] else [0, 1]),
                                 source=r["source"], page=r["page"], status=r["status"]))

@@ -12,7 +12,9 @@ from runtime.table import read_csv, num
 
 REVOLVES = ["Plain", "Flange"]
 FLANGES = ["Square", "Compact"]
-HOLES = [f"AxisHole{i}" for i in (1, 2, 3, 4)] + [f"CompactHole{i}" for i in (1, 2, 3, 4)]
+# hole sets: a hole refers to the face it was picked on, so each variant of the body has its own set
+HOLEVARS = ["Round", "Square", "Compact"]
+HOLES = [f"Hole{v}{i}" for v in HOLEVARS for i in (1, 2, 3, 4)]
 def feature_names():
     f = []
     for v in REVOLVES: f += [f"Profile{v}", f"Revolve{v}"]
@@ -67,9 +69,9 @@ def make_rows():
             feats = set()
             rev = "Plain" if fam in ("straight", "square", "compact") else "Flange"
             feats |= {f"Profile{rev}", f"Revolve{rev}"}
-            if fam == "square": feats |= {"SquareSketch", "SquareFlange"} | {f"AxisHole{i}" for i in (1, 2, 3, 4)}
-            if fam == "compact": feats |= {"CompactSketch", "CompactFlange"} | {f"CompactHole{i}" for i in ((1, 2, 3, 4) if p["cp_f"] else (1, 4))}
-            if fam == "round": feats |= {f"AxisHole{i}" for i in ((1, 2, 3, 4) if p["cp_f"] else (2, 4))}
+            if fam == "square": feats |= {"SquareSketch", "SquareFlange"} | {f"HoleSquare{i}" for i in (1, 2, 3, 4)}
+            if fam == "compact": feats |= {"CompactSketch", "CompactFlange"} | {f"HoleCompact{i}" for i in ((1, 2, 3, 4) if p["cp_f"] else (1, 4))}
+            if fam == "round": feats |= {f"HoleRound{i}" for i in ((1, 2, 3, 4) if p["cp_f"] else (2, 4))}
             out.append(dict(name=name, type=ty["type"], family=fam, wall=ty["wall"], table=ty["table"], dr=d, params=p, features=feats, lengths=lens,
                             source=r["source"], page=r["page"], status=r["status"]))
     return out, skipped

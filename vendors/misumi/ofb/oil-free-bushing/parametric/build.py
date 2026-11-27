@@ -133,10 +133,12 @@ def build(out: Path):
     make(compact_cmds(), ["CompactSketch", "CompactFlange"])
     state("C-MUBZ-5", {"ProfilePlain", "RevolvePlain"})
     add("solid.cylinder", diameter="bore", height="blen + 2", base=[-1, 0, 0], axis="X", operation="cut", name="Bore")
-    state("C-MUTZ-16", {"ProfileFlange", "RevolveFlange"})
-    make([hole_cmd(f"AxisHole{i + 1}", y, z) for i, (y, z) in enumerate(AXIS)], [f"AxisHole{i}" for i in (1, 2, 3, 4)])
-    state("C-MUTNZ-16", {"ProfilePlain", "RevolvePlain", "CompactSketch", "CompactFlange"})
-    make([hole_cmd(f"CompactHole{i + 1}", y, z) for i, (y, z) in enumerate(COMPACT)], [f"CompactHole{i}" for i in (1, 2, 3, 4)])
+    holes_at = {"Round": ("C-MUTZ-16", {"ProfileFlange", "RevolveFlange"}), "Square": ("C-MUTSZ-16", {"ProfilePlain", "RevolvePlain", "SquareSketch", "SquareFlange"}),
+                "Compact": ("C-MUTNZ-16", {"ProfilePlain", "RevolvePlain", "CompactSketch", "CompactFlange"})}
+    for v in rw.HOLEVARS:
+        state(holes_at[v][0], holes_at[v][1])
+        pos = COMPACT if v == "Compact" else AXIS
+        make([hole_cmd(f"Hole{v}{i + 1}", y, z) for i, (y, z) in enumerate(pos)], [f"Hole{v}{i}" for i in (1, 2, 3, 4)])
     add("browser.visibility", items=[f"Profile{k}" for k in rw.REVOLVES] + ["SquareSketch", "CompactSketch"], visible=False)
     res = run(cmds, save=wd / "stage1.sc", workdir=wd)
     ids = {}
@@ -158,7 +160,7 @@ def build(out: Path):
         k = r["params"]["rowno"]; where = f"{r['name']} ({r['source']} {r['page']})"
         rule(f"len-{k}", f"printed L of {where}", pc("rowno", "eq", k),
              {"type": "allow_parameter_values", "parameter": "blen", "expressions": [f"{cell(v)} mm" for v in r["lengths"]]})
-    for n in ("AxisHole1", "AxisHole3", "CompactHole2", "CompactHole3"):
+    for n in ("HoleRound1", "HoleRound3", "HoleCompact2", "HoleCompact3"):
         if n in ids:
             rule(f"{n}-off", f"{n} off when F is 0 (two holes)", pc("cp_f", "eq", "0 mm"), {"type": "drive_suppression", "feature": ids[n], "value": True})
         else:
