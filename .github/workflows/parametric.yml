@@ -1,7 +1,7 @@
 name: parametric
 # The parametric form of each generator (vendors/<v>/<s>/<g>/parametric/: one .sc + configuration table + field template + Rhai)
 # against its Python generator, for every code in codes.txt: parametric/ci.sh OUTDIR writes faithfulness.json and
-# tools/parametric-verdict decides. One job per generator. Pull requests: the generators they touch (all when runtime/ or tools/
+# tools/parametric-verdict decides. One job per generator and SolidCraft version. Pull requests: the generators they touch (all when runtime/ or tools/
 # change); pushes to main and manual runs: all.
 on:
   pull_request:
@@ -10,8 +10,6 @@ on:
     branches: [main]
     paths: ["vendors/**", "runtime/**", "tools/**", ".github/workflows/parametric.yml"]
   workflow_dispatch:
-env:
-  SC_VER: "0.50.0"
 concurrency:
   group: parametric-${{ github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
@@ -33,6 +31,7 @@ jobs:
           else sel="$all"; fi
           echo "gens=$(printf '%s\n' $sel | python3 -c 'import json,sys; print(json.dumps([l.strip() for l in sys.stdin if l.strip()]))')" >> "$GITHUB_OUTPUT"
   faithfulness:
+    name: faithfulness (${{ matrix.gen }}, SC ${{ matrix.sc_ver }})
     needs: list
     if: needs.list.outputs.gens != '[]'
     runs-on: ubuntu-latest
@@ -40,6 +39,9 @@ jobs:
       fail-fast: false
       matrix:
         gen: ${{ fromJson(needs.list.outputs.gens) }}
+        sc_ver: ["0.50.0", "0.51.1"]
+    env:
+      SC_VER: ${{ matrix.sc_ver }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -63,5 +65,5 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: faithfulness-${{ strategy.job-index }}
+          name: faithfulness-${{ strategy.job-index }}-sc-${{ matrix.sc_ver }}
           path: ${{ runner.temp }}/out/*.json
