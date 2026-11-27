@@ -27,3 +27,11 @@
 
 Checked (automatic spec check passes for every code in `codes.txt`), Reviewed (+ an independent reviewer who is not the author), Drawing-matched (+ a
 comparison with the vendor's configured-part drawing, only where the vendor allows it). Nothing below Checked is published.
+
+## Before you push
+
+Run `git config core.hooksPath tools/hooks` once per clone. The pre-push hook runs `tools/lint` (files) and `tools/privacy`
+(commit messages and author addresses) and refuses personal paths, development-session links or trailers, vendor CAD and stray
+images; use your GitHub noreply address as the commit email. The `privacy` workflow runs the same checks on every pull request.
+To keep your own words out too (machine names, say), list them, one regular expression per line, in
+`~/.config/sc-parts/private-words` (or the file `$SC_PARTS_PRIVATE_WORDS` names); that file stays on your machine.

@@ -1,0 +1,32 @@
+#!/usr/bin/env python3
+"""tools/privacy [--] REVS...: check commit messages and authors in REVS (git rev-list arguments, e.g. origin/main..HEAD) for what
+must never be published (runtime/privacy.py): personal paths and addresses, development-session links and trailers, vendor-CAD reference
+talk, and a maintainer's local private words. Authors must use a GitHub noreply address or no address at all. Files are
+checked by tools/lint. Used by the pre-push hook (tools/hooks/pre-push) and by CI (.github/workflows/privacy.yml). Exit 1 on a find."""
+import argparse, subprocess, sys
+from pathlib import Path
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+from runtime import privacy
+
+ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+ap.add_argument("revs", nargs="+", help="git rev-list arguments after --, e.g. origin/main..HEAD, or SHA --not --remotes")
+a = ap.parse_args()
+out = subprocess.run(["git", "-C", str(ROOT), "log", "--format=%H%x00%an <%ae>%x00%cn <%ce>%x00%B%x1e", *a.revs],
+                     capture_output=True, check=True).stdout
+bad = 0
+for rec in out.split(b"\x1e"):
+    rec = rec.strip(b"\n")
+    if not rec:
+        continue
+    sha, author, committer, body = rec.split(b"\x00", 3)
+    for who in (author, committer):
+        email = who.split(b"<", 1)[1].rstrip(b">") if b"<" in who else b""
+        if email and not email.endswith(b"@users.noreply.github.com") and email != b"noreply@github.com":
+            bad += 1; print(f"{sha[:10].decode()}: author/committer address is not a GitHub noreply address")
+    hit = privacy.find(body)
+    if hit:
+        bad += 1; print(f"{sha[:10].decode()}: commit message has {hit[0]} {hit[1]!r}")
+n = out.count(b"\x1e")
+print(f"privacy: {n} commit(s) checked, {bad} problem(s)" if bad else f"privacy: {n} commit(s) clean")
+sys.exit(1 if bad else 0)

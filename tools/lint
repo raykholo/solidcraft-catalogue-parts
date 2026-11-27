@@ -4,17 +4,17 @@
     codes.txt, checks/) and PROVENANCE.md is exactly what tools/provenance writes;
   - every row of every data/*.csv names a source id that exists in sources.toml and has a page and a status; every source has a URL;
   - no vendor CAD, logo or photo files (CAD extensions anywhere; images only as icon.svg, preview.png and shots/*.png; no <image> in an svg);
-  - no personal paths in any file, inflate-aware: PNG chunks and their zlib streams are scanned too.
+  - no personal paths, development-session text or (locally) private words in any file (runtime/privacy.py), inflate-aware: PNG
+    chunks and their zlib streams are scanned too.
 Exit 1 when anything is found."""
 import csv, re, struct, sys, tomllib, zlib
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
-from runtime import registry, provenance
+from runtime import registry, provenance, privacy
 
 CAD = {".step", ".stp", ".iges", ".igs", ".x_t", ".x_b", ".sldprt", ".sldasm", ".ipt", ".iam", ".catpart", ".prt", ".3dm", ".dwg", ".dxf", ".stl", ".sat", ".f3d"}
 IMG = {".png", ".jpg", ".jpeg", ".gif", ".bmp", ".webp", ".tif", ".tiff", ".ico", ".svg", ".pdf"}
-PERSONAL = re.compile(rb"(/home/[A-Za-z0-9_.-]+|/var/home/|/Users/[A-Za-z0-9_.-]+|[A-Za-z]:\\Users\\|/root/|\bray@)")
 SKIP_DIRS = {".git", "out", "dist", ".claude", "__pycache__"}
 problems: list[str] = []
 def bad(msg): problems.append(msg)
@@ -33,6 +33,8 @@ def files():
     for p in sorted(ROOT.rglob("*")):
         if p.is_file() and not (set(p.relative_to(ROOT).parts) & SKIP_DIRS) and not p.name.endswith(".pyc"):
             yield p
+
+last_idat = [None]                                # the inflated pixel data png_blobs yielded last
 
 def png_blobs(data: bytes):
     """Yield the bytes inside a PNG that a plain byte search cannot see: inflated IDAT and zTXt / iTXt text."""
@@ -53,7 +55,8 @@ def png_blobs(data: bytes):
                 yield zlib.decompress(text) if comp else text
             except Exception: pass
     if idat:
-        try: yield zlib.decompress(idat)
+        try:
+            last_idat[0] = zlib.decompress(idat); yield last_idat[0]
         except Exception: pass
 
 for p in files():
@@ -66,12 +69,12 @@ for p in files():
     data = p.read_bytes()
     if ext == ".svg" and b"<image" in data:
         bad(f"{rel}: svg embeds a raster image")
-    if rel == Path("tools/lint"):
-        continue                                  # this file spells out the patterns it looks for
-    for blob in [data, *png_blobs(data)]:
-        m = PERSONAL.search(blob)
-        if m:
-            bad(f"{rel}: personal path or address {m.group(0).decode(errors='replace')!r}"); break
+    if rel in (Path("tools/lint"), Path("runtime/privacy.py")):
+        continue                                  # these files spell out the patterns they look for
+    for i, blob in enumerate([data, *png_blobs(data)]):
+        hit = privacy.find(blob, text=not (ext == ".png" and i > 0 and blob is last_idat[0]))
+        if hit:
+            bad(f"{rel}: {hit[0]} {hit[1]!r}"); break
 
 need = ["generator.toml", "README.md", "PROVENANCE.md", "icon.svg", "preview.png", "sources.toml", "codes.txt"]
 for g in registry.generators():

@@ -1,0 +1,25 @@
+name: privacy
+# Every pull request and every push to main: no personal paths, development-session text, vendor CAD or stray images in the files
+# (tools/lint), and none in the commit messages, with GitHub noreply author addresses (tools/privacy).
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  privacy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: tools/lint
+      - name: Commit messages and authors
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            tools/privacy -- "origin/${{ github.base_ref }}..${{ github.event.pull_request.head.sha }}"
+          elif [ "${{ github.event.before }}" != "0000000000000000000000000000000000000000" ]; then
+            tools/privacy -- "${{ github.event.before }}..${{ github.sha }}"
+          else
+            tools/privacy -- "${{ github.sha }}"
+          fi
