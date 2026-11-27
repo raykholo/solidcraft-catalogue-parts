@@ -1,0 +1,30 @@
+type,family,base,tolerance_class,material,hardness,surface,source,page,status
+E-SFJ,straight,E-SFJ,g7,S45C equivalent or GCr15,High frequency quenched,-,S8,p.432 type table,labelled
+E-SSFJ,straight,E-SSFJ,g7,SUS440C or equivalent,"High frequency quenched, SUS440C or equivalent 53HRC~",-,S8,p.432 type table,labelled
+E-PSFJ,straight,E-PSFJ,g7,S45C equivalent or GCr15,GCr15 55HRC~,"Hard chrome plating, HV750~, 3 um or more",S8,p.432 type table,labelled
+E-PSSFJ,straight,E-PSSFJ,g7,SUS440C or equivalent,53HRC~,"Hard chrome plating, HV750~, 3 um or more",S8,p.432 type table,labelled
+E-PSFG,straight,E-PSFG,f8,S45C or equivalent,-,"Hard chrome plating, HV750~, 10 um or more",S8,p.432 type table,labelled
+E-SFJC,C,E-SFJ,g7,S45C equivalent or GCr15,High frequency quenched,-,S30,p.434 type table,labelled
+E-SSFJC,C,E-SSFJ,g7,SUS440C or equivalent,"High frequency quenched, SUS440C or equivalent 53HRC~",-,S30,p.434 type table,labelled
+E-PSFJC,C,E-PSFJ,g7,S45C equivalent or GCr15,GCr15 55HRC~,"Hard chrome plating, HV750~, 3 um or more",S30,p.434 type table,labelled
+E-PSSFJC,C,E-PSSFJ,g7,SUS440C or equivalent,53HRC~,"Hard chrome plating, HV750~, 3 um or more",S30,p.434 type table,labelled
+E-PSFGC,C,E-PSFG,f8,S45C or equivalent,-,"Hard chrome plating, HV750~, 10 um or more",S30,p.434 type table,labelled
+E-SFJZ,Z,E-SFJ,g7,S45C equivalent or GCr15,High frequency quenched,-,S30,p.435 type table,labelled
+E-SSFJZ,Z,E-SSFJ,g7,SUS440C or equivalent,"High frequency quenched, SUS440C or equivalent 53HRC~",-,S30,p.435 type table,labelled
+E-PSFJZ,Z,E-PSFJ,g7,S45C equivalent or GCr15,GCr15 55HRC~,"Hard chrome plating, HV750~, 3 um or more",S30,p.435 type table,labelled
+E-PSSFJZ,Z,E-PSSFJ,g7,SUS440C or equivalent,53HRC~,"Hard chrome plating, HV750~, 3 um or more",S30,p.435 type table,labelled
+E-PSFGZ,Z,E-PSFG,f8,S45C or equivalent,-,"Hard chrome plating, HV750~, 10 um or more",S30,p.435 type table,labelled
+E-SFJW,W,E-SFJ,g7,S45C equivalent or GCr15,High frequency quenched,-,S30,p.436 type table,labelled
+E-SSFJW,W,E-SSFJ,g7,SUS440C or equivalent,"High frequency quenched, SUS440C or equivalent 53HRC~",-,S30,p.436 type table,labelled
+E-PSFJW,W,E-PSFJ,g7,S45C equivalent or GCr15,GCr15 55HRC~,"Hard chrome plating, HV750~, 3 um or more",S30,p.436 type table,labelled
+E-PSSFJW,W,E-PSSFJ,g7,SUS440C or equivalent,53HRC~,"Hard chrome plating, HV750~, 3 um or more",S30,p.436 type table,labelled
+E-PSFGW,W,E-PSFG,f8,S45C or equivalent,-,"Hard chrome plating, HV750~, 10 um or more",S30,p.436 type table,labelled
+E-SFPG,PG,E-SFJ,g7,S45C equivalent or GCr15,High frequency quenched,-,S30,p.437 type table,labelled
+E-SSFPG,PG,E-SSFJ,g7,SUS440C or equivalent,"High frequency quenched, SUS440C or equivalent 53HRC~",-,S30,p.437 type table,labelled
+E-PSFPG,PG,E-PSFJ,g7,S45C equivalent or GCr15,GCr15 55HRC~,"Hard chrome plating, HV750~, 3 um or more",S30,p.437 type table,labelled
+E-PSSFPG,PG,E-PSSFJ,g7,SUS440C or equivalent,53HRC~,"Hard chrome plating, HV750~, 3 um or more",S30,p.437 type table,labelled
+E-SFPH,PH,E-SFJ,g7,S45C equivalent or GCr15,High frequency quenched,-,S30,p.438 type table,labelled
+E-SSFPH,PH,E-SSFJ,g7,SUS440C or equivalent,"High frequency quenched, SUS440C or equivalent 53HRC~",-,S30,p.438 type table,labelled
+E-PSFPH,PH,E-PSFJ,g7,S45C equivalent or GCr15,GCr15 55HRC~,"Hard chrome plating, HV750~, 3 um or more",S30,p.438 type table,labelled
+E-PSSFPH,PH,E-PSSFJ,g7,SUS440C or equivalent,53HRC~,"Hard chrome plating, HV750~, 3 um or more",S30,p.438 type table,labelled
+E-PFPGH,PH,E-PSFG,f8,S45C or equivalent,-,"Hard chrome plating, HV750~, 10 um or more",S30,p.438 type table,labelled

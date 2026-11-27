@@ -1,0 +1,32 @@
+name,value,unit,source,page,status
+flat_depth_le_5,0.5,mm,S8,p.432 FC/WFC,labelled
+flat_depth_le_16,1.0,mm,S8,p.432 FC/WFC,labelled
+flat_depth_le_40,2.0,mm,S8,p.432 FC/WFC,labelled
+flat_depth_gt_40,3.0,mm,S8,p.432 FC/WFC,labelled
+lkc_tol_lt_200,0.03,mm,S8,p.432,labelled
+lkc_tol_lt_500,0.05,mm,S8,p.432,labelled
+lkc_tol_ge_500,0.1,mm,S8,p.432,labelled
+step_f_min,2,mm,S30,p.437 F column,labelled
+step_f_max_factor,4,x P,S30,p.437 F column (2<=F<=Px4),labelled
+lfc_depth_le_16,1,mm,S30,p.437 LFC table (P 6-16),labelled
+lfc_depth_gt_16,2,mm,S30,p.437 LFC table (P 20-40 and 41~),labelled
+lkc_min_d_minus_p,2,mm,S30,p.437 LKC note (not applicable when D-P<=2),labelled
+md_tap_factor,3,x M,S30,p.437 MD (effective tap length M x 3),labelled
+md_d_min,12,mm,S30,p.437 MD application condition,labelled
+md_d_max,30,mm,S30,p.437 MD application condition,labelled
+md_m_min,6,mm,S30,p.437 MD application condition,labelled
+md_m_max,20,mm,S30,p.437 MD application condition,labelled
+d_list,3|4|5|6|8|10|12|13|15|16|20|25|30|35|40|50,,S8,p.432 spec table,labelled
+keys_tap,4|5|6|8|10|12|13|15|16|20|25|30|35|40|50,,S8;S30,p.433-438 tap,labelled
+keys_tap_jc,6|8|10|12|13|15|16|20|25|30|35|40|50,,S8;S30,p.433-438 tap_jc,labelled
+keys_tap_jz,6|8|10|12|13|15|16|20|25|30|35|40|50,,S8;S30,p.433-438 tap_jz,labelled
+keys_tap_jw,4|5|6|8|10|12|13|15|16|20|25|30|35|40|50,,S8;S30,p.433-438 tap_jw,labelled
+keys_stepped_pg,8|10|12|13|15|16|20|25|30,,S8;S30,p.433-438 stepped_pg,labelled
+keys_stepped_ph,8|10|12|13|15|16|20|25|30,,S8;S30,p.433-438 stepped_ph,labelled
+page_straight,432,,S8;S30,p.432,labelled
+page_T,433,,S8;S30,p.433,labelled
+page_C,434,,S8;S30,p.434,labelled
+page_Z,435,,S8;S30,p.435,labelled
+page_W,436,,S8;S30,p.436,labelled
+page_PG,437,,S8;S30,p.437,labelled
+page_PH,438,,S8;S30,p.438,labelled

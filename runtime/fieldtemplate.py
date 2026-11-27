@@ -1,4 +1,4 @@
-"""Reference implementation of SolidCraft's generator field templates (docs/formats/generator.md section 3), until SolidCraft ships its own.
+r"""Reference implementation of SolidCraft's generator field templates (docs/formats/generator.md section 3), until SolidCraft ships its own.
 
     t = Template.parse("MGN{size: int 1..99}{block: C|H}[E:special]{n: int 1..9}R{length: int 1..9999}")
     t.match("MGN 12 h 2 R300")  -> {"size": 12, "block": "H", "special": False, "n": 2, "length": 300}   (None when it does not match)
@@ -7,7 +7,12 @@
 Elements: literals; {name} (a choice listed in `choices`), {name: a|b|c} (longest listed value that fits), {name: C=standard, H=heavy}
 (letter -> value; printing writes the letter), {name: int LO..HI}, {name: decimal LO..HI [step S] [digits D]}, {name: text MIN..MAX}
 (characters from the escape class), [optional part] (fields in it are absent -> None / their default), [E:flag] (a literal that sets a
-boolean). A text field may carry its own escape class after the length: {name: text 1..80 [A-Za-z0-9-]} (else the template's `escape`, else
+boolean), `\-` (a REQUIRED separator: the character must be present exactly as written, so `E-SFJ12\-5` reads `E-SFJ12-5` and not `E-SFJ125`),
+{name: bag(M:num, F:int, LKC)} (an unordered option bag: tokens each preceded by a `-`, in any order and any number of times, each token one of
+the listed options with an optional argument (`int` = digits, `num` = digits and at most one decimal digit; no argument = a bare flag), every other
+token kept as the option `?` with its raw text; the value is the ordered list `[[name, argument text | null], ...]`, so the script can reproduce
+the refusals that depend on order and repeats; the doc's `set(...)` is the same grammar with each option at most once and an object value, which
+cannot say which of two `A` arguments belongs to which option). A text field may carry its own escape class after the length: {name: text 1..80 [A-Za-z0-9-]} (else the template's `escape`, else
 any character but a separator). Separators " -_/." and case are ignored when parsing: they are skipped between elements (never inside a
 text field whose class allows them), printing uses the template's own spelling. Matching backtracks, longest value first, the first complete
 match wins; limits as the doc: code <= 128 characters, template <= 256, 32 fields, 20000 steps.
@@ -66,6 +71,12 @@ class _Field:
             self.step = float(m.group(3)) if m.group(3) else None; self.digits = int(m.group(4)) if m.group(4) else None
         elif m := re.fullmatch(r"text\s+(\d+)\.\.(\d+)(?:\s+(\[[^\]]+\]))?", s):
             self.kind = "text"; self.lo, self.hi = int(m.group(1)), int(m.group(2)); self.cls = _charclass(m.group(3)) if m.group(3) else None
+        elif m := re.fullmatch(r"bag\((.*)\)", s):
+            self.kind = "bag"; self.opts = {}
+            for part in m.group(1).split(","):
+                nm, _, arg = part.strip().partition(":")
+                if arg not in ("", "int", "num"): raise TemplateError(f"bag option {nm!r}: argument must be int or num")
+                self.opts[nm.strip().upper()] = arg or None
         elif "=" in s:
             self.kind = "map"; self.map = {}
             for part in s.split(","):
@@ -99,6 +110,22 @@ class _Field:
                     v = float(s)
                     if self.lo <= v <= self.hi and (not self.step or abs((v - self.lo) / self.step - round((v - self.lo) / self.step)) < 1e-9):
                         yield v, pos + ln
+        elif self.kind == "bag":
+            items, p = [], pos
+            while p < len(text) and text[p] == "-":
+                m = re.compile(r"[A-Z0-9.]+").match(text, p + 1)
+                if not m: return                      # a dangling "-" is not a token: no match
+                tok = m.group(0); p = m.end()
+                for nm in sorted(self.opts, key=len, reverse=True):
+                    arg = self.opts[nm]
+                    if not tok.startswith(nm): continue
+                    rest = tok[len(nm):]
+                    if arg is None and rest == "": items.append([nm, None]); break
+                    if arg == "int" and re.fullmatch(r"\d+", rest): items.append([nm, rest]); break
+                    if arg == "num" and re.fullmatch(r"\d+(?:\.\d)?", rest): items.append([nm, rest]); break
+                else:
+                    items.append(["?", tok])
+            yield items, p
         elif self.kind == "text":
             allowed = self.cls if self.cls is not None else esc
             n = 0
@@ -125,6 +152,12 @@ class _Field:
         if self.kind == "decimal":
             if not self.lo <= value <= self.hi: raise ValueError(f"field {self.name}: {value!r} is outside {self.lo}..{self.hi}")
             return f"{value:.{self.digits}f}" if self.digits is not None else f"{value:g}"
+        if self.kind == "bag":
+            out = ""
+            for nm, arg in value:
+                if nm != "?" and nm.upper() not in self.opts: raise ValueError(f"field {self.name}: {nm!r} is not one of {list(self.opts)}")
+                out += "-" + (arg if nm == "?" else nm + (arg if arg is not None else ""))
+            return out
         if self.kind == "text":
             if not (self.lo <= len(str(value)) <= self.hi): raise ValueError(f"field {self.name}: text length outside {self.lo}..{self.hi}")
             return str(value)
@@ -189,7 +222,7 @@ class Template:
                 if n[2]: a[n[2]] = True
                 return run(nodes, i + 1, p, a, k)
             if n[0] == "field":
-                for v, p in n[1].options(text, skip(pos), self.escape):
+                for v, p in n[1].options(text, pos if n[1].kind == "bag" else skip(pos), self.escape):
                     r = run(nodes, i + 1, p, {**acc, n[1].name: v}, k)
                     if r is not None: return r
                 return None

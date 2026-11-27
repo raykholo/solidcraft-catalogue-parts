@@ -1,0 +1,16 @@
+D,lmin,lmax,m_options,source,page,status
+4,20,300,2,S8,p.433 table and figure,labelled
+5,20,400,2.6|3,S8,p.433 table and figure,labelled
+6,20,800,3,S8,p.433 table and figure,labelled
+8,20,1000,3|4|5,S8,p.433 table and figure,labelled
+10,20,1000,3|4|5|6,S8,p.433 table and figure,labelled
+12,20,1200,4|5|6|8,S8,p.433 table and figure,labelled
+13,25,1200,4|5|6|8,S8,p.433 table and figure,labelled
+15,25,1200,4|5|6|8|10,S8,p.433 table and figure,labelled
+16,30,1200,4|5|6|8|10,S8,p.433 table and figure,labelled
+20,30,1200,4|5|6|8|10|12,S8,p.433 table and figure,labelled
+25,35,1200,4|5|6|8|10|12|16,S8,p.433 table and figure,labelled
+30,35,1500,6|8|10|12|16|20,S8,p.433 table and figure,labelled
+35,35,1500,8|10|12|16|20|24,S8,p.433 table and figure,labelled
+40,50,1500,10|12|16|20|24|30,S8,p.433 table and figure,labelled
+50,65,1500,10|12|16|20|24|30,S8,p.433 table and figure,labelled

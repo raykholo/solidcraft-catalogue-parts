@@ -1,0 +1,113 @@
+format = "solidcraft-generator/2"
+id = "sfj-shaft"
+name = "MISUMI Economy Series linear shafts (E- prefix): plain, tapped, stepped, flats"
+license = "CC0-1.0"
+model = "sfj-shaft.sc"
+
+[parameters]
+part_type = { type = "text", default = "E-PSFJ" }
+d = { type = "int", min = 0, max = 99 }
+length = { type = "decimal", min = 10, max = 1500, step = 0.1, unit = "mm" }
+
+# one template for the ordering code, a catch-all behind it so that the script gives the 'expected ...' refusal of the Python generator
+[[template]]
+pattern = 'E\-{type: text 1..10 [A-Z]}{d: int 0..99}\-{length: decimal}{opts: bag(M:num, N:num, MD:num, F:int, P:int, T:int, SC:int, SX:int, WSC:int, X:int, FC:int, WFC:int, LFC:int, A:int, E:int, LKC)}'
+
+[[template]]
+pattern = '{raw: text 1..128 [A-Za-z0-9._ /-]}'
+
+[rows."3"]
+source = "MISUMI Economy Series catalogue 2025 (sources.toml S8), p.432 spec table"
+page = "p.432 spec table"
+status = "verified"
+note = "diameter row: g7 / f8 limits, flat depth and wrench flat of this D; the options are parameters"
+
+[rows."4"]
+source = "MISUMI Economy Series catalogue 2025 (sources.toml S8), p.432 spec table"
+page = "p.432 spec table"
+status = "verified"
+note = "diameter row: g7 / f8 limits, flat depth and wrench flat of this D; the options are parameters"
+
+[rows."5"]
+source = "MISUMI Economy Series catalogue 2025 (sources.toml S8), p.432 spec table"
+page = "p.432 spec table"
+status = "verified"
+note = "diameter row: g7 / f8 limits, flat depth and wrench flat of this D; the options are parameters"
+
+[rows."6"]
+source = "MISUMI Economy Series catalogue 2025 (sources.toml S8), p.432 spec table"
+page = "p.432 spec table"
+status = "verified"
+note = "diameter row: g7 / f8 limits, flat depth and wrench flat of this D; the options are parameters"
+
+[rows."8"]
+source = "MISUMI Economy Series catalogue 2025 (sources.toml S8), p.432 spec table"
+page = "p.432 spec table"
+status = "verified"
+note = "diameter row: g7 / f8 limits, flat depth and wrench flat of this D; the options are parameters"
+
+[rows."10"]
+source = "MISUMI Economy Series catalogue 2025 (sources.toml S8), p.432 spec table"
+page = "p.432 spec table"
+status = "verified"
+note = "diameter row: g7 / f8 limits, flat depth and wrench flat of this D; the options are parameters"
+
+[rows."12"]
+source = "MISUMI Economy Series catalogue 2025 (sources.toml S8), p.432 spec table"
+page = "p.432 spec table"
+status = "verified"
+note = "diameter row: g7 / f8 limits, flat depth and wrench flat of this D; the options are parameters"
+
+[rows."13"]
+source = "MISUMI Economy Series catalogue 2025 (sources.toml S8), p.432 spec table"
+page = "p.432 spec table"
+status = "verified"
+note = "diameter row: g7 / f8 limits, flat depth and wrench flat of this D; the options are parameters"
+
+[rows."15"]
+source = "MISUMI Economy Series catalogue 2025 (sources.toml S8), p.432 spec table"
+page = "p.432 spec table"
+status = "verified"
+note = "diameter row: g7 / f8 limits, flat depth and wrench flat of this D; the options are parameters"
+
+[rows."16"]
+source = "MISUMI Economy Series catalogue 2025 (sources.toml S8), p.432 spec table"
+page = "p.432 spec table"
+status = "verified"
+note = "diameter row: g7 / f8 limits, flat depth and wrench flat of this D; the options are parameters"
+
+[rows."20"]
+source = "MISUMI Economy Series catalogue 2025 (sources.toml S8), p.432 spec table"
+page = "p.432 spec table"
+status = "verified"
+note = "diameter row: g7 / f8 limits, flat depth and wrench flat of this D; the options are parameters"
+
+[rows."25"]
+source = "MISUMI Economy Series catalogue 2025 (sources.toml S8), p.432 spec table"
+page = "p.432 spec table"
+status = "verified"
+note = "diameter row: g7 / f8 limits, flat depth and wrench flat of this D; the options are parameters"
+
+[rows."30"]
+source = "MISUMI Economy Series catalogue 2025 (sources.toml S8), p.432 spec table"
+page = "p.432 spec table"
+status = "verified"
+note = "diameter row: g7 / f8 limits, flat depth and wrench flat of this D; the options are parameters"
+
+[rows."35"]
+source = "MISUMI Economy Series catalogue 2025 (sources.toml S8), p.432 spec table"
+page = "p.432 spec table"
+status = "verified"
+note = "diameter row: g7 / f8 limits, flat depth and wrench flat of this D; the options are parameters"
+
+[rows."40"]
+source = "MISUMI Economy Series catalogue 2025 (sources.toml S8), p.432 spec table"
+page = "p.432 spec table"
+status = "verified"
+note = "diameter row: g7 / f8 limits, flat depth and wrench flat of this D; the options are parameters"
+
+[rows."50"]
+source = "MISUMI Economy Series catalogue 2025 (sources.toml S8), p.432 spec table"
+page = "p.432 spec table"
+status = "verified"
+note = "diameter row: g7 / f8 limits, flat depth and wrench flat of this D; the options are parameters"
