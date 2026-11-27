@@ -46,7 +46,7 @@ COLUMNS = [n for n, *_ in PARAMS]
 RT = [3, 4, 5, 6]                                   # ring / bearing clamp thread sizes
 UA = [3, 4, 5, 6, 8, 10]                            # urethane slit types: tapped half, thread sizes
 US = [4, 6]                                         # urethane split type
-F_RING = ["Collar", "Boss", "Bore", "Slit"] + [f"RThr_M{m}_{k}" for m in RT for k in (1, 2)] + ["FixThru1", "FixThru2", "FixCb1", "FixCb2"]
+F_RING = ["Collar", "Boss", "Bore", "Slit"] + [f"RThr_M{m}" for m in RT] + ["FixThru1", "FixThru2", "FixCb1", "FixCb2"] + [f"RThrS_M{m}_{k}" for m in RT for k in (1, 2)]
 F_URE = ["Damper", "DamperBore", "UClearA", "UBoxA", "UCylA"] + [f"UThrA_M{m}" for m in UA] + ["UClearB", "UBoxB", "UCylB"] + \
         [f"UThrAs_M{m}" for m in US] + [f"UThrBs_M{m}" for m in US]
 FEATS = F_RING + F_URE
@@ -96,8 +96,8 @@ def alive(v):
     kind, split, fix, m = int(v["kind"]), int(v["split"]), int(v["fix"]), int(v["msize"])
     on = {"Collar", "Bore", "Slit"}
     if kind == 1: on.add("Boss")
-    if kind != 2: on.add(f"RThr_M{m}_1")
-    if kind == 0 and split: on.add(f"RThr_M{m}_2")
+    if kind != 2 and not split: on.add(f"RThr_M{m}")
+    if kind == 0 and split: on |= {f"RThrS_M{m}_1", f"RThrS_M{m}_2"}
     if fix == 1: on |= {"FixThru1", "FixThru2"}
     if fix == 2: on |= {"FixCb1", "FixCb2"}
     if kind == 2:
@@ -139,12 +139,17 @@ def build(out: Path):
     add("solid.box", length="cut_w", width="(1 + split) * (od / 2 + 1 mm)", height="ht + 2 mm", corner=["-cut_w / 2", "-od / 2 - 1 mm", "z0 - 1 mm"],
         operation="cut", targets=[STEEL], name="Slit")
     for m in RT:
-        for k, y in ((1, "yh1"), (2, "yh2")):
-            hole(f"RThr_M{m}_{k}", position=["xh", y, "zc"], direction=[-1, 0, 0], thread=f"M{m}"); only_suppressed(f"RThr_M{m}_{k}")
+        hole(f"RThr_M{m}", position=["xh", "yh1", "zc"], direction=[-1, 0, 0], thread=f"M{m}"); only_suppressed(f"RThr_M{m}")
     for k, sx in ((1, ""), (2, "-")):
         hole(f"FixThru{k}", position=[f"{sx}p_fix / 2", 0, "ht"], diameter="s_fix"); only_suppressed(f"FixThru{k}")
     for k, sx in ((1, ""), (2, "-")):
         hole(f"FixCb{k}", position=[f"{sx}p_fix / 2", 0, "ht"], diameter="d1f", type="counterbore", cb_diameter="d2f", cb_depth="tcb"); only_suppressed(f"FixCb{k}")
+    # the split ring: its outer face is cut in two by the gap, and a hole picks the face it sits on, so the two clamp screws of the split type are their own
+    # features, drawn in the split state (a hole drawn on the slit ring does not survive the switch to the gap: "the reference no longer exists as it was picked")
+    add("parameters.change", changes={"split": "1", "cut_w": cell(SPLIT_GAP)})
+    for m in RT:
+        for k, y in ((1, "yh1"), (2, "yh2")):
+            hole(f"RThrS_M{m}_{k}", position=["xh", y, "zc"], direction=[-1, 0, 0], thread=f"M{m}"); only_suppressed(f"RThrS_M{m}_{k}")
     # ---- urethane state: the standard D30 collar, then its split form ---------------------------------------------------------
     u30 = ure[("slit", 30)]
     def state(u, split):
@@ -192,8 +197,8 @@ def build(out: Path):
         rule(f"{f}-off", f"{f} off", {"type": "not", "condition": cond}, {"type": "drive_suppression", "feature": ids[f], "value": True})
     sup("Boss", pc("kind", "eq", 1))
     for m in RT:
-        sup(f"RThr_M{m}_1", allof(pc("kind", "ne", 2), pc("msize", "eq", m)))
-        sup(f"RThr_M{m}_2", allof(pc("kind", "eq", 0), pc("split", "eq", 1), pc("msize", "eq", m)))
+        sup(f"RThr_M{m}", allof(pc("kind", "ne", 2), pc("split", "eq", 0), pc("msize", "eq", m)))
+        for k in (1, 2): sup(f"RThrS_M{m}_{k}", allof(pc("kind", "eq", 0), pc("split", "eq", 1), pc("msize", "eq", m)))
     for f in ("FixThru1", "FixThru2"): sup(f, pc("fix", "eq", 1))
     for f in ("FixCb1", "FixCb2"): sup(f, pc("fix", "eq", 2))
     for f in ("Damper", "DamperBore", "UClearA", "UBoxA", "UCylA"): sup(f, pc("kind", "eq", 2))
