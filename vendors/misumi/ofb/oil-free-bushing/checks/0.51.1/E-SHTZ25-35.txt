@@ -1,0 +1,17 @@
+== E-SHTZ25-35
+PASS  one closed body                             spec         1  got          1           [S16]
+PASS  overall length L (X)                        spec        35  got    35.0000  +-0.005  [S16 p.520 L]
+PASS  flange extent H (bbox Y)                    spec        54  got    54.0000  +-0.005  [S16 p.520 H]
+PASS  flange extent H (bbox Z)                    spec        54  got    54.0000  +-0.005  [S16 p.520 H]
+PASS  outside cylinder D 33                       spec       yes  got        yes           [S16 p.520 D]
+PASS  bore cylinder d 25                          spec       yes  got        yes           [S16 p.520 d]
+PASS  tolerances written in the part description  spec       yes  got        yes           [S16 p.520] echoed, not drawn
+PASS  flange thickness T = 6                      spec       yes  got        yes           [S16 p.520 T]
+PASS  flange cylinder H 54                        spec       yes  got        yes           [S16 p.520 H]
+PASS  4 mounting holes d1 5.5                     spec         4  got          4           [S16 p.520 d1]
+PASS  4 counterbores d2 9                         spec         4  got          4           [S16 p.520 d2]
+PASS  holes on P.C.D.                             spec       yes  got        yes           [S16 p.520 P.C.D.]
+PASS  counterbore floors at depth t = 3.7         spec         4  got          4           [S16 p.520 t] counterbore on the outer flange face: figure reading
+PASS  part number metadata                        spec E-SHTZ25-35  got E-SHTZ25-35           [-]
+PASS  design part number                          spec E-SHTZ25-35  got E-SHTZ25-35           [-]
+15/15 passed

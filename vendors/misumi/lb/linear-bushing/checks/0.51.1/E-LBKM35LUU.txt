@@ -1,0 +1,18 @@
+== E-LBKM35LUU
+PASS  one closed body                             spec         1  got          1           [S11]
+PASS  overall length L (X)                        spec       135  got   135.0000  +-0.005  [S11 p.468 L]
+PASS  flange extent H (bbox Y)                    spec        82  got    82.0000  +-0.005  [S11 p.468 H]
+PASS  flange extent H (bbox Z)                    spec        82  got    82.0000  +-0.005  [S11 p.468 H]
+PASS  outside cylinder D 52                       spec       yes  got        yes           [S11 p.468 D]
+PASS  bore cylinder dr 35                         spec       yes  got        yes           [S11 p.468 dr]
+PASS  tolerances written in the part description  spec       yes  got        yes           [S11 p.468] echoed, not drawn
+PASS  flange thickness T = 10                     spec       yes  got        yes           [S11 p.468 T]
+PASS  square flange flats                         spec         4  got          4           [S11 p.468 W]
+PASS  flats at W/2 from the axis                  spec       yes  got        yes           [S11 p.468 W]
+PASS  4 mounting holes d 6.6                      spec         4  got          4           [S11 p.468 d]
+PASS  4 counterbores d1 11                        spec         4  got          4           [S11 p.468 d1]
+PASS  holes on P.C.D.                             spec       yes  got        yes           [S11 p.468 P.C.D.]
+PASS  counterbore floors at depth t = 6.1         spec         4  got          4           [S11 p.468 t] counterbore side: figure reading
+PASS  part number metadata                        spec E-LBKM35LUU  got E-LBKM35LUU           [-]
+PASS  design part number                          spec E-LBKM35LUU  got E-LBKM35LUU           [-]
+16/16 passed

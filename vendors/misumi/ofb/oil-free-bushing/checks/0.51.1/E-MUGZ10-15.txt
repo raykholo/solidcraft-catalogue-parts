@@ -1,0 +1,14 @@
+== E-MUGZ10-15
+PASS  one closed body                                spec         1  got          1           [S16]
+PASS  overall length L (X)                           spec        15  got    15.0000  +-0.005  [S16 p.516 L]
+PASS  flange extent H (bbox Y)                       spec        25  got    25.0000  +-0.005  [S16 p.516 H]
+PASS  flange extent H (bbox Z)                       spec        25  got    25.0000  +-0.005  [S16 p.516 H]
+PASS  outside cylinder D 16                          spec       yes  got        yes           [S16 p.516 D]
+PASS  bore cylinder d 10                             spec       yes  got        yes           [S16 p.516 d]
+PASS  tolerances written in the part description     spec       yes  got        yes           [S16 p.516] echoed, not drawn
+PASS  flange cylinder H 25                           spec       yes  got        yes           [S16 p.516 H]
+PASS  flange thickness t = 3                         spec       yes  got        yes           [S16 p.516 t]
+PASS  volume = pi/4 ((D^2 - d^2) L + (H^2 - D^2) t)  spec      2707  got  2707.2675  +-0.736311 [derived]
+PASS  part number metadata                           spec E-MUGZ10-15  got E-MUGZ10-15           [-]
+PASS  design part number                             spec E-MUGZ10-15  got E-MUGZ10-15           [-]
+12/12 passed

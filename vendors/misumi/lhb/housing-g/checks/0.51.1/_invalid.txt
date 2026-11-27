@@ -1,0 +1,6 @@
+E-LBHG12-30	CodeError: E-LBHG12-30: centre height H 30 is not offered for dr 12; the choices are [15, 20, 25] (p.491)
+E-LBHG30-25	CodeError: E-LBHG30-25: centre height H 25 is not offered for dr 30; the choices are [30, 40, 50] (p.491)
+E-LBHG12	CodeError: 'E-LBHG12': expected E-LBHG<dr>-<H> (single) or E-LBHGW<dr>-<H> (double), H the centre height, e.g. E-LBHG12-15, E-LBHGW30-40
+E-LBHGW16-15	CodeError: E-LBHGW16-15: centre height H 15 is not offered for dr 16; the choices are [20, 25, 30] (p.491)
+E-LBHG10-15	CodeError: E-LBHG10-15: dr 10 is not a catalogue size; E-LBHG / E-LBHGW are offered for dr [12, 16, 20, 25, 30] (p.491)
+E-LBHG12-15-P	CodeError: 'E-LBHG12-15-P': expected E-LBHG<dr>-<H> (single) or E-LBHGW<dr>-<H> (double), H the centre height, e.g. E-LBHG12-15, E-LBHGW30-40

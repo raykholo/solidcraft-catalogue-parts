@@ -1,0 +1,28 @@
+== NFSB5-4040-250
+PASS  one closed body                                                spec         1  got          1           [S1 p.530]
+PASS  overall width (Y)                                              spec        40  got    40.0000  +-0.005  [S1 p.530 '40']
+PASS  overall height (Z)                                             spec        40  got    40.0000  +-0.005  [S1 p.530 '40']
+PASS  length (X)                                                     spec       250  got   250.0000  +-0.005  [S1 p.530 L range] spec tol +-0.5
+PASS  slot mouth width                                               spec         6  got     6.0000  +-0.005  [S1 p.530 '6']
+PASS  slot cavity width                                              spec        12  got    12.0000  +-0.005  [S1 p.530 '12']
+PASS  lip thickness                                                  spec         2  got     2.0000  +-0.005  [S1 p.530 '2']
+PASS  bore block width (slot floor to inner face)                    spec         8  got     8.0000  +-0.005  [S1 p.530 '8']
+PASS  web thickness (flank to void)                                  spec       1.5  got     1.5000  +-0.005  [S1 p.530 '1.5']
+PASS  slot depth (outer face to floor)                               spec         6  got     6.0000  +-0.005  [S1 p.530 depth '6']
+PASS  cross-section area vs drawing                                  spec     472.4  got   472.4316  +-0.472433 [S1 p.530 drawing] area from the dimensions
+PASS  cross-section area vs published 472                            spec       472  got   472.4316  +-1.416  [S22 p.530] published to 3 figures: band 0.3 % of the value, never below half a unit (0.5 mm2)
+PASS  mass per metre vs published 1.28 kg/m                          spec      1.28  got     1.2803  +-0.005  [S22 p.530] area x 2.71 g/cm3 (aluminium extrusion alloy, not printed); band is half a unit of the printed digit
+PASS  moment of inertia (smaller) of the profile vs published        spec  8.89e+04  got 88658.0370  +-889    [S22 p.530] computed from the profile geometry (sources.toml 1900-1999); 1 % band, the table prints 3 figures
+PASS  moment of inertia (larger) of the profile vs published         spec  8.89e+04  got 88658.0370  +-889    [S22 p.530] computed from the profile geometry (sources.toml 1900-1999); 1 % band, the table prints 3 figures
+PASS  polar moment Ix + Iy vs published (SolidCraft inertia tensor)  spec 1.778e+05  got 177149.7924  +-1778   [S22 p.530] I_xx / (rho L) from component.properties; mesh integral, planar faces exact, bores within 0.1 %
+PASS  bore O4.2 at (-10, -10)                                        spec       yes  got        yes           [S1 p.530]
+PASS  bore O4.2 at (-10, 10)                                         spec       yes  got        yes           [S1 p.530]
+PASS  bore O4.2 at (10, -10)                                         spec       yes  got        yes           [S1 p.530]
+PASS  bore O4.2 at (10, 10)                                          spec       yes  got        yes           [S1 p.530]
+PASS  bores O4.2 (count)                                             spec         4  got          4           [S1 p.530]
+PASS  outer corners R1 (count)                                       spec         4  got          4           [S1 p.530] '4-R1'
+PASS  lip-tip rounds R0.3 (count)                                    spec      >=16  got         16           [S1 p.530 drawing] measured
+PASS  volume = area x L                                              spec 1.181e+05  got 118107.9013  +-0.5    [derived]
+PASS  part number metadata                                           spec NFSB5-4040-250  got NFSB5-4040-250           [-]
+PASS  design part number                                             spec NFSB5-4040-250  got NFSB5-4040-250           [-]
+26/26 passed

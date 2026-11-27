@@ -1,0 +1,25 @@
+== E-STHWR50
+PASS  one closed body                                                                                      spec         1  got          1           [S52 p.539 Slit Standard table]
+PASS  overall length (bbox Z)                                                                              spec        65  got    65.0000  +-0.005  [S52 p.539 Slit Standard table L]
+PASS  flange thickness T = 12                                                                              spec       yes  got        yes           [S52 p.539 Slit Standard table T]
+PASS  shaft hole O50 (axis along Z, on the axis)                                                           spec       yes  got        yes           [S52 p.539 Slit Standard table D]
+PASS  D tolerance (H8) upper/lower                                                                         spec (0.039, 0)  got (0.039, 0)           [S52 p.539 Slit Standard table DH8] echoed into the description
+PASS  tolerance written in the part description                                                            spec       yes  got        yes           [S52 p.539 Slit Standard table DH8]
+PASS  sleeve outside diameter D1 = 85                                                                      spec       yes  got        yes           [S52 p.539 Slit Standard table D1]
+PASS  Thickness (N) = (D1 - D) / 2                                                                         spec      17.5  got    17.5000  +-1e-09  [S52 p.539 Slit Standard table N, D1, D] derived from the table: N is the sleeve wall
+PASS  flange diameter H (bbox X)                                                                           spec       119  got   119.0000  +-0.005  [S52 p.539 Slit Standard table H]
+PASS  flange diameter H (bbox Y)                                                                           spec       119  got   119.0000  +-0.005  [S52 p.539 Slit Standard table H]
+PASS  flange cylinder O119                                                                                 spec       yes  got        yes           [S52 p.539 Slit Standard table H]
+PASS  mounting holes O9: count                                                                             spec         4  got          4           [S52 p.539 Slit Standard table 4-d / 2-d / 2-Hole / 4-Hole]
+PASS  mounting hole positions (P)                                                                          spec       yes  got        yes           [S52 p.539 Slit Standard table P]
+PASS  groove: start z = 41                                                                                 spec       yes  got        yes           [S52 p.539 Slit Standard table B, S1, L] depth is not printed
+PASS  groove: width 2 (end z = 43, ring B = 22 to the end)                                                 spec       yes  got        yes           [S52 p.539 Slit Standard table B, S1]
+PASS  radial slit width 1.5                                                                                spec       yes  got        yes           [S52 p.539 Slit Standard table S]
+PASS  clamp screw counterbore floor Y = 16 from the slit centre                                            spec       yes  got        yes           [S52 p.539 Slit Standard table Y]
+PASS  clamp screw clearance hole O11 on the clamp axis (y = X = 32, z = 54)                                spec       yes  got        yes           [S52 p.539 Slit Standard table d2, X, B]
+PASS  clamp screw counterbore O18 on the clamp axis (y = X = 32, z = 54)                                   spec       yes  got        yes           [S52 p.539 Slit Standard table d1, X, B]
+PASS  clamp screw thread M10 count                                                                         spec         1  got          1           [S52 p.539 Slit Standard table M]
+PASS  clamp screw thread axes at y = X = 32, z = 54 (B / 2, or B / 4 and 3 B / 4 on the slit long sleeve)  spec       yes  got        yes           [S52 p.539 Slit Standard table X, B]
+PASS  part number metadata                                                                                 spec E-STHWR50  got  E-STHWR50           [-]
+PASS  design part number                                                                                   spec E-STHWR50  got  E-STHWR50           [-]
+23/23 passed

@@ -1,0 +1,26 @@
+== E-PSFPH8-200-F5-P6-M3-T5-SC0
+PASS  one closed body                            spec         1  got          1           [S30]
+PASS  overall length (Y) = F + L + T             spec       210  got   210.0000  +-0.005  [S30 p.438 L] 1 mm steps
+PASS  diameter D (bbox Y)                        spec         8  got     8.0000  +-0.005  [S30 p.438 D8]
+PASS  diameter D (bbox Z)                        spec         8  got     8.0000  +-0.005  [S30 p.438 D8]
+PASS  cylinder face O8                           spec       yes  got        yes           [S30 p.438]
+PASS  D tolerance g7 upper/lower                 spec (-0.005, -0.02)  got (-0.005, -0.02)           [S8 p.432 spec table] echoed into the description
+PASS  tolerance written in the part description  spec       yes  got        yes           [S8 p.432]
+PASS  L inside the table range 25-996            spec       yes  got        yes           [S30 p.438]
+PASS  step diameter P6 within 6-6                spec       yes  got        yes           [S30 p.438 P column]
+PASS  step cylinder face O6                      spec       yes  got        yes           [S30 p.438 P]
+PASS  F within 2 <= F <= P x 4                   spec       yes  got        yes           [S30 p.438 F column]
+PASS  overall length (Y) 210 <= 800              spec       yes  got        yes           [S30 p.438 (Y) Max.]
+PASS  left step end face at x = -5               spec       yes  got        yes           [S30 p.438 F]
+PASS  shoulder face at x = 0                     spec       yes  got        yes           [S30 p.438 L]
+PASS  main body ends at x = 200                  spec       yes  got        yes           [S30 p.438 L]
+PASS  right step end face at x = 205             spec       yes  got        yes           [S30 p.438 T]
+PASS  left end: M3 thread, depth 6, x -5..1      spec       yes  got        yes           [S30 p.438 M / N selection] tap depth M x 2 (MD: M x 3)
+PASS  right end: M3 thread, depth 6, x 199..205  spec       yes  got        yes           [S30 p.438 M / N selection] tap depth M x 2 (MD: M x 3)
+PASS  flat 1: wrench flat faces (pair)           spec         2  got          2           [S30 p.438 SC/WSC/SX]
+PASS  flat 1: width across flats W               spec         7  got     7.0000  +-0.005  [S8 p.432 W table]
+PASS  flat 1: start x = 0                        spec       yes  got        yes           [S30 p.438 SC/FC/A]
+PASS  flat 1: end x = 8                          spec       yes  got        yes           [S30 p.438 l1/FC]
+PASS  part number metadata                       spec E-PSFPH8-200-F5-P6-M3-T5-SC0  got E-PSFPH8-200-F5-P6-M3-T5-SC0           [-]
+PASS  design part number                         spec E-PSFPH8-200-F5-P6-M3-T5-SC0  got E-PSFPH8-200-F5-P6-M3-T5-SC0           [-]
+24/24 passed

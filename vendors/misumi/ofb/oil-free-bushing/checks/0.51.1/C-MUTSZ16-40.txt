@@ -1,0 +1,18 @@
+== C-MUTSZ16-40
+PASS  one closed body                             spec         1  got          1           [S16]
+PASS  overall length L (X)                        spec        40  got    40.0000  +-0.005  [S16 p.515 L]
+PASS  flange extent H (bbox Y)                    spec        40  got    40.0000  +-0.005  [S16 p.515 H]
+PASS  flange extent H (bbox Z)                    spec        40  got    40.0000  +-0.005  [S16 p.515 H]
+PASS  outside cylinder D 22                       spec       yes  got        yes           [S16 p.515 D]
+PASS  bore cylinder d 16                          spec       yes  got        yes           [S16 p.515 d]
+PASS  tolerances written in the part description  spec       yes  got        yes           [S16 p.515] echoed, not drawn
+PASS  flange thickness T = 5                      spec       yes  got        yes           [S16 p.515 T]
+PASS  square flange flats                         spec         4  got          4           [S16 p.515 W]
+PASS  flats at W/2 from the axis                  spec       yes  got        yes           [S16 p.515 W]
+PASS  4 mounting holes d1 4.5                     spec         4  got          4           [S16 p.515 d1]
+PASS  4 counterbores d2 7.5                       spec         4  got          4           [S16 p.515 d2]
+PASS  holes on P.C.D.                             spec       yes  got        yes           [S16 p.515 P.C.D.]
+PASS  counterbore floors at depth t = 3           spec         4  got          4           [S16 p.515 t] counterbore on the outer flange face: figure reading
+PASS  part number metadata                        spec C-MUTSZ16-40  got C-MUTSZ16-40           [-]
+PASS  design part number                          spec C-MUTSZ16-40  got C-MUTSZ16-40           [-]
+16/16 passed

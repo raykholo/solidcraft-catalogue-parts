@@ -1,0 +1,19 @@
+== E-LBH5UU
+PASS  one closed body                             spec         1  got          1           [S13]
+PASS  overall length L (X)                        spec        15  got    15.0000  +-0.005  [S13 p.470 L]
+PASS  flange width D+6/8/10 (bbox Y)              spec        16  got    16.0000  +-0.005  [S13 p.470 width]
+PASS  flange extent H (bbox Z)                    spec        25  got    25.0000  +-0.005  [S13 p.470 H]
+PASS  outside cylinder D 10                       spec       yes  got        yes           [S13 p.470 D]
+PASS  bore cylinder dr 5                          spec       yes  got        yes           [S13 p.470 dr]
+PASS  tolerances written in the part description  spec       yes  got        yes           [S13 p.470] echoed, not drawn
+PASS  flange thickness T = 5                      spec       yes  got        yes           [S13 p.470 T]
+PASS  flange end arcs H 25                        spec       yes  got        yes           [S13 p.470 H]
+PASS  compact flange flats                        spec         2  got          2           [S13 p.470 D+6/8/10]
+PASS  flats at width/2 from the axis              spec       yes  got        yes           [S13 p.470 D+6/8/10]
+PASS  2 mounting holes d 3.5                      spec         2  got          2           [S13 p.470 d]
+PASS  2 counterbores d1 6                         spec         2  got          2           [S13 p.470 d1]
+PASS  holes at A / F                              spec       yes  got        yes           [S13 p.470 A F]
+PASS  counterbore floors at depth t = 3.3         spec         2  got          2           [S13 p.470 t] counterbore side: figure reading
+PASS  part number metadata                        spec  E-LBH5UU  got   E-LBH5UU           [-]
+PASS  design part number                          spec  E-LBH5UU  got   E-LBH5UU           [-]
+17/17 passed

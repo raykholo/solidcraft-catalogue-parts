@@ -1,0 +1,12 @@
+== E-LB6TUU
+PASS  one closed body                             spec         1  got          1           [S11]
+PASS  overall length L (X)                        spec        16  got    16.0000  +-0.005  [S11 p.464 L]
+PASS  outer extent (bbox Y)                       spec        12  got    12.0000  +-0.005  [S11 p.464 D]
+PASS  outer extent (bbox Z)                       spec        12  got    12.0000  +-0.005  [S11 p.464 D]
+PASS  outside cylinder D 12                       spec       yes  got        yes           [S11 p.464 D]
+PASS  bore cylinder dr 6                          spec       yes  got        yes           [S11 p.464 dr]
+PASS  tolerances written in the part description  spec       yes  got        yes           [S11 p.464] echoed, not drawn
+PASS  volume = pi/4 (D^2 - dr^2) L                spec      1357  got  1357.1680  +-0.180956 [derived]
+PASS  part number metadata                        spec  E-LB6TUU  got   E-LB6TUU           [-]
+PASS  design part number                          spec  E-LB6TUU  got   E-LB6TUU           [-]
+10/10 passed

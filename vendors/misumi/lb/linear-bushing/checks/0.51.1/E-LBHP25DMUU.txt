@@ -1,0 +1,20 @@
+== E-LBHP25DMUU
+PASS  one closed body                                 spec         1  got          1           [S13]
+PASS  overall length L (X)                            spec        83  got    83.0000  +-0.005  [S13 p.477 L]
+PASS  flange width D+6/8/10 (bbox Y)                  spec        46  got    46.0000  +-0.005  [S13 p.477 width]
+PASS  flange extent H (bbox Z)                        spec        62  got    62.0000  +-0.005  [S13 p.477 H]
+PASS  outside cylinder D 40                           spec       yes  got        yes           [S13 p.477 D]
+PASS  bore cylinder dr 25                             spec       yes  got        yes           [S13 p.477 dr]
+PASS  tolerances written in the part description      spec       yes  got        yes           [S13 p.477] echoed, not drawn
+PASS  flange thickness T = 8                          spec       yes  got        yes           [S13 p.477 T]
+PASS  flange starts l = 8 from the end of the barrel  spec       yes  got        yes           [S13 p.477 l]
+PASS  flange end arcs H 62                            spec       yes  got        yes           [S13 p.477 H]
+PASS  compact flange flats                            spec         2  got          2           [S13 p.477 D+6/8/10]
+PASS  flats at width/2 from the axis                  spec       yes  got        yes           [S13 p.477 D+6/8/10]
+PASS  4 mounting holes d 5.5                          spec         4  got          4           [S13 p.477 d]
+PASS  4 counterbores d1 9                             spec         4  got          4           [S13 p.477 d1]
+PASS  holes at A / F                                  spec       yes  got        yes           [S13 p.477 A F]
+PASS  counterbore floors at depth t = 5.1             spec         4  got          4           [S13 p.477 t] counterbore side: figure reading
+PASS  part number metadata                            spec E-LBHP25DMUU  got E-LBHP25DMUU           [-]
+PASS  design part number                              spec E-LBHP25DMUU  got E-LBHP25DMUU           [-]
+18/18 passed

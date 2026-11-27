@@ -1,0 +1,19 @@
+== E-LBHS12S
+PASS  one closed body                                   spec         1  got          1           [S14]
+PASS  overall length L (bbox Y)                         spec        85  got    85.0000  +-0.005  [S14 p.490 L]
+PASS  width W (bbox X)                                  spec        28  got    28.0000  +-0.005  [S14 p.490 W]
+PASS  height H (bbox Z)                                 spec        34  got    34.0000  +-0.005  [S14 p.490 H]
+PASS  shaft bore dr 12 (axis along Y)                   spec       yes  got        yes           [S14 p.490 dr] nominal, tolerance echoed in the description
+PASS  bore axis h = 20 above the base                   spec       yes  got        yes           [S14 p.490 h] h +-0.05
+PASS  2 vertical threads M6 (M1)                        spec         2  got          2           [S14 p.490 2-M1]
+PASS  M1 holes L1 = 48 apart                            spec       yes  got        yes           [S14 p.490 L1] x offset is appearance
+PASS  M1 effective length 9.5 from the top face         spec       yes  got        yes           [S14 p.490 M1 (effective length)]
+PASS  2 horizontal threads M5 (M2)                      spec         2  got          2           [S14 p.490 2-M2]
+PASS  M2 holes L2 = 62 apart                            spec       yes  got        yes           [S14 p.490 L2] middle hole of the long type at mid-length is appearance
+PASS  M2 effective length 22, l = 6 below the top face  spec       yes  got        yes           [S14 p.490 M2, l] drawn from the +X face (appearance)
+PASS  2 counterbores d1 = 8                             spec       yes  got        yes           [S14 p.490 d1 x t] side and coaxial placement are appearance
+PASS  counterbore depth t = 6                           spec       yes  got        yes           [S14 p.490 d1 x t]
+PASS  tolerances written in the part description        spec       yes  got        yes           [S14 p.490] echoed, not drawn
+PASS  part number metadata                              spec E-LBHS12S  got  E-LBHS12S           [-]
+PASS  design part number                                spec E-LBHS12S  got  E-LBHS12S           [-]
+17/17 passed

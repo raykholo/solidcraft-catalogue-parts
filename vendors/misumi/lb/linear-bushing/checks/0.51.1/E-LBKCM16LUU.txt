@@ -1,0 +1,20 @@
+== E-LBKCM16LUU
+PASS  one closed body                                  spec         1  got          1           [S13]
+PASS  overall length L (X)                             spec        70  got    70.0000  +-0.005  [S13 p.479 L]
+PASS  flange extent H (bbox Y)                         spec        48  got    48.0000  +-0.005  [S13 p.479 H]
+PASS  flange extent H (bbox Z)                         spec        48  got    48.0000  +-0.005  [S13 p.479 H]
+PASS  outside cylinder D 28                            spec       yes  got        yes           [S13 p.479 D]
+PASS  bore cylinder dr 16                              spec       yes  got        yes           [S13 p.479 dr]
+PASS  tolerances written in the part description       spec       yes  got        yes           [S13 p.479] echoed, not drawn
+PASS  flange thickness T = 6                           spec       yes  got        yes           [S13 p.479 T]
+PASS  flange starts l = 32 from the end of the barrel  spec       yes  got        yes           [S13 p.479 l]
+PASS  flange centred: l + T/2 = L/2                    spec        35  got    35.0000  +-0.005  [S13 p.479 l T L] derived: the printed l, T and L agree
+PASS  square flange flats                              spec         4  got          4           [S13 p.479 W]
+PASS  flats at W/2 from the axis                       spec       yes  got        yes           [S13 p.479 W]
+PASS  4 mounting holes d 4.5                           spec         4  got          4           [S13 p.479 d]
+PASS  4 counterbores d1 7.5                            spec         4  got          4           [S13 p.479 d1]
+PASS  holes on P.C.D.                                  spec       yes  got        yes           [S13 p.479 P.C.D.]
+PASS  counterbore floors at depth t = 4.1              spec         4  got          4           [S13 p.479 t] counterbore side: figure reading
+PASS  part number metadata                             spec E-LBKCM16LUU  got E-LBKCM16LUU           [-]
+PASS  design part number                               spec E-LBKCM16LUU  got E-LBKCM16LUU           [-]
+18/18 passed

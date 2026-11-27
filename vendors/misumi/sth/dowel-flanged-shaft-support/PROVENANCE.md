@@ -6,7 +6,7 @@ Manufacturer names and ordering codes are used only to say what each part is. Th
 
 **Guarantee level: Reviewed**  (levels: Checked = automatic spec check; Reviewed = + independent reviewer; Drawing-matched = + drawing match)
 
-**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.50.0; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
+**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.51.1; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
 
 ## Based on
 
@@ -39,28 +39,28 @@ Sources hash: `sha256:ce8f0008db783702afbd47ff5cb95b732f15774dbdff6be3d28d481179
 ## Verified by
 
 1. **Automatic spec check** (`tools/check`): every code in `codes.txt` is built with solidcraft-cli and every dimension is compared with the datasheet value within the stated tolerance.
-   - SolidCraft 0.50.0: 435 of 435 dimension rows match, over 17 codes.
+   - SolidCraft 0.51.1: 435 of 435 dimension rows match, over 17 codes.
    - CI run: none yet (placeholder `<link to the generator.yml run>`; filled by CI once the repository exists).
 
    | Code | Options | Result | File |
    |------|---------|--------|------|
-   | `E-STHWRBK12` | - | 26/26 | `checks/0.50.0/E-STHWRBK12.txt` |
-   | `E-STHWRBK16` | - | 26/26 | `checks/0.50.0/E-STHWRBK16.txt` |
-   | `E-STHWRBK20` | - | 26/26 | `checks/0.50.0/E-STHWRBK20.txt` |
-   | `E-STHWRBK25` | - | 26/26 | `checks/0.50.0/E-STHWRBK25.txt` |
-   | `E-STHWRBK30` | - | 26/26 | `checks/0.50.0/E-STHWRBK30.txt` |
-   | `E-STHWRK12` | - | 26/26 | `checks/0.50.0/E-STHWRK12.txt` |
-   | `E-STHWRK20` | - | 26/26 | `checks/0.50.0/E-STHWRK20.txt` |
-   | `E-STHWRK30` | - | 26/26 | `checks/0.50.0/E-STHWRK30.txt` |
-   | `E-SSTHWRK16` | - | 26/26 | `checks/0.50.0/E-SSTHWRK16.txt` |
-   | `E-SSTHWRK25` | - | 26/26 | `checks/0.50.0/E-SSTHWRK25.txt` |
-   | `E-STHWCBK12` | - | 25/25 | `checks/0.50.0/E-STHWCBK12.txt` |
-   | `E-STHWCBK16` | - | 25/25 | `checks/0.50.0/E-STHWCBK16.txt` |
-   | `E-STHWCBK20` | - | 25/25 | `checks/0.50.0/E-STHWCBK20.txt` |
-   | `E-STHWCBK25` | - | 25/25 | `checks/0.50.0/E-STHWCBK25.txt` |
-   | `E-STHWCBK30` | - | 25/25 | `checks/0.50.0/E-STHWCBK30.txt` |
-   | `E-SSTHWCK12` | - | 25/25 | `checks/0.50.0/E-SSTHWCK12.txt` |
-   | `E-SSTHWCK30` | - | 25/25 | `checks/0.50.0/E-SSTHWCK30.txt` |
+   | `E-STHWRBK12` | - | 26/26 | `checks/0.51.1/E-STHWRBK12.txt` |
+   | `E-STHWRBK16` | - | 26/26 | `checks/0.51.1/E-STHWRBK16.txt` |
+   | `E-STHWRBK20` | - | 26/26 | `checks/0.51.1/E-STHWRBK20.txt` |
+   | `E-STHWRBK25` | - | 26/26 | `checks/0.51.1/E-STHWRBK25.txt` |
+   | `E-STHWRBK30` | - | 26/26 | `checks/0.51.1/E-STHWRBK30.txt` |
+   | `E-STHWRK12` | - | 26/26 | `checks/0.51.1/E-STHWRK12.txt` |
+   | `E-STHWRK20` | - | 26/26 | `checks/0.51.1/E-STHWRK20.txt` |
+   | `E-STHWRK30` | - | 26/26 | `checks/0.51.1/E-STHWRK30.txt` |
+   | `E-SSTHWRK16` | - | 26/26 | `checks/0.51.1/E-SSTHWRK16.txt` |
+   | `E-SSTHWRK25` | - | 26/26 | `checks/0.51.1/E-SSTHWRK25.txt` |
+   | `E-STHWCBK12` | - | 25/25 | `checks/0.51.1/E-STHWCBK12.txt` |
+   | `E-STHWCBK16` | - | 25/25 | `checks/0.51.1/E-STHWCBK16.txt` |
+   | `E-STHWCBK20` | - | 25/25 | `checks/0.51.1/E-STHWCBK20.txt` |
+   | `E-STHWCBK25` | - | 25/25 | `checks/0.51.1/E-STHWCBK25.txt` |
+   | `E-STHWCBK30` | - | 25/25 | `checks/0.51.1/E-STHWCBK30.txt` |
+   | `E-SSTHWCK12` | - | 25/25 | `checks/0.51.1/E-SSTHWCK12.txt` |
+   | `E-SSTHWCK30` | - | 25/25 | `checks/0.51.1/E-SSTHWCK30.txt` |
 
    Invalid codes that must be rejected with a message (`!` lines in codes.txt): 9.
 

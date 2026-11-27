@@ -1,0 +1,9 @@
+E-STHWRBK10	CodeError: E-STHWRBK10: hole diameter D must be one of [12, 16, 20, 25, 30] (p.537 table)
+E-STHWCBK8	CodeError: E-STHWCBK8: hole diameter D must be one of [12, 16, 20, 25, 30] (p.537 table)
+E-STHWRBK40	CodeError: E-STHWRBK40: hole diameter D must be one of [12, 16, 20, 25, 30] (p.537 table)
+E-STHWRBK	CodeError: 'E-STHWRBK': expected <type><D>, e.g. E-STHWRBK12, with type one of E-STHWRBK, E-STHWRK, E-SSTHWRK, E-STHWCBK, E-SSTHWCK
+E-STHWCK20	CodeError: 'E-STHWCK20': expected <type><D>, e.g. E-STHWRBK12, with type one of E-STHWRBK, E-STHWRK, E-SSTHWRK, E-STHWCBK, E-SSTHWCK
+E-SSTHWCBK20	CodeError: 'E-SSTHWCBK20': expected <type><D>, e.g. E-STHWRBK12, with type one of E-STHWRBK, E-STHWRK, E-SSTHWRK, E-STHWCBK, E-SSTHWCK
+E-STHWSBK16	CodeError: 'E-STHWSBK16': expected <type><D>, e.g. E-STHWRBK12, with type one of E-STHWRBK, E-STHWRK, E-SSTHWRK, E-STHWCBK, E-SSTHWCK
+E-STHWRB16	CodeError: 'E-STHWRB16': expected <type><D>, e.g. E-STHWRBK12, with type one of E-STHWRBK, E-STHWRK, E-SSTHWRK, E-STHWCBK, E-SSTHWCK
+E-STHWRBK13	CodeError: E-STHWRBK13: hole diameter D must be one of [12, 16, 20, 25, 30] (p.537 table)

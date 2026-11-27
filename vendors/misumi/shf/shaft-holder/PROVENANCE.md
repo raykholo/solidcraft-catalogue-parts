@@ -6,7 +6,7 @@ Manufacturer names and ordering codes are used only to say what each part is. Th
 
 **Guarantee level: Reviewed**  (levels: Checked = automatic spec check; Reviewed = + independent reviewer; Drawing-matched = + drawing match)
 
-**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.50.0; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
+**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.51.1; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
 
 ## Based on
 
@@ -42,27 +42,27 @@ Sources hash: `sha256:a9e60275f34511a1d0870e3e97b7546065d38dc125c9ee18613df06e38
 ## Verified by
 
 1. **Automatic spec check** (`tools/check`): every code in `codes.txt` is built with solidcraft-cli and every dimension is compared with the datasheet value within the stated tolerance.
-   - SolidCraft 0.50.0: 314 of 314 dimension rows match, over 16 codes.
+   - SolidCraft 0.51.1: 314 of 314 dimension rows match, over 16 codes.
    - CI run: none yet (placeholder `<link to the generator.yml run>`; filled by CI once the repository exists).
 
    | Code | Options | Result | File |
    |------|---------|--------|------|
-   | `E-SHSTM8-25` | - | 21/21 | `checks/0.50.0/E-SHSTM8-25.txt` |
-   | `E-SHSTB12-15` | - | 21/21 | `checks/0.50.0/E-SHSTB12-15.txt` |
-   | `E-SHSTB15-20` | - | 21/21 | `checks/0.50.0/E-SHSTB15-20.txt` |
-   | `E-SHSTA16-20` | - | 21/21 | `checks/0.50.0/E-SHSTA16-20.txt` |
-   | `E-SHSTM20-60` | - | 21/21 | `checks/0.50.0/E-SHSTM20-60.txt` |
-   | `E-SHSTB30-40` | - | 21/21 | `checks/0.50.0/E-SHSTB30-40.txt` |
-   | `E-SHWTB8-10` | - | 21/21 | `checks/0.50.0/E-SHWTB8-10.txt` |
-   | `E-SHWTA10-15` | - | 21/21 | `checks/0.50.0/E-SHWTA10-15.txt` |
-   | `E-SHWTB20-30` | - | 21/21 | `checks/0.50.0/E-SHWTB20-30.txt` |
-   | `E-SHWTB30-60` | - | 21/21 | `checks/0.50.0/E-SHWTB30-60.txt` |
-   | `E-SHSTBN10-10` | - | 21/21 | `checks/0.50.0/E-SHSTBN10-10.txt` |
-   | `E-SHSTMN16-30` | - | 21/21 | `checks/0.50.0/E-SHSTMN16-30.txt` |
-   | `E-SHSTBN30-80` | - | 23/23 | `checks/0.50.0/E-SHSTBN30-80.txt` |
-   | `E-SHSTMN50-50` | - | 23/23 | `checks/0.50.0/E-SHSTMN50-50.txt` |
-   | `C-SHA10` | - | 8/8 | `checks/0.50.0/C-SHA10.txt` |
-   | `C-SHA30` | - | 8/8 | `checks/0.50.0/C-SHA30.txt` |
+   | `E-SHSTM8-25` | - | 21/21 | `checks/0.51.1/E-SHSTM8-25.txt` |
+   | `E-SHSTB12-15` | - | 21/21 | `checks/0.51.1/E-SHSTB12-15.txt` |
+   | `E-SHSTB15-20` | - | 21/21 | `checks/0.51.1/E-SHSTB15-20.txt` |
+   | `E-SHSTA16-20` | - | 21/21 | `checks/0.51.1/E-SHSTA16-20.txt` |
+   | `E-SHSTM20-60` | - | 21/21 | `checks/0.51.1/E-SHSTM20-60.txt` |
+   | `E-SHSTB30-40` | - | 21/21 | `checks/0.51.1/E-SHSTB30-40.txt` |
+   | `E-SHWTB8-10` | - | 21/21 | `checks/0.51.1/E-SHWTB8-10.txt` |
+   | `E-SHWTA10-15` | - | 21/21 | `checks/0.51.1/E-SHWTA10-15.txt` |
+   | `E-SHWTB20-30` | - | 21/21 | `checks/0.51.1/E-SHWTB20-30.txt` |
+   | `E-SHWTB30-60` | - | 21/21 | `checks/0.51.1/E-SHWTB30-60.txt` |
+   | `E-SHSTBN10-10` | - | 21/21 | `checks/0.51.1/E-SHSTBN10-10.txt` |
+   | `E-SHSTMN16-30` | - | 21/21 | `checks/0.51.1/E-SHSTMN16-30.txt` |
+   | `E-SHSTBN30-80` | - | 23/23 | `checks/0.51.1/E-SHSTBN30-80.txt` |
+   | `E-SHSTMN50-50` | - | 23/23 | `checks/0.51.1/E-SHSTMN50-50.txt` |
+   | `C-SHA10` | - | 8/8 | `checks/0.51.1/C-SHA10.txt` |
+   | `C-SHA30` | - | 8/8 | `checks/0.51.1/C-SHA30.txt` |
 
    Invalid codes that must be rejected with a message (`!` lines in codes.txt): 10.
 

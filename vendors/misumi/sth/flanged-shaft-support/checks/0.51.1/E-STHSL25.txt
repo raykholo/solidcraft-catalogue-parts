@@ -1,0 +1,22 @@
+== E-STHSL25
+PASS  one closed body                                                         spec         1  got          1           [S51 p.535 table]
+PASS  overall length (bbox Z)                                                 spec        57  got    57.0000  +-0.005  [S51 p.535 table L / L1]
+PASS  flange thickness T = 8                                                  spec       yes  got        yes           [S51 p.535 table T]
+PASS  shaft hole O25 (axis along Z, on the axis)                              spec       yes  got        yes           [S51 p.535 table D]
+PASS  D tolerance (H8) upper/lower                                            spec (0.033, 0)  got (0.033, 0)           [S51 p.535 table DH8] echoed into the description
+PASS  tolerance written in the part description                               spec       yes  got        yes           [S51 p.535 table DH8]
+PASS  sleeve outside diameter D1 = 33                                         spec       yes  got        yes           [S51 p.535 table D1]
+PASS  Thickness (N) = (D1 - D) / 2                                            spec         4  got     4.0000  +-1e-09  [S51 p.535 table N, D1, D] derived from the table: N is the sleeve wall
+PASS  square flange extent across the cut corners (bbox X)                    spec        55  got    55.0000  +-0.005  [S51 p.535 table H, K] labelled: H is the extent across the cut corners
+PASS  square flange extent across the cut corners (bbox Y)                    spec        55  got    55.0000  +-0.005  [S51 p.535 table H, K] labelled: H is the extent across the cut corners
+PASS  mounting holes O5.5: count                                              spec         4  got          4           [S51 p.535 table 4-d / 2-d / 2-Hole / 4-Hole]
+PASS  mounting hole positions (P)                                             spec       yes  got        yes           [S51 p.535 table P]
+PASS  set screw thread M5 count                                               spec         4  got          4           [S51 p.535 table 2-M / 4-M, M]
+PASS  set screw thread length from the wall 4 up to wall + 0.381 (got 4.168)  spec       yes  got        yes           [S51 p.535 table D1, D] wall = (D1 - D) / 2, measured to the cylindrical surface
+PASS  set screw thread length from the wall 4 up to wall + 0.381 (got 4.168)  spec       yes  got        yes           [S51 p.535 table D1, D] wall = (D1 - D) / 2, measured to the cylindrical surface
+PASS  set screw thread length from the wall 4 up to wall + 0.381 (got 4.168)  spec       yes  got        yes           [S51 p.535 table D1, D] wall = (D1 - D) / 2, measured to the cylindrical surface
+PASS  set screw thread length from the wall 4 up to wall + 0.381 (got 4.168)  spec       yes  got        yes           [S51 p.535 table D1, D] wall = (D1 - D) / 2, measured to the cylindrical surface
+PASS  set screw positions from the flange back face: [19, 38]                 spec       yes  got        yes           [S51 p.535 table l1] measured: 19, 19, 38, 38
+PASS  part number metadata                                                    spec E-STHSL25  got  E-STHSL25           [-]
+PASS  design part number                                                      spec E-STHSL25  got  E-STHSL25           [-]
+20/20 passed

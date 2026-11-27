@@ -1,0 +1,16 @@
+== HBKUS5-C
+PASS  one closed body                                                        spec         1  got          1           [S40]
+PASS  width                                                                  spec        14  got    14.0000  +-0.005  [S40 p.539/540 '14' / '19']
+PASS  foot length                                                            spec        51  got    51.0000  +-0.005  [S40 p.539/540 foot length] from the wall outer face (the tab is 1 proud of it)
+PASS  wall height                                                            spec        51  got    51.0000  +-0.005  [S40 p.539/540 wall height] from the foot outer face (the tab is 1 proud of it)
+PASS  foot thickness 9 (foot top face at z = 9)                              spec       yes  got        yes           [S40 p.539/540 '5', '9']
+PASS  wall thickness not dimensioned: not checked (appearance, approximate)  spec       yes  got        yes           [-] equal to the foot
+PASS  tab 6 wide on the centre line (side faces at x = W/2 -+ 3)             spec       yes  got        yes           [S40 p.539 '6']
+PASS  tabs 1 proud of the outer faces (faces at z = -1 and y = -1)           spec       yes  got        yes           [S40 p.539 '1']
+PASS  foot holes, positions from the wall outer face                         spec    [41.0]  got     [41.0]           [S40 p.539/540 hole positions]
+PASS  wall holes, positions from the foot outer face                         spec    [41.0]  got     [41.0]           [S40 p.539/540 hole positions]
+PASS  every hole has the catalogue diameter                                  spec       yes  got        yes           [S40 p.539/540 '2-O5.5' (O4.5 for -4)]
+PASS  holes on the width centre line                                         spec       yes  got        yes           [S40 p.539/540 '7 / 7', '9.5 / 9.5', '5 / 7']
+PASS  part number metadata                                                   spec  HBKUS5-C  got   HBKUS5-C           [-]
+PASS  design part number                                                     spec  HBKUS5-C  got   HBKUS5-C           [-]
+14/14 passed

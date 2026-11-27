@@ -1,0 +1,26 @@
+== RGW45CC
+PASS  bodies                                                                spec         1  got          1           [S17 code]
+PASS  Block 1 length L                                                      spec     153.2  got   153.2000  +-0.005  [S17 p.166-168]
+PASS  Block 1 width W                                                       spec       120  got   120.0000  +-0.005  [S17 p.166-168]
+PASS  Block 1 top height H                                                  spec        60  got    60.0000  +-0.005  [S17 p.166-168]
+PASS  Block 1 bottom H1                                                     spec         8  got     8.0000  +-0.005  [S17 p.166-168]
+PASS  Block 1 mounting threads (legend 6-Mxl / 6-M)                         spec         6  got          6           [S17 p.168 table (3)]
+PASS  Block 1 hole spacing B                                                spec       100  got   100.0000  +-0.005  [S17 p.168 table (3)]
+PASS  Block 1 hole spacing C                                                spec        80  got    80.0000  +-0.005  [S17 p.168 table (3)]
+PASS  Block 1 holes on the rail axis                                        spec         2  got          2           [S17 p.168 table (3)]
+PASS  Block 1 hole spacing C1 (rail axis row)                               spec        60  got    60.0000  +-0.005  [S17 p.168 table (3)]
+PASS  Block 1 thread M12                                                    spec       M12  got        M12           [S17 p.168 table (3)]
+PASS  Block 1 thread depth                                                  spec        14  got    14.0000  +-0.01   [S17 p.168 table (3)] l (RGH, Mxl) / T (RGW)
+PASS  appearance bodies all named '(appearance, approximate)'               spec       yes  got        yes           [-]
+PASS  appearance bodies per block (2 end caps, 2 end seals, grease nipple)  spec         5  got          5           [-] appearance, approximate
+PASS  Block 1 steel body length L1                                          spec       106  got   106.0000  +-0.005  [S17 p.166-168]
+PASS  Block 1 end cap material                                              spec ABS Plastic  got ABS Plastic           [-] appearance, approximate
+PASS  appearance: Block 1 top faces finish (1 face(s))                      spec Metal - Polished Carbon Steel, roughness 0.16  got Metal - Polished Carbon Steel, roughness 0.16           [-] appearance, approximate; appearance.chain read-back per face
+PASS  appearance: Block 1 side faces finish (2 face(s))                     spec Metal - Polished Carbon Steel, roughness 0.16 | Metal - Polished Carbon Steel, roughness 0.16  got Metal - Polished Carbon Steel, roughness 0.16 | Metal - Polished Carbon Steel, roughness 0.16           [-] appearance, approximate; appearance.chain read-back per face
+PASS  appearance: Block 1 end faces (steel body) finish (2 face(s))         spec Steel - Satin PBR, roughness 0.4 | Steel - Satin PBR, roughness 0.4  got Steel - Satin PBR, roughness 0.4 | Steel - Satin PBR, roughness 0.4           [-] appearance, approximate; appearance.chain read-back per face
+PASS  appearance: Block 1 rail-channel top face finish (1 face(s))          spec Metal - Cool Reflective Silver, roughness 0.12  got Metal - Cool Reflective Silver, roughness 0.12           [-] appearance, approximate; appearance.chain read-back per face
+PASS  appearance: Block 1 rail-channel side faces finish (2 face(s))        spec Metal - Cool Reflective Silver, roughness 0.12 | Metal - Cool Reflective Silver, roughness 0.12  got Metal - Cool Reflective Silver, roughness 0.12 | Metal - Cool Reflective Silver, roughness 0.12           [-] appearance, approximate; appearance.chain read-back per face
+PASS  description has DIMENSIONED and APPEARANCE sections                   spec       yes  got        yes           [-]
+PASS  part number metadata                                                  spec   RGW45CC  got    RGW45CC           [-]
+PASS  design part number                                                    spec   RGW45CC  got    RGW45CC           [-]
+24/24 passed

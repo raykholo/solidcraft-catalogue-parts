@@ -1,0 +1,19 @@
+== E-LBHN6
+PASS  one closed body                                         spec         1  got          1           [S12]
+PASS  overall length L (bbox Y)                               spec        25  got    25.0000  +-0.005  [S12 p.485 L]
+PASS  width W (bbox X)                                        spec        30  got    30.0000  +-0.005  [S12 p.485 W]
+PASS  height H (bbox Z)                                       spec        18  got    18.0000  +-0.005  [S12 p.485 H]
+PASS  shaft bore dr 6 (axis along Y)                          spec       yes  got        yes           [S12 p.485 dr] nominal, tolerance echoed in the description
+PASS  bore axis h = 9 below the top face                      spec       yes  got        yes           [S12 p.485 h] h +-0.04
+PASS  shoulder height H2 = 6                                  spec       yes  got        yes           [S12 p.485 H2]
+PASS  H1 = 15 from the top face (lower end of the body wall)  spec       yes  got        yes           [S12 p.485 H1] wall step 1 mm is appearance; checked through the wall plane centre
+PASS  4 mounting threads M4                                   spec         4  got          4           [S12 p.485 4-M]
+PASS  threads on W1 = 20 and L1 = 15                          spec       yes  got        yes           [S12 p.485 W1, L1]
+PASS  thread depth l                                          spec         8  got     8.0000  +-0.01   [S12 p.485 l]
+PASS  thread starts at the top face                           spec        18  got    18.0000  +-0.01   [S12 p.485 l]
+PASS  pilot hole d 3.4 at every mounting hole                 spec       yes  got        yes           [S12 p.485 d] drawn through the base (read from the figure)
+PASS  no dowel holes                                          spec         0  got          0           [S12]
+PASS  tolerances written in the part description              spec       yes  got        yes           [S12 p.485] echoed, not drawn
+PASS  part number metadata                                    spec   E-LBHN6  got    E-LBHN6           [-]
+PASS  design part number                                      spec   E-LBHN6  got    E-LBHN6           [-]
+17/17 passed

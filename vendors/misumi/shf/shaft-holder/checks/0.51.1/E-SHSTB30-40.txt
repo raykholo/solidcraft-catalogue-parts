@@ -1,0 +1,23 @@
+== E-SHSTB30-40
+PASS  one closed body                            spec         1  got          1           [S50]
+PASS  thickness T (bbox Y)                       spec        20  got    20.0000  +-0.005  [S50 p.541 T]
+PASS  shaft bore O30 (axis along Y)              spec       yes  got        yes           [S50 p.541 D]
+PASS  bore centre height H = 40                  spec       yes  got        yes           [S50 p.541 H] H +-0.02
+PASS  D tolerance (H8) upper/lower               spec (0.033, 0)  got (0.033, 0)           [S50 p.541/542 DH8] echoed into the description
+PASS  tolerance written in the part description  spec       yes  got        yes           [S50]
+PASS  overall length L (bbox X)                  spec        85  got    85.0000  +-0.005  [S50 p.541 L]
+PASS  overall height H1 = H + offset (bbox Z)    spec        73  got    73.0000  +-0.005  [S50 p.541 H1] H1 = H+33
+PASS  foot thickness S = 10                      spec       yes  got        yes           [S50 p.541 S]
+PASS  top width W = 45                           spec       yes  got        yes           [S50 p.541 W]
+PASS  base holes O9 at +-L1/2 (L1 = 65)          spec       yes  got        yes           [S50 p.541 L1, d]
+PASS  number of base holes                       spec         2  got          2           [S50 p.541 2-d / 4-d]
+PASS  slit width C = 3                           spec       yes  got        yes           [S50 p.541 C]
+PASS  clamp thread M8 count                      spec         1  got          1           [S50 p.541 M]
+PASS  thread length                              spec        16  got    16.0000  +-0.01   [S50 p.541 M] Depth
+PASS  thread axis height H + E                   spec        64  got    64.0000  +-0.005  [S50 p.541 E]
+PASS  screw clearance hole O9 at H + E           spec       yes  got        yes           [S50 p.541 d2]
+PASS  counterbore O14 at H + E                   spec       yes  got        yes           [S50 p.541 d1]
+PASS  counterbore depth l = 9                    spec       yes  got        yes           [S50 p.541 l]
+PASS  part number metadata                       spec E-SHSTB30-40  got E-SHSTB30-40           [-]
+PASS  design part number                         spec E-SHSTB30-40  got E-SHSTB30-40           [-]
+21/21 passed

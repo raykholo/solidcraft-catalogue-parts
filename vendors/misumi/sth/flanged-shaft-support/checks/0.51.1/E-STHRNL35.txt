@@ -1,0 +1,23 @@
+== E-STHRNL35
+PASS  one closed body                                                           spec         1  got          1           [S52 p.536 table]
+PASS  overall length (bbox Z)                                                   spec        75  got    75.0000  +-0.005  [S52 p.536 table L / L1]
+PASS  flange thickness T = 10                                                   spec       yes  got        yes           [S52 p.536 table T]
+PASS  shaft hole O35 (axis along Z, on the axis)                                spec       yes  got        yes           [S52 p.536 table D]
+PASS  D tolerance (H8) upper/lower                                              spec (0.039, 0)  got (0.039, 0)           [S52 p.536 table DH8] echoed into the description
+PASS  tolerance written in the part description                                 spec       yes  got        yes           [S52 p.536 table DH8]
+PASS  sleeve outside diameter D1 = 55                                           spec       yes  got        yes           [S52 p.536 table D1]
+PASS  Thickness (N) = (D1 - D) / 2                                              spec        10  got    10.0000  +-1e-09  [S52 p.536 table N, D1, D] derived from the table: N is the sleeve wall
+PASS  flange diameter H (bbox X)                                                spec        89  got    89.0000  +-0.005  [S52 p.536 table H]
+PASS  flange diameter H (bbox Y)                                                spec        89  got    89.0000  +-0.005  [S52 p.536 table H]
+PASS  flange cylinder O89                                                       spec       yes  got        yes           [S52 p.536 table H]
+PASS  mounting holes O9: count                                                  spec         4  got          4           [S52 p.536 table 4-d / 2-d / 2-Hole / 4-Hole]
+PASS  mounting hole positions (P)                                               spec       yes  got        yes           [S52 p.536 table P]
+PASS  set screw thread M6 count                                                 spec         4  got          4           [S52 p.536 table 2-M / 4-M, M]
+PASS  set screw thread length from the wall 10 up to wall + 0.328 (got 10.171)  spec       yes  got        yes           [S52 p.536 table D1, D] wall = (D1 - D) / 2, measured to the cylindrical surface
+PASS  set screw thread length from the wall 10 up to wall + 0.328 (got 10.171)  spec       yes  got        yes           [S52 p.536 table D1, D] wall = (D1 - D) / 2, measured to the cylindrical surface
+PASS  set screw thread length from the wall 10 up to wall + 0.328 (got 10.171)  spec       yes  got        yes           [S52 p.536 table D1, D] wall = (D1 - D) / 2, measured to the cylindrical surface
+PASS  set screw thread length from the wall 10 up to wall + 0.328 (got 10.171)  spec       yes  got        yes           [S52 p.536 table D1, D] wall = (D1 - D) / 2, measured to the cylindrical surface
+PASS  set screw positions from the flange back face: [25, 50]                   spec       yes  got        yes           [S52 p.536 table l1] measured: 25, 25, 50, 50
+PASS  part number metadata                                                      spec E-STHRNL35  got E-STHRNL35           [-]
+PASS  design part number                                                        spec E-STHRNL35  got E-STHRNL35           [-]
+21/21 passed

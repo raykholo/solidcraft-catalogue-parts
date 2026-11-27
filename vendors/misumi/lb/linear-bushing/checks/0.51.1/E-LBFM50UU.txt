@@ -1,0 +1,17 @@
+== E-LBFM50UU
+PASS  one closed body                             spec         1  got          1           [S11]
+PASS  overall length L (X)                        spec       100  got   100.0000  +-0.005  [S11 p.466 L]
+PASS  flange extent H (bbox Y)                    spec       116  got   116.0000  +-0.005  [S11 p.466 H]
+PASS  flange extent H (bbox Z)                    spec       116  got   116.0000  +-0.005  [S11 p.466 H]
+PASS  outside cylinder D 80                       spec       yes  got        yes           [S11 p.466 D]
+PASS  bore cylinder dr 50                         spec       yes  got        yes           [S11 p.466 dr]
+PASS  tolerances written in the part description  spec       yes  got        yes           [S11 p.466] echoed, not drawn
+PASS  flange thickness T = 13                     spec       yes  got        yes           [S11 p.466 T]
+PASS  flange cylinder H 116                       spec       yes  got        yes           [S11 p.466 H]
+PASS  4 mounting holes d 9                        spec         4  got          4           [S11 p.466 d]
+PASS  4 counterbores d1 14                        spec         4  got          4           [S11 p.466 d1]
+PASS  holes on P.C.D.                             spec       yes  got        yes           [S11 p.466 P.C.D.]
+PASS  counterbore floors at depth t = 8.1         spec         4  got          4           [S11 p.466 t] counterbore side: figure reading
+PASS  part number metadata                        spec E-LBFM50UU  got E-LBFM50UU           [-]
+PASS  design part number                          spec E-LBFM50UU  got E-LBFM50UU           [-]
+15/15 passed

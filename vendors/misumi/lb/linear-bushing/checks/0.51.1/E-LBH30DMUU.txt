@@ -1,0 +1,19 @@
+== E-LBH30DMUU
+PASS  one closed body                             spec         1  got          1           [S13]
+PASS  overall length L (X)                        spec        90  got    90.0000  +-0.005  [S13 p.471 L]
+PASS  flange width D+6/8/10 (bbox Y)              spec        51  got    51.0000  +-0.005  [S13 p.471 width]
+PASS  flange extent H (bbox Z)                    spec        74  got    74.0000  +-0.005  [S13 p.471 H]
+PASS  outside cylinder D 45                       spec       yes  got        yes           [S13 p.471 D]
+PASS  bore cylinder dr 30                         spec       yes  got        yes           [S13 p.471 dr]
+PASS  tolerances written in the part description  spec       yes  got        yes           [S13 p.471] echoed, not drawn
+PASS  flange thickness T = 10                     spec       yes  got        yes           [S13 p.471 T]
+PASS  flange end arcs H 74                        spec       yes  got        yes           [S13 p.471 H]
+PASS  compact flange flats                        spec         2  got          2           [S13 p.471 D+6/8/10]
+PASS  flats at width/2 from the axis              spec       yes  got        yes           [S13 p.471 D+6/8/10]
+PASS  4 mounting holes d 6.6                      spec         4  got          4           [S13 p.471 d]
+PASS  4 counterbores d1 11                        spec         4  got          4           [S13 p.471 d1]
+PASS  holes at A / F                              spec       yes  got        yes           [S13 p.471 A F]
+PASS  counterbore floors at depth t = 6.1         spec         4  got          4           [S13 p.471 t] counterbore side: figure reading
+PASS  part number metadata                        spec E-LBH30DMUU  got E-LBH30DMUU           [-]
+PASS  design part number                          spec E-LBH30DMUU  got E-LBH30DMUU           [-]
+17/17 passed

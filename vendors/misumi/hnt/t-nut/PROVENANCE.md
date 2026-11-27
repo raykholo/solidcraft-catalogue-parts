@@ -6,7 +6,7 @@ Manufacturer names and ordering codes are used only to say what each part is. Th
 
 **Guarantee level: Reviewed**  (levels: Checked = automatic spec check; Reviewed = + independent reviewer; Drawing-matched = + drawing match)
 
-**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.50.0; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
+**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.51.1; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
 
 ## Based on
 
@@ -40,16 +40,16 @@ Sources hash: `sha256:4bd8910c2240776d980f5e53a7ebcb8279895ed6e8259c49ce3affca4a
 ## Verified by
 
 1. **Automatic spec check** (`tools/check`): every code in `codes.txt` is built with solidcraft-cli and every dimension is compared with the datasheet value within the stated tolerance.
-   - SolidCraft 0.50.0: 70 of 70 dimension rows match, over 5 codes.
+   - SolidCraft 0.51.1: 70 of 70 dimension rows match, over 5 codes.
    - CI run: none yet (placeholder `<link to the generator.yml run>`; filled by CI once the repository exists).
 
    | Code | Options | Result | File |
    |------|---------|--------|------|
-   | `HNTT5` | - | 14/14 | `checks/0.50.0/HNTT5.txt` |
-   | `HNTT5-4` | - | 14/14 | `checks/0.50.0/HNTT5-4.txt` |
-   | `HNTTSN5-3` | - | 14/14 | `checks/0.50.0/HNTTSN5-3.txt` |
-   | `HNTTSS5-5` | - | 14/14 | `checks/0.50.0/HNTTSS5-5.txt` |
-   | `HNTTV5-5` | - | 14/14 | `checks/0.50.0/HNTTV5-5.txt` |
+   | `HNTT5` | - | 14/14 | `checks/0.51.1/HNTT5.txt` |
+   | `HNTT5-4` | - | 14/14 | `checks/0.51.1/HNTT5-4.txt` |
+   | `HNTTSN5-3` | - | 14/14 | `checks/0.51.1/HNTTSN5-3.txt` |
+   | `HNTTSS5-5` | - | 14/14 | `checks/0.51.1/HNTTSS5-5.txt` |
+   | `HNTTV5-5` | - | 14/14 | `checks/0.51.1/HNTTV5-5.txt` |
 
    Invalid codes that must be rejected with a message (`!` lines in codes.txt): 3.
 

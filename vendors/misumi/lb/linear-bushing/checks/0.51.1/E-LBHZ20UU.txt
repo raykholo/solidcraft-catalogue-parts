@@ -1,0 +1,19 @@
+== E-LBHZ20UU
+PASS  one closed body                             spec         1  got          1           [S13]
+PASS  overall length L (X)                        spec        42  got    42.0000  +-0.005  [S13 p.470 L]
+PASS  flange width D+6/8/10 (bbox Y)              spec        38  got    38.0000  +-0.005  [S13 p.470 width]
+PASS  flange extent H (bbox Z)                    spec        54  got    54.0000  +-0.005  [S13 p.470 H]
+PASS  outside cylinder D 32                       spec       yes  got        yes           [S13 p.470 D]
+PASS  bore cylinder dr 20                         spec       yes  got        yes           [S13 p.470 dr]
+PASS  tolerances written in the part description  spec       yes  got        yes           [S13 p.470] echoed, not drawn
+PASS  flange thickness T = 8                      spec       yes  got        yes           [S13 p.470 T]
+PASS  flange end arcs H 54                        spec       yes  got        yes           [S13 p.470 H]
+PASS  compact flange flats                        spec         2  got          2           [S13 p.470 D+6/8/10]
+PASS  flats at width/2 from the axis              spec       yes  got        yes           [S13 p.470 D+6/8/10]
+PASS  4 mounting holes d 5.5                      spec         4  got          4           [S13 p.470 d]
+PASS  4 counterbores d1 9                         spec         4  got          4           [S13 p.470 d1]
+PASS  holes at A / F                              spec       yes  got        yes           [S13 p.470 A F]
+PASS  counterbore floors at depth t = 5.1         spec         4  got          4           [S13 p.470 t] counterbore side: figure reading
+PASS  part number metadata                        spec E-LBHZ20UU  got E-LBHZ20UU           [-]
+PASS  design part number                          spec E-LBHZ20UU  got E-LBHZ20UU           [-]
+17/17 passed

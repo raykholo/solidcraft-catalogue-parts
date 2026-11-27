@@ -6,7 +6,7 @@ Manufacturer names and ordering codes are used only to say what each part is. Th
 
 **Guarantee level: Reviewed**  (levels: Checked = automatic spec check; Reviewed = + independent reviewer; Drawing-matched = + drawing match)
 
-**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.50.0; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
+**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.51.1; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
 
 ## Based on
 
@@ -42,27 +42,27 @@ Sources hash: `sha256:6a6a3c5fe492feac57969e903e9571fee53b7a8dd1a3f61cdc95ca0c2d
 ## Verified by
 
 1. **Automatic spec check** (`tools/check`): every code in `codes.txt` is built with solidcraft-cli and every dimension is compared with the datasheet value within the stated tolerance.
-   - SolidCraft 0.50.0: 292 of 292 dimension rows match, over 16 codes.
+   - SolidCraft 0.51.1: 292 of 292 dimension rows match, over 16 codes.
    - CI run: none yet (placeholder `<link to the generator.yml run>`; filled by CI once the repository exists).
 
    | Code | Options | Result | File |
    |------|---------|--------|------|
-   | `E-LBHS5` | - | 17/17 | `checks/0.50.0/E-LBHS5.txt` |
-   | `E-LBHS10` | - | 17/17 | `checks/0.50.0/E-LBHS10.txt` |
-   | `E-LBHS16-P` | - | 21/21 | `checks/0.50.0/E-LBHS16-P.txt` |
-   | `E-LBHS30-P` | - | 21/21 | `checks/0.50.0/E-LBHS30-P.txt` |
-   | `E-LBHS6D` | - | 17/17 | `checks/0.50.0/E-LBHS6D.txt` |
-   | `E-LBHS12D` | - | 17/17 | `checks/0.50.0/E-LBHS12D.txt` |
-   | `E-LBHS12S` | - | 17/17 | `checks/0.50.0/E-LBHS12S.txt` |
-   | `E-LBHS20S` | - | 17/17 | `checks/0.50.0/E-LBHS20S.txt` |
-   | `E-LBHS13L` | - | 17/17 | `checks/0.50.0/E-LBHS13L.txt` |
-   | `E-LBHS8L` | - | 17/17 | `checks/0.50.0/E-LBHS8L.txt` |
-   | `E-LBHS16L-P` | - | 20/20 | `checks/0.50.0/E-LBHS16L-P.txt` |
-   | `E-LBHS30L-P` | - | 20/20 | `checks/0.50.0/E-LBHS30L-P.txt` |
-   | `E-LBHSW5` | - | 17/17 | `checks/0.50.0/E-LBHSW5.txt` |
-   | `E-LBHSW10` | - | 17/17 | `checks/0.50.0/E-LBHSW10.txt` |
-   | `E-LBHSW20-P` | - | 20/20 | `checks/0.50.0/E-LBHSW20-P.txt` |
-   | `E-LBHSW30-P` | - | 20/20 | `checks/0.50.0/E-LBHSW30-P.txt` |
+   | `E-LBHS5` | - | 17/17 | `checks/0.51.1/E-LBHS5.txt` |
+   | `E-LBHS10` | - | 17/17 | `checks/0.51.1/E-LBHS10.txt` |
+   | `E-LBHS16-P` | - | 21/21 | `checks/0.51.1/E-LBHS16-P.txt` |
+   | `E-LBHS30-P` | - | 21/21 | `checks/0.51.1/E-LBHS30-P.txt` |
+   | `E-LBHS6D` | - | 17/17 | `checks/0.51.1/E-LBHS6D.txt` |
+   | `E-LBHS12D` | - | 17/17 | `checks/0.51.1/E-LBHS12D.txt` |
+   | `E-LBHS12S` | - | 17/17 | `checks/0.51.1/E-LBHS12S.txt` |
+   | `E-LBHS20S` | - | 17/17 | `checks/0.51.1/E-LBHS20S.txt` |
+   | `E-LBHS13L` | - | 17/17 | `checks/0.51.1/E-LBHS13L.txt` |
+   | `E-LBHS8L` | - | 17/17 | `checks/0.51.1/E-LBHS8L.txt` |
+   | `E-LBHS16L-P` | - | 20/20 | `checks/0.51.1/E-LBHS16L-P.txt` |
+   | `E-LBHS30L-P` | - | 20/20 | `checks/0.51.1/E-LBHS30L-P.txt` |
+   | `E-LBHSW5` | - | 17/17 | `checks/0.51.1/E-LBHSW5.txt` |
+   | `E-LBHSW10` | - | 17/17 | `checks/0.51.1/E-LBHSW10.txt` |
+   | `E-LBHSW20-P` | - | 20/20 | `checks/0.51.1/E-LBHSW20-P.txt` |
+   | `E-LBHSW30-P` | - | 20/20 | `checks/0.51.1/E-LBHSW30-P.txt` |
 
    Invalid codes that must be rejected with a message (`!` lines in codes.txt): 10.
 

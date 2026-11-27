@@ -1,0 +1,22 @@
+== E-SCSPD13
+PASS  2 steel part(s) + 1 urethane damper, all closed         spec         3  got          3           [S21] split type = two halves
+PASS  steel bodies                                            spec         2  got          2           [S21]
+PASS  total width B (Z)                                       spec        18  got    18.0000  +-0.005  [S21 p.546 B]
+PASS  damper thickness t                                      spec         3  got     3.0000  +-0.005  [S21 p.546 t]
+PASS  steel width B1                                          spec        15  got    15.0000  +-0.005  [S21 p.546 B1]
+PASS  B - B1 = t                                              spec         3  got     3.0000  +-1e-09  [S21 p.546] derived: printed B, B1, t agree
+PASS  outer diameter D1 (X)                                   spec        35  got    35.0000  +-0.01   [S21 p.546 D1]
+PASS  outer diameter D1 (Y)                                   spec        35  got    35.0000  +-0.01   [S21 p.546 D1] the damper disc is a full ring
+PASS  outer cylinder face O35                                 spec       yes  got        yes           [S21 p.546 D1]
+PASS  bore cylinder face I.D. 13                              spec       yes  got        yes           [S21 p.546 I.D. D] nominal; +0.05/+0.01 is the tolerance before cutting
+PASS  bore tolerance written in the part description          spec       yes  got        yes           [S21 p.546 D tolerance]
+PASS  slit / gap width W                                      spec       1.5  got     1.5000  +-0.005  [S21 p.546 W]
+PASS  head seat floor face(s) at Y = 6                        spec       yes  got        yes           [S21 p.546 Y] flat floor of the head seat
+PASS  clearance hole d = 7 axes at y = -11, 11 (X), z = 10.5  spec [(-11, 10.5), (11, 10.5)]  got [(-11.0, 10.5), (11.0, 10.5)]           [S21 p.546 d, X] z: appearance (centred on B1)
+PASS  head seat radius R = 6 on the same axes                 spec [(-11, 10.5), (11, 10.5)]  got [(-11.0, 10.5), (11.0, 10.5)]           [S21 p.546 R]
+PASS  head seat 2R = 12 within B1, floor beyond the slit      spec       yes  got        yes           [derived]
+PASS  clamp screw thread M6 present                           spec       yes  got        yes           [S21 p.546 M (coarse)] tapped half and length are appearance
+PASS  no other thread                                         spec       yes  got        yes           [S21 p.546 M (coarse)]
+PASS  part number metadata                                    spec E-SCSPD13  got  E-SCSPD13           [-]
+PASS  design part number                                      spec E-SCSPD13  got  E-SCSPD13           [-]
+20/20 passed

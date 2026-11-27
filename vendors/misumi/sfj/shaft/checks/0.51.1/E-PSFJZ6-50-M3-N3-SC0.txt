@@ -1,0 +1,18 @@
+== E-PSFJZ6-50-M3-N3-SC0
+PASS  one closed body                            spec         1  got          1           [S30]
+PASS  length (X)                                 spec        50  got    50.0000  +-0.005  [S30 p.435 L] 1 mm steps
+PASS  diameter D (bbox Y)                        spec         6  got     6.0000  +-0.005  [S30 p.435 D6]
+PASS  diameter D (bbox Z)                        spec         6  got     6.0000  +-0.005  [S30 p.435 D6]
+PASS  cylinder face O6                           spec       yes  got        yes           [S30 p.435]
+PASS  D tolerance g7 upper/lower                 spec (-0.004, -0.016)  got (-0.004, -0.016)           [S8 p.432 spec table] echoed into the description
+PASS  tolerance written in the part description  spec       yes  got        yes           [S8 p.432]
+PASS  L inside the table range 25-600            spec       yes  got        yes           [S30 p.435]
+PASS  left end: M3 thread, depth 6, x 0..6       spec       yes  got        yes           [S30 p.435 M / N selection] tap depth M x 2 (MD: M x 3)
+PASS  right end: M3 thread, depth 6, x 44..50    spec       yes  got        yes           [S30 p.435 M / N selection] tap depth M x 2 (MD: M x 3)
+PASS  flat 1: wrench flat faces (pair)           spec         2  got          2           [S30 p.435 SC/WSC/SX]
+PASS  flat 1: width across flats W               spec         5  got     5.0000  +-0.005  [S8 p.432 W table]
+PASS  flat 1: start x = 0                        spec       yes  got        yes           [S30 p.435 SC/FC/A]
+PASS  flat 1: end x = 8                          spec       yes  got        yes           [S30 p.435 l1/FC]
+PASS  part number metadata                       spec E-PSFJZ6-50-M3-N3-SC0  got E-PSFJZ6-50-M3-N3-SC0           [-]
+PASS  design part number                         spec E-PSFJZ6-50-M3-N3-SC0  got E-PSFJZ6-50-M3-N3-SC0           [-]
+16/16 passed

@@ -6,7 +6,7 @@ Manufacturer names and ordering codes are used only to say what each part is. Th
 
 **Guarantee level: Reviewed**  (levels: Checked = automatic spec check; Reviewed = + independent reviewer; Drawing-matched = + drawing match)
 
-**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.50.0; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
+**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.51.1; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
 
 ## Based on
 
@@ -52,40 +52,40 @@ Sources hash: `sha256:1f3e2269bf6fb2c4bb58af3664060d4bece229ac0e28f57548276c1bf7
 ## Verified by
 
 1. **Automatic spec check** (`tools/check`): every code in `codes.txt` is built with solidcraft-cli and every dimension is compared with the datasheet value within the stated tolerance.
-   - SolidCraft 0.50.0: 402 of 402 dimension rows match, over 29 codes.
+   - SolidCraft 0.51.1: 402 of 402 dimension rows match, over 29 codes.
    - CI run: none yet (placeholder `<link to the generator.yml run>`; filled by CI once the repository exists).
 
    | Code | Options | Result | File |
    |------|---------|--------|------|
-   | `C-MUBZ5-10` | - | 11/11 | `checks/0.50.0/C-MUBZ5-10.txt` |
-   | `C-MUBZ20-30` | - | 11/11 | `checks/0.50.0/C-MUBZ20-30.txt` |
-   | `C-MUBZ100-100` | - | 11/11 | `checks/0.50.0/C-MUBZ100-100.txt` |
-   | `C-MUBZU35-15` | - | 11/11 | `checks/0.50.0/C-MUBZU35-15.txt` |
-   | `C-MUBZU12-20` | - | 11/11 | `checks/0.50.0/C-MUBZU12-20.txt` |
-   | `C-MUFZ5-10` | - | 13/13 | `checks/0.50.0/C-MUFZ5-10.txt` |
-   | `C-MUFZ100-100` | - | 13/13 | `checks/0.50.0/C-MUFZ100-100.txt` |
-   | `C-MUFZ18-20` | - | 13/13 | `checks/0.50.0/C-MUFZ18-20.txt` |
-   | `C-MUFZU30-30` | - | 13/13 | `checks/0.50.0/C-MUFZU30-30.txt` |
-   | `C-MUFZU12-15` | - | 13/13 | `checks/0.50.0/C-MUFZU12-15.txt` |
-   | `C-MUTZ6-10` | - | 15/15 | `checks/0.50.0/C-MUTZ6-10.txt` |
-   | `C-MUTZ16-30` | - | 15/15 | `checks/0.50.0/C-MUTZ16-30.txt` |
-   | `C-MUTZ50-100` | - | 15/15 | `checks/0.50.0/C-MUTZ50-100.txt` |
-   | `C-MUTSZ6-10` | - | 16/16 | `checks/0.50.0/C-MUTSZ6-10.txt` |
-   | `C-MUTSZ16-40` | - | 16/16 | `checks/0.50.0/C-MUTSZ16-40.txt` |
-   | `C-MUTSZ50-100` | - | 16/16 | `checks/0.50.0/C-MUTSZ50-100.txt` |
-   | `C-MUTNZ6-15` | - | 17/17 | `checks/0.50.0/C-MUTNZ6-15.txt` |
-   | `C-MUTNZ13-25` | - | 17/17 | `checks/0.50.0/C-MUTNZ13-25.txt` |
-   | `C-MUTNZ30-70` | - | 17/17 | `checks/0.50.0/C-MUTNZ30-70.txt` |
-   | `C-MUTNZ50-80` | - | 17/17 | `checks/0.50.0/C-MUTNZ50-80.txt` |
-   | `E-MUGZ10-15` | - | 12/12 | `checks/0.50.0/E-MUGZ10-15.txt` |
-   | `E-MUGZ50-60` | - | 12/12 | `checks/0.50.0/E-MUGZ50-60.txt` |
-   | `E-SHBZ10-12` | - | 11/11 | `checks/0.50.0/E-SHBZ10-12.txt` |
-   | `E-SHBZ13-20` | - | 11/11 | `checks/0.50.0/E-SHBZ13-20.txt` |
-   | `E-SHFZ8-10` | - | 13/13 | `checks/0.50.0/E-SHFZ8-10.txt` |
-   | `E-SHFZ30-50` | - | 13/13 | `checks/0.50.0/E-SHFZ30-50.txt` |
-   | `E-SHTZ25-35` | - | 15/15 | `checks/0.50.0/E-SHTZ25-35.txt` |
-   | `E-SHTNZ10-25` | - | 17/17 | `checks/0.50.0/E-SHTNZ10-25.txt` |
-   | `E-SHTNZ16-40` | - | 17/17 | `checks/0.50.0/E-SHTNZ16-40.txt` |
+   | `C-MUBZ5-10` | - | 11/11 | `checks/0.51.1/C-MUBZ5-10.txt` |
+   | `C-MUBZ20-30` | - | 11/11 | `checks/0.51.1/C-MUBZ20-30.txt` |
+   | `C-MUBZ100-100` | - | 11/11 | `checks/0.51.1/C-MUBZ100-100.txt` |
+   | `C-MUBZU35-15` | - | 11/11 | `checks/0.51.1/C-MUBZU35-15.txt` |
+   | `C-MUBZU12-20` | - | 11/11 | `checks/0.51.1/C-MUBZU12-20.txt` |
+   | `C-MUFZ5-10` | - | 13/13 | `checks/0.51.1/C-MUFZ5-10.txt` |
+   | `C-MUFZ100-100` | - | 13/13 | `checks/0.51.1/C-MUFZ100-100.txt` |
+   | `C-MUFZ18-20` | - | 13/13 | `checks/0.51.1/C-MUFZ18-20.txt` |
+   | `C-MUFZU30-30` | - | 13/13 | `checks/0.51.1/C-MUFZU30-30.txt` |
+   | `C-MUFZU12-15` | - | 13/13 | `checks/0.51.1/C-MUFZU12-15.txt` |
+   | `C-MUTZ6-10` | - | 15/15 | `checks/0.51.1/C-MUTZ6-10.txt` |
+   | `C-MUTZ16-30` | - | 15/15 | `checks/0.51.1/C-MUTZ16-30.txt` |
+   | `C-MUTZ50-100` | - | 15/15 | `checks/0.51.1/C-MUTZ50-100.txt` |
+   | `C-MUTSZ6-10` | - | 16/16 | `checks/0.51.1/C-MUTSZ6-10.txt` |
+   | `C-MUTSZ16-40` | - | 16/16 | `checks/0.51.1/C-MUTSZ16-40.txt` |
+   | `C-MUTSZ50-100` | - | 16/16 | `checks/0.51.1/C-MUTSZ50-100.txt` |
+   | `C-MUTNZ6-15` | - | 17/17 | `checks/0.51.1/C-MUTNZ6-15.txt` |
+   | `C-MUTNZ13-25` | - | 17/17 | `checks/0.51.1/C-MUTNZ13-25.txt` |
+   | `C-MUTNZ30-70` | - | 17/17 | `checks/0.51.1/C-MUTNZ30-70.txt` |
+   | `C-MUTNZ50-80` | - | 17/17 | `checks/0.51.1/C-MUTNZ50-80.txt` |
+   | `E-MUGZ10-15` | - | 12/12 | `checks/0.51.1/E-MUGZ10-15.txt` |
+   | `E-MUGZ50-60` | - | 12/12 | `checks/0.51.1/E-MUGZ50-60.txt` |
+   | `E-SHBZ10-12` | - | 11/11 | `checks/0.51.1/E-SHBZ10-12.txt` |
+   | `E-SHBZ13-20` | - | 11/11 | `checks/0.51.1/E-SHBZ13-20.txt` |
+   | `E-SHFZ8-10` | - | 13/13 | `checks/0.51.1/E-SHFZ8-10.txt` |
+   | `E-SHFZ30-50` | - | 13/13 | `checks/0.51.1/E-SHFZ30-50.txt` |
+   | `E-SHTZ25-35` | - | 15/15 | `checks/0.51.1/E-SHTZ25-35.txt` |
+   | `E-SHTNZ10-25` | - | 17/17 | `checks/0.51.1/E-SHTNZ10-25.txt` |
+   | `E-SHTNZ16-40` | - | 17/17 | `checks/0.51.1/E-SHTNZ16-40.txt` |
 
    Invalid codes that must be rejected with a message (`!` lines in codes.txt): 15.
 

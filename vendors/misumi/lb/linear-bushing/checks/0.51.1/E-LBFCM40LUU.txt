@@ -1,0 +1,19 @@
+== E-LBFCM40LUU
+PASS  one closed body                                  spec         1  got          1           [S13]
+PASS  overall length L (X)                             spec       151  got   151.0000  +-0.005  [S13 p.478 L]
+PASS  flange extent H (bbox Y)                         spec        96  got    96.0000  +-0.005  [S13 p.478 H]
+PASS  flange extent H (bbox Z)                         spec        96  got    96.0000  +-0.005  [S13 p.478 H]
+PASS  outside cylinder D 60                            spec       yes  got        yes           [S13 p.478 D]
+PASS  bore cylinder dr 40                              spec       yes  got        yes           [S13 p.478 dr]
+PASS  tolerances written in the part description       spec       yes  got        yes           [S13 p.478] echoed, not drawn
+PASS  flange thickness T = 13                          spec       yes  got        yes           [S13 p.478 T]
+PASS  flange starts l = 69 from the end of the barrel  spec       yes  got        yes           [S13 p.478 l]
+PASS  flange centred: l + T/2 = L/2                    spec      75.5  got    75.5000  +-0.005  [S13 p.478 l T L] derived: the printed l, T and L agree
+PASS  flange cylinder H 96                             spec       yes  got        yes           [S13 p.478 H]
+PASS  4 mounting holes d 9                             spec         4  got          4           [S13 p.478 d]
+PASS  4 counterbores d1 14                             spec         4  got          4           [S13 p.478 d1]
+PASS  holes on P.C.D.                                  spec       yes  got        yes           [S13 p.478 P.C.D.]
+PASS  counterbore floors at depth t = 8.1              spec         4  got          4           [S13 p.478 t] counterbore side: figure reading
+PASS  part number metadata                             spec E-LBFCM40LUU  got E-LBFCM40LUU           [-]
+PASS  design part number                               spec E-LBFCM40LUU  got E-LBFCM40LUU           [-]
+17/17 passed

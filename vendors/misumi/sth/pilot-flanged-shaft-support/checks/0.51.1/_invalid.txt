@@ -1,0 +1,8 @@
+E-STHWIRB6	CodeError: E-STHWIRB6: hole diameter D must be one of [8, 10, 12, 15, 16, 20, 25, 30, 40] (p.540 table)
+E-STHWICB35	CodeError: E-STHWICB35: hole diameter D must be one of [8, 10, 12, 15, 16, 20, 25, 30, 40] (p.540 table)
+E-STHWIRB50	CodeError: E-STHWIRB50: hole diameter D must be one of [8, 10, 12, 15, 16, 20, 25, 30, 40] (p.540 table)
+E-STHWIRB	CodeError: 'E-STHWIRB': expected <type><D>, e.g. E-STHWIRB8, with type one of E-STHWIRB, E-STHWICB
+E-STHWISB10	CodeError: 'E-STHWISB10': expected <type><D>, e.g. E-STHWIRB8, with type one of E-STHWIRB, E-STHWICB
+E-STHWIRBL16	CodeError: 'E-STHWIRBL16': expected <type><D>, e.g. E-STHWIRB8, with type one of E-STHWIRB, E-STHWICB
+E-STHWRB10	CodeError: 'E-STHWRB10': expected <type><D>, e.g. E-STHWIRB8, with type one of E-STHWIRB, E-STHWICB
+E-STHWIRB9	CodeError: E-STHWIRB9: hole diameter D must be one of [8, 10, 12, 15, 16, 20, 25, 30, 40] (p.540 table)
