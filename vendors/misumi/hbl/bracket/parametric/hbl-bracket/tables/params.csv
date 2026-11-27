@@ -1,0 +1,8 @@
+name,value,unit,source,page,status
+thickness,5,mm,S40,p.539 and p.540 drawings (dimension 5),labelled
+relief_d,4.2,mm,S40,p.539 and p.540 drawings (O4.2),published
+relief_at,12,mm,S40,p.539 and p.540 drawings (dimension 12),published
+drawn,HBLTS5|HBLTSB5|CHBLTS5|NBLTS5|HBLTV5|HBLTVB5|HBLTSW5|HBLTVW5|HBLTF5|HBKTST5|HBKTS5|HBKTSB5|HBKUS5|HBKUSB5|NBLUS5|HBLUS5|HBLTH5|HBLTHB5,,S40,p.539 / p.540,labelled
+alt_c_types,HBLTS5|HBLTS5-4|CHBLTS5|NBLTS5|HBLTV5|HBLTVB5|HBLTSW5|HBLTVW5|HBLTF5|HBKTS5|HBKUS5|NBLUS5|HBLUS5|HBLTH5|HBLTHB5,,S40,p.539 / p.540,labelled
+alterations,SET|SST|SEU|SSU|SEP|SSP|SEC,,S40,p.539 / p.540,labelled
+other_types,HBLCD5|HBLFSL5|HBLFSN5|HBLFSNF5|HBLFSNK5|HBLFSNT5|HBLFSR5|HBLFSSW5|HBLS5|HBLSS5,,S40,p.539 / p.540,labelled

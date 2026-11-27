@@ -1,0 +1,196 @@
+format = "solidcraft-generator/2"
+id = "shf-shaft-holder"
+name = "MISUMI Economy shaft supports: T-shaped with slit, with side slit, thickened, and T-shaped aluminium (C-SHA)"
+license = "CC0-1.0"
+model = "shf-shaft-holder.sc"
+
+# E-SH<type><D>-<H> or C-SHA<D>: one configuration row per (family, D); H is the free parameter (a list per row in the model's rules).
+# The second template takes anything else so that generator.rhai can give the Python generator's message for a code of the wrong shape.
+[parameters]
+h = { type = "int", min = 10, max = 80, unit = "mm" }
+
+[[template]]
+pattern = '{pfx: E|C}-SH{fam: STBN|STMN|STB|STM|STA|WTB|WTA|A}{d: int 1..99}[\-{h: int 0..99999999}]'
+
+[[template]]
+pattern = '{raw: text 1..64 [A-Za-z0-9-]}'
+
+[rows."slit-8"]
+source = "MISUMI Economy Series catalogue 2025 S50 (sources.toml), p.541 table"
+page = "p.541 table"
+status = "verified"
+note = "labelled catalogue dimensions; the position of the second base row and second screw of the thickened types is appearance"
+
+[rows."slit-10"]
+source = "MISUMI Economy Series catalogue 2025 S50 (sources.toml), p.541 table"
+page = "p.541 table"
+status = "verified"
+note = "labelled catalogue dimensions; the position of the second base row and second screw of the thickened types is appearance"
+
+[rows."slit-12"]
+source = "MISUMI Economy Series catalogue 2025 S50 (sources.toml), p.541 table"
+page = "p.541 table"
+status = "verified"
+note = "labelled catalogue dimensions; the position of the second base row and second screw of the thickened types is appearance"
+
+[rows."slit-15"]
+source = "MISUMI Economy Series catalogue 2025 S50 (sources.toml), p.541 table"
+page = "p.541 table"
+status = "verified"
+note = "labelled catalogue dimensions; the position of the second base row and second screw of the thickened types is appearance"
+
+[rows."slit-16"]
+source = "MISUMI Economy Series catalogue 2025 S50 (sources.toml), p.541 table"
+page = "p.541 table"
+status = "verified"
+note = "labelled catalogue dimensions; the position of the second base row and second screw of the thickened types is appearance"
+
+[rows."slit-20"]
+source = "MISUMI Economy Series catalogue 2025 S50 (sources.toml), p.541 table"
+page = "p.541 table"
+status = "verified"
+note = "labelled catalogue dimensions; the position of the second base row and second screw of the thickened types is appearance"
+
+[rows."slit-25"]
+source = "MISUMI Economy Series catalogue 2025 S50 (sources.toml), p.541 table"
+page = "p.541 table"
+status = "verified"
+note = "labelled catalogue dimensions; the position of the second base row and second screw of the thickened types is appearance"
+
+[rows."slit-30"]
+source = "MISUMI Economy Series catalogue 2025 S50 (sources.toml), p.541 table"
+page = "p.541 table"
+status = "verified"
+note = "labelled catalogue dimensions; the position of the second base row and second screw of the thickened types is appearance"
+
+[rows."side-8"]
+source = "MISUMI Economy Series catalogue 2025 S50 (sources.toml), p.541 side slit table"
+page = "p.541 side slit table"
+status = "verified"
+note = "labelled catalogue dimensions; the position of the second base row and second screw of the thickened types is appearance"
+
+[rows."side-10"]
+source = "MISUMI Economy Series catalogue 2025 S50 (sources.toml), p.541 side slit table"
+page = "p.541 side slit table"
+status = "verified"
+note = "labelled catalogue dimensions; the position of the second base row and second screw of the thickened types is appearance"
+
+[rows."side-12"]
+source = "MISUMI Economy Series catalogue 2025 S50 (sources.toml), p.541 side slit table"
+page = "p.541 side slit table"
+status = "verified"
+note = "labelled catalogue dimensions; the position of the second base row and second screw of the thickened types is appearance"
+
+[rows."side-16"]
+source = "MISUMI Economy Series catalogue 2025 S50 (sources.toml), p.541 side slit table"
+page = "p.541 side slit table"
+status = "verified"
+note = "labelled catalogue dimensions; the position of the second base row and second screw of the thickened types is appearance"
+
+[rows."side-20"]
+source = "MISUMI Economy Series catalogue 2025 S50 (sources.toml), p.541 side slit table"
+page = "p.541 side slit table"
+status = "verified"
+note = "labelled catalogue dimensions; the position of the second base row and second screw of the thickened types is appearance"
+
+[rows."side-30"]
+source = "MISUMI Economy Series catalogue 2025 S50 (sources.toml), p.541 side slit table"
+page = "p.541 side slit table"
+status = "verified"
+note = "labelled catalogue dimensions; the position of the second base row and second screw of the thickened types is appearance"
+
+[rows."thick-10"]
+source = "MISUMI Economy Series catalogue 2025 S50 (sources.toml), p.542 table"
+page = "p.542 table"
+status = "verified"
+note = "labelled catalogue dimensions; the position of the second base row and second screw of the thickened types is appearance"
+
+[rows."thick-12"]
+source = "MISUMI Economy Series catalogue 2025 S50 (sources.toml), p.542 table"
+page = "p.542 table"
+status = "verified"
+note = "labelled catalogue dimensions; the position of the second base row and second screw of the thickened types is appearance"
+
+[rows."thick-15"]
+source = "MISUMI Economy Series catalogue 2025 S50 (sources.toml), p.542 table"
+page = "p.542 table"
+status = "verified"
+note = "labelled catalogue dimensions; the position of the second base row and second screw of the thickened types is appearance"
+
+[rows."thick-16"]
+source = "MISUMI Economy Series catalogue 2025 S50 (sources.toml), p.542 table"
+page = "p.542 table"
+status = "verified"
+note = "labelled catalogue dimensions; the position of the second base row and second screw of the thickened types is appearance"
+
+[rows."thick-20"]
+source = "MISUMI Economy Series catalogue 2025 S50 (sources.toml), p.542 table"
+page = "p.542 table"
+status = "verified"
+note = "labelled catalogue dimensions; the position of the second base row and second screw of the thickened types is appearance"
+
+[rows."thick-25"]
+source = "MISUMI Economy Series catalogue 2025 S50 (sources.toml), p.542 table"
+page = "p.542 table"
+status = "verified"
+note = "labelled catalogue dimensions; the position of the second base row and second screw of the thickened types is appearance"
+
+[rows."thick-30"]
+source = "MISUMI Economy Series catalogue 2025 S50 (sources.toml), p.542 table"
+page = "p.542 table"
+status = "verified"
+note = "labelled catalogue dimensions; the position of the second base row and second screw of the thickened types is appearance"
+
+[rows."thick-35"]
+source = "MISUMI Economy Series catalogue 2025 S50 (sources.toml), p.542 table"
+page = "p.542 table"
+status = "verified"
+note = "labelled catalogue dimensions; the position of the second base row and second screw of the thickened types is appearance"
+
+[rows."thick-40"]
+source = "MISUMI Economy Series catalogue 2025 S50 (sources.toml), p.542 table"
+page = "p.542 table"
+status = "verified"
+note = "labelled catalogue dimensions; the position of the second base row and second screw of the thickened types is appearance"
+
+[rows."thick-50"]
+source = "MISUMI Economy Series catalogue 2025 S50 (sources.toml), p.542 table"
+page = "p.542 table"
+status = "verified"
+note = "labelled catalogue dimensions; the position of the second base row and second screw of the thickened types is appearance"
+
+[rows."csha-10"]
+source = "MISUMI Economy Series catalogue 2025 S50 (sources.toml), p.540 T-shaped table"
+page = "p.540 T-shaped table"
+status = "verified"
+note = "labelled catalogue dimensions; the position of the second base row and second screw of the thickened types is appearance"
+
+[rows."csha-12"]
+source = "MISUMI Economy Series catalogue 2025 S50 (sources.toml), p.540 T-shaped table"
+page = "p.540 T-shaped table"
+status = "verified"
+note = "labelled catalogue dimensions; the position of the second base row and second screw of the thickened types is appearance"
+
+[rows."csha-16"]
+source = "MISUMI Economy Series catalogue 2025 S50 (sources.toml), p.540 T-shaped table"
+page = "p.540 T-shaped table"
+status = "verified"
+note = "labelled catalogue dimensions; the position of the second base row and second screw of the thickened types is appearance"
+
+[rows."csha-20"]
+source = "MISUMI Economy Series catalogue 2025 S50 (sources.toml), p.540 T-shaped table"
+page = "p.540 T-shaped table"
+status = "verified"
+note = "labelled catalogue dimensions; the position of the second base row and second screw of the thickened types is appearance"
+
+[rows."csha-25"]
+source = "MISUMI Economy Series catalogue 2025 S50 (sources.toml), p.540 T-shaped table"
+page = "p.540 T-shaped table"
+status = "verified"
+note = "labelled catalogue dimensions; the position of the second base row and second screw of the thickened types is appearance"
+
+[rows."csha-30"]
+source = "MISUMI Economy Series catalogue 2025 S50 (sources.toml), p.540 T-shaped table"
+page = "p.540 T-shaped table"
+status = "verified"
+note = "labelled catalogue dimensions; the position of the second base row and second screw of the thickened types is appearance"

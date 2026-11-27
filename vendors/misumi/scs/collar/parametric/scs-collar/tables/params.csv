@@ -1,0 +1,53 @@
+name,value,unit,source,page,status
+bore_tol_upper,0.05,mm,S20,p.544 note (D +0.05/+0.01 before cutting),labelled
+bore_tol_lower,0.01,mm,S20,p.544 note (D +0.05/+0.01 before cutting),labelled
+slit_width,1.0,mm,S20,not printed on p.544 / p.545 (appearance),approximate
+split_gap,0.5,mm,S20,not printed on p.544 (appearance),approximate
+bore_tol_slit_urethane_upper,0.06,mm,S21,p.547 side views (D +0.06/+0.01 before cutting),labelled
+bore_tol_slit_urethane_lower,0.01,mm,S21,p.547 side views (D +0.06/+0.01 before cutting),labelled
+bore_tol_e_scd_upper,0.08,mm,S21,p.547 note (D tolerance of E-SCD is +0.01~+0.08),labelled
+ds_C-SCSAW,6|8|10|12|15|16|20|25|30,,S20,derived from the size tables,labelled
+bs_C-SCSAW_6,8|10,,S20,derived from the size tables,labelled
+bs_C-SCSAW_8,8|10,,S20,derived from the size tables,labelled
+bs_C-SCSAW_10,8|10,,S20,derived from the size tables,labelled
+bs_C-SCSAW_12,8|10,,S20,derived from the size tables,labelled
+bs_C-SCSAW_15,10|12,,S20,derived from the size tables,labelled
+bs_C-SCSAW_16,10|12,,S20,derived from the size tables,labelled
+bs_C-SCSAW_20,12|15,,S20,derived from the size tables,labelled
+bs_C-SCSAW_25,12|15,,S20,derived from the size tables,labelled
+bs_C-SCSAW_30,15,,S20,derived from the size tables,labelled
+ds_C-SCNPAW,6|8|10|12|15|16|20|25|30,,S20,derived from the size tables,labelled
+bs_C-SCNPAW_6,8,,S20,derived from the size tables,labelled
+bs_C-SCNPAW_8,8|10,,S20,derived from the size tables,labelled
+bs_C-SCNPAW_10,8|10,,S20,derived from the size tables,labelled
+bs_C-SCNPAW_12,8|10,,S20,derived from the size tables,labelled
+bs_C-SCNPAW_15,10|12,,S20,derived from the size tables,labelled
+bs_C-SCNPAW_16,10|12,,S20,derived from the size tables,labelled
+bs_C-SCNPAW_20,12|15,,S20,derived from the size tables,labelled
+bs_C-SCNPAW_25,12|15,,S20,derived from the size tables,labelled
+bs_C-SCNPAW_30,15,,S20,derived from the size tables,labelled
+ds_C-SCSMAW,8|10|12|15|16|20|25|30,,S20,derived from the size tables,labelled
+bs_C-SCSMAW_8,8|10,,S20,derived from the size tables,labelled
+bs_C-SCSMAW_10,10|12,,S20,derived from the size tables,labelled
+bs_C-SCSMAW_12,10|12,,S20,derived from the size tables,labelled
+bs_C-SCSMAW_15,10|12,,S20,derived from the size tables,labelled
+bs_C-SCSMAW_16,10|12,,S20,derived from the size tables,labelled
+bs_C-SCSMAW_20,12|15,,S20,derived from the size tables,labelled
+bs_C-SCSMAW_25,12|15,,S20,derived from the size tables,labelled
+bs_C-SCSMAW_30,15,,S20,derived from the size tables,labelled
+ds_C-SCSGAW,8|10|12|15|16|20|25|30,,S20,derived from the size tables,labelled
+bs_C-SCSGAW_8,8|10,,S20,derived from the size tables,labelled
+bs_C-SCSGAW_10,10|12,,S20,derived from the size tables,labelled
+bs_C-SCSGAW_12,10|12,,S20,derived from the size tables,labelled
+bs_C-SCSGAW_15,12,,S20,derived from the size tables,labelled
+bs_C-SCSGAW_16,10|12,,S20,derived from the size tables,labelled
+bs_C-SCSGAW_20,12|15,,S20,derived from the size tables,labelled
+bs_C-SCSGAW_25,15,,S20,derived from the size tables,labelled
+bs_C-SCSGAW_30,15,,S20,derived from the size tables,labelled
+ds_bearing,6|8|10|12|15|20|25|30,,S21,derived from the size tables,labelled
+ds_slit,4|5|6|8|10|12|13|15|16|20|25|30|35|40|50,,S21,derived from the size tables,labelled
+stainless_slit,6|10|12|16|20|25|30|35,,S21,derived from the size tables,labelled
+ds_slit-compact,8|10|12|16|20|25|30|40,,S21,derived from the size tables,labelled
+stainless_slit-compact,8|10|12|16|20|30|40,,S21,derived from the size tables,labelled
+ds_split-compact,6|8|10|12|13|15|16|20|25|30,,S21,derived from the size tables,labelled
+stainless_split-compact,15|16|20|25,,S21,derived from the size tables,labelled

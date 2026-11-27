@@ -1,0 +1,8 @@
+code,name,screw,nut,source,page,status
+SET,Screw and nut set,CBM5-10,HNTT5-5,S40,p.540 alterations table (when HBLTS5 is specified),published
+SST,Screw and nut set (stainless steel),SCB5-10,HNTTBS5-5,S40,p.540 alterations table (when HBLTS5 is specified),published
+SEU,Screw and nut set (pre-assembly insertion spring nuts),CBM5-10,HNTU5-5,S40,p.540 alterations table (when HBLTS5 is specified),published
+SSU,Screw and nut set (pre-assembly insertion spring nuts; stainless steel),SCB5-10,SHNTU5-5,S40,p.540 alterations table (when HBLTS5 is specified),published
+SEP,Screw and nut set (post-assembly insertion spring nuts),CBM5-10,HNTP5-5,S40,p.540 alterations table (when HBLTS5 is specified),published
+SSP,Screw and nut set (post-assembly insertion spring nuts; stainless steel),SCB5-10,SHNTP5-5,S40,p.540 alterations table (when HBLTS5 is specified),published
+SEC,Screw and nut set (screws with captured washer and nuts),HCBST5-12,HNTT5-5,S40,p.540 alterations table (when HBLTS5 is specified),published

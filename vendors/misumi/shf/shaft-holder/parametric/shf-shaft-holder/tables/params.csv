@@ -1,0 +1,6 @@
+name,value,unit,source,page,status
+h_tol,0.02,mm,S50,p.541 / p.542 (H +-0.02),labelled
+sizes_slit,8|10|12|15|16|20|25|30,mm,S50,p.541 table,labelled
+sizes_side,8|10|12|16|20|30,mm,S50,p.541 table,labelled
+sizes_thick,10|12|15|16|20|25|30|35|40|50,mm,S50,p.542 table,labelled
+sizes_csha,10|12|16|20|25|30,mm,S50,p.540 table,labelled

@@ -265,7 +265,14 @@ class TemplateSet:
             r = t.match(code)
             if r is not None: return i, r
         return None
-    def print(self, params, index=0): return self.templates[index].print(params)
+    def print(self, params, index=None):
+        """Print with template `index`; without it, with the first template whose fields `params` fills (a ValueError names the last one tried)."""
+        if index is not None: return self.templates[index].print(params)
+        err = None
+        for t in self.templates:
+            try: return t.print(params)
+            except ValueError as e: err = e
+        raise err
 
 def load(gen_dir):
     """The TemplateSet of a generator package folder: generator.toml [[template]] entries (pattern, optional escape), choices from [parameters]."""
