@@ -18,7 +18,7 @@ parametric/
     tables/{rails,blocks,caps}.csv   the catalogue rows (copies of ../data with source/page/status; blocks keyed "<block>-<size>")
   build_template.py          the model as a command list (what is modelled once)
   run_template.sh            builds the .sc: stage 1 parameters, geometry, table; stage 2 rules (they need feature ids)
-  harness/                   the end-to-end run: stub.py (parse/code), run_all.py, rhai-resolve/ (a 100-line Rust wrapper of the rhai crate)
+  harness/                   the end-to-end run: stub.py (parse/code), run_all.py (the Rhai host is the shared runtime/rhai-run)
   probes.py, run_probes.sh, exp/   the small experiments behind the findings below
   ../../../../../runtime/fieldtemplate.py   Python reference of the field-template syntax
 ```
@@ -26,7 +26,7 @@ parametric/
 Rebuild everything (from the repo root, with `SC_CLI` and `SC_APP` pointing at the SolidCraft 0.50.0 binaries):
 
 ```
-(cd vendors/hiwin/mg/rail-set/parametric/harness/rhai-resolve && cargo build --release)   # then: export RHAI_RESOLVE=<that binary>
+(cd runtime/rhai-run && cargo build --release)   # then: export RHAI_RUN=<that binary>
 bash vendors/hiwin/mg/rail-set/parametric/run_all.sh out
 ```
 
@@ -101,7 +101,7 @@ runs `src/check.py` on both. About 7 minutes.
   covers `MGN12H2R300Z0C`, `MGN9C1R195ZFH` and the catalogue's own `MGN 12 C E 2 R1600 E Z1 P M II + SS/U/EL+RC/-O`; it prints
   every `codes.txt` code back unchanged. Size and length are plain integers on purpose: the refusals belong to Rhai so that they carry
   the Python generator's wording (`MGNR12 max single length is 2000 mm`).
-- `generator.rhai` is run by the real Rhai engine (`harness/rhai-resolve`, rhai 1.27, the doc's limits, only `table()` and
+- `generator.rhai` is run by the real Rhai engine (`runtime/rhai-run`, rhai 1.27, the doc's limits, only `table()` and
   `refuse()` registered), not mirrored in Python. `caps` is not in the code (HIWIN has no symbol): it is an option the caller sets
   (`parameters.caps = 1`), refused for sizes below 12 by the allowed-values rule.
 - The `check`: `src/check.py check_mgn_dimensioned` runs unchanged on the instance file through a wrapper (harness/run_all.py) that

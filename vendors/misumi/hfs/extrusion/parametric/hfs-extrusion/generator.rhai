@@ -19,13 +19,13 @@ fn pylist(a) {                    // Python's repr of a list of strings
     "[" + join(q, ", ") + "]"
 }
 fn strs(a) { let o = []; for x in a { o.push(x.to_string()); } o }
-fn ints(a) { let o = []; for x in a { o.push(parse_int(x)); } o }
+fn ints(a) { let o = []; for x in a { o.push(parse_int(x.to_string())); } o }
 fn nonempty(a) { let o = []; for x in a { if x != "" { o.push(x); } } o }
 fn lo_of(a) { let m = a[0]; for x in a { if x < m { m = x; } } m }
 fn hi_of(a) { let m = a[0]; for x in a { if x > m { m = x; } } m }
 fn sorted_list(a) { let b = a; b.sort(); b }
-fn split_bar(s) { if s == () || s == "" { [] } else { s.split("|") } }
-fn num(s) { parse_float(s) }
+fn split_bar(s) { if s == () { [] } else { s.to_string().split("|") } }
+fn num(x) { if type_of(x) == "string" { parse_float(x) } else { x.to_float() } }
 fn side_name(side) { if side == "L" { "left" } else { "right" } }
 fn mm(x) { g(x) + " mm" }
 fn param(name) { table("params", name, "value") }

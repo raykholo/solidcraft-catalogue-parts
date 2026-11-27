@@ -37,18 +37,19 @@ def cli(cmds, src=None, save=None, name="step"):
 def rhai(fn, *args):
     env = dict(os.environ, FT_ROOT=str(ROOT))
     r = subprocess.run([RHAI, str(PKG), fn, *[json.dumps(a) for a in args]], capture_output=True, text=True, env=env)
-    return json.loads(r.stdout) if r.stdout.strip() else {"script_error": r.stderr}
+    return json.loads(r.stdout) if r.stdout.strip() else {"ok": False, "reason": "script_error", "message": r.stderr}
+
+TEMPLATES = ft.load(PKG)
 
 def resolve(code):
-    """code -> ('ok', result) | ('refused', kind, message)"""
-    try:
-        tpl, fields = ft.parse(ft.load(PKG), code.strip().upper())
-    except ft.Refusal as r:
-        return ("refused", r.kind, r.message), None
+    """code -> (('ok', result) | ('refused', kind, message), fields)"""
+    m = TEMPLATES.match(code.strip().upper())
+    if m is None:
+        return ("refused", "invalid", f"{code!r} matches none of the templates"), None
+    fields = m[1]
     out = rhai("resolve", fields)
-    if "refusal" in out: return ("refused", out["refusal"]["kind"], out["refusal"]["message"]), fields
-    if "ok" not in out: raise SystemExit(f"rhai: {out}")
-    return ("ok", out["ok"]), fields
+    if not out.get("ok"): return ("refused", out["reason"], out["message"]), fields
+    return ("ok", out["value"]), fields
 
 def measure(sc_path, out_dir, tag, threads=True):
     cmds = [{"command": "inspect.measure", "params": {}}] + ([{"command": "model.threads", "params": {}}] if threads else [])
@@ -146,7 +147,7 @@ def main():
         row["parametric_spec"] = spec_check(e, host, work, body)
         # parameters -> fields -> code (generator.code) and the round trip parameters == parameters
         f2 = rhai("fields", res["configuration"], res["parameters"])
-        printed = ft.load(PKG)[0].print(f2["ok"]) if "ok" in f2 else None
+        printed = TEMPLATES.print(f2["value"]) if f2.get("ok") else None
         st2, _ = resolve(printed) if printed else (("refused", "", "no code"), None)
         results["roundtrip"].append({"code": code, "printed": printed, "same_parameters": st2[0] == "ok" and st2[1]["parameters"] == res["parameters"]
                                      and st2[1]["configuration"] == res["configuration"]})

@@ -13,9 +13,10 @@ hfs-extrusion/                 the package layout of the interface document
 build.py                       builds the model with solidcraft-cli
 pkgfiles.py  lin.py            tables and generator.toml; expression helper for the sketch points
 run_codes.py  report.py        the end-to-end proof (results.json) and the tables below
-../../../../runtime/fieldtemplate.py   stand-in for the field-template parser and printer (doc section 3)
-../../../../runtime/rhai-run/          stand-in host for generator.rhai: the real Rhai engine (crate rhai 1.27) with the documented sandbox limits
-                                       and the registered functions table() / refuse() / code_template()
+../../../../runtime/fieldtemplate.py   stand-in for the field-template parser and printer (doc section 3), shared with the HIWIN MG proof; this
+                                       generator added the inline per-field escape class and separators skipped (not stripped) in the code
+../../../../runtime/rhai-run/          stand-in host for generator.rhai, shared with the MG proof: the real Rhai engine (crate rhai 1.27), the
+                                       documented sandbox limits, typed table cells, table() / refuse() / code_template(), JSON in and out
 ```
 
 ## How the model is built (all of it worked on SolidCraft 0.50.0)

@@ -1,12 +1,12 @@
 """Python stand-in for SolidCraft's generator.parse / generator.code (docs/formats/generator.md sections 3-5): the field template from
-generator.toml (runtime/fieldtemplate.py) and resolve(fields) in generator.rhai, evaluated by the real Rhai engine (rhai-resolve)."""
+generator.toml (runtime/fieldtemplate.py) and resolve(fields) in generator.rhai, evaluated by the real Rhai engine (runtime/rhai-run)."""
 import json, os, subprocess, sys, tomllib
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[6]
 sys.path.insert(0, str(ROOT))
 from runtime.fieldtemplate import Template, TemplateSet, Refusal
 
-RHAI = os.environ.get("RHAI_RESOLVE", str(ROOT / "rbin" / "rhai-resolve"))
+RHAI = os.environ.get("RHAI_RUN", str(ROOT / "rbin" / "rhai-run"))   # the shared host: runtime/rhai-run
 
 class Package:
     def __init__(self, folder):
