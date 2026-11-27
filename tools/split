@@ -1,0 +1,165 @@
+#!/usr/bin/env python3
+"""tools/split --out DIR [--upto N] [--no-verify]: build a fresh local git repository at DIR holding this tree as a series of small
+pull requests for the official repository (see docs/contributing-upstream.md).
+
+  main = gen/01-<id>   the skeleton (LICENSE, NOTICE, README / CONTRIBUTING / AGENTS written for the new repository from
+                       docs/upstream-skeleton/, runtime/, schema/, tools/, workflows, docs/review.md) plus generator 1
+  gen/02-<id> ...      each branch is the previous one plus exactly one generator folder, the regenerated index/catalog.json,
+                       its row in the README table and its section of docs/grammar.md
+
+The order and the reason for each place are in docs/contribution-order.toml. The repository has no remote and nothing is pushed.
+Every commit is authored and committed as Ray (GitHub noreply address) with no trailers. Unless --no-verify, every branch tip is
+checked with tools/lint, tools/provenance --check, tools/build-index --check and tools/privacy over the branch's own commits, and a
+table is printed (stage, branch, files added, checks). tools/check is not run: it needs SolidCraft and CI runs it.
+Rebuilding replaces DIR, but only if it is empty, missing, or was made by this tool."""
+import argparse, os, re, shutil, subprocess, sys, tomllib
+from pathlib import Path
+ROOT = Path(__file__).resolve().parent.parent
+
+NAME, EMAIL = "Ray", "raykholo@users.noreply.github.com"
+MARKER = "tools-split-marker"
+# what the skeleton takes from this tree (everything the generators import or the checks need; nothing of the parts-library release)
+SKELETON_COPY = ["LICENSE", ".gitignore", "runtime", "schema/generator.schema.json", "schema/recipe.schema.json",
+                 "schema/sources.schema.json", "tools/build-index", "tools/check", "tools/gen", "tools/lint", "tools/preview",
+                 "tools/privacy", "tools/provenance", "tools/render", "tools/shots", "tools/hooks",
+                 ".github/workflows/generator.yml", ".github/workflows/privacy.yml", "docs/review.md"]
+TEMPLATES = ["README.md", "CONTRIBUTING.md", "AGENTS.md", "NOTICE"]      # docs/upstream-skeleton/<name> -> <name>
+ROW_MARKER = "<!-- generators:end -->"
+
+GIT_ENV = dict(os.environ, GIT_AUTHOR_NAME=NAME, GIT_AUTHOR_EMAIL=EMAIL, GIT_COMMITTER_NAME=NAME, GIT_COMMITTER_EMAIL=EMAIL,
+               GIT_CONFIG_GLOBAL="/dev/null", GIT_CONFIG_SYSTEM="/dev/null")
+
+def git(out, *args, check=True, capture=False):
+    r = subprocess.run(["git", "-C", str(out), *args], env=GIT_ENV, check=check, capture_output=True, text=True)
+    return r.stdout if capture else None
+
+def tracked(prefix: str) -> list[str]:
+    """Files git tracks in this tree under prefix (a file or folder): never build output, caches or untracked scraps."""
+    r = subprocess.run(["git", "-C", str(ROOT), "ls-files", "-z", "--", prefix], capture_output=True, check=True)
+    return sorted(x for x in r.stdout.decode().split("\0") if x and "__pycache__" not in x)
+
+def copy(rel: str, out: Path):
+    dst = out / rel; dst.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(ROOT / rel, dst)
+
+def grammar_sections() -> tuple[str, dict[str, str]]:
+    text = (ROOT / "docs" / "grammar.md").read_text()
+    head, *secs = re.split(r"(?m)^(?=## )", text)
+    return head, {s.splitlines()[0][3:].strip(): s for s in secs}
+
+def readme_row(gdir: Path) -> str:
+    m = tomllib.loads((gdir / "generator.toml").read_text())
+    ex: list[str] = []
+    for pm in m.get("declares", {}).get("matches", []):
+        for e in pm.get("examples", []):
+            if e not in ex: ex.append(e)
+    rel = "/".join(gdir.relative_to(ROOT).parts)
+    return f"| `{m['id']}` | {', '.join(f'`{e}`' for e in ex[:3])} | `{rel}` |"
+
+def message(gid: str, gdir: Path, first: bool) -> str:
+    m = tomllib.loads((gdir / "generator.toml").read_text())
+    valid = bad = 0
+    for line in (gdir / "codes.txt").read_text().splitlines():
+        b = line.partition("#")[0].strip()
+        if b: bad, valid = (bad + 1, valid) if b.startswith("!") else (bad, valid + 1)
+    rv = tomllib.loads((gdir / "review.toml").read_text())
+    who = "independent AI re-read of every dimension row against the cited pages; not reviewed by a person" if rv["reviewer_kind"] == "ai" \
+        else "independent review by a person of every dimension row against the cited pages"
+    subject = f"Add the repository skeleton and {gid}" if first else f"Add {gid}"
+    body = [f"{m['name']}.", "", f"Codes in codes.txt: {valid} valid, {bad} that must be rejected. Every dimension is cited in sources.toml;",
+            f"appearance-only features are listed under not_guaranteed. Review: {who} ({rv.get('date', '?')}).", ""]
+    if first:
+        body += ["The skeleton is the shared runtime, the schemas, the tools (gen, check, shots, preview, provenance, lint, build-index,",
+                 "privacy, render), the generator and privacy workflows and the contribution documents; this generator is the first user of it.", ""]
+    body += ["tools/check passes for every code on the SolidCraft release named in checks/; CI re-runs it."]
+    return subject + "\n\n" + "\n".join(body) + "\n"
+
+def verify(out: Path, rng: list[str]) -> list[tuple[str, bool]]:
+    env = dict(os.environ, PYTHONDONTWRITEBYTECODE="1")
+    res = []
+    for name, cmd in (("lint", ["tools/lint"]), ("provenance", ["tools/provenance", "--check"]),
+                      ("index", ["tools/build-index", "--check"]), ("privacy", ["tools/privacy", "--", *rng])):
+        r = subprocess.run([sys.executable, *cmd], cwd=out, env=env, capture_output=True, text=True)
+        ok = r.returncode == 0
+        if not ok: print(f"  {name} FAILED:\n" + "\n".join("    " + l for l in (r.stdout + r.stderr).splitlines()[-12:]), file=sys.stderr)
+        res.append((name, ok))
+    return res
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap.add_argument("--out", required=True, help="directory of the new repository (outside this worktree)")
+    ap.add_argument("--upto", type=int, default=0, help="only the first N generators of docs/contribution-order.toml")
+    ap.add_argument("--no-verify", action="store_true")
+    a = ap.parse_args()
+    out = Path(a.out).resolve()
+    if out == ROOT or ROOT in out.parents or out in ROOT.parents:
+        sys.exit("tools/split: --out must be a directory outside this worktree")
+    if out.exists() and any(out.iterdir()):
+        if not (out / ".git" / MARKER).is_file():
+            sys.exit(f"tools/split: {out} is not empty and was not made by tools/split; refusing to replace it")
+        shutil.rmtree(out)
+    out.mkdir(parents=True, exist_ok=True)
+
+    order = tomllib.loads((ROOT / "docs" / "contribution-order.toml").read_text())["generator"]
+    ids = {tomllib.loads(p.read_text())["id"]: p.parent for p in sorted(ROOT.glob("vendors/*/*/*/generator.toml"))}
+    if sorted(ids) != sorted(g["id"] for g in order):
+        sys.exit("tools/split: docs/contribution-order.toml and vendors/ list different generators: "
+                 + ", ".join(sorted(set(ids) ^ {g["id"] for g in order})))
+    if a.upto: order = order[:a.upto]
+    ghead, gsecs = grammar_sections()
+
+    git(out, "init", "-q", "-b", "main")
+    (out / ".git" / MARKER).write_text("made by tools/split\n")
+    git(out, "config", "user.name", NAME); git(out, "config", "user.email", EMAIL)
+    git(out, "config", "commit.gpgsign", "false"); git(out, "config", "core.hooksPath", "/dev/null")
+    git(out, "config", "advice.detachedHead", "false")
+
+    for rel in SKELETON_COPY:
+        for f in tracked(rel): copy(f, out)
+    for t in TEMPLATES:
+        shutil.copy2(ROOT / "docs" / "upstream-skeleton" / t, out / t)
+    rows: list[tuple[str, str, int, list]] = []
+    grammar_done: list[str] = []
+    prev = None
+    for n, g in enumerate(order, 1):
+        gid = g["id"]; gdir = ids[gid]
+        branch = f"gen/{n:02d}-{gid}"
+        if n == 1:
+            git(out, "checkout", "-q", "-b", branch)
+        else:
+            git(out, "checkout", "-q", "-b", branch, prev)
+        for f in tracked(str(gdir.relative_to(ROOT))): copy(f, out)
+        readme = out / "README.md"; text = readme.read_text()
+        readme.write_text(text.replace(ROW_MARKER, readme_row(gdir) + "\n" + ROW_MARKER))
+        sec = g.get("grammar", "")
+        if sec:
+            if sec not in gsecs: sys.exit(f"tools/split: docs/grammar.md has no section {sec!r}")
+            grammar_done.append(sec)
+            (out / "docs").mkdir(exist_ok=True)
+            (out / "docs" / "grammar.md").write_text(ghead + "".join(gsecs[s] for s in gsecs if s in grammar_done))
+        r = subprocess.run([sys.executable, "tools/build-index"], cwd=out, capture_output=True, text=True,
+                           env=dict(os.environ, PYTHONDONTWRITEBYTECODE="1"))
+        if r.returncode: sys.exit(f"tools/split: build-index refused {gid}:\n{r.stdout}{r.stderr}")
+        git(out, "add", "-A")
+        subprocess.run(["git", "-C", str(out), "commit", "-q", "-F", "-"], input=message(gid, gdir, n == 1), text=True, check=True, env=GIT_ENV)
+        if n == 1:
+            git(out, "branch", "-f", "main", branch)       # main is generator 1: the seed the later pull requests are made against
+        if n == 1:
+            added = git(out, "ls-tree", "-r", "--name-only", "HEAD", capture=True).split()
+        else:
+            added = git(out, "diff", "--name-only", "--diff-filter=A", f"{prev}..{branch}", capture=True).split()
+        checks = [] if a.no_verify else verify(out, ["HEAD"] if n == 1 else [f"{prev}..{branch}"])
+        rows.append((str(n), branch, len(added), checks))
+        prev = branch
+    git(out, "checkout", "-q", "main")
+
+    print(f"\nrepository: {out}   (no remote; nothing pushed)\n")
+    print(f"{'stage':<6}{'branch':<62}{'files added':>12}  checks (lint, provenance, index, privacy)")
+    for n, br, cnt, ck in rows:
+        mark = "not run" if not ck else " ".join(f"{k}:{'ok' if ok else 'FAIL'}" for k, ok in ck)
+        print(f"{n:<6}{br:<62}{cnt:>12}  {mark}")
+    if any(not ok for *_, ck in rows for _, ok in ck):
+        sys.exit(1)
+
+if __name__ == "__main__":
+    main()

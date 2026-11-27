@@ -106,16 +106,17 @@ for g in registry.generators():
                     bad(f"{rel}/data/{csvf.name}:{i}: page and status are required")
     if (g.dir / "PROVENANCE.md").is_file() and (g.dir / "PROVENANCE.md").read_text() != provenance.render(g):
         bad(f"{rel}/PROVENANCE.md: out of date (run tools/provenance)")
-# library.toml must make a manifest the parts index accepts (tools/release writes it; checked here so it fails on every commit)
-import json, tomllib
-from runtime.schema import validate
-lib = tomllib.loads((ROOT / "library.toml").read_text())
-probe = {"manifest_version": lib["manifest_version"], "id": f"{lib['publisher']}.{lib['library']}", "name": lib["name"],
-         "publisher": lib["publisher"], "repo": lib["repo"], "release": {"tag": f"v{lib['version']}", "asset": f"{lib['library']}-{lib['version']}.zip",
-         "sha256": "0" * 64}, "format": "folder", "format_version": 1, "min_solidcraft": "0.0.0", "license": lib["license"],
-         "description": lib["description"], "tags": lib["tags"], "homepage": lib["homepage"], "tier": "unverified"}
-for e in validate(probe, json.loads((ROOT / "schema" / "parts-library.schema.json").read_text())):
-    bad(f"library.toml: {e}")
+# library.toml (only in a repository that packs a parts-library release) must make a manifest the parts index accepts
+if (ROOT / "library.toml").is_file():
+    import json, tomllib
+    from runtime.schema import validate
+    lib = tomllib.loads((ROOT / "library.toml").read_text())
+    probe = {"manifest_version": lib["manifest_version"], "id": f"{lib['publisher']}.{lib['library']}", "name": lib["name"],
+             "publisher": lib["publisher"], "repo": lib["repo"], "release": {"tag": f"v{lib['version']}", "asset": f"{lib['library']}-{lib['version']}.zip",
+             "sha256": "0" * 64}, "format": "folder", "format_version": 1, "min_solidcraft": "0.0.0", "license": lib["license"],
+             "description": lib["description"], "tags": lib["tags"], "homepage": lib["homepage"], "tier": "unverified"}
+    for e in validate(probe, json.loads((ROOT / "schema" / "parts-library.schema.json").read_text())):
+        bad(f"library.toml: {e}")
 for x in problems:
     print("LINT  " + x)
 print(f"{len(problems)} problem(s)" if problems else "lint: clean")

@@ -1,0 +1,91 @@
+# The order in which the generators are offered to the official repository, one pull request each (tools/split reads this file;
+# docs/contributing-upstream.md is the procedure). The first three were fixed by the maintainer; the other fifteen are ordered by
+# the evidence below, strongest first.
+#
+# Evidence weighed (counted from each generator's sources.toml, review.toml, codes.txt and checks/ at the time of writing; all 18 are
+# Reviewed, independent AI re-read, 2026-11-26 / 27, none by a person):
+#   corrections    rows the independent re-read marked "corrected" (the review found a real error and it was fixed)
+#   codes          valid codes + codes that must be rejected, in codes.txt
+#   rows/code      spec-check rows per built code in the newest checks/ folder (0.50.0)
+#   cited          share of sources.toml dimension rows that are published / labelled / measured / derived (not approximate or none)
+#   printed        share of those that are printed in the catalogue (published / labelled) rather than measured / derived
+# Appearance-only rows are the complement of "cited". More corrections, more codes, more check rows and a higher cited share rank
+# higher; a large share of derived or "none" rows ranks lower (a reviewer has more to take on trust).
+#
+# grammar (optional) names the section of docs/grammar.md that goes in with the generator.
+
+[[generator]]
+id = "misumi.hnt.t-nut"
+reason = "Fixed first: the smallest complete generator (10 rows, 5 valid + 3 rejected codes, 14 checks per code, 90% cited); every value was re-read from the catalogue page and the side view re-measured from its vector paths, so it is quick to review and shows the whole method."
+grammar = "MISUMI 5 series pre-assembly T-nuts (S9)"
+
+[[generator]]
+id = "misumi.hfs.extrusion"
+reason = "Fixed second: the most dimensioned generator (67 rows, 97% cited, 30 published and 24 labelled), 1 correction found in review, 22 codes, 28 checks per code."
+grammar = "MISUMI 5 and 6 series aluminium extrusion"
+
+[[generator]]
+id = "hiwin.mg.rail-set"
+reason = "Fixed third: the other vendor (HIWIN) and a rail plus block set, 58 checks per code (the most of any generator); only 7 codes and 29% appearance or uncited rows."
+grammar = "HIWIN MGN (S4)"
+
+[[generator]]
+id = "hiwin.rg.guideway"
+reason = "1 correction in review, 45 codes (29 valid, 16 rejected), 38.5 checks per code, 88% of rows printed in the catalogue and only 2 approximate."
+
+[[generator]]
+id = "hiwin.eg.guideway"
+reason = "1 correction in review, 30 codes, 35.9 checks per code, 87% of rows printed, only 2 approximate."
+
+[[generator]]
+id = "misumi.sth.flanged-shaft-support"
+reason = "The most corrections of any generator (2), the most codes (73, of which 23 rejected) and 20 checks per code; ranked below the HIWIN guideways because 6 of its 28 rows are derived and 2 have no source (14% appearance)."
+
+[[generator]]
+id = "misumi.lb.linear-bushing"
+reason = "1 correction, 57 codes (20 rejected), 17 of 22 rows printed; 16 checks per code and 23% appearance rows."
+
+[[generator]]
+id = "misumi.sfj.shaft"
+reason = "1 correction, 40 codes (18 rejected), 26 rows with 19 printed; 18 checks per code but 27% appearance rows, and its review is a day older than the rest."
+
+[[generator]]
+id = "misumi.scs.collar"
+reason = "48 codes (18 rejected), 21 of 26 rows printed (9 published, 12 labelled); no correction found in review, 17 checks per code, 19% appearance."
+
+[[generator]]
+id = "hiwin.hg.guideway"
+reason = "Same method as the other HIWIN guideways and 35.6 checks per code, 11 of 13 rows published; but no correction in review and only 14 codes."
+
+[[generator]]
+id = "misumi.ofb.oil-free-bushing"
+reason = "44 codes (15 rejected) and 11 of 16 rows published, but 31% of rows are approximate and only 13.9 checks per code."
+
+[[generator]]
+id = "misumi.sth.dowel-flanged-shaft-support"
+reason = "26 codes, 25.6 checks per code, but only 1 of 10 rows is published (6 labelled, 1 derived, 1 none)."
+
+[[generator]]
+id = "misumi.sth.pilot-flanged-shaft-support"
+reason = "26 codes, 24.5 checks per code, but only 1 of 10 rows is published (5 labelled, 2 derived, 1 none)."
+
+[[generator]]
+id = "misumi.hbl.bracket"
+reason = "36 codes (11 rejected) and 18 of 22 rows printed, but the fewest checks per code of the larger generators (12.6)."
+
+[[generator]]
+id = "misumi.lhb.bushing-housing"
+reason = "21 codes, 10 of 12 rows published, 17% appearance; 17.3 checks per code, no correction found."
+
+[[generator]]
+id = "misumi.lhb.tall-housing"
+reason = "26 codes, 9 of 12 rows published, 25% appearance, 18.2 checks per code, no correction found."
+
+[[generator]]
+id = "misumi.shf.shaft-holder"
+reason = "26 codes and 19.6 checks per code, but 36% appearance or uncited rows (3 approximate, 1 none) of 11."
+
+[[generator]]
+id = "misumi.lhb.housing-g"
+reason = "Last: the least evidence, 6 rows only, 16 codes and 12 checks per code (the fewest); 5 of 6 rows published."
+grammar = ""
