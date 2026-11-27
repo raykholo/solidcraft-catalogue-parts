@@ -34,7 +34,7 @@ PARAMS = [("width", "14", "mm", "plate width W (extrusion direction X)"), ("foot
           ("tabs", "0", "", "1 = the HBK types: tabs on the bottom of both arms"), ("foot_n", "1", "", "foot holes: 1 or 2"),
           ("wall_n", "1", "", "wall holes: 1 or 2")]
 DERIVED = [("hole_x", "width / 2 + hole_off", "mm", "hole centres across the width")]
-FEATS = ["FootTab", "WallTab", "FootHole1", "FootHole2", "WallHole1", "WallHole2"]
+FEATS = ["FootTab", "WallTab", "FootHole2", "WallHole2"]        # the optional features: suppression columns and rules (the first holes are always there)
 
 def run(cmds, src=None, save=None, workdir=None):
     wd = Path(workdir)
