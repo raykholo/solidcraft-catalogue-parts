@@ -15,8 +15,10 @@ Everything is shared and small (about 1,100 lines of Python), so all of `runtime
 `sc`, `table`, `check`, `appearance`, `registry`, `provenance`, `schema`, `privacy`. With it:
 
 - `schema/`: `generator`, `recipe` and `sources` schemas.
-- `tools/`: `gen`, `check`, `shots`, `preview`, `render`, `provenance`, `lint`, `build-index`, `privacy` and `hooks/pre-push`.
-- `.github/workflows/`: `generator.yml` (spec check, provenance, lint, index) and `privacy.yml`.
+- `tools/`: `gen`, `check`, `shots`, `preview`, `render`, `provenance`, `lint`, `build-index`, `privacy`, `commit-scope`, `versions` and `hooks/pre-push`.
+- `.github/workflows/`: `generator.yml` (spec check, version bump, provenance, lint, index), `privacy.yml` (also the commit-subject check) and `tag.yml` (per-generator tags).
+- `.github/CODEOWNERS`: a template with no owners yet (the official maintainers fill in their handles; the file says how).
+- `docs/repository-layout.md`: why one repository holds many generators.
 - `LICENSE`, `NOTICE`, `.gitignore`, and `README.md`, `CONTRIBUTING.md`, `AGENTS.md` written for the new repository (`docs/upstream-skeleton/`),
   plus `docs/review.md` and `docs/grammar.md` (each generator brings its own section of it).
 

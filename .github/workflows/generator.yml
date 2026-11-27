@@ -1,6 +1,6 @@
 name: generator
 # On a pull request: the vendors/<vendor>/<series>/<generator>/ folders it touches (all of them when runtime/, schema/ or tools/ change).
-# On a push to main, or by hand: every generator.
+# On a push to main, or by hand: every generator. Cheap whole-tree checks (provenance, lint, index, packages) always run on everything.
 on:
   pull_request:
     paths: ["vendors/**", "runtime/**", "schema/**", "tools/**", "packages/**", "docs/generator-package.md"]
@@ -36,6 +36,9 @@ jobs:
           if git diff --name-only "$base" HEAD | grep -qE '^(runtime|schema|tools)/'; then dirs=$(ls -d vendors/*/*/*/); else
             dirs=$(git diff --name-only "$base" HEAD | grep -E '^vendors/[^/]+/[^/]+/[^/]+/' | cut -d/ -f1-4 | sort -u); fi
           echo "dirs=$(echo $dirs)" >> "$GITHUB_OUTPUT"
+      - name: Version bump (a pull request that changes a generator's files raises its generator.toml version)
+        if: github.event_name == 'pull_request'
+        run: tools/versions check "origin/${{ github.base_ref }}"
       - run: tools/check ${{ steps.changed.outputs.dirs }}
       - run: tools/provenance --check
       - run: tools/lint

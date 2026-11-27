@@ -1,0 +1,70 @@
+#!/usr/bin/env python3
+"""tools/versions: per-generator versions (generator.toml `version`) and their tags `<id>/v<version>`. See docs/repository-layout.md.
+
+  tools/versions check BASE      every generator whose own files changed between BASE (a ref; the merge-base is used) and HEAD must have a
+                                 `version` that is x.Y.Z semver and greater than BASE's. A generator that is new since BASE needs a valid
+                                 version only. Generated or documentation-only changes do not need a bump: checks/, PROVENANCE.md,
+                                 review.toml, README.md, preview.png and shots/ (a re-check on a new SolidCraft release, a regenerated
+                                 provenance page, a review sign-off, a screenshot). Everything else does (src/, data/, sources.toml,
+                                 codes.txt, parametric/, icon.svg, the rest of generator.toml).
+  tools/versions tags [BEFORE]   print the tags that should exist at HEAD, one per line: `<id>/v<version>` for each generator whose version
+                                 differs from BEFORE's (every generator when BEFORE is omitted or all zeros) and whose tag does not exist yet.
+Exit 1 when `check` finds a problem."""
+import re, subprocess, sys, tomllib
+from pathlib import Path
+ROOT = Path(__file__).resolve().parent.parent
+EXEMPT = ("checks/", "shots/", "PROVENANCE.md", "review.toml", "README.md", "preview.png")
+SEMVER = re.compile(r"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$")
+
+def git(*a, check=True):
+    return subprocess.run(["git", "-C", str(ROOT), *a], capture_output=True, text=True, check=check)
+
+def toml_at(rev: str, folder: str):
+    r = git("show", f"{rev}:{folder}/generator.toml", check=False)
+    return tomllib.loads(r.stdout) if r.returncode == 0 else None
+
+def folders(rev: str) -> list[str]:
+    names = git("ls-tree", "-r", "--name-only", rev, "--", "vendors").stdout.split()
+    return sorted({f[:-len("/generator.toml")] for f in names if re.fullmatch(r"vendors/[^/]+/[^/]+/[^/]+/generator\.toml", f)})
+
+def ver(m): return tuple(int(x) for x in m["version"].split("."))
+
+def check(base: str) -> int:
+    mb = git("merge-base", base, "HEAD").stdout.strip()
+    changed = git("diff", "--name-only", "-z", mb, "HEAD").stdout.split("\0")
+    bad = 0
+    for folder in sorted(set(folders("HEAD")) | set(folders(mb))):
+        files = [f[len(folder) + 1:] for f in changed if f.startswith(folder + "/")]
+        if not files: continue
+        new, old = toml_at("HEAD", folder), toml_at(mb, folder)
+        if new is None: continue                                          # the generator was removed
+        v = str(new.get("version", ""))
+        if not SEMVER.match(v):
+            bad += 1; print(f"{folder}: version {v!r} in generator.toml is not x.Y.Z semver"); continue
+        if old is None: continue                                          # new generator
+        if all(f.startswith(EXEMPT) for f in files): continue             # only generated or documentation files
+        if ver(new) <= ver(old):
+            bad += 1
+            print(f"{folder}: its files changed ({', '.join(f for f in files if not f.startswith(EXEMPT))[:120]}) but `version` is still {old['version']}; "
+                  f"bump it in {folder}/generator.toml (patch for a fix, minor for a new code or feature)")
+    print(f"versions: {bad} problem(s)" if bad else "versions: every changed generator has a bumped version")
+    return 1 if bad else 0
+
+def tags(before: str | None) -> int:
+    if before and set(before) == {"0"}: before = None
+    if before and git("cat-file", "-e", before + "^{commit}", check=False).returncode: before = None
+    have = set(git("tag", "--list").stdout.split())
+    for folder in folders("HEAD"):
+        m = toml_at("HEAD", folder)
+        tag = f"{m['id']}/v{m['version']}"
+        old = toml_at(before, folder) if before else None
+        if old is not None and old["version"] == m["version"]: continue
+        if tag in have or git("check-ref-format", f"refs/tags/{tag}", check=False).returncode: continue
+        print(tag)
+    return 0
+
+if __name__ == "__main__":
+    a = sys.argv[1:]
+    if a[:1] == ["check"] and len(a) == 2: sys.exit(check(a[1]))
+    if a[:1] == ["tags"] and len(a) <= 2: sys.exit(tags(a[1] if len(a) == 2 else None))
+    sys.exit(__doc__)

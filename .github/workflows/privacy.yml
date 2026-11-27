@@ -1,6 +1,7 @@
 name: privacy
 # Every pull request and every push to main: no personal paths, development-session text, vendor CAD or stray images in the files
-# (tools/lint), and none in the commit messages, with GitHub noreply author addresses (tools/privacy).
+# (tools/lint), and none in the commit messages, with GitHub noreply author addresses (tools/privacy), and generator-scoped
+# commit subjects (tools/commit-scope).
 on:
   pull_request:
   push:
@@ -17,9 +18,21 @@ jobs:
       - name: Commit messages and authors
         run: |
           if [ "${{ github.event_name }}" = "pull_request" ]; then
-            tools/privacy -- "origin/${{ github.base_ref }}..${{ github.event.pull_request.head.sha }}"
+            rng="origin/${{ github.base_ref }}..${{ github.event.pull_request.head.sha }}"
           elif [ "${{ github.event.before }}" != "0000000000000000000000000000000000000000" ]; then
-            tools/privacy -- "${{ github.event.before }}..${{ github.sha }}"
+            rng="${{ github.event.before }}..${{ github.sha }}"
           else
-            tools/privacy -- "${{ github.sha }}"
+            rng="${{ github.sha }}"
+          fi
+          tools/privacy -- "$rng"
+      # A commit touching one generator folder only has that generator's id (or a prefix of it) in its subject: docs/repository-layout.md.
+      # Only the new commits of the pull request or push are checked; shared-code and multi-generator commits are free-form.
+      - name: Commit subjects scoped by generator
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            tools/commit-scope -- "origin/${{ github.base_ref }}..${{ github.event.pull_request.head.sha }}"
+          elif [ "${{ github.event.before }}" != "0000000000000000000000000000000000000000" ]; then
+            tools/commit-scope -- "${{ github.event.before }}..${{ github.sha }}"
+          else
+            tools/commit-scope -- "${{ github.sha }}^!"
           fi

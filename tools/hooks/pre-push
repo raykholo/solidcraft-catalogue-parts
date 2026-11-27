@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Refuse a push whose files or commit messages carry personal paths, session text or private words (tools/lint, tools/privacy).
+# Refuse a push whose files or commit messages carry personal paths, session text or private words (tools/lint, tools/privacy), or
+# whose single-generator commits lack the generator id in the subject (tools/commit-scope).
 # Install once per clone: git config core.hooksPath tools/hooks
 set -euo pipefail
 root=$(git rev-parse --show-toplevel)
@@ -10,4 +11,6 @@ while read -r _lref lsha _rref rsha; do
   if [ "$rsha" = "$zero" ]; then range="$lsha --not --remotes"; else range="$rsha..$lsha"; fi
   # shellcheck disable=SC2086
   "$root/tools/privacy" -- $range >/dev/null 2>&1 || { "$root/tools/privacy" -- $range || true; echo "pre-push: refused"; exit 1; }
+  # a commit that touches one generator folder only starts its subject with that generator's id (docs/repository-layout.md)
+  "$root/tools/commit-scope" -- $range >/dev/null 2>&1 || { "$root/tools/commit-scope" -- $range || true; echo "pre-push: refused"; exit 1; }
 done

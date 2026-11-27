@@ -16,7 +16,9 @@
 
 ## Pull request checklist
 
-1. One generator (or one data change) per pull request.
+How the repository is organised (commit subjects, versions and tags, CI scope, owners): `docs/repository-layout.md`.
+
+1. One generator (or one data change) per pull request. Commits that touch only that generator start with its id (`misumi.hfs.extrusion: ...`), and the PR raises its `generator.toml` `version`.
 2. `tools/check <your generator folder>` passes on the current SolidCraft release; commit the new `checks/<version>/` files.
 3. `tools/preview <dir>` (rendered, never a vendor image) and `tools/provenance <dir>`; commit `preview.png` and `PROVENANCE.md`.
 4. `tools/lint` and `tools/build-index --check` pass; commit `index/catalog.json` only if CI is not yet generating it.
@@ -31,7 +33,7 @@ comparison with the vendor's configured-part drawing, only where the vendor allo
 ## Before you push
 
 Run `git config core.hooksPath tools/hooks` once per clone. The pre-push hook runs `tools/lint` (files) and `tools/privacy`
-(commit messages and author addresses) and refuses personal paths, development-session links or trailers, vendor CAD and stray
+(commit messages and author addresses) and `tools/commit-scope` (generator id in the subject) and refuses personal paths, development-session links or trailers, vendor CAD and stray
 images; use your GitHub noreply address as the commit email. The `privacy` workflow runs the same checks on every pull request.
 To keep your own words out too (machine names, say), list them, one regular expression per line, in
 `~/.config/sc-parts/private-words` (or the file `$SC_PARTS_PRIVATE_WORDS` names); that file stays on your machine.
