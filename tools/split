@@ -9,7 +9,7 @@ pull requests for the official repository (see docs/contributing-upstream.md).
 
 The order and the reason for each place are in docs/contribution-order.toml. The repository has no remote and nothing is pushed.
 Every commit is authored and committed as Ray (GitHub noreply address) with no trailers. Unless --no-verify, every branch tip is
-checked with tools/lint, tools/provenance --check, tools/build-index --check and tools/privacy over the branch's own commits, and a
+checked with tools/lint, tools/provenance --check, tools/build-index --check, tools/privacy and tools/commit-scope over the branch's own commits, and a
 table is printed (stage, branch, files added, checks). tools/check is not run: it needs SolidCraft and CI runs it.
 Rebuilding replaces DIR, but only if it is empty, missing, or was made by this tool."""
 import argparse, os, re, shutil, subprocess, sys, tomllib
@@ -79,7 +79,8 @@ def verify(out: Path, rng: list[str]) -> list[tuple[str, bool]]:
     env = dict(os.environ, PYTHONDONTWRITEBYTECODE="1")
     res = []
     for name, cmd in (("lint", ["tools/lint"]), ("provenance", ["tools/provenance", "--check"]),
-                      ("index", ["tools/build-index", "--check"]), ("privacy", ["tools/privacy", "--", *rng])):
+                      ("index", ["tools/build-index", "--check"]), ("privacy", ["tools/privacy", "--", *rng]),
+                      ("commit-scope", ["tools/commit-scope", "--", *rng])):
         r = subprocess.run([sys.executable, *cmd], cwd=out, env=env, capture_output=True, text=True)
         ok = r.returncode == 0
         if not ok: print(f"  {name} FAILED:\n" + "\n".join("    " + l for l in (r.stdout + r.stderr).splitlines()[-12:]), file=sys.stderr)
@@ -157,7 +158,7 @@ def main():
     git(out, "checkout", "-q", "main")
 
     print(f"\nrepository: {out}   (no remote; nothing pushed)\n")
-    print(f"{'stage':<6}{'branch':<62}{'files added':>12}  checks (lint, provenance, index, privacy)")
+    print(f"{'stage':<6}{'branch':<62}{'files added':>12}  checks (lint, provenance, index, privacy, commit-scope)")
     for n, br, cnt, ck in rows:
         mark = "not run" if not ck else " ".join(f"{k}:{'ok' if ok else 'FAIL'}" for k, ok in ck)
         print(f"{n:<6}{br:<62}{cnt:>12}  {mark}")
