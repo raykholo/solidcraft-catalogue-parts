@@ -1,0 +1,25 @@
+key,shape,dr,D,D_tol_ni,L,L_tol,l,H,T,d,d1,t,pcd,W,A,F,width,dr_tol,source,page,status
+round-6,round,6,12,-0.021,29,0.3,5,28,5,3.5,6,3.1,20,,,,,-0.01,S13,p.473 table,labelled
+round-8,round,8,15,-0.021,37,0.3,5,32,5,3.5,6,3.1,24,,,,,-0.01,S13,p.473 table,labelled
+round-10,round,10,19,-0.023,47,0.3,6,40,6,4.5,7.5,4.1,29,,,,,-0.01,S13,p.473 table,labelled
+round-12,round,12,21,-0.023,47,0.3,6,42,6,4.5,7.5,4.1,32,,,,,-0.01,S13,p.473 table,labelled
+round-16,round,16,28,-0.023,56,0.3,6,48,6,4.5,7.5,4.1,38,,,,,-0.01,S13,p.473 table,labelled
+round-20,round,20,32,-0.028,65,0.3,8,54,8,5.5,9,5.1,43,,,,,-0.012,S13,p.473 table,labelled
+round-25,round,25,40,-0.028,83,0.3,8,62,8,5.5,9,5.1,51,,,,,-0.012,S13,p.473 table,labelled
+round-30,round,30,45,-0.028,90,0.3,10,74,10,6.6,11,6.1,60,,,,,-0.012,S13,p.473 table,labelled
+square-6,square,6,12,-0.021,29,0.3,5,28,5,3.5,6,3.1,20,22,,,,-0.01,S13,p.475 table,labelled
+square-8,square,8,15,-0.021,37,0.3,5,32,5,3.5,6,3.1,24,25,,,,-0.01,S13,p.475 table,labelled
+square-10,square,10,19,-0.023,47,0.3,6,40,6,4.5,7.5,4.1,29,30,,,,-0.01,S13,p.475 table,labelled
+square-12,square,12,21,-0.023,47,0.3,6,42,6,4.5,7.5,4.1,32,32,,,,-0.01,S13,p.475 table,labelled
+square-16,square,16,28,-0.023,56,0.3,6,48,6,4.5,7.5,4.1,38,37,,,,-0.01,S13,p.475 table,labelled
+square-20,square,20,32,-0.028,65,0.3,8,54,8,5.5,9,5.1,43,42,,,,-0.012,S13,p.475 table,labelled
+square-25,square,25,40,-0.028,83,0.3,8,62,8,5.5,9,5.1,51,50,,,,-0.012,S13,p.475 table,labelled
+square-30,square,30,45,-0.028,90,0.3,10,74,10,6.6,11,6.1,60,58,,,,-0.012,S13,p.475 table,labelled
+compact-6,compact,6,12,-0.021,29,0.3,5,28,5,3.5,6,3.1,,,20,,18,-0.01,S13,p.477 table,labelled
+compact-8,compact,8,15,-0.021,37,0.3,5,32,5,3.5,6,3.1,,,24,,21,-0.01,S13,p.477 table,labelled
+compact-10,compact,10,19,-0.023,47,0.3,6,40,6,4.5,7.5,4.1,,,29,,25,-0.01,S13,p.477 table,labelled
+compact-12,compact,12,21,-0.023,47,0.3,6,42,6,4.5,7.5,4.1,,,32,,27,-0.01,S13,p.477 table,labelled
+compact-16,compact,16,28,-0.023,56,0.3,6,48,6,4.5,7.5,4.1,,,31,22,34,-0.01,S13,p.477 table,labelled
+compact-20,compact,20,32,-0.028,65,0.3,8,54,8,5.5,9,5.1,,,36,24,38,-0.012,S13,p.477 table,labelled
+compact-25,compact,25,40,-0.028,83,0.3,8,62,8,5.5,9,5.1,,,40,32,46,-0.012,S13,p.477 table,labelled
+compact-30,compact,30,45,-0.028,90,0.3,10,74,10,6.6,11,6.1,,,49,35,51,-0.012,S13,p.477 table,labelled

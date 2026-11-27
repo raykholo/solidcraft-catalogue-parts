@@ -57,6 +57,16 @@ def _tokens(lit):
 def _unescape(lit):
     return re.sub(r"\\(.)", r"\1", lit)
 
+def _lit(text, pos, value):
+    """Where the listed value `value` ends when it is read at `pos`: its characters in order, separators of the code skipped between them
+    (so `C-MUFZ` is read from `C-MUFZ5-10`, and from `c mufz`); None when it does not fit."""
+    p = pos
+    for c in _norm(value):
+        while p < len(text) and text[p] in SEPARATORS: p += 1
+        if text[p:p + 1] != c: return None
+        p += 1
+    return p
+
 class _Field:
     def __init__(self, name, spec, choices):
         self.name, self.spec = name, (spec or "").strip()
@@ -87,11 +97,13 @@ class _Field:
     def options(self, text, pos, esc):
         """Yield (value, new position) in preference order (longest first)."""
         if self.kind == "choice":
-            for v in sorted(self.values, key=len, reverse=True):
-                if text.startswith(_norm(v), pos): yield self._typed(v), pos + len(_norm(v))
+            for v in sorted(self.values, key=lambda x: len(_norm(x)), reverse=True):
+                p = _lit(text, pos, v)
+                if p is not None: yield self._typed(v), p
         elif self.kind == "map":
-            for k in sorted(self.map, key=len, reverse=True):
-                if text.startswith(_norm(k), pos): yield self.map[k], pos + len(_norm(k))
+            for k in sorted(self.map, key=lambda x: len(_norm(x)), reverse=True):
+                p = _lit(text, pos, k)
+                if p is not None: yield self.map[k], p
         elif self.kind == "int":
             m = re.compile(r"[1-9]\d*|0").match(text, pos)
             if m:
