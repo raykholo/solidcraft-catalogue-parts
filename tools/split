@@ -20,7 +20,7 @@ NAME, EMAIL = "Ray", "raykholo@users.noreply.github.com"
 MARKER = "tools-split-marker"
 # what the skeleton takes from this tree (everything the generators import or the checks need; nothing of the parts-library release)
 SKELETON_COPY = ["LICENSE", ".gitignore", "runtime", "schema/generator.schema.json", "schema/recipe.schema.json",
-                 "schema/sources.schema.json", "tools/build-index", "tools/check", "tools/gen", "tools/lint", "tools/preview",
+                 "schema/sources.schema.json", "schema/generator-package.schema.json", "tools/build-index", "tools/check", "tools/gen", "tools/lint", "tools/preview",
                  "tools/privacy", "tools/commit-scope", "tools/versions", "tools/provenance", "tools/render", "tools/shots", "tools/hooks",
                  ".github/workflows/generator.yml", ".github/workflows/privacy.yml", ".github/workflows/tag.yml", "docs/review.md",
                  "docs/repository-layout.md"]
