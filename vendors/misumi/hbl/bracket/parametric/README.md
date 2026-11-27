@@ -32,7 +32,7 @@ faithfulness.py  ci.sh         the verdict file for tools/parametric-verdict, an
 
 ## The ordering code
 
-`generator.toml`: `{base: text 1..24 [A-Za-z0-9]}[-{rest: text 1..40 [A-Za-z0-9-]}]`. `resolve` splits `rest` on `-`, takes a leading `4` as the type's own `-4`
+`generator.toml`: `{base: text 1..24 [A-Za-z0-9]}[\-{rest: text 1..40 [A-Za-z0-9-]}]`, then `{raw: text 1..64 [A-Za-z0-9-]}` for a dangling or doubled `-` (`HBLTS5-`, `HBLTS5--C`), which `resolve` reads as typed. `resolve` splits `rest` on `-`, takes a leading `4` as the type's own `-4`
 (`HBLTS5-4`), and every Python refusal, in its order and with its message, is a `refuse(kind, message)` in `generator.rhai` (`invalid` / `not_modelled` mirror
 `CodeError` / `NotModelled`). The description, material and surface are plain Rhai over `tables/*.csv`, and the harness compares the description with the Python
 one character for character. `fields(configuration, parameters)` is the inverse (the alteration is accessory text, not a parameter, so it is not printed).
@@ -96,6 +96,9 @@ same bbox, face and body counts.
 | HBLTS5-4-4 | HBLTS5-4-4: unknown alteration '4'; the catalogue lists C, SET, SST, SEU, SSU, SEP, SSP, SEC (no -5 or other suffix exists) | HBLTS5-4-4: unknown alteration '4'; the catalogue lists C, SET, SST, SEU, SSU, SEP, SSP, SEC (no -5 or other suffix exists) | yes |
 | HBLUS5-4 | HBLUS5-4: HBLUS5 has no -4 version (an M4 screw version exists for HBLTS5 only; the plain code is the M5 one) | HBLUS5-4: HBLUS5 has no -4 version (an M4 screw version exists for HBLTS5 only; the plain code is the M5 one) | yes |
 | HBLTH5-C-SET | HBLTH5-C-SET: one alteration at most (C, SET, SST, SEU, SSU, SEP, SSP, SEC); the catalogue lists them as alternatives | HBLTH5-C-SET: one alteration at most (C, SET, SST, SEU, SSU, SEP, SSP, SEC); the catalogue lists them as alternatives | yes |
+| HBLTS5- | HBLTS5-: unknown alteration ''; the catalogue lists C, SET, SST, SEU, SSU, SEP, SSP, SEC (no -5 or other suffix exists) | HBLTS5-: unknown alteration ''; the catalogue lists C, SET, SST, SEU, SSU, SEP, SSP, SEC (no -5 or other suffix exists) | yes |
+| HBLTS5--C | HBLTS5--C: one alteration at most (C, SET, SST, SEU, SSU, SEP, SSP, SEC); the catalogue lists them as alternatives | HBLTS5--C: one alteration at most (C, SET, SST, SEU, SSU, SEP, SSP, SEC); the catalogue lists them as alternatives | yes |
+| HBLTS5-C- | HBLTS5-C-: one alteration at most (C, SET, SST, SEU, SSU, SEP, SSP, SEC); the catalogue lists them as alternatives | HBLTS5-C-: one alteration at most (C, SET, SST, SEU, SSU, SEP, SSP, SEC); the catalogue lists them as alternatives | yes |
 
 | change | on | changed in place vol / area / bbox / faces | direct code (inserted) | python | equal (changed = direct = python) |
 |---|---|---|---|---|---|
@@ -113,7 +116,7 @@ same bbox, face and body counts.
 config.table: 19 rows, 20 columns, 11 rules
 
 All 25 codes: the parametric part has the same volume, area, bbox, face and body count as the Python part, and passes the same spec check with the same number of
-rows. Every refusal (the 11 of `codes.txt` and 13 more, compared with `br.parse`) has the Python message word for word.
+rows. Every refusal (the 11 of `codes.txt` and 16 more, compared with `br.parse`) has the Python message word for word.
 
 ## Commands
 

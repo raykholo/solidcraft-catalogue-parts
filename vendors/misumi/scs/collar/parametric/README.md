@@ -35,10 +35,10 @@ faithfulness.py  ci.sh         the verdict file for tools/parametric-verdict, an
 
 ## The ordering code
 
-`generator.toml` has four templates: `C-{type: SCSAW|SCNPAW|SCSMAW|SCSGAW}{nums: text 1..8 [0-9-]}`, `C-{kind: SCSBNAW}{nums}`, `E-[{plat: P|S}]{fam: SCSPD|SCDJ|SCD}{nums}`
-and the catch-all `{raw: text 1..64 [A-Za-z0-9-]}`. The two sizes are one text field (`12-10`) that `generator.rhai` splits and checks like the Python regular
-expressions (`\d{1,2}-\d{1,2}`), because the stand-in parser skips separators and a code without its `-` has to be refused. The one-value choice fields (`kind`,
-`fam`) let the template printer tell the templates apart. Every Python refusal, in its order and with its message, is a `refuse(kind, message)`.
+`generator.toml` has five templates: `C-{type: SCSAW|SCNPAW|SCSMAW|SCSGAW}{d: int 0..99}\-{b: int 0..99}`, `C-{kind: SCSBNAW}{d}\-{ds}`, `E-[{plat: P|S}]{fam: SCSPD|SCD}{d}`,
+`E-[{plat: P|S}]{fam: SCDJ}{d}[\-{b}]` and the catch-all `{raw: text 1..64 [A-Za-z0-9-]}`. The `\-` is a required separator, so a code without its `-` is refused as the Python
+regular expressions do. The one-value choice fields (`kind`, `fam`) let the template printer tell the templates apart. Every Python refusal, in its order and with its
+message, is a `refuse(kind, message)`; a code that matches only the catch-all gets the shape message quoting it as typed.
 
 ## Result: side by side
 
@@ -115,6 +115,11 @@ same bbox, face and body counts.
 | E-PSCSPD7 | E-PSCSPD is offered for D in 6, 8, 10, 12, 13, 15, 16, 20, 25, 30 mm, not 7 (p.546 table) | E-PSCSPD is offered for D in 6, 8, 10, 12, 13, 15, 16, 20, 25, 30 mm, not 7 (p.546 table) | yes |
 | E-SCDJ40-14 | E-SCDJ40 is offered in width B = 15 mm only, not 14 (p.547 compact type table, B selection) | E-SCDJ40 is offered in width B = 15 mm only, not 14 (p.547 compact type table, B selection) | yes |
 | E-SSCD4 | E-SSCD (stainless steel) is only available for D in 6, 10, 12, 16, 20, 25, 30, 35 mm, not 4 (p.547 standard type note) | E-SSCD (stainless steel) is only available for D in 6, 10, 12, 16, 20, 25, 30, 35 mm, not 4 (p.547 standard type note) | yes |
+| E-SCD12- | 'E-SCD12-': expected <type><I.D. D>-<width B>, e.g. C-SCSAW12-10 (types: C-SCSAW, C-SCNPAW, C-SCSMAW, C-SCSGAW); C-SCSBNAW<D>-<Ds>, E-SCD<D>, E-SCSPD<D> and E-SCDJ<D>-<B> (and their E-P.. / E-S.. variants) are the other forms | 'E-SCD12-': expected <type><I.D. D>-<width B>, e.g. C-SCSAW12-10 (types: C-SCSAW, C-SCNPAW, C-SCSMAW, C-SCSGAW); C-SCSBNAW<D>-<Ds>, E-SCD<D>, E-SCSPD<D> and E-SCDJ<D>-<B> (and their E-P.. / E-S.. variants) are the other forms | yes |
+| E-SCSPD6- | 'E-SCSPD6-': expected <type><I.D. D>-<width B>, e.g. C-SCSAW12-10 (types: C-SCSAW, C-SCNPAW, C-SCSMAW, C-SCSGAW); C-SCSBNAW<D>-<Ds>, E-SCD<D>, E-SCSPD<D> and E-SCDJ<D>-<B> (and their E-P.. / E-S.. variants) are the other forms | 'E-SCSPD6-': expected <type><I.D. D>-<width B>, e.g. C-SCSAW12-10 (types: C-SCSAW, C-SCNPAW, C-SCSMAW, C-SCSGAW); C-SCSBNAW<D>-<Ds>, E-SCD<D>, E-SCSPD<D> and E-SCDJ<D>-<B> (and their E-P.. / E-S.. variants) are the other forms | yes |
+| C-SCSAW-10 | 'C-SCSAW-10': expected <type><I.D. D>-<width B>, e.g. C-SCSAW12-10 (types: C-SCSAW, C-SCNPAW, C-SCSMAW, C-SCSGAW); C-SCSBNAW<D>-<Ds>, E-SCD<D>, E-SCSPD<D> and E-SCDJ<D>-<B> (and their E-P.. / E-S.. variants) are the other forms | 'C-SCSAW-10': expected <type><I.D. D>-<width B>, e.g. C-SCSAW12-10 (types: C-SCSAW, C-SCNPAW, C-SCSMAW, C-SCSGAW); C-SCSBNAW<D>-<Ds>, E-SCD<D>, E-SCSPD<D> and E-SCDJ<D>-<B> (and their E-P.. / E-S.. variants) are the other forms | yes |
+| C-SCSAW12- | 'C-SCSAW12-': expected <type><I.D. D>-<width B>, e.g. C-SCSAW12-10 (types: C-SCSAW, C-SCNPAW, C-SCSMAW, C-SCSGAW); C-SCSBNAW<D>-<Ds>, E-SCD<D>, E-SCSPD<D> and E-SCDJ<D>-<B> (and their E-P.. / E-S.. variants) are the other forms | 'C-SCSAW12-': expected <type><I.D. D>-<width B>, e.g. C-SCSAW12-10 (types: C-SCSAW, C-SCNPAW, C-SCSMAW, C-SCSGAW); C-SCSBNAW<D>-<Ds>, E-SCD<D>, E-SCSPD<D> and E-SCDJ<D>-<B> (and their E-P.. / E-S.. variants) are the other forms | yes |
+| E-SCDJ12-10- | 'E-SCDJ12-10-': expected <type><I.D. D>-<width B>, e.g. C-SCSAW12-10 (types: C-SCSAW, C-SCNPAW, C-SCSMAW, C-SCSGAW); C-SCSBNAW<D>-<Ds>, E-SCD<D>, E-SCSPD<D> and E-SCDJ<D>-<B> (and their E-P.. / E-S.. variants) are the other forms | 'E-SCDJ12-10-': expected <type><I.D. D>-<width B>, e.g. C-SCSAW12-10 (types: C-SCSAW, C-SCNPAW, C-SCSMAW, C-SCSGAW); C-SCSBNAW<D>-<Ds>, E-SCD<D>, E-SCSPD<D> and E-SCDJ<D>-<B> (and their E-P.. / E-S.. variants) are the other forms | yes |
 
 | change | on | changed in place vol / area / bbox / faces | direct code (inserted) | python | equal (changed = direct = python) |
 |---|---|---|---|---|---|
@@ -135,9 +140,8 @@ All 30 codes: the parametric part has the same volume, area, bbox, face and body
 urethane collar), and passes the same spec check with the same number of rows. Every refusal (the 18 of `codes.txt` and 17 more, compared with `collar.parse`) has the
 Python message word for word. The table has 102 rows, 61 columns and 73 rules.
 
-**Two differences, from the interface and not from the part.** The field-template syntax ignores separators, so a trailing separator (`E-SCD12-`) parses as `E-SCD12`,
-and the code is echoed in its canonical spelling in a shape error (`C-SCSAW-10` is shown as `C-SCSAW10`), where the Python regular expressions refuse the first and
-print the raw text of the second. They are not in the battery above because the verdict would call them differences, and they are.
+A code with a dangling separator or a missing one (`E-SCD12-`, `C-SCSAW1210`, `C-SCSAW-10`) is refused with the Python shape message, quoting the code as typed: the two sizes
+are joined by the required separator `\-` and the last template (one free text field) catches everything else.
 
 ## Commands
 
@@ -179,7 +183,6 @@ type built directly and with the Python part (table above, last block): C-SCSAW1
 
 | Where | What the collar needs | Proposal |
 |---|---|---|
-| field template | two numbers joined by a required `-` (`12-10`): the stand-in skips separators, so `C-SCSAW1210` would parse | the document's `\-` required separator in the stand-in (or here: one text field split in Rhai, done) |
 | field template | print with the template that fits the fields | `TemplateSet.print` tries each template (done in `runtime/fieldtemplate.py`); one-value choice fields tell templates apart |
 | field template | a catch-all for the shape error message | a second `[[template]]` of free text (done), or `fn no_match(raw)` |
 | model | a feature that keeps its face pick across a slit -> gap change | re-pick by position on rebuild (a `position` hole already has the point), or accept a `position` hole without a stored face |

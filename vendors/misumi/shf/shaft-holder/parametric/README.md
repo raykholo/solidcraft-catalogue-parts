@@ -35,7 +35,7 @@ faithfulness.py  ci.sh         the verdict file for tools/parametric-verdict, an
 
 ## The ordering code
 
-`generator.toml`: `{pfx: E|C}-SH{fam: STBN|STMN|STB|STM|STA|WTB|WTA|A}{d: int 1..99}[-{h: int 0..99999999}]`, then `{raw: text 1..64 [A-Za-z0-9-]}` for every
+`generator.toml`: `{pfx: E|C}-SH{fam: STBN|STMN|STB|STM|STA|WTB|WTA|A}{d: int 1..99}[\-{h: int 0..99999999}]`, then `{raw: text 1..64 [A-Za-z0-9-]}` for every
 other shape. `generator.rhai` gives the Python message for each: the shape error (`'E-SHSTM8-25-3': expected <type><D>-<H> ...`), a missing height, a height
 that is not offered, the `E-SHSTB15-25` note, `E-SHSTMN` on a `*` marked D, the aluminium types on a non-marked H, a C-SHA with a height or an unlisted D.
 `fields(configuration, parameters)` is the inverse (code printing for a bill of materials): for all 16 codes parse(print(parse(code))) gives the same row and parameters.
@@ -95,6 +95,8 @@ same bbox, face and body counts.
 | C-SHA | 'C-SHA': expected <type><D>-<H> with type E-SHSTB, E-SHSTM, E-SHSTA, E-SHWTB, E-SHWTA, E-SHSTBN or E-SHSTMN (e.g. E-SHSTM8-25), or C-SHA<D> (e.g. C-SHA10) | 'C-SHA': expected <type><D>-<H> with type E-SHSTB, E-SHSTM, E-SHSTA, E-SHWTB, E-SHWTA, E-SHSTBN or E-SHSTMN (e.g. E-SHSTM8-25), or C-SHA<D> (e.g. C-SHA10) | yes |
 | C-SHA25-20 | C-SHA has one fixed height per hole diameter (no H in the part number): C-SHA10 | C-SHA has one fixed height per hole diameter (no H in the part number): C-SHA10 | yes |
 | X | 'X': expected <type><D>-<H> with type E-SHSTB, E-SHSTM, E-SHSTA, E-SHWTB, E-SHWTA, E-SHSTBN or E-SHSTMN (e.g. E-SHSTM8-25), or C-SHA<D> (e.g. C-SHA10) | 'X': expected <type><D>-<H> with type E-SHSTB, E-SHSTM, E-SHSTA, E-SHWTB, E-SHWTA, E-SHSTBN or E-SHSTMN (e.g. E-SHSTM8-25), or C-SHA<D> (e.g. C-SHA10) | yes |
+| E-SHSTM8-25- | 'E-SHSTM8-25-': expected <type><D>-<H> with type E-SHSTB, E-SHSTM, E-SHSTA, E-SHWTB, E-SHWTA, E-SHSTBN or E-SHSTMN (e.g. E-SHSTM8-25), or C-SHA<D> (e.g. C-SHA10) | 'E-SHSTM8-25-': expected <type><D>-<H> with type E-SHSTB, E-SHSTM, E-SHSTA, E-SHWTB, E-SHWTA, E-SHSTBN or E-SHSTMN (e.g. E-SHSTM8-25), or C-SHA<D> (e.g. C-SHA10) | yes |
+| E-SHSTM8--25 | 'E-SHSTM8--25': expected <type><D>-<H> with type E-SHSTB, E-SHSTM, E-SHSTA, E-SHWTB, E-SHWTA, E-SHSTBN or E-SHSTMN (e.g. E-SHSTM8-25), or C-SHA<D> (e.g. C-SHA10) | 'E-SHSTM8--25': expected <type><D>-<H> with type E-SHSTB, E-SHSTM, E-SHSTA, E-SHWTB, E-SHWTA, E-SHSTBN or E-SHSTMN (e.g. E-SHSTM8-25), or C-SHA<D> (e.g. C-SHA10) | yes |
 
 | change | on | changed in place vol / area / bbox / faces | direct code (inserted) | python | equal (changed = direct = python) |
 |---|---|---|---|---|---|
@@ -120,9 +122,8 @@ All 16 codes: the parametric part has the same volume, area, bbox, face and body
 rows (21, or 23 for the two-screw thickened types, or 8 for C-SHA). Every refusal (the 10 of `codes.txt` and 19 more, compared with `holder.parse`) has the
 Python message word for word.
 
-**One difference, from the interface and not from the part.** The field-template syntax ignores separators (`-`, space, `_`, `/`, `.`) everywhere, so a trailing
-separator (`E-SHSTM8-25-`) parses as `E-SHSTM8-25`, where the Python regular expression refuses it. The stand-in parser follows the document; it is not in the battery
-above because the verdict would call it a difference, and it is one.
+A code with a dangling or doubled separator (`E-SHSTM8-25-`, `E-SHSTM8--25`) is refused with the Python shape message, quoting the code as typed: the height is
+preceded by the required separator `\-` and the second template (one free text field) catches everything else.
 
 ## Commands
 
