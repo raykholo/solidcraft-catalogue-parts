@@ -1,0 +1,6 @@
+type,family,material,surface,source,page,status
+E-STHWRBK,round,General structural steel or carbon steel,Black oxide film,S19,p.537 type table,labelled
+E-STHWRK,round,General structural steel or carbon steel,Electroless nickel plating,S19,p.537 type table,labelled
+E-SSTHWRK,round,Stainless steel,none printed,S19,p.537 type table,labelled
+E-STHWCBK,compact,General structural steel or carbon steel,Black oxide film,S19,p.537 type table,labelled
+E-SSTHWCK,compact,Stainless steel,none printed,S19,p.537 type table,labelled

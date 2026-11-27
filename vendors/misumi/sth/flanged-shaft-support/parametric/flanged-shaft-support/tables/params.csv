@@ -1,0 +1,19 @@
+name,value
+families_text,"E-STHRB E-STHR E-STHSB E-STHS E-STHCB E-STHC E-SSTHC (standard), E-STHRBL .. E-STHCL (long sleeve), E-STHRBN .. E-STHCNL (thickened), E-STHXRB E-STHXR E-STHXCB E-STHXC (end mounting), E-STHMRB E-STHMR E-STHMRBL E-STHMRL (compact), E-STHWRB .. E-SSTHWC and ...L (slit)"
+page_std,p.534-535
+page_thick,p.536
+page_xend,p.533
+page_slit,p.538-539
+page_mr,p.532
+dkeys_dims,6|8|10|12|15|16|20|25|30|35|40|50
+long_ok_dims,12|16|20|25|30
+dkeys_thick,8|10|12|15|16|20|25|30|35|40|50
+long_ok_thick,12|16|20|25|30|35|40|50
+dkeys_xend,8|10|12|15|16|20|25|30|40
+long_ok_xend,
+dkeys_slit,8|10|12|15|16|20|25|30|35|40|50
+long_ok_slit,
+dkeys_slit_long,12|16|20|25|30|35|40|50
+long_ok_slit_long,
+dkeys_mr,8|10|12|15|16|20|25|30
+long_ok_mr,12|15|16|20|25|30

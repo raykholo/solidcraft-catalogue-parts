@@ -1,0 +1,101 @@
+format = "solidcraft-generator/2"
+id = "pilot-flanged-shaft-support"
+name = "MISUMI Economy pilot flanged shaft supports, steel: round (E-STHWIRB) and compact (E-STHWICB)"
+license = "CC0-1.0"
+model = "pilot-flanged-shaft-support.sc"
+
+[[template]]
+pattern = 'E-STHWI{shape: R=round, C=compact}B{d: text 1..6 [0-9]}'
+
+[[template]]
+pattern = 'E-{type: text 1..12 [A-Za-z]}{d: text 1..6 [0-9]}'
+
+[rows."round-8"]
+source = "MISUMI Economy Series catalogue S18 (sources.toml), p.540 table"
+page = "p.540 table"
+status = "labelled"
+
+[rows."round-10"]
+source = "MISUMI Economy Series catalogue S18 (sources.toml), p.540 table"
+page = "p.540 table"
+status = "labelled"
+
+[rows."round-12"]
+source = "MISUMI Economy Series catalogue S18 (sources.toml), p.540 table"
+page = "p.540 table"
+status = "labelled"
+
+[rows."round-15"]
+source = "MISUMI Economy Series catalogue S18 (sources.toml), p.540 table"
+page = "p.540 table"
+status = "labelled"
+
+[rows."round-16"]
+source = "MISUMI Economy Series catalogue S18 (sources.toml), p.540 table"
+page = "p.540 table"
+status = "labelled"
+
+[rows."round-20"]
+source = "MISUMI Economy Series catalogue S18 (sources.toml), p.540 table"
+page = "p.540 table"
+status = "labelled"
+
+[rows."round-25"]
+source = "MISUMI Economy Series catalogue S18 (sources.toml), p.540 table"
+page = "p.540 table"
+status = "labelled"
+
+[rows."round-30"]
+source = "MISUMI Economy Series catalogue S18 (sources.toml), p.540 table"
+page = "p.540 table"
+status = "labelled"
+
+[rows."round-40"]
+source = "MISUMI Economy Series catalogue S18 (sources.toml), p.540 table"
+page = "p.540 table"
+status = "labelled"
+
+[rows."compact-8"]
+source = "MISUMI Economy Series catalogue S18 (sources.toml), p.540 table"
+page = "p.540 table"
+status = "labelled"
+
+[rows."compact-10"]
+source = "MISUMI Economy Series catalogue S18 (sources.toml), p.540 table"
+page = "p.540 table"
+status = "labelled"
+
+[rows."compact-12"]
+source = "MISUMI Economy Series catalogue S18 (sources.toml), p.540 table"
+page = "p.540 table"
+status = "labelled"
+
+[rows."compact-15"]
+source = "MISUMI Economy Series catalogue S18 (sources.toml), p.540 table"
+page = "p.540 table"
+status = "labelled"
+
+[rows."compact-16"]
+source = "MISUMI Economy Series catalogue S18 (sources.toml), p.540 table"
+page = "p.540 table"
+status = "labelled"
+
+[rows."compact-20"]
+source = "MISUMI Economy Series catalogue S18 (sources.toml), p.540 table"
+page = "p.540 table"
+status = "labelled"
+
+[rows."compact-25"]
+source = "MISUMI Economy Series catalogue S18 (sources.toml), p.540 table"
+page = "p.540 table"
+status = "labelled"
+
+[rows."compact-30"]
+source = "MISUMI Economy Series catalogue S18 (sources.toml), p.540 table"
+page = "p.540 table"
+status = "labelled"
+
+[rows."compact-40"]
+source = "MISUMI Economy Series catalogue S18 (sources.toml), p.540 table"
+page = "p.540 table"
+status = "labelled"

@@ -1,0 +1,896 @@
+format = "solidcraft-generator/2"
+id = "flanged-shaft-support"
+name = "MISUMI Economy flanged shaft supports: standard, thickened, end mounting, with slit and compact, round / square / compact flange, long sleeve"
+license = "CC0-1.0"
+model = "flanged-shaft-support.sc"
+
+[[template]]
+pattern = 'E-[S:stainless]STH[{series: X=xend, W=slit, M=mr}]{shape: R=round, S=square, C=compact}[B:black][N:thick][L:long]{d: text 1..6 [0-9]}'
+
+[[template]]
+pattern = 'E-{type: text 1..12 [A-Za-z]}{d: text 1..6 [0-9]}'
+
+[rows."std-round-6"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-round-8"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-round-10"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-round-12"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-round-15"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-round-16"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-round-20"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-round-25"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-round-30"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-round-35"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-round-40"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-round-50"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-square-6"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-square-8"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-square-10"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-square-12"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-square-15"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-square-16"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-square-20"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-square-25"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-square-30"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-square-35"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-square-40"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-square-50"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-compact-6"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-compact-8"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-compact-10"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-compact-12"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-compact-15"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-compact-16"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-compact-20"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-compact-25"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-compact-30"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-compact-35"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-compact-40"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-compact-50"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-round-long-12"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-round-long-16"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-round-long-20"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-round-long-25"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-round-long-30"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-square-long-12"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-square-long-16"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-square-long-20"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-square-long-25"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-square-long-30"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-compact-long-12"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-compact-long-16"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-compact-long-20"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-compact-long-25"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."std-compact-long-30"]
+source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"
+page = "p.535 table"
+status = "labelled"
+
+[rows."thick-round-8"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-round-10"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-round-12"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-round-15"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-round-16"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-round-20"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-round-25"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-round-30"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-round-40"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-round-50"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-round-long-12"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-round-long-16"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-round-long-20"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-round-long-25"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-round-long-30"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-round-long-35"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-round-long-40"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-round-long-50"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-compact-8"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-compact-10"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-compact-12"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-compact-15"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-compact-16"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-compact-20"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-compact-25"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-compact-30"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-compact-35"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-compact-40"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-compact-50"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-compact-long-12"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-compact-long-16"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-compact-long-20"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-compact-long-25"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-compact-long-30"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-compact-long-35"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-compact-long-40"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."thick-compact-long-50"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.536 table"
+page = "p.536 table"
+status = "labelled"
+
+[rows."xend-round-8"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.533 table"
+page = "p.533 table"
+status = "labelled"
+
+[rows."xend-round-10"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.533 table"
+page = "p.533 table"
+status = "labelled"
+
+[rows."xend-round-12"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.533 table"
+page = "p.533 table"
+status = "labelled"
+
+[rows."xend-round-15"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.533 table"
+page = "p.533 table"
+status = "labelled"
+
+[rows."xend-round-16"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.533 table"
+page = "p.533 table"
+status = "labelled"
+
+[rows."xend-round-20"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.533 table"
+page = "p.533 table"
+status = "labelled"
+
+[rows."xend-round-25"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.533 table"
+page = "p.533 table"
+status = "labelled"
+
+[rows."xend-round-30"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.533 table"
+page = "p.533 table"
+status = "labelled"
+
+[rows."xend-round-40"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.533 table"
+page = "p.533 table"
+status = "labelled"
+
+[rows."xend-compact-8"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.533 table"
+page = "p.533 table"
+status = "labelled"
+
+[rows."xend-compact-10"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.533 table"
+page = "p.533 table"
+status = "labelled"
+
+[rows."xend-compact-12"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.533 table"
+page = "p.533 table"
+status = "labelled"
+
+[rows."xend-compact-15"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.533 table"
+page = "p.533 table"
+status = "labelled"
+
+[rows."xend-compact-16"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.533 table"
+page = "p.533 table"
+status = "labelled"
+
+[rows."xend-compact-20"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.533 table"
+page = "p.533 table"
+status = "labelled"
+
+[rows."xend-compact-25"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.533 table"
+page = "p.533 table"
+status = "labelled"
+
+[rows."xend-compact-30"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.533 table"
+page = "p.533 table"
+status = "labelled"
+
+[rows."xend-compact-40"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.533 table"
+page = "p.533 table"
+status = "labelled"
+
+[rows."mr-collar-8"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.532 table"
+page = "p.532 table"
+status = "labelled"
+
+[rows."mr-collar-10"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.532 table"
+page = "p.532 table"
+status = "labelled"
+
+[rows."mr-collar-12"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.532 table"
+page = "p.532 table"
+status = "labelled"
+
+[rows."mr-collar-15"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.532 table"
+page = "p.532 table"
+status = "labelled"
+
+[rows."mr-collar-16"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.532 table"
+page = "p.532 table"
+status = "labelled"
+
+[rows."mr-collar-20"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.532 table"
+page = "p.532 table"
+status = "labelled"
+
+[rows."mr-collar-25"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.532 table"
+page = "p.532 table"
+status = "labelled"
+
+[rows."mr-collar-30"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.532 table"
+page = "p.532 table"
+status = "labelled"
+
+[rows."mr-collar-long-12"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.532 table"
+page = "p.532 table"
+status = "labelled"
+
+[rows."mr-collar-long-15"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.532 table"
+page = "p.532 table"
+status = "labelled"
+
+[rows."mr-collar-long-16"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.532 table"
+page = "p.532 table"
+status = "labelled"
+
+[rows."mr-collar-long-20"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.532 table"
+page = "p.532 table"
+status = "labelled"
+
+[rows."mr-collar-long-25"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.532 table"
+page = "p.532 table"
+status = "labelled"
+
+[rows."mr-collar-long-30"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.532 table"
+page = "p.532 table"
+status = "labelled"
+
+[rows."slit-round-8"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-round-10"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-round-12"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-round-15"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-round-16"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-round-20"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-round-25"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-round-30"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-round-35"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-round-40"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-round-50"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-round-long-12"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Long Sleeve table"
+page = "p.539 Slit Long Sleeve table"
+status = "labelled"
+
+[rows."slit-round-long-16"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Long Sleeve table"
+page = "p.539 Slit Long Sleeve table"
+status = "labelled"
+
+[rows."slit-round-long-20"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Long Sleeve table"
+page = "p.539 Slit Long Sleeve table"
+status = "labelled"
+
+[rows."slit-round-long-25"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Long Sleeve table"
+page = "p.539 Slit Long Sleeve table"
+status = "labelled"
+
+[rows."slit-round-long-30"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Long Sleeve table"
+page = "p.539 Slit Long Sleeve table"
+status = "labelled"
+
+[rows."slit-round-long-35"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Long Sleeve table"
+page = "p.539 Slit Long Sleeve table"
+status = "labelled"
+
+[rows."slit-round-long-40"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Long Sleeve table"
+page = "p.539 Slit Long Sleeve table"
+status = "labelled"
+
+[rows."slit-round-long-50"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Long Sleeve table"
+page = "p.539 Slit Long Sleeve table"
+status = "labelled"
+
+[rows."slit-square-8"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-square-10"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-square-12"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-square-15"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-square-16"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-square-20"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-square-25"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-square-30"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-square-35"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-square-40"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-square-50"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-square-long-12"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Long Sleeve table"
+page = "p.539 Slit Long Sleeve table"
+status = "labelled"
+
+[rows."slit-square-long-16"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Long Sleeve table"
+page = "p.539 Slit Long Sleeve table"
+status = "labelled"
+
+[rows."slit-square-long-20"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Long Sleeve table"
+page = "p.539 Slit Long Sleeve table"
+status = "labelled"
+
+[rows."slit-square-long-25"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Long Sleeve table"
+page = "p.539 Slit Long Sleeve table"
+status = "labelled"
+
+[rows."slit-square-long-30"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Long Sleeve table"
+page = "p.539 Slit Long Sleeve table"
+status = "labelled"
+
+[rows."slit-square-long-35"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Long Sleeve table"
+page = "p.539 Slit Long Sleeve table"
+status = "labelled"
+
+[rows."slit-square-long-40"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Long Sleeve table"
+page = "p.539 Slit Long Sleeve table"
+status = "labelled"
+
+[rows."slit-square-long-50"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Long Sleeve table"
+page = "p.539 Slit Long Sleeve table"
+status = "labelled"
+
+[rows."slit-compact-8"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-compact-10"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-compact-12"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-compact-15"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-compact-16"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-compact-20"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-compact-25"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-compact-30"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-compact-35"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-compact-40"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-compact-50"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Standard table"
+page = "p.539 Slit Standard table"
+status = "labelled"
+
+[rows."slit-compact-long-12"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Long Sleeve table"
+page = "p.539 Slit Long Sleeve table"
+status = "labelled"
+
+[rows."slit-compact-long-16"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Long Sleeve table"
+page = "p.539 Slit Long Sleeve table"
+status = "labelled"
+
+[rows."slit-compact-long-20"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Long Sleeve table"
+page = "p.539 Slit Long Sleeve table"
+status = "labelled"
+
+[rows."slit-compact-long-25"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Long Sleeve table"
+page = "p.539 Slit Long Sleeve table"
+status = "labelled"
+
+[rows."slit-compact-long-30"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Long Sleeve table"
+page = "p.539 Slit Long Sleeve table"
+status = "labelled"
+
+[rows."slit-compact-long-35"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Long Sleeve table"
+page = "p.539 Slit Long Sleeve table"
+status = "labelled"
+
+[rows."slit-compact-long-40"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Long Sleeve table"
+page = "p.539 Slit Long Sleeve table"
+status = "labelled"
+
+[rows."slit-compact-long-50"]
+source = "MISUMI Economy Series catalogue S52 (sources.toml), p.539 Slit Long Sleeve table"
+page = "p.539 Slit Long Sleeve table"
+status = "labelled"
