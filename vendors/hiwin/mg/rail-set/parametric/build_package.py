@@ -29,7 +29,7 @@ length = { type = "int", min = 40, max = 2000, unit = "mm" }
 caps   = { type = "int", min = 0, max = 1, default = 0 }   # option, not in the code: plastic bolt caps (MGN12, MGN15)
 
 [[template]]
-pattern = "MGN{size: int 1..99}{block: C|H}[E:special_block]{blocks: int 1..9}R{length: int 1..9999}[E:special_rail][{preload: Z0|ZF|Z1}][{precision: C|H|P}][{material: M|HC|NC}][{rails: I|II|III|IIII}][+{options: text 1..64}]"
+pattern = "MGN{size: int 1..99}{block: C|H}[E:special_block]{blocks: int 1..9}R{length: int 1..9999}[E:special_rail][{preload: Z0|ZF|Z1}][{precision: C|H|P}][{material: M|HC|NC}][{rails: I|II|III|IIII}][+{code_options: text 1..64}]"
 escape  = "[A-Za-z0-9+]+"
 
 '''

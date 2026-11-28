@@ -1,6 +1,6 @@
 id = "hiwin.mg.rail-set"
 name = "HIWIN MG miniature linear guide: rail with blocks"
-version = "0.2.1"
+version = "0.3.0"
 kind = "generator"
 min_host_version = "0.49.1"
 preview_code = "MGN12H2R300Z0C"

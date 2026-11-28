@@ -149,3 +149,24 @@ The 0.50.0/0.51.1 results above remain release observations. The #23175 CI artif
 Remaining follow-ups: thread designation from a parameter: tangency-labs/solidcraft#9594; feature-pattern copy body names: tangency-labs/solidcraft#23457.
 
 The supplied #23175 artifact includes 3 link checks; the added ordinary-edit enforcement check awaits CI.
+
+Options outside the ordering code
+--------------------------------
+
+On hosts advertising `fields.options`, both `generator.parse` and `generator.insert`
+accept `options: {caps: 1}` with an MGN12 or MGN15 ordering code. The resolver
+passes `caps: "1"` to the design. An omitted caps option defaults to zero,
+including on older hosts that never supply `fields.options`. Only integer 0 and
+1 are accepted; requesting caps on another size returns the Python build's
+catalogue refusal. The printed ordering code is unchanged. The optional suffix
+field is named `code_options` to leave `options` available for the host object.
+
+`ci.sh` appends shared runtime option checks for MGN12 and MGN15 through both
+commands, plus caps=2 and MGN9 refusals with messages. Parse results are applied
+to a fresh design instance before measurement; insert results are measured
+directly. References use the Python dimensioned build plus its cap cylinders,
+with the same volume, area, bounding-box extents, face and body counts as the
+shared link rebuild checks. Existing verdicts remain intact. Hosts without the
+capability record the dependency on SolidCraft with #23175. No design rebuild is
+needed for this change: the design already exposes `caps` and its suppression
+rules.

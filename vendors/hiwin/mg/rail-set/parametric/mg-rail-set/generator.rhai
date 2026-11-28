@@ -22,6 +22,16 @@ fn two_decimals(x) {
 }
 
 fn resolve(f) {
+    let caps = 0;
+    if type_of(f.options) == "map" && f.options.caps != () {
+        caps = f.options.caps;
+    }
+    if type_of(caps) != "i64" || (caps != 0 && caps != 1) {
+        refuse("invalid", "caps must be 0 or 1");
+    }
+    if caps == 1 && table("caps", f.size) == () {
+        refuse("invalid", `MGN${f.size}: the catalogue lists bolt caps for MGN12 and MGN15 only (S4 Table 2-4-9)`);
+    }
     let rail = table("rails", f.size);
     let row = f.block + "-" + f.size;
     if rail == () || table("blocks", row) == () {
@@ -43,7 +53,7 @@ fn resolve(f) {
     }
     #{
         configuration: row,
-        parameters: #{ length: `${f.length} mm`, blocks: `${f.blocks}` }
+        parameters: #{ length: `${f.length} mm`, blocks: `${f.blocks}`, caps: `${caps}` }
     }
 }
 
