@@ -227,4 +227,4 @@ Generated index and package metadata were refreshed with `tools/build-index` and
 - `vendors/hiwin/rg/guideway/parametric/rg-guideway/generator.rhai`
 - `vendors/hiwin/rg/guideway/parametric/rg-guideway/generator.toml`
 
-The #23175 surface is capability-gated by the command catalogue. Remaining gaps: parameter thread designations (#9594), feature-pattern copy body names (#23457), optional `no_match(raw)` after #23175, an ordered bag/list beside `set(...)`, and cosmetic threads shortened by later cuts (repro sent; follow-up being filed). Hosts without `component.set_link_parameters` retain the inserted-link blocked record.
+The #23175 surface is capability-gated by the command catalogue. Remaining gaps: parameter thread designations (#9594), feature-pattern copy body names (#23457), optional `no_match(raw)` after #23175, an ordered bag/list beside `set(...)`, and a cosmetic thread created after a cross cut stops at the cut (#23507). Hosts without `component.set_link_parameters` retain the inserted-link blocked record.

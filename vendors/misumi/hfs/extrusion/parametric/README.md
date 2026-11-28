@@ -194,6 +194,6 @@ The optional link proof is declared in `link_checks.json` and run by `ci.sh` thr
 
 The 0.50.0/0.51.1 results above remain release observations. The #23175 CI artifact records 16 valid, 26 rejects, 6 rebuild checks and 1 blocked records. The next CI run also checks link overrides and ordinary edit refusal with `enforce_on_edit` where limit rules exist; these new checks are pending. Differences remain differences.
 
-Cosmetic thread shortened by a later cut: follow-up: being filed (repro sent).
+A cosmetic thread created after a cross cut stops at the cut: follow-up: tangency-labs/solidcraft#23507.
 
 The supplied #23175 artifact includes 3 link checks; the added ordinary-edit enforcement check awaits CI.

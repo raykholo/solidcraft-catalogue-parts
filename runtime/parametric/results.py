@@ -14,8 +14,8 @@ def dependencies(blocked):
         what = row["what"].lower()
         if "free parameter values on an inserted link" in what:
             row = dict(LINK_BLOCKED)
-        elif "cosmetic thread shortened" in what:
-            row["needs"] = "follow-up: being filed (repro sent)"
+        elif "cosmetic thread created after a cross cut" in what:
+            row["needs"] = "follow-up: tangency-labs/solidcraft#23507"
         elif "thread" in what:
             row["needs"] = "follow-up: tangency-labs/solidcraft#9594"
         rows.append(row)
