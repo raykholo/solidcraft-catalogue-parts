@@ -96,13 +96,16 @@ fn resolve_code(c) {
     let desc = describe_part(key, alt, r);
     let row = key;
     if key == "HBLTS5-4" { row = "HBLTS5"; }
-    #{ configuration: row, parameters: #{ hole_d: `${g(r.hole_d)} mm` },
+    let diameter = g(r.hole_d) + " mm";
+    #{ configuration: row, parameters: #{ hole_d: diameter },
        properties: #{ part_number: c, description: desc, material: r.material, surface: r.surface, alteration: alt } }
 }
 
 // parameters -> fields (generator.code): the type's own spelling; the alteration is accessory text, not a parameter
 fn fields(configuration, parameters) {
-    if configuration == "HBLTS5" && parameters.hole_d == `${g(table("types", "HBLTS5-4", "hole_d"))} mm` {
+    let small = table("types", "HBLTS5-4", "hole_d");
+    let diameter = g(small) + " mm";
+    if configuration == "HBLTS5" && parameters.hole_d == diameter {
         return #{ base: "HBLTS5", rest: "4" };
     }
     if configuration.ends_with("-4") {

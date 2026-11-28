@@ -4,6 +4,7 @@ configuration row + parameters -> the parametric .sc configured and inserted -> 
 code built by the Python generator and measured the same way. Writes results.json in --out.
 
     SC_CLI=<solidcraft-cli> RHAI_RUN=<rhai-run binary> python3 run_codes.py [--out DIR] [--only CODE]
+    python3 run_codes.py --rhai-only --out DIR  # full valid catalogue; no SolidCraft
 """
 from __future__ import annotations
 import argparse, json, os, subprocess, sys, tempfile
@@ -41,12 +42,8 @@ def measure(sc_path, out_dir, tag, threads=True):
 
 def resolve(code):
     """code -> (('ok', result) | ('refused', kind, message), fields)"""
-    m = TEMPLATES.match(code.strip().upper())
-    if m is None:
-        return ("refused", "invalid", f"{code!r} matches none of the templates"), None
-    out = rhai("resolve", m[1])
-    if not out.get("ok"): return ("refused", out["reason"], out["message"]), m[1]
-    return ("ok", out["value"]), m[1]
+    from runtime.parametric.resolve import checked
+    return checked(TEMPLATES, rhai, code)
 
 
 def python_part(code, out):
@@ -71,7 +68,7 @@ def collar_from(res, code):
         return co.Urethane(code=c, type=typ, family=r["family"], kind=t["kind"], D=r["D"], B=r["B"], D1=r["D1"], B1=r["B1"], t=r["t"], M=r["M"], d=r["d"], R=r["R"],
                            W=r["W"], X=r["X"], Y=r["Y"], Z=r["Z"], material=t["material"], surface=t["surface"], accessory=t["accessory"], damper=t["damper"])
     r = SIZES[key]
-    return co.Collar(code=c, type=typ, kind=t["kind"], D=r["D"], B=r["B"], D1=r["D1"], M=r["M"], material=t["material"], surface=t["surface"],
+    return co.Collar(code=c, type=typ, kind=t["kind"], D=r["D"], B=float(res["parameters"].get("ring_h", str(r["B"])).split()[0]), D1=r["D1"], M=r["M"], material=t["material"], surface=t["surface"],
                      P=r["P"], S=r["S"], d1=r["d1"], d2=r["d2"], t=r["t"])
 
 def code_row_cmds(code, res):
@@ -104,8 +101,25 @@ def pymsg(code):
         co.parse(code); return "accepted"
     except ValueError as ex: return str(ex)
 
+def valid_candidates():
+    codes = [cl.code for cl in GEN.codes() if cl.valid]
+    codes += [f"{r['type']}{r['D']}-{r['B']}" for r in SIZES.values()]
+    codes += [f"C-SCSBNAW{r['D']}-{r['Ds']}" for r in BEAR.values()]
+    stems = {"slit": "SCD", "slit-compact": "SCDJ", "split-compact": "SCSPD"}
+    for r in UREROWS.values():
+        stem = stems[r["family"]]
+        for plating in ("", "P", "S"):
+            code = f"E-{plating}{stem}{r['D']:g}"
+            if stem == "SCDJ": code += f"-{r['B']:g}"
+            codes.append(code)
+    return codes
+
+
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("--out", default=str(HERE)); ap.add_argument("--only"); a = ap.parse_args()
+    ap = argparse.ArgumentParser(); ap.add_argument("--out", default=str(HERE)); ap.add_argument("--only"); ap.add_argument("--rhai-only", action="store_true"); a = ap.parse_args()
+    if a.rhai_only:
+        from runtime.parametric.resolve import sweep
+        raise SystemExit(sweep(valid_candidates(), registry.Generator(HERE.parent).build, resolve, rhai, TEMPLATES, a.out))
     out = Path(a.out); work = Path(tempfile.mkdtemp()); out.mkdir(parents=True, exist_ok=True)
     results = {"codes": [], "refusals": [], "parametric": [], "limits": {}, "roundtrip": []}
     for cl in GEN.codes():
@@ -141,8 +155,15 @@ def main():
             results["refusals"].append({"code": code, "python": pymsg(code), "parametric": st[2] if st[0] == "refused" else "ACCEPTED", "kind": st[1] if st[0] == "refused" else None, "extra": True})
         # ---- stays parametric: change the width on the configured design, compare with the code built directly ----------------
         for base, newb, direct_code in REBUILD:
-            st, _ = resolve(base); res = st[1]
-            dst, _ = resolve(direct_code); dres = dst[1]
+            st, _ = resolve(base)
+            dst, _ = resolve(direct_code)
+            failures = [(code, state) for code, state in ((base, st), (direct_code, dst)) if state[0] != "ok"]
+            if failures:
+                error = "; ".join(f"{code}: resolve {state[1]}: {state[2]}" for code, state in failures)
+                results["parametric"].append({"base": base, "param": "width", "value": f"{newb} mm", "direct": direct_code,
+                                              "error": error, "changed": {"error": error}})
+                continue
+            res, dres = st[1], dst[1]
             wc = work / f"pc_{scrun.slug(base)}.sc"
             cmds = [{"command": "config.activate", "params": {"row": res["configuration"]}},
                     {"command": "parameters.change", "params": {"name": "ring_h", "expression": f"{newb} mm"}},
@@ -152,12 +173,16 @@ def main():
             if not err:
                 ent["changed"] = measure(wc, work, "pc.changed")
                 hostd, _, e2 = insert_code(direct_code, dres, work, "pcd_" + scrun.slug(direct_code))
-                ent["direct_inserted"] = measure(hostd, work, "pc.direct")
+                ent["direct_inserted"] = {"error": e2} if e2 else measure(hostd, work, "pc.direct")
                 part, pysc = python_part(direct_code, work)
                 ent["python"] = measure(pysc, work, "pc.py")
             results["parametric"].append(ent)
         # ---- what 0.50.0 cannot express / what the rules enforce: exact messages ------------------------------------------
-        st, _ = resolve("C-SCSAW12-10"); res = st[1]
+        st, _ = resolve("C-SCSAW12-10")
+        if st[0] != "ok":
+            (out / "results.json").write_text(json.dumps(results, indent=1))
+            return
+        res = st[1]
         host, wc, _ = insert_code("C-SCSAW12-10", res, work, "lim")
         meas = {"command": "inspect.measure", "params": {}}
         probes = {
@@ -179,4 +204,5 @@ def main():
     (out / "results.json").write_text(json.dumps(results, indent=1, default=str))
     print("wrote", out / "results.json")
 
-main()
+if __name__ == "__main__":
+    main()

@@ -52,6 +52,9 @@ def convert(results, gid, blocked, layout="standard"):
             v["note"] = "extra code (not in codes.txt)"
         if layout == "rows" and "error" in row.get("parametric", {}):
             v["note"] = row["parametric"]["error"]
+        failure = row.get("parametric") or {}
+        if "refused" in failure or "error" in failure:
+            v["note"] = str(failure.get("refused", failure.get("error")))
         out["valid"].append(v)
     seen = {r["code"] for r in out["valid"]}
     if layout == "nut":

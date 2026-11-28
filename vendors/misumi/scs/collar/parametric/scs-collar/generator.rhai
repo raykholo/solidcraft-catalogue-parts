@@ -87,11 +87,14 @@ fn resolve_ring(fields, c) {
     // Slit rings with the same bore, outside diameter and screw share geometry
     // except for width. Keep the table-derived width as both height parameters.
     if typ == "C-SCSAW" {
-        let widths = bar(param(`bs_${typ}_${d}`));
+        let name = `bs_${typ}_${d}`;
+        let values = param(name);
+        let widths = bar(values);
         for candidate in widths {
-            let base = table("sizes", `${typ}-${d}-${candidate}`);
+            let key = `${typ}-${d}-${candidate}`;
+            let base = table("sizes", key);
             if base.D1 == r.D1 && base.M == r.M {
-                row = `${typ}-${d}-${candidate}`;
+                row = key;
                 break;
             }
         }
@@ -200,10 +203,15 @@ fn ure_fields(configuration, typ) {
 fn bearing_fields(configuration, bits) {
     #{ kind: "SCSBNAW", d: parse_int(bits[2]), ds: table("bearing", configuration, "Ds") }
 }
+fn ring_width(bits, parameters) {
+    if parameters.ring_h == () { return parse_int(bits[3]); }
+    let words = parameters.ring_h.split(" ");
+    parse_int(words[0])
+}
 fn fields(configuration, parameters) {
     let typ = parameters.part_type;
     if typ.starts_with("E-") { return ure_fields(configuration, typ); }
     let bits = configuration.split("-");
     if typ == "C-SCSBNAW" { return bearing_fields(configuration, bits); }
-    #{ type: typ.sub_string(2, typ.len() - 2), d: parse_int(bits[2]), b: if parameters.ring_h == () { parse_int(bits[3]) } else { parse_int(parameters.ring_h.split(" ")[0]) } }
+    #{ type: typ.sub_string(2, typ.len() - 2), d: parse_int(bits[2]), b: ring_width(bits, parameters) }
 }

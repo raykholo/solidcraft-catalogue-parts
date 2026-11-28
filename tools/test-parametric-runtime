@@ -40,6 +40,54 @@ class HarnessContracts(unittest.TestCase):
             with patch.object(links, "cli", side_effect=[([{"rules": [rule]}], None), (None, message)]):
                 self.assertEqual(links.edit_check("model")[0]["changed"]["refused"], expected)
 
+    def test_resolve_failure_records_faithfulness_without_crashing_rebuilds(self):
+        import importlib.util
+        for folder in ("hbl/bracket", "scs/collar"):
+            path = ROOT / "vendors/misumi" / folder / "parametric/run_codes.py"
+            spec = importlib.util.spec_from_file_location("failed_resolve_harness", path)
+            harness = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(harness)
+            with tempfile.TemporaryDirectory() as tmp, \
+                    patch.object(sys, "argv", [str(path), "--out", tmp]), \
+                    patch.object(harness, "rhai", return_value={"ok": False, "reason": "script_error", "message": "compile failed"}), \
+                    patch.object(harness, "python_part", return_value=(SimpleNamespace(description="test"), Path(tmp) / "unused")), \
+                    patch.object(harness, "measure", return_value=M), \
+                    patch.object(harness.pycheck, "check", return_value=SimpleNamespace(rows=[])), \
+                    patch.object(harness, "cli", return_value=([], None)):
+                harness.main()
+                results = json.loads((Path(tmp) / "results.json").read_text())
+                self.assertTrue(results["codes"])
+                self.assertTrue(results["parametric"])
+                converted = convert(results, folder, [], "description")
+                for row in converted["valid"]:
+                    self.assertEqual(row["parametric"], {"error": True})
+                    self.assertIn("compile failed", row["note"])
+                report = Path(tmp) / "faithfulness.json"
+                report.write_text(json.dumps(converted))
+                verdict = subprocess.run([str(ROOT / "tools/parametric-verdict"), str(report)], capture_output=True)
+                self.assertNotEqual(verdict.returncode, 0)
+                for row in converted["rebuild"]:
+                    self.assertEqual(row["changed"], {"error": True})
+
+    def test_malformed_resolve_success_is_a_refusal(self):
+        from runtime.parametric.resolve import checked
+        templates = SimpleNamespace(match=lambda code: (None, {}))
+        for value in ("error text", None, {}, {"configuration": "row"}):
+            state, _ = checked(templates, lambda *args: {"ok": True, "value": value}, "CODE")
+            self.assertEqual(state[0:2], ("refused", "script_error"))
+            self.assertIn("invalid result", state[2])
+
+    def test_offline_sweep_reports_accepted_code_refused_by_resolver(self):
+        from runtime.parametric.resolve import sweep
+        with tempfile.TemporaryDirectory() as tmp:
+            failed = sweep(["VALID"], lambda code: (SimpleNamespace(description="part"), []),
+                           lambda code: (("refused", "script_error", "compile failed"), {}),
+                           None, None, tmp)
+            self.assertTrue(failed)
+            rows = json.loads((Path(tmp) / "resolve.json").read_text())
+            self.assertIn("Python accepted", rows[0]["error"])
+            self.assertIn("compile failed", rows[0]["error"])
+
     def test_command_catalogue_cached_and_feature_gated(self):
         for catalogue, expected in [([{"name": "component.set_link_parameters"}], True),
                                     ({"commands": ["component.insert_design"]}, False)]:

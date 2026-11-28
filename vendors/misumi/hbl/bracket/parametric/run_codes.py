@@ -4,6 +4,7 @@ configuration row -> the parametric .sc inserted with `configuration` -> measure
 the Python generator and measured the same way. Writes results.json in --out.
 
     SC_CLI=<solidcraft-cli> RHAI_RUN=<rhai-run binary> python3 run_codes.py [--out DIR] [--only CODE]
+    python3 run_codes.py --rhai-only --out DIR  # full valid catalogue; no SolidCraft
 """
 from __future__ import annotations
 import argparse, json, os, subprocess, sys, tempfile
@@ -38,12 +39,8 @@ def measure(sc_path, out_dir, tag, threads=True):
 
 def resolve(code):
     """code -> (('ok', result) | ('refused', kind, message), fields)"""
-    m = TEMPLATES.match(code.strip().upper())
-    if m is None:
-        return ("refused", "invalid", f"{code!r} matches none of the templates"), None
-    out = rhai("resolve", m[1])
-    if not out.get("ok"): return ("refused", out["reason"], out["message"]), m[1]
-    return ("ok", out["value"]), m[1]
+    from runtime.parametric.resolve import checked
+    return checked(TEMPLATES, rhai, code)
 
 
 def python_part(code, out):
@@ -53,7 +50,10 @@ def python_part(code, out):
 
 def bracket_from(res):
     """The br.Bracket the spec check needs, built from the Rhai result and the package's own table (not from the Python parser)."""
-    return br._bracket(res["configuration"], res["properties"]["part_number"], res["properties"]["alteration"])
+    key = res["configuration"]
+    if key == "HBLTS5" and res["parameters"].get("hole_d") == f'{float(br.TYPES["HBLTS5-4"]["hole_d"]):g} mm':
+        key = "HBLTS5-4"
+    return br._bracket(key, res["properties"]["part_number"], res["properties"]["alteration"])
 
 from runtime.parametric import subst
 
@@ -64,9 +64,13 @@ def spec_check(b, host_sc, out, body):
 
 def insert_code(code, res, out, tag):
     """A host design inserts the package model with `configuration` (the type's row), names the component after the code and writes its metadata."""
+    wc = out / f"{tag}.model.sc"
+    values = {f"param:{k}": v for k, v in res["parameters"].items()}
+    _, error = cli([{"command": "config.row", "params": {"name": code, "from": res["configuration"], "values": values}}], src=MODEL, save=wc)
+    if error: return None, f"config.row: {error}"
     host = out / f"{tag}.host.sc"
     pr = res["properties"]; c = code.strip().upper()
-    r, err = cli([{"command": "component.insert_design", "params": {"path": str(MODEL), "configuration": res["configuration"], "name": c}},
+    r, err = cli([{"command": "component.insert_design", "params": {"path": str(wc), "configuration": code, "name": c}},
                   {"command": "component.metadata.set", "params": {"component": c, "part_number": pr["part_number"], "description": pr["description"],
                                                                     "material": f'{pr["material"]}; {pr["surface"]}'}},
                   {"command": "document.metadata.set", "params": {"values": {"part_number": pr["part_number"], "description": pr["description"]}}}], save=host)
@@ -78,8 +82,18 @@ def pymsg(code):
         br.parse(code); return "accepted"
     except ValueError as ex: return str(ex)
 
+def valid_candidates():
+    from runtime.table import read_csv
+    codes = [cl.code for cl in registry.Generator(HERE.parent).codes() if cl.valid]
+    alterations = ["", "C"] + [r["code"] for r in read_csv(PKG / "tables/alterations.csv")]
+    return codes + [key + ("-" + alt if alt else "") for key in br.TYPES for alt in alterations]
+
+
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("--out", default=str(HERE)); ap.add_argument("--only"); a = ap.parse_args()
+    ap = argparse.ArgumentParser(); ap.add_argument("--out", default=str(HERE)); ap.add_argument("--only"); ap.add_argument("--rhai-only", action="store_true"); a = ap.parse_args()
+    if a.rhai_only:
+        from runtime.parametric.resolve import sweep
+        raise SystemExit(sweep(valid_candidates(), registry.Generator(HERE.parent).build, resolve, rhai, TEMPLATES, a.out))
     out = Path(a.out); work = Path(tempfile.mkdtemp()); out.mkdir(parents=True, exist_ok=True)
     gen = registry.find("HBLTS5")
     results = {"codes": [], "refusals": [], "parametric": [], "limits": {}, "roundtrip": []}
@@ -104,7 +118,7 @@ def main():
         if err: row["parametric"] = {"error": err}; results["codes"].append(row); continue
         row["parametric"] = measure(host, work, tag + ".pa")
         row["parametric_spec"] = spec_check(bracket_from(res), host, work, row["parametric"]["names"][0])
-        f2 = rhai("fields", res["configuration"], {})
+        f2 = rhai("fields", res["configuration"], res["parameters"])
         printed = TEMPLATES.print(f2["value"]) if f2.get("ok") else None
         st2, _ = resolve(printed) if printed else (("refused", "", "no code"), None)
         results["roundtrip"].append({"code": code, "printed": printed, "same_configuration": st2[0] == "ok" and st2[1]["configuration"] == res["configuration"]})
@@ -124,13 +138,22 @@ def main():
                 ent["changed"] = measure(wc, work, "pc.changed")
                 if direct_code:
                     stt, _ = resolve(direct_code)
+                    if stt[0] != "ok":
+                        ent["error"] = f"{direct_code}: resolve {stt[1]}: {stt[2]}"
+                        ent["changed"] = {"error": ent["error"]}
+                        results["parametric"].append(ent)
+                        continue
                     hostd, e2 = insert_code(direct_code, stt[1], work, "pcd_" + scrun.slug(direct_code))
-                    ent["direct_inserted"] = measure(hostd, work, "pc.direct")
+                    ent["direct_inserted"] = {"error": e2} if e2 else measure(hostd, work, "pc.direct")
                     part, pysc = python_part(direct_code, work)
                     ent["python"] = measure(pysc, work, "pc.py")
             results["parametric"].append(ent)
         # ---- what 0.50.0 cannot express: exact errors ------------------------------------------------------------------------
-        host, _ = insert_code("HBLTS5", resolve("HBLTS5")[0][1], work, "lim")
+        state, _ = resolve("HBLTS5")
+        if state[0] != "ok":
+            (out / "results.json").write_text(json.dumps(results, indent=1))
+            return
+        host, _ = insert_code("HBLTS5", state[1], work, "lim")
         meas = {"command": "inspect.measure", "params": {}}
         probes = {
             "insert_design with a free `parameters` map (width 19 mm)": ([{"command": "component.insert_design", "params": {"path": str(MODEL), "configuration": "HBLTS5", "parameters": {"width": "19 mm"}, "name": "free"}}, meas], host),
@@ -151,4 +174,5 @@ def main():
     (out / "results.json").write_text(json.dumps(results, indent=1, default=str))
     print("wrote", out / "results.json")
 
-main()
+if __name__ == "__main__":
+    main()
