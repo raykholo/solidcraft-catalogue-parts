@@ -37,3 +37,13 @@ tools/provenance vendors/misumi/hnt/t-nut   # re-write PROVENANCE.md (never edit
 Invalid codes stop with a message (`CodeError: ...`); valid options that are not drawn give `NotModelled`.
 
 See `PROVENANCE.md` (generated) for where every number comes from and how it was verified, and `sources.toml` for the full citations.
+
+## Parametric construction
+
+The parametric builder keeps one permanent `Nut` seed body. Fixed sections for each
+(E, T) pair join that body; each section owns its pilot cut and three cosmetic
+thread alternatives. Rows enable one section, its bore and its matching thread.
+The seed is contained in every section and is completely removed by the pilot
+bore. This avoids alternative body-name ownership on SolidCraft 0.51.1 and face
+references across variants, while retaining the fixed sketches required by
+0.50.0. See `LANE-TESTS.md` for validation and the additional feature cost.

@@ -264,6 +264,43 @@ class HarnessContracts(unittest.TestCase):
                     self.assertEqual({k: v for k, v in row.items() if k not in ignored},
                                      {k: v for k, v in other.items() if k not in ignored})
 
+    def test_hnt_body_owner_and_variant_local_threads(self):
+        import importlib
+        builder = importlib.import_module("vendors.misumi.hnt.t-nut.parametric.build")
+        batches = []
+        def capture(commands, **kwargs):
+            batches.append(commands)
+            return [{"sketch": i, "feature": i} for i, _ in enumerate(commands)]
+        with tempfile.TemporaryDirectory() as tmp, patch.object(builder, "run", side_effect=capture):
+            builder.build(Path(tmp))
+        commands, config = batches
+        owners = [c for c in commands if "body_name" in c["params"]]
+        self.assertEqual([(c["command"], c["params"]["body_name"]) for c in owners], [("solid.cylinder", "Nut")])
+        active = {}
+        for c in commands:
+            p = c["params"]
+            if c["command"] == "timeline.suppress":
+                active[p["feature"]] = not p["suppressed"]
+            elif c["command"].startswith(("solid.", "sketch.create")):
+                if c["command"] == "solid.thread":
+                    suffix = p["name"].split(" ", 2)[2]
+                    self.assertTrue(active[f"Pilot bore {suffix}"])
+                    self.assertTrue(active[f"Nut {suffix}"])
+                    self.assertEqual(sum(v for k, v in active.items() if k.startswith("Pilot bore ")), 1)
+                active[p.get("name", "")] = True
+                if c["command"] == "solid.extrude":
+                    self.assertEqual(p["operation"], "join")
+                    self.assertEqual(p["targets"], ["Nut"])
+        rows = [c["params"] for c in config if c["command"] == "config.row"]
+        self.assertEqual({r["name"] for r in rows}, {r[0] for r in builder.rows_of_table()})
+        for row in rows:
+            enabled = [k.removeprefix("suppress:") for k, v in row["values"].items() if k.startswith("suppress:") and not v]
+            self.assertEqual(len(enabled), 4)
+            thread = next(f for f in enabled if f.startswith("Thread "))
+            self.assertTrue(thread.startswith(f"Thread M{row['name'].rsplit('-', 1)[1]} "))
+            suffix = thread.split(" ", 2)[2]
+            self.assertEqual(set(enabled), {f"Profile {suffix}", f"Nut {suffix}", f"Pilot bore {suffix}", thread})
+
     def test_nut_converter_ignores_rebuilds_and_preserves_extra_rows(self):
         row = {"code": "X", "python": M, "parametric": M, "python_spec": {"rows": 1, "failed": []}, "parametric_spec": {"rows": 1, "failed": []}}
         result = convert({"codes": [row], "refusals": [], "parametric": [{"unused": True}],

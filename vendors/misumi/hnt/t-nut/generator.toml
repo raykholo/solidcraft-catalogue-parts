@@ -1,10 +1,11 @@
 id = "misumi.hnt.t-nut"
 name = "MISUMI 5 series pre-assembly T-nuts (HNTT family)"
-version = "0.1.2"
+version = "0.1.3"
 kind = "generator"
 min_host_version = "0.49.1"
 preview_code = "HNTT5-4"
 
+# Parametric construction: one permanent Nut seed; variant-local joins, bores and threads.
 [entry]
 build  = "nut:parse_build"
 check  = "check:check"
