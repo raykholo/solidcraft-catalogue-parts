@@ -3,7 +3,6 @@ id = "rg-guideway"
 name = "HIWIN RG roller guideway: rail, block or rail with blocks"
 license = "CC0-1.0"
 model = "rg-guideway.sc"
-min_solidcraft = "0.52.0"
 
 # Ordering codes, HIWIN Linear Guideway catalogue G99TE24-2410, RG series, section 2-9-3:
 #   set    RG W 35 C C E 2 R 1640 E ZA P II + KK/E2+RC       rail with blocks

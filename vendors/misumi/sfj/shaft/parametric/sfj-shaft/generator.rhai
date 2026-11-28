@@ -30,29 +30,34 @@ fn lead_letters(t) {
     k
 }
 // `rest` preserves token order and repeats on the native host too.
+fn numeric_arg(name, arg) {
+    if arg == "" || name == "LKC" { return false; }
+    let dots = 0;
+    for ch in arg.chars() {
+        if ch == '.' { dots += 1; }
+        else if !"0123456789".contains(ch) { return false; }
+    }
+    if dots == 0 { return true; }
+    if dots != 1 { return false; }
+    if !(name in ["M", "N", "MD"]) { return false; }
+    if arg.starts_with(".") || arg.ends_with(".") { return false; }
+    arg.split(".")[1].len() == 1
+}
+fn option_pair(token) {
+    let names = ["WSC", "WFC", "LFC", "LKC", "MD", "SC", "SX", "FC", "M", "N", "F", "P", "T", "X", "A", "E"];
+    for name in names {
+        if !token.starts_with(name) { continue; }
+        let arg = token.sub_string(name.len());
+        if name == "LKC" && arg == "" { return [name, ()]; }
+        if numeric_arg(name, arg) { return [name, arg]; }
+    }
+    ["?", token]
+}
 fn option_tokens(text) {
     let out = [];
     if text == () || text == "" { return out; }
     if !text.starts_with("-") { return [["?", text]]; }
-    let parts = text.sub_string(1).split("-");
-    for token in parts {
-        let found = false;
-        for name in ["WSC", "WFC", "LFC", "LKC", "MD", "SC", "SX", "FC", "M", "N", "F", "P", "T", "X", "A", "E"] {
-            if found || !token.starts_with(name) { continue; }
-            let arg = token.sub_string(name.len());
-            if name == "LKC" && arg == "" { out.push([name, ()]); found = true; continue; }
-            let numeric = arg != "";
-            let dots = 0;
-            for ch in arg.chars() {
-                if ch == '.' { dots += 1; }
-                else if !"0123456789".contains(ch) { numeric = false; }
-            }
-            let decimal = name == "M" || name == "N" || name == "MD";
-            if dots > 0 && (!decimal || dots != 1 || arg.ends_with(".") || arg.starts_with(".") || arg.split(".")[1].len() != 1) { numeric = false; }
-            if name != "LKC" && numeric { out.push([name, arg]); found = true; }
-        }
-        if !found { out.push(["?", token]); }
-    }
+    for token in text.sub_string(1).split("-") { out.push(option_pair(token)); }
     out
 }
 fn option_text(tokens) {
@@ -102,7 +107,7 @@ fn new_state(name, typ, tflag, fields) {
     let dl = []; for x in split_bar(param("d_list")) { dl.push(to_i(x)); }
     if !has(dl, D) { let l = join(dl, ", "); refuse("invalid", `diameter ${D}: catalogue sizes are [${l}]`); }
     let dr = table("diameters", D);
-    let f8 = dr.f8_upper != "";
+    let f8 = dr.f8_upper != () && dr.f8_upper != "";
     let s = #{ name: name, typ: typ, tt: if tflag { "T" } else { "" }, D: D, L: fields.length.to_float(), fam: fam, base: row.base, page: page_of(fam),
                cls: row.tolerance_class, material: row.material, hardness: row.hardness, surface: row.surface,
                tapped: false, M: 0.0, lkc: false, length_tol: 0.0, F: 0, P: 0, T: 0, ymax: 0, md: false, taps: [], flats: [], notes: [], toks: [], sc: (), sx: (), wsc: (),

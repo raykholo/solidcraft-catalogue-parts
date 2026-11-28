@@ -123,7 +123,7 @@ fn compact_long_part(code, typ, dr, suf, plated, cb) {
     if typ == "E-LBHZ" && dr > 30 { refuse("invalid", name + ": the opposite-counterbore type E-LBHZ is offered for dr 6-30 (p.470)"); }
     if dr == 5 && typ != "E-LBH" { refuse("invalid", name + ": dr 5 is offered only as the plain E-LBH5UU (p.470)"); }
     let dbl = suf == "LUU";
-    if dbl && r.L_double == "" { refuse("invalid", name + ": dr 5 is offered as a single bushing (UU) only (p.470)"); }
+    if dbl && (r.L_double == () || r.L_double == "") { refuse("invalid", name + ": dr 5 is offered as a single bushing (UU) only (p.470)"); }
     let tol = if plated { if dbl { r.D_tol_double_ni } else { r.D_tol_single_ni } } else { if dbl { r.D_tol_double } else { r.D_tol_single } };
     let len = if dbl { r.L_double } else { r.L_single };
     let b = mkb(code, typ, "compact", "long", dr, r.D, tol, len, [r.L_tol, -r.L_tol], [r.dr_tol_upper, r.dr_tol_lower], cat(["compact_long-compact-", dr]));
@@ -285,7 +285,8 @@ fn resolve(fields) {
     let shape = if fields.shape == () { "" } else { fields.shape };
     let variant = if fields.variant == () { "" } else { fields.variant };
     let typ = "E-LB" + shape + variant;
-    let drs = fields.dr;
+    let drs = fields.dr.to_string();
+    if fields.zero == true { drs = "0" + drs; }
     let suf = fields.suffix;
     let dr = parse_int(drs);
     let t = table("types", typ);
@@ -312,7 +313,7 @@ fn fields(configuration, parameters) {
     let len = parse_float(parameters.blen.split(" ")[0]);
     let shape = if r.shape == "round" { "F" } else if r.shape == "square" { "K" } else if r.shape == "compact" { "H" } else { () };
     let lay = if r.kind == "pilot" { "P" } else if r.kind == "center" { "C" } else { "" };
-    let dbl = r.L2 != "" && len == r.L2.to_float();
+    let dbl = (r.L2 != () && r.L2 != "") && len == r.L2.to_float();
     let suffix = "UU";
     if r.kind == "straight" && r.series == "short" { suffix = "TUU"; }
     else if r.series == "medium" { suffix = if plated { "DMUU" } else { "DUU" }; }
@@ -320,5 +321,5 @@ fn fields(configuration, parameters) {
     let variant = lay;
     if opp { variant += "Z"; }
     if plated && r.series == "long" && r.kind != "straight" { variant += "M"; }
-    #{ shape: shape, variant: if variant == "" { () } else { variant }, dr: r.dr.to_string(), suffix: suffix }
+    #{ shape: shape, variant: if variant == "" { () } else { variant }, dr: r.dr, suffix: suffix }
 }

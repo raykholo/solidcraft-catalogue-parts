@@ -5,7 +5,7 @@ license = "CC0-1.0"
 model = "bushing-housing.sc"
 
 [parameters]
-dr = { type = "text", min = 1, max = 2, escape = "[0-9]" }
+dr = { type = "int", min = 0, max = 99 }
 raw = { type = "text", min = 1, max = 128, escape = "[ -~]" }
 dowel = { type = "int", min = 0, max = 1 }
 

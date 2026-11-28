@@ -57,7 +57,7 @@ def write_package():
     for name, series, r in cat:
         lines += [f'[rows."{name}"]', f'source = "MISUMI Economy catalogue 2025 ({r["source"]}, sources.toml)"', f'page = "{r["page"]}"', 'status = "verified"', ""]
     from runtime.parametric.manifest import write_manifest
-    write_manifest((PKG / "generator.toml"), "\n".join(lines), {'dr': {'type': 'text', 'min': 1, 'max': 2, 'escape': '[0-9]'}, 'raw': {'type': 'text', 'min': 1, 'max': 128, 'escape': '[ -~]'}})
+    write_manifest((PKG / "generator.toml"), "\n".join(lines), {'dr': {'type': 'int', 'min': 0, 'max': 99}, 'raw': {'type': 'text', 'min': 1, 'max': 128, 'escape': '[ -~]'}})
 
 # ---- the model --------------------------------------------------------------------------------------------------------
 COLUMNS = ["dr", "bl", "l1", "bw", "bh", "hb", "h1", "h2", "w1", "td", "pd", "dp", "dl", "dwx", "dwy", "dowel", "dowel_ok"]

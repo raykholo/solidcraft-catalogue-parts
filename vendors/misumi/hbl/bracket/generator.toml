@@ -1,6 +1,6 @@
 id = "misumi.hbl.bracket"
 name = "MISUMI 5 series extruded brackets (HBLTS, HBLTV, HBLTSW, HBLTVW, HBLTF, HBKTS, HBKUS, HBLUS, HBLTH)"
-version = "0.2.3"
+version = "0.2.4"
 kind = "generator"
 min_host_version = "0.49.1"
 preview_code = "HBLTSW5"

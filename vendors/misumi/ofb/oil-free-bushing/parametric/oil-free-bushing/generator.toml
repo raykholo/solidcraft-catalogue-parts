@@ -5,13 +5,13 @@ license = "CC0-1.0"
 model = "oil-free-bushing.sc"
 
 [parameters]
-d = { type = "text", min = 1, max = 3, escape = "[0-9]" }
-l = { type = "text", min = 1, max = 3, escape = "[0-9]" }
+d = { type = "int", min = 0, max = 999 }
+l = { type = "int", min = 0, max = 999 }
 raw = { type = "text", min = 1, max = 80, escape = "[A-Za-z0-9 _./-]" }
 blen = { type = "int", min = 6, max = 100, unit = "mm" }
 
 [[template]]
-pattern = '{otype: C-MUBZU|C-MUBZ|C-MUFZU|C-MUFZ|C-MUTSZ|C-MUTNZ|C-MUTZ|E-MUGZ|E-SHBZ|E-SHFZ|E-SHTNZ|E-SHTZ}{d}\-{l}'
+pattern = '{otype: C-MUBZU|C-MUBZ|C-MUFZU|C-MUFZ|C-MUTSZ|C-MUTNZ|C-MUTZ|E-MUGZ|E-SHBZ|E-SHFZ|E-SHTNZ|E-SHTZ}[0:dz]{d}\-[0:lz]{l}[{ending: rest}]'
 
 [[template]]
 pattern = '{raw}'
@@ -19,794 +19,794 @@ pattern = '{raw}'
 [rows."C-MUBZ-5"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZ-6"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZ-8"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZ-10"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZ-12"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZ-13"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZ-15"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZ-16"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZ-18"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZ-20"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZ-25"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZ-30"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZ-32"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZ-35"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZ-38"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZ-40"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZ-45"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZ-50"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZ-55"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZ-60"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZ-65"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZ-70"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZ-80"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZ-90"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZ-100"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZU-5"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZU-6"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZU-8"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZU-10"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZU-12"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZU-13"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZU-15"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZU-16"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZU-18"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZU-20"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZU-25"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZU-30"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZU-35"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZU-40"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUBZU-50"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (straight)"
 page = "p.514 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZ-5"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZ-6"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZ-8"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZ-10"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZ-12"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZ-13"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZ-15"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZ-16"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZ-18"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZ-20"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZ-25"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZ-30"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZ-35"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZ-40"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZ-45"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZ-50"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZ-60"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZ-70"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZ-80"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZ-90"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZ-100"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZU-5"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZU-6"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZU-8"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZU-10"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZU-12"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZU-13"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZU-15"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZU-16"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZU-20"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZU-25"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUFZU-30"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.514 table (shouldered)"
 page = "p.514 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTZ-6"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTZ-8"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTZ-10"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTZ-12"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTZ-13"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTZ-16"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTZ-20"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTZ-25"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTZ-30"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTZ-35"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTZ-40"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTZ-50"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTSZ-6"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTSZ-8"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTSZ-10"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTSZ-12"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTSZ-13"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTSZ-16"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTSZ-20"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTSZ-25"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTSZ-30"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTSZ-35"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTSZ-40"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTSZ-50"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTNZ-6"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTNZ-8"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTNZ-10"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTNZ-12"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTNZ-13"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTNZ-16"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTNZ-20"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTNZ-25"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTNZ-30"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTNZ-35"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTNZ-40"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."C-MUTNZ-50"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.515 table"
 page = "p.515 table"
-status = "labelled"
+status = "verified"
 
 [rows."E-MUGZ-6"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.516 table (E-MUGZ)"
 page = "p.516 table (E-MUGZ)"
-status = "labelled"
+status = "verified"
 
 [rows."E-MUGZ-8"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.516 table (E-MUGZ)"
 page = "p.516 table (E-MUGZ)"
-status = "labelled"
+status = "verified"
 
 [rows."E-MUGZ-10"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.516 table (E-MUGZ)"
 page = "p.516 table (E-MUGZ)"
-status = "labelled"
+status = "verified"
 
 [rows."E-MUGZ-12"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.516 table (E-MUGZ)"
 page = "p.516 table (E-MUGZ)"
-status = "labelled"
+status = "verified"
 
 [rows."E-MUGZ-13"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.516 table (E-MUGZ)"
 page = "p.516 table (E-MUGZ)"
-status = "labelled"
+status = "verified"
 
 [rows."E-MUGZ-15"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.516 table (E-MUGZ)"
 page = "p.516 table (E-MUGZ)"
-status = "labelled"
+status = "verified"
 
 [rows."E-MUGZ-16"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.516 table (E-MUGZ)"
 page = "p.516 table (E-MUGZ)"
-status = "labelled"
+status = "verified"
 
 [rows."E-MUGZ-18"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.516 table (E-MUGZ)"
 page = "p.516 table (E-MUGZ)"
-status = "labelled"
+status = "verified"
 
 [rows."E-MUGZ-20"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.516 table (E-MUGZ)"
 page = "p.516 table (E-MUGZ)"
-status = "labelled"
+status = "verified"
 
 [rows."E-MUGZ-25"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.516 table (E-MUGZ)"
 page = "p.516 table (E-MUGZ)"
-status = "labelled"
+status = "verified"
 
 [rows."E-MUGZ-30"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.516 table (E-MUGZ)"
 page = "p.516 table (E-MUGZ)"
-status = "labelled"
+status = "verified"
 
 [rows."E-MUGZ-40"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.516 table (E-MUGZ)"
 page = "p.516 table (E-MUGZ)"
-status = "labelled"
+status = "verified"
 
 [rows."E-MUGZ-50"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.516 table (E-MUGZ)"
 page = "p.516 table (E-MUGZ)"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHBZ-5"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.519 table (straight)"
 page = "p.519 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHBZ-6"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.519 table (straight)"
 page = "p.519 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHBZ-8"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.519 table (straight)"
 page = "p.519 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHBZ-10"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.519 table (straight)"
 page = "p.519 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHBZ-12"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.519 table (straight)"
 page = "p.519 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHBZ-13"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.519 table (straight)"
 page = "p.519 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHBZ-15"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.519 table (straight)"
 page = "p.519 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHBZ-16"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.519 table (straight)"
 page = "p.519 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHBZ-20"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.519 table (straight)"
 page = "p.519 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHBZ-25"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.519 table (straight)"
 page = "p.519 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHBZ-30"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.519 table (straight)"
 page = "p.519 table (straight)"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHFZ-5"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.519 table (shouldered)"
 page = "p.519 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHFZ-6"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.519 table (shouldered)"
 page = "p.519 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHFZ-8"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.519 table (shouldered)"
 page = "p.519 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHFZ-10"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.519 table (shouldered)"
 page = "p.519 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHFZ-12"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.519 table (shouldered)"
 page = "p.519 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHFZ-13"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.519 table (shouldered)"
 page = "p.519 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHFZ-15"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.519 table (shouldered)"
 page = "p.519 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHFZ-16"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.519 table (shouldered)"
 page = "p.519 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHFZ-20"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.519 table (shouldered)"
 page = "p.519 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHFZ-25"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.519 table (shouldered)"
 page = "p.519 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHFZ-30"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.519 table (shouldered)"
 page = "p.519 table (shouldered)"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHTZ-6"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.520 table"
 page = "p.520 table"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHTZ-8"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.520 table"
 page = "p.520 table"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHTZ-10"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.520 table"
 page = "p.520 table"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHTZ-12"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.520 table"
 page = "p.520 table"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHTZ-16"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.520 table"
 page = "p.520 table"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHTZ-20"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.520 table"
 page = "p.520 table"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHTZ-25"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.520 table"
 page = "p.520 table"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHTZ-30"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.520 table"
 page = "p.520 table"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHTNZ-6"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.520 table"
 page = "p.520 table"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHTNZ-8"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.520 table"
 page = "p.520 table"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHTNZ-10"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.520 table"
 page = "p.520 table"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHTNZ-12"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.520 table"
 page = "p.520 table"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHTNZ-16"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.520 table"
 page = "p.520 table"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHTNZ-20"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.520 table"
 page = "p.520 table"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHTNZ-25"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.520 table"
 page = "p.520 table"
-status = "labelled"
+status = "verified"
 
 [rows."E-SHTNZ-30"]
 source = "MISUMI Economy Series catalogue S16 (sources.toml), p.520 table"
 page = "p.520 table"
-status = "labelled"
+status = "verified"

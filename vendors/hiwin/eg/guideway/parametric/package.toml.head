@@ -3,7 +3,6 @@ id = "eg-guideway"
 name = "HIWIN EG low-profile linear guideway: rail, block or rail with blocks"
 license = "CC0-1.0"
 model = "eg-guideway.sc"
-min_solidcraft = "0.52.0"
 
 # Ordering codes, HIWIN Linear Guideway catalogue G99TE24-2410, EG series, section 2-2-3 (p.44-45):
 #   set    EG W 25 C A E 2 R 1600 E ZA P M II + DD/E2+RC     rail with blocks

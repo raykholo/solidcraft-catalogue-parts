@@ -3,7 +3,6 @@ id = "mg-rail-set"
 name = "HIWIN MG miniature linear guide: rail with blocks"
 license = "CC0-1.0"
 model = "mg-rail-set.sc"
-min_solidcraft = "0.52.0"
 
 # Ordering code, HIWIN MG catalogue G99TE24-2410 section 2-4-10 (p.78): MGN 12 C E 2 R1600 E Z1 P M II + SS/U/EL+RC/-O
 # Size and length are plain integers here and checked in generator.rhai, so that the refusals carry the catalogue's wording.

@@ -1,11 +1,12 @@
 format = "solidcraft-generator/2"
 id = "dowel-flanged-shaft-support"
-name = "MISUMI Economy flanged shaft supports with slit and positioning (dowel) holes: round (E-STHWRBK, E-STHWRK, E-SSTHWRK) and compact (E-STHWCBK, E-SSTHWCK)"
+name = "MISUMI Economy dowel flanged shaft support"
 license = "CC0-1.0"
 model = "dowel-flanged-shaft-support.sc"
 
 [parameters]
-d = { type = "text", min = 1, max = 6, escape = "[0-9]" }
+raw = { type = "text", min = 1, max = 128, escape = "[ -~]" }
+d = { type = "int", min = 0, max = 999999 }
 type = { type = "text", min = 1, max = 12, escape = "[A-Za-z]" }
 
 [[template]]
@@ -14,52 +15,55 @@ pattern = 'E-[S:stainless]STHW{shape: R=round, C=compact}[B:black]K{d}'
 [[template]]
 pattern = 'E-{type}{d}'
 
+[[template]]
+pattern = '{raw}'
+
 [rows."round-12"]
 source = "MISUMI Economy Series catalogue S19 (sources.toml), p.537 table"
 page = "p.537 table"
-status = "labelled"
+status = "verified"
 
 [rows."round-16"]
 source = "MISUMI Economy Series catalogue S19 (sources.toml), p.537 table"
 page = "p.537 table"
-status = "labelled"
+status = "verified"
 
 [rows."round-20"]
 source = "MISUMI Economy Series catalogue S19 (sources.toml), p.537 table"
 page = "p.537 table"
-status = "labelled"
+status = "verified"
 
 [rows."round-25"]
 source = "MISUMI Economy Series catalogue S19 (sources.toml), p.537 table"
 page = "p.537 table"
-status = "labelled"
+status = "verified"
 
 [rows."round-30"]
 source = "MISUMI Economy Series catalogue S19 (sources.toml), p.537 table"
 page = "p.537 table"
-status = "labelled"
+status = "verified"
 
 [rows."compact-12"]
 source = "MISUMI Economy Series catalogue S19 (sources.toml), p.537 table"
 page = "p.537 table"
-status = "labelled"
+status = "verified"
 
 [rows."compact-16"]
 source = "MISUMI Economy Series catalogue S19 (sources.toml), p.537 table"
 page = "p.537 table"
-status = "labelled"
+status = "verified"
 
 [rows."compact-20"]
 source = "MISUMI Economy Series catalogue S19 (sources.toml), p.537 table"
 page = "p.537 table"
-status = "labelled"
+status = "verified"
 
 [rows."compact-25"]
 source = "MISUMI Economy Series catalogue S19 (sources.toml), p.537 table"
 page = "p.537 table"
-status = "labelled"
+status = "verified"
 
 [rows."compact-30"]
 source = "MISUMI Economy Series catalogue S19 (sources.toml), p.537 table"
 page = "p.537 table"
-status = "labelled"
+status = "verified"

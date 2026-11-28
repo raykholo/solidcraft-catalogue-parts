@@ -35,6 +35,12 @@ class HarnessContracts(unittest.TestCase):
         for path in packages:
             data = tomllib.loads(path.read_text())
             self.assertFalse(data.keys() - allowed["top"], path)
+            self.assertLessEqual(len(data["name"]), 128, path)
+            self.assertNotIn("min_solidcraft", data, path)
+            for row in data.get("rows", {}).values():
+                self.assertIn(row.get("status"), (None, "verified", "needs_review", "not_modelled"), path)
+            for table in (path.parent / "tables").glob("*.csv"):
+                self.assertRegex(table.stem, r"^[A-Za-z_][A-Za-z_0-9]*$")
             for group in ("parameters", "template", "rows", "example"):
                 items = data.get(group, {})
                 for item in items.values() if isinstance(items, dict) else items:
@@ -113,7 +119,7 @@ class HarnessContracts(unittest.TestCase):
 
     def test_native_rest_is_optional_nonempty_and_limited(self):
         template = fieldtemplate.Template.parse("X[{opts: rest}]")
-        self.assertIsNone(template.match("X")["opts"])
+        self.assertNotIn("opts", template.match("X"))
         self.assertEqual(template.match("X-M4-N8")["opts"], "-M4-N8")
         self.assertIsNone(template.match("X" + "A" * 65))
         package = ROOT / "vendors/misumi/sfj/shaft/parametric/sfj-shaft"
@@ -141,6 +147,46 @@ class HarnessContracts(unittest.TestCase):
                     "parse": [{"code": "valid", "expected": {"configuration": "row", "parameters": {}}, "actual": changed}]}))
                 result = subprocess.run([str(ROOT / "tools/parametric-verdict"), str(path)], capture_output=True, text=True)
                 self.assertEqual(result.returncode, expected_exit, result.stdout + result.stderr)
+
+    def test_native_matching_literals_defaults_maps_and_text(self):
+        template = fieldtemplate.Template.parse("AB{kind: C=compact, R=round}[-{x}]", parameters={"x": {"type": "text", "min": 1, "max": 8, "default": "none", "escape": "[/]"}})
+        self.assertEqual(template.match("ABc"), {"kind": "compact", "kind_code": "C", "x": "none"})
+        self.assertEqual(template.match("ABr-a/B")["x"], "a/B")
+        self.assertIsNone(template.match("A Bc"))
+        self.assertEqual(template.match("ABc-_"), {"kind": "compact", "kind_code": "C", "x": "none"})
+        optional = fieldtemplate.Template.parse("X[{x: int 0..99}]")
+        self.assertEqual(optional.match("X"), {})
+        with self.assertRaises(fieldtemplate.TemplateError):
+            fieldtemplate.Template.parse("X{x: decimal}")
+        decimal = fieldtemplate.Template.parse("X{x: decimal 0..99 digits 2}")
+        self.assertIsNone(decimal.match("X1.234"))
+        self.assertEqual(decimal.print({"x": 1.2}), "X1.2")
+
+    def test_native_reply_omits_empty_parameters(self):
+        from runtime.parametric import native_parse as native
+        expected = {"configuration": "row", "parameters": {}}
+        with patch.object(native, "resolve", return_value=expected), patch.object(native, "cli", return_value=([{"ok": True, "configuration": "row"}], None)):
+            row = native.parse_row(ROOT, SimpleNamespace(code="CODE", valid=True), {})
+            self.assertEqual(row["expected"], row["actual"])
+
+    @unittest.skipUnless(__import__("os").environ.get("RHAI_RUN"), "requires the real Rhai host")
+    def test_real_rhai_caps_defaults_values_and_catalogue_refusal(self):
+        from runtime.parametric import rhai
+        package = ROOT / "vendors/hiwin/mg/rail-set/parametric/mg-rail-set"
+        fields = fieldtemplate.load(package).match("MGN12H2R300Z0C")[1]
+        for options, caps in [({}, "0"), ({"caps": 0}, "0"), ({"caps": 1}, "1")]:
+            reply = rhai(package, "resolve", fields | {"options": options})
+            self.assertTrue(reply["ok"], reply)
+            self.assertEqual(reply["value"]["parameters"]["caps"], caps)
+        for value in (2, -1, True, "1", 1.0):
+            reply = rhai(package, "resolve", fields | {"options": {"caps": value}})
+            self.assertFalse(reply["ok"], reply)
+            self.assertEqual(reply["message"], "caps must be 0 or 1")
+        fields = fieldtemplate.load(package).match("MGN9C1R195ZFH")[1]
+        reply = rhai(package, "resolve", fields | {"options": {"caps": 1}})
+        with self.assertRaises(ValueError) as error:
+            registry.Generator(package.parent.parent).build("MGN9C1R195ZFH", caps=True)
+        self.assertEqual(reply["message"], str(error.exception))
 
     def test_options_catalogue_capability(self):
         from runtime.parametric import options
@@ -400,7 +446,7 @@ class HarnessContracts(unittest.TestCase):
             with patch.object(package, "rhai", return_value={"ok": False, "reason": "invalid", "message": "refused"}) as call:
                 package.parse(code)
                 self.assertEqual(call.call_args.args[1]["raw_code"], code)
-                self.assertEqual(call.call_args.args[1]["raw"], code.strip().upper())
+                self.assertEqual(call.call_args.args[1]["raw"], code.strip())
 
     def test_guideway_rebuild_conversion_retains_order_and_errors(self):
         raw = {"vol": 42, "area": 20, "faces": 6, "bodies": 1, "lo": [-2, 0, 1], "hi": [1, 4, 6]}

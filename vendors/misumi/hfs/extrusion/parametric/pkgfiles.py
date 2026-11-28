@@ -5,7 +5,7 @@ from pathlib import Path
 from runtime.table import read_csv
 from vendors.misumi.hfs.extrusion.src import ext
 
-TEMPLATE = "[K:fixed]{part_type}-{profile}[-{length: decimal}][-{alts}]"
+TEMPLATE = "[K:fixed]{part_type}-{profile}[-{length: decimal 0..999999}][-{alts}]"
 
 from runtime.parametric.kit import write_csv
 

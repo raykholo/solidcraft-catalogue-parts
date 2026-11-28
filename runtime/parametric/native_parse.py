@@ -44,7 +44,7 @@ def parse_row(package, line, refusals):
         if error:
             row['actual'] = {'error': error}
         elif line.valid and reply.get('ok') is True:
-            row['actual'] = {k: reply.get(k) for k in ('configuration', 'parameters')}
+            row['actual'] = {'configuration': reply.get('configuration'), 'parameters': reply.get('parameters', {})}
         elif not line.valid and reply.get('ok') is False:
             row['actual'] = {'ok': False, 'message': reply.get('message')}
         else:

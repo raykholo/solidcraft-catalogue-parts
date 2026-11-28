@@ -7,7 +7,7 @@
  "license": "Apache-2.0",
  "author": "raykholo",
  "guarantee": "reviewed",
- "provenance": "Generated from the catalogue generator misumi.hfs.extrusion 0.2.2 of raykholo/solidcraft-catalogue-parts; every number is a row of a table below with its source, page and status. Verified by: automatic spec check of every code in codes.txt on SolidCraft 0.51.1; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person. Not guaranteed (appearance, approximate): Section values read from the vector drawing rather than printed: lip thickness on the 5 series, where the cavity wall ends and the floor half width (m; The central voids of the 2040 / 4040 (measured) and the 4040 bore-block inner-corner notch (3.6 mm square, fitted so that the section area meets the p; Wrench access hole depth (through the whole section) and, on 2040 / 4040 / 3030, the H / V axis convention; The cosmetic M5 / M8 end thread on the bore (its length and the effect of a wrench hole cutting the bore); FL / FR on the 5 series (the catalogue table lists the 6 and 8 series only)",
+ "provenance": "Generated from the catalogue generator misumi.hfs.extrusion 0.2.3 of raykholo/solidcraft-catalogue-parts; every number is a row of a table below with its source, page and status. Verified by: automatic spec check of every code in codes.txt on SolidCraft 0.51.1; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person. Not guaranteed (appearance, approximate): Section values read from the vector drawing rather than printed: lip thickness on the 5 series, where the cavity wall ends and the floor half width (m; The central voids of the 2040 / 4040 (measured) and the 4040 bore-block inner-corner notch (3.6 mm square, fitted so that the section area meets the p; Wrench access hole depth (through the whole section) and, on 2040 / 4040 / 3030, the H / V axis convention; The cosmetic M5 / M8 end thread on the bore (its length and the effect of a wrench hole cutting the bore); FL / FR on the 5 series (the catalogue table lists the 6 and 8 series only)",
  "sources": [
   {
    "id": "S1",
@@ -1339,7 +1339,7 @@
  ],
  "x-generator": {
   "id": "misumi.hfs.extrusion",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "sources_hash": "sha256:734c8793b44e13f4324567be9aeeb515489c5e0edd0014a0ce8007e110333714",
   "level": "Reviewed",
   "checked_on": "0.51.1",

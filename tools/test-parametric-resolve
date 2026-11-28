@@ -1,0 +1,99 @@
+#!/usr/bin/env python3
+"""Offline real-Rhai resolve sweep over every codes.txt line; never runs SolidCraft.
+
+RHAI_RUN is required. --native-tables also checks scripts with native null cells,
+using a temporary wrapper around the stand-in's table() (whose blanks are strings).
+"""
+import argparse
+import json
+import os
+import shutil
+import sys
+import tempfile
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from runtime import fieldtemplate, registry
+from runtime.parametric import rhai
+
+NULL_TABLES = '''
+fn offline_table(name, key) {
+    let row = table(name, key);
+    if row == () { return row; }
+    for column in row.keys() { if row[column] == "" { row[column] = (); } }
+    row
+}
+fn offline_table(name, key, column) {
+    let cell = table(name, key, column);
+    if cell == "" { () } else { cell }
+}
+'''
+
+
+def sweep(generator, package):
+    templates = fieldtemplate.load(package)
+    rows = []
+    for line in generator.codes():
+        row = {'code': line.code, 'valid': line.valid, 'ok': False}
+        try:
+            try:
+                generator.build(line.code, **line.opts)
+                python = None
+            except ValueError as error:
+                python = str(error)
+            matched = templates.match(line.code.strip().upper())
+            if matched is None:
+                # Legacy harnesses use the script's no_match text as a refusal.
+                response = rhai(package, 'no_match', line.code)
+                if response.get('ok') and isinstance(response.get('value'), str):
+                    response = {'ok': False, 'message': response['value']}
+            else:
+                response = rhai(package, 'resolve', matched[1])
+            if line.valid:
+                value = response.get('value')
+                row['ok'] = bool(python is None and response.get('ok') and isinstance(value, dict)
+                                 and isinstance(value.get('configuration'), str)
+                                 and isinstance(value.get('parameters'), dict)
+                                 and all(isinstance(v, str) for v in value['parameters'].values()))
+            else:
+                row['ok'] = python is not None and response.get('ok') is False and response.get('message') == python
+            if not row['ok']:
+                row.update(python=python, response=response)
+        except Exception as error:
+            row['error'] = str(error)
+        rows.append(row)
+    return rows
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument('--out', type=Path)
+    ap.add_argument('--native-tables', action='store_true')
+    args = ap.parse_args()
+    if not os.environ.get('RHAI_RUN'):
+        ap.error('set RHAI_RUN to the real Rhai host binary')
+    results = []
+    for generator in registry.generators():
+        manifest, = (generator.dir / 'parametric').glob('*/generator.toml')
+        with tempfile.TemporaryDirectory() as temporary:
+            package = manifest.parent
+            if args.native_tables:
+                target = Path(temporary) / package.name
+                shutil.copytree(package, target, ignore=shutil.ignore_patterns('*.sc'))
+                script = target / 'generator.rhai'
+                script.write_text(script.read_text().replace('table(', 'offline_table(') + NULL_TABLES)
+                package = target
+            rows = sweep(generator, package)
+        bad = [r for r in rows if not r['ok']]
+        print(f'{generator.id}: {len(rows)} lines, {len(bad)} differences', flush=True)
+        for row in bad:
+            print(json.dumps(row, sort_keys=True), flush=True)
+        results.append({'generator': generator.id, 'rows': rows})
+    if args.out:
+        args.out.write_text(json.dumps(results, indent=1) + '\n')
+    return int(any(not row['ok'] for result in results for row in result['rows']))
+
+
+if __name__ == '__main__':
+    sys.exit(main())

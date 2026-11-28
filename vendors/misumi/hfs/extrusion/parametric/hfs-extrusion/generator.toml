@@ -16,7 +16,7 @@ wl_rows = { type = "int", min = 0, max = 3 }
 wr_rows = { type = "int", min = 0, max = 3 }
 
 [[template]]
-pattern = '[K:fixed]{part_type}-{profile}[-{length: decimal}][-{alts}]'
+pattern = '[K:fixed]{part_type}-{profile}[-{length: decimal 0..999999}][-{alts}]'
 
 [rows."2020"]
 source = "MISUMI FA catalogue S1 (sources.toml), p.529"

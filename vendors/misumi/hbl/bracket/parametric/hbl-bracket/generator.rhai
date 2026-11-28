@@ -14,7 +14,7 @@ fn join(a, sep) {
 }
 fn bar(s) { if s == () || s == "" { [] } else { s.to_string().split("|") } }
 fn param(name) { table("params", name, "value") }
-fn is_str(x) { type_of(x) == "string" }
+fn is_str(x) { x == () || type_of(x) == "string" }
 
 fn refuse_type(c, base) {         // the code names no drawn type
     let dl = bar(param("drawn")); let drawn = join(dl, ", ");

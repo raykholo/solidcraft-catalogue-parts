@@ -23,7 +23,7 @@ fn shape_error(raw) {
     refuse("invalid", `${shown}: expected E-LBHG<dr>-<H> (single) or E-LBHGW<dr>-<H> (double), H the centre height, e.g. E-LBHG12-15, E-LBHGW30-40`);
 }
 fn check(typ, dr, hv) {          // -> the table row; refuses
-    let row = table("housing-g", dr);
+    let row = table("housing_g", dr);
     if row == () {
         let offered = pylist(ints(split_bar(table("params", "drs", "value"))));
         refuse("invalid", `${typ}${dr}-${hv}: dr ${dr} is not a catalogue size; E-LBHG / E-LBHGW are offered for dr ${offered} (p.491)`);
@@ -54,8 +54,8 @@ fn resolve(fields) {
     if fields.raw != () { shape_error(fields.raw); }
     let double = fields.double;
     let typ = if double { "E-LBHGW" } else { "E-LBHG" };
-    let dr = parse_int(fields.dr);
-    let hv = parse_int(fields.h);
+    let dr = parse_int(fields.dr.to_string());
+    let hv = parse_int(fields.h.to_string());
     let row = check(typ, dr, hv);
     let code = `${typ}${dr}-${hv}`;
     let series = if double { "double" } else { "single" };
@@ -72,5 +72,5 @@ fn fields(configuration, parameters) {
     let double = configuration.starts_with("GW-");
     let dr = configuration.sub_string(configuration.index_of("-") + 1);
     let hv = parse_int(parameters.hc.split(" ")[0]);
-    #{ double: double, dr: dr, h: hv.to_string() }
+    #{ double: double, dr: parse_int(dr), h: hv }
 }

@@ -49,7 +49,7 @@ def _tokens(lit):
         if lit[i] == "\\" and i + 1 < len(lit):
             out.append((lit[i + 1].upper(), True)); i += 2
         else:
-            if lit[i] not in SEPARATORS: out.append((lit[i].upper(), False))
+            out.append((lit[i].upper(), False))
             i += 1
     return out
 
@@ -59,31 +59,33 @@ def _unescape(lit):
 def _lit(text, pos, value):
     """Where the listed value `value` ends when it is read at `pos`: its characters in order, separators of the code skipped between them
     (so `C-MUFZ` is read from `C-MUFZ5-10`, and from `c mufz`); None when it does not fit."""
-    p = pos
-    for c in _norm(value):
-        while p < len(text) and text[p] in SEPARATORS: p += 1
-        if text[p:p + 1] != c: return None
-        p += 1
-    return p
+    end = pos + len(value)
+    return end if text[pos:end].upper() == value.upper() else None
 
 class _Field:
     def __init__(self, name, spec, choices, parameters):
         self.name, self.spec = name, (spec or "").strip()
         s = self.spec
         definition = parameters.get(name, {})
+        if not s and definition.get("type") in ("int", "decimal"):
+            s = f"{definition['type']} {definition.get('min', 0)}..{definition.get('max', 1000000000)}"
         if not s and definition.get("type") == "text":
             s = f"text {definition.get('min', 1)}..{definition.get('max', 32)}"
             self.spec = s
         if not s:
             if name not in choices: raise TemplateError(f"field {{{name}}} has no spec and no choice list")
             self.kind, self.values = "choice", [str(v) for v in choices[name]]
-        elif m := re.fullmatch(r"int(?:\s+(\d*)\s*\.\.\s*(\d*))?", s):
+        elif m := re.fullmatch(r"int\s+(-?\d+)\s*\.\.\s*(-?\d+)(?:\s+step\s+(\d+))?", s):
             self.kind = "int"; self.lo = int(m.group(1)) if m.group(1) else 0; self.hi = int(m.group(2)) if m.group(2) else 10**9
-        elif m := re.fullmatch(r"decimal(?:\s+([\d.]+)\.\.([\d.]+))?(?:\s+step\s+([\d.]+))?(?:\s+digits\s+(\d+))?", s):
+            self.step = int(m.group(3) or 1) if spec else int(definition.get("step", 1))
+        elif m := re.fullmatch(r"decimal\s+(-?[\d.]+)\.\.(-?[\d.]+)(?:\s+step\s+([\d.]+))?(?:\s+digits\s+(\d+))?", s):
             self.kind = "decimal"; self.lo = float(m.group(1) or 0); self.hi = float(m.group(2) or 1e9)
-            self.step = float(m.group(3)) if m.group(3) else None; self.digits = int(m.group(4)) if m.group(4) else None
+            self.step = float(m.group(3)) if m.group(3) else None; self.digits = int(m.group(4) or 3) if spec else int(definition.get("digits", 3))
+            if not spec: self.step = definition.get("step")
         elif m := re.fullmatch(r"text\s+(\d+)\.\.(\d+)", s):
             self.kind = "text"; self.lo, self.hi = int(m.group(1)), int(m.group(2)); self.cls = _charclass(definition["escape"]) if not spec and definition.get("escape") else None
+        elif s in ("int", "decimal"):
+            raise TemplateError("a number field needs a range")
         elif s.startswith("text "):
             raise TemplateError("text escape belongs on a declared parameter")
         elif s == "rest":
@@ -118,14 +120,14 @@ class _Field:
                 for ln in range(len(full), 0, -1):
                     s = full[:ln]
                     if not re.fullmatch(r"[1-9]\d*|0", s): continue
-                    if self.lo <= int(s) <= self.hi: yield int(s), pos + ln
+                    if self.lo <= int(s) <= self.hi and (int(s) - self.lo) % self.step == 0: yield int(s), pos + ln
         elif self.kind == "decimal":
             m = re.compile(r"\d+(?:\.\d+)?").match(text, pos)
             if m:
                 full = m.group(0)
                 for ln in range(len(full), 0, -1):
                     s = full[:ln]
-                    if s.endswith("."): continue
+                    if s.endswith(".") or len(s.partition(".")[2]) > self.digits: continue
                     v = float(s)
                     if self.lo <= v <= self.hi and (not self.step or abs((v - self.lo) / self.step - round((v - self.lo) / self.step)) < 1e-9):
                         yield v, pos + ln
@@ -157,7 +159,7 @@ class _Field:
                 if ln >= 1: yield text[pos:pos + ln], pos + ln
 
     def _typed(self, v):
-        return int(v) if re.fullmatch(r"\d+", v) else v
+        return v
 
     def printed(self, value):
         if self.kind == "map":
@@ -173,7 +175,7 @@ class _Field:
             return str(value)
         if self.kind == "decimal":
             if not self.lo <= value <= self.hi: raise ValueError(f"field {self.name}: {value!r} is outside {self.lo}..{self.hi}")
-            return f"{value:.{self.digits}f}" if self.digits is not None else f"{value:g}"
+            return f"{value:.{self.digits}f}".rstrip("0").rstrip(".") if self.digits else str(round(value))
         if self.kind == "bag":
             out = ""
             for nm, arg in value:
@@ -184,11 +186,14 @@ class _Field:
             return str(value)
         if self.kind == "text":
             if not (self.lo <= len(str(value)) <= self.hi): raise ValueError(f"field {self.name}: text length outside {self.lo}..{self.hi}")
+            if any(not (ch.isascii() and ch.isalnum() or self.cls is not None and ch in self.cls) for ch in str(value)):
+                raise ValueError(f"field {self.name}: text contains a character outside its escape class")
             return str(value)
 
 class Template:
     def __init__(self, pattern, nodes, fields, escape):
         self.pattern, self.nodes, self.fields, self.escape = pattern, nodes, fields, escape
+        self.parameters = {}
 
     @classmethod
     def parse(cls, pattern, choices=None, parameters=None):
@@ -220,12 +225,14 @@ class Template:
             return nodes
         nodes = parse_seq(False)
         if len(fields) > MAX_FIELDS: raise TemplateError("more than 32 fields")
-        return cls(pattern, nodes, fields, None)
+        template = cls(pattern, nodes, fields, None)
+        template.parameters = parameters or {}
+        return template
 
     # ---- code -> fields
-    def match(self, code):
+    def match(self, code, _steps=None):
         if len(code) > MAX_CODE: raise Refusal("invalid", "code longer than 128 characters")
-        text = code.strip().upper(); steps = [0]
+        text = code.strip(); steps = _steps if _steps is not None else [0]
         def skip(p):
             while p < len(text) and text[p] in SEPARATORS: p += 1
             return p
@@ -237,26 +244,38 @@ class Template:
             if i == len(nodes): return k(pos, acc)
             n = nodes[i]
             if n[0] == "lit":
-                p = pos
+                p = pos if n[1] and n[1][0][1] else skip(pos)
                 for c, req in n[1]:                 # separators in the code are skipped between the literal's characters, but not before a required one
-                    if not req: p = skip(p)
-                    if text[p:p + 1] != c: return None
-                    p += 1
+                    if c in SEPARATORS and not req:
+                        p = skip(p)
+                    elif text[p:p + 1].upper() == c:
+                        p += 1
+                    else:
+                        return None
                 a = dict(acc)
                 if n[2]: a[n[2]] = True
                 return run(nodes, i + 1, p, a, k)
             if n[0] == "field":
-                for v, p in n[1].options(text, pos if (n[1].kind in ("bag", "rest") or (i > 0 and nodes[i - 1][0] == "lit" and nodes[i - 1][1] and nodes[i - 1][1][-1][1])) else skip(pos), self.escape):
-                    r = run(nodes, i + 1, p, {**acc, n[1].name: v}, k)
+                for v, p in n[1].options(text, pos if n[1].kind in ("bag", "rest") else skip(pos), self.escape):
+                    values = {**acc, n[1].name: v}
+                    if n[1].kind == "map":
+                        values[n[1].name + "_code"] = next(code for code, value in n[1].map.items() if value == v)
+                    r = run(nodes, i + 1, p, values, k)
                     if r is not None: return r
                 return None
             if n[0] == "opt":
                 r = run(n[1], 0, pos, acc, lambda p, a: run(nodes, i + 1, p, a, k))
                 if r is not None: return r
-                return run(nodes, i + 1, pos, acc, k)
-        out = run(self.nodes, 0, 0, {}, lambda p, a: a if text[p:].strip() == "" else None)   # a dangling separator is not a code
+                absent = dict(acc)
+                for child in self._walk(n[1]):
+                    if child[0] == "field" and "default" in self.parameters.get(child[1].name, {}):
+                        absent[child[1].name] = self.parameters[child[1].name]["default"]
+                    elif child[0] == "lit" and child[2]:
+                        absent[child[2]] = False
+                return run(nodes, i + 1, pos, absent, k)
+        out = run(self.nodes, 0, 0, {}, lambda p, a: a if skip(p) == len(text) else None)   # a dangling separator is not a code
         if out is None: return None
-        return {n: out.get(n, False if n in {x[2] for x in self._walk() if x[0] == "lit" and x[2]} else None) for n in sorted(names, key=lambda x: str(x))} | {k: v for k, v in out.items()}
+        return out
 
     def _walk(self, nodes=None):
         for n in (self.nodes if nodes is None else nodes):
@@ -285,8 +304,9 @@ class TemplateSet:
     """Several templates tried in order: the first complete match wins."""
     def __init__(self, templates): self.templates = templates
     def match(self, code):
+        steps = [0]
         for i, t in enumerate(self.templates):
-            r = t.match(code)
+            r = t.match(code, steps)
             if r is not None: return i, r
         return None
     def print(self, params, index=None):

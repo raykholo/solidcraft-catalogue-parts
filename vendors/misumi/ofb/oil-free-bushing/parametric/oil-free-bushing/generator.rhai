@@ -181,9 +181,10 @@ fn row_of(name, typ, t, d, L, thin, tab, pg) {
 
 fn resolve(fields) {
     if fields.raw != () { refuse_raw(fields.raw); }
+    if fields.ending != () { refuse_raw(code_template(fields)); }
     let typ = fields.otype;
-    let d = parse_int(fields.d);
-    let L = parse_int(fields.l);
+    let d = parse_int(fields.d.to_string());
+    let L = parse_int(fields.l.to_string());
     let t = table("types", typ);
     let tab = t.table;
     let pg = page_of(tab);
@@ -197,5 +198,5 @@ fn resolve(fields) {
 // the inverse, for code printing (a bill of materials): configuration row + parameters -> the fields of the first template
 fn fields(configuration, parameters) {
     let r = table("rows", configuration);
-    #{ otype: r.type, d: r.dr.to_string(), l: parse_int(parameters.blen.split(" ")[0]).to_string() }
+    #{ otype: r.type, d: r.dr, l: parse_int(parameters.blen.split(" ")[0]) }
 }

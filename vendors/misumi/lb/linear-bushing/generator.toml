@@ -1,6 +1,6 @@
 id = "misumi.lb.linear-bushing"
 name = "MISUMI Economy linear bushings: straight (E-LB), round (E-LBF), square (E-LBK) and compact (E-LBH) flanged, with pilot and centre flanged"
-version = "0.2.2"
+version = "0.2.3"
 kind = "generator"
 min_host_version = "0.49.1"
 preview_code = "E-LBF20LUU"

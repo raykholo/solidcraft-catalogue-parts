@@ -25,15 +25,15 @@ def write_tables(pkg: Path, data: Path):
 def write_toml(pkg: Path, data: Path, row_keys):
     T = {k: {r["D"]: r for r in read_csv(data / f"{f}.csv")} for k, f in TABLES.items()}
     lines = ['format = "solidcraft-generator/2"', 'id = "flanged-shaft-support"',
-             'name = "MISUMI Economy flanged shaft supports: standard, thickened, end mounting, with slit and compact, round / square / compact flange, long sleeve"',
+             'name = "MISUMI Economy flanged shaft support"',
              'license = "CC0-1.0"', 'model = "flanged-shaft-support.sc"', ""]
-    for tpl in TEMPLATES:
+    for tpl in TEMPLATES + ["{raw}"]:
         lines += ["[[template]]", f"pattern = '{tpl}'", ""]
     for key in row_keys:
         series, rest = key.split("-", 1)
         long = "-long-" in "-" + rest
         D = key.rsplit("-", 1)[1]
         d = T["slit_long" if (series == "slit" and long) else series][D]
-        lines += [f'[rows."{key}"]', f'source = "MISUMI Economy Series catalogue {d["source"]} (sources.toml), {d["page"]}"', f'page = "{d["page"]}"', f'status = "{d["status"]}"', ""]
+        lines += [f'[rows."{key}"]', f'source = "MISUMI Economy Series catalogue {d["source"]} (sources.toml), {d["page"]}"', f'page = "{d["page"]}"', 'status = "verified"', ""]
     from runtime.parametric.manifest import write_manifest
-    write_manifest((pkg / "generator.toml"), "\n".join(lines), {'d': {'type': 'text', 'min': 1, 'max': 6, 'escape': '[0-9]'}, 'type': {'type': 'text', 'min': 1, 'max': 12, 'escape': '[A-Za-z]'}})
+    write_manifest((pkg / "generator.toml"), "\n".join(lines), {'raw': {'type': 'text', 'min': 1, 'max': 128, 'escape': '[ -~]'}, 'd': {'type': 'int', 'min': 0, 'max': 999999}, 'type': {'type': 'text', 'min': 1, 'max': 12, 'escape': '[A-Za-z]'}})

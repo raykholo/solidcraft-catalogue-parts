@@ -7,7 +7,7 @@
  "license": "Apache-2.0",
  "author": "raykholo",
  "guarantee": "reviewed",
- "provenance": "Generated from the catalogue generator hiwin.mg.rail-set 0.3.1 of raykholo/solidcraft-catalogue-parts; every number is a row of a table below with its source, page and status. Verified by: automatic spec check of every code in codes.txt on SolidCraft 0.51.1; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person. Not guaranteed (appearance, approximate): Rail top chamfers (0.025 x rail width) and the two side ball grooves (a circular approximation: the catalogue draws no groove profile); Block top chamfers and the 0.2 mm black top insert between the mounting holes; End cap / end seal split of (L - L1) / 2, their 0.3 mm inset, colours (green cap, red seal as HIWIN's photo shows) and plastic material; Retainer strips, the four cross-head end screws (only their projection (L Max - L) / 2 is catalogue) and the grease nipple shape (only M3 and G are ca; Rail screws: SolidCraft's ISO 4762 standard part of the catalogue bolt size (the screw model is SolidCraft's, not HIWIN's); Rail hole caps (option `caps`, MGN12 / MGN15): thickness 1.2 is catalogue, the diameter is the counterbore diameter (the catalogue O6.15 is a press fi; Materials and PBR looks of every body (SolidCraft appearance-library entries: ground top and side faces, raceway faces, satin body, plastics, brass; b",
+ "provenance": "Generated from the catalogue generator hiwin.mg.rail-set 0.3.2 of raykholo/solidcraft-catalogue-parts; every number is a row of a table below with its source, page and status. Verified by: automatic spec check of every code in codes.txt on SolidCraft 0.51.1; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person. Not guaranteed (appearance, approximate): Rail top chamfers (0.025 x rail width) and the two side ball grooves (a circular approximation: the catalogue draws no groove profile); Block top chamfers and the 0.2 mm black top insert between the mounting holes; End cap / end seal split of (L - L1) / 2, their 0.3 mm inset, colours (green cap, red seal as HIWIN's photo shows) and plastic material; Retainer strips, the four cross-head end screws (only their projection (L Max - L) / 2 is catalogue) and the grease nipple shape (only M3 and G are ca; Rail screws: SolidCraft's ISO 4762 standard part of the catalogue bolt size (the screw model is SolidCraft's, not HIWIN's); Rail hole caps (option `caps`, MGN12 / MGN15): thickness 1.2 is catalogue, the diameter is the counterbore diameter (the catalogue O6.15 is a press fi; Materials and PBR looks of every body (SolidCraft appearance-library entries: ground top and side faces, raceway faces, satin body, plastics, brass; b",
  "sources": [
   {
    "id": "S4",
@@ -3842,7 +3842,7 @@
  ],
  "x-generator": {
   "id": "hiwin.mg.rail-set",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "sources_hash": "sha256:6ff5d57a3813d897b01f9627dd87de888e0a251acf36ecddc34b7d567cffeb26",
   "level": "Reviewed",
   "checked_on": "0.51.1",

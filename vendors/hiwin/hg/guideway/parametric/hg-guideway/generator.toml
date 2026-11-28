@@ -3,7 +3,6 @@ id = "hg-guideway"
 name = "HIWIN HG linear guideway: rail, block or rail with blocks"
 license = "CC0-1.0"
 model = "hg-guideway.sc"
-min_solidcraft = "0.52.0"
 
 # Ordering codes, HIWIN Linear Guideway catalogue G99TE24-2410, HG series, section 2-1-3:
 #   set    HG W 25 C A E 2 R 1600 E ZA P M II + DD/E2+RC     rail with blocks (rail mounted from the top R or from the bottom T)

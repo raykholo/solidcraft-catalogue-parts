@@ -5,8 +5,8 @@ license = "CC0-1.0"
 model = "housing-g.sc"
 
 [parameters]
-dr = { type = "text", min = 1, max = 2, escape = "[0-9]" }
-h = { type = "text", min = 1, max = 2, escape = "[0-9]" }
+dr = { type = "int", min = 0, max = 99 }
+h = { type = "int", min = 0, max = 99 }
 raw = { type = "text", min = 1, max = 128, escape = "[ -~]" }
 hc = { type = "int", min = 15, max = 50, unit = "mm" }
 
