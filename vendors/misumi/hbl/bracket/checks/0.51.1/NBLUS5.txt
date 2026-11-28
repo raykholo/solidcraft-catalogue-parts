@@ -1,0 +1,14 @@
+== NBLUS5
+PASS  one closed body                                                        spec         1  got          1           [S40]
+PASS  width                                                                  spec        14  got    14.0000  +-0.005  [S40 p.539/540 '14' / '19']
+PASS  foot length                                                            spec        51  got    51.0000  +-0.005  [S40 p.539/540 foot length]
+PASS  wall height                                                            spec        51  got    51.0000  +-0.005  [S40 p.539/540 wall height]
+PASS  foot thickness 9 (foot top face at z = 9)                              spec       yes  got        yes           [S40 p.539/540 '5', '9']
+PASS  wall thickness not dimensioned: not checked (appearance, approximate)  spec       yes  got        yes           [-] equal to the foot
+PASS  foot holes, positions from the wall outer face                         spec    [41.0]  got     [41.0]           [S40 p.539/540 hole positions]
+PASS  wall holes, positions from the foot outer face                         spec    [41.0]  got     [41.0]           [S40 p.539/540 hole positions]
+PASS  every hole has the catalogue diameter                                  spec       yes  got        yes           [S40 p.539/540 '2-O5.5' (O4.5 for -4)]
+PASS  holes on the width centre line                                         spec       yes  got        yes           [S40 p.539/540 '7 / 7', '9.5 / 9.5', '5 / 7']
+PASS  part number metadata                                                   spec    NBLUS5  got     NBLUS5           [-]
+PASS  design part number                                                     spec    NBLUS5  got     NBLUS5           [-]
+12/12 passed

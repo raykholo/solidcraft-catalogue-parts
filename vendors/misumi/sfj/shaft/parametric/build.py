@@ -52,7 +52,7 @@ PARAMS = [("D", "50", "mm", "shaft diameter (row of data/diameters.csv)"), ("W",
           ("L", "100", "mm", "length L (main body for the stepped types)"), ("lkc", "0", "", "1 = LKC (0.1 mm length steps; tolerance text only)"),
           ("part_type", "E-PSFJ", "text", "catalogue type (E-PSFJ, E-SSFPG ...): material, tolerance class and finish only, no geometry"),
           ("F", "4", "mm", "left step length F (0 = no step)"), ("P", "40", "mm", "step diameter P"), ("T", "4", "mm", "right step length T (0 = no step)"),
-          ("ml", "3", "mm", "left tapped end: nominal thread M (0 = none)"), ("mr", "3", "mm", "right tapped end: nominal thread N (0 = none)"),
+          ("m_left", "3", "mm", "left tapped end: nominal thread M (0 = none)"), ("m_right", "3", "mm", "right tapped end: nominal thread N (0 = none)"),
           ("md", "0", "", "1 = MD: effective tap length M x 3 on the left end"),
           ("sc", "10", "mm", "SC: wrench flat position (-1 = none)"), ("sx", "10", "mm", "SX: distance to the second wrench flat set (-1 = none)"),
           ("wsc", "10", "mm", "WSC: position of the first of two wrench flats (-1 = none)"), ("xw", "10", "mm", "X: distance between the two WSC flats"),
@@ -62,7 +62,7 @@ PARAMS = [("D", "50", "mm", "shaft diameter (row of data/diameters.csv)"), ("W",
           ("lfc", "2", "mm", "LFC: length of the set screw flat on the left step (-1 = none)"), ("la", "0", "mm", "LFC: A from the step end"),
           ("lfd", "1", "mm", "LFC flat depth (p.437: 1 for P up to 16, else 2)")]
 COLUMNS = [n for n, *_ in PARAMS]
-DEFAULT = {n: ("0" if n in ("F", "T", "ml", "mr", "md", "lkc") else "-1" if n in ("sc", "sx", "wsc", "fc", "fa", "fe", "wfc", "wa", "we", "lfc", "la") else v)
+DEFAULT = {n: ("0" if n in ("F", "T", "m_left", "m_right", "md", "lkc") else "-1" if n in ("sc", "sx", "wsc", "fc", "fa", "fe", "wfc", "wa", "we", "lfc", "la") else v)
            for n, v, *_ in PARAMS}
 DEFAULT["part_type"] = "E-PSFJ"; DEFAULT["xw"] = "0"; DEFAULT["lfd"] = "1"
 
@@ -72,8 +72,8 @@ def build(out: Path):
     cmds = []
     def add(c, **kw): cmds.append({"command": c, "params": kw})
     for n, e, u, c in PARAMS: add("parameters.add", name=n, expression=e, unit=u, comment=c)
-    add("parameters.add", name="tl_depth", expression="ml * (2 + md)", unit="mm", comment="left tap depth: M x 2 (MD: M x 3)")
-    add("parameters.add", name="tr_depth", expression="mr * 2", unit="mm", comment="right tap depth: N x 2")
+    add("parameters.add", name="tl_depth", expression="m_left * (2 + md)", unit="mm", comment="left tap depth: M x 2 (MD: M x 3)")
+    add("parameters.add", name="tr_depth", expression="m_right * 2", unit="mm", comment="right tap depth: N x 2")
     add("component.create", name="MISUMI shaft")
     add("solid.cylinder", diameter="D", height="L", base=[0, 0, 0], axis="X", operation="new", body_name="Shaft", name="Shaft")
     add("solid.cylinder", diameter="P", height="F", base=["-F", 0, 0], axis="X", operation="join", targets=["Shaft"], name="Left step")
@@ -131,16 +131,16 @@ def build(out: Path):
     pc = lambda n, op, e: {"type": "parameter", "parameter": n, "operator": op, "expression": str(e)}
     always = {"type": "always"}
     rule("length-range", "Length 10 to 1500 mm (S8 p.432 spec table)", always, {"type": "parameter_range", "parameter": "L", "minimum": "10 mm", "maximum": "1500 mm"})
-    rule("ml-values", "Left thread M: none or a size of the tap tables (S8 p.433, S30 p.434-438)", always,
-         {"type": "allow_parameter_values", "parameter": "ml", "expressions": ["0 mm"] + [f"{g(m)} mm" for m in sorted(set(L_SHAFT) | set(L_STEP))]})
-    rule("mr-values", "Right thread N: none or a size of the tap tables (S30 p.435-438)", always,
-         {"type": "allow_parameter_values", "parameter": "mr", "expressions": ["0 mm"] + [f"{g(m)} mm" for m in sorted(set(R_SHAFT) | set(R_STEP))]})
+    rule("m_left-values", "Left thread M: none or a size of the tap tables (S8 p.433, S30 p.434-438)", always,
+         {"type": "allow_parameter_values", "parameter": "m_left", "expressions": ["0 mm"] + [f"{g(m)} mm" for m in sorted(set(L_SHAFT) | set(L_STEP))]})
+    rule("m_right-values", "Right thread N: none or a size of the tap tables (S30 p.435-438)", always,
+         {"type": "allow_parameter_values", "parameter": "m_right", "expressions": ["0 mm"] + [f"{g(m)} mm" for m in sorted(set(R_SHAFT) | set(R_STEP))]})
     def onoff(nm, cond):
         rule(nm + "-on", nm + " on", cond, {"type": "drive_suppression", "feature": ids[nm], "value": False})
         rule(nm + "-off", nm + " off", {"type": "not", "condition": cond}, {"type": "drive_suppression", "feature": ids[nm], "value": True})
     onoff("Left step", pc("F", "gt", "0 mm")); onoff("Right step", pc("T", "gt", "0 mm"))
     for nm, tag, m in holes:
-        end = pc("ml", "eq", f"{g(m)} mm") if tag.startswith("L") else pc("mr", "eq", f"{g(m)} mm")
+        end = pc("m_left", "eq", f"{g(m)} mm") if tag.startswith("L") else pc("m_right", "eq", f"{g(m)} mm")
         stp = pc("F", "gt", "0 mm") if tag.startswith("L") else pc("T", "gt", "0 mm")
         onoff(nm, {"type": "all", "conditions": [end, stp if tag.endswith("step") else {"type": "not", "condition": stp}]})
     for nm, c in boxes: onoff(nm, pc(c, "ge", "0 mm"))

@@ -1,0 +1,3 @@
+HNTT5-6	CodeError: HNTT5 is offered in M3, M4, M5, not M6
+HNTTV5-4	CodeError: HNTTV5 is offered in M5, not M4
+HNTT5-3.5	CodeError: HNTT5 is offered in M3, M4, M5, not M3.5

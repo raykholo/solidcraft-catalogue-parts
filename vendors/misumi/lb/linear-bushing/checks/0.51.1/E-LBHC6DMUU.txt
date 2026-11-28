@@ -1,0 +1,21 @@
+== E-LBHC6DMUU
+PASS  one closed body                                  spec         1  got          1           [S13]
+PASS  overall length L (X)                             spec        29  got    29.0000  +-0.005  [S13 p.480 L]
+PASS  flange width D+6/8/10 (bbox Y)                   spec        18  got    18.0000  +-0.005  [S13 p.480 width]
+PASS  flange extent H (bbox Z)                         spec        28  got    28.0000  +-0.005  [S13 p.480 H]
+PASS  outside cylinder D 12                            spec       yes  got        yes           [S13 p.480 D]
+PASS  bore cylinder dr 6                               spec       yes  got        yes           [S13 p.480 dr]
+PASS  tolerances written in the part description       spec       yes  got        yes           [S13 p.480] echoed, not drawn
+PASS  flange thickness T = 5                           spec       yes  got        yes           [S13 p.480 T]
+PASS  flange starts l = 12 from the end of the barrel  spec       yes  got        yes           [S13 p.480 l]
+PASS  flange centred: l + T/2 = L/2                    spec      14.5  got    14.5000  +-0.005  [S13 p.480 l T L] derived: the printed l, T and L agree
+PASS  flange end arcs H 28                             spec       yes  got        yes           [S13 p.480 H]
+PASS  compact flange flats                             spec         2  got          2           [S13 p.480 D+6/8/10]
+PASS  flats at width/2 from the axis                   spec       yes  got        yes           [S13 p.480 D+6/8/10]
+PASS  2 mounting holes d 3.5                           spec         2  got          2           [S13 p.480 d]
+PASS  2 counterbores d1 6                              spec         3  got          3           [S13 p.480 d1] dr 6: the bore has the same radius as d1 6, so it is counted too
+PASS  holes at A / F                                   spec       yes  got        yes           [S13 p.480 A F]
+PASS  counterbore floors at depth t = 3.1              spec         2  got          2           [S13 p.480 t] counterbore side: figure reading
+PASS  part number metadata                             spec E-LBHC6DMUU  got E-LBHC6DMUU           [-]
+PASS  design part number                               spec E-LBHC6DMUU  got E-LBHC6DMUU           [-]
+19/19 passed

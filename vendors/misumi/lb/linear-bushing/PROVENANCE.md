@@ -6,7 +6,7 @@ Manufacturer names and ordering codes are used only to say what each part is. Th
 
 **Guarantee level: Reviewed**  (levels: Checked = automatic spec check; Reviewed = + independent reviewer; Drawing-matched = + drawing match)
 
-**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.50.0; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
+**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.51.1; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
 
 ## Based on
 
@@ -62,48 +62,48 @@ Sources hash: `sha256:777b18353e7ceae33f17ab5c04ed70cedeba2f446d3222aa9c0a99937d
 ## Verified by
 
 1. **Automatic spec check** (`tools/check`): every code in `codes.txt` is built with solidcraft-cli and every dimension is compared with the datasheet value within the stated tolerance.
-   - SolidCraft 0.50.0: 604 of 604 dimension rows match, over 37 codes.
+   - SolidCraft 0.51.1: 604 of 604 dimension rows match, over 37 codes.
    - CI run: none yet (placeholder `<link to the generator.yml run>`; filled by CI once the repository exists).
 
    | Code | Options | Result | File |
    |------|---------|--------|------|
-   | `E-LB6TUU` | - | 10/10 | `checks/0.50.0/E-LB6TUU.txt` |
-   | `E-LB20TUU` | - | 10/10 | `checks/0.50.0/E-LB20TUU.txt` |
-   | `E-LB12DUU` | - | 14/14 | `checks/0.50.0/E-LB12DUU.txt` |
-   | `E-LB30DMUU` | - | 14/14 | `checks/0.50.0/E-LB30DMUU.txt` |
-   | `E-LBF20LUU` | - | 15/15 | `checks/0.50.0/E-LBF20LUU.txt` |
-   | `E-LBFZ10UU` | - | 15/15 | `checks/0.50.0/E-LBFZ10UU.txt` |
-   | `E-LBFM50UU` | - | 15/15 | `checks/0.50.0/E-LBFM50UU.txt` |
-   | `E-LBK16LUU` | - | 16/16 | `checks/0.50.0/E-LBK16LUU.txt` |
-   | `E-LBKZ6UU` | - | 16/16 | `checks/0.50.0/E-LBKZ6UU.txt` |
-   | `E-LBKM35LUU` | - | 16/16 | `checks/0.50.0/E-LBKM35LUU.txt` |
-   | `E-LBF25DUU` | - | 15/15 | `checks/0.50.0/E-LBF25DUU.txt` |
-   | `E-LBF20DUU` | - | 15/15 | `checks/0.50.0/E-LBF20DUU.txt` |
-   | `E-LBK12DMUU` | - | 16/16 | `checks/0.50.0/E-LBK12DMUU.txt` |
-   | `E-LBH5UU` | - | 17/17 | `checks/0.50.0/E-LBH5UU.txt` |
-   | `E-LBH10LUU` | - | 17/17 | `checks/0.50.0/E-LBH10LUU.txt` |
-   | `E-LBHZ20UU` | - | 17/17 | `checks/0.50.0/E-LBHZ20UU.txt` |
-   | `E-LBHM50LUU` | - | 17/17 | `checks/0.50.0/E-LBHM50LUU.txt` |
-   | `E-LBH16DUU` | - | 17/17 | `checks/0.50.0/E-LBH16DUU.txt` |
-   | `E-LBH30DMUU` | - | 17/17 | `checks/0.50.0/E-LBH30DMUU.txt` |
-   | `E-LBFP20LUU` | - | 16/16 | `checks/0.50.0/E-LBFP20LUU.txt` |
-   | `E-LBFPM10UU` | - | 16/16 | `checks/0.50.0/E-LBFPM10UU.txt` |
-   | `E-LBFP30DMUU` | - | 16/16 | `checks/0.50.0/E-LBFP30DMUU.txt` |
-   | `E-LBKP6UU` | - | 17/17 | `checks/0.50.0/E-LBKP6UU.txt` |
-   | `E-LBKPM40LUU` | - | 17/17 | `checks/0.50.0/E-LBKPM40LUU.txt` |
-   | `E-LBKP12DMUU` | - | 17/17 | `checks/0.50.0/E-LBKP12DMUU.txt` |
-   | `E-LBHP16LUU` | - | 18/18 | `checks/0.50.0/E-LBHP16LUU.txt` |
-   | `E-LBHPM8UU` | - | 18/18 | `checks/0.50.0/E-LBHPM8UU.txt` |
-   | `E-LBHP25DMUU` | - | 18/18 | `checks/0.50.0/E-LBHP25DMUU.txt` |
-   | `E-LBFC20LUU` | - | 17/17 | `checks/0.50.0/E-LBFC20LUU.txt` |
-   | `E-LBFCM40LUU` | - | 17/17 | `checks/0.50.0/E-LBFCM40LUU.txt` |
-   | `E-LBFC30DMUU` | - | 17/17 | `checks/0.50.0/E-LBFC30DMUU.txt` |
-   | `E-LBKC12LUU` | - | 18/18 | `checks/0.50.0/E-LBKC12LUU.txt` |
-   | `E-LBKCM16LUU` | - | 18/18 | `checks/0.50.0/E-LBKCM16LUU.txt` |
-   | `E-LBKC25DMUU` | - | 18/18 | `checks/0.50.0/E-LBKC25DMUU.txt` |
-   | `E-LBHC10LUU` | - | 19/19 | `checks/0.50.0/E-LBHC10LUU.txt` |
-   | `E-LBHCM40LUU` | - | 19/19 | `checks/0.50.0/E-LBHCM40LUU.txt` |
-   | `E-LBHC6DMUU` | - | 19/19 | `checks/0.50.0/E-LBHC6DMUU.txt` |
+   | `E-LB6TUU` | - | 10/10 | `checks/0.51.1/E-LB6TUU.txt` |
+   | `E-LB20TUU` | - | 10/10 | `checks/0.51.1/E-LB20TUU.txt` |
+   | `E-LB12DUU` | - | 14/14 | `checks/0.51.1/E-LB12DUU.txt` |
+   | `E-LB30DMUU` | - | 14/14 | `checks/0.51.1/E-LB30DMUU.txt` |
+   | `E-LBF20LUU` | - | 15/15 | `checks/0.51.1/E-LBF20LUU.txt` |
+   | `E-LBFZ10UU` | - | 15/15 | `checks/0.51.1/E-LBFZ10UU.txt` |
+   | `E-LBFM50UU` | - | 15/15 | `checks/0.51.1/E-LBFM50UU.txt` |
+   | `E-LBK16LUU` | - | 16/16 | `checks/0.51.1/E-LBK16LUU.txt` |
+   | `E-LBKZ6UU` | - | 16/16 | `checks/0.51.1/E-LBKZ6UU.txt` |
+   | `E-LBKM35LUU` | - | 16/16 | `checks/0.51.1/E-LBKM35LUU.txt` |
+   | `E-LBF25DUU` | - | 15/15 | `checks/0.51.1/E-LBF25DUU.txt` |
+   | `E-LBF20DUU` | - | 15/15 | `checks/0.51.1/E-LBF20DUU.txt` |
+   | `E-LBK12DMUU` | - | 16/16 | `checks/0.51.1/E-LBK12DMUU.txt` |
+   | `E-LBH5UU` | - | 17/17 | `checks/0.51.1/E-LBH5UU.txt` |
+   | `E-LBH10LUU` | - | 17/17 | `checks/0.51.1/E-LBH10LUU.txt` |
+   | `E-LBHZ20UU` | - | 17/17 | `checks/0.51.1/E-LBHZ20UU.txt` |
+   | `E-LBHM50LUU` | - | 17/17 | `checks/0.51.1/E-LBHM50LUU.txt` |
+   | `E-LBH16DUU` | - | 17/17 | `checks/0.51.1/E-LBH16DUU.txt` |
+   | `E-LBH30DMUU` | - | 17/17 | `checks/0.51.1/E-LBH30DMUU.txt` |
+   | `E-LBFP20LUU` | - | 16/16 | `checks/0.51.1/E-LBFP20LUU.txt` |
+   | `E-LBFPM10UU` | - | 16/16 | `checks/0.51.1/E-LBFPM10UU.txt` |
+   | `E-LBFP30DMUU` | - | 16/16 | `checks/0.51.1/E-LBFP30DMUU.txt` |
+   | `E-LBKP6UU` | - | 17/17 | `checks/0.51.1/E-LBKP6UU.txt` |
+   | `E-LBKPM40LUU` | - | 17/17 | `checks/0.51.1/E-LBKPM40LUU.txt` |
+   | `E-LBKP12DMUU` | - | 17/17 | `checks/0.51.1/E-LBKP12DMUU.txt` |
+   | `E-LBHP16LUU` | - | 18/18 | `checks/0.51.1/E-LBHP16LUU.txt` |
+   | `E-LBHPM8UU` | - | 18/18 | `checks/0.51.1/E-LBHPM8UU.txt` |
+   | `E-LBHP25DMUU` | - | 18/18 | `checks/0.51.1/E-LBHP25DMUU.txt` |
+   | `E-LBFC20LUU` | - | 17/17 | `checks/0.51.1/E-LBFC20LUU.txt` |
+   | `E-LBFCM40LUU` | - | 17/17 | `checks/0.51.1/E-LBFCM40LUU.txt` |
+   | `E-LBFC30DMUU` | - | 17/17 | `checks/0.51.1/E-LBFC30DMUU.txt` |
+   | `E-LBKC12LUU` | - | 18/18 | `checks/0.51.1/E-LBKC12LUU.txt` |
+   | `E-LBKCM16LUU` | - | 18/18 | `checks/0.51.1/E-LBKCM16LUU.txt` |
+   | `E-LBKC25DMUU` | - | 18/18 | `checks/0.51.1/E-LBKC25DMUU.txt` |
+   | `E-LBHC10LUU` | - | 19/19 | `checks/0.51.1/E-LBHC10LUU.txt` |
+   | `E-LBHCM40LUU` | - | 19/19 | `checks/0.51.1/E-LBHCM40LUU.txt` |
+   | `E-LBHC6DMUU` | - | 19/19 | `checks/0.51.1/E-LBHC6DMUU.txt` |
 
    Invalid codes that must be rejected with a message (`!` lines in codes.txt): 20.
 

@@ -1,0 +1,8 @@
+E-LBHN6-P	CodeError: E-LBHN6: dr 6 has no dowel hole version, the dowel hole table starts at dr 8 (p.485 / p.487)
+E-LBHN13D	CodeError: E-LBHN13D: the medium housing is offered for dr [6, 8, 10, 12, 16, 20, 25, 30] only; dr 13, 35, 40 and 50 are single only (p.485)
+E-LBHN16L	CodeError: E-LBHN has Single (no suffix) and Medium (D) only; the Long length L belongs to E-LBHNW (p.485)
+E-LBHN9	CodeError: E-LBHN9: the wide single housing is offered for dr [6, 8, 10, 12, 13, 16, 20, 25, 30, 35, 40, 50] (p.485)
+E-LBHNW10D	CodeError: E-LBHNW10D: the medium long housing is offered for dr [16, 20, 25, 30] (p.487)
+E-LBHNW6	CodeError: E-LBHNW6: the wide double housing is offered for dr [8, 10, 12, 13, 16, 20, 25, 30, 35, 40, 50] (p.487)
+E-LBHNW35L	CodeError: E-LBHNW35L: the long housing is offered for dr [12, 16, 20, 25, 30] (p.487)
+E-LBHN16-X	CodeError: 'E-LBHN16-X': expected <type><dr>[<length>][-P] with type E-LBHN (single, length none or D) or E-LBHNW (double, length none, D or L), -P for dowel holes, e.g. E-LBHN16, E-LBHN16D-P, E-LBHNW20L

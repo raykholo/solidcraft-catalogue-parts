@@ -1,0 +1,10 @@
+E-LBHS5-P	CodeError: E-LBHS5-P: no dowel hole version for dr 5: the single housing has dowel holes for dr 8 and up (p.488)
+E-LBHSW6-P	CodeError: E-LBHSW6-P: no dowel hole version for dr 6: the double housing has dowel holes for dr 8 and up (p.489)
+E-LBHS14	CodeError: E-LBHS14: the tall single housing E-LBHS (p.488) is offered for dr [5, 6, 8, 10, 12, 13, 16, 20, 25, 30] only
+E-LBHS6S	CodeError: E-LBHS6S: the medium long housing E-LBHS..S (p.490) is offered for dr [12, 16, 20, 25, 30] only
+E-LBHS13D	CodeError: E-LBHS13D: the medium housing E-LBHS..D (p.490) is offered for dr [6, 8, 10, 12, 16, 20, 25, 30] only
+E-LBHS12D-P	CodeError: E-LBHS12D-P: dowel holes are available on the long type only (p.490), not on the medium housing
+E-LBHS12L-P	CodeError: E-LBHS12L-P: no dowel hole version for dr 12: the long housing has dowel holes for dr 16 and up (p.490)
+E-LBHSW10L	CodeError: 'E-LBHSW10L': the double housing E-LBHSW has no length suffix (p.489)
+E-LBHS5L	CodeError: E-LBHS5L: the long housing E-LBHS..L (p.490) is offered for dr [8, 10, 12, 13, 16, 20, 25, 30] only
+E-LBHS16X	CodeError: 'E-LBHS16X': expected E-LBHS<dr>[<length>][-P] (length none = single, D = medium, S = medium long, L = long) or E-LBHSW<dr>[-P] (double), e.g. E-LBHS10, E-LBHS12S, E-LBHS16L-P, E-LBHSW20-P

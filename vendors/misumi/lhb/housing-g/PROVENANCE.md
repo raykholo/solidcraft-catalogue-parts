@@ -6,7 +6,7 @@ Manufacturer names and ordering codes are used only to say what each part is. Th
 
 **Guarantee level: Reviewed**  (levels: Checked = automatic spec check; Reviewed = + independent reviewer; Drawing-matched = + drawing match)
 
-**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.50.0; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
+**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.51.1; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
 
 ## Based on
 
@@ -34,21 +34,21 @@ Sources hash: `sha256:3c31a3b4dadce8c1fb3df6b34a4a1b51ff5fb58a421de9c82df079fd8e
 ## Verified by
 
 1. **Automatic spec check** (`tools/check`): every code in `codes.txt` is built with solidcraft-cli and every dimension is compared with the datasheet value within the stated tolerance.
-   - SolidCraft 0.50.0: 120 of 120 dimension rows match, over 10 codes.
+   - SolidCraft 0.51.1: 120 of 120 dimension rows match, over 10 codes.
    - CI run: none yet (placeholder `<link to the generator.yml run>`; filled by CI once the repository exists).
 
    | Code | Options | Result | File |
    |------|---------|--------|------|
-   | `E-LBHG12-15` | - | 12/12 | `checks/0.50.0/E-LBHG12-15.txt` |
-   | `E-LBHG12-25` | - | 12/12 | `checks/0.50.0/E-LBHG12-25.txt` |
-   | `E-LBHG16-20` | - | 12/12 | `checks/0.50.0/E-LBHG16-20.txt` |
-   | `E-LBHG20-30` | - | 12/12 | `checks/0.50.0/E-LBHG20-30.txt` |
-   | `E-LBHG25-40` | - | 12/12 | `checks/0.50.0/E-LBHG25-40.txt` |
-   | `E-LBHG30-50` | - | 12/12 | `checks/0.50.0/E-LBHG30-50.txt` |
-   | `E-LBHGW12-20` | - | 12/12 | `checks/0.50.0/E-LBHGW12-20.txt` |
-   | `E-LBHGW20-25` | - | 12/12 | `checks/0.50.0/E-LBHGW20-25.txt` |
-   | `E-LBHGW25-30` | - | 12/12 | `checks/0.50.0/E-LBHGW25-30.txt` |
-   | `E-LBHGW30-40` | - | 12/12 | `checks/0.50.0/E-LBHGW30-40.txt` |
+   | `E-LBHG12-15` | - | 12/12 | `checks/0.51.1/E-LBHG12-15.txt` |
+   | `E-LBHG12-25` | - | 12/12 | `checks/0.51.1/E-LBHG12-25.txt` |
+   | `E-LBHG16-20` | - | 12/12 | `checks/0.51.1/E-LBHG16-20.txt` |
+   | `E-LBHG20-30` | - | 12/12 | `checks/0.51.1/E-LBHG20-30.txt` |
+   | `E-LBHG25-40` | - | 12/12 | `checks/0.51.1/E-LBHG25-40.txt` |
+   | `E-LBHG30-50` | - | 12/12 | `checks/0.51.1/E-LBHG30-50.txt` |
+   | `E-LBHGW12-20` | - | 12/12 | `checks/0.51.1/E-LBHGW12-20.txt` |
+   | `E-LBHGW20-25` | - | 12/12 | `checks/0.51.1/E-LBHGW20-25.txt` |
+   | `E-LBHGW25-30` | - | 12/12 | `checks/0.51.1/E-LBHGW25-30.txt` |
+   | `E-LBHGW30-40` | - | 12/12 | `checks/0.51.1/E-LBHGW30-40.txt` |
 
    Invalid codes that must be rejected with a message (`!` lines in codes.txt): 6.
 

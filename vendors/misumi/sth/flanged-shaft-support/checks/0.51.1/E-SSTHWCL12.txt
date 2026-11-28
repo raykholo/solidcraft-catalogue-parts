@@ -1,0 +1,24 @@
+== E-SSTHWCL12
+PASS  one closed body                                                                                          spec         1  got          1           [S52 p.539 Slit Long Sleeve table]
+PASS  overall length (bbox Z)                                                                                  spec        33  got    33.0000  +-0.005  [S52 p.539 Slit Long Sleeve table L / L1]
+PASS  flange thickness T = 6                                                                                   spec       yes  got        yes           [S52 p.539 Slit Long Sleeve table T]
+PASS  shaft hole O12 (axis along Z, on the axis)                                                               spec       yes  got        yes           [S52 p.539 Slit Long Sleeve table D]
+PASS  D tolerance (H8) upper/lower                                                                             spec (0.027, 0)  got (0.027, 0)           [S52 p.539 Slit Long Sleeve table DH8] echoed into the description
+PASS  tolerance written in the part description                                                                spec       yes  got        yes           [S52 p.539 Slit Long Sleeve table DH8]
+PASS  sleeve outside diameter D1 = 32                                                                          spec       yes  got        yes           [S52 p.539 Slit Long Sleeve table D1]
+PASS  Thickness (N) = (D1 - D) / 2                                                                             spec        10  got    10.0000  +-1e-09  [S52 p.539 Slit Long Sleeve table N, D1, D] derived from the table: N is the sleeve wall
+PASS  compact flange width W (bbox X)                                                                          spec        34  got    34.0000  +-0.005  [S52 p.539 Slit Long Sleeve table W]
+PASS  compact flange height H (bbox Y)                                                                         spec        52  got    52.0000  +-0.005  [S52 p.539 Slit Long Sleeve table H]
+PASS  mounting holes O4.5: count                                                                               spec         4  got          4           [S52 p.539 Slit Long Sleeve table 4-d / 2-d / 2-Hole / 4-Hole]
+PASS  mounting hole positions (P1, F)                                                                          spec       yes  got        yes           [S52 p.539 Slit Long Sleeve table P1, F]
+PASS  groove: start z = 11.5                                                                                   spec       yes  got        yes           [S52 p.539 Slit Long Sleeve table B, S1, L] depth is not printed
+PASS  groove: width 1.5 (end z = 13, ring B = 20 to the end)                                                   spec       yes  got        yes           [S52 p.539 Slit Long Sleeve table B, S1]
+PASS  radial slit width 1.5                                                                                    spec       yes  got        yes           [S52 p.539 Slit Long Sleeve table S]
+PASS  clamp screw counterbore floor Y = 4 from the slit centre                                                 spec       yes  got        yes           [S52 p.539 Slit Long Sleeve table Y]
+PASS  clamp screw clearance hole O5.6 on the clamp axis (y = X = 11, z = 28)                                   spec       yes  got        yes           [S52 p.539 Slit Long Sleeve table d2, X, B]
+PASS  clamp screw counterbore O9 on the clamp axis (y = X = 11, z = 28)                                        spec       yes  got        yes           [S52 p.539 Slit Long Sleeve table d1, X, B]
+PASS  clamp screw thread M5 count                                                                              spec         2  got          2           [S52 p.539 Slit Long Sleeve table M]
+PASS  clamp screw thread axes at y = X = 11, z = 28, 18 (B / 2, or B / 4 and 3 B / 4 on the slit long sleeve)  spec       yes  got        yes           [S52 p.539 Slit Long Sleeve table X, B]
+PASS  part number metadata                                                                                     spec E-SSTHWCL12  got E-SSTHWCL12           [-]
+PASS  design part number                                                                                       spec E-SSTHWCL12  got E-SSTHWCL12           [-]
+22/22 passed

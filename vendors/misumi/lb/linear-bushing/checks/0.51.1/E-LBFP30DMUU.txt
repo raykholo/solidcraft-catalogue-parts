@@ -1,0 +1,18 @@
+== E-LBFP30DMUU
+PASS  one closed body                                  spec         1  got          1           [S13]
+PASS  overall length L (X)                             spec        90  got    90.0000  +-0.005  [S13 p.473 L]
+PASS  flange extent H (bbox Y)                         spec        74  got    74.0000  +-0.005  [S13 p.473 H]
+PASS  flange extent H (bbox Z)                         spec        74  got    74.0000  +-0.005  [S13 p.473 H]
+PASS  outside cylinder D 45                            spec       yes  got        yes           [S13 p.473 D]
+PASS  bore cylinder dr 30                              spec       yes  got        yes           [S13 p.473 dr]
+PASS  tolerances written in the part description       spec       yes  got        yes           [S13 p.473] echoed, not drawn
+PASS  flange thickness T = 10                          spec       yes  got        yes           [S13 p.473 T]
+PASS  flange starts l = 10 from the end of the barrel  spec       yes  got        yes           [S13 p.473 l]
+PASS  flange cylinder H 74                             spec       yes  got        yes           [S13 p.473 H]
+PASS  4 mounting holes d 6.6                           spec         4  got          4           [S13 p.473 d]
+PASS  4 counterbores d1 11                             spec         4  got          4           [S13 p.473 d1]
+PASS  holes on P.C.D.                                  spec       yes  got        yes           [S13 p.473 P.C.D.]
+PASS  counterbore floors at depth t = 6.1              spec         4  got          4           [S13 p.473 t] counterbore side: figure reading
+PASS  part number metadata                             spec E-LBFP30DMUU  got E-LBFP30DMUU           [-]
+PASS  design part number                               spec E-LBFP30DMUU  got E-LBFP30DMUU           [-]
+16/16 passed

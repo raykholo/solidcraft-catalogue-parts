@@ -6,7 +6,7 @@ Manufacturer names and ordering codes are used only to say what each part is. Th
 
 **Guarantee level: Reviewed**  (levels: Checked = automatic spec check; Reviewed = + independent reviewer; Drawing-matched = + drawing match)
 
-**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.50.0; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
+**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.51.1; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
 
 ## Based on
 
@@ -63,61 +63,61 @@ Sources hash: `sha256:fc9c94f21c5b12686d32e65fc4b2914bd9ed2918a2ea0298225e8c6dad
 ## Verified by
 
 1. **Automatic spec check** (`tools/check`): every code in `codes.txt` is built with solidcraft-cli and every dimension is compared with the datasheet value within the stated tolerance.
-   - SolidCraft 0.50.0: 1005 of 1005 dimension rows match, over 50 codes.
+   - SolidCraft 0.51.1: 1005 of 1005 dimension rows match, over 50 codes.
    - CI run: none yet (placeholder `<link to the generator.yml run>`; filled by CI once the repository exists).
 
    | Code | Options | Result | File |
    |------|---------|--------|------|
-   | `E-STHRB6` | - | 19/19 | `checks/0.50.0/E-STHRB6.txt` |
-   | `E-STHRB12` | - | 19/19 | `checks/0.50.0/E-STHRB12.txt` |
-   | `E-STHR20` | - | 19/19 | `checks/0.50.0/E-STHR20.txt` |
-   | `E-STHRB50` | - | 19/19 | `checks/0.50.0/E-STHRB50.txt` |
-   | `E-STHSB6` | - | 18/18 | `checks/0.50.0/E-STHSB6.txt` |
-   | `E-STHSB16` | - | 18/18 | `checks/0.50.0/E-STHSB16.txt` |
-   | `E-STHS30` | - | 18/18 | `checks/0.50.0/E-STHS30.txt` |
-   | `E-STHSB50` | - | 18/18 | `checks/0.50.0/E-STHSB50.txt` |
-   | `E-STHCB6` | - | 18/18 | `checks/0.50.0/E-STHCB6.txt` |
-   | `E-STHCB10` | - | 18/18 | `checks/0.50.0/E-STHCB10.txt` |
-   | `E-STHC16` | - | 18/18 | `checks/0.50.0/E-STHC16.txt` |
-   | `E-STHCB25` | - | 18/18 | `checks/0.50.0/E-STHCB25.txt` |
-   | `E-STHC40` | - | 18/18 | `checks/0.50.0/E-STHC40.txt` |
-   | `E-SSTHC12` | - | 18/18 | `checks/0.50.0/E-SSTHC12.txt` |
-   | `E-SSTHC35` | - | 18/18 | `checks/0.50.0/E-SSTHC35.txt` |
-   | `E-STHRBL12` | - | 19/19 | `checks/0.50.0/E-STHRBL12.txt` |
-   | `E-STHRL20` | - | 21/21 | `checks/0.50.0/E-STHRL20.txt` |
-   | `E-STHSBL16` | - | 20/20 | `checks/0.50.0/E-STHSBL16.txt` |
-   | `E-STHSL25` | - | 20/20 | `checks/0.50.0/E-STHSL25.txt` |
-   | `E-STHCBL30` | - | 20/20 | `checks/0.50.0/E-STHCBL30.txt` |
-   | `E-STHCL16` | - | 20/20 | `checks/0.50.0/E-STHCL16.txt` |
-   | `E-STHMRB8` | - | 22/22 | `checks/0.50.0/E-STHMRB8.txt` |
-   | `E-STHMR15` | - | 22/22 | `checks/0.50.0/E-STHMR15.txt` |
-   | `E-STHMRBL12` | - | 22/22 | `checks/0.50.0/E-STHMRBL12.txt` |
-   | `E-STHMRL16` | - | 22/22 | `checks/0.50.0/E-STHMRL16.txt` |
-   | `E-STHMRL25` | - | 22/22 | `checks/0.50.0/E-STHMRL25.txt` |
-   | `E-STHMRL30` | - | 22/22 | `checks/0.50.0/E-STHMRL30.txt` |
-   | `E-STHXRB10` | - | 20/20 | `checks/0.50.0/E-STHXRB10.txt` |
-   | `E-STHXR40` | - | 20/20 | `checks/0.50.0/E-STHXR40.txt` |
-   | `E-STHXCB8` | - | 19/19 | `checks/0.50.0/E-STHXCB8.txt` |
-   | `E-STHXC16` | - | 19/19 | `checks/0.50.0/E-STHXC16.txt` |
-   | `E-STHXCB30` | - | 19/19 | `checks/0.50.0/E-STHXCB30.txt` |
-   | `E-STHRBN8` | - | 19/19 | `checks/0.50.0/E-STHRBN8.txt` |
-   | `E-STHRN50` | - | 19/19 | `checks/0.50.0/E-STHRN50.txt` |
-   | `E-STHCBN10` | - | 18/18 | `checks/0.50.0/E-STHCBN10.txt` |
-   | `E-STHCN30` | - | 18/18 | `checks/0.50.0/E-STHCN30.txt` |
-   | `E-STHRBNL16` | - | 21/21 | `checks/0.50.0/E-STHRBNL16.txt` |
-   | `E-STHCNL35` | - | 20/20 | `checks/0.50.0/E-STHCNL35.txt` |
-   | `E-STHRNL35` | - | 21/21 | `checks/0.50.0/E-STHRNL35.txt` |
-   | `E-STHWRB10` | - | 23/23 | `checks/0.50.0/E-STHWRB10.txt` |
-   | `E-STHWR50` | - | 23/23 | `checks/0.50.0/E-STHWR50.txt` |
-   | `E-SSTHWR30` | - | 23/23 | `checks/0.50.0/E-SSTHWR30.txt` |
-   | `E-STHWSB8` | - | 22/22 | `checks/0.50.0/E-STHWSB8.txt` |
-   | `E-STHWS25` | - | 22/22 | `checks/0.50.0/E-STHWS25.txt` |
-   | `E-STHWCB35` | - | 22/22 | `checks/0.50.0/E-STHWCB35.txt` |
-   | `E-SSTHWC16` | - | 22/22 | `checks/0.50.0/E-SSTHWC16.txt` |
-   | `E-STHWRBL12` | - | 23/23 | `checks/0.50.0/E-STHWRBL12.txt` |
-   | `E-STHWSL30` | - | 22/22 | `checks/0.50.0/E-STHWSL30.txt` |
-   | `E-STHWCBL50` | - | 22/22 | `checks/0.50.0/E-STHWCBL50.txt` |
-   | `E-SSTHWCL12` | - | 22/22 | `checks/0.50.0/E-SSTHWCL12.txt` |
+   | `E-STHRB6` | - | 19/19 | `checks/0.51.1/E-STHRB6.txt` |
+   | `E-STHRB12` | - | 19/19 | `checks/0.51.1/E-STHRB12.txt` |
+   | `E-STHR20` | - | 19/19 | `checks/0.51.1/E-STHR20.txt` |
+   | `E-STHRB50` | - | 19/19 | `checks/0.51.1/E-STHRB50.txt` |
+   | `E-STHSB6` | - | 18/18 | `checks/0.51.1/E-STHSB6.txt` |
+   | `E-STHSB16` | - | 18/18 | `checks/0.51.1/E-STHSB16.txt` |
+   | `E-STHS30` | - | 18/18 | `checks/0.51.1/E-STHS30.txt` |
+   | `E-STHSB50` | - | 18/18 | `checks/0.51.1/E-STHSB50.txt` |
+   | `E-STHCB6` | - | 18/18 | `checks/0.51.1/E-STHCB6.txt` |
+   | `E-STHCB10` | - | 18/18 | `checks/0.51.1/E-STHCB10.txt` |
+   | `E-STHC16` | - | 18/18 | `checks/0.51.1/E-STHC16.txt` |
+   | `E-STHCB25` | - | 18/18 | `checks/0.51.1/E-STHCB25.txt` |
+   | `E-STHC40` | - | 18/18 | `checks/0.51.1/E-STHC40.txt` |
+   | `E-SSTHC12` | - | 18/18 | `checks/0.51.1/E-SSTHC12.txt` |
+   | `E-SSTHC35` | - | 18/18 | `checks/0.51.1/E-SSTHC35.txt` |
+   | `E-STHRBL12` | - | 19/19 | `checks/0.51.1/E-STHRBL12.txt` |
+   | `E-STHRL20` | - | 21/21 | `checks/0.51.1/E-STHRL20.txt` |
+   | `E-STHSBL16` | - | 20/20 | `checks/0.51.1/E-STHSBL16.txt` |
+   | `E-STHSL25` | - | 20/20 | `checks/0.51.1/E-STHSL25.txt` |
+   | `E-STHCBL30` | - | 20/20 | `checks/0.51.1/E-STHCBL30.txt` |
+   | `E-STHCL16` | - | 20/20 | `checks/0.51.1/E-STHCL16.txt` |
+   | `E-STHMRB8` | - | 22/22 | `checks/0.51.1/E-STHMRB8.txt` |
+   | `E-STHMR15` | - | 22/22 | `checks/0.51.1/E-STHMR15.txt` |
+   | `E-STHMRBL12` | - | 22/22 | `checks/0.51.1/E-STHMRBL12.txt` |
+   | `E-STHMRL16` | - | 22/22 | `checks/0.51.1/E-STHMRL16.txt` |
+   | `E-STHMRL25` | - | 22/22 | `checks/0.51.1/E-STHMRL25.txt` |
+   | `E-STHMRL30` | - | 22/22 | `checks/0.51.1/E-STHMRL30.txt` |
+   | `E-STHXRB10` | - | 20/20 | `checks/0.51.1/E-STHXRB10.txt` |
+   | `E-STHXR40` | - | 20/20 | `checks/0.51.1/E-STHXR40.txt` |
+   | `E-STHXCB8` | - | 19/19 | `checks/0.51.1/E-STHXCB8.txt` |
+   | `E-STHXC16` | - | 19/19 | `checks/0.51.1/E-STHXC16.txt` |
+   | `E-STHXCB30` | - | 19/19 | `checks/0.51.1/E-STHXCB30.txt` |
+   | `E-STHRBN8` | - | 19/19 | `checks/0.51.1/E-STHRBN8.txt` |
+   | `E-STHRN50` | - | 19/19 | `checks/0.51.1/E-STHRN50.txt` |
+   | `E-STHCBN10` | - | 18/18 | `checks/0.51.1/E-STHCBN10.txt` |
+   | `E-STHCN30` | - | 18/18 | `checks/0.51.1/E-STHCN30.txt` |
+   | `E-STHRBNL16` | - | 21/21 | `checks/0.51.1/E-STHRBNL16.txt` |
+   | `E-STHCNL35` | - | 20/20 | `checks/0.51.1/E-STHCNL35.txt` |
+   | `E-STHRNL35` | - | 21/21 | `checks/0.51.1/E-STHRNL35.txt` |
+   | `E-STHWRB10` | - | 23/23 | `checks/0.51.1/E-STHWRB10.txt` |
+   | `E-STHWR50` | - | 23/23 | `checks/0.51.1/E-STHWR50.txt` |
+   | `E-SSTHWR30` | - | 23/23 | `checks/0.51.1/E-SSTHWR30.txt` |
+   | `E-STHWSB8` | - | 22/22 | `checks/0.51.1/E-STHWSB8.txt` |
+   | `E-STHWS25` | - | 22/22 | `checks/0.51.1/E-STHWS25.txt` |
+   | `E-STHWCB35` | - | 22/22 | `checks/0.51.1/E-STHWCB35.txt` |
+   | `E-SSTHWC16` | - | 22/22 | `checks/0.51.1/E-SSTHWC16.txt` |
+   | `E-STHWRBL12` | - | 23/23 | `checks/0.51.1/E-STHWRBL12.txt` |
+   | `E-STHWSL30` | - | 22/22 | `checks/0.51.1/E-STHWSL30.txt` |
+   | `E-STHWCBL50` | - | 22/22 | `checks/0.51.1/E-STHWCBL50.txt` |
+   | `E-SSTHWCL12` | - | 22/22 | `checks/0.51.1/E-SSTHWCL12.txt` |
 
    Invalid codes that must be rejected with a message (`!` lines in codes.txt): 23.
 

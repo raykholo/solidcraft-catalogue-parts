@@ -6,7 +6,7 @@ Manufacturer names and ordering codes are used only to say what each part is. Th
 
 **Guarantee level: Reviewed**  (levels: Checked = automatic spec check; Reviewed = + independent reviewer; Drawing-matched = + drawing match)
 
-**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.50.0; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
+**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.51.1; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
 
 ## Based on
 
@@ -52,36 +52,36 @@ Sources hash: `sha256:c98a191213d83fe5342a86ba63b85a08fe990bdb8b8f6631ea49218d10
 ## Verified by
 
 1. **Automatic spec check** (`tools/check`): every code in `codes.txt` is built with solidcraft-cli and every dimension is compared with the datasheet value within the stated tolerance.
-   - SolidCraft 0.50.0: 314 of 314 dimension rows match, over 25 codes.
+   - SolidCraft 0.51.1: 314 of 314 dimension rows match, over 25 codes.
    - CI run: none yet (placeholder `<link to the generator.yml run>`; filled by CI once the repository exists).
 
    | Code | Options | Result | File |
    |------|---------|--------|------|
-   | `HBLTS5` | - | 12/12 | `checks/0.50.0/HBLTS5.txt` |
-   | `HBLTS5-4` | - | 12/12 | `checks/0.50.0/HBLTS5-4.txt` |
-   | `HBLTSB5` | - | 12/12 | `checks/0.50.0/HBLTSB5.txt` |
-   | `CHBLTS5` | - | 12/12 | `checks/0.50.0/CHBLTS5.txt` |
-   | `NBLTS5` | - | 12/12 | `checks/0.50.0/NBLTS5.txt` |
-   | `HBLTV5` | - | 12/12 | `checks/0.50.0/HBLTV5.txt` |
-   | `HBLTVB5` | - | 12/12 | `checks/0.50.0/HBLTVB5.txt` |
-   | `HBLTSW5` | - | 12/12 | `checks/0.50.0/HBLTSW5.txt` |
-   | `HBLTVW5` | - | 12/12 | `checks/0.50.0/HBLTVW5.txt` |
-   | `HBLTF5` | - | 12/12 | `checks/0.50.0/HBLTF5.txt` |
-   | `HBKTST5` | - | 14/14 | `checks/0.50.0/HBKTST5.txt` |
-   | `HBKTS5` | - | 14/14 | `checks/0.50.0/HBKTS5.txt` |
-   | `HBKTSB5` | - | 14/14 | `checks/0.50.0/HBKTSB5.txt` |
-   | `HBKUS5` | - | 14/14 | `checks/0.50.0/HBKUS5.txt` |
-   | `HBKUSB5` | - | 14/14 | `checks/0.50.0/HBKUSB5.txt` |
-   | `NBLUS5` | - | 12/12 | `checks/0.50.0/NBLUS5.txt` |
-   | `HBLUS5` | - | 12/12 | `checks/0.50.0/HBLUS5.txt` |
-   | `HBLTH5` | - | 12/12 | `checks/0.50.0/HBLTH5.txt` |
-   | `HBLTHB5` | - | 12/12 | `checks/0.50.0/HBLTHB5.txt` |
-   | `HBLTS5-C` | - | 12/12 | `checks/0.50.0/HBLTS5-C.txt` |
-   | `HBLTS5-4-C` | - | 12/12 | `checks/0.50.0/HBLTS5-4-C.txt` |
-   | `HBKUS5-C` | - | 14/14 | `checks/0.50.0/HBKUS5-C.txt` |
-   | `HBLTF5-SEC` | - | 12/12 | `checks/0.50.0/HBLTF5-SEC.txt` |
-   | `HBLTSW5-SET` | - | 12/12 | `checks/0.50.0/HBLTSW5-SET.txt` |
-   | `HBKTS5-SST` | - | 14/14 | `checks/0.50.0/HBKTS5-SST.txt` |
+   | `HBLTS5` | - | 12/12 | `checks/0.51.1/HBLTS5.txt` |
+   | `HBLTS5-4` | - | 12/12 | `checks/0.51.1/HBLTS5-4.txt` |
+   | `HBLTSB5` | - | 12/12 | `checks/0.51.1/HBLTSB5.txt` |
+   | `CHBLTS5` | - | 12/12 | `checks/0.51.1/CHBLTS5.txt` |
+   | `NBLTS5` | - | 12/12 | `checks/0.51.1/NBLTS5.txt` |
+   | `HBLTV5` | - | 12/12 | `checks/0.51.1/HBLTV5.txt` |
+   | `HBLTVB5` | - | 12/12 | `checks/0.51.1/HBLTVB5.txt` |
+   | `HBLTSW5` | - | 12/12 | `checks/0.51.1/HBLTSW5.txt` |
+   | `HBLTVW5` | - | 12/12 | `checks/0.51.1/HBLTVW5.txt` |
+   | `HBLTF5` | - | 12/12 | `checks/0.51.1/HBLTF5.txt` |
+   | `HBKTST5` | - | 14/14 | `checks/0.51.1/HBKTST5.txt` |
+   | `HBKTS5` | - | 14/14 | `checks/0.51.1/HBKTS5.txt` |
+   | `HBKTSB5` | - | 14/14 | `checks/0.51.1/HBKTSB5.txt` |
+   | `HBKUS5` | - | 14/14 | `checks/0.51.1/HBKUS5.txt` |
+   | `HBKUSB5` | - | 14/14 | `checks/0.51.1/HBKUSB5.txt` |
+   | `NBLUS5` | - | 12/12 | `checks/0.51.1/NBLUS5.txt` |
+   | `HBLUS5` | - | 12/12 | `checks/0.51.1/HBLUS5.txt` |
+   | `HBLTH5` | - | 12/12 | `checks/0.51.1/HBLTH5.txt` |
+   | `HBLTHB5` | - | 12/12 | `checks/0.51.1/HBLTHB5.txt` |
+   | `HBLTS5-C` | - | 12/12 | `checks/0.51.1/HBLTS5-C.txt` |
+   | `HBLTS5-4-C` | - | 12/12 | `checks/0.51.1/HBLTS5-4-C.txt` |
+   | `HBKUS5-C` | - | 14/14 | `checks/0.51.1/HBKUS5-C.txt` |
+   | `HBLTF5-SEC` | - | 12/12 | `checks/0.51.1/HBLTF5-SEC.txt` |
+   | `HBLTSW5-SET` | - | 12/12 | `checks/0.51.1/HBLTSW5-SET.txt` |
+   | `HBKTS5-SST` | - | 14/14 | `checks/0.51.1/HBKTS5-SST.txt` |
 
    Invalid codes that must be rejected with a message (`!` lines in codes.txt): 11.
 

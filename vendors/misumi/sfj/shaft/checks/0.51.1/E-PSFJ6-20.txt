@@ -1,0 +1,13 @@
+== E-PSFJ6-20
+PASS  one closed body                            spec         1  got          1           [S8]
+PASS  length (X)                                 spec        20  got    20.0000  +-0.005  [S8 p.432 L] 1 mm steps
+PASS  diameter D (bbox Y)                        spec         6  got     6.0000  +-0.005  [S8 p.432 D6]
+PASS  diameter D (bbox Z)                        spec         6  got     6.0000  +-0.005  [S8 p.432 D6]
+PASS  cylinder face O6                           spec       yes  got        yes           [S8 p.432]
+PASS  D tolerance g7 upper/lower                 spec (-0.004, -0.016)  got (-0.004, -0.016)           [S8 p.432 spec table] echoed into the description
+PASS  tolerance written in the part description  spec       yes  got        yes           [S8 p.432]
+PASS  L inside the table range 20-800            spec       yes  got        yes           [S8 p.432]
+PASS  volume = pi (D/2)^2 L                      spec     565.5  got   565.4867  +-0.282743 [derived]
+PASS  part number metadata                       spec E-PSFJ6-20  got E-PSFJ6-20           [-]
+PASS  design part number                         spec E-PSFJ6-20  got E-PSFJ6-20           [-]
+11/11 passed

@@ -1,0 +1,20 @@
+E-LB25TUU	CodeError: E-LB25TUU: the short straight bushing is offered for dr [6, 8, 10, 12, 13, 16, 20] (p.464)
+E-LB10UU	CodeError: E-LB is the straight bushing: its suffix is TUU (short), DUU or DMUU (medium), not UU
+E-LBFZ40UU	CodeError: E-LBFZ40: the opposite-counterbore type E-LBFZ is offered for dr 6-30; dr 35, 40, 50 only as E-LBF and E-LBFM (p.466 / p.468)
+E-LBF10TUU	CodeError: E-LBF has no short (TUU) version: flanged bushings end in UU / LUU (long) or DUU / DMUU (medium)
+E-LBFM20DUU	CodeError: E-LBFM: the medium flanged bushing is ordered as E-LBF<dr>DUU, or E-LBF<dr>DMUU for electroless nickel plating (p.467 / p.469); the Z and M type letters belong to the UU / LUU bushings
+E-LBK35DUU	CodeError: E-LBK35DUU: the medium flanged bushing is offered for dr [6, 8, 10, 12, 16, 20, 25, 30] (p.467 / p.469)
+E-LBH5LUU	CodeError: E-LBH5LUU: dr 5 is offered as a single bushing (UU) only (p.470)
+E-LBHM5UU	CodeError: E-LBHM5UU: dr 5 is offered only as the plain E-LBH5UU (p.470)
+E-LBHZ35UU	CodeError: E-LBHZ35UU: the opposite-counterbore type E-LBHZ is offered for dr 6-30 (p.470)
+E-LBH13DUU	CodeError: E-LBH13DUU: the medium compact flanged bushing is offered for dr [6, 8, 10, 12, 16, 20, 25, 30] (p.471)
+E-LBHM20DUU	CodeError: E-LBHM: the medium compact flanged bushing is ordered as E-LBH<dr>DUU, or E-LBH<dr>DMUU for electroless nickel plating (p.471); the Z and M type letters belong to the UU / LUU bushings
+E-LBH20TUU	CodeError: E-LBH has no short (TUU) version
+E-LBFP35UU	CodeError: E-LBFP35UU: flanged bushings with pilot are offered for dr [6, 8, 10, 12, 16, 20, 25, 30, 40] (p.472)
+E-LBFPM20DMUU	CodeError: E-LBFPM: the medium bushing with pilot is ordered as E-LBFP<dr>DMUU only (the case is always nickel plated; no DUU, no M type letter on the medium series)
+E-LBKP20DUU	CodeError: E-LBKP: the medium bushing with pilot is ordered as E-LBKP<dr>DMUU only (the case is always nickel plated; no DUU, no M type letter on the medium series)
+E-LBFC20UU	CodeError: E-LBFC: the centre flanged bushing is a double bushing: LUU (long) or DMUU (medium, plain type E-LBFC only), not UU
+E-LBKCM20DMUU	CodeError: E-LBKCM: the medium centre flanged bushing is ordered as E-LBKC<dr>DMUU (nickel plated by the DMUU suffix), not with the M type letter
+E-LBHC50LUU	CodeError: E-LBHC50LUU: centre flanged bushings are offered for dr [6, 8, 10, 12, 16, 20, 25, 30, 40] (p.480)
+E-LBHS20UU	CodeError: 'E-LBHS20UU': stainless steel linear bushings (representative type E-LBHS) are only mentioned on p.470; the catalogue prints no dimension table for them, so they are not covered
+E-LBFP13LUU	CodeError: E-LBFP13LUU: flanged bushings with pilot are offered for dr [6, 8, 10, 12, 16, 20, 25, 30, 40] (p.472)

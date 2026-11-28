@@ -6,7 +6,7 @@ Manufacturer names and ordering codes are used only to say what each part is. Th
 
 **Guarantee level: Reviewed**  (levels: Checked = automatic spec check; Reviewed = + independent reviewer; Drawing-matched = + drawing match)
 
-**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.50.0; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
+**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.51.1; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
 
 ## Based on
 
@@ -59,41 +59,41 @@ Sources hash: `sha256:98a780a0454499bc8cc11e6b5d3680e1423b678fb038011923c41a81b4
 ## Verified by
 
 1. **Automatic spec check** (`tools/check`): every code in `codes.txt` is built with solidcraft-cli and every dimension is compared with the datasheet value within the stated tolerance.
-   - SolidCraft 0.50.0: 516 of 516 dimension rows match, over 30 codes.
+   - SolidCraft 0.51.1: 516 of 516 dimension rows match, over 30 codes.
    - CI run: none yet (placeholder `<link to the generator.yml run>`; filled by CI once the repository exists).
 
    | Code | Options | Result | File |
    |------|---------|--------|------|
-   | `C-SCSAW6-8` | - | 12/12 | `checks/0.50.0/C-SCSAW6-8.txt` |
-   | `C-SCSAW12-10` | - | 12/12 | `checks/0.50.0/C-SCSAW12-10.txt` |
-   | `C-SCSAW30-15` | - | 12/12 | `checks/0.50.0/C-SCSAW30-15.txt` |
-   | `C-SCNPAW6-8` | - | 12/12 | `checks/0.50.0/C-SCNPAW6-8.txt` |
-   | `C-SCNPAW16-12` | - | 12/12 | `checks/0.50.0/C-SCNPAW16-12.txt` |
-   | `C-SCNPAW25-15` | - | 12/12 | `checks/0.50.0/C-SCNPAW25-15.txt` |
-   | `C-SCSMAW8-8` | - | 16/16 | `checks/0.50.0/C-SCSMAW8-8.txt` |
-   | `C-SCSMAW20-15` | - | 16/16 | `checks/0.50.0/C-SCSMAW20-15.txt` |
-   | `C-SCSMAW30-15` | - | 16/16 | `checks/0.50.0/C-SCSMAW30-15.txt` |
-   | `C-SCSGAW8-10` | - | 17/17 | `checks/0.50.0/C-SCSGAW8-10.txt` |
-   | `C-SCSGAW12-10` | - | 17/17 | `checks/0.50.0/C-SCSGAW12-10.txt` |
-   | `C-SCSGAW30-15` | - | 17/17 | `checks/0.50.0/C-SCSGAW30-15.txt` |
-   | `C-SCSBNAW6-9` | - | 15/15 | `checks/0.50.0/C-SCSBNAW6-9.txt` |
-   | `C-SCSBNAW12-16` | - | 15/15 | `checks/0.50.0/C-SCSBNAW12-16.txt` |
-   | `C-SCSBNAW30-35` | - | 15/15 | `checks/0.50.0/C-SCSBNAW30-35.txt` |
-   | `E-SCSPD6` | - | 20/20 | `checks/0.50.0/E-SCSPD6.txt` |
-   | `E-SCSPD13` | - | 20/20 | `checks/0.50.0/E-SCSPD13.txt` |
-   | `E-PSCSPD20` | - | 20/20 | `checks/0.50.0/E-PSCSPD20.txt` |
-   | `E-SSCSPD25` | - | 20/20 | `checks/0.50.0/E-SSCSPD25.txt` |
-   | `E-SCSPD30` | - | 20/20 | `checks/0.50.0/E-SCSPD30.txt` |
-   | `E-PSCD4` | - | 20/20 | `checks/0.50.0/E-PSCD4.txt` |
-   | `E-SCD12` | - | 20/20 | `checks/0.50.0/E-SCD12.txt` |
-   | `E-SSCD16` | - | 20/20 | `checks/0.50.0/E-SSCD16.txt` |
-   | `E-PSCD35` | - | 20/20 | `checks/0.50.0/E-PSCD35.txt` |
-   | `E-SCD50` | - | 20/20 | `checks/0.50.0/E-SCD50.txt` |
-   | `E-SCDJ8-10` | - | 20/20 | `checks/0.50.0/E-SCDJ8-10.txt` |
-   | `E-SCDJ12-10` | - | 20/20 | `checks/0.50.0/E-SCDJ12-10.txt` |
-   | `E-PSCDJ20-13` | - | 20/20 | `checks/0.50.0/E-PSCDJ20-13.txt` |
-   | `E-SSCDJ30-15` | - | 20/20 | `checks/0.50.0/E-SSCDJ30-15.txt` |
-   | `E-SCDJ40-15` | - | 20/20 | `checks/0.50.0/E-SCDJ40-15.txt` |
+   | `C-SCSAW6-8` | - | 12/12 | `checks/0.51.1/C-SCSAW6-8.txt` |
+   | `C-SCSAW12-10` | - | 12/12 | `checks/0.51.1/C-SCSAW12-10.txt` |
+   | `C-SCSAW30-15` | - | 12/12 | `checks/0.51.1/C-SCSAW30-15.txt` |
+   | `C-SCNPAW6-8` | - | 12/12 | `checks/0.51.1/C-SCNPAW6-8.txt` |
+   | `C-SCNPAW16-12` | - | 12/12 | `checks/0.51.1/C-SCNPAW16-12.txt` |
+   | `C-SCNPAW25-15` | - | 12/12 | `checks/0.51.1/C-SCNPAW25-15.txt` |
+   | `C-SCSMAW8-8` | - | 16/16 | `checks/0.51.1/C-SCSMAW8-8.txt` |
+   | `C-SCSMAW20-15` | - | 16/16 | `checks/0.51.1/C-SCSMAW20-15.txt` |
+   | `C-SCSMAW30-15` | - | 16/16 | `checks/0.51.1/C-SCSMAW30-15.txt` |
+   | `C-SCSGAW8-10` | - | 17/17 | `checks/0.51.1/C-SCSGAW8-10.txt` |
+   | `C-SCSGAW12-10` | - | 17/17 | `checks/0.51.1/C-SCSGAW12-10.txt` |
+   | `C-SCSGAW30-15` | - | 17/17 | `checks/0.51.1/C-SCSGAW30-15.txt` |
+   | `C-SCSBNAW6-9` | - | 15/15 | `checks/0.51.1/C-SCSBNAW6-9.txt` |
+   | `C-SCSBNAW12-16` | - | 15/15 | `checks/0.51.1/C-SCSBNAW12-16.txt` |
+   | `C-SCSBNAW30-35` | - | 15/15 | `checks/0.51.1/C-SCSBNAW30-35.txt` |
+   | `E-SCSPD6` | - | 20/20 | `checks/0.51.1/E-SCSPD6.txt` |
+   | `E-SCSPD13` | - | 20/20 | `checks/0.51.1/E-SCSPD13.txt` |
+   | `E-PSCSPD20` | - | 20/20 | `checks/0.51.1/E-PSCSPD20.txt` |
+   | `E-SSCSPD25` | - | 20/20 | `checks/0.51.1/E-SSCSPD25.txt` |
+   | `E-SCSPD30` | - | 20/20 | `checks/0.51.1/E-SCSPD30.txt` |
+   | `E-PSCD4` | - | 20/20 | `checks/0.51.1/E-PSCD4.txt` |
+   | `E-SCD12` | - | 20/20 | `checks/0.51.1/E-SCD12.txt` |
+   | `E-SSCD16` | - | 20/20 | `checks/0.51.1/E-SSCD16.txt` |
+   | `E-PSCD35` | - | 20/20 | `checks/0.51.1/E-PSCD35.txt` |
+   | `E-SCD50` | - | 20/20 | `checks/0.51.1/E-SCD50.txt` |
+   | `E-SCDJ8-10` | - | 20/20 | `checks/0.51.1/E-SCDJ8-10.txt` |
+   | `E-SCDJ12-10` | - | 20/20 | `checks/0.51.1/E-SCDJ12-10.txt` |
+   | `E-PSCDJ20-13` | - | 20/20 | `checks/0.51.1/E-PSCDJ20-13.txt` |
+   | `E-SSCDJ30-15` | - | 20/20 | `checks/0.51.1/E-SSCDJ30-15.txt` |
+   | `E-SCDJ40-15` | - | 20/20 | `checks/0.51.1/E-SCDJ40-15.txt` |
 
    Invalid codes that must be rejected with a message (`!` lines in codes.txt): 18.
 

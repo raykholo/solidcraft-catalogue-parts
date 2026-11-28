@@ -1,0 +1,16 @@
+== HNTT5
+PASS  one closed body                                                           spec         1  got          1           [S9]
+PASS  plan length along the slot                                                spec        10  got    10.0000  +-0.005  [S9 p.559 '10']
+PASS  plan width across the slot                                                spec        10  got    10.0000  +-0.005  [S9 p.559 '10']
+PASS  total thickness T                                                         spec       4.1  got     4.1000  +-0.005  [S9 p.559 table T]
+PASS  neck width                                                                spec       5.8  got     5.8000  +-0.005  [S9 p.559 '5.8']
+PASS  shoulder faces at height E                                                spec         2  got          2           [S9 p.559 table E] E=3.3
+PASS  bottom face (5.8 wide) at z = 0                                           spec         1  got          1           [S9 p.559]
+PASS  thread M5 present                                                         spec         1  got          1           [S9 p.559 'M']
+PASS  thread runs through the nut (T)                                           spec       4.1  got     4.1000  +-0.01   [S9 p.559] thickness T
+PASS  tapped bore: cylinder face of the pilot diameter O4.2 at the plan centre  spec         1  got          1           [S9 p.559] M5 tap drill (ISO coarse), derived
+PASS  no cylinder of the nominal diameter O5 (thread is cosmetic)               spec         0  got          0           [S9 p.559] convention, sources.toml row 2000
+PASS  thread axis at the plan centre                                            spec       yes  got        yes           [S9 p.559 plan view]
+PASS  part number metadata                                                      spec   HNTT5-5  got    HNTT5-5           [-]
+PASS  design part number                                                        spec   HNTT5-5  got    HNTT5-5           [-]
+14/14 passed

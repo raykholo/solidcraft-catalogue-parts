@@ -1,0 +1,22 @@
+== E-SCSPD6
+PASS  2 steel part(s) + 1 urethane damper, all closed      spec         3  got          3           [S21] split type = two halves
+PASS  steel bodies                                         spec         2  got          2           [S21]
+PASS  total width B (Z)                                    spec        12  got    12.0000  +-0.005  [S21 p.546 B]
+PASS  damper thickness t                                   spec         2  got     2.0000  +-0.005  [S21 p.546 t]
+PASS  steel width B1                                       spec        10  got    10.0000  +-0.005  [S21 p.546 B1]
+PASS  B - B1 = t                                           spec         2  got     2.0000  +-1e-09  [S21 p.546] derived: printed B, B1, t agree
+PASS  outer diameter D1 (X)                                spec        20  got    20.0000  +-0.01   [S21 p.546 D1]
+PASS  outer diameter D1 (Y)                                spec        20  got    20.0000  +-0.01   [S21 p.546 D1] the damper disc is a full ring
+PASS  outer cylinder face O20                              spec       yes  got        yes           [S21 p.546 D1]
+PASS  bore cylinder face I.D. 6                            spec       yes  got        yes           [S21 p.546 I.D. D] nominal; +0.05/+0.01 is the tolerance before cutting
+PASS  bore tolerance written in the part description       spec       yes  got        yes           [S21 p.546 D tolerance]
+PASS  slit / gap width W                                   spec         1  got     1.0000  +-0.005  [S21 p.546 W]
+PASS  head seat floor face(s) at Y = 4                     spec       yes  got        yes           [S21 p.546 Y] flat floor of the head seat
+PASS  clearance hole d = 4.5 axes at y = -6, 6 (X), z = 7  spec [(-6, 7.0), (6, 7.0)]  got [(-6.0, 7.0), (6.0, 7.0)]           [S21 p.546 d, X] z: appearance (centred on B1)
+PASS  head seat radius R = 3.75 on the same axes           spec [(-6, 7.0), (6, 7.0)]  got [(-6.0, 7.0), (6.0, 7.0)]           [S21 p.546 R]
+PASS  head seat 2R = 7.5 within B1, floor beyond the slit  spec       yes  got        yes           [derived]
+PASS  clamp screw thread M4 present                        spec       yes  got        yes           [S21 p.546 M (coarse)] tapped half and length are appearance
+PASS  no other thread                                      spec       yes  got        yes           [S21 p.546 M (coarse)]
+PASS  part number metadata                                 spec  E-SCSPD6  got   E-SCSPD6           [-]
+PASS  design part number                                   spec  E-SCSPD6  got   E-SCSPD6           [-]
+20/20 passed

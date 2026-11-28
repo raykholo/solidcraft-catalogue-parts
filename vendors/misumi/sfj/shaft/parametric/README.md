@@ -24,9 +24,9 @@ faithfulness.py  ci.sh         faithfulness.json for tools/parametric-verdict (w
 
 - **One model, 26 parameters and 2 derived ones.** `D L` (length; the main body of the stepped types), the row cells `W l1 H` (wrench flat width and
   length, flat surface depth), `part_type` (a text parameter: material, tolerance class and finish, no geometry), `lkc` (0.1 mm steps: text only),
-  the steps `F P T` (left step length, step diameter, right step length), the tapped ends `ml mr md` (nominal thread of the left and right end, MD),
+  the steps `F P T` (left step length, step diameter, right step length), the tapped ends `m_left m_right md` (nominal thread of the left and right end, MD),
   and the flats `sc sx wsc xw fc fa fe wfc wa we lfc la lfd`. **Absent is a parameter value**: a step length of 0, a thread of 0, a flat
-  position of -1 mm; the rules below switch on `F > 0`, `ml = 3 mm`, `sc >= 0 mm`. The tap depths `tl_depth = ml * (2 + md)` and `tr_depth = 2 * mr`
+  position of -1 mm; the rules below switch on `F > 0`, `m_left = 3 mm`, `sc >= 0 mm`. The tap depths `tl_depth = m_left * (2 + md)` and `tr_depth = 2 * m_right`
   are derived parameters.
 - **Features.** Python's commands, in Python's order: the cylinder `Shaft` (`D x L`, along X), `Left step` (`P x F`, base `-F`) and `Right step`
   (`P x T`, base `L`), the tapped ends (`solid.hole` with `thread = M<size>`), the flats as `solid.box` cuts whose corner, length and thickness are
@@ -42,11 +42,15 @@ faithfulness.py  ci.sh         faithfulness.json for tools/parametric-verdict (w
   no coarse pitch for it (`M2.6 has no coarse ISO pitch: give one, e.g. M2.6x0.25 or M2.6x0.2`), so the Python generator cannot build that code either.
 - **Configuration table = the diameter rows.** One row per D of `data/diameters.csv` (`D`, `H` from `params.csv`, `W l1` from `data/wrench.csv` for
   D 6 and over; D 3 to 5 have no wrench flat, their `W l1` stay at the model default). Everything else is a parameter of the code, set in a row for
-  the code (`config.row from=<D>`) by the harness. Rules: `L` 10 to 1500 mm, the allowed values of `ml` / `mr` (0 or a catalogue thread size), and an
+  the code (`config.row from=<D>`) by the harness. Rules: `L` 10 to 1500 mm, the allowed values of `m_left` / `m_right` (0 or a catalogue thread size), and an
   on-rule and an off-rule (`drive_suppression`) for each of the 59 optional features.
 - **Creation order matters in SolidCraft.** A feature of length 0 is refused at creation (`invalid input: extrude distance is zero`), so the model
   is drawn with a stepped, tapped, flatted D 50 shaft and each optional feature is created with the others suppressed (a hole picks the plain end
   face), then every row starts from the bare shaft.
+
+For an existing pre-0.2.1 container, `python3 build.py --migrate-tap-parameters` updates the whole-word tap parameter names to
+`m_left` and `m_right` without running SolidCraft. It preserves the document except for those tokens and removes the geometry cache so
+SolidCraft rebuilds it on opening. The normal `build.py` command builds the model with the same names from scratch.
 
 ## The ordering code
 
@@ -260,7 +264,7 @@ also compares the thread spans, the description text and the round trip.
    designation (or size) is an expression and whose host is "the end face at this x".
 3. **M2.6.** `solid.hole thread=M2.6` -> `invalid parameters for `solid.hole`: M2.6 has no coarse ISO pitch: give one, e.g. M2.6x0.25 or M2.6x0.2`.
    The Python generator lists M2.6 for E-PSFJW5 and cannot build it either; neither side is compared, the parametric model has no M2.6 feature, and
-   `ml = 2.6 mm` is outside the allowed values (rule `ml-values`). Needed: the pitch in the table (`M2.6x0.45`), as the interface allows.
+   `m_left = 2.6 mm` is outside the allowed values (rule `m_left-values`). Needed: the pitch in the table (`M2.6x0.45`), as the interface allows.
 4. **A feature of zero size cannot exist while it is suppressed in the saved model.** `solid.cylinder height=F` with `F = 0 mm`:
    `invalid input: extrude distance is zero`. The model is drawn with F, T > 0 and its rows set them to 0 with the step suppressed by the rule `F > 0`.
 5. **The option set.** See "The ordering code": `set(...)` is each-once with an object value; the bag with an ordered list is what the shaft needs.

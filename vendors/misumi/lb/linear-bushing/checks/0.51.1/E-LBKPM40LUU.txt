@@ -1,0 +1,19 @@
+== E-LBKPM40LUU
+PASS  one closed body                                  spec         1  got          1           [S13]
+PASS  overall length L (X)                             spec       151  got   151.0000  +-0.005  [S13 p.474 L]
+PASS  flange extent H (bbox Y)                         spec        96  got    96.0000  +-0.005  [S13 p.474 H]
+PASS  flange extent H (bbox Z)                         spec        96  got    96.0000  +-0.005  [S13 p.474 H]
+PASS  outside cylinder D 60                            spec       yes  got        yes           [S13 p.474 D]
+PASS  bore cylinder dr 40                              spec       yes  got        yes           [S13 p.474 dr]
+PASS  tolerances written in the part description       spec       yes  got        yes           [S13 p.474] echoed, not drawn
+PASS  flange thickness T = 13                          spec       yes  got        yes           [S13 p.474 T]
+PASS  flange starts l = 13 from the end of the barrel  spec       yes  got        yes           [S13 p.474 l]
+PASS  square flange flats                              spec         4  got          4           [S13 p.474 W]
+PASS  flats at W/2 from the axis                       spec       yes  got        yes           [S13 p.474 W]
+PASS  4 mounting holes d 9                             spec         4  got          4           [S13 p.474 d]
+PASS  4 counterbores d1 14                             spec         4  got          4           [S13 p.474 d1]
+PASS  holes on P.C.D.                                  spec       yes  got        yes           [S13 p.474 P.C.D.]
+PASS  counterbore floors at depth t = 8.1              spec         4  got          4           [S13 p.474 t] counterbore side: figure reading
+PASS  part number metadata                             spec E-LBKPM40LUU  got E-LBKPM40LUU           [-]
+PASS  design part number                               spec E-LBKPM40LUU  got E-LBKPM40LUU           [-]
+17/17 passed

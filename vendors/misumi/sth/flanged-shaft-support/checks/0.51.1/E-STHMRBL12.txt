@@ -1,0 +1,24 @@
+== E-STHMRBL12
+PASS  one closed body                                                                                        spec         1  got          1           [S52 p.532 table]
+PASS  overall length (bbox Z)                                                                                spec        25  got    25.0000  +-0.005  [S52 p.532 table L / L1]
+PASS  shaft hole O12 (axis along Z, on the axis)                                                             spec       yes  got        yes           [S52 p.532 table D]
+PASS  D tolerance (H8) upper/lower                                                                           spec (0.027, 0)  got (0.027, 0)           [S52 p.532 table DH8] echoed into the description
+PASS  tolerance written in the part description                                                              spec       yes  got        yes           [S52 p.532 table DH8]
+PASS  body diameter H (bbox X)                                                                               spec        36  got    36.0000  +-0.005  [S52 p.532 table H]
+PASS  body diameter H (bbox Y)                                                                               spec        36  got    36.0000  +-0.005  [S52 p.532 table H]
+PASS  body cylinder O36                                                                                      spec       yes  got        yes           [S52 p.532 table H]
+PASS  L = T + S + B (printed numbers)                                                                        spec        25  got    25.0000  +-1e-09  [S52 p.532 table] derived from the table
+PASS  mounting holes O5.5: count                                                                             spec         2  got          2           [S52 p.532 table 4-d / 2-d / 2-Hole / 4-Hole]
+PASS  mounting hole positions (P)                                                                            spec       yes  got        yes           [S52 p.532 table P]
+PASS  counterbore diameter d2 = 9.5 at the mounting holes (depth is appearance)                              spec       yes  got        yes           [S52 p.532 table d2]
+PASS  groove: start z = 12.5                                                                                 spec       yes  got        yes           [S52 p.532 table T, S] depth is not printed
+PASS  groove: width 1.5 (end z = 14, ring B = 11 to the end)                                                 spec       yes  got        yes           [S52 p.532 table S, B]
+PASS  radial slit width 1.5                                                                                  spec       yes  got        yes           [S52 p.532 table 1.5 (figure)]
+PASS  clamp screw counterbore floor Y = 6 from the slit centre                                               spec       yes  got        yes           [S52 p.532 table Y]
+PASS  clamp screw clearance hole O5.5 on the clamp axis (y = X = 12, z = 19.5)                               spec       yes  got        yes           [S52 p.532 table d, X, B]
+PASS  clamp screw counterbore O9 on the clamp axis (y = X = 12, z = 19.5)                                    spec       yes  got        yes           [S52 p.532 table R, X, B]
+PASS  clamp screw thread M5 count                                                                            spec         1  got          1           [S52 p.532 table M]
+PASS  clamp screw thread axes at y = X = 12, z = 19.5 (B / 2, or B / 4 and 3 B / 4 on the slit long sleeve)  spec       yes  got        yes           [S52 p.532 table X, B]
+PASS  part number metadata                                                                                   spec E-STHMRBL12  got E-STHMRBL12           [-]
+PASS  design part number                                                                                     spec E-STHMRBL12  got E-STHMRBL12           [-]
+22/22 passed

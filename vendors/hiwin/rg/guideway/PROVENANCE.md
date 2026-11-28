@@ -6,7 +6,7 @@ Manufacturer names and ordering codes are used only to say what each part is. Th
 
 **Guarantee level: Reviewed**  (levels: Checked = automatic spec check; Reviewed = + independent reviewer; Drawing-matched = + drawing match)
 
-**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.50.0; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
+**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.51.1; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
 
 ## Based on
 
@@ -49,40 +49,40 @@ Sources hash: `sha256:0cdf2d70c40bfca7ba62f3c99e24247ee87be451449e586111192429bd
 ## Verified by
 
 1. **Automatic spec check** (`tools/check`): every code in `codes.txt` is built with solidcraft-cli and every dimension is compared with the datasheet value within the stated tolerance.
-   - SolidCraft 0.50.0: 1116 of 1116 dimension rows match, over 29 codes.
+   - SolidCraft 0.51.1: 1116 of 1116 dimension rows match, over 29 codes.
    - CI run: none yet (placeholder `<link to the generator.yml run>`; filled by CI once the repository exists).
 
    | Code | Options | Result | File |
    |------|---------|--------|------|
-   | `RGH15CA1R340ZAP` | - | 42/42 | `checks/0.50.0/RGH15CA1R340ZAP.txt` |
-   | `RGH20HA2R1000ZAH` | - | 59/59 | `checks/0.50.0/RGH20HA2R1000ZAH.txt` |
-   | `RGH25CA1R640Z0H` | - | 42/42 | `checks/0.50.0/RGH25CA1R640Z0H.txt` |
-   | `RGH30HA1R1000ZBP` | - | 42/42 | `checks/0.50.0/RGH30HA1R1000ZBP.txt` |
-   | `RGH35CA2R840ZAUP` | - | 59/59 | `checks/0.50.0/RGH35CA2R840ZAUP.txt` |
-   | `RGH45HA1R885ZBSP` | - | 42/42 | `checks/0.50.0/RGH45HA1R885ZBSP.txt` |
-   | `RGH55CA1R780ZAP` | - | 42/42 | `checks/0.50.0/RGH55CA1R780ZAP.txt` |
-   | `RGH65HA1R1270ZAP` | - | 42/42 | `checks/0.50.0/RGH65HA1R1270ZAP.txt` |
-   | `RGH20CA1R340ZAP+ZZ` | - | 42/42 | `checks/0.50.0/RGH20CA1R340ZAP_ZZ.txt` |
-   | `RGH45CA1R570ZAP+KK/E2+RC` | - | 42/42 | `checks/0.50.0/RGH45CA1R570ZAP_KK_E2_RC.txt` |
-   | `RGW15CC1R160ZAP` | - | 43/43 | `checks/0.50.0/RGW15CC1R160ZAP.txt` |
-   | `RGW20HC2R820ZBP` | - | 61/61 | `checks/0.50.0/RGW20HC2R820ZBP.txt` |
-   | `RGW25CC2R640ZAH` | - | 61/61 | `checks/0.50.0/RGW25CC2R640ZAH.txt` |
-   | `RGW30HC1R760ZAP` | - | 43/43 | `checks/0.50.0/RGW30HC1R760ZAP.txt` |
-   | `RGW35CC1R840ZAP` | - | 43/43 | `checks/0.50.0/RGW35CC1R840ZAP.txt` |
-   | `RGW45HC1R1200ZAP` | - | 43/43 | `checks/0.50.0/RGW45HC1R1200ZAP.txt` |
-   | `RGW55CC1R780ZAP` | - | 43/43 | `checks/0.50.0/RGW55CC1R780ZAP.txt` |
-   | `RGW65HC1R1270ZAP` | - | 43/43 | `checks/0.50.0/RGW65HC1R1270ZAP.txt` |
-   | `RGW25CC1R640ZAP+DD` | - | 43/43 | `checks/0.50.0/RGW25CC1R640ZAP_DD.txt` |
-   | `RGW45CC` | - | 24/24 | `checks/0.50.0/RGW45CC.txt` |
-   | `RGH20CA` | - | 23/23 | `checks/0.50.0/RGH20CA.txt` |
-   | `RGW65HC` | - | 24/24 | `checks/0.50.0/RGW65HC.txt` |
-   | `RGW25CCEZAP+ZZ` | - | 24/24 | `checks/0.50.0/RGW25CCEZAP_ZZ.txt` |
-   | `RGR15R160` | - | 24/24 | `checks/0.50.0/RGR15R160.txt` |
-   | `RGR25R990` | - | 24/24 | `checks/0.50.0/RGR25R990.txt` |
-   | `RGR35R1000H` | - | 24/24 | `checks/0.50.0/RGR35R1000H.txt` |
-   | `RGR45R570P` | - | 24/24 | `checks/0.50.0/RGR45R570P.txt` |
-   | `RGR55R780` | - | 24/24 | `checks/0.50.0/RGR55R780.txt` |
-   | `RGR65R1270P` | - | 24/24 | `checks/0.50.0/RGR65R1270P.txt` |
+   | `RGH15CA1R340ZAP` | - | 42/42 | `checks/0.51.1/RGH15CA1R340ZAP.txt` |
+   | `RGH20HA2R1000ZAH` | - | 59/59 | `checks/0.51.1/RGH20HA2R1000ZAH.txt` |
+   | `RGH25CA1R640Z0H` | - | 42/42 | `checks/0.51.1/RGH25CA1R640Z0H.txt` |
+   | `RGH30HA1R1000ZBP` | - | 42/42 | `checks/0.51.1/RGH30HA1R1000ZBP.txt` |
+   | `RGH35CA2R840ZAUP` | - | 59/59 | `checks/0.51.1/RGH35CA2R840ZAUP.txt` |
+   | `RGH45HA1R885ZBSP` | - | 42/42 | `checks/0.51.1/RGH45HA1R885ZBSP.txt` |
+   | `RGH55CA1R780ZAP` | - | 42/42 | `checks/0.51.1/RGH55CA1R780ZAP.txt` |
+   | `RGH65HA1R1270ZAP` | - | 42/42 | `checks/0.51.1/RGH65HA1R1270ZAP.txt` |
+   | `RGH20CA1R340ZAP+ZZ` | - | 42/42 | `checks/0.51.1/RGH20CA1R340ZAP_ZZ.txt` |
+   | `RGH45CA1R570ZAP+KK/E2+RC` | - | 42/42 | `checks/0.51.1/RGH45CA1R570ZAP_KK_E2_RC.txt` |
+   | `RGW15CC1R160ZAP` | - | 43/43 | `checks/0.51.1/RGW15CC1R160ZAP.txt` |
+   | `RGW20HC2R820ZBP` | - | 61/61 | `checks/0.51.1/RGW20HC2R820ZBP.txt` |
+   | `RGW25CC2R640ZAH` | - | 61/61 | `checks/0.51.1/RGW25CC2R640ZAH.txt` |
+   | `RGW30HC1R760ZAP` | - | 43/43 | `checks/0.51.1/RGW30HC1R760ZAP.txt` |
+   | `RGW35CC1R840ZAP` | - | 43/43 | `checks/0.51.1/RGW35CC1R840ZAP.txt` |
+   | `RGW45HC1R1200ZAP` | - | 43/43 | `checks/0.51.1/RGW45HC1R1200ZAP.txt` |
+   | `RGW55CC1R780ZAP` | - | 43/43 | `checks/0.51.1/RGW55CC1R780ZAP.txt` |
+   | `RGW65HC1R1270ZAP` | - | 43/43 | `checks/0.51.1/RGW65HC1R1270ZAP.txt` |
+   | `RGW25CC1R640ZAP+DD` | - | 43/43 | `checks/0.51.1/RGW25CC1R640ZAP_DD.txt` |
+   | `RGW45CC` | - | 24/24 | `checks/0.51.1/RGW45CC.txt` |
+   | `RGH20CA` | - | 23/23 | `checks/0.51.1/RGH20CA.txt` |
+   | `RGW65HC` | - | 24/24 | `checks/0.51.1/RGW65HC.txt` |
+   | `RGW25CCEZAP+ZZ` | - | 24/24 | `checks/0.51.1/RGW25CCEZAP_ZZ.txt` |
+   | `RGR15R160` | - | 24/24 | `checks/0.51.1/RGR15R160.txt` |
+   | `RGR25R990` | - | 24/24 | `checks/0.51.1/RGR25R990.txt` |
+   | `RGR35R1000H` | - | 24/24 | `checks/0.51.1/RGR35R1000H.txt` |
+   | `RGR45R570P` | - | 24/24 | `checks/0.51.1/RGR45R570P.txt` |
+   | `RGR55R780` | - | 24/24 | `checks/0.51.1/RGR55R780.txt` |
+   | `RGR65R1270P` | - | 24/24 | `checks/0.51.1/RGR65R1270P.txt` |
 
    Invalid codes that must be rejected with a message (`!` lines in codes.txt): 16.
 

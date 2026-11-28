@@ -1,0 +1,75 @@
+== MGN12H2R300Z0C
+PASS  bodies: rail + blocks                                                     spec         3  got          3           [S4 2-4-10 code]
+PASS  rail length                                                               spec       300  got   300.0000  +-0.005  [S4 p.85]
+PASS  rail width WR                                                             spec        12  got    12.0000  +-0.005  [S4 2-4-19]
+PASS  rail height HR                                                            spec         8  got     8.0000  +-0.005  [S4 2-4-19]
+PASS  rail through-hole diameter d                                              spec       3.5  got     3.5000  +-0.001  [S4 2-4-19]
+PASS  rail counterbore diameter D                                               spec         6  got     6.0000  +-0.001  [S4 2-4-19]
+PASS  rail hole count                                                           spec        12  got         12           [S4 p.85 L=(n-1)P+2E]
+PASS  rail hole 1 position                                                      spec      12.5  got    12.5000  +-0.005  [S4 p.85 E, P]
+PASS  rail hole 2 position                                                      spec      37.5  got    37.5000  +-0.005  [S4 p.85 E, P]
+PASS  rail hole 12 position                                                     spec     287.5  got   287.5000  +-0.005  [S4 p.85 E, P]
+PASS  rail hole pitch P                                                         spec        25  got    25.0000  +-0.005  [S4 p.85]
+PASS  counterbore depth h (floors at HR-h)                                      spec        12  got         12           [S4 2-4-19] h=4.5
+PASS  Block 1 length L                                                          spec      45.4  got    45.4000  +-0.005  [S4 2-4-19]
+PASS  Block 1 width W                                                           spec        27  got    27.0000  +-0.005  [S4 2-4-19]
+PASS  Block 1 top height H                                                      spec        13  got    13.0000  +-0.005  [S4 2-4-19]
+PASS  Block 1 bottom H1                                                         spec         3  got     3.0000  +-0.005  [S4 2-4-19]
+PASS  Block 1 mounting threads                                                  spec         4  got          4           [S4 2-4-19]
+PASS  Block 1 hole spacing B                                                    spec        20  got    20.0000  +-0.005  [S4 2-4-19]
+PASS  Block 1 hole spacing C                                                    spec        20  got    20.0000  +-0.005  [S4 2-4-19]
+PASS  Block 1 thread M3 depth                                                   spec       3.5  got        3.5           [S4 2-4-19]
+PASS  Block 2 length L                                                          spec      45.4  got    45.4000  +-0.005  [S4 2-4-19]
+PASS  Block 2 width W                                                           spec        27  got    27.0000  +-0.005  [S4 2-4-19]
+PASS  Block 2 top height H                                                      spec        13  got    13.0000  +-0.005  [S4 2-4-19]
+PASS  Block 2 bottom H1                                                         spec         3  got     3.0000  +-0.005  [S4 2-4-19]
+PASS  Block 2 mounting threads                                                  spec         4  got          4           [S4 2-4-19]
+PASS  Block 2 hole spacing B                                                    spec        20  got    20.0000  +-0.005  [S4 2-4-19]
+PASS  Block 2 hole spacing C                                                    spec        20  got    20.0000  +-0.005  [S4 2-4-19]
+PASS  Block 2 thread M3 depth                                                   spec       3.5  got        3.5           [S4 2-4-19]
+PASS  rail/block interference count                                             spec         0  got          0           [-]
+PASS  part number metadata                                                      spec MGN12H2R300Z0C  got MGN12H2R300Z0C           [-]
+PASS  design part number                                                        spec MGN12H2R300Z0C  got MGN12H2R300Z0C           [-]
+PASS  appearance bodies all named '(appearance, approximate)'                   spec       yes  got        yes           [-]
+PASS  appearance bodies per block (2 caps, 2 seals, 2 retainers, 4 end screws)  spec        22  got         22           [-]
+PASS  rail screws (one per rail hole)                                           spec        12  got         12           [S4 2-4-19 bolt M3x8]
+PASS  rail hole caps (one per hole)                                             spec        12  got         12           [S4 Table 2-4-9]
+PASS  rail hole cap thickness H                                                 spec       1.2  got     1.2000  +-0.005  [S4 Table 2-4-9] diameter = counterbore D (cap O6.15 is a press fit)
+PASS  rail hole caps flush with the rail top                                    spec         8  got     8.0000  +-0.005  [S4 Table 2-4-9]
+PASS  Block 1 top insert flush with block top H                                 spec        13  got    13.0000  +-0.005  [S4 2-4-19] appearance, approximate
+PASS  Block 1 steel body length L1                                              spec      32.4  got    32.4000  +-0.005  [S4 2-4-19]
+PASS  Block 1 body + end caps + end seals = L                                   spec      45.4  got    45.4000  +-0.005  [S4 2-4-19]
+PASS  Block 1 overall with end screws = L Max                                   spec      45.8  got    45.8000  +-0.005  [S4 2-4-19 L Max]
+PASS  Block 1 lube hole diameter Gn                                             spec         2  got     2.0000  +-0.001  [S4 2-4-19 Gn]
+PASS  Block 1 lube hole height H2 below top                                     spec       2.5  got     2.5000  +-0.005  [S4 2-4-19 H2]
+PASS  Block 1 end cap appearance                                                spec ABS - Green  got ABS - Green           [photo] appearance, approximate
+PASS  Block 1 end seal appearance                                               spec ABS - Red  got  ABS - Red           [photo] appearance, approximate
+PASS  Block 1 end cap material                                                  spec ABS Plastic  got ABS Plastic           [-] appearance, approximate
+PASS  Block 2 top insert flush with block top H                                 spec        13  got    13.0000  +-0.005  [S4 2-4-19] appearance, approximate
+PASS  Block 2 steel body length L1                                              spec      32.4  got    32.4000  +-0.005  [S4 2-4-19]
+PASS  Block 2 body + end caps + end seals = L                                   spec      45.4  got    45.4000  +-0.005  [S4 2-4-19]
+PASS  Block 2 overall with end screws = L Max                                   spec      45.8  got    45.8000  +-0.005  [S4 2-4-19 L Max]
+PASS  Block 2 lube hole diameter Gn                                             spec         2  got     2.0000  +-0.001  [S4 2-4-19 Gn]
+PASS  Block 2 lube hole height H2 below top                                     spec       2.5  got     2.5000  +-0.005  [S4 2-4-19 H2]
+PASS  Block 2 end cap appearance                                                spec ABS - Green  got ABS - Green           [photo] appearance, approximate
+PASS  Block 2 end seal appearance                                               spec ABS - Red  got  ABS - Red           [photo] appearance, approximate
+PASS  Block 2 end cap material                                                  spec ABS Plastic  got ABS Plastic           [-] appearance, approximate
+PASS  rail side ball grooves (2, one per side)                                  spec         2  got          2           [S4 p.76 drawing] appearance, approximate
+PASS  rail material assigned                                                    spec       yes  got        yes           [-]
+PASS  rail/block/screw interference count (all bodies)                          spec         0  got          0           [-]
+PASS  description has DIMENSIONED and APPEARANCE sections                       spec       yes  got        yes           [-]
+PASS  appearance: rail top face finish (1 face(s))                              spec Metal - Polished Carbon Steel, roughness 0.16  got Metal - Polished Carbon Steel, roughness 0.16           [-] appearance, approximate; appearance.chain read-back per face
+PASS  appearance: rail side faces finish (4 face(s))                            spec Metal - Polished Carbon Steel, roughness 0.16 | Metal - Polished Carbon Steel, roughness 0.16 | Metal - Polished Carbon Steel, roughness 0.16 | Metal - Polished Carbon Steel, roughness 0.16  got Metal - Polished Carbon Steel, roughness 0.16 | Metal - Polished Carbon Steel, roughness 0.16 | Metal - Polished Carbon Steel, roughness 0.16 | Metal - Polished Carbon Steel, roughness 0.16           [-] appearance, approximate; appearance.chain read-back per face
+PASS  appearance: rail ball-groove faces finish (3 face(s))                     spec Metal - Cool Reflective Silver, roughness 0.12 | Metal - Cool Reflective Silver, roughness 0.12 | Metal - Cool Reflective Silver, roughness 0.12  got Metal - Cool Reflective Silver, roughness 0.12 | Metal - Cool Reflective Silver, roughness 0.12 | Metal - Cool Reflective Silver, roughness 0.12           [-] appearance, approximate; appearance.chain read-back per face
+PASS  appearance: rail bottom face finish (1 face(s))                           spec Steel - Satin PBR, roughness 0.4  got Steel - Satin PBR, roughness 0.4           [-] appearance, approximate; appearance.chain read-back per face
+PASS  appearance: Block 1 top faces finish (2 face(s))                          spec Metal - Polished Carbon Steel, roughness 0.16 | Metal - Polished Carbon Steel, roughness 0.16  got Metal - Polished Carbon Steel, roughness 0.16 | Metal - Polished Carbon Steel, roughness 0.16           [-] appearance, approximate; appearance.chain read-back per face
+PASS  appearance: Block 1 side faces finish (2 face(s))                         spec Metal - Polished Carbon Steel, roughness 0.16 | Metal - Polished Carbon Steel, roughness 0.16  got Metal - Polished Carbon Steel, roughness 0.16 | Metal - Polished Carbon Steel, roughness 0.16           [-] appearance, approximate; appearance.chain read-back per face
+PASS  appearance: Block 1 end faces (steel body) finish (2 face(s))             spec Steel - Satin PBR, roughness 0.4 | Steel - Satin PBR, roughness 0.4  got Steel - Satin PBR, roughness 0.4 | Steel - Satin PBR, roughness 0.4           [-] appearance, approximate; appearance.chain read-back per face
+PASS  appearance: Block 1 rail-channel top face finish (1 face(s))              spec Metal - Cool Reflective Silver, roughness 0.12  got Metal - Cool Reflective Silver, roughness 0.12           [-] appearance, approximate; appearance.chain read-back per face
+PASS  appearance: Block 1 rail-channel side faces finish (2 face(s))            spec Metal - Cool Reflective Silver, roughness 0.12 | Metal - Cool Reflective Silver, roughness 0.12  got Metal - Cool Reflective Silver, roughness 0.12 | Metal - Cool Reflective Silver, roughness 0.12           [-] appearance, approximate; appearance.chain read-back per face
+PASS  appearance: Block 2 top faces finish (2 face(s))                          spec Metal - Polished Carbon Steel, roughness 0.16 | Metal - Polished Carbon Steel, roughness 0.16  got Metal - Polished Carbon Steel, roughness 0.16 | Metal - Polished Carbon Steel, roughness 0.16           [-] appearance, approximate; appearance.chain read-back per face
+PASS  appearance: Block 2 side faces finish (2 face(s))                         spec Metal - Polished Carbon Steel, roughness 0.16 | Metal - Polished Carbon Steel, roughness 0.16  got Metal - Polished Carbon Steel, roughness 0.16 | Metal - Polished Carbon Steel, roughness 0.16           [-] appearance, approximate; appearance.chain read-back per face
+PASS  appearance: Block 2 end faces (steel body) finish (2 face(s))             spec Steel - Satin PBR, roughness 0.4 | Steel - Satin PBR, roughness 0.4  got Steel - Satin PBR, roughness 0.4 | Steel - Satin PBR, roughness 0.4           [-] appearance, approximate; appearance.chain read-back per face
+PASS  appearance: Block 2 rail-channel top face finish (1 face(s))              spec Metal - Cool Reflective Silver, roughness 0.12  got Metal - Cool Reflective Silver, roughness 0.12           [-] appearance, approximate; appearance.chain read-back per face
+PASS  appearance: Block 2 rail-channel side faces finish (2 face(s))            spec Metal - Cool Reflective Silver, roughness 0.12 | Metal - Cool Reflective Silver, roughness 0.12  got Metal - Cool Reflective Silver, roughness 0.12 | Metal - Cool Reflective Silver, roughness 0.12           [-] appearance, approximate; appearance.chain read-back per face
+73/73 passed

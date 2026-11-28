@@ -1,0 +1,17 @@
+== E-LBF25DUU
+PASS  one closed body                             spec         1  got          1           [S11]
+PASS  overall length L (X)                        spec        83  got    83.0000  +-0.005  [S11 p.467 L]
+PASS  flange extent H (bbox Y)                    spec        62  got    62.0000  +-0.005  [S11 p.467 H]
+PASS  flange extent H (bbox Z)                    spec        62  got    62.0000  +-0.005  [S11 p.467 H]
+PASS  outside cylinder D 40                       spec       yes  got        yes           [S11 p.467 D]
+PASS  bore cylinder dr 25                         spec       yes  got        yes           [S11 p.467 dr]
+PASS  tolerances written in the part description  spec       yes  got        yes           [S11 p.467] echoed, not drawn
+PASS  flange thickness T = 8                      spec       yes  got        yes           [S11 p.467 T]
+PASS  flange cylinder H 62                        spec       yes  got        yes           [S11 p.467 H]
+PASS  4 mounting holes d 5.5                      spec         4  got          4           [S11 p.467 d]
+PASS  4 counterbores d1 9                         spec         4  got          4           [S11 p.467 d1]
+PASS  holes on P.C.D.                             spec       yes  got        yes           [S11 p.467 P.C.D.]
+PASS  counterbore floors at depth t = 5.1         spec         4  got          4           [S11 p.467 t] counterbore side: figure reading
+PASS  part number metadata                        spec E-LBF25DUU  got E-LBF25DUU           [-]
+PASS  design part number                          spec E-LBF25DUU  got E-LBF25DUU           [-]
+15/15 passed

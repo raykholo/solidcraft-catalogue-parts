@@ -1,0 +1,16 @@
+== E-LB12DUU
+PASS  one closed body                             spec         1  got          1           [S11]
+PASS  overall length L (X)                        spec        47  got    47.0000  +-0.005  [S11 p.465 L]
+PASS  outer extent (bbox Y)                       spec        21  got    21.0000  +-0.005  [S11 p.465 D]
+PASS  outer extent (bbox Z)                       spec        21  got    21.0000  +-0.005  [S11 p.465 D]
+PASS  outside cylinder D 21                       spec       yes  got        yes           [S11 p.465 D]
+PASS  bore cylinder dr 12                         spec       yes  got        yes           [S11 p.465 dr]
+PASS  tolerances written in the part description  spec       yes  got        yes           [S11 p.465] echoed, not drawn
+PASS  ring grooves: cylinder faces at D1          spec         2  got          2           [S11 p.465 D1]
+PASS  ring groove walls                           spec         4  got          4           [S11 p.465 W B]
+PASS  groove width W (first)                      spec       1.3  got     1.3000  +-0.005  [S11 p.465 W]
+PASS  groove width W (second)                     spec       1.3  got     1.3000  +-0.005  [S11 p.465 W]
+PASS  distance between the grooves B              spec        30  got    30.0000  +-0.005  [S11 p.465 B]
+PASS  part number metadata                        spec E-LB12DUU  got  E-LB12DUU           [-]
+PASS  design part number                          spec E-LB12DUU  got  E-LB12DUU           [-]
+14/14 passed

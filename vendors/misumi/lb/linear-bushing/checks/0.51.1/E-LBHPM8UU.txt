@@ -1,0 +1,20 @@
+== E-LBHPM8UU
+PASS  one closed body                                 spec         1  got          1           [S13]
+PASS  overall length L (X)                            spec        24  got    24.0000  +-0.005  [S13 p.476 L]
+PASS  flange width D+6/8/10 (bbox Y)                  spec        21  got    21.0000  +-0.005  [S13 p.476 width]
+PASS  flange extent H (bbox Z)                        spec        32  got    32.0000  +-0.005  [S13 p.476 H]
+PASS  outside cylinder D 15                           spec       yes  got        yes           [S13 p.476 D]
+PASS  bore cylinder dr 8                              spec       yes  got        yes           [S13 p.476 dr]
+PASS  tolerances written in the part description      spec       yes  got        yes           [S13 p.476] echoed, not drawn
+PASS  flange thickness T = 5                          spec       yes  got        yes           [S13 p.476 T]
+PASS  flange starts l = 5 from the end of the barrel  spec       yes  got        yes           [S13 p.476 l]
+PASS  flange end arcs H 32                            spec       yes  got        yes           [S13 p.476 H]
+PASS  compact flange flats                            spec         2  got          2           [S13 p.476 D+6/8/10]
+PASS  flats at width/2 from the axis                  spec       yes  got        yes           [S13 p.476 D+6/8/10]
+PASS  2 mounting holes d 3.5                          spec         2  got          2           [S13 p.476 d]
+PASS  2 counterbores d1 6                             spec         2  got          2           [S13 p.476 d1]
+PASS  holes at A / F                                  spec       yes  got        yes           [S13 p.476 A F]
+PASS  counterbore floors at depth t = 3.1             spec         2  got          2           [S13 p.476 t] counterbore side: figure reading
+PASS  part number metadata                            spec E-LBHPM8UU  got E-LBHPM8UU           [-]
+PASS  design part number                              spec E-LBHPM8UU  got E-LBHPM8UU           [-]
+18/18 passed

@@ -1,0 +1,14 @@
+== HBLTSW5
+PASS  one closed body                                 spec         1  got          1           [S40]
+PASS  width                                           spec        14  got    14.0000  +-0.005  [S40 p.539/540 '14' / '19']
+PASS  foot length                                     spec        57  got    57.0000  +-0.005  [S40 p.539/540 foot length]
+PASS  wall height                                     spec        57  got    57.0000  +-0.005  [S40 p.539/540 wall height]
+PASS  foot thickness 5 (foot top face at z = 5)       spec       yes  got        yes           [S40 p.539/540 '5', '9']
+PASS  wall thickness 5 (wall inner face at y = 5)     spec       yes  got        yes           [S40 p.539/540 '5']
+PASS  foot holes, positions from the wall outer face  spec [30.0, 50.0]  got [30.0, 50.0]           [S40 p.539/540 hole positions]
+PASS  wall holes, positions from the foot outer face  spec [30.0, 50.0]  got [30.0, 50.0]           [S40 p.539/540 hole positions]
+PASS  every hole has the catalogue diameter           spec       yes  got        yes           [S40 p.539/540 '2-O5.5' (O4.5 for -4)]
+PASS  holes on the width centre line                  spec       yes  got        yes           [S40 p.539/540 '7 / 7', '9.5 / 9.5', '5 / 7']
+PASS  part number metadata                            spec   HBLTSW5  got    HBLTSW5           [-]
+PASS  design part number                              spec   HBLTSW5  got    HBLTSW5           [-]
+12/12 passed

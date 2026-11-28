@@ -1,0 +1,14 @@
+== C-SCNPAW25-15
+PASS  2 closed body (the two halves)                  spec         2  got          2           [S20] split type = two halves
+PASS  width B (Z)                                     spec        15  got    15.0000  +-0.005  [S20 p.544 width B]
+PASS  outer diameter D1 (X)                           spec        50  got    50.0000  +-0.01   [S20 table D1]
+PASS  outer diameter D1 (Y)                           spec        50  got    49.9975  +-0.005  [S20 table D1] slit / gap chord removed
+PASS  outer cylinder face O50                         spec       yes  got        yes           [S20 table D1]
+PASS  bore cylinder face I.D. 25                      spec       yes  got        yes           [S20 table I.D. D] nominal; +0.05/+0.01 is the tolerance before cutting
+PASS  bore tolerance written in the part description  spec       yes  got        yes           [S20 p.544 note]
+PASS  D1 larger than D                                spec       yes  got        yes           [derived]
+PASS  clamp screw thread M6 present                   spec       yes  got        yes           [S20 table M (coarse)] position and depth are appearance
+PASS  no other thread                                 spec       yes  got        yes           [S20 table M (coarse)]
+PASS  part number metadata                            spec C-SCNPAW25-15  got C-SCNPAW25-15           [-]
+PASS  design part number                              spec C-SCNPAW25-15  got C-SCNPAW25-15           [-]
+12/12 passed

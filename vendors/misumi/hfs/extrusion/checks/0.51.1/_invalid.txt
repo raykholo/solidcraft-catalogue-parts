@@ -1,0 +1,6 @@
+HFS5-2020-49-LTP	CodeError: length 49 mm outside 50-4000 mm
+KHFS5-2020-800	CodeError: fixed-length (K) extrusions come only in [1000, 4000] mm, not 800
+HFS5-2020-100-LTP-LTP	CodeError: alteration LTP given twice
+HFS5-2020-100-ZZZ	CodeError: unknown or unsupported alteration 'ZZZ'
+HFS5-2020-100.3	CodeError: length 100.3 mm is not a multiple of 0.5 mm
+HFS6-3030-100-LTP-RWV-X7	CodeError: unknown or unsupported alteration 'X7'

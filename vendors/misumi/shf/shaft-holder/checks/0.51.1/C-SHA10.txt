@@ -1,0 +1,10 @@
+== C-SHA10
+PASS  one closed body                      spec         1  got          1           [S50]
+PASS  thickness T (bbox Y)                 spec        11  got    11.0000  +-0.005  [S50 p.540 T]
+PASS  shaft bore O10 (axis along Y)        spec       yes  got        yes           [S50 p.540 D]
+PASS  bore centre height H = 20            spec       yes  got        yes           [S50 p.540 H]
+PASS  D tolerance class                    spec        H7  got         H7           [S50 p.540] tolerance value not printed; class only
+PASS  base holes O5.5 at +-L1/2 (L1 = 32)  spec       yes  got        yes           [S50 p.540 L1, d]
+PASS  part number metadata                 spec   C-SHA10  got    C-SHA10           [-]
+PASS  design part number                   spec   C-SHA10  got    C-SHA10           [-]
+8/8 passed

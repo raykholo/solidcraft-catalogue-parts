@@ -6,7 +6,7 @@ Manufacturer names and ordering codes are used only to say what each part is. Th
 
 **Guarantee level: Reviewed**  (levels: Checked = automatic spec check; Reviewed = + independent reviewer; Drawing-matched = + drawing match)
 
-**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.50.0; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
+**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.51.1; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
 
 ## Based on
 
@@ -103,27 +103,27 @@ Sources hash: `sha256:734c8793b44e13f4324567be9aeeb515489c5e0edd0014a0ce8007e110
 ## Verified by
 
 1. **Automatic spec check** (`tools/check`): every code in `codes.txt` is built with solidcraft-cli and every dimension is compared with the datasheet value within the stated tolerance.
-   - SolidCraft 0.50.0: 453 of 453 dimension rows match, over 16 codes.
+   - SolidCraft 0.51.1: 453 of 453 dimension rows match, over 16 codes.
    - CI run: none yet (placeholder `<link to the generator.yml run>`; filled by CI once the repository exists).
 
    | Code | Options | Result | File |
    |------|---------|--------|------|
-   | `HFS5-2020-1000-LTP-RTP` | - | 25/25 | `checks/0.50.0/HFS5-2020-1000-LTP-RTP.txt` |
-   | `HFS5-2020-120-LTP-RTP-LCH` | - | 28/28 | `checks/0.50.0/HFS5-2020-120-LTP-RTP-LCH.txt` |
-   | `HFS5-2020-300-TPW-RWV` | - | 29/29 | `checks/0.50.0/HFS5-2020-300-TPW-RWV.txt` |
-   | `HFS5-2020-497.5-TPW-LEV-REH` | - | 35/35 | `checks/0.50.0/HFS5-2020-497.5-TPW-LEV-REH.txt` |
-   | `HFS5-2040-1000-TPW-RWV` | - | 31/31 | `checks/0.50.0/HFS5-2040-1000-TPW-RWV.txt` |
-   | `HFS5-2040-300-LTP-RTP-LCH` | - | 30/30 | `checks/0.50.0/HFS5-2040-300-LTP-RTP-LCH.txt` |
-   | `HFS5-4040-300-TPW` | - | 32/32 | `checks/0.50.0/HFS5-4040-300-TPW.txt` |
-   | `HFS5-4040-497.5-LTP-RCV` | - | 33/33 | `checks/0.50.0/HFS5-4040-497.5-LTP-RCV.txt` |
-   | `HFS6-3030-500-LCH-X5-TPW` | - | 33/33 | `checks/0.50.0/HFS6-3030-500-LCH-X5-TPW.txt` |
-   | `HFSB6-3030-120-LTP-RTP-RWV-X8` | - | 34/34 | `checks/0.50.0/HFSB6-3030-120-LTP-RTP-RWV-X8.txt` |
-   | `KHFS5-2020-1000` | - | 22/22 | `checks/0.50.0/KHFS5-2020-1000.txt` |
-   | `KHFS5-2040-1000` | - | 23/23 | `checks/0.50.0/KHFS5-2040-1000.txt` |
-   | `KHFS6-3030-1000` | - | 27/27 | `checks/0.50.0/KHFS6-3030-1000.txt` |
-   | `NFSB5-2020-250` | - | 22/22 | `checks/0.50.0/NFSB5-2020-250.txt` |
-   | `NFSB5-4040-250` | - | 26/26 | `checks/0.50.0/NFSB5-4040-250.txt` |
-   | `NFS5-2040-300` | - | 23/23 | `checks/0.50.0/NFS5-2040-300.txt` |
+   | `HFS5-2020-1000-LTP-RTP` | - | 25/25 | `checks/0.51.1/HFS5-2020-1000-LTP-RTP.txt` |
+   | `HFS5-2020-120-LTP-RTP-LCH` | - | 28/28 | `checks/0.51.1/HFS5-2020-120-LTP-RTP-LCH.txt` |
+   | `HFS5-2020-300-TPW-RWV` | - | 29/29 | `checks/0.51.1/HFS5-2020-300-TPW-RWV.txt` |
+   | `HFS5-2020-497.5-TPW-LEV-REH` | - | 35/35 | `checks/0.51.1/HFS5-2020-497.5-TPW-LEV-REH.txt` |
+   | `HFS5-2040-1000-TPW-RWV` | - | 31/31 | `checks/0.51.1/HFS5-2040-1000-TPW-RWV.txt` |
+   | `HFS5-2040-300-LTP-RTP-LCH` | - | 30/30 | `checks/0.51.1/HFS5-2040-300-LTP-RTP-LCH.txt` |
+   | `HFS5-4040-300-TPW` | - | 32/32 | `checks/0.51.1/HFS5-4040-300-TPW.txt` |
+   | `HFS5-4040-497.5-LTP-RCV` | - | 33/33 | `checks/0.51.1/HFS5-4040-497.5-LTP-RCV.txt` |
+   | `HFS6-3030-500-LCH-X5-TPW` | - | 33/33 | `checks/0.51.1/HFS6-3030-500-LCH-X5-TPW.txt` |
+   | `HFSB6-3030-120-LTP-RTP-RWV-X8` | - | 34/34 | `checks/0.51.1/HFSB6-3030-120-LTP-RTP-RWV-X8.txt` |
+   | `KHFS5-2020-1000` | - | 22/22 | `checks/0.51.1/KHFS5-2020-1000.txt` |
+   | `KHFS5-2040-1000` | - | 23/23 | `checks/0.51.1/KHFS5-2040-1000.txt` |
+   | `KHFS6-3030-1000` | - | 27/27 | `checks/0.51.1/KHFS6-3030-1000.txt` |
+   | `NFSB5-2020-250` | - | 22/22 | `checks/0.51.1/NFSB5-2020-250.txt` |
+   | `NFSB5-4040-250` | - | 26/26 | `checks/0.51.1/NFSB5-4040-250.txt` |
+   | `NFS5-2040-300` | - | 23/23 | `checks/0.51.1/NFS5-2040-300.txt` |
 
    Invalid codes that must be rejected with a message (`!` lines in codes.txt): 6.
 

@@ -1,0 +1,14 @@
+== C-SCSAW12-10
+PASS  1 closed body                                   spec         1  got          1           [S20]
+PASS  width B (Z)                                     spec        10  got    10.0000  +-0.005  [S20 p.544 width B]
+PASS  outer diameter D1 (X)                           spec        30  got    30.0000  +-0.01   [S20 table D1]
+PASS  outer diameter D1 (Y)                           spec     29.99  got    29.9917  +-0.005  [S20 table D1] slit / gap chord removed
+PASS  outer cylinder face O30                         spec       yes  got        yes           [S20 table D1]
+PASS  bore cylinder face I.D. 12                      spec       yes  got        yes           [S20 table I.D. D] nominal; +0.05/+0.01 is the tolerance before cutting
+PASS  bore tolerance written in the part description  spec       yes  got        yes           [S20 p.544 note]
+PASS  D1 larger than D                                spec       yes  got        yes           [derived]
+PASS  clamp screw thread M4 present                   spec       yes  got        yes           [S20 table M (coarse)] position and depth are appearance
+PASS  no other thread                                 spec       yes  got        yes           [S20 table M (coarse)]
+PASS  part number metadata                            spec C-SCSAW12-10  got C-SCSAW12-10           [-]
+PASS  design part number                              spec C-SCSAW12-10  got C-SCSAW12-10           [-]
+12/12 passed

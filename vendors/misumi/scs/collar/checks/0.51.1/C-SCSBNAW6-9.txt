@@ -1,0 +1,17 @@
+== C-SCSBNAW6-9
+PASS  1 closed body                                   spec         1  got          1           [S21]
+PASS  total width B (Z)                               spec         9  got     9.0000  +-0.005  [S21 p.546 width B]
+PASS  outer diameter D1 (X)                           spec        20  got    20.0000  +-0.01   [S21 p.546 table D1]
+PASS  outer diameter D1 (Y)                           spec     19.99  got    19.9875  +-0.005  [S21 p.546 table D1] slit chord removed
+PASS  outer cylinder face O20                         spec       yes  got        yes           [S21 p.546 table D1]
+PASS  boss cylinder face Ds 9                         spec       yes  got        yes           [S21 p.546 table Ds]
+PASS  bore cylinder face I.D. 6                       spec       yes  got        yes           [S21 p.546 table I.D. D] nominal; +0.05/+0.01 is the tolerance before cutting
+PASS  bore tolerance written in the part description  spec       yes  got        yes           [S21 p.546 note]
+PASS  shoulder face at ring width b = 8               spec       yes  got        yes           [S21 p.546 b]
+PASS  boss end face at B = 9                          spec       yes  got        yes           [S21 p.546 B]
+PASS  Ds larger than D, smaller than D1               spec       yes  got        yes           [derived]
+PASS  clamp screw thread M3 present                   spec       yes  got        yes           [S21 p.546 table M (coarse)] position and depth are appearance
+PASS  no other thread                                 spec       yes  got        yes           [S21 p.546 table M (coarse)]
+PASS  part number metadata                            spec C-SCSBNAW6-9  got C-SCSBNAW6-9           [-]
+PASS  design part number                              spec C-SCSBNAW6-9  got C-SCSBNAW6-9           [-]
+15/15 passed

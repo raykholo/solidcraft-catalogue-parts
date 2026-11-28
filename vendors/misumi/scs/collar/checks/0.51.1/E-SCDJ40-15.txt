@@ -1,0 +1,22 @@
+== E-SCDJ40-15
+PASS  1 steel part(s) + 1 urethane damper, all closed    spec         2  got          2           [S21]
+PASS  steel bodies                                       spec         1  got          1           [S21]
+PASS  total width B (Z)                                  spec        15  got    15.0000  +-0.005  [S21 p.547 compact type B]
+PASS  damper thickness t                                 spec         3  got     3.0000  +-0.005  [S21 p.547 compact type t]
+PASS  steel width B1                                     spec        12  got    12.0000  +-0.005  [S21 p.547 compact type B1]
+PASS  B - B1 = t                                         spec         3  got     3.0000  +-1e-09  [S21 p.547 compact type] derived: printed B, B1, t agree
+PASS  outer diameter D1 (X)                              spec        60  got    60.0000  +-0.01   [S21 p.547 compact type D1]
+PASS  outer diameter D1 (Y)                              spec        60  got    60.0000  +-0.01   [S21 p.547 compact type D1] the damper disc is a full ring
+PASS  outer cylinder face O60                            spec       yes  got        yes           [S21 p.547 compact type D1]
+PASS  bore cylinder face I.D. 40                         spec       yes  got        yes           [S21 p.547 compact type I.D. D] nominal; +0.06/+0.01 is the tolerance before cutting
+PASS  bore tolerance written in the part description     spec       yes  got        yes           [S21 p.547 compact type D tolerance]
+PASS  slit / gap width W                                 spec         2  got     2.0000  +-0.005  [S21 p.547 compact type W]
+PASS  head seat floor face(s) at Y = 6                   spec       yes  got        yes           [S21 p.547 compact type Y] flat floor of the head seat
+PASS  clearance hole d = 5.5 axes at y = -25 (X), z = 9  spec [(-25, 9.0)]  got [(-25.0, 9.0)]           [S21 p.547 compact type d, X] z: appearance (centred on B1)
+PASS  head seat radius R = 4.5 on the same axes          spec [(-25, 9.0)]  got [(-25.0, 9.0)]           [S21 p.547 compact type R]
+PASS  head seat 2R = 9 within B1, floor beyond the slit  spec       yes  got        yes           [derived]
+PASS  clamp screw thread M5 present                      spec       yes  got        yes           [S21 p.547 compact type M (coarse)] tapped half and length are appearance
+PASS  no other thread                                    spec       yes  got        yes           [S21 p.547 compact type M (coarse)]
+PASS  part number metadata                               spec E-SCDJ40-15  got E-SCDJ40-15           [-]
+PASS  design part number                                 spec E-SCDJ40-15  got E-SCDJ40-15           [-]
+20/20 passed

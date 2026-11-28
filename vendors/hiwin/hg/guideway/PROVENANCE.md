@@ -6,7 +6,7 @@ Manufacturer names and ordering codes are used only to say what each part is. Th
 
 **Guarantee level: Reviewed**  (levels: Checked = automatic spec check; Reviewed = + independent reviewer; Drawing-matched = + drawing match)
 
-**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.50.0; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
+**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.51.1; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
 
 ## Based on
 
@@ -44,20 +44,20 @@ Sources hash: `sha256:efde57d123ac29fb2d6f88a0ef5924d930e7ebc1401a3ae665ab2fefe5
 ## Verified by
 
 1. **Automatic spec check** (`tools/check`): every code in `codes.txt` is built with solidcraft-cli and every dimension is compared with the datasheet value within the stated tolerance.
-   - SolidCraft 0.50.0: 320 of 320 dimension rows match, over 9 codes.
+   - SolidCraft 0.51.1: 320 of 320 dimension rows match, over 9 codes.
    - CI run: none yet (placeholder `<link to the generator.yml run>`; filled by CI once the repository exists).
 
    | Code | Options | Result | File |
    |------|---------|--------|------|
-   | `HGH20CA2R1000ZAH` | - | 57/57 | `checks/0.50.0/HGH20CA2R1000ZAH.txt` |
-   | `HGH65HA1R1270` | - | 41/41 | `checks/0.50.0/HGH65HA1R1270.txt` |
-   | `HGR15R160M` | - | 24/24 | `checks/0.50.0/HGR15R160M.txt` |
-   | `HGR20R1000` | - | 24/24 | `checks/0.50.0/HGR20R1000.txt` |
-   | `HGR25T640` | - | 22/22 | `checks/0.50.0/HGR25T640.txt` |
-   | `HGW20HB2R820ZBC` | - | 50/50 | `checks/0.50.0/HGW20HB2R820ZBC.txt` |
-   | `HGW25CC1R640ZAP` | - | 41/41 | `checks/0.50.0/HGW25CC1R640ZAP.txt` |
-   | `HGW30CA1R445ZAH` | - | 41/41 | `checks/0.50.0/HGW30CA1R445ZAH.txt` |
-   | `HGW45CB` | - | 20/20 | `checks/0.50.0/HGW45CB.txt` |
+   | `HGH20CA2R1000ZAH` | - | 57/57 | `checks/0.51.1/HGH20CA2R1000ZAH.txt` |
+   | `HGH65HA1R1270` | - | 41/41 | `checks/0.51.1/HGH65HA1R1270.txt` |
+   | `HGR15R160M` | - | 24/24 | `checks/0.51.1/HGR15R160M.txt` |
+   | `HGR20R1000` | - | 24/24 | `checks/0.51.1/HGR20R1000.txt` |
+   | `HGR25T640` | - | 22/22 | `checks/0.51.1/HGR25T640.txt` |
+   | `HGW20HB2R820ZBC` | - | 50/50 | `checks/0.51.1/HGW20HB2R820ZBC.txt` |
+   | `HGW25CC1R640ZAP` | - | 41/41 | `checks/0.51.1/HGW25CC1R640ZAP.txt` |
+   | `HGW30CA1R445ZAH` | - | 41/41 | `checks/0.51.1/HGW30CA1R445ZAH.txt` |
+   | `HGW45CB` | - | 20/20 | `checks/0.51.1/HGW45CB.txt` |
 
    Invalid codes that must be rejected with a message (`!` lines in codes.txt): 5.
 

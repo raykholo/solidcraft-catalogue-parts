@@ -6,7 +6,7 @@ Manufacturer names and ordering codes are used only to say what each part is. Th
 
 **Guarantee level: Reviewed**  (levels: Checked = automatic spec check; Reviewed = + independent reviewer; Drawing-matched = + drawing match)
 
-**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.50.0; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
+**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.51.1; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
 
 ## Based on
 
@@ -45,16 +45,16 @@ Sources hash: `sha256:6ff5d57a3813d897b01f9627dd87de888e0a251acf36ecddc34b7d567c
 ## Verified by
 
 1. **Automatic spec check** (`tools/check`): every code in `codes.txt` is built with solidcraft-cli and every dimension is compared with the datasheet value within the stated tolerance.
-   - SolidCraft 0.50.0: 290 of 290 dimension rows match, over 5 codes.
+   - SolidCraft 0.51.1: 290 of 290 dimension rows match, over 5 codes.
    - CI run: none yet (placeholder `<link to the generator.yml run>`; filled by CI once the repository exists).
 
    | Code | Options | Result | File |
    |------|---------|--------|------|
-   | `MGN12H2R300Z0C` | - | 70/70 | `checks/0.50.0/MGN12H2R300Z0C.txt` |
-   | `MGN12H2R300Z0C` | caps | 73/73 | `checks/0.50.0/MGN12H2R300Z0C-caps.txt` |
-   | `MGN15H1R200Z0C` | - | 48/48 | `checks/0.50.0/MGN15H1R200Z0C.txt` |
-   | `MGN15H1R200Z0C` | caps | 51/51 | `checks/0.50.0/MGN15H1R200Z0C-caps.txt` |
-   | `MGN9C1R195ZFH` | - | 48/48 | `checks/0.50.0/MGN9C1R195ZFH.txt` |
+   | `MGN12H2R300Z0C` | - | 70/70 | `checks/0.51.1/MGN12H2R300Z0C.txt` |
+   | `MGN12H2R300Z0C` | caps | 73/73 | `checks/0.51.1/MGN12H2R300Z0C-caps.txt` |
+   | `MGN15H1R200Z0C` | - | 48/48 | `checks/0.51.1/MGN15H1R200Z0C.txt` |
+   | `MGN15H1R200Z0C` | caps | 51/51 | `checks/0.51.1/MGN15H1R200Z0C-caps.txt` |
+   | `MGN9C1R195ZFH` | - | 48/48 | `checks/0.51.1/MGN9C1R195ZFH.txt` |
 
    Invalid codes that must be rejected with a message (`!` lines in codes.txt): 4.
 

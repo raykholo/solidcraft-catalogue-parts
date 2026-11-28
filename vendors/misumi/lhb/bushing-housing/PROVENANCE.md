@@ -6,7 +6,7 @@ Manufacturer names and ordering codes are used only to say what each part is. Th
 
 **Guarantee level: Reviewed**  (levels: Checked = automatic spec check; Reviewed = + independent reviewer; Drawing-matched = + drawing match)
 
-**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.50.0; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
+**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.51.1; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
 
 ## Based on
 
@@ -42,24 +42,24 @@ Sources hash: `sha256:b38730baa338814678c1d23c910bae0288fcb78ee39d0ecd0322cad76a
 ## Verified by
 
 1. **Automatic spec check** (`tools/check`): every code in `codes.txt` is built with solidcraft-cli and every dimension is compared with the datasheet value within the stated tolerance.
-   - SolidCraft 0.50.0: 225 of 225 dimension rows match, over 13 codes.
+   - SolidCraft 0.51.1: 225 of 225 dimension rows match, over 13 codes.
    - CI run: none yet (placeholder `<link to the generator.yml run>`; filled by CI once the repository exists).
 
    | Code | Options | Result | File |
    |------|---------|--------|------|
-   | `E-LBHN6` | - | 17/17 | `checks/0.50.0/E-LBHN6.txt` |
-   | `E-LBHN16` | - | 17/17 | `checks/0.50.0/E-LBHN16.txt` |
-   | `E-LBHN16D-P` | - | 18/18 | `checks/0.50.0/E-LBHN16D-P.txt` |
-   | `E-LBHN20D` | - | 17/17 | `checks/0.50.0/E-LBHN20D.txt` |
-   | `E-LBHN13` | - | 17/17 | `checks/0.50.0/E-LBHN13.txt` |
-   | `E-LBHN30-P` | - | 18/18 | `checks/0.50.0/E-LBHN30-P.txt` |
-   | `E-LBHN50` | - | 17/17 | `checks/0.50.0/E-LBHN50.txt` |
-   | `E-LBHNW8` | - | 17/17 | `checks/0.50.0/E-LBHNW8.txt` |
-   | `E-LBHNW12L` | - | 17/17 | `checks/0.50.0/E-LBHNW12L.txt` |
-   | `E-LBHNW16D` | - | 17/17 | `checks/0.50.0/E-LBHNW16D.txt` |
-   | `E-LBHNW20L-P` | - | 18/18 | `checks/0.50.0/E-LBHNW20L-P.txt` |
-   | `E-LBHNW30D` | - | 17/17 | `checks/0.50.0/E-LBHNW30D.txt` |
-   | `E-LBHNW50-P` | - | 18/18 | `checks/0.50.0/E-LBHNW50-P.txt` |
+   | `E-LBHN6` | - | 17/17 | `checks/0.51.1/E-LBHN6.txt` |
+   | `E-LBHN16` | - | 17/17 | `checks/0.51.1/E-LBHN16.txt` |
+   | `E-LBHN16D-P` | - | 18/18 | `checks/0.51.1/E-LBHN16D-P.txt` |
+   | `E-LBHN20D` | - | 17/17 | `checks/0.51.1/E-LBHN20D.txt` |
+   | `E-LBHN13` | - | 17/17 | `checks/0.51.1/E-LBHN13.txt` |
+   | `E-LBHN30-P` | - | 18/18 | `checks/0.51.1/E-LBHN30-P.txt` |
+   | `E-LBHN50` | - | 17/17 | `checks/0.51.1/E-LBHN50.txt` |
+   | `E-LBHNW8` | - | 17/17 | `checks/0.51.1/E-LBHNW8.txt` |
+   | `E-LBHNW12L` | - | 17/17 | `checks/0.51.1/E-LBHNW12L.txt` |
+   | `E-LBHNW16D` | - | 17/17 | `checks/0.51.1/E-LBHNW16D.txt` |
+   | `E-LBHNW20L-P` | - | 18/18 | `checks/0.51.1/E-LBHNW20L-P.txt` |
+   | `E-LBHNW30D` | - | 17/17 | `checks/0.51.1/E-LBHNW30D.txt` |
+   | `E-LBHNW50-P` | - | 18/18 | `checks/0.51.1/E-LBHNW50-P.txt` |
 
    Invalid codes that must be rejected with a message (`!` lines in codes.txt): 8.
 

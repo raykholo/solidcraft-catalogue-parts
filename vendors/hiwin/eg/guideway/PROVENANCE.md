@@ -6,7 +6,7 @@ Manufacturer names and ordering codes are used only to say what each part is. Th
 
 **Guarantee level: Reviewed**  (levels: Checked = automatic spec check; Reviewed = + independent reviewer; Drawing-matched = + drawing match)
 
-**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.50.0; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
+**Verified by:** automatic spec check of every code in codes.txt on SolidCraft 0.51.1; independent AI re-read of every dimension row against the cited pages (cell by cell, 2026-11-27); not reviewed by a person.
 
 ## Based on
 
@@ -46,32 +46,32 @@ Sources hash: `sha256:9dfc0bc0ff6dfbdce189fa6fd26464bd2f68acfe082543b8e7687427c6
 ## Verified by
 
 1. **Automatic spec check** (`tools/check`): every code in `codes.txt` is built with solidcraft-cli and every dimension is compared with the datasheet value within the stated tolerance.
-   - SolidCraft 0.50.0: 753 of 753 dimension rows match, over 21 codes.
+   - SolidCraft 0.51.1: 753 of 753 dimension rows match, over 21 codes.
    - CI run: none yet (placeholder `<link to the generator.yml run>`; filled by CI once the repository exists).
 
    | Code | Options | Result | File |
    |------|---------|--------|------|
-   | `EGH15SA1R280ZAC` | - | 41/41 | `checks/0.50.0/EGH15SA1R280ZAC.txt` |
-   | `EGH15CA1R280ZBP` | - | 41/41 | `checks/0.50.0/EGH15CA1R280ZBP.txt` |
-   | `EGH20CA2R1000ZAH` | - | 57/57 | `checks/0.50.0/EGH20CA2R1000ZAH.txt` |
-   | `EGH25SA2R460ZBP` | - | 57/57 | `checks/0.50.0/EGH25SA2R460ZBP.txt` |
-   | `EGH30CA1R640Z0C` | - | 41/41 | `checks/0.50.0/EGH30CA1R640Z0C.txt` |
-   | `EGH35CA1R840ZAP` | - | 41/41 | `checks/0.50.0/EGH35CA1R840ZAP.txt` |
-   | `EGW15CB1R160` | - | 39/39 | `checks/0.50.0/EGW15CB1R160.txt` |
-   | `EGW20SA1R220ZAC` | - | 41/41 | `checks/0.50.0/EGW20SA1R220ZAC.txt` |
-   | `EGW25CA2R640ZAP` | - | 57/57 | `checks/0.50.0/EGW25CA2R640ZAP.txt` |
-   | `EGW25SB1R340` | - | 39/39 | `checks/0.50.0/EGW25SB1R340.txt` |
-   | `EGW30CA1R760ZAH` | - | 41/41 | `checks/0.50.0/EGW30CA1R760ZAH.txt` |
-   | `EGW35CB2R1000ZBH` | - | 50/50 | `checks/0.50.0/EGW35CB2R1000ZBH.txt` |
-   | `EGW35SA` | - | 22/22 | `checks/0.50.0/EGW35SA.txt` |
-   | `EGW15CBZAP` | - | 20/20 | `checks/0.50.0/EGW15CBZAP.txt` |
-   | `EGH20CA` | - | 22/22 | `checks/0.50.0/EGH20CA.txt` |
-   | `EGR15R160` | - | 24/24 | `checks/0.50.0/EGR15R160.txt` |
-   | `EGR20R1000` | - | 24/24 | `checks/0.50.0/EGR20R1000.txt` |
-   | `EGR25R640` | - | 24/24 | `checks/0.50.0/EGR25R640.txt` |
-   | `EGR30R1000` | - | 24/24 | `checks/0.50.0/EGR30R1000.txt` |
-   | `EGR35R840` | - | 24/24 | `checks/0.50.0/EGR35R840.txt` |
-   | `EGR15R160M` | - | 24/24 | `checks/0.50.0/EGR15R160M.txt` |
+   | `EGH15SA1R280ZAC` | - | 41/41 | `checks/0.51.1/EGH15SA1R280ZAC.txt` |
+   | `EGH15CA1R280ZBP` | - | 41/41 | `checks/0.51.1/EGH15CA1R280ZBP.txt` |
+   | `EGH20CA2R1000ZAH` | - | 57/57 | `checks/0.51.1/EGH20CA2R1000ZAH.txt` |
+   | `EGH25SA2R460ZBP` | - | 57/57 | `checks/0.51.1/EGH25SA2R460ZBP.txt` |
+   | `EGH30CA1R640Z0C` | - | 41/41 | `checks/0.51.1/EGH30CA1R640Z0C.txt` |
+   | `EGH35CA1R840ZAP` | - | 41/41 | `checks/0.51.1/EGH35CA1R840ZAP.txt` |
+   | `EGW15CB1R160` | - | 39/39 | `checks/0.51.1/EGW15CB1R160.txt` |
+   | `EGW20SA1R220ZAC` | - | 41/41 | `checks/0.51.1/EGW20SA1R220ZAC.txt` |
+   | `EGW25CA2R640ZAP` | - | 57/57 | `checks/0.51.1/EGW25CA2R640ZAP.txt` |
+   | `EGW25SB1R340` | - | 39/39 | `checks/0.51.1/EGW25SB1R340.txt` |
+   | `EGW30CA1R760ZAH` | - | 41/41 | `checks/0.51.1/EGW30CA1R760ZAH.txt` |
+   | `EGW35CB2R1000ZBH` | - | 50/50 | `checks/0.51.1/EGW35CB2R1000ZBH.txt` |
+   | `EGW35SA` | - | 22/22 | `checks/0.51.1/EGW35SA.txt` |
+   | `EGW15CBZAP` | - | 20/20 | `checks/0.51.1/EGW15CBZAP.txt` |
+   | `EGH20CA` | - | 22/22 | `checks/0.51.1/EGH20CA.txt` |
+   | `EGR15R160` | - | 24/24 | `checks/0.51.1/EGR15R160.txt` |
+   | `EGR20R1000` | - | 24/24 | `checks/0.51.1/EGR20R1000.txt` |
+   | `EGR25R640` | - | 24/24 | `checks/0.51.1/EGR25R640.txt` |
+   | `EGR30R1000` | - | 24/24 | `checks/0.51.1/EGR30R1000.txt` |
+   | `EGR35R840` | - | 24/24 | `checks/0.51.1/EGR35R840.txt` |
+   | `EGR15R160M` | - | 24/24 | `checks/0.51.1/EGR15R160M.txt` |
 
    Invalid codes that must be rejected with a message (`!` lines in codes.txt): 9.
 

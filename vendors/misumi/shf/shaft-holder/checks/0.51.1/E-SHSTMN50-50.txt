@@ -1,0 +1,25 @@
+== E-SHSTMN50-50
+PASS  one closed body                            spec         1  got          1           [S50]
+PASS  thickness T (bbox Y)                       spec        50  got    50.0000  +-0.005  [S50 p.542 T]
+PASS  shaft bore O50 (axis along Y)              spec       yes  got        yes           [S50 p.542 D]
+PASS  bore centre height H = 50                  spec       yes  got        yes           [S50 p.542 H] H +-0.02
+PASS  D tolerance (H8) upper/lower               spec (0.039, 0)  got (0.039, 0)           [S50 p.541/542 DH8] echoed into the description
+PASS  tolerance written in the part description  spec       yes  got        yes           [S50]
+PASS  overall length L (bbox X)                  spec       125  got   125.0000  +-0.005  [S50 p.542 L]
+PASS  overall height H1 = H + offset (bbox Z)    spec       101  got   101.0000  +-0.005  [S50 p.542 H1] H1 = H+51
+PASS  foot thickness S = 15                      spec       yes  got        yes           [S50 p.542 S]
+PASS  top width W = 75                           spec       yes  got        yes           [S50 p.542 W]
+PASS  base holes O11 at +-L1/2 (L1 = 100)        spec       yes  got        yes           [S50 p.542 L1, d]
+PASS  number of base holes                       spec         4  got          4           [S50 p.542 2-d / 4-d]
+PASS  slit width C = 3                           spec       yes  got        yes           [S50 p.542 C]
+PASS  clamp thread M12 count                     spec         2  got          2           [S50 p.542 M] 2 screws for D30-50 thickened
+PASS  thread length                              spec        24  got    24.0000  +-0.01   [S50 p.542 M] Depth
+PASS  thread axis height H + E                   spec        88  got    88.0000  +-0.005  [S50 p.542 E]
+PASS  thread length                              spec        24  got    24.0000  +-0.01   [S50 p.542 M] Depth
+PASS  thread axis height H + E                   spec        88  got    88.0000  +-0.005  [S50 p.542 E]
+PASS  screw clearance hole O14 at H + E          spec       yes  got        yes           [S50 p.542 d2]
+PASS  counterbore O20 at H + E                   spec       yes  got        yes           [S50 p.542 d1]
+PASS  counterbore depth l = 13                   spec       yes  got        yes           [S50 p.542 l]
+PASS  part number metadata                       spec E-SHSTMN50-50  got E-SHSTMN50-50           [-]
+PASS  design part number                         spec E-SHSTMN50-50  got E-SHSTMN50-50           [-]
+23/23 passed

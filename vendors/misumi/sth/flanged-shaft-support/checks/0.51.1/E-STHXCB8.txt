@@ -1,0 +1,21 @@
+== E-STHXCB8
+PASS  one closed body                                    spec         1  got          1           [S52 p.533 table]
+PASS  overall length (bbox Z)                            spec        16  got    16.0000  +-0.005  [S52 p.533 table L]
+PASS  flange thickness T = 5                             spec       yes  got        yes           [S52 p.533 table T]
+PASS  shaft hole O8 (axis along Z, on the axis)          spec       yes  got        yes           [S52 p.533 table D]
+PASS  D tolerance (H8) upper/lower                       spec (0.022, 0)  got (0.022, 0)           [S52 p.533 table DH8] echoed into the description
+PASS  tolerance written in the part description          spec       yes  got        yes           [S52 p.533 table DH8]
+PASS  sleeve outside diameter D1 = 12                    spec       yes  got        yes           [S52 p.533 table D1]
+PASS  Thickness (N) = (D1 - D) / 2                       spec         2  got     2.0000  +-1e-09  [S52 p.533 table N, D1, D] derived from the table: N is the sleeve wall
+PASS  compact flange width W (bbox X)                    spec        16  got    16.0000  +-0.005  [S52 p.533 table W]
+PASS  compact flange height H (bbox Y)                   spec        28  got    28.0000  +-0.005  [S52 p.533 table H]
+PASS  mounting holes O3.5: count                         spec         2  got          2           [S52 p.533 table 4-d / 2-d / 2-Hole / 4-Hole]
+PASS  mounting hole positions (P1)                       spec       yes  got        yes           [S52 p.533 table P1]
+PASS  bore depth E = L - l1 (printed numbers)            spec         8  got     8.0000  +-1e-09  [S52 p.533 table E, l1, L] derived from the table
+PASS  blind bore floor at l1 = 8 from the flange face    spec       yes  got        yes           [S52 p.533 table l1]
+PASS  counterbore floor at l = 4.5 from the flange face  spec       yes  got        yes           [S52 p.533 table l]
+PASS  mounting screw hole O4.5 (d2) on the axis          spec       yes  got        yes           [S52 p.533 table d2]
+PASS  mounting screw counterbore O8 (d1) on the axis     spec       yes  got        yes           [S52 p.533 table d1]
+PASS  part number metadata                               spec E-STHXCB8  got  E-STHXCB8           [-]
+PASS  design part number                                 spec E-STHXCB8  got  E-STHXCB8           [-]
+19/19 passed

@@ -1,0 +1,20 @@
+== E-SSFJ10-123.4-LKC-WSC12-X8
+PASS  one closed body                            spec         1  got          1           [S8]
+PASS  length (X)                                 spec     123.4  got   123.4000  +-0.005  [S8 p.432 L] 1 mm steps, LKC L+-0.03
+PASS  diameter D (bbox Y)                        spec        10  got    10.0000  +-0.005  [S8 p.432 D10]
+PASS  diameter D (bbox Z)                        spec        10  got    10.0000  +-0.005  [S8 p.432 D10]
+PASS  cylinder face O10                          spec       yes  got        yes           [S8 p.432]
+PASS  D tolerance g7 upper/lower                 spec (-0.005, -0.02)  got (-0.005, -0.02)           [S8 p.432 spec table] echoed into the description
+PASS  tolerance written in the part description  spec       yes  got        yes           [S8 p.432]
+PASS  L inside the table range 20-1000           spec       yes  got        yes           [S8 p.432]
+PASS  flat 1: wrench flat faces (pair)           spec         2  got          2           [S8 p.432 SC/WSC/SX]
+PASS  flat 1: width across flats W               spec         8  got     8.0000  +-0.005  [S8 p.432 W table]
+PASS  flat 1: start x = 12                       spec       yes  got        yes           [S8 p.432 SC/FC/A]
+PASS  flat 1: end x = 20                         spec       yes  got        yes           [S8 p.432 l1/FC]
+PASS  flat 2: wrench flat faces (pair)           spec         2  got          2           [S8 p.432 SC/WSC/SX]
+PASS  flat 2: width across flats W               spec         8  got     8.0000  +-0.005  [S8 p.432 W table]
+PASS  flat 2: start x = 28                       spec       yes  got        yes           [S8 p.432 SC/FC/A]
+PASS  flat 2: end x = 36                         spec       yes  got        yes           [S8 p.432 l1/FC]
+PASS  part number metadata                       spec E-SSFJ10-123.4-LKC-WSC12-X8  got E-SSFJ10-123.4-LKC-WSC12-X8           [-]
+PASS  design part number                         spec E-SSFJ10-123.4-LKC-WSC12-X8  got E-SSFJ10-123.4-LKC-WSC12-X8           [-]
+18/18 passed
