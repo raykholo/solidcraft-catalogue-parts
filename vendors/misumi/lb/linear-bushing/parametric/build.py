@@ -178,7 +178,8 @@ def build(out: Path):
                 on = {"type": "all", "conditions": conds}
                 rule(f"{n}-on", f"{n} on", on, {"type": "drive_suppression", "feature": ids[n], "value": False})
                 rule(f"{n}-off", f"{n} off", {"type": "not", "condition": on}, {"type": "drive_suppression", "feature": ids[n], "value": True})
-    cfg.append({"command": "config.rule", "params": {"rules": rules}})
+    from runtime.parametric import limit_rules
+    cfg.append({"command": "config.rule", "params": {"rules": limit_rules(rules)}})
     cfg.append({"command": "config.activate", "params": {"row": R[0]["name"]}})
     run(cfg, src=wd / "stage1.sc", save=wd / "stage2.sc", workdir=wd)
     # config.configure made a "Default" row from the current values: it is not a catalogue row, drop it (the table keeps only catalogue rows)

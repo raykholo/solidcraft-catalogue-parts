@@ -1,6 +1,6 @@
 # misumi.hbl.bracket as a parametric SolidCraft generator
 
-Using free parameters on inserted links, `component.set_link_parameters`, `generator.parse` / `generator.insert`, field templates, Rhai, and rules addressed by feature name needs #23175 (our draft, being finished). The exact command errors quoted below are observations from SolidCraft 0.50.0. The draft checks ranges on link overrides; ordinary source `parameters.change` still does not enforce range restrictions.
+Using free parameters on inserted links, `component.set_link_parameters`, `generator.parse` / `generator.insert`, field templates, Rhai, and rules addressed by feature name requires the #23175 surface (unavailable on 0.50.0/0.51.1). The exact command errors quoted below are observations from SolidCraft 0.50.0. On capable hosts, link overrides and ordinary source `parameters.change` enforce limit rules marked `enforce_on_edit`.
 
 The MISUMI 5 series extruded brackets modelled ONCE in SolidCraft (`hbl-bracket/hbl-bracket.sc`), a configuration table of the 19 catalogue rows, the ordering
 code as a field template and the logic as plain Rhai, following SolidCraft's generator interface (`docs/formats/generator.md`, version 2, issue 22331).
@@ -29,8 +29,8 @@ faithfulness.py  ci.sh         the verdict file for tools/parametric-verdict, an
   parameter, so a user who edits `tabs` on an inserted part gets the tabs. The first foot and wall hole are always there.
 - **Configuration table = the catalogue rows.** 19 rows (one per type, `HBLTS5-4` included), from `data/types.csv`; source and page per row in `generator.toml`.
   Where the row has no tab, `tab_w` and `tab_h` keep inert positive values (6 and 1) so the suppressed box features stay valid; the tabs are off by `tabs = 0`.
-- **No free parameter.** An alteration (`-C`, `-SET`, ...) only adds accessory text to the description (the Python generator does the same), so the code
-  resolves to a row and nothing else. The parts are inserted with `component.insert_design {configuration}`.
+- **Table-derived hole diameter.** HBLTS5 and HBLTS5-4 share HBLTS5 with `hole_d` overrides. An alteration (`-C`, `-SET`, ...) only adds accessory text to the description (the Python generator does the same), so the code
+  resolves to a row plus its table-derived hole diameter.
 
 ## The ordering code
 
@@ -131,17 +131,17 @@ tools/parametric-verdict OUTDIR/faithfulness.json                # the verdict C
 
 ## It stays parametric
 
-There is no free parameter in a code, but the model is parametric all the same: a row is activated and one parameter changed on the configured design
+The table-derived hole diameter is also a link parameter: a row is activated and one parameter changed on the configured design
 (`parameters.change`), then compared with the other code built directly (table above, last block): the width of an HBLTS5 set to 19 mm is an HBLTV5, and its
 hole diameter set to 4.5 mm is an HBLTS5-4, in volume, area, bbox and faces. The probe `tabs = 1` on an HBLTS5 row shows the rules switching the two tab
 features on (volume 4684.9 = HBKTS5).
 
 ## SolidCraft 0.50.0 observations (exact errors) and workarounds
 
-1. **A free parameter value on an inserted part needs #23175 (our draft, being finished).** `component.insert_design {path, configuration: "HBLTS5", parameters: {width: "19 mm"}}` is accepted and the key
+1. **A free parameter value on an inserted part requires the #23175 surface (unavailable on 0.50.0/0.51.1).** `component.insert_design {path, configuration: "HBLTS5", parameters: {width: "19 mm"}}` is accepted and the key
    ignored (the new occurrence has the volume of the HBLTS5, not of a 19 mm wide plate; no error); `component.set_link_parameters` -> `unknown command`;
    `generator.parse` -> `unknown command`. This generator needs none for its codes, so nothing is worked around; a user who wants a different width edits the
-   configured design. Listed under "blocked" in `faithfulness.json` (needs #23175 (our draft, being finished)).
+   configured design. Listed under "blocked" in `faithfulness.json` (requires the #23175 surface (unavailable on 0.50.0/0.51.1)).
 2. **Rules addressed by feature name need #23175 (our draft, being finished).** In 0.50.0, rules name features by integer id (`config.rule` `feature` is an integer), so `build.py` builds the model in two passes (the ids come from the replies of the first).
 3. **A suppressed feature still holds its inputs.** The tab boxes of the rows without tabs keep `tab_w = 6`, `tab_h = 1` (inert, switched off by `tabs = 0`): a size
    of 0 would be an invalid box, and a row must not rebuild an invalid feature. A conditional or a "zero means absent" feature would remove the placeholder.
@@ -156,4 +156,12 @@ features on (volume 4684.9 = HBKTS5).
 | inverse | `generator.code {parameters}` needs parameters -> fields; an alteration is not a parameter | optional `fn fields(configuration, parameters)`; an alteration text parameter would let it print `-SET` |
 | rules | name a feature by name | `feature` by name in `config.rule` |
 
-This package has no free ordering parameter, so it adds no optional link-parameter checks. Internal dimension rebuild probes remain as recorded above.
+Link insertion and editing compare two real catalogue codes with their Python generator builds. A separate existing limit rule supplies the refusal check; no new catalogue limits are introduced.
+
+### #23175 checks
+
+The 0.50.0/0.51.1 results above remain release observations. The #23175 CI artifact records 25 valid, 27 rejects, 2 rebuild checks and 1 blocked records. The next CI run also checks link overrides and ordinary edit refusal with `enforce_on_edit` where limit rules exist; these new checks are pending. Differences remain differences.
+
+The supplied #23175 artifact includes 0 link checks; the added ordinary-edit enforcement check awaits CI.
+
+The link fixture compares HBLTS5 → HBLTS5-4 (`hole_d`, same HBLTS5 row) against Python builds. Refusal uses the existing `tabs` rule with value 2.

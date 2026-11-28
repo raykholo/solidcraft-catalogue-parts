@@ -17,9 +17,9 @@ EXTRA_REFUSALS = ["E-STHWIRB8-", "E-STHWIRB0", "E-STHWIRB09", "E-STHWIRB100", "E
 # a built design switched to another row (a different family, a different screw size, a very different size) = that other code inserted directly
 REBUILD = [("E-STHWIRB8", "E-STHWICB40"), ("E-STHWICB30", "E-STHWIRB12"), ("E-STHWIRB40", "E-STHWIRB8")]
 BLOCKED = [{"what": "a code that matches no template gets the engine's message, not the generator's (the stand-in asks an optional fn no_match(raw))",
-            "needs": "needs #23175 (our draft, being finished) (optional no_match(raw) in generator.rhai)"},
+            "needs": "follow-up after #23175: optional no_match(raw) in generator.rhai"},
            {"what": "a thread designation cannot come from a parameter: one thread feature per clamp screw size (M4 M5 M6 M8), suppressed per row",
-            "needs": 'follow-up: parameter-driven threads and persistent thread references (outside #23175)'}]
+            "needs": 'follow-up: tangency-labs/solidcraft#9594'}]
 
 def support_from(h, res, code):
     p = res["properties"]; mod = h.gen.module("pilot")

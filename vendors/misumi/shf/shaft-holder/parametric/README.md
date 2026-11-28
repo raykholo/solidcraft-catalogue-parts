@@ -1,6 +1,6 @@
 # misumi.shf.shaft-holder as a parametric SolidCraft generator
 
-Using free parameters on inserted links, `component.set_link_parameters`, `generator.parse` / `generator.insert`, field templates, Rhai, and rules addressed by feature name needs #23175 (our draft, being finished). The exact command errors quoted below are observations from SolidCraft 0.50.0. The draft checks ranges on link overrides; ordinary source `parameters.change` still does not enforce range restrictions.
+Using free parameters on inserted links, `component.set_link_parameters`, `generator.parse` / `generator.insert`, field templates, Rhai, and rules addressed by feature name requires the #23175 surface (unavailable on 0.50.0/0.51.1). The exact command errors quoted below are observations from SolidCraft 0.50.0. On capable hosts, link overrides and ordinary source `parameters.change` enforce limit rules marked `enforce_on_edit`.
 
 The MISUMI Economy shaft supports (T-shaped with slit `E-SHSTB/M/A`, with side slit `E-SHWTB/A`, thickened `E-SHSTBN/MN`, and the aluminium `C-SHA`) modelled
 ONCE in SolidCraft (`shf-shaft-holder/shf-shaft-holder.sc`), a configuration table of the 30 catalogue rows, the ordering code as field templates and the logic
@@ -144,11 +144,11 @@ thickened type). The screws, the slit, the counterbore and the bore centre all f
 
 ## SolidCraft 0.50.0 observations (exact errors) and workarounds
 
-1. **A free parameter value on an inserted part needs #23175 (our draft, being finished).** `component.insert_design {path, configuration: "slit-8", parameters: {h: "40 mm"}}` is accepted and the key ignored
+1. **A free parameter value on an inserted part requires the #23175 surface (unavailable on 0.50.0/0.51.1).** `component.insert_design {path, configuration: "slit-8", parameters: {h: "40 mm"}}` is accepted and the key ignored
    (the occurrence keeps the row's own height, not 40 mm; no error); `component.set_link_parameters` -> `unknown command`; `generator.parse` -> `unknown command`.
    Workaround (labelled): a row for the code in a working copy of the model (`config.row {from: <family-D row>, values: {param:h: "25 mm", ...}}`), inserted with
    `configuration`; to change the height, change it in the working copy and insert again. Listed under "blocked" in `faithfulness.json`
-   (needs #23175 (our draft, being finished)).
+   (requires the #23175 surface (unavailable on 0.50.0/0.51.1)).
 2. **Limits on ordinary edits.** `allow_parameter_values` is enforced on a row (`config.row ... values {param:h: "35 mm"}` on `slit-8` -> `rule `slit-8: H from the p.541
    table` restricts the final value`; the aluminium list `slit-10: aluminium types only for the * marked H (p.541)` the same) but `parameters.change h 35 mm` in the
    design is accepted. The list per row is therefore enforced by `resolve` for a code and by the rules for a row.
@@ -175,3 +175,9 @@ thickened type). The screws, the slit, the counterbore and the bore centre all f
 | rules | name a feature by name; a suppress-if that reads a parameter in the feature itself | `feature` by name in `config.rule` |
 
 The optional link proof is declared in `link_checks.json` and run by `ci.sh` through `runtime.parametric.links`. It adds insertion, link-edit, and out-of-range refusal rows only when the command catalogue lists `component.set_link_parameters`. Release builds retain their existing rows and link dependency item.
+
+### #23175 checks
+
+The 0.50.0/0.51.1 results above remain release observations. The #23175 CI artifact records 16 valid, 31 rejects, 8 rebuild checks and 0 blocked records. The next CI run also checks link overrides and ordinary edit refusal with `enforce_on_edit` where limit rules exist; these new checks are pending. Differences remain differences.
+
+The supplied #23175 artifact includes 3 link checks; the added ordinary-edit enforcement check awaits CI.

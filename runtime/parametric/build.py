@@ -9,6 +9,7 @@ stages: stage 1 draws it and reads the ids from the replies, stage 2 writes the 
     ids = build_model(spec, Path("out/pkg"), cli)      # writes out/pkg/<name>.sc
 """
 from __future__ import annotations
+from runtime.parametric import limit_rules
 import json, shutil, subprocess, sys, tempfile
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -99,7 +100,7 @@ def build_model(spec: Spec, pkg: Path, cli: str):
             vals[f"suppress:{f}"] = f in row.suppress
         cfg.append({"command": "config.row", "params": {"name": key, "values": vals}})
     if spec.rules:
-        cfg.append({"command": "config.rule", "params": {"rules": spec.rules(ids)}})
+        cfg.append({"command": "config.rule", "params": {"rules": limit_rules(spec.rules(ids))}})
     cfg.append({"command": "config.activate", "params": {"row": next(iter(spec.rows))}})
     run(cli, cfg, wd, src=wd / "stage1.sc", save=pkg / f"{spec.name}.sc")
     for bak in pkg.glob("*.bak"):

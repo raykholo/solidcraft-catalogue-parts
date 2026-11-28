@@ -93,10 +93,18 @@ A free parameter changed on a built part (`parameters.change` on the instance) a
 
 | Wanted | Result on 0.50.0 | Workaround used (labelled) |
 |---|---|---|
-| Free parameter values on insert: needs #23175 (our draft, being finished) | `component.insert_design` accepts a `parameters` key and ignores it silently; `component.set_link_parameters` is unknown (see the measured lines above) | the instance file: `config.activate` + `parameters.change` on a copy of the model, which is then the file that gets inserted |
+| Free parameter values on insert: requires the #23175 surface (unavailable on 0.50.0/0.51.1) | `component.insert_design` accepts a `parameters` key and ignores it silently; `component.set_link_parameters` is unknown (see the measured lines above) | the instance file: `config.activate` + `parameters.change` on a copy of the model, which is then the file that gets inserted |
 | Thread designation from a parameter | `thread: "M5"` is a literal | one hole feature per designation (M4, M5, M6, M8, M10, M12, M14, M16, M5, M6, M8, M12, M14, M20 on the rail), the row suppresses all but its own |
 | Names of pattern copies | the copies of a feature pattern are named `Body<N>` | the harness renames them `Block 1..n` by position before `src/check.py` reads them |
 
-Using free parameters on inserted links, `component.set_link_parameters`, `generator.parse` / `generator.insert`, field templates, Rhai and rules by feature name needs #23175 (our draft, being finished). Historical 0.50.0 errors above remain quoted verbatim. The draft checks link overrides against source range rules; ordinary source `parameters.change` still does not enforce restrictions. Parameter-driven thread designations and named pattern copies remain follow-ups outside #23175.
+Using free parameters on inserted links, `component.set_link_parameters`, `generator.parse` / `generator.insert`, field templates, Rhai and rules by feature name requires the #23175 surface (unavailable on 0.50.0/0.51.1). Historical 0.50.0 errors above remain quoted verbatim. On capable hosts, link overrides and ordinary source `parameters.change` enforce opted-in source limit rules. Parameter-driven thread designations and named pattern copies remain follow-ups outside #23175.
 
 The optional link proof in `link_checks.json` runs through `runtime.parametric.links` after the legacy conversion. Only a command catalogue containing `component.set_link_parameters` enables its insertion, link-edit and out-of-range refusal rows. Unsupported builds retain the legacy faithfulness rows and dependency item.
+
+### #23175 checks
+
+The 0.50.0/0.51.1 results above remain release observations. The #23175 CI artifact records 9 valid, 6 rejects, 13 rebuild checks and 2 blocked records. The next CI run also checks link overrides and ordinary edit refusal with `enforce_on_edit` where limit rules exist; these new checks are pending. Differences remain differences.
+
+Remaining follow-ups: thread designation from a parameter: tangency-labs/solidcraft#9594; feature-pattern copy body names: tangency-labs/solidcraft#23457.
+
+The supplied #23175 artifact includes 6 link checks; the added ordinary-edit enforcement check awaits CI.

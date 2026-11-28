@@ -1,6 +1,6 @@
 id = "misumi.hnt.t-nut"
 name = "MISUMI 5 series pre-assembly T-nuts (HNTT family)"
-version = "0.1.1"
+version = "0.1.2"
 kind = "generator"
 min_host_version = "0.49.1"
 preview_code = "HNTT5-4"

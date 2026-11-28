@@ -1,6 +1,6 @@
 # misumi.lhb.bushing-housing as a parametric SolidCraft generator
 
-Using free parameters on inserted links, `component.set_link_parameters`, `generator.parse` / `generator.insert`, field templates, Rhai, and rules addressed by feature name needs #23175 (our draft, being finished). The exact command errors quoted below are observations from SolidCraft 0.50.0. The draft checks ranges on link overrides; ordinary source `parameters.change` still does not enforce range restrictions.
+Using free parameters on inserted links, `component.set_link_parameters`, `generator.parse` / `generator.insert`, field templates, Rhai, and rules addressed by feature name requires the #23175 surface (unavailable on 0.50.0/0.51.1). The exact command errors quoted below are observations from SolidCraft 0.50.0. On capable hosts, link overrides and ordinary source `parameters.change` enforce limit rules marked `enforce_on_edit`.
 
 The housing modelled ONCE in SolidCraft (`bushing-housing/bushing-housing.sc`), a configuration table of the catalogue rows, the ordering code as a field template and
 the logic as plain Rhai, following SolidCraft's generator interface (`docs/formats/generator.md`, version 2, issue 22331). The Python generator in `../src`
@@ -134,7 +134,7 @@ configured design; compared with the direct code inserted the same way and with 
 
 ## SolidCraft 0.50.0 observations (exact errors) and workarounds
 
-1. **A free parameter value on an inserted part needs #23175 (our draft, being finished).** `component.insert_design {path, configuration, parameters: {dowel: "1"}}` is accepted and the key
+1. **A free parameter value on an inserted part requires the #23175 surface (unavailable on 0.50.0/0.51.1).** `component.insert_design {path, configuration, parameters: {dowel: "1"}}` is accepted and the key
    ignored: the second part comes in with the same bounding box as the first, no error (`bbox max of both parts [[25.0, 22.000000000000004, 38.5], [25.0, 22.000000000000004, 38.5]]`).
    `component.set_link_parameters` -> `unknown command `component.set_link_parameters``; `generator.parse` -> `unknown command `generator.parse``;
    `generator.insert` -> `unknown command `generator.insert``. `parameters.change dowel 1` in the host design returns without error and leaves the inserted
@@ -165,3 +165,9 @@ third mounting row, the dowel sites), the dowel option as a `drive_suppression` 
 source and page in `generator.toml`, `generator.rhai` with `table()` / `refuse()` / `code_template()`.
 
 The optional link proof is declared in `link_checks.json` and run by `ci.sh` through `runtime.parametric.links`. It adds insertion, link-edit, and out-of-range refusal rows only when the command catalogue lists `component.set_link_parameters`. Release builds retain their existing rows and link dependency item.
+
+### #23175 checks
+
+The 0.50.0/0.51.1 results above remain release observations. The #23175 CI artifact records 13 valid, 25 rejects, 7 rebuild checks and 1 blocked records. The next CI run also checks link overrides and ordinary edit refusal with `enforce_on_edit` where limit rules exist; these new checks are pending. Differences remain differences.
+
+The supplied #23175 artifact includes 3 link checks; the added ordinary-edit enforcement check awaits CI.

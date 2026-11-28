@@ -144,7 +144,8 @@ def build(out: Path):
         stp = pc("F", "gt", "0 mm") if tag.startswith("L") else pc("T", "gt", "0 mm")
         onoff(nm, {"type": "all", "conditions": [end, stp if tag.endswith("step") else {"type": "not", "condition": stp}]})
     for nm, c in boxes: onoff(nm, pc(c, "ge", "0 mm"))
-    cfg.append({"command": "config.rule", "params": {"rules": rules}})
+    from runtime.parametric import limit_rules
+    cfg.append({"command": "config.rule", "params": {"rules": limit_rules(rules)}})
     cfg.append({"command": "config.activate", "params": {"row": "10"}})
     run(cfg, src=wd / "stage1.sc", save=pkg / f"{PKG}.sc")
     write_tables(pkg); write_toml(pkg)

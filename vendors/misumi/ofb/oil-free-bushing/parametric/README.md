@@ -1,6 +1,6 @@
 # misumi.ofb.oil-free-bushing as a parametric SolidCraft generator
 
-Using free parameters on inserted links, `component.set_link_parameters`, `generator.parse` / `generator.insert`, field templates, Rhai, and rules addressed by feature name needs #23175 (our draft, being finished). The exact command errors quoted below are observations from SolidCraft 0.50.0. The draft checks ranges on link overrides; ordinary source `parameters.change` still does not enforce range restrictions.
+Using free parameters on inserted links, `component.set_link_parameters`, `generator.parse` / `generator.insert`, field templates, Rhai, and rules addressed by feature name requires the #23175 surface (unavailable on 0.50.0/0.51.1). The exact command errors quoted below are observations from SolidCraft 0.50.0. On capable hosts, link overrides and ordinary source `parameters.change` enforce limit rules marked `enforce_on_edit`.
 
 The bushing modelled ONCE in SolidCraft (`oil-free-bushing/oil-free-bushing.sc`), 159 configuration rows (one per type and table row), the ordering code as a field
 template and the logic as plain Rhai, following SolidCraft's generator interface (`docs/formats/generator.md`, version 2, issue 22331). The Python generator in `../src` is
@@ -950,10 +950,10 @@ Sweep of every other valid code of the generator: 755 codes, identical to the Py
    `configuration X would fail to rebuild: <Hole>: the reference `F8:side:l4` no longer exists as it was picked; reselect it`. Workaround
    (labelled): one set of hole features per body variant (a suppression column each). Proposal: a hole whose position expression is re-resolved
    to the face at that position on every rebuild (the doc says the position is followed; the face reference is what breaks).
-2. **A free parameter value on an inserted part needs #23175 (our draft, being finished).** `component.insert_design {configuration, parameters}` is accepted and the key ignored,
+2. **A free parameter value on an inserted part requires the #23175 surface (unavailable on 0.50.0/0.51.1).** `component.insert_design {configuration, parameters}` is accepted and the key ignored,
    `component.set_link_parameters` and `generator.parse|insert` are `unknown command` (see the probe table). Workaround (labelled): a row for
    the code in a working copy of the model (`config.row {from: <catalogue row>, values: {...}}`), inserted by `configuration`; to change the
-   length, change it in the working copy and insert again. needs #23175 (our draft, being finished).
+   length, change it in the working copy and insert again. requires the #23175 surface (unavailable on 0.50.0/0.51.1).
 3. **A rule cannot name a configuration row.** The per-row allowed lengths and the hole-set switches need a condition; there is none on the row, so
    each row carries a unitless `rowno` (and `kind` for the body variant) and the rules test that. Proposal: a `row` condition.
 4. **Expression depth.** The sandbox allows a depth of 16 inside a function; a `refuse` call with a message built from `${}` interpolation or an
@@ -967,3 +967,9 @@ Sweep of every other valid code of the generator: 755 codes, identical to the Py
    parameters (the arc's centre is solved, not stored).
 
 The optional link proof is declared in `link_checks.json` and run by `ci.sh` through `runtime.parametric.links`. It adds insertion, link-edit, and out-of-range refusal rows only when the command catalogue lists `component.set_link_parameters`. Release builds retain their existing rows and link dependency item.
+
+### #23175 checks
+
+The 0.50.0/0.51.1 results above remain release observations. The #23175 CI artifact records 784 valid, 58 rejects, 13 rebuild checks and 0 blocked records. The next CI run also checks link overrides and ordinary edit refusal with `enforce_on_edit` where limit rules exist; these new checks are pending. Differences remain differences.
+
+The supplied #23175 artifact includes 3 link checks; the added ordinary-edit enforcement check awaits CI.

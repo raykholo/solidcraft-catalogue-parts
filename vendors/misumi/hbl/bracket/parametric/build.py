@@ -107,7 +107,8 @@ def build(out: Path):
     rule("tabs-range", "tabs 0 or 1", always, {"type": "parameter_range", "parameter": "tabs", "minimum": "0", "maximum": "1"})
     rule("foot-n-range", "foot holes 1 or 2 (S40 p.539 / p.540 drawings)", always, {"type": "parameter_range", "parameter": "foot_n", "minimum": "1", "maximum": "2"})
     rule("wall-n-range", "wall holes 1 or 2 (S40 p.539 / p.540 drawings)", always, {"type": "parameter_range", "parameter": "wall_n", "minimum": "1", "maximum": "2"})
-    cfg.append({"command": "config.rule", "params": {"rules": rules}})
+    from runtime.parametric import limit_rules
+    cfg.append({"command": "config.rule", "params": {"rules": limit_rules(rules)}})
     cfg.append({"command": "config.activate", "params": {"row": rows[0]["type"]}})
     run(cfg, src=wd / "stage1.sc", save=pkg / f"{PKG}.sc", workdir=wd)
     pkgfiles.write_tables(pkg, DATA); pkgfiles.write_toml(pkg, DATA)

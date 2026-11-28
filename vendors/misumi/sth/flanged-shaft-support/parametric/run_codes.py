@@ -18,9 +18,9 @@ EXTRA_REFUSALS = ["E-STHRB8-", "E-STHRB0", "E-STHRB100", "E-STHRB6X", "E-STHRBN"
 REBUILD = [("E-STHRB6", "E-STHWCBL50"), ("E-STHWCBL50", "E-STHMRL16"), ("E-STHMRB8", "E-STHXC16"), ("E-STHXR40", "E-STHSBL16"),
            ("E-STHCNL35", "E-STHRBN8"), ("E-STHWSB8", "E-STHCBL30")]
 BLOCKED = [{"what": "a code that matches no template gets the engine's message, not the generator's (the stand-in asks an optional fn no_match(raw))",
-            "needs": "needs #23175 (our draft, being finished) (optional no_match(raw) in generator.rhai)"},
+            "needs": "follow-up after #23175: optional no_match(raw) in generator.rhai"},
            {"what": "a thread designation cannot come from a parameter: one thread feature per screw size (set screws M3 M4 M5 M6 M8; clamp screws M4 M5 M6 M8 M10), per station and screw, suppressed per row",
-            "needs": 'follow-up: parameter-driven threads and persistent thread references (outside #23175)'}]
+            "needs": 'follow-up: tangency-labs/solidcraft#9594'}]
 
 def sweep_codes():
     """a code for every configuration row that codes.txt does not reach: the first type of that (series, shape, sleeve) the table allows"""

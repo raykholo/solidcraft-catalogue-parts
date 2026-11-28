@@ -10,6 +10,7 @@ Dimensioned geometry only (rail with its holes, blocks with their threads, optio
 import csv, json, sys
 from pathlib import Path
 HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE.parents[4]))
 DATA = HERE.parent / "data"
 def rows(name): return list(csv.DictReader((DATA / name).open()))
 def c(command, **p): return {"command": command, "params": p}
@@ -97,7 +98,8 @@ def commands(fids=None):
     for size, r in RAILS.items():
         rules.append(dict(id=f"len-{size}", name=f"MGNR{size} lengths, S4 p.85 Table 2-4-15", condition=dict(type="parameter", parameter="size", operator="eq", expression=size),
                           effect=dict(type="parameter_range", parameter="length", minimum=f"{2 * float(r['Es']):g} mm", maximum=f"{r['max_len']} mm")))
-    cm.append(c("config.rule", rules=rules))
+    from runtime.parametric import limit_rules
+    cm.append(c("config.rule", rules=limit_rules(rules)))
     return cm
 
 if __name__ == "__main__":

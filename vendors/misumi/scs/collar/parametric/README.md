@@ -1,6 +1,6 @@
 # misumi.scs.collar as a parametric SolidCraft generator
 
-Using free parameters on inserted links, `component.set_link_parameters`, `generator.parse` / `generator.insert`, field templates, Rhai, and rules addressed by feature name needs #23175 (our draft, being finished). The exact command errors quoted below are observations from SolidCraft 0.50.0. The draft checks ranges on link overrides; ordinary source `parameters.change` still does not enforce range restrictions.
+Using free parameters on inserted links, `component.set_link_parameters`, `generator.parse` / `generator.insert`, field templates, Rhai, and rules addressed by feature name requires the #23175 surface (unavailable on 0.50.0/0.51.1). The exact command errors quoted below are observations from SolidCraft 0.50.0. On capable hosts, link overrides and ordinary source `parameters.change` enforce limit rules marked `enforce_on_edit`.
 
 The MISUMI Economy Series shaft collars modelled ONCE in SolidCraft (`scs-collar/scs-collar.sc`), a configuration table of the 102 catalogue rows, the ordering
 code as field templates and the logic as plain Rhai, following SolidCraft's generator interface (`docs/formats/generator.md`, version 2, issue 22331). The Python
@@ -31,8 +31,7 @@ faithfulness.py  ci.sh         the verdict file for tools/parametric-verdict, an
   ring), the fixing holes (through or counterbored), the damper and its bore, the head seat of screw A (clearance hole, slot, round) and of screw B (split).
 - **A thread size cannot come from a parameter**: one tapped-hole feature per size (`RThr_M3..M6` x 2 screws for the ring and bearing, `UThrA_M3..M10` for the slit
   urethane types, `UThrAs` / `UThrBs` M4 and M6 for the split urethane type, which taps the half the kernel names `Collar (1)`, as the Python builder does).
-- **Rows = the catalogue rows** (`C-SCSAW-12-10`, `C-SCSBNAW-12`, `slit-compact-12`): 61 ring, 8 bearing, 33 urethane. There is no free parameter (B follows from D, and
-  the plating E- / E-P / E-S only changes the text), so each code is one row and the text parameter `part_type` carries the plating for the code printer.
+- **Rows = the catalogue rows** (`C-SCSAW-12-10`, `C-SCSBNAW-12`, `slit-compact-12`): 61 ring, 8 bearing, 33 urethane. Compatible C-SCSAW widths share a row using `ring_h` and `ht` overrides. The text parameter `part_type` carries the plating for the code printer.
 - The clamp screw holes use `position` on the outer cylinder with the derived `xh`, `yh1`, `yh2`; the fixing holes `position` on the top face.
 
 ## The ordering code
@@ -171,10 +170,9 @@ type built directly and with the Python part (table above, last block): C-SCSAW1
 3. **The tapped half of a split collar is a body name.** The kernel names the halves `Collar (1)` and `Collar (2)`, and the urethane builder taps `Collar (1)`; a
    feature's `targets` is fixed in the feature, so the split types have their own tapped-hole features (`UThrAs`, `UThrBs`) targeting `Collar (1)`, and the slit types
    target `Collar`.
-4. **A free parameter value on an inserted part needs #23175 (our draft, being finished).** `component.insert_design {parameters: {...}}` is accepted and the key ignored; `component.set_link_parameters` and
-   `generator.parse` -> `unknown command` (probes in the table above). There is no free parameter in a code here (B follows from D, the plating is text), so nothing
-   is worked around; the width changes in "It stays parametric" are made on the configured design, not on a link. Listed under "blocked" in `faithfulness.json`
-   (needs #23175 (our draft, being finished)).
+4. **A free parameter value on an inserted part requires the #23175 surface (unavailable on 0.50.0/0.51.1).** `component.insert_design {parameters: {...}}` is accepted and the key ignored; `component.set_link_parameters` and
+   `generator.parse` -> `unknown command` (probes in the table above). Compatible C-SCSAW widths now resolve to one row plus width overrides; plating remains text. The historical width changes in "It stays parametric" are made on the configured design. The inserted-link gap remains under "blocked" on release hosts
+   (requires the #23175 surface (unavailable on 0.50.0/0.51.1)).
 5. **The working "Default" row** made by `config.configure` is dropped before the rules are added (see the shaft-holder README for the error it gives otherwise).
 6. **Rules addressed by feature name need #23175 (our draft, being finished).** In 0.50.0, rules name features by integer id, so `build.py` builds the model in two passes; **a suppressed feature still holds its inputs**, so the rows without a boss,
    fixing holes or damper keep inert positive sizes for them.
@@ -190,4 +188,12 @@ type built directly and with the Python part (table above, last block): C-SCSAW1
 | model | a feature that keeps its face pick across a slit -> gap change | re-pick by position on rebuild (a `position` hole already has the point), or accept a `position` hole without a stored face |
 | rules | name a feature by name | `feature` by name in `config.rule` |
 
-This package has no free ordering parameter, so it adds no optional link-parameter checks. Internal dimension rebuild probes remain as recorded above.
+Link insertion and editing compare two real catalogue codes with their Python generator builds. A separate existing limit rule supplies the refusal check; no new catalogue limits are introduced.
+
+### #23175 checks
+
+The 0.50.0/0.51.1 results above remain release observations. The #23175 CI artifact records 30 valid, 40 rejects, 2 rebuild checks and 1 blocked records. The next CI run also checks link overrides and ordinary edit refusal with `enforce_on_edit` where limit rules exist; these new checks are pending. Differences remain differences.
+
+The supplied #23175 artifact includes 0 link checks; the added ordinary-edit enforcement check awaits CI.
+
+The link fixture compares C-SCSAW16-10 → C-SCSAW16-12 (`ring_h` and `ht`, same C-SCSAW-16-10 row) against Python builds. The size table gives the same outside diameter and M5 screw for both widths. Refusal uses the existing `split` rule with value 2.

@@ -1,6 +1,6 @@
 id = "misumi.scs.collar"
 name = "MISUMI Economy Series shaft collars: aluminium slit, split, slit with 2 through or 2 counterbored fixing holes, slit for bearing inner mount; steel / stainless slit and split collars with urethane"
-version = "0.2.1"
+version = "0.2.2"
 kind = "generator"
 min_host_version = "0.49.1"
 preview_code = "C-SCSGAW12-10"

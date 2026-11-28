@@ -1,6 +1,6 @@
 # hiwin.mg.rail-set as a parametric generator (prototype, SolidCraft 0.50.0)
 
-Using free parameters on inserted links, `component.set_link_parameters`, `generator.parse` / `generator.insert`, field templates, Rhai, and rules addressed by feature name needs #23175 (our draft, being finished). The exact command errors quoted below are observations from SolidCraft 0.50.0. The draft checks ranges on link overrides; ordinary source `parameters.change` still does not enforce range restrictions.
+Using free parameters on inserted links, `component.set_link_parameters`, `generator.parse` / `generator.insert`, field templates, Rhai, and rules addressed by feature name requires the #23175 surface (unavailable on 0.50.0/0.51.1). The exact command errors quoted below are observations from SolidCraft 0.50.0. On capable hosts, link overrides and ordinary source `parameters.change` enforce limit rules marked `enforce_on_edit`.
 
 Question (issue tangency-labs/solidcraft#22331): can a generator be ONE parametric `.sc` plus a configuration table plus an
 ordering-code template and a few lines of Rhai, instead of `build.py` emitting fixed numbers? Answer on MG: **the model, the table,
@@ -139,5 +139,13 @@ runs `src/check.py` on both. About 7 minutes.
    CSVs here: the `.csv` `source/page/status` columns are enough for `table()`, but `[rows.*]` repeats them.
 
 
-This feature needs #23175 (our draft, being finished); the errors above are from 0.50.0.
+This feature requires the #23175 surface (unavailable on 0.50.0/0.51.1); the errors above are from 0.50.0.
 The optional link proof is declared in `link_checks.json` and run by `ci.sh` through `runtime.parametric.links`. It adds insertion, link-edit, and out-of-range refusal rows only when the command catalogue lists `component.set_link_parameters`. Release builds retain their existing rows and link dependency item.
+
+### #23175 checks
+
+The 0.50.0/0.51.1 results above remain release observations. The #23175 CI artifact records 5 valid, 4 rejects, 5 rebuild checks and 0 blocked records. The next CI run also checks link overrides and ordinary edit refusal with `enforce_on_edit` where limit rules exist; these new checks are pending. Differences remain differences.
+
+Remaining follow-ups: thread designation from a parameter: tangency-labs/solidcraft#9594; feature-pattern copy body names: tangency-labs/solidcraft#23457.
+
+The supplied #23175 artifact includes 3 link checks; the added ordinary-edit enforcement check awaits CI.

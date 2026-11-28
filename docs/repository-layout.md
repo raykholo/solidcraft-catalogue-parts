@@ -36,3 +36,5 @@ branch to a new repository's `main` and that generator has its own repository; c
 
 Outside parties do the same without asking: publish a repository with a generator in this shape, and list it through the parts index
 (`tangency-labs/solidcraft-parts`, the Parts Library listing) with a pull request that names the repository and a tag.
+
+The #23175 surface is capability-gated by the command catalogue. Remaining gaps: parameter thread designations (#9594), feature-pattern copy body names (#23457), optional `no_match(raw)` after #23175, an ordered bag/list beside `set(...)`, and cosmetic threads shortened by later cuts (repro sent; follow-up being filed). Hosts without `component.set_link_parameters` retain the inserted-link blocked record.

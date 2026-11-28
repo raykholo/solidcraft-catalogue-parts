@@ -286,7 +286,8 @@ def commands(S: Series, rules_mode="expr"):
                               effect=dict(type="parameter_range", parameter="length", minimum=f"{g10(lo)} mm", maximum=f"{g10(S.cat.MAX_LEN)} mm")))
         rules.append(dict(id="blocks-range", name="1 to 99 blocks", condition=dict(type="always"),
                           effect=dict(type="parameter_range", parameter="blocks", minimum="1", maximum="99")))
-    cm.append(c("config.rule", rules=rules))
+    from runtime.parametric import limit_rules
+    cm.append(c("config.rule", rules=limit_rules(rules)))
     return cm
 
 if __name__ == "__main__":

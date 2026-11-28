@@ -1,0 +1,14 @@
+{
+  "package": "scs-collar",
+  "checks": [
+    {
+      "parameter": "ring_h",
+      "insert": "C-SCSAW16-10",
+      "change": "C-SCSAW16-12",
+      "refuse": {
+        "parameter": "split",
+        "outside": "2"
+      }
+    }
+  ]
+}

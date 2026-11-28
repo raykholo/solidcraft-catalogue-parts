@@ -7,6 +7,7 @@ A generator's parametric/run_codes.py describes itself with a `Gen` and calls `m
     python3 run_codes.py --rhai-only          no SolidCraft: only the refusals (Rhai against the Python message) and the descriptions
 """
 from __future__ import annotations
+from runtime.parametric import limit_rules
 import argparse, base64, json, os, shutil, subprocess, sys, tempfile, traceback
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -49,7 +50,7 @@ def build_model(pkg: Path, model: str, cmds, columns, feature_cols, rows, rules_
     ids = feature_ids(cmds, res)
     cfg = [{"command": "config.configure", "params": {"params": columns, "features": feature_cols}}]
     cfg += [{"command": "config.row", "params": {"name": n, "values": v}} for n, v in rows]
-    cfg += [{"command": "config.rule", "params": {"rules": rules_fn(ids)}}, {"command": "config.activate", "params": {"row": first_row}}]
+    cfg += [{"command": "config.rule", "params": {"rules": limit_rules(rules_fn(ids))}}, {"command": "config.activate", "params": {"row": first_row}}]
     cli_or_exit(cfg, src=wd / "stage1.sc", save=wd / "stage2.sc", workdir=wd / "b", what="model, stage 2 (configuration table)")
     r, err = cli([{"command": "config.row", "params": {"name": "Default", "delete": True}}], src=wd / "stage2.sc", save=pkg / model, workdir=wd / "c")
     if err:

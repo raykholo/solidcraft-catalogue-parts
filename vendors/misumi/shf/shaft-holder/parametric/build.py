@@ -185,7 +185,8 @@ def build(out: Path):
         if ha:
             rule(f"halu-{key}", f"{key}: aluminium types only for the * marked H ({page})", allof(sel, pc("alu", "eq", 1)),
                  {"type": "allow_parameter_values", "parameter": "h", "expressions": [f"{x} mm" for x in ha]})
-    cfg.append({"command": "config.rule", "params": {"rules": rules}})
+    from runtime.parametric import limit_rules
+    cfg.append({"command": "config.rule", "params": {"rules": limit_rules(rules)}})
     cfg.append({"command": "config.activate", "params": {"row": rows[0][0]}})
     run(cfg, src=wd / "stage1.sc", save=pkg / f"{PKG}.sc", workdir=wd)
     pkgfiles.write_tables(pkg, DATA, [r[0] for r in rows]); pkgfiles.write_toml(pkg, DATA)

@@ -1,6 +1,6 @@
 # misumi.sfj.shaft as a parametric SolidCraft generator
 
-Using free parameters on inserted links, `component.set_link_parameters`, `generator.parse` / `generator.insert`, field templates, Rhai, and rules addressed by feature name needs #23175 (our draft, being finished). The exact command errors quoted below are observations from SolidCraft 0.50.0. The draft checks ranges on link overrides; ordinary source `parameters.change` still does not enforce range restrictions.
+Using free parameters on inserted links, `component.set_link_parameters`, `generator.parse` / `generator.insert`, field templates, Rhai, and rules addressed by feature name requires the #23175 surface (unavailable on 0.50.0/0.51.1). The exact command errors quoted below are observations from SolidCraft 0.50.0. On capable hosts, link overrides and ordinary source `parameters.change` enforce limit rules marked `enforce_on_edit`.
 
 The shaft modelled ONCE in SolidCraft (`sfj-shaft/sfj-shaft.sc`), a configuration table of the diameter rows, the ordering code as a field template
 (an unordered option set with arguments, a decimal length) and the logic, about 30 cross-option refusals included, as plain Rhai, following
@@ -277,5 +277,13 @@ also compares the thread spans, the description text and the round trip.
    template then gives the `expected ...` refusal, as Python does.
 
 
-This feature needs #23175 (our draft, being finished); the errors above are from 0.50.0.
+This feature requires the #23175 surface (unavailable on 0.50.0/0.51.1); the errors above are from 0.50.0.
 The optional link proof is declared in `link_checks.json` and run by `ci.sh` through `runtime.parametric.links`. It adds insertion, link-edit, and out-of-range refusal rows only when the command catalogue lists `component.set_link_parameters`. Release builds retain their existing rows and link dependency item.
+
+### #23175 checks
+
+The 0.50.0/0.51.1 results above remain release observations. The #23175 CI artifact records 42 valid, 94 rejects, 10 rebuild checks and 2 blocked records. The next CI run also checks link overrides and ordinary edit refusal with `enforce_on_edit` where limit rules exist; these new checks are pending. Differences remain differences.
+
+Unordered option set with arguments: follow-up after #23175: an ordered bag/list option kind beside set(...). The local bag(...) remains.
+
+The supplied #23175 artifact includes 3 link checks; the added ordinary-edit enforcement check awaits CI.

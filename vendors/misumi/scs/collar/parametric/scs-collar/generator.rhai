@@ -83,7 +83,23 @@ fn resolve_ring(fields, c) {
     let d = fields.d; let b = fields.b;
     let r = check_ring(typ, d, b);
     let t = table("types", typ);
-    result(`${typ}-${d}-${b}`, typ, c, describe_ring(typ, d, b, r, t), t)
+    let row = `${typ}-${d}-${b}`;
+    // Slit rings with the same bore, outside diameter and screw share geometry
+    // except for width. Keep the table-derived width as both height parameters.
+    if typ == "C-SCSAW" {
+        let widths = bar(param(`bs_${typ}_${d}`));
+        for candidate in widths {
+            let base = table("sizes", `${typ}-${d}-${candidate}`);
+            if base.D1 == r.D1 && base.M == r.M {
+                row = `${typ}-${d}-${candidate}`;
+                break;
+            }
+        }
+    }
+    let out = result(row, typ, c, describe_ring(typ, d, b, r, t), t);
+    out.parameters.ring_h = `${g(b)} mm`;
+    out.parameters.ht = `${g(b)} mm`;
+    out
 }
 
 // ---- the bearing inner mount collar --------------------------------------------------------------------
@@ -164,7 +180,7 @@ fn resolve(fields) {
     resolve_ure(fields, c)
 }
 
-// parameters -> fields (generator.code): the type is the text parameter part_type, the sizes come from the row
+// parameters -> fields (generator.code): the type is the text parameter part_type, the bore comes from the row and ring width may be overridden
 fn stem_of(rest) {
     if rest.ends_with("SCSPD") { return "SCSPD"; }
     if rest.ends_with("SCDJ") { return "SCDJ"; }
@@ -189,5 +205,5 @@ fn fields(configuration, parameters) {
     if typ.starts_with("E-") { return ure_fields(configuration, typ); }
     let bits = configuration.split("-");
     if typ == "C-SCSBNAW" { return bearing_fields(configuration, bits); }
-    #{ type: typ.sub_string(2, typ.len() - 2), d: parse_int(bits[2]), b: parse_int(bits[3]) }
+    #{ type: typ.sub_string(2, typ.len() - 2), d: parse_int(bits[2]), b: if parameters.ring_h == () { parse_int(bits[3]) } else { parse_int(parameters.ring_h.split(" ")[0]) } }
 }

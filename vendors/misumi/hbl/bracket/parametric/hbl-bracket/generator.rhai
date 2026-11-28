@@ -1,7 +1,7 @@
 // MISUMI 5 series extruded brackets (HBLTS5 ... HBLTHB5): ordering-code logic as plain Rhai.
 // Interface: docs/formats/generator.md (SolidCraft generator interface v2): resolve(fields) -> #{configuration, parameters, properties} or refuse(kind, message).
 // Every number comes from tables/*.csv (generated from data/*.csv, each row cites its source id and page); this script only reads them.
-// The code is <type>[-<alteration>] with the type's own "-4" (HBLTS5-4): the configuration row is the type, the alteration is accessory text only.
+// The code is <type>[-<alteration>] with the type's own "-4" (HBLTS5-4): HBLTS5 and HBLTS5-4 share a row with a table-derived hole diameter; alterations are accessory text only.
 
 fn g(x) {                         // Python's {:g}
     let f = x.to_float();
@@ -94,12 +94,17 @@ fn resolve_code(c) {
     let alt = check_alteration(c, key, rest);
     let r = table("types", key);
     let desc = describe_part(key, alt, r);
-    #{ configuration: key, parameters: #{},
+    let row = key;
+    if key == "HBLTS5-4" { row = "HBLTS5"; }
+    #{ configuration: row, parameters: #{ hole_d: `${g(r.hole_d)} mm` },
        properties: #{ part_number: c, description: desc, material: r.material, surface: r.surface, alteration: alt } }
 }
 
 // parameters -> fields (generator.code): the type's own spelling; the alteration is accessory text, not a parameter
 fn fields(configuration, parameters) {
+    if configuration == "HBLTS5" && parameters.hole_d == `${g(table("types", "HBLTS5-4", "hole_d"))} mm` {
+        return #{ base: "HBLTS5", rest: "4" };
+    }
     if configuration.ends_with("-4") {
         return #{ base: configuration.sub_string(0, configuration.len() - 2), rest: "4" };
     }

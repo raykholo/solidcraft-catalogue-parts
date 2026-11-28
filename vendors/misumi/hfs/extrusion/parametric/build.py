@@ -202,7 +202,8 @@ def build(out: Path):
             on = {"type": "all", "conditions": [pc(tp, "eq", 1), pc("profile", "eq", key)]}
             rule(f"{n}-on", f"{n} on", on, {"type": "drive_suppression", "feature": fid, "value": False})
             rule(f"{n}-off", f"{n} off", {"type": "not", "condition": on}, {"type": "drive_suppression", "feature": fid, "value": True})
-    cfg.append({"command": "config.rule", "params": {"rules": rules}})
+    from runtime.parametric import limit_rules
+    cfg.append({"command": "config.rule", "params": {"rules": limit_rules(rules)}})
     cfg.append({"command": "config.activate", "params": {"row": "2020"}})
     run(cfg, src=wd / "stage1.sc", save=pkg / f"{PKG}.sc", workdir=wd)
     pkgfiles.write_tables(pkg, DATA); pkgfiles.write_toml(pkg, DATA)

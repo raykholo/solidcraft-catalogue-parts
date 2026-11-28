@@ -17,9 +17,9 @@ EXTRA_REFUSALS = ["E-STHWRBK12-", "E-STHWRBK0", "E-STHWRBK09", "E-STHWRBK100", "
 # a built design switched to another row (a different family, a different screw size, a very different size) = that other code inserted directly
 REBUILD = [("E-STHWRBK12", "E-STHWCBK30"), ("E-STHWCBK16", "E-SSTHWRK25"), ("E-STHWRBK30", "E-STHWRBK12")]
 BLOCKED = [{"what": "a code that matches no template gets the engine's message, not the generator's (the stand-in asks an optional fn no_match(raw))",
-            "needs": "needs #23175 (our draft, being finished) (optional no_match(raw) in generator.rhai)"},
+            "needs": "follow-up after #23175: optional no_match(raw) in generator.rhai"},
            {"what": "a thread designation cannot come from a parameter: one thread feature per clamp screw size (M5 M6), suppressed per row",
-            "needs": 'follow-up: parameter-driven threads and persistent thread references (outside #23175)'}]
+            "needs": 'follow-up: tangency-labs/solidcraft#9594'}]
 
 def support_from(h, res, code):
     p = res["properties"]; mod = h.gen.module("dowel")

@@ -8,7 +8,7 @@ On a supporting build the link proof inserts the fixture code's resolved configu
 
 The third command attempts the fixture's invalid value. Since the draft specifies the refusal semantics but no fixed error string, the row uses `direct={"refused": true}` and preserves the verbatim CLI refusal under `changed.message`. `changed.refused` is true only if the command refuses and its message names the parameter and a rule/restriction. Acceptance, unrelated topology errors and unknown commands fail. `tools/parametric-verdict` recognizes this sentinel; numeric tolerances, spec counts and rejection-message equality retain their existing rules. A failed link proof records a failing rebuild row.
 
-Historical errors in READMEs remain literal 0.50.0 observations. Link and generator-command dependencies say "needs #23175 (our draft, being finished)". Parameter-driven thread designations are follow-ups outside that draft, as its documentation states. Ordinary source parameter edits still do not enforce range restrictions; the draft checks link overrides.
+Historical errors in READMEs remain literal 0.50.0 observations. Link and generator-command dependencies say "needs #23175 (our draft, being finished)". Parameter-driven thread designations are follow-ups outside that draft, as its documentation states. On #23175-capable hosts, limit rules opt into `enforce_on_edit`; CI checks ordinary edit refusals and link overrides. Release hosts retain the existing rules.
 
 ## Link fixtures
 
@@ -226,3 +226,5 @@ Generated index and package metadata were refreshed with `tools/build-index` and
 - `vendors/hiwin/rg/guideway/parametric/package.toml.head`
 - `vendors/hiwin/rg/guideway/parametric/rg-guideway/generator.rhai`
 - `vendors/hiwin/rg/guideway/parametric/rg-guideway/generator.toml`
+
+The #23175 surface is capability-gated by the command catalogue. Remaining gaps: parameter thread designations (#9594), feature-pattern copy body names (#23457), optional `no_match(raw)` after #23175, an ordered bag/list beside `set(...)`, and cosmetic threads shortened by later cuts (repro sent; follow-up being filed). Hosts without `component.set_link_parameters` retain the inserted-link blocked record.

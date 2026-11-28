@@ -32,9 +32,32 @@ def direct(generator, code, work, tag, options=None):
     return measure(path, work, tag + ".measure", threads=False, include_threads=False)
 
 
+def edit_check(model):
+    """Exercise an ordinary edit against a limit rule on the source design."""
+    replies, error = cli([{"command": "config.table", "params": {}}], src=model)
+    if error:
+        raise ValueError(error)
+    rules = [r for r in replies[0]["rules"] if r.get("effect", {}).get("type") in
+             {"parameter_range", "allow_parameter_values"}]
+    if not rules:
+        return []
+    rule = rules[0]
+    effect = rule["effect"]
+    parameter = effect["parameter"]
+    outside = "(" + str(effect["minimum"]) + ") - 1" if effect["type"] == "parameter_range" else "999999"
+    _, refusal = cli([{"command": "parameters.change", "params": {
+        "name": parameter, "expression": outside}}], src=model)
+    message = refusal if isinstance(refusal, str) else json.dumps(refusal) if refusal else ""
+    named = any(str(rule.get(k, "")) in message for k in ("id", "name") if rule.get(k))
+    return [{"label": "edit: out-of-range refused", "direct": {"refused": True},
+             "changed": {"refused": bool(refusal and named), "parameter": parameter, "message": message}}]
+
+
 def link_rows(generator, package, model, fixture, work):
     """Insert overrides, edit that saved link, and require a parameter-naming refusal."""
     parameter = fixture["parameter"]
+    refuse = fixture.get("refuse", {"parameter": parameter, "outside": fixture.get("outside")})
+    refusal_parameter = refuse["parameter"]
     insert_code, change_code = fixture["insert"], fixture["change"]
     inserted, changed = resolve(package, insert_code), resolve(package, change_code)
     initial = inserted["parameters"][parameter]
@@ -57,7 +80,7 @@ def link_rows(generator, package, model, fixture, work):
     refusal_row = {"label": "link: out-of-range refused", "direct": {"refused": True}}
     if error:
         edit_row["changed"] = {"error": "insert failed"}
-        refusal_row["changed"] = {"refused": False, "message": "insert failed", "parameter": parameter}
+        refusal_row["changed"] = {"refused": False, "message": "insert failed", "parameter": refusal_parameter}
         return rows + [edit_row, refusal_row]
     component = replies[0]["component"]
     # Use the returned id, and retain every other override through merge.
@@ -67,13 +90,16 @@ def link_rows(generator, package, model, fixture, work):
     edit_row["changed"] = {"error": error} if error else measure(edited, work, "change.measure", threads=False, include_threads=False)
     rows.append(edit_row)
     _, refusal = cli([{"command": "component.set_link_parameters", "params": {
-        "component": component, "parameters": {parameter: fixture["outside"]}, "merge": True}}], src=host)
+        "component": component, "parameters": {refusal_parameter: refuse["outside"]}, "merge": True}}], src=host)
     message = refusal if isinstance(refusal, str) else json.dumps(refusal) if refusal else ""
     # Do not bless a topology failure or an unknown command as a range refusal.
-    mentions = bool(re.search(r"(?<!\w)" + re.escape(parameter) + r"(?!\w)", message, re.IGNORECASE))
-    limit = bool(re.search(r"range|allow|restrict|limit|rule", message, re.IGNORECASE))
+    mentions = bool(re.search(r"(?<!\w)" + re.escape(refusal_parameter) + r"(?!\w)", message, re.IGNORECASE))
+    table, table_error = cli([{"command": "config.table", "params": {}}], src=model)
+    names = [str(r[k]) for r in (table[0]["rules"] if table and not table_error else [])
+             if r.get("effect", {}).get("parameter") == refusal_parameter for k in ("id", "name") if r.get(k)]
+    limit = any(name in message for name in names)
     refusal_row["changed"] = {"refused": bool(refusal and mentions and limit),
-                              "parameter": parameter, "message": message}
+                              "parameter": refusal_parameter, "message": message}
     rows.append(refusal_row)
     return rows
 
@@ -82,16 +108,19 @@ def check_links(generator_dir, outdir):
     """Append optional link rows to faithfulness.json; unsupported builds keep it unchanged."""
     generator_dir, outdir = Path(generator_dir).resolve(), Path(outdir).resolve()
     fixture_path = generator_dir / "parametric" / "link_checks.json"
-    if not fixture_path.exists():
-        return
     if not supports_link_parameters():
         return
-    fixtures = json.loads(fixture_path.read_text())
+    fixtures = json.loads(fixture_path.read_text()) if fixture_path.exists() else {
+        "package": next(p.parent.name for p in (generator_dir / "parametric").glob("*/generator.toml")), "checks": []}
     generator = registry.Generator(generator_dir)
     package = generator_dir / "parametric" / fixtures["package"]
     manifest = tomllib.loads((package / "generator.toml").read_text())
     result_path = outdir / "faithfulness.json"
     result = json.loads(result_path.read_text())
+    try:
+        result["rebuild"].extend(edit_check(package / manifest["model"]))
+    except Exception as error:
+        result["rebuild"].append({"label": "edit: limit check", "direct": {"error": str(error)}, "changed": {"error": str(error)}})
     for fixture in fixtures["checks"]:
         with tempfile.TemporaryDirectory() as temporary:
             try:
@@ -99,7 +128,8 @@ def check_links(generator_dir, outdir):
             except Exception as error:
                 rows = [{"label": f"link: {fixture['parameter']} checks", "direct": {"error": str(error)}, "changed": {"error": str(error)}}]
             result["rebuild"].extend(rows)
-    result["blocked"] = [row for row in result["blocked"] if "free parameter values on an inserted link" not in row["what"]]
+    if fixtures["checks"]:
+        result["blocked"] = [row for row in result["blocked"] if "free parameter values on an inserted link" not in row["what"]]
     result_path.write_text(json.dumps(result, indent=1))
 
 

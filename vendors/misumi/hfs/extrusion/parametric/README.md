@@ -1,6 +1,6 @@
 # misumi.hfs.extrusion as a parametric SolidCraft generator
 
-Using free parameters on inserted links, `component.set_link_parameters`, `generator.parse` / `generator.insert`, field templates, Rhai, and rules addressed by feature name needs #23175 (our draft, being finished). The exact command errors quoted below are observations from SolidCraft 0.50.0. The draft checks ranges on link overrides; ordinary source `parameters.change` still does not enforce range restrictions.
+Using free parameters on inserted links, `component.set_link_parameters`, `generator.parse` / `generator.insert`, field templates, Rhai, and rules addressed by feature name requires the #23175 surface (unavailable on 0.50.0/0.51.1). The exact command errors quoted below are observations from SolidCraft 0.50.0. On capable hosts, link overrides and ordinary source `parameters.change` enforce limit rules marked `enforce_on_edit`.
 
 The extrusion modelled ONCE in SolidCraft (`hfs-extrusion/hfs-extrusion.sc`), a configuration table of the catalogue rows, the ordering code as a
 field template and the logic as plain Rhai, following SolidCraft's generator interface (`docs/formats/generator.md`, version 2, issue 22331). The
@@ -152,7 +152,7 @@ moves) and the right-end taps, which follow the new end.
    TapL2020_1: the reference F4:side:c1 no longer exists as it was picked; reselect it`. Workaround (labelled, closest faithful): the threads come
    first in the timeline with a point 0.5 mm inside the end of a 1000 mm model, and follow `length` through the face reference; they are then not
    shortened by a crossing hole (above).
-2. **A free parameter value on an inserted part needs #23175 (our draft, being finished).** `component.insert_design {path, configuration: "2020", parameters: {length: "777 mm"}}` is
+2. **A free parameter value on an inserted part requires the #23175 surface (unavailable on 0.50.0/0.51.1).** `component.insert_design {path, configuration: "2020", parameters: {length: "777 mm"}}` is
    accepted and the key ignored (the part comes in 1000 mm long, no error); `component.set_link_parameters` -> `unknown command`;
    `generator.parse` / `generator.insert` -> `unknown command`. `parameters.change length 777 mm` in the host design returns `recomputed: 0` and
    leaves the inserted part unchanged. Workaround (labelled): a row for the code in a working copy of the model (`config.row {from: <profile row>,
@@ -189,3 +189,11 @@ extrusion and taps), options as `drive_suppression` rules, limits as `parameter_
 
 
 The optional link proof is declared in `link_checks.json` and run by `ci.sh` through `runtime.parametric.links`. It adds insertion, link-edit, and out-of-range refusal rows only when the command catalogue lists `component.set_link_parameters`. Release builds retain their existing rows and link dependency item.
+
+### #23175 checks
+
+The 0.50.0/0.51.1 results above remain release observations. The #23175 CI artifact records 16 valid, 26 rejects, 6 rebuild checks and 1 blocked records. The next CI run also checks link overrides and ordinary edit refusal with `enforce_on_edit` where limit rules exist; these new checks are pending. Differences remain differences.
+
+Cosmetic thread shortened by a later cut: follow-up: being filed (repro sent).
+
+The supplied #23175 artifact includes 3 link checks; the added ordinary-edit enforcement check awaits CI.

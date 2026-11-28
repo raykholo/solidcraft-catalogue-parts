@@ -162,3 +162,5 @@ the index should run the generator's parse (`code_template` then `refuse`) as th
 that carry meaning (`E-SFJ12-5` against `E-SFJ125`, the `-` between `d` and `l` in OFB, SCS, SHF) need a "required separator" mark
 or search accepts a spaceless run of digits; and the unordered option tails (HFS, SFJ) and the free `+...` tail (HIWIN) need the
 kinds marked (*) above, otherwise those generators declare only the prefix up to the tail.
+
+The #23175 surface is capability-gated by the command catalogue. Remaining gaps: parameter thread designations (#9594), feature-pattern copy body names (#23457), optional `no_match(raw)` after #23175, an ordered bag/list beside `set(...)`, and cosmetic threads shortened by later cuts (repro sent; follow-up being filed). Hosts without `component.set_link_parameters` retain the inserted-link blocked record.

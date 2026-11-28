@@ -1,0 +1,14 @@
+{
+  "package": "hbl-bracket",
+  "checks": [
+    {
+      "parameter": "hole_d",
+      "insert": "HBLTS5",
+      "change": "HBLTS5-4",
+      "refuse": {
+        "parameter": "tabs",
+        "outside": "2"
+      }
+    }
+  ]
+}

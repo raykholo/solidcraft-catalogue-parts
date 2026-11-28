@@ -154,7 +154,8 @@ def build(out: Path):
             rule(f"{n}-off", f"{n} off when F is 0 (two holes)", pc("cp_f", "eq", "0 mm"), {"type": "drive_suppression", "feature": ids[n], "value": True})
         else:
             print(f"warning: no feature id for {n}: the F = 0 suppression rule is left to the row columns", file=sys.stderr)
-    cfg.append({"command": "config.rule", "params": {"rules": rules}})
+    from runtime.parametric import limit_rules
+    cfg.append({"command": "config.rule", "params": {"rules": limit_rules(rules)}})
     cfg.append({"command": "config.activate", "params": {"row": R[0]["name"]}})
     run(cfg, src=wd / "stage1.sc", save=wd / "stage2.sc", workdir=wd)
     # config.configure made a "Default" row from the current values: it is not a catalogue row, drop it (the table keeps only catalogue rows)

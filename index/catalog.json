@@ -201,7 +201,7 @@
   {
    "id": "hiwin.mg.rail-set",
    "name": "HIWIN MG miniature linear guide: rail with blocks",
-   "version": "0.2.0",
+   "version": "0.2.1",
    "kind": "generator",
    "min_host_version": "0.49.1",
    "vendor": "HIWIN",
@@ -353,7 +353,7 @@
   {
    "id": "misumi.hbl.bracket",
    "name": "MISUMI 5 series extruded brackets (HBLTS, HBLTV, HBLTSW, HBLTVW, HBLTF, HBKTS, HBKUS, HBLUS, HBLTH)",
-   "version": "0.2.1",
+   "version": "0.2.2",
    "kind": "generator",
    "min_host_version": "0.49.1",
    "vendor": "MISUMI",
@@ -435,7 +435,7 @@
   {
    "id": "misumi.hfs.extrusion",
    "name": "MISUMI aluminium extrusions, 5 series 2020 / 2040 / 4040 and 6 series 3030",
-   "version": "0.2.0",
+   "version": "0.2.1",
    "kind": "generator",
    "min_host_version": "0.49.1",
    "vendor": "MISUMI",
@@ -510,7 +510,7 @@
   {
    "id": "misumi.hnt.t-nut",
    "name": "MISUMI 5 series pre-assembly T-nuts (HNTT family)",
-   "version": "0.1.1",
+   "version": "0.1.2",
    "kind": "generator",
    "min_host_version": "0.49.1",
    "vendor": "MISUMI",
@@ -560,7 +560,7 @@
   {
    "id": "misumi.lb.linear-bushing",
    "name": "MISUMI Economy linear bushings: straight (E-LB), round (E-LBF), square (E-LBK) and compact (E-LBH) flanged, with pilot and centre flanged",
-   "version": "0.2.0",
+   "version": "0.2.1",
    "kind": "generator",
    "min_host_version": "0.49.1",
    "vendor": "MISUMI",
@@ -631,7 +631,7 @@
   {
    "id": "misumi.lhb.bushing-housing",
    "name": "MISUMI Economy linear bushing housing units, wide blocks: single / medium (E-LBHN) and double / medium long / long (E-LBHNW), with or without dowel holes",
-   "version": "0.2.0",
+   "version": "0.2.1",
    "kind": "generator",
    "min_host_version": "0.49.1",
    "vendor": "MISUMI",
@@ -738,7 +738,7 @@
   {
    "id": "misumi.lhb.tall-housing",
    "name": "MISUMI Economy linear bushing housing units with dowel holes, tall blocks: single / medium / medium long / long (E-LBHS) and double (E-LBHSW)",
-   "version": "0.2.0",
+   "version": "0.2.1",
    "kind": "generator",
    "min_host_version": "0.49.1",
    "vendor": "MISUMI",
@@ -794,7 +794,7 @@
   {
    "id": "misumi.ofb.oil-free-bushing",
    "name": "MISUMI Economy oil free bushings: copper alloy straight, shouldered, flanged (round, square, compact) and thrust type, and special brass straight, shouldered, round and compact flanged",
-   "version": "0.2.0",
+   "version": "0.2.1",
    "kind": "generator",
    "min_host_version": "0.49.1",
    "vendor": "MISUMI",
@@ -868,7 +868,7 @@
   {
    "id": "misumi.scs.collar",
    "name": "MISUMI Economy Series shaft collars: aluminium slit, split, slit with 2 through or 2 counterbored fixing holes, slit for bearing inner mount; steel / stainless slit and split collars with urethane",
-   "version": "0.2.1",
+   "version": "0.2.2",
    "kind": "generator",
    "min_host_version": "0.49.1",
    "vendor": "MISUMI",
@@ -1022,7 +1022,7 @@
   {
    "id": "misumi.sfj.shaft",
    "name": "MISUMI Economy Series linear shafts (E- prefix, ASEAN catalogue 2025; g7 / f8): plain, tapped, stepped, with wrench flats and flat surfaces",
-   "version": "0.3.0",
+   "version": "0.3.1",
    "kind": "generator",
    "min_host_version": "0.49.1",
    "vendor": "MISUMI",
@@ -1084,7 +1084,7 @@
   {
    "id": "misumi.shf.shaft-holder",
    "name": "MISUMI Economy shaft supports: T-shaped with slit, with side slit, thickened, and T-shaped aluminium (C-SHA)",
-   "version": "0.2.0",
+   "version": "0.2.1",
    "kind": "generator",
    "min_host_version": "0.49.1",
    "vendor": "MISUMI",
@@ -1139,7 +1139,7 @@
   {
    "id": "misumi.sth.dowel-flanged-shaft-support",
    "name": "MISUMI Economy flanged shaft supports with slit and positioning holes, steel: round (E-STHWRBK, E-STHWRK, E-SSTHWRK) and compact (E-STHWCBK, E-SSTHWCK), with 2 dowel holes and clamp screw",
-   "version": "0.1.1",
+   "version": "0.1.2",
    "kind": "generator",
    "min_host_version": "0.49.1",
    "vendor": "MISUMI",
@@ -1198,7 +1198,7 @@
   {
    "id": "misumi.sth.flanged-shaft-support",
    "name": "MISUMI Economy flanged shaft supports, steel and stainless: standard and long sleeve (E-STHRB / E-STHSB / E-STHCB / E-SSTHC and ...L), thickened (E-STHRBN / E-STHCBN), end mounting (E-STHXRB / E-STHXCB), flanged with slit (E-STHWRB / E-STHWSB / E-STHWCB) and compact clamp (E-STHMRB)",
-   "version": "0.2.1",
+   "version": "0.2.2",
    "kind": "generator",
    "min_host_version": "0.49.1",
    "vendor": "MISUMI",
@@ -1382,7 +1382,7 @@
   {
    "id": "misumi.sth.pilot-flanged-shaft-support",
    "name": "MISUMI Economy pilot flanged shaft supports, steel: round flanged (E-STHWIRB) and compact flanged (E-STHWICB), with pilot spigot, slit and clamp screw",
-   "version": "0.1.1",
+   "version": "0.1.2",
    "kind": "generator",
    "min_host_version": "0.49.1",
    "vendor": "MISUMI",

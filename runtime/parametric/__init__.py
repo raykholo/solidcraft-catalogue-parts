@@ -79,3 +79,13 @@ def supports_link_parameters():
         if isinstance(value, dict): return any(contains(k) or contains(v) for k, v in value.items())
         return False
     return contains(commands)
+
+
+def limit_rules(rules):
+    """Enable edit enforcement only on hosts exposing the #23175 link surface."""
+    if not any(r.get("effect", {}).get("type") in {"parameter_range", "allow_parameter_values"} for r in rules):
+        return rules
+    if not supports_link_parameters():
+        return rules
+    return [dict(r, enforce_on_edit=True) if r.get("effect", {}).get("type") in
+            {"parameter_range", "allow_parameter_values"} else r for r in rules]

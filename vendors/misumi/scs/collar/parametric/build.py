@@ -202,7 +202,8 @@ def build(out: Path):
     rule("kind-range", "kind 0 to 2", always, {"type": "parameter_range", "parameter": "kind", "minimum": "0", "maximum": "2"})
     rule("split-range", "split 0 or 1", always, {"type": "parameter_range", "parameter": "split", "minimum": "0", "maximum": "1"})
     rule("fix-range", "fixing holes 0 to 2", always, {"type": "parameter_range", "parameter": "fix", "minimum": "0", "maximum": "2"})
-    cfg.append({"command": "config.rule", "params": {"rules": rules}})
+    from runtime.parametric import limit_rules
+    cfg.append({"command": "config.rule", "params": {"rules": limit_rules(rules)}})
     cfg.append({"command": "config.activate", "params": {"row": rows[0][0]}})
     run(cfg, src=wd / "stage1.sc", save=pkg / f"{PKG}.sc", workdir=wd)
     pkgfiles.write_tables(pkg, DATA); pkgfiles.write_toml(pkg, DATA)

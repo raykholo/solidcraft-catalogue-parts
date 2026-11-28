@@ -33,7 +33,7 @@ GEN = pk.Gen(
     free_param="dowel", free_value="1",
     blocked=[{"what": "free parameter values on an inserted link (insert_design parameters ignored; set_link_parameters unknown)", "needs": "needs #23175 (our draft, being finished)"},
              {"what": "thread designation from a parameter (one suppressed hole feature per size M4 / M5 / M6 / M8 / M10 for M1, for M2 and for the middle M2 hole)",
-              "needs": 'follow-up: parameter-driven threads and persistent thread references (outside #23175)'}])
+              "needs": 'follow-up: tangency-labs/solidcraft#9594'}])
 
 if __name__ == "__main__":
     pk.main(GEN)

@@ -23,6 +23,23 @@ class HarnessContracts(unittest.TestCase):
     def tearDown(self):
         supports_link_parameters.cache_clear()
 
+    def test_edit_enforcement_only_marks_limits_on_capable_hosts(self):
+        from runtime.parametric import limit_rules
+        rules = [{"effect": {"type": "parameter_range"}}, {"effect": {"type": "suppress_features"}}]
+        for supported in (False, True):
+            with patch("runtime.parametric.supports_link_parameters", return_value=supported):
+                result = limit_rules(rules)
+                self.assertEqual(result[0].get("enforce_on_edit", False), supported)
+                self.assertNotIn("enforce_on_edit", result[1])
+                self.assertNotIn("enforce_on_edit", rules[0])
+
+    def test_edit_refusal_requires_rule_name(self):
+        rule = {"id": "range", "name": "Width range", "effect": {
+            "type": "parameter_range", "parameter": "w", "minimum": "5 mm"}}
+        for message, expected in [("Width range refused", True), ("topology error", False), (None, False)]:
+            with patch.object(links, "cli", side_effect=[([{"rules": [rule]}], None), (None, message)]):
+                self.assertEqual(links.edit_check("model")[0]["changed"]["refused"], expected)
+
     def test_command_catalogue_cached_and_feature_gated(self):
         for catalogue, expected in [([{"name": "component.set_link_parameters"}], True),
                                     ({"commands": ["component.insert_design"]}, False)]:
@@ -42,9 +59,9 @@ class HarnessContracts(unittest.TestCase):
                 run.assert_not_called()
 
     def test_no_free_parameter_does_not_probe_commands(self):
-        with patch.object(links, "supports_link_parameters") as support:
+        with patch.object(links, "supports_link_parameters", return_value=False) as support:
             links.check_links(ROOT / "vendors/misumi/hnt/t-nut", "unused")
-            support.assert_not_called()
+            support.assert_called_once()
 
     def test_supported_build_appends_without_replacing_existing_rows(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -54,6 +71,7 @@ class HarnessContracts(unittest.TestCase):
                 {"what": "thread follow-up", "needs": "follow-up"}]}
             path.write_text(json.dumps(original))
             with patch.object(links, "supports_link_parameters", return_value=True), \
+                    patch.object(links, "edit_check", return_value=[]), \
                     patch.object(links, "link_rows", return_value=[{"label": "link test"}]) as run:
                 links.check_links("vendors/misumi/hfs/extrusion", tmp)
                 result = json.loads(path.read_text())
@@ -62,26 +80,37 @@ class HarnessContracts(unittest.TestCase):
                 self.assertEqual(result["blocked"], original["blocked"][1:])
                 run.assert_called_once()
 
-    def rows(self, refusal):
+    def rows(self, refusal, refuse=None):
+        refusal_parameter = refuse["parameter"] if refuse else "length"
         a = {"configuration": "row", "parameters": {"length": "400 mm", "caps": "0"}}
         b = {"configuration": "row", "parameters": {"length": "300 mm", "caps": "0"}}
         with tempfile.TemporaryDirectory() as tmp, patch.object(links, "resolve", side_effect=[a, b]), \
-                patch.object(links, "direct", return_value=M), patch.object(links, "measure", return_value=M), \
-                patch.object(links, "cli", side_effect=[([{"component": 73}], None), ([], None), (None, refusal)]) as call:
+                patch.object(links, "direct", return_value=M) as direct, patch.object(links, "measure", return_value=M), \
+                patch.object(links, "cli", side_effect=[([{"component": 73}], None), ([], None), (None, refusal), ([{"rules": [{"id": f"{refusal_parameter} range", "effect": {"parameter": refusal_parameter}}]}], None)]) as call:
             rows = links.link_rows(None, Path(tmp), Path(tmp) / "part.sc",
-                                   {"parameter": "length", "insert": "A", "change": "B", "outside": "3000 mm"}, Path(tmp))
+                                   {"parameter": "length", "insert": "A", "change": "B", "outside": "3000 mm", **({"refuse": refuse} if refuse else {})}, Path(tmp))
             calls = call.call_args_list
             self.assertNotIn("src", calls[0].kwargs)  # empty assembly
             self.assertEqual(calls[0].args[0][0]["params"]["parameters"], a["parameters"])
             self.assertEqual(calls[1].args[0][0]["params"], {"component": 73, "parameters": {"length": "300 mm"}, "merge": True})
             self.assertEqual(calls[1].kwargs["src"], calls[0].kwargs["save"])
-            self.assertEqual(calls[2].args[0][0]["params"]["parameters"], {"length": "3000 mm"})
+            self.assertEqual(calls[2].args[0][0]["params"]["parameters"],
+                             {refusal_parameter: refuse["outside"] if refuse else "3000 mm"})
+            self.assertEqual([c.args[1] for c in direct.call_args_list], ["A", "B"])
             return rows
 
     def test_refusal_must_name_parameter_and_limit(self):
         self.assertTrue(self.rows("rule length range restricts the final value")[-1]["changed"]["refused"])
         for failure in (None, "unknown command component.set_link_parameters", "length: geometry failed", "rule width range restricts final value"):
             self.assertFalse(self.rows(failure)[-1]["changed"]["refused"])
+
+    def test_separate_refusal_parameter(self):
+        fixture = {"parameter": "split", "outside": "2"}
+        row = self.rows("split range restricts final value", fixture)[-1]
+        self.assertTrue(row["changed"]["refused"])
+        self.assertEqual(row["changed"]["parameter"], "split")
+        for message in (None, "length range restricts final value", "split geometry failed"):
+            self.assertFalse(self.rows(message, fixture)[-1]["changed"]["refused"])
 
     def test_verdict_refusals_and_existing_geometry_rules(self):
         valid = {"code": "sample", "python": M, "parametric": M, "spec_python": "1/1", "spec_parametric": "1/1"}
@@ -98,7 +127,7 @@ class HarnessContracts(unittest.TestCase):
 
     def test_all_link_fixture_codes_build_without_cli(self):
         fixtures = list((ROOT / "vendors").glob("*/*/*/parametric/link_checks.json"))
-        self.assertEqual(len(fixtures), 12)
+        self.assertEqual(len(fixtures), 14)
         for path in fixtures:
             data = json.loads(path.read_text())
             gen = registry.Generator(path.parents[1])
@@ -109,6 +138,24 @@ class HarnessContracts(unittest.TestCase):
                         self.assertIsNotNone(templates.match(code))
                         part, commands = gen.build(code, **check.get("build_options", {}))
                         self.assertTrue(commands)
+
+    def test_shared_row_catalogue_geometry(self):
+        import csv
+        bracket = ROOT / "vendors/misumi/hbl/bracket/data/types.csv"
+        with bracket.open() as stream:
+            rows = {r["type"]: r for r in csv.DictReader(stream)}
+        ignored = {"type", "hole_d", "screw", "nut", "source", "page", "status"}
+        self.assertEqual({k: v for k, v in rows["HBLTS5"].items() if k not in ignored},
+                         {k: v for k, v in rows["HBLTS5-4"].items() if k not in ignored})
+        collar = ROOT / "vendors/misumi/scs/collar/data/sizes.csv"
+        with collar.open() as stream:
+            rows = [r for r in csv.DictReader(stream) if r["type"] == "C-SCSAW"]
+        ignored = {"B", "source", "page", "status"}
+        for row in rows:
+            for other in rows:
+                if (row["D"], row["D1"], row["M"]) == (other["D"], other["D1"], other["M"]):
+                    self.assertEqual({k: v for k, v in row.items() if k not in ignored},
+                                     {k: v for k, v in other.items() if k not in ignored})
 
     def test_nut_converter_ignores_rebuilds_and_preserves_extra_rows(self):
         row = {"code": "X", "python": M, "parametric": M, "python_spec": {"rows": 1, "failed": []}, "parametric_spec": {"rows": 1, "failed": []}}

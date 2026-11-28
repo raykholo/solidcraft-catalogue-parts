@@ -40,7 +40,7 @@ def write_toml(pkg: Path, data: Path):
     lines = ['format = "solidcraft-generator/2"', 'id = "scs-collar"',
              'name = "MISUMI Economy Series shaft collars: aluminium slit and split, with fixing holes, bearing inner mount, and with urethane damper"',
              'license = "CC0-1.0"', 'model = "scs-collar.sc"', "",
-             "# One configuration row per catalogue row; no free parameter (B follows from D in every table, and the plating E- / E-P / E-S only changes the text).",
+             "# Catalogue rows remain available; compatible C-SCSAW widths share a row with ring_h and ht overrides. Plating changes text only.",
              "# The `\\-` between the two sizes is a required separator (`C-SCSAW1210` is refused, as the Python regular expressions do).",
              "# The last template takes anything else so that generator.rhai can give the Python generator's message for a code of the wrong shape."]
     for p in TEMPLATES:

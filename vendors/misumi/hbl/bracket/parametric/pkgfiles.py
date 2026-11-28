@@ -26,8 +26,8 @@ def write_toml(pkg: Path, data: Path):
     lines = ['format = "solidcraft-generator/2"', 'id = "hbl-bracket"',
              'name = "MISUMI 5 series extruded brackets (HBLTS, HBLTV, HBLTSW, HBLTVW, HBLTF, HBKTS, HBKUS, HBLUS, HBLTH)"', 'license = "CC0-1.0"',
              'model = "hbl-bracket.sc"', "",
-             "# The code is the type (one configuration row per type, -4 included) and at most one alteration. The alteration only adds accessory text,",
-             "# so there is no free parameter. Both fields are plain text: generator.rhai answers every Python refusal with its own message.",
+             "# Catalogue rows remain available; HBLTS5 and HBLTS5-4 resolve to HBLTS5 with a table-derived hole_d.",
+             "# Alterations add accessory text only. generator.rhai preserves the generator refusal messages.",
              "[[template]]", f"pattern = '{TEMPLATES[0]}'", "", "[[template]]", f"pattern = '{TEMPLATES[1]}'", ""]
     for r in read_csv(data / "types.csv"):
         lines += [f'[rows."{r["type"]}"]', f'source = {json.dumps("MISUMI FA catalogue 2014 " + r["source"] + " (sources.toml), " + r["page"])}', f'page = "{r["page"].split()[0]}"',
