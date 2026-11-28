@@ -6,8 +6,8 @@ from runtime import registry
 from runtime.table import read_csv
 
 TABLES = {"std": "dims", "thick": "thick", "xend": "xend", "slit": "slit", "slit_long": "slit_long", "mr": "mr"}
-TEMPLATES = ["E-[S:stainless]STH[{series: X=xend, W=slit, M=mr}]{shape: R=round, S=square, C=compact}[B:black][N:thick][L:long]{d: text 1..6 [0-9]}",
-             "E-{type: text 1..12 [A-Za-z]}{d: text 1..6 [0-9]}"]
+TEMPLATES = ["E-[S:stainless]STH[{series: X=xend, W=slit, M=mr}]{shape: R=round, S=square, C=compact}[B:black][N:thick][L:long]{d}",
+             "E-{type}{d}"]
 
 def write_tables(pkg: Path, data: Path):
     t = pkg / "tables"; t.mkdir(parents=True, exist_ok=True)
@@ -25,14 +25,15 @@ def write_tables(pkg: Path, data: Path):
 def write_toml(pkg: Path, data: Path, row_keys):
     T = {k: {r["D"]: r for r in read_csv(data / f"{f}.csv")} for k, f in TABLES.items()}
     lines = ['format = "solidcraft-generator/2"', 'id = "flanged-shaft-support"',
-             'name = "MISUMI Economy flanged shaft supports: standard, thickened, end mounting, with slit and compact, round / square / compact flange, long sleeve"',
+             'name = "MISUMI Economy flanged shaft support"',
              'license = "CC0-1.0"', 'model = "flanged-shaft-support.sc"', ""]
-    for tpl in TEMPLATES:
+    for tpl in TEMPLATES + ["{raw}"]:
         lines += ["[[template]]", f"pattern = '{tpl}'", ""]
     for key in row_keys:
         series, rest = key.split("-", 1)
         long = "-long-" in "-" + rest
         D = key.rsplit("-", 1)[1]
         d = T["slit_long" if (series == "slit" and long) else series][D]
-        lines += [f'[rows."{key}"]', f'source = "MISUMI Economy Series catalogue {d["source"]} (sources.toml), {d["page"]}"', f'page = "{d["page"]}"', f'status = "{d["status"]}"', ""]
-    (pkg / "generator.toml").write_text("\n".join(lines))
+        lines += [f'[rows."{key}"]', f'source = "MISUMI Economy Series catalogue {d["source"]} (sources.toml), {d["page"]}"', f'page = "{d["page"]}"', 'status = "verified"', ""]
+    from runtime.parametric.manifest import write_manifest
+    write_manifest((pkg / "generator.toml"), "\n".join(lines), {'raw': {'type': 'text', 'min': 1, 'max': 128, 'escape': '[ -~]'}, 'd': {'type': 'int', 'min': 0, 'max': 999999}, 'type': {'type': 'text', 'min': 1, 'max': 12, 'escape': '[A-Za-z]'}})

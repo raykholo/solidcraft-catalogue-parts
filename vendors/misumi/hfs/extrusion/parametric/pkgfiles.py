@@ -5,7 +5,7 @@ from pathlib import Path
 from runtime.table import read_csv
 from vendors.misumi.hfs.extrusion.src import ext
 
-TEMPLATE = "[K:fixed]{part_type: text 3..8 [A-Za-z0-9]}-{profile: text 4..6 [0-9]}[-{length: decimal}][-{alts: text 1..80 [A-Za-z0-9-]}]"
+TEMPLATE = "[K:fixed]{part_type}-{profile}[-{length: decimal 0..999999}][-{alts}]"
 
 from runtime.parametric.kit import write_csv
 
@@ -44,4 +44,5 @@ def write_toml(pkg: Path, data: Path):
         src, page = r["cite"].split(" ", 1)
         lines += [f'[rows."{r["key"]}"]', f'source = "MISUMI FA catalogue {src} (sources.toml), {page}"', f'page = "{page}"', 'status = "verified"',
                   'note = "section values read from the vector drawing are listed in the generator README under not guaranteed"', ""]
-    (pkg / "generator.toml").write_text("\n".join(lines))
+    from runtime.parametric.manifest import write_manifest
+    write_manifest((pkg / "generator.toml"), "\n".join(lines), {'part_type': {'type': 'text', 'min': 3, 'max': 8, 'escape': '[A-Za-z0-9]'}, 'profile': {'type': 'text', 'min': 4, 'max': 6, 'escape': '[0-9]'}, 'alts': {'type': 'text', 'min': 1, 'max': 80, 'escape': '[A-Za-z0-9-]'}})

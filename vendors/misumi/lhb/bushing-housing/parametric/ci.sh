@@ -8,3 +8,5 @@ python3 -m runtime.parametric.kit package-files vendors/misumi/lhb/bushing-housi
 
 # Optional link proof: release CLIs retain the legacy verdict unchanged.
 python3 -m runtime.parametric.links "vendors/misumi/lhb/bushing-housing" "$O"
+
+python3 -m runtime.parametric.native_parse "vendors/misumi/lhb/bushing-housing" "$O"

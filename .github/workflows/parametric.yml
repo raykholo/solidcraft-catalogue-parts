@@ -38,13 +38,18 @@ jobs:
               versions.append("pr23175")
           print("sc_vers=" + json.dumps(versions))
           PYVERS
-          all=$(ls vendors/*/*/*/parametric/ci.sh 2>/dev/null | xargs -r -n1 dirname | xargs -r -n1 dirname | sort -u)
+          # No pipes whose failure could hide: each command that can fail runs on its own, so bash -e stops the job.
+          all=""
+          for c in vendors/*/*/*/parametric/ci.sh; do [ -f "$c" ] && all="$all $(dirname "$(dirname "$c")")"; done
+          [ -n "$all" ] || { echo "no parametric generators found"; exit 1; }
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             base=$(git merge-base origin/${{ github.base_ref }} HEAD)
-            if git diff --name-only "$base" HEAD | grep -qE '^(runtime|tools)/|^\.github/workflows/parametric\.yml$'; then sel="$all"; else
-              sel=$(for g in $all; do if git diff --name-only "$base" HEAD | grep -q "^$g/"; then echo "$g"; fi; done); fi
+            changed=$(git diff --name-only "$base" HEAD)
+            if grep -qE '^(runtime|tools)/|^\.github/workflows/parametric\.yml$' <<<"$changed"; then sel="$all"; else
+              sel=""; for g in $all; do if grep -q "^$g/" <<<"$changed"; then sel="$sel $g"; fi; done; fi
           else sel="$all"; fi
-          echo "gens=$(printf '%s\n' $sel | python3 -c 'import json,sys; print(json.dumps([l.strip() for l in sys.stdin if l.strip()]))')" >> "$GITHUB_OUTPUT"
+          gens=$(python3 -c 'import json,sys; print(json.dumps(sys.argv[1:]))' $sel)
+          echo "gens=$gens" >> "$GITHUB_OUTPUT"
   faithfulness:
     needs: list
     if: needs.list.outputs.gens != '[]'
@@ -91,6 +96,7 @@ jobs:
       - name: Every code both ways
         run: bash ${{ matrix.gen }}/parametric/ci.sh "$RUNNER_TEMP/out"
       - name: Verdict
+        shell: bash   # -eo pipefail: without it the tee below hides the verdict's exit status
         run: tools/parametric-verdict "$RUNNER_TEMP/out/faithfulness.json" | tee -a "$GITHUB_STEP_SUMMARY"
       - if: always()
         uses: actions/upload-artifact@v4

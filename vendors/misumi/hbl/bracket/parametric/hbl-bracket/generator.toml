@@ -6,11 +6,16 @@ model = "hbl-bracket.sc"
 
 # Catalogue rows remain available; HBLTS5 and HBLTS5-4 resolve to HBLTS5 with a table-derived hole_d.
 # Alterations add accessory text only. generator.rhai preserves the generator refusal messages.
-[[template]]
-pattern = '{base: text 1..24 [A-Za-z0-9]}[\-{rest: text 1..40 [A-Za-z0-9-]}]'
+[parameters]
+base = { type = "text", min = 1, max = 24, escape = "[A-Za-z0-9]" }
+rest = { type = "text", min = 1, max = 40, escape = "[A-Za-z0-9-]" }
+raw = { type = "text", min = 1, max = 64, escape = "[A-Za-z0-9-]" }
 
 [[template]]
-pattern = '{raw: text 1..64 [A-Za-z0-9-]}'
+pattern = '{base}[\-{rest}]'
+
+[[template]]
+pattern = '{raw}'
 
 [rows."HBLTS5"]
 source = "MISUMI FA catalogue 2014 S40 (sources.toml), p.539 HBLTS5 drawing and tables"

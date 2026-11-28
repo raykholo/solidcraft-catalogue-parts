@@ -5,8 +5,8 @@ from pathlib import Path
 from runtime.table import read_csv
 
 PAGE = "p.540"
-TEMPLATES = ["E-STHWI{shape: R=round, C=compact}B{d: text 1..6 [0-9]}",
-             "E-{type: text 1..12 [A-Za-z]}{d: text 1..6 [0-9]}"]
+TEMPLATES = ["E-STHWI{shape: R=round, C=compact}B{d}",
+             "E-{type}{d}"]
 
 def write_tables(pkg: Path, data: Path):
     t = pkg / "tables"; t.mkdir(parents=True, exist_ok=True)
@@ -22,9 +22,10 @@ def write_toml(pkg: Path, data: Path, row_keys):
     lines = ['format = "solidcraft-generator/2"', 'id = "pilot-flanged-shaft-support"',
              'name = "MISUMI Economy pilot flanged shaft supports, steel: round (E-STHWIRB) and compact (E-STHWICB)"', 'license = "CC0-1.0"',
              'model = "pilot-flanged-shaft-support.sc"', ""]
-    for tpl in TEMPLATES:
+    for tpl in TEMPLATES + ["{raw}"]:
         lines += ["[[template]]", f"pattern = '{tpl}'", ""]
     for key in row_keys:
         d = dims[key.split("-")[1]]
-        lines += [f'[rows."{key}"]', f'source = "MISUMI Economy Series catalogue {d["source"]} (sources.toml), {d["page"]}"', f'page = "{d["page"]}"', f'status = "{d["status"]}"', ""]
-    (pkg / "generator.toml").write_text("\n".join(lines))
+        lines += [f'[rows."{key}"]', f'source = "MISUMI Economy Series catalogue {d["source"]} (sources.toml), {d["page"]}"', f'page = "{d["page"]}"', 'status = "verified"', ""]
+    from runtime.parametric.manifest import write_manifest
+    write_manifest((pkg / "generator.toml"), "\n".join(lines), {'raw': {'type': 'text', 'min': 1, 'max': 128, 'escape': '[ -~]'}, 'd': {'type': 'int', 'min': 0, 'max': 999999}, 'type': {'type': 'text', 'min': 1, 'max': 12, 'escape': '[A-Za-z]'}})

@@ -42,8 +42,9 @@ fn no_match(raw) {
 }
 
 fn resolve(fields) {
+    if fields.raw != () { refuse("invalid", no_match(fields.raw)); }
     let typ = typ_of(fields);
-    let digits = fields.d;
+    let digits = fields.d.to_string();
     let t = table("types", typ);
     if t == () {
         let tt = param("types_text"); let shown = typ + digits;

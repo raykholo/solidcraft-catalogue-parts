@@ -8,3 +8,5 @@ cp "$P/shf-shaft-holder/shf-shaft-holder.sc" "$O/shf-shaft-holder.sc.json"    # 
 
 # Optional link proof: release CLIs retain the legacy verdict unchanged.
 python3 -m runtime.parametric.links "vendors/misumi/shf/shaft-holder" "$O"
+
+python3 -m runtime.parametric.native_parse "vendors/misumi/shf/shaft-holder" "$O"

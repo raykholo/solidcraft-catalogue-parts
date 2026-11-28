@@ -23,6 +23,230 @@ class HarnessContracts(unittest.TestCase):
     def tearDown(self):
         supports_link_parameters.cache_clear()
 
+    def test_package_manifest_keys_match_native_structs(self):
+        import tomllib
+        allowed = {"top": set("format id name description license author model min_solidcraft script row_from parameters template rows example".split()),
+                   "parameters": set("type values labels codes min max step digits unit default escape".split()),
+                   "template": set("pattern description fields".split()),
+                   "rows": set("source page status note description".split()),
+                   "example": set("code invalid message_contains volume_mm3 bbox_mm faces".split())}
+        packages = list(ROOT.glob("vendors/*/*/*/parametric/*/generator.toml"))
+        self.assertEqual(len(packages), 18)
+        for path in packages:
+            data = tomllib.loads(path.read_text())
+            self.assertFalse(data.keys() - allowed["top"], path)
+            self.assertLessEqual(len(data["name"]), 128, path)
+            self.assertNotIn("min_solidcraft", data, path)
+            for row in data.get("rows", {}).values():
+                self.assertIn(row.get("status"), (None, "verified", "needs_review", "not_modelled"), path)
+            for table in (path.parent / "tables").glob("*.csv"):
+                self.assertRegex(table.stem, r"^[A-Za-z_][A-Za-z_0-9]*$")
+            for group in ("parameters", "template", "rows", "example"):
+                items = data.get(group, {})
+                for item in items.values() if isinstance(items, dict) else items:
+                    self.assertFalse(item.keys() - allowed[group], (path, group))
+            templates = fieldtemplate.load(path.parent)
+            for template in templates.templates:
+                self.assertNotIn("bag(", template.pattern)
+
+    def test_text_escape_is_declared_and_not_template_level(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "generator.toml"
+            path.write_text('[parameters]\nx = {type="text", min=1, max=8, escape="[A-Za-z0-9+/]"}\n[[template]]\npattern="X{x}"\n')
+            templates = fieldtemplate.load(tmp)
+            self.assertEqual(templates.match("XAB/C+1")[1]["x"], "AB/C+1")
+            self.assertIsNone(templates.match("XAB!"))
+            path.write_text(path.read_text() + 'escape="[A-Z]"\n')
+            with self.assertRaises(fieldtemplate.TemplateError):
+                fieldtemplate.load(tmp)
+        with self.assertRaises(fieldtemplate.TemplateError):
+            fieldtemplate.Template.parse("X{x: text 1..8 [A-Z]}")
+
+    def test_native_parse_capability_cached(self):
+        from runtime.parametric import native_parse as native
+        for catalogue, expected in [({"commands": [{"name": "generator.parse"}]}, True), ([{"name": "generator.insert"}], False)]:
+            native.supports_parse.cache_clear()
+            with patch.object(native.subprocess, "run", return_value=SimpleNamespace(stdout=json.dumps(catalogue))) as call:
+                self.assertEqual(native.supports_parse(), expected)
+                self.assertEqual(native.supports_parse(), expected)
+                self.assertEqual(call.call_count, 1)
+        native.supports_parse.cache_clear()
+
+    def test_native_parse_valid_reference_and_errors(self):
+        from runtime.parametric import native_parse as native
+        value = {"configuration": "row", "parameters": {"length": "300 mm"}}
+        line = SimpleNamespace(code="VALID", valid=True)
+        for reply in [value | {"ok": True}, {"ok": False, "message": "package invalid"}]:
+            with patch.object(native, "resolve", return_value=value), patch.object(native, "cli", return_value=([reply], None)) as call:
+                row = native.parse_row(ROOT, line, {})
+                self.assertEqual(row["expected"], value)
+                self.assertEqual(call.call_args.args[0][0]["params"]["code"], "VALID")
+                self.assertEqual(row["expected"] == row["actual"], reply["ok"])
+        with patch.object(native, "resolve", side_effect=ValueError("reference failed")), patch.object(native, "cli", return_value=([value | {"ok": True}], None)) as call:
+            row = native.parse_row(ROOT, line, {})
+            self.assertIn("error", row["expected"])
+            call.assert_called_once()
+
+    def test_native_parse_refusal_keeps_exact_message_and_blocked_keeps_rows(self):
+        from runtime.parametric import native_parse as native
+        line = SimpleNamespace(code="INVALID", valid=False)
+        with patch.object(native, "cli", return_value=([{"ok": False, "message": "engine no_match"}], None)):
+            row = native.parse_row(ROOT, line, {"INVALID": "Python message"})
+            self.assertNotEqual(row["expected"], row["actual"])
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "faithfulness.json"
+            original = {"parse": [row], "blocked": [], "rejects": []}
+            path.write_text(json.dumps(original))
+            with patch.object(native, "supports_parse", return_value=False):
+                native.check_parse(ROOT / "vendors/hiwin/mg/rail-set", tmp)
+            result = json.loads(path.read_text())
+            self.assertEqual(result["parse"], [row])
+            self.assertEqual(result["blocked"], [native.BLOCKED])
+
+    def test_native_parse_sweeps_every_codes_line_and_ci_calls_it(self):
+        from runtime.parametric import native_parse as native
+        for generator in registry.generators():
+            self.assertIn("runtime.parametric.native_parse", (generator.dir / "parametric/ci.sh").read_text())
+            with tempfile.TemporaryDirectory() as tmp:
+                path = Path(tmp) / "faithfulness.json"
+                path.write_text(json.dumps({"rejects": [], "blocked": []}))
+                with patch.object(native, "supports_parse", return_value=True), patch.object(native, "parse_row", return_value={"checked": True}) as row:
+                    native.check_parse(generator.dir, tmp)
+                lines = generator.codes()
+                self.assertEqual(row.call_count, len(lines))
+                self.assertEqual([c.args[1].code for c in row.call_args_list], [line.code for line in lines])
+                self.assertEqual(len(json.loads(path.read_text())["parse"]), len(lines))
+
+    def test_native_rest_is_optional_nonempty_and_limited(self):
+        template = fieldtemplate.Template.parse("X[{opts: rest}]")
+        self.assertNotIn("opts", template.match("X"))
+        self.assertEqual(template.match("X-M4-N8")["opts"], "-M4-N8")
+        self.assertIsNone(template.match("X" + "A" * 65))
+        package = ROOT / "vendors/misumi/sfj/shaft/parametric/sfj-shaft"
+        templates = fieldtemplate.load(package)
+        for code in ("E-PSFJ12-300", "E-PSFJ12-300-M4-N8"):
+            matched = templates.match(code)
+            self.assertEqual(matched[0], 0)
+            self.assertEqual(templates.print(matched[1], 0), code)
+
+    def test_manifest_writer_retains_defaults(self):
+        from runtime.parametric.manifest import write_manifest
+        import tomllib
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "generator.toml"
+            write_manifest(path, '[parameters]\nx = {type="text", default="A"}\n[[template]]\npattern="X{x}"\n',
+                           {"x": {"type": "text", "min": 1, "max": 3, "escape": "[A-Z/]"}})
+            self.assertEqual(tomllib.loads(path.read_text())["parameters"]["x"]["default"], "A")
+            self.assertEqual(fieldtemplate.load(tmp).match("XA/B")[1]["x"], "A/B")
+
+    def test_native_parse_differences_fail_verdict(self):
+        for changed, expected_exit in [({"configuration": "row", "parameters": {}}, 0), ({"configuration": "other", "parameters": {}}, 1), ({"error": "package failed"}, 1)]:
+            with tempfile.TemporaryDirectory() as tmp:
+                path = Path(tmp) / "faithfulness.json"
+                path.write_text(json.dumps({"valid": [{"code": "valid", "python": M, "parametric": M, "spec_python": "1/1", "spec_parametric": "1/1"}],
+                    "parse": [{"code": "valid", "expected": {"configuration": "row", "parameters": {}}, "actual": changed}]}))
+                result = subprocess.run([str(ROOT / "tools/parametric-verdict"), str(path)], capture_output=True, text=True)
+                self.assertEqual(result.returncode, expected_exit, result.stdout + result.stderr)
+
+    def test_native_matching_literals_defaults_maps_and_text(self):
+        template = fieldtemplate.Template.parse("AB{kind: C=compact, R=round}[-{x}]", parameters={"x": {"type": "text", "min": 1, "max": 8, "default": "none", "escape": "[/]"}})
+        self.assertEqual(template.match("ABc"), {"kind": "compact", "kind_code": "C", "x": "none"})
+        self.assertEqual(template.match("ABr-a/B")["x"], "a/B")
+        self.assertIsNone(template.match("A Bc"))
+        self.assertEqual(template.match("ABc-_"), {"kind": "compact", "kind_code": "C", "x": "none"})
+        optional = fieldtemplate.Template.parse("X[{x: int 0..99}]")
+        self.assertEqual(optional.match("X"), {})
+        with self.assertRaises(fieldtemplate.TemplateError):
+            fieldtemplate.Template.parse("X{x: decimal}")
+        decimal = fieldtemplate.Template.parse("X{x: decimal 0..99 digits 2}")
+        self.assertIsNone(decimal.match("X1.234"))
+        self.assertEqual(decimal.print({"x": 1.2}), "X1.2")
+
+    def test_native_reply_omits_empty_parameters(self):
+        from runtime.parametric import native_parse as native
+        expected = {"configuration": "row", "parameters": {}}
+        with patch.object(native, "resolve", return_value=expected), patch.object(native, "cli", return_value=([{"ok": True, "configuration": "row"}], None)):
+            row = native.parse_row(ROOT, SimpleNamespace(code="CODE", valid=True), {})
+            self.assertEqual(row["expected"], row["actual"])
+
+    @unittest.skipUnless(__import__("os").environ.get("RHAI_RUN"), "requires the real Rhai host")
+    def test_real_rhai_caps_defaults_values_and_catalogue_refusal(self):
+        from runtime.parametric import rhai
+        package = ROOT / "vendors/hiwin/mg/rail-set/parametric/mg-rail-set"
+        fields = fieldtemplate.load(package).match("MGN12H2R300Z0C")[1]
+        for options, caps in [({}, "0"), ({"caps": 0}, "0"), ({"caps": 1}, "1")]:
+            reply = rhai(package, "resolve", fields | {"options": options})
+            self.assertTrue(reply["ok"], reply)
+            self.assertEqual(reply["value"]["parameters"]["caps"], caps)
+        for value in (2, -1, True, "1", 1.0):
+            reply = rhai(package, "resolve", fields | {"options": {"caps": value}})
+            self.assertFalse(reply["ok"], reply)
+            self.assertEqual(reply["message"], "caps must be 0 or 1")
+        fields = fieldtemplate.load(package).match("MGN9C1R195ZFH")[1]
+        reply = rhai(package, "resolve", fields | {"options": {"caps": 1}})
+        with self.assertRaises(ValueError) as error:
+            registry.Generator(package.parent.parent).build("MGN9C1R195ZFH", caps=True)
+        self.assertEqual(reply["message"], str(error.exception))
+
+    def test_options_catalogue_capability(self):
+        from runtime.parametric import options
+        for catalogue, expected in [([{"name": "generator.parse", "params": "options? fields.options"}], True),
+                                    ([{"name": "generator.parse", "params": "generator, code"}], False),
+                                    ([{"name": "other", "params": "fields.options"}], False)]:
+            options.supports_options.cache_clear()
+            with patch.object(options.subprocess, "run", return_value=SimpleNamespace(stdout=json.dumps(catalogue))) as call:
+                self.assertEqual(options.supports_options(), expected)
+                self.assertEqual(options.supports_options(), expected)
+                self.assertEqual(call.call_count, 1)
+        options.supports_options.cache_clear()
+
+    def test_options_blocked_preserves_existing_verdicts(self):
+        from runtime.parametric import options
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "faithfulness.json"
+            original = {"rebuild": [{"label": "difference", "direct": M, "changed": {"error": True}}], "blocked": []}
+            path.write_text(json.dumps(original))
+            with patch.object(options, "supports_options", return_value=False):
+                options.check_options(ROOT / "vendors/hiwin/mg/rail-set", tmp)
+            result = json.loads(path.read_text())
+            self.assertEqual(result["rebuild"], original["rebuild"])
+            self.assertEqual(result["blocked"], [options.BLOCKED])
+
+    def test_options_refusals_require_message_for_both_commands(self):
+        from runtime.parametric import options
+        for message, expected in [("caps must be 0 or 1", True), ("unknown command", False), (None, False)]:
+            with tempfile.TemporaryDirectory() as tmp, patch.object(options, "cli", return_value=([{}], message)) as call:
+                rows = options.option_rows(None, ROOT, {"code": "MGN12H2R300Z0C", "options": {"caps": 2},
+                    "refusal": "caps must be 0 or 1"}, Path(tmp))
+                self.assertEqual([r["changed"]["refused"] for r in rows], [expected, expected])
+                self.assertEqual([c.args[0][0]["command"] for c in call.call_args_list], ["generator.parse", "generator.insert"])
+
+    def test_options_success_measures_both_paths_without_dropping_options(self):
+        from runtime.parametric import options
+        fixture = {"code": "MGN12H2R300Z0C", "options": {"caps": 1}}
+        parsed = {"ok": True, "configuration": "H-12", "parameters": {"caps": "1"}, "fields": {"options": {"caps": 1}}}
+        with tempfile.TemporaryDirectory() as tmp, patch.object(options, "cli", side_effect=[([parsed], None), ([{}], None), ([{}], None)]) as call, patch.object(options, "caps_reference", return_value=M), patch.object(options, "measure", return_value=M):
+            rows = options.option_rows(None, ROOT / "vendors/hiwin/mg/rail-set/parametric/mg-rail-set", fixture, Path(tmp))
+            self.assertEqual(len(rows), 2)
+            self.assertTrue(all(r["direct"] == r["changed"] == M for r in rows))
+            calls = [c.args[0][0] for c in call.call_args_list]
+            self.assertEqual([c["command"] for c in calls], ["generator.parse", "component.insert_design", "generator.insert"])
+            self.assertEqual(calls[0]["params"]["options"], fixture["options"])
+            self.assertEqual(calls[2]["params"]["options"], fixture["options"])
+            self.assertEqual(calls[1]["params"]["parameters"], parsed["parameters"])
+
+    def test_caps_reference_uses_python_cylinders_only(self):
+        from runtime.parametric import options
+        generator = registry.Generator(ROOT / "vendors/hiwin/mg/rail-set")
+        with tempfile.TemporaryDirectory() as tmp, patch.object(options.sc, "run_script", return_value=("part.sc", None)) as run, patch.object(options, "measure", return_value=M):
+            options.caps_reference(generator, "MGN12H2R300Z0C", Path(tmp))
+            commands = run.call_args.args[0]
+            caps = [c for c in commands if c["params"].get("body_name", "").startswith("Rail cap ")]
+            self.assertTrue(caps)
+            self.assertTrue(all(c["command"] == "solid.cylinder" for c in caps))
+            _, plain = generator.build("MGN12H2R300Z0C", appearance=False, screws=False, caps=True)
+            self.assertEqual(commands, plain + caps)
+
     def test_edit_enforcement_only_marks_limits_on_capable_hosts(self):
         from runtime.parametric import limit_rules
         rules = [{"effect": {"type": "parameter_range"}}, {"effect": {"type": "suppress_features"}}]
@@ -222,7 +446,7 @@ class HarnessContracts(unittest.TestCase):
             with patch.object(package, "rhai", return_value={"ok": False, "reason": "invalid", "message": "refused"}) as call:
                 package.parse(code)
                 self.assertEqual(call.call_args.args[1]["raw_code"], code)
-                self.assertEqual(call.call_args.args[1]["raw"], code.strip().upper())
+                self.assertEqual(call.call_args.args[1]["raw"], code.strip())
 
     def test_guideway_rebuild_conversion_retains_order_and_errors(self):
         raw = {"vol": 42, "area": 20, "faces": 6, "bodies": 1, "lo": [-2, 0, 1], "hi": [1, 4, 6]}

@@ -127,9 +127,13 @@ def main():
         # ---- stays parametric: change the length of a built part and compare with the code built directly ---------------------
         for base, newlen in (("E-PSFJT12-60-M6", 100), ("E-PSFJZ6-50-M3-N3-SC0", 200), ("E-SFJC20-300-M10-SC5-FC40-E20", 500), ("E-PFPGH30-800-F30-P20-M16-T25-SC40", 600),
                              ("E-PSFPG25-400-F20-P16-MD10-SC30-WFC20-A50-E50", 700), ("E-PSSFJZ16-300-M8-N6-WSC20-X30-LKC", 450), ("E-SFJ20-300-SC5", 150)):
-            st, _ = resolve(base); res = st[1]
+            st, _ = resolve(base)
+            if st[0] != "ok": raise ValueError(f"rebuild base {base}: {st[1]}: {st[2]}")
+            res = st[1]
             parts = base.split("-"); parts[2] = str(newlen); direct = "-".join(parts)
-            std, _ = resolve(direct); dres = std[1]
+            std, _ = resolve(direct)
+            if std[0] != "ok": raise ValueError(f"rebuild reference {direct}: {std[1]}: {std[2]}")
+            dres = std[1]
             wc = work / f"pc_{scrun.slug(base)}.sc"
             cmds = row_cmds(base, res) + [{"command": "config.activate", "params": {"row": base}}, {"command": "parameters.change", "params": {"name": "L", "expression": f"{newlen} mm"}}]
             r, err = cli(cmds, src=PKG / "sfj-shaft.sc", save=wc)

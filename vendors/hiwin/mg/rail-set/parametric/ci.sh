@@ -6,3 +6,6 @@ python3 $P/faithfulness.py "$O/harness" "$O/faithfulness.json"
 
 # Optional link proof: release CLIs retain the legacy verdict unchanged.
 python3 -m runtime.parametric.links "vendors/hiwin/mg/rail-set" "$O"
+python3 -m runtime.parametric.options "vendors/hiwin/mg/rail-set" "$O"
+
+python3 -m runtime.parametric.native_parse "vendors/hiwin/mg/rail-set" "$O"

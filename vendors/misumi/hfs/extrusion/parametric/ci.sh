@@ -7,3 +7,5 @@ python3 $P/faithfulness.py "$O/results.json" "$O/faithfulness.json"
 
 # Optional link proof: release CLIs retain the legacy verdict unchanged.
 python3 -m runtime.parametric.links "vendors/misumi/hfs/extrusion" "$O"
+
+python3 -m runtime.parametric.native_parse "vendors/misumi/hfs/extrusion" "$O"

@@ -63,6 +63,11 @@ for path in sys.argv[1:]:
         ok, why = same(x.get("direct"), x.get("changed"))
         bad += not ok
         print(f"| rebuild: {x['label']} | {fm(x.get('direct'))} | {fm(x.get('changed'))} | - | {'identical' if ok else 'DIFFERS: ' + why} |")
+    for x in r.get("parse", []):
+        expected, actual = x.get("expected"), x.get("actual")
+        ok = bool(expected and actual and "error" not in expected and "error" not in actual and expected == actual)
+        bad += not ok
+        print(f"| generator.parse: {x['code']} | {json.dumps(expected, sort_keys=True)} | {json.dumps(actual, sort_keys=True)} | - | {'identical' if ok else 'DIFFERS'} |")
     for x in r.get("blocked", []):
         print(f"| blocked: {x['what']} | - | - | - | needs: {x['needs']} |")
     nvalid = len(r.get("valid", []))

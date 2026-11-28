@@ -21,8 +21,8 @@ from runtime.parametric import kit as pk
 PKG = HERE / "tall-housing"
 DATA = HERE.parent / "data"
 MODEL = "tall-housing.sc"
-TEMPLATE = r"E\-LBHS[W:double]{dr: text 1..2 [0-9]}[{length: D|S|L}][\-P:dowel]"
-FALLBACK = "{raw: text 1..128 [ -~]}"
+TEMPLATE = r"E\-LBHS[W:double]{dr}[{length: D|S|L}][\-P:dowel]"
+FALLBACK = "{raw}"
 THREADS = ["M4", "M5", "M6", "M8", "M10"]
 SERIES = ["single", "double", "medium", "medlong", "long"]
 
@@ -44,7 +44,8 @@ def write_package():
              "[[template]]", f"pattern = '{TEMPLATE}'", "", "[[template]]", f"pattern = '{FALLBACK}'", ""]
     for r in blocks():
         lines += [f'[rows."{key(r)}"]', f'source = "MISUMI Economy catalogue 2025 ({r["source"]}, sources.toml)"', f'page = "{r["page"]}"', 'status = "verified"', ""]
-    (PKG / "generator.toml").write_text("\n".join(lines))
+    from runtime.parametric.manifest import write_manifest
+    write_manifest((PKG / "generator.toml"), "\n".join(lines), {'dr': {'type': 'int', 'min': 0, 'max': 99}, 'raw': {'type': 'text', 'min': 1, 'max': 128, 'escape': '[ -~]'}})
 
 # ---- the model --------------------------------------------------------------------------------------------------------
 COLUMNS = ["dr", "bl", "l1", "l2", "hb", "bw", "bh", "tl", "m1d", "m2d", "cbd", "cbt", "dp", "dl", "dwx", "dwy", "dowel", "dowel_ok"]

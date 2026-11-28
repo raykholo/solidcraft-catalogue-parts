@@ -5,7 +5,7 @@ from pathlib import Path
 from runtime.table import read_csv
 
 TEMPLATES = ["{pfx: E|C}-SH{fam: STBN|STMN|STB|STM|STA|WTB|WTA|A}{d: int 1..99}[\\-{h: int 0..99999999}]",
-             "{raw: text 1..64 [A-Za-z0-9-]}"]
+             "{raw}"]
 
 from runtime.parametric.kit import write_csv
 
@@ -39,4 +39,5 @@ def write_toml(pkg: Path, data: Path):
             lines += [f'[rows."{key}"]', f'source = {json.dumps("MISUMI Economy Series catalogue 2025 " + r["source"] + " (sources.toml), " + r["page"])}',
                       f'page = {json.dumps(r["page"])}', 'status = "verified"',
                       'note = "labelled catalogue dimensions; the position of the second base row and second screw of the thickened types is appearance"', ""]
-    (pkg / "generator.toml").write_text("\n".join(lines))
+    from runtime.parametric.manifest import write_manifest
+    write_manifest((pkg / "generator.toml"), "\n".join(lines), {'raw': {'type': 'text', 'min': 1, 'max': 64, 'escape': '[A-Za-z0-9-]'}})

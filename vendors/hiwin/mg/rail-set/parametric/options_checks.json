@@ -1,0 +1,9 @@
+{
+ "package": "mg-rail-set",
+ "checks": [
+  {"code": "MGN12H2R300Z0C", "options": {"caps": 1}},
+  {"code": "MGN15C1R300Z0C", "options": {"caps": 1}},
+  {"code": "MGN12H2R300Z0C", "options": {"caps": 2}, "refusal": "caps must be 0 or 1"},
+  {"code": "MGN9C1R195ZFH", "options": {"caps": 1}, "refusal": "the catalogue lists bolt caps for MGN12 and MGN15 only (S4 Table 2-4-9)"}
+ ]
+}

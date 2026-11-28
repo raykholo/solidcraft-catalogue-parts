@@ -85,7 +85,7 @@ fn describe_part(code, series, dr, d, dw) {
 fn resolve(fields) {
     if fields.raw != () { shape_error(fields.raw); }
     let typ = if fields.double { "E-LBHSW" } else { "E-LBHS" };
-    let dr = parse_int(fields.dr);
+    let dr = parse_int(fields.dr.to_string());
     let ln = if fields.length == () { "" } else { fields.length };
     let dowel = fields.dowel;
     let code = typ + fields.dr + ln;
@@ -105,5 +105,5 @@ fn fields(configuration, parameters) {
     let series = configuration.sub_string(0, configuration.index_of("-"));
     let dr = configuration.sub_string(configuration.index_of("-") + 1);
     let ln = if series == "medium" { "D" } else if series == "medlong" { "S" } else if series == "long" { "L" } else { () };
-    #{ double: series == "double", dr: dr, length: ln, dowel: parameters.dowel == "1" }
+    #{ double: series == "double", dr: parse_int(dr), length: ln, dowel: parameters.dowel == "1" }
 }

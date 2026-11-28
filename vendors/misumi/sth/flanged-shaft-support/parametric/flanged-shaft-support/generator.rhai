@@ -60,7 +60,7 @@ fn stations(long, D) {            // set screw stations of the standard and thic
     if D == 12 { 1 } else { 2 }
 }
 fn body_text(series, long, D, d, nst) {
-    let L = d.L; if long && d.L1 != () && d.L1 != "" { L = d.L1; }
+    let L = d.L; if long && d.L1 != () && (d.L1 != () && d.L1 != "") { L = d.L1; }
     if series == "std" || series == "thick" {
         let sc = nst * 2;
         return `sleeve O${g(d.D1)} x L=${g(L)}, flange T=${g(d.T)}, ${sc} x M${g(d.M)} set screw holes (l from the flange back face), `;
@@ -85,8 +85,9 @@ fn describe(typ, D, d, series, family, long, nst, material, surface) {
 }
 
 fn resolve(fields) {
+    if fields.raw != () { refuse("invalid", no_match(fields.raw)); }
     let typ = typ_of(fields);
-    let digits = fields.d;
+    let digits = fields.d.to_string();
     let t = table("types", typ);
     if t == () { refuse("invalid", expected(typ + digits)); }
     let D = parse_int(digits);
@@ -97,12 +98,12 @@ fn resolve(fields) {
         let dl = dlist("dkeys_" + tname);
         refuse("invalid", `${typ}${D}: hole diameter D must be one of ${dl} (${page})`);
     }
-    if long && series != "slit" && d.L1 == "" {
+    if long && series != "slit" && (d.L1 == () || d.L1 == "") {
         let ok = dlist("long_ok_" + tname);
         refuse("invalid", `${typ}${D}: the long sleeve type is only applicable to the D marked * in the table: ${ok} (${page})`);
     }
     let na = t.not_applicable_d.to_string().split("|");
-    if t.not_applicable_d != "" && (D.to_string() in na) {
+    if (t.not_applicable_d != () && t.not_applicable_d != "") && (D.to_string() in na) {
         refuse("invalid", `${typ} is not applicable when D = ${D} (${page} note)`);
     }
     let key = `${series}-${t.family}-${if long { "long-" } else { "" }}${D}`;

@@ -39,7 +39,7 @@ fn single_series(dr, ln) {        // E-LBHN: single (no suffix) or medium (D)
     let r = table("single", dr);
     if r == () { let o = offered("single"); refuse("invalid", `E-LBHN${dr}: the wide single housing is offered for dr ${o} (p.485)`); }
     if ln == "D" {
-        if r.L_medium == "" {
+        if (r.L_medium == () || r.L_medium == "") {
             let o = offered("medium");
             refuse("invalid", `E-LBHN${dr}D: the medium housing is offered for dr ${o} only; dr 13, 35, 40 and 50 are single only (p.485)`);
         }
@@ -51,11 +51,11 @@ fn double_series(dr, ln) {        // E-LBHNW: double (no suffix), medium long (D
     let r = table("double", dr);
     if r == () { let o = offered("double"); refuse("invalid", `E-LBHNW${dr}: the wide double housing is offered for dr ${o} (p.487)`); }
     if ln == "D" {
-        if r.L_medlong == "" { let o = offered("medlong"); refuse("invalid", `E-LBHNW${dr}D: the medium long housing is offered for dr ${o} (p.487)`); }
+        if (r.L_medlong == () || r.L_medlong == "") { let o = offered("medlong"); refuse("invalid", `E-LBHNW${dr}D: the medium long housing is offered for dr ${o} (p.487)`); }
         return "medlong";
     }
     if ln == "L" {
-        if r.L_long == "" { let o = offered("long"); refuse("invalid", `E-LBHNW${dr}L: the long housing is offered for dr ${o} (p.487)`); }
+        if (r.L_long == () || r.L_long == "") { let o = offered("long"); refuse("invalid", `E-LBHNW${dr}L: the long housing is offered for dr ${o} (p.487)`); }
         return "long";
     }
     "double"
@@ -93,14 +93,14 @@ fn resolve(fields) {
     if fields.raw != () { shape_error(fields.raw); }
     let double = fields.double;
     let typ = if double { "E-LBHNW" } else { "E-LBHN" };
-    let dr = parse_int(fields.dr);
+    let dr = parse_int(fields.dr.to_string());
     let ln = if fields.length == () { "" } else { fields.length };
     let dowel = fields.dowel;
     let code = typ + fields.dr + ln;
     if dowel { code += "-P"; }
     let series = if double { double_series(dr, ln) } else { single_series(dr, ln) };
     let r = table(if double { "double" } else { "single" }, dr);
-    if dowel && r.P == "" {
+    if dowel && (r.P == () || r.P == "") {
         refuse("invalid", `${typ}${dr}: dr ${dr} has no dowel hole version, the dowel hole table starts at dr 8 (p.485 / p.487)`);
     }
     #{ configuration: `${series}-${dr}`, parameters: #{ dowel: if dowel { "1" } else { "0" } },
@@ -114,5 +114,5 @@ fn fields(configuration, parameters) {
     let dr = configuration.sub_string(configuration.index_of("-") + 1);
     let double = series == "double" || series == "medlong" || series == "long";
     let ln = if series == "medium" || series == "medlong" { "D" } else if series == "long" { "L" } else { () };
-    #{ double: double, dr: dr, length: ln, dowel: parameters.dowel == "1" }
+    #{ double: double, dr: parse_int(dr), length: ln, dowel: parameters.dowel == "1" }
 }

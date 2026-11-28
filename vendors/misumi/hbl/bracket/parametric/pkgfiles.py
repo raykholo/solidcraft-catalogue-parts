@@ -5,7 +5,7 @@ from pathlib import Path
 from runtime.table import read_csv
 from vendors.misumi.hbl.bracket.src import bracket as br
 
-TEMPLATES = ["{base: text 1..24 [A-Za-z0-9]}[\\-{rest: text 1..40 [A-Za-z0-9-]}]", "{raw: text 1..64 [A-Za-z0-9-]}"]
+TEMPLATES = ["{base}[\\-{rest}]", "{raw}"]
 
 from runtime.parametric.kit import write_csv
 
@@ -32,4 +32,5 @@ def write_toml(pkg: Path, data: Path):
     for r in read_csv(data / "types.csv"):
         lines += [f'[rows."{r["type"]}"]', f'source = {json.dumps("MISUMI FA catalogue 2014 " + r["source"] + " (sources.toml), " + r["page"])}', f'page = "{r["page"].split()[0]}"',
                   'status = "verified"', 'note = "plain flat arms: the inner-corner web, its ribs and the tab length are not drawn (README, not guaranteed)"', ""]
-    (pkg / "generator.toml").write_text("\n".join(lines))
+    from runtime.parametric.manifest import write_manifest
+    write_manifest((pkg / "generator.toml"), "\n".join(lines), {'base': {'type': 'text', 'min': 1, 'max': 24, 'escape': '[A-Za-z0-9]'}, 'rest': {'type': 'text', 'min': 1, 'max': 40, 'escape': '[A-Za-z0-9-]'}, 'raw': {'type': 'text', 'min': 1, 'max': 64, 'escape': '[A-Za-z0-9-]'}})

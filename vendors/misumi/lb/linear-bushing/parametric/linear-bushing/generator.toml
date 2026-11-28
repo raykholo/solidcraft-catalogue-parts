@@ -5,902 +5,904 @@ license = "CC0-1.0"
 model = "linear-bushing.sc"
 
 [parameters]
+dr = { type = "int", min = 0, max = 99 }
+raw = { type = "text", min = 1, max = 80, escape = "[A-Za-z0-9 _./-]" }
 blen = { type = "decimal", min = 15, max = 192, unit = "mm" }
 opp = { type = "int", min = 0, max = 1 }
 plated = { type = "int", min = 0, max = 1 }
 
 [[template]]
-pattern = 'E-LB[{shape: F|K|H}[{variant: PM|CM|Z|M|P|C}]]{dr: text 1..2 [0-9]}{suffix: TUU|DMUU|DUU|LUU|UU}'
+pattern = 'E-LB[{shape: F|K|H}[{variant: PM|CM|Z|M|P|C}]][0:zero]{dr}{suffix: TUU|DMUU|DUU|LUU|UU}'
 
 [[template]]
-pattern = '{raw: text 1..80 [A-Za-z0-9 _./-]}'
+pattern = '{raw}'
 
 [rows."short-6"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.464 table"
 page = "p.464 table"
-status = "labelled"
+status = "verified"
 
 [rows."short-8"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.464 table"
 page = "p.464 table"
-status = "labelled"
+status = "verified"
 
 [rows."short-10"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.464 table"
 page = "p.464 table"
-status = "labelled"
+status = "verified"
 
 [rows."short-12"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.464 table"
 page = "p.464 table"
-status = "labelled"
+status = "verified"
 
 [rows."short-13"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.464 table"
 page = "p.464 table"
-status = "labelled"
+status = "verified"
 
 [rows."short-16"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.464 table"
 page = "p.464 table"
-status = "labelled"
+status = "verified"
 
 [rows."short-20"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.464 table"
 page = "p.464 table"
-status = "labelled"
+status = "verified"
 
 [rows."medium-6"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.465 table"
 page = "p.465 table"
-status = "labelled"
+status = "verified"
 
 [rows."medium-8"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.465 table"
 page = "p.465 table"
-status = "labelled"
+status = "verified"
 
 [rows."medium-10"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.465 table"
 page = "p.465 table"
-status = "labelled"
+status = "verified"
 
 [rows."medium-12"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.465 table"
 page = "p.465 table"
-status = "labelled"
+status = "verified"
 
 [rows."medium-16"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.465 table"
 page = "p.465 table"
-status = "labelled"
+status = "verified"
 
 [rows."medium-20"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.465 table"
 page = "p.465 table"
-status = "labelled"
+status = "verified"
 
 [rows."medium-25"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.465 table"
 page = "p.465 table"
-status = "labelled"
+status = "verified"
 
 [rows."medium-30"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.465 table"
 page = "p.465 table"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_long-round-6"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.466 p.468 tables"
 page = "p.466 p.468 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_long-square-6"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.466 p.468 tables"
 page = "p.466 p.468 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_long-round-8"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.466 p.468 tables"
 page = "p.466 p.468 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_long-square-8"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.466 p.468 tables"
 page = "p.466 p.468 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_long-round-10"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.466 p.468 tables"
 page = "p.466 p.468 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_long-square-10"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.466 p.468 tables"
 page = "p.466 p.468 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_long-round-12"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.466 p.468 tables"
 page = "p.466 p.468 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_long-square-12"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.466 p.468 tables"
 page = "p.466 p.468 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_long-round-13"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.466 p.468 tables"
 page = "p.466 p.468 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_long-square-13"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.466 p.468 tables"
 page = "p.466 p.468 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_long-round-16"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.466 p.468 tables"
 page = "p.466 p.468 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_long-square-16"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.466 p.468 tables"
 page = "p.466 p.468 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_long-round-20"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.466 p.468 tables"
 page = "p.466 p.468 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_long-square-20"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.466 p.468 tables"
 page = "p.466 p.468 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_long-round-25"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.466 p.468 tables"
 page = "p.466 p.468 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_long-square-25"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.466 p.468 tables"
 page = "p.466 p.468 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_long-round-30"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.466 p.468 tables"
 page = "p.466 p.468 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_long-square-30"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.466 p.468 tables"
 page = "p.466 p.468 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_long-round-35"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.466 p.468 tables"
 page = "p.466 p.468 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_long-square-35"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.466 p.468 tables"
 page = "p.466 p.468 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_long-round-40"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.466 p.468 tables"
 page = "p.466 p.468 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_long-square-40"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.466 p.468 tables"
 page = "p.466 p.468 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_long-round-50"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.466 p.468 tables"
 page = "p.466 p.468 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_long-square-50"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.466 p.468 tables"
 page = "p.466 p.468 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_medium-round-6"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.467 p.469 tables"
 page = "p.467 p.469 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_medium-square-6"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.467 p.469 tables"
 page = "p.467 p.469 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_medium-round-8"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.467 p.469 tables"
 page = "p.467 p.469 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_medium-square-8"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.467 p.469 tables"
 page = "p.467 p.469 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_medium-round-10"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.467 p.469 tables"
 page = "p.467 p.469 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_medium-square-10"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.467 p.469 tables"
 page = "p.467 p.469 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_medium-round-12"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.467 p.469 tables"
 page = "p.467 p.469 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_medium-square-12"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.467 p.469 tables"
 page = "p.467 p.469 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_medium-round-16"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.467 p.469 tables"
 page = "p.467 p.469 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_medium-square-16"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.467 p.469 tables"
 page = "p.467 p.469 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_medium-round-20"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.467 p.469 tables"
 page = "p.467 p.469 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_medium-square-20"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.467 p.469 tables"
 page = "p.467 p.469 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_medium-round-25"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.467 p.469 tables"
 page = "p.467 p.469 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_medium-square-25"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.467 p.469 tables"
 page = "p.467 p.469 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_medium-round-30"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.467 p.469 tables"
 page = "p.467 p.469 tables"
-status = "labelled"
+status = "verified"
 
 [rows."flanged_medium-square-30"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.467 p.469 tables"
 page = "p.467 p.469 tables"
-status = "labelled"
+status = "verified"
 
 [rows."compact_long-compact-5"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.470 table"
 page = "p.470 table"
-status = "labelled"
+status = "verified"
 
 [rows."compact_long-compact-6"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.470 table"
 page = "p.470 table"
-status = "labelled"
+status = "verified"
 
 [rows."compact_long-compact-8"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.470 table"
 page = "p.470 table"
-status = "labelled"
+status = "verified"
 
 [rows."compact_long-compact-10"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.470 table"
 page = "p.470 table"
-status = "labelled"
+status = "verified"
 
 [rows."compact_long-compact-12"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.470 table"
 page = "p.470 table"
-status = "labelled"
+status = "verified"
 
 [rows."compact_long-compact-13"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.470 table"
 page = "p.470 table"
-status = "labelled"
+status = "verified"
 
 [rows."compact_long-compact-16"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.470 table"
 page = "p.470 table"
-status = "labelled"
+status = "verified"
 
 [rows."compact_long-compact-20"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.470 table"
 page = "p.470 table"
-status = "labelled"
+status = "verified"
 
 [rows."compact_long-compact-25"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.470 table"
 page = "p.470 table"
-status = "labelled"
+status = "verified"
 
 [rows."compact_long-compact-30"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.470 table"
 page = "p.470 table"
-status = "labelled"
+status = "verified"
 
 [rows."compact_long-compact-35"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.470 table"
 page = "p.470 table"
-status = "labelled"
+status = "verified"
 
 [rows."compact_long-compact-40"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.470 table"
 page = "p.470 table"
-status = "labelled"
+status = "verified"
 
 [rows."compact_long-compact-50"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.470 table"
 page = "p.470 table"
-status = "labelled"
+status = "verified"
 
 [rows."compact_medium-compact-6"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.471 table"
 page = "p.471 table"
-status = "labelled"
+status = "verified"
 
 [rows."compact_medium-compact-8"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.471 table"
 page = "p.471 table"
-status = "labelled"
+status = "verified"
 
 [rows."compact_medium-compact-10"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.471 table"
 page = "p.471 table"
-status = "labelled"
+status = "verified"
 
 [rows."compact_medium-compact-12"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.471 table"
 page = "p.471 table"
-status = "labelled"
+status = "verified"
 
 [rows."compact_medium-compact-16"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.471 table"
 page = "p.471 table"
-status = "labelled"
+status = "verified"
 
 [rows."compact_medium-compact-20"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.471 table"
 page = "p.471 table"
-status = "labelled"
+status = "verified"
 
 [rows."compact_medium-compact-25"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.471 table"
 page = "p.471 table"
-status = "labelled"
+status = "verified"
 
 [rows."compact_medium-compact-30"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.471 table"
 page = "p.471 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_long-round-6"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.472 table"
 page = "p.472 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_long-round-8"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.472 table"
 page = "p.472 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_long-round-10"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.472 table"
 page = "p.472 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_long-round-12"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.472 table"
 page = "p.472 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_long-round-16"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.472 table"
 page = "p.472 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_long-round-20"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.472 table"
 page = "p.472 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_long-round-25"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.472 table"
 page = "p.472 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_long-round-30"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.472 table"
 page = "p.472 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_long-round-40"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.472 table"
 page = "p.472 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_long-square-6"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.474 table"
 page = "p.474 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_long-square-8"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.474 table"
 page = "p.474 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_long-square-10"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.474 table"
 page = "p.474 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_long-square-12"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.474 table"
 page = "p.474 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_long-square-16"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.474 table"
 page = "p.474 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_long-square-20"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.474 table"
 page = "p.474 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_long-square-25"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.474 table"
 page = "p.474 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_long-square-30"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.474 table"
 page = "p.474 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_long-square-40"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.474 table"
 page = "p.474 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_long-compact-6"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.476 table"
 page = "p.476 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_long-compact-8"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.476 table"
 page = "p.476 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_long-compact-10"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.476 table"
 page = "p.476 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_long-compact-12"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.476 table"
 page = "p.476 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_long-compact-16"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.476 table"
 page = "p.476 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_long-compact-20"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.476 table"
 page = "p.476 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_long-compact-25"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.476 table"
 page = "p.476 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_long-compact-30"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.476 table"
 page = "p.476 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_long-compact-40"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.476 table"
 page = "p.476 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_medium-round-6"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.473 table"
 page = "p.473 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_medium-round-8"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.473 table"
 page = "p.473 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_medium-round-10"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.473 table"
 page = "p.473 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_medium-round-12"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.473 table"
 page = "p.473 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_medium-round-16"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.473 table"
 page = "p.473 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_medium-round-20"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.473 table"
 page = "p.473 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_medium-round-25"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.473 table"
 page = "p.473 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_medium-round-30"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.473 table"
 page = "p.473 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_medium-square-6"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.475 table"
 page = "p.475 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_medium-square-8"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.475 table"
 page = "p.475 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_medium-square-10"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.475 table"
 page = "p.475 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_medium-square-12"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.475 table"
 page = "p.475 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_medium-square-16"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.475 table"
 page = "p.475 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_medium-square-20"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.475 table"
 page = "p.475 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_medium-square-25"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.475 table"
 page = "p.475 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_medium-square-30"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.475 table"
 page = "p.475 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_medium-compact-6"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.477 table"
 page = "p.477 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_medium-compact-8"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.477 table"
 page = "p.477 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_medium-compact-10"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.477 table"
 page = "p.477 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_medium-compact-12"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.477 table"
 page = "p.477 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_medium-compact-16"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.477 table"
 page = "p.477 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_medium-compact-20"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.477 table"
 page = "p.477 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_medium-compact-25"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.477 table"
 page = "p.477 table"
-status = "labelled"
+status = "verified"
 
 [rows."pilot_medium-compact-30"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.477 table"
 page = "p.477 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_long-round-6"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.478 table"
 page = "p.478 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_long-round-8"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.478 table"
 page = "p.478 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_long-round-10"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.478 table"
 page = "p.478 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_long-round-12"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.478 table"
 page = "p.478 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_long-round-16"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.478 table"
 page = "p.478 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_long-round-20"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.478 table"
 page = "p.478 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_long-round-25"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.478 table"
 page = "p.478 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_long-round-30"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.478 table"
 page = "p.478 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_long-round-40"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.478 table"
 page = "p.478 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_long-square-6"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.479 table"
 page = "p.479 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_long-square-8"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.479 table"
 page = "p.479 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_long-square-10"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.479 table"
 page = "p.479 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_long-square-12"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.479 table"
 page = "p.479 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_long-square-16"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.479 table"
 page = "p.479 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_long-square-20"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.479 table"
 page = "p.479 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_long-square-25"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.479 table"
 page = "p.479 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_long-square-30"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.479 table"
 page = "p.479 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_long-square-40"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.479 table"
 page = "p.479 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_long-compact-6"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.480 table"
 page = "p.480 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_long-compact-8"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.480 table"
 page = "p.480 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_long-compact-10"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.480 table"
 page = "p.480 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_long-compact-12"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.480 table"
 page = "p.480 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_long-compact-16"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.480 table"
 page = "p.480 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_long-compact-20"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.480 table"
 page = "p.480 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_long-compact-25"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.480 table"
 page = "p.480 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_long-compact-30"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.480 table"
 page = "p.480 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_long-compact-40"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.480 table"
 page = "p.480 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_medium-round-6"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.478 table"
 page = "p.478 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_medium-round-8"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.478 table"
 page = "p.478 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_medium-round-10"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.478 table"
 page = "p.478 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_medium-round-12"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.478 table"
 page = "p.478 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_medium-round-16"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.478 table"
 page = "p.478 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_medium-round-20"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.478 table"
 page = "p.478 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_medium-round-25"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.478 table"
 page = "p.478 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_medium-round-30"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.478 table"
 page = "p.478 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_medium-square-6"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.479 table"
 page = "p.479 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_medium-square-8"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.479 table"
 page = "p.479 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_medium-square-10"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.479 table"
 page = "p.479 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_medium-square-12"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.479 table"
 page = "p.479 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_medium-square-16"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.479 table"
 page = "p.479 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_medium-square-20"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.479 table"
 page = "p.479 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_medium-square-25"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.479 table"
 page = "p.479 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_medium-square-30"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.479 table"
 page = "p.479 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_medium-compact-6"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.480 table"
 page = "p.480 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_medium-compact-8"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.480 table"
 page = "p.480 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_medium-compact-10"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.480 table"
 page = "p.480 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_medium-compact-12"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.480 table"
 page = "p.480 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_medium-compact-16"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.480 table"
 page = "p.480 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_medium-compact-20"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.480 table"
 page = "p.480 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_medium-compact-25"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.480 table"
 page = "p.480 table"
-status = "labelled"
+status = "verified"
 
 [rows."center_medium-compact-30"]
 source = "MISUMI Economy Series catalogue S13 (sources.toml), p.480 table"
 page = "p.480 table"
-status = "labelled"
+status = "verified"

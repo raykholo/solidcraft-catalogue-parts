@@ -4,7 +4,7 @@ import tomllib
 from runtime.parametric import rhai as call_rhai
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
-from runtime.fieldtemplate import Template, TemplateSet, Refusal
+from runtime.fieldtemplate import load, Refusal
 
 
 class Package:
@@ -12,8 +12,7 @@ class Package:
         self.no_match_reason, self.typed_code_field = no_match_reason, typed_code_field
         self.no_match = no_match or (lambda code: f"not an MGN set code: {code!r}")
         self.dir = Path(folder); self.toml = tomllib.loads((self.dir / "generator.toml").read_text())
-        ch = {k: v["values"] for k, v in self.toml.get("parameters", {}).items() if v.get("type") == "choice"}
-        self.templates = TemplateSet([Template.parse(t["pattern"], ch, t.get("escape")) for t in self.toml["template"]])
+        self.templates = load(self.dir)
 
     def rhai(self, fn, arg):
         return call_rhai(self.dir, fn, arg)

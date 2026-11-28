@@ -20,8 +20,8 @@ from runtime.parametric import kit as pk
 PKG = HERE / "housing-g"
 DATA = HERE.parent / "data"
 MODEL = "housing-g.sc"
-TEMPLATE = r"E\-LBHG[W:double]{dr: text 1..2 [0-9]}\-{h: text 1..2 [0-9]}"
-FALLBACK = "{raw: text 1..128 [ -~]}"
+TEMPLATE = r"E\-LBHG[W:double]{dr}\-{h}"
+FALLBACK = "{raw}"
 
 def drows():
     return [r for r in read_csv(DATA / "housing-g.csv")]
@@ -30,7 +30,7 @@ def row_name(fam, r): return f"{fam}-{r['dr']}"
 
 def write_package():
     rows = drows()
-    pk.write_csv(PKG / "tables/housing-g.csv", ["key"] + list(rows[0].keys()), [[r["dr"]] + list(r.values()) for r in rows])
+    pk.write_csv(PKG / "tables/housing_g.csv", ["key"] + list(rows[0].keys()), [[r["dr"]] + list(r.values()) for r in rows])
     pk.write_csv(PKG / "tables/params.csv", ["name", "value", "unit", "source", "page", "status"],
                  [["drs", "|".join(r["dr"] for r in rows), "", "S14", "p.491 table", "labelled"]])
     lines = ['format = "solidcraft-generator/2"', 'id = "housing-g"',
@@ -42,7 +42,8 @@ def write_package():
         for fam in ("G", "GW"):
             lines += [f'[rows."{row_name(fam, r)}"]', f'source = "MISUMI Economy catalogue 2025 ({r["source"]}, sources.toml)"', f'page = "{r["page"]}"',
                       'status = "verified"', ""]
-    (PKG / "generator.toml").write_text("\n".join(lines))
+    from runtime.parametric.manifest import write_manifest
+    write_manifest((PKG / "generator.toml"), "\n".join(lines), {'dr': {'type': 'int', 'min': 0, 'max': 99}, 'h': {'type': 'int', 'min': 0, 'max': 99}, 'raw': {'type': 'text', 'min': 1, 'max': 128, 'escape': '[ -~]'}})
 
 # ---- the model --------------------------------------------------------------------------------------------------------
 COLUMNS = ["dr", "hc", "hoff", "fw", "fs", "bw", "c1", "l1", "hd", "tl", "t1", "drk"]

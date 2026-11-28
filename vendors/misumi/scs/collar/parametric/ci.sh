@@ -8,3 +8,5 @@ cp "$P/scs-collar/scs-collar.sc" "$O/scs-collar.sc.json"    # the built model, k
 
 # Optional link proof: release CLIs retain the legacy verdict unchanged.
 python3 -m runtime.parametric.links "vendors/misumi/scs/collar" "$O"
+
+python3 -m runtime.parametric.native_parse "vendors/misumi/scs/collar" "$O"
