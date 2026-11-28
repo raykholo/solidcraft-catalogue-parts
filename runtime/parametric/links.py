@@ -92,13 +92,13 @@ def link_rows(generator, package, model, fixture, work):
     _, refusal = cli([{"command": "component.set_link_parameters", "params": {
         "component": component, "parameters": {refusal_parameter: refuse["outside"]}, "merge": True}}], src=host)
     message = refusal if isinstance(refusal, str) else json.dumps(refusal) if refusal else ""
-    # Do not bless a topology failure or an unknown command as a range refusal.
-    mentions = bool(re.search(r"(?<!\w)" + re.escape(refusal_parameter) + r"(?!\w)", message, re.IGNORECASE))
+    # Do not bless a topology failure or an unknown command as a range refusal: the message must name a limit
+    # rule on this very parameter (its id or name); SolidCraft names the rule, not always the parameter.
     table, table_error = cli([{"command": "config.table", "params": {}}], src=model)
     names = [str(r[k]) for r in (table[0]["rules"] if table and not table_error else [])
              if r.get("effect", {}).get("parameter") == refusal_parameter for k in ("id", "name") if r.get(k)]
     limit = any(name in message for name in names)
-    refusal_row["changed"] = {"refused": bool(refusal and mentions and limit),
+    refusal_row["changed"] = {"refused": bool(refusal and limit),
                               "parameter": refusal_parameter, "message": message}
     rows.append(refusal_row)
     return rows
