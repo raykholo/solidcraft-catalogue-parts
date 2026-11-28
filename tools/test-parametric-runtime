@@ -23,6 +23,125 @@ class HarnessContracts(unittest.TestCase):
     def tearDown(self):
         supports_link_parameters.cache_clear()
 
+    def test_package_manifest_keys_match_native_structs(self):
+        import tomllib
+        allowed = {"top": set("format id name description license author model min_solidcraft script row_from parameters template rows example".split()),
+                   "parameters": set("type values labels codes min max step digits unit default escape".split()),
+                   "template": set("pattern description fields".split()),
+                   "rows": set("source page status note description".split()),
+                   "example": set("code invalid message_contains volume_mm3 bbox_mm faces".split())}
+        packages = list(ROOT.glob("vendors/*/*/*/parametric/*/generator.toml"))
+        self.assertEqual(len(packages), 18)
+        for path in packages:
+            data = tomllib.loads(path.read_text())
+            self.assertFalse(data.keys() - allowed["top"], path)
+            for group in ("parameters", "template", "rows", "example"):
+                items = data.get(group, {})
+                for item in items.values() if isinstance(items, dict) else items:
+                    self.assertFalse(item.keys() - allowed[group], (path, group))
+            templates = fieldtemplate.load(path.parent)
+            for template in templates.templates:
+                self.assertNotIn("bag(", template.pattern)
+
+    def test_text_escape_is_declared_and_not_template_level(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "generator.toml"
+            path.write_text('[parameters]\nx = {type="text", min=1, max=8, escape="[A-Za-z0-9+/]"}\n[[template]]\npattern="X{x}"\n')
+            templates = fieldtemplate.load(tmp)
+            self.assertEqual(templates.match("XAB/C+1")[1]["x"], "AB/C+1")
+            self.assertIsNone(templates.match("XAB!"))
+            path.write_text(path.read_text() + 'escape="[A-Z]"\n')
+            with self.assertRaises(fieldtemplate.TemplateError):
+                fieldtemplate.load(tmp)
+        with self.assertRaises(fieldtemplate.TemplateError):
+            fieldtemplate.Template.parse("X{x: text 1..8 [A-Z]}")
+
+    def test_native_parse_capability_cached(self):
+        from runtime.parametric import native_parse as native
+        for catalogue, expected in [({"commands": [{"name": "generator.parse"}]}, True), ([{"name": "generator.insert"}], False)]:
+            native.supports_parse.cache_clear()
+            with patch.object(native.subprocess, "run", return_value=SimpleNamespace(stdout=json.dumps(catalogue))) as call:
+                self.assertEqual(native.supports_parse(), expected)
+                self.assertEqual(native.supports_parse(), expected)
+                self.assertEqual(call.call_count, 1)
+        native.supports_parse.cache_clear()
+
+    def test_native_parse_valid_reference_and_errors(self):
+        from runtime.parametric import native_parse as native
+        value = {"configuration": "row", "parameters": {"length": "300 mm"}}
+        line = SimpleNamespace(code="VALID", valid=True)
+        for reply in [value | {"ok": True}, {"ok": False, "message": "package invalid"}]:
+            with patch.object(native, "resolve", return_value=value), patch.object(native, "cli", return_value=([reply], None)) as call:
+                row = native.parse_row(ROOT, line, {})
+                self.assertEqual(row["expected"], value)
+                self.assertEqual(call.call_args.args[0][0]["params"]["code"], "VALID")
+                self.assertEqual(row["expected"] == row["actual"], reply["ok"])
+        with patch.object(native, "resolve", side_effect=ValueError("reference failed")), patch.object(native, "cli", return_value=([value | {"ok": True}], None)) as call:
+            row = native.parse_row(ROOT, line, {})
+            self.assertIn("error", row["expected"])
+            call.assert_called_once()
+
+    def test_native_parse_refusal_keeps_exact_message_and_blocked_keeps_rows(self):
+        from runtime.parametric import native_parse as native
+        line = SimpleNamespace(code="INVALID", valid=False)
+        with patch.object(native, "cli", return_value=([{"ok": False, "message": "engine no_match"}], None)):
+            row = native.parse_row(ROOT, line, {"INVALID": "Python message"})
+            self.assertNotEqual(row["expected"], row["actual"])
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "faithfulness.json"
+            original = {"parse": [row], "blocked": [], "rejects": []}
+            path.write_text(json.dumps(original))
+            with patch.object(native, "supports_parse", return_value=False):
+                native.check_parse(ROOT / "vendors/hiwin/mg/rail-set", tmp)
+            result = json.loads(path.read_text())
+            self.assertEqual(result["parse"], [row])
+            self.assertEqual(result["blocked"], [native.BLOCKED])
+
+    def test_native_parse_sweeps_every_codes_line_and_ci_calls_it(self):
+        from runtime.parametric import native_parse as native
+        for generator in registry.generators():
+            self.assertIn("runtime.parametric.native_parse", (generator.dir / "parametric/ci.sh").read_text())
+            with tempfile.TemporaryDirectory() as tmp:
+                path = Path(tmp) / "faithfulness.json"
+                path.write_text(json.dumps({"rejects": [], "blocked": []}))
+                with patch.object(native, "supports_parse", return_value=True), patch.object(native, "parse_row", return_value={"checked": True}) as row:
+                    native.check_parse(generator.dir, tmp)
+                lines = generator.codes()
+                self.assertEqual(row.call_count, len(lines))
+                self.assertEqual([c.args[1].code for c in row.call_args_list], [line.code for line in lines])
+                self.assertEqual(len(json.loads(path.read_text())["parse"]), len(lines))
+
+    def test_native_rest_is_optional_nonempty_and_limited(self):
+        template = fieldtemplate.Template.parse("X[{opts: rest}]")
+        self.assertIsNone(template.match("X")["opts"])
+        self.assertEqual(template.match("X-M4-N8")["opts"], "-M4-N8")
+        self.assertIsNone(template.match("X" + "A" * 65))
+        package = ROOT / "vendors/misumi/sfj/shaft/parametric/sfj-shaft"
+        templates = fieldtemplate.load(package)
+        for code in ("E-PSFJ12-300", "E-PSFJ12-300-M4-N8"):
+            matched = templates.match(code)
+            self.assertEqual(matched[0], 0)
+            self.assertEqual(templates.print(matched[1], 0), code)
+
+    def test_manifest_writer_retains_defaults(self):
+        from runtime.parametric.manifest import write_manifest
+        import tomllib
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "generator.toml"
+            write_manifest(path, '[parameters]\nx = {type="text", default="A"}\n[[template]]\npattern="X{x}"\n',
+                           {"x": {"type": "text", "min": 1, "max": 3, "escape": "[A-Z/]"}})
+            self.assertEqual(tomllib.loads(path.read_text())["parameters"]["x"]["default"], "A")
+            self.assertEqual(fieldtemplate.load(tmp).match("XA/B")[1]["x"], "A/B")
+
+    def test_native_parse_differences_fail_verdict(self):
+        for changed, expected_exit in [({"configuration": "row", "parameters": {}}, 0), ({"configuration": "other", "parameters": {}}, 1), ({"error": "package failed"}, 1)]:
+            with tempfile.TemporaryDirectory() as tmp:
+                path = Path(tmp) / "faithfulness.json"
+                path.write_text(json.dumps({"valid": [{"code": "valid", "python": M, "parametric": M, "spec_python": "1/1", "spec_parametric": "1/1"}],
+                    "parse": [{"code": "valid", "expected": {"configuration": "row", "parameters": {}}, "actual": changed}]}))
+                result = subprocess.run([str(ROOT / "tools/parametric-verdict"), str(path)], capture_output=True, text=True)
+                self.assertEqual(result.returncode, expected_exit, result.stdout + result.stderr)
+
     def test_options_catalogue_capability(self):
         from runtime.parametric import options
         for catalogue, expected in [([{"name": "generator.parse", "params": "options? fields.options"}], True),

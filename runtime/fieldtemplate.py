@@ -12,8 +12,7 @@ boolean), `\-` (a REQUIRED separator: the character must be present exactly as w
 the listed options with an optional argument (`int` = digits, `num` = digits and at most one decimal digit; no argument = a bare flag), every other
 token kept as the option `?` with its raw text; the value is the ordered list `[[name, argument text | null], ...]`, so the script can reproduce
 the refusals that depend on order and repeats; the doc's `set(...)` is the same grammar with each option at most once and an object value, which
-cannot say which of two `A` arguments belongs to which option). A text field may carry its own escape class after the length: {name: text 1..80 [A-Za-z0-9-]} (else the template's `escape`, else
-any character but a separator). Separators " -_/." and case are ignored when parsing: they are skipped between elements (never inside a
+cannot say which of two `A` arguments belongs to which option). A text field takes its escape class from its declared parameter and is referenced as {name}. Separators " -_/." and case are ignored when parsing: they are skipped between elements (never inside a
 text field whose class allows them), printing uses the template's own spelling. Matching backtracks, longest value first, the first complete
 match wins; limits as the doc: code <= 128 characters, template <= 256, 32 fields, 20000 steps.
 """
@@ -68,9 +67,13 @@ def _lit(text, pos, value):
     return p
 
 class _Field:
-    def __init__(self, name, spec, choices):
+    def __init__(self, name, spec, choices, parameters):
         self.name, self.spec = name, (spec or "").strip()
         s = self.spec
+        definition = parameters.get(name, {})
+        if not s and definition.get("type") == "text":
+            s = f"text {definition.get('min', 1)}..{definition.get('max', 32)}"
+            self.spec = s
         if not s:
             if name not in choices: raise TemplateError(f"field {{{name}}} has no spec and no choice list")
             self.kind, self.values = "choice", [str(v) for v in choices[name]]
@@ -79,8 +82,12 @@ class _Field:
         elif m := re.fullmatch(r"decimal(?:\s+([\d.]+)\.\.([\d.]+))?(?:\s+step\s+([\d.]+))?(?:\s+digits\s+(\d+))?", s):
             self.kind = "decimal"; self.lo = float(m.group(1) or 0); self.hi = float(m.group(2) or 1e9)
             self.step = float(m.group(3)) if m.group(3) else None; self.digits = int(m.group(4)) if m.group(4) else None
-        elif m := re.fullmatch(r"text\s+(\d+)\.\.(\d+)(?:\s+(\[[^\]]+\]))?", s):
-            self.kind = "text"; self.lo, self.hi = int(m.group(1)), int(m.group(2)); self.cls = _charclass(m.group(3)) if m.group(3) else None
+        elif m := re.fullmatch(r"text\s+(\d+)\.\.(\d+)", s):
+            self.kind = "text"; self.lo, self.hi = int(m.group(1)), int(m.group(2)); self.cls = _charclass(definition["escape"]) if not spec and definition.get("escape") else None
+        elif s.startswith("text "):
+            raise TemplateError("text escape belongs on a declared parameter")
+        elif s == "rest":
+            self.kind = "rest"
         elif m := re.fullmatch(r"bag\((.*)\)", s):
             self.kind = "bag"; self.opts = {}
             for part in m.group(1).split(","):
@@ -138,11 +145,14 @@ class _Field:
                 else:
                     items.append(["?", tok])
             yield items, p
+        elif self.kind == "rest":
+            if 1 <= len(text[pos:]) <= 64:
+                yield text[pos:], len(text)
         elif self.kind == "text":
             allowed = self.cls if self.cls is not None else esc
             n = 0
             while (pos + n < len(text) and n < self.hi and
-                   (text[pos + n] not in SEPARATORS if allowed is None else (text[pos + n].upper() in allowed or text[pos + n].lower() in allowed))): n += 1
+                   (text[pos + n].isascii() and text[pos + n].isalnum() or allowed is not None and (text[pos + n].upper() in allowed or text[pos + n].lower() in allowed))): n += 1
             for ln in range(n, self.lo - 1, -1):
                 if ln >= 1: yield text[pos:pos + ln], pos + ln
 
@@ -170,6 +180,8 @@ class _Field:
                 if nm != "?" and nm.upper() not in self.opts: raise ValueError(f"field {self.name}: {nm!r} is not one of {list(self.opts)}")
                 out += "-" + (arg if nm == "?" else nm + (arg if arg is not None else ""))
             return out
+        if self.kind == "rest":
+            return str(value)
         if self.kind == "text":
             if not (self.lo <= len(str(value)) <= self.hi): raise ValueError(f"field {self.name}: text length outside {self.lo}..{self.hi}")
             return str(value)
@@ -179,7 +191,7 @@ class Template:
         self.pattern, self.nodes, self.fields, self.escape = pattern, nodes, fields, escape
 
     @classmethod
-    def parse(cls, pattern, choices=None, escape=None):
+    def parse(cls, pattern, choices=None, parameters=None):
         if len(pattern) > MAX_TEMPLATE: raise TemplateError("template longer than 256 characters")
         choices = choices or {}
         pos = 0; fields = []
@@ -197,7 +209,7 @@ class Template:
                     end = pattern.index("}", pos)
                     body = pattern[pos + 1:end]; pos = end + 1
                     name, _, spec = body.partition(":")
-                    f = _Field(name.strip(), spec, choices); fields.append(f); nodes.append(("field", f)); continue
+                    f = _Field(name.strip(), spec, choices, parameters or {}); fields.append(f); nodes.append(("field", f)); continue
                 m = re.compile(r"[^\[\]{}]+").match(pattern, pos)
                 lit = m.group(0); pos = m.end()
                 flag = None
@@ -208,7 +220,7 @@ class Template:
             return nodes
         nodes = parse_seq(False)
         if len(fields) > MAX_FIELDS: raise TemplateError("more than 32 fields")
-        return cls(pattern, nodes, fields, _charclass(escape) if escape else None)
+        return cls(pattern, nodes, fields, None)
 
     # ---- code -> fields
     def match(self, code):
@@ -234,7 +246,7 @@ class Template:
                 if n[2]: a[n[2]] = True
                 return run(nodes, i + 1, p, a, k)
             if n[0] == "field":
-                for v, p in n[1].options(text, pos if (n[1].kind == "bag" or (i > 0 and nodes[i - 1][0] == "lit" and nodes[i - 1][1] and nodes[i - 1][1][-1][1])) else skip(pos), self.escape):
+                for v, p in n[1].options(text, pos if (n[1].kind in ("bag", "rest") or (i > 0 and nodes[i - 1][0] == "lit" and nodes[i - 1][1] and nodes[i - 1][1][-1][1])) else skip(pos), self.escape):
                     r = run(nodes, i + 1, p, {**acc, n[1].name: v}, k)
                     if r is not None: return r
                 return None
@@ -287,12 +299,14 @@ class TemplateSet:
         raise err
 
 def load(gen_dir):
-    """The TemplateSet of a generator package folder: generator.toml [[template]] entries (pattern, optional escape), choices from [parameters]."""
+    """The TemplateSet of a generator package folder: generator.toml [[template]] entries (pattern), field definitions from [parameters]."""
     import tomllib
     from pathlib import Path
     toml = tomllib.loads((Path(gen_dir) / "generator.toml").read_text())
     ch = {k: v["values"] for k, v in toml.get("parameters", {}).items() if v.get("type") == "choice"}
-    return TemplateSet([Template.parse(t["pattern"], ch, t.get("escape")) for t in toml["template"]])
+    if any("escape" in t for t in toml["template"]):
+        raise TemplateError("escape belongs on a text parameter, not a template")
+    return TemplateSet([Template.parse(t["pattern"], ch, toml.get("parameters", {})) for t in toml["template"]])
 
 if __name__ == "__main__":      # python3 runtime/fieldtemplate.py parse|print PACKAGE_DIR CODE|JSON   (the Rhai host's code_template() uses print)
     import json, sys

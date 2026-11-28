@@ -8,3 +8,5 @@ cp "$O/harness/report.json" "$O/harness/rebuild.json" "$O/build/build.json" "$O/
 python3 $G/gw_faith.py RG "$O/harness" "$O/faithfulness.json"
 
 python3 -m runtime.parametric.links "vendors/hiwin/rg/guideway" "$O"
+
+python3 -m runtime.parametric.native_parse "vendors/hiwin/rg/guideway" "$O"

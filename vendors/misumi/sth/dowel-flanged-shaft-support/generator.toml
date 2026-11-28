@@ -1,6 +1,6 @@
 id = "misumi.sth.dowel-flanged-shaft-support"
 name = "MISUMI Economy flanged shaft supports with slit and positioning holes, steel: round (E-STHWRBK, E-STHWRK, E-SSTHWRK) and compact (E-STHWCBK, E-SSTHWCK), with 2 dowel holes and clamp screw"
-version = "0.1.2"
+version = "0.1.3"
 kind = "generator"
 min_host_version = "0.49.1"
 preview_code = "E-STHWRBK20"

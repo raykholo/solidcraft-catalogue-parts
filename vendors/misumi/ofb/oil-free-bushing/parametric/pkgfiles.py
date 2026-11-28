@@ -7,8 +7,8 @@ from runtime.table import read_csv
 import rows as rw
 
 TYPES = ["C-MUBZU", "C-MUBZ", "C-MUFZU", "C-MUFZ", "C-MUTSZ", "C-MUTNZ", "C-MUTZ", "E-MUGZ", "E-SHBZ", "E-SHFZ", "E-SHTNZ", "E-SHTZ"]
-TEMPLATES = ["{otype: " + "|".join(TYPES) + r"}{d: text 1..3 [0-9]}\-{l: text 1..3 [0-9]}",
-             "{raw: text 1..80 [A-Za-z0-9 _./-]}"]
+TEMPLATES = ["{otype: " + "|".join(TYPES) + r"}{d}\-{l}",
+             "{raw}"]
 TABLES = ["copper_straight", "copper_shouldered", "copper_flanged", "thrust", "brass_straight", "brass_shouldered", "brass_flanged"]
 
 from runtime.parametric.kit import write_csv
@@ -39,4 +39,5 @@ def write_toml(pkg: Path, model_rows):
     for r in model_rows:
         lines += [f'[rows."{r["name"]}"]', f'source = "MISUMI Economy Series catalogue {r["source"]} (sources.toml), {r["page"]}"',
                   f'page = "{r["page"]}"', f'status = "{r["status"]}"', ""]
-    (pkg / "generator.toml").write_text("\n".join(lines))
+    from runtime.parametric.manifest import write_manifest
+    write_manifest((pkg / "generator.toml"), "\n".join(lines), {'d': {'type': 'text', 'min': 1, 'max': 3, 'escape': '[0-9]'}, 'l': {'type': 'text', 'min': 1, 'max': 3, 'escape': '[0-9]'}, 'raw': {'type': 'text', 'min': 1, 'max': 80, 'escape': '[A-Za-z0-9 _./-]'}})

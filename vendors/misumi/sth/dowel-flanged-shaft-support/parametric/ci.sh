@@ -6,3 +6,5 @@ python3 $P/run_codes.py --out "$O"
 
 # Optional link proof: release CLIs retain the legacy verdict unchanged.
 python3 -m runtime.parametric.links "vendors/misumi/sth/dowel-flanged-shaft-support" "$O"
+
+python3 -m runtime.parametric.native_parse "vendors/misumi/sth/dowel-flanged-shaft-support" "$O"

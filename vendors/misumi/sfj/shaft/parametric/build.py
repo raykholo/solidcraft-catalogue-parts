@@ -165,8 +165,8 @@ def write_tables(pkg: Path):
     with open(t / "params.csv", "a", newline="") as fh:
         csv.writer(fh, lineterminator="\n").writerows(rows)
 
-TEMPLATES = [r"E\-{type: text 1..10 [A-Z]}{d: int 0..99}\-{length: decimal}{opts: bag(M:num, N:num, MD:num, F:int, P:int, T:int, SC:int, SX:int, WSC:int, X:int, FC:int, WFC:int, LFC:int, A:int, E:int, LKC)}",
-             "{raw: text 1..128 [A-Za-z0-9._ /-]}"]
+TEMPLATES = [r"E\-{type}{d: int 0..99}\-{length: decimal}[{opts: rest}]",
+             "{raw}"]
 
 def write_toml(pkg: Path):
     lines = ['format = "solidcraft-generator/2"', f'id = "{PKG}"', 'name = "MISUMI Economy Series linear shafts (E- prefix): plain, tapped, stepped, flats"', 'license = "CC0-1.0"',
@@ -177,7 +177,8 @@ def write_toml(pkg: Path):
     for r in read_csv(DATA / "diameters.csv"):
         lines += [f'[rows."{r["D"]}"]', f'source = "MISUMI Economy Series catalogue 2025 (sources.toml S8), {r["page"]}"', f'page = "{r["page"]}"', 'status = "verified"',
                   'note = "diameter row: g7 / f8 limits, flat depth and wrench flat of this D; the options are parameters"', ""]
-    (pkg / "generator.toml").write_text("\n".join(lines))
+    from runtime.parametric.manifest import write_manifest
+    write_manifest((pkg / "generator.toml"), "\n".join(lines), {'type': {'type': 'text', 'min': 1, 'max': 10, 'escape': '[A-Z]'}, 'raw': {'type': 'text', 'min': 1, 'max': 128, 'escape': '[A-Za-z0-9._ /-]'}})
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(); ap.add_argument("--out", default=str(HERE)); a = ap.parse_args()

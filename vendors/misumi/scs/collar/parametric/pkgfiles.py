@@ -8,7 +8,7 @@ TEMPLATES = [r"C-{type: SCSAW|SCNPAW|SCSMAW|SCSGAW}{d: int 0..99}\-{b: int 0..99
              r"C-{kind: SCSBNAW}{d: int 0..99}\-{ds: int 0..99}",
              "E-[{plat: P|S}]{fam: SCSPD|SCD}{d: int 0..99}",
              r"E-[{plat: P|S}]{fam: SCDJ}{d: int 0..99}[\-{b: int 0..99}]",
-             "{raw: text 1..64 [A-Za-z0-9-]}"]
+             "{raw}"]
 
 from runtime.parametric.kit import write_csv
 
@@ -51,4 +51,5 @@ def write_toml(pkg: Path, data: Path):
             lines += [f'[rows."{key(r)}"]', f'source = {json.dumps("MISUMI Economy Series catalogue 2025 " + r["source"] + " (sources.toml), " + r["page"])}',
                       f'page = {json.dumps(r["page"])}', 'status = "verified"',
                       'note = "slit width, gap, clamp screw position and the damper shape are appearance, approximate (README, not guaranteed)"', ""]
-    (pkg / "generator.toml").write_text("\n".join(lines))
+    from runtime.parametric.manifest import write_manifest
+    write_manifest((pkg / "generator.toml"), "\n".join(lines), {'raw': {'type': 'text', 'min': 1, 'max': 64, 'escape': '[A-Za-z0-9-]'}})

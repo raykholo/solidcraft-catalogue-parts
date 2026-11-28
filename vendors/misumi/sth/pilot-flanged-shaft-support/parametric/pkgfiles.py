@@ -5,8 +5,8 @@ from pathlib import Path
 from runtime.table import read_csv
 
 PAGE = "p.540"
-TEMPLATES = ["E-STHWI{shape: R=round, C=compact}B{d: text 1..6 [0-9]}",
-             "E-{type: text 1..12 [A-Za-z]}{d: text 1..6 [0-9]}"]
+TEMPLATES = ["E-STHWI{shape: R=round, C=compact}B{d}",
+             "E-{type}{d}"]
 
 def write_tables(pkg: Path, data: Path):
     t = pkg / "tables"; t.mkdir(parents=True, exist_ok=True)
@@ -27,4 +27,5 @@ def write_toml(pkg: Path, data: Path, row_keys):
     for key in row_keys:
         d = dims[key.split("-")[1]]
         lines += [f'[rows."{key}"]', f'source = "MISUMI Economy Series catalogue {d["source"]} (sources.toml), {d["page"]}"', f'page = "{d["page"]}"', f'status = "{d["status"]}"', ""]
-    (pkg / "generator.toml").write_text("\n".join(lines))
+    from runtime.parametric.manifest import write_manifest
+    write_manifest((pkg / "generator.toml"), "\n".join(lines), {'d': {'type': 'text', 'min': 1, 'max': 6, 'escape': '[0-9]'}, 'type': {'type': 'text', 'min': 1, 'max': 12, 'escape': '[A-Za-z]'}})

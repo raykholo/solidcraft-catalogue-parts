@@ -29,6 +29,38 @@ fn lead_letters(t) {
     while i < t.len() && is_letter(ch(t, i)) { k += ch(t, i); i += 1; }
     k
 }
+// `rest` preserves token order and repeats on the native host too.
+fn option_tokens(text) {
+    let out = [];
+    if text == () || text == "" { return out; }
+    if !text.starts_with("-") { return [["?", text]]; }
+    let parts = text.sub_string(1).split("-");
+    for token in parts {
+        let found = false;
+        for name in ["WSC", "WFC", "LFC", "LKC", "MD", "SC", "SX", "FC", "M", "N", "F", "P", "T", "X", "A", "E"] {
+            if found || !token.starts_with(name) { continue; }
+            let arg = token.sub_string(name.len());
+            if name == "LKC" && arg == "" { out.push([name, ()]); found = true; continue; }
+            let numeric = arg != "";
+            let dots = 0;
+            for ch in arg.chars() {
+                if ch == '.' { dots += 1; }
+                else if !"0123456789".contains(ch) { numeric = false; }
+            }
+            let decimal = name == "M" || name == "N" || name == "MD";
+            if dots > 0 && (!decimal || dots != 1 || arg.ends_with(".") || arg.starts_with(".") || arg.split(".")[1].len() != 1) { numeric = false; }
+            if name != "LKC" && numeric { out.push([name, arg]); found = true; }
+        }
+        if !found { out.push(["?", token]); }
+    }
+    out
+}
+fn option_text(tokens) {
+    if tokens.len() == 0 { return (); }
+    let text = "";
+    for t in tokens { text += "-" + raw(#{ n: t[0], a: t[1] }); }
+    text
+}
 fn raw(t) { if t.n == "?" { t.a } else if t.a == () { t.n } else { t.n + t.a } }
 fn fmt3(x) {                      // Python's {:+.3f}
     let v = (x.to_float().abs() * 1000.0).round().to_int();
@@ -86,7 +118,7 @@ fn new_state(name, typ, tflag, fields) {
     if (D == 35 || D == 40 || D == 50) && s.base != "E-PSFJ" && fam != "PG" && fam != "PH" {
         refuse("invalid", `O.D. ${D} is applicable only to E-PSFJ${sfx} (p.${s.page} note)`);
     }
-    s.toks = fields.opts;
+    s.toks = option_tokens(fields.opts);
     s
 }
 // the positional first token: M / N / F / P / T / MD with its argument
@@ -500,5 +532,5 @@ fn fields(configuration, parameters) {
     let fam = "T"; if row != () { fam = row.family; }
     let o = positional_opts(p, fam);
     for x in flat_opts(p) { o.push(x); }
-    #{ type: name.sub_string(2), d: to_i(configuration), length: val(p.L), opts: o }
+    #{ type: name.sub_string(2), d: to_i(configuration), length: val(p.L), opts: option_text(o) }
 }

@@ -5,15 +5,17 @@ license = "CC0-1.0"
 model = "linear-bushing.sc"
 
 [parameters]
+dr = { type = "text", min = 1, max = 2, escape = "[0-9]" }
+raw = { type = "text", min = 1, max = 80, escape = "[A-Za-z0-9 _./-]" }
 blen = { type = "decimal", min = 15, max = 192, unit = "mm" }
 opp = { type = "int", min = 0, max = 1 }
 plated = { type = "int", min = 0, max = 1 }
 
 [[template]]
-pattern = 'E-LB[{shape: F|K|H}[{variant: PM|CM|Z|M|P|C}]]{dr: text 1..2 [0-9]}{suffix: TUU|DMUU|DUU|LUU|UU}'
+pattern = 'E-LB[{shape: F|K|H}[{variant: PM|CM|Z|M|P|C}]]{dr}{suffix: TUU|DMUU|DUU|LUU|UU}'
 
 [[template]]
-pattern = '{raw: text 1..80 [A-Za-z0-9 _./-]}'
+pattern = '{raw}'
 
 [rows."short-6"]
 source = "MISUMI Economy Series catalogue S11 (sources.toml), p.464 table"

@@ -4,11 +4,15 @@ name = "MISUMI Economy flanged shaft supports with slit and positioning (dowel) 
 license = "CC0-1.0"
 model = "dowel-flanged-shaft-support.sc"
 
-[[template]]
-pattern = 'E-[S:stainless]STHW{shape: R=round, C=compact}[B:black]K{d: text 1..6 [0-9]}'
+[parameters]
+d = { type = "text", min = 1, max = 6, escape = "[0-9]" }
+type = { type = "text", min = 1, max = 12, escape = "[A-Za-z]" }
 
 [[template]]
-pattern = 'E-{type: text 1..12 [A-Za-z]}{d: text 1..6 [0-9]}'
+pattern = 'E-[S:stainless]STHW{shape: R=round, C=compact}[B:black]K{d}'
+
+[[template]]
+pattern = 'E-{type}{d}'
 
 [rows."round-12"]
 source = "MISUMI Economy Series catalogue S19 (sources.toml), p.537 table"

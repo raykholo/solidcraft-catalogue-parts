@@ -7,13 +7,14 @@ model = "shf-shaft-holder.sc"
 # E-SH<type><D>-<H> or C-SHA<D>: one configuration row per (family, D); H is the free parameter (a list per row in the model's rules).
 # The second template takes anything else so that generator.rhai can give the Python generator's message for a code of the wrong shape.
 [parameters]
+raw = { type = "text", min = 1, max = 64, escape = "[A-Za-z0-9-]" }
 h = { type = "int", min = 10, max = 80, unit = "mm" }
 
 [[template]]
 pattern = '{pfx: E|C}-SH{fam: STBN|STMN|STB|STM|STA|WTB|WTA|A}{d: int 1..99}[\-{h: int 0..99999999}]'
 
 [[template]]
-pattern = '{raw: text 1..64 [A-Za-z0-9-]}'
+pattern = '{raw}'
 
 [rows."slit-8"]
 source = "MISUMI Economy Series catalogue 2025 S50 (sources.toml), p.541 table"

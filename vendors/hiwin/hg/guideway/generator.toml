@@ -1,6 +1,6 @@
 id = "hiwin.hg.guideway"
 name = "HIWIN HG heavy-load linear guideway: rail, block or rail with blocks"
-version = "0.2.1"
+version = "0.2.2"
 kind = "generator"
 min_host_version = "0.49.1"
 preview_code = "HGH20CA2R1000ZAH"

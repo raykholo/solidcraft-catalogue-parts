@@ -4,11 +4,15 @@ name = "MISUMI Economy flanged shaft supports: standard, thickened, end mounting
 license = "CC0-1.0"
 model = "flanged-shaft-support.sc"
 
-[[template]]
-pattern = 'E-[S:stainless]STH[{series: X=xend, W=slit, M=mr}]{shape: R=round, S=square, C=compact}[B:black][N:thick][L:long]{d: text 1..6 [0-9]}'
+[parameters]
+d = { type = "text", min = 1, max = 6, escape = "[0-9]" }
+type = { type = "text", min = 1, max = 12, escape = "[A-Za-z]" }
 
 [[template]]
-pattern = 'E-{type: text 1..12 [A-Za-z]}{d: text 1..6 [0-9]}'
+pattern = 'E-[S:stainless]STH[{series: X=xend, W=slit, M=mr}]{shape: R=round, S=square, C=compact}[B:black][N:thick][L:long]{d}'
+
+[[template]]
+pattern = 'E-{type}{d}'
 
 [rows."std-round-6"]
 source = "MISUMI Economy Series catalogue S51 (sources.toml), p.535 table"

@@ -4,11 +4,15 @@ name = "MISUMI Economy pilot flanged shaft supports, steel: round (E-STHWIRB) an
 license = "CC0-1.0"
 model = "pilot-flanged-shaft-support.sc"
 
-[[template]]
-pattern = 'E-STHWI{shape: R=round, C=compact}B{d: text 1..6 [0-9]}'
+[parameters]
+d = { type = "text", min = 1, max = 6, escape = "[0-9]" }
+type = { type = "text", min = 1, max = 12, escape = "[A-Za-z]" }
 
 [[template]]
-pattern = 'E-{type: text 1..12 [A-Za-z]}{d: text 1..6 [0-9]}'
+pattern = 'E-STHWI{shape: R=round, C=compact}B{d}'
+
+[[template]]
+pattern = 'E-{type}{d}'
 
 [rows."round-8"]
 source = "MISUMI Economy Series catalogue S18 (sources.toml), p.540 table"

@@ -9,3 +9,5 @@ cp vendors/misumi/ofb/oil-free-bushing/parametric/oil-free-bushing/oil-free-bush
 
 # Optional link proof: release CLIs retain the legacy verdict unchanged.
 python3 -m runtime.parametric.links "vendors/misumi/ofb/oil-free-bushing" "$O"
+
+python3 -m runtime.parametric.native_parse "vendors/misumi/ofb/oil-free-bushing" "$O"

@@ -5,16 +5,18 @@ license = "CC0-1.0"
 model = "sfj-shaft.sc"
 
 [parameters]
+type = { type = "text", min = 1, max = 10, escape = "[A-Z]" }
+raw = { type = "text", min = 1, max = 128, escape = "[A-Za-z0-9._ /-]" }
 part_type = { type = "text", default = "E-PSFJ" }
 d = { type = "int", min = 0, max = 99 }
 length = { type = "decimal", min = 10, max = 1500, step = 0.1, unit = "mm" }
 
 # one template for the ordering code, a catch-all behind it so that the script gives the 'expected ...' refusal of the Python generator
 [[template]]
-pattern = 'E\-{type: text 1..10 [A-Z]}{d: int 0..99}\-{length: decimal}{opts: bag(M:num, N:num, MD:num, F:int, P:int, T:int, SC:int, SX:int, WSC:int, X:int, FC:int, WFC:int, LFC:int, A:int, E:int, LKC)}'
+pattern = 'E\-{type}{d: int 0..99}\-{length: decimal}[{opts: rest}]'
 
 [[template]]
-pattern = '{raw: text 1..128 [A-Za-z0-9._ /-]}'
+pattern = '{raw}'
 
 [rows."3"]
 source = "MISUMI Economy Series catalogue 2025 (sources.toml S8), p.432 spec table"

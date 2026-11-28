@@ -1,6 +1,6 @@
 id = "misumi.lhb.tall-housing"
 name = "MISUMI Economy linear bushing housing units with dowel holes, tall blocks: single / medium / medium long / long (E-LBHS) and double (E-LBHSW)"
-version = "0.2.1"
+version = "0.2.2"
 kind = "generator"
 min_host_version = "0.49.1"
 preview_code = "E-LBHS16L-P"

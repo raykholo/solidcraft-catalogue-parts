@@ -20,8 +20,8 @@ from runtime.parametric import kit as pk
 PKG = HERE / "housing-g"
 DATA = HERE.parent / "data"
 MODEL = "housing-g.sc"
-TEMPLATE = r"E\-LBHG[W:double]{dr: text 1..2 [0-9]}\-{h: text 1..2 [0-9]}"
-FALLBACK = "{raw: text 1..128 [ -~]}"
+TEMPLATE = r"E\-LBHG[W:double]{dr}\-{h}"
+FALLBACK = "{raw}"
 
 def drows():
     return [r for r in read_csv(DATA / "housing-g.csv")]
@@ -42,7 +42,8 @@ def write_package():
         for fam in ("G", "GW"):
             lines += [f'[rows."{row_name(fam, r)}"]', f'source = "MISUMI Economy catalogue 2025 ({r["source"]}, sources.toml)"', f'page = "{r["page"]}"',
                       'status = "verified"', ""]
-    (PKG / "generator.toml").write_text("\n".join(lines))
+    from runtime.parametric.manifest import write_manifest
+    write_manifest((PKG / "generator.toml"), "\n".join(lines), {'dr': {'type': 'text', 'min': 1, 'max': 2, 'escape': '[0-9]'}, 'h': {'type': 'text', 'min': 1, 'max': 2, 'escape': '[0-9]'}, 'raw': {'type': 'text', 'min': 1, 'max': 128, 'escape': '[ -~]'}})
 
 # ---- the model --------------------------------------------------------------------------------------------------------
 COLUMNS = ["dr", "hc", "hoff", "fw", "fs", "bw", "c1", "l1", "hd", "tl", "t1", "drk"]

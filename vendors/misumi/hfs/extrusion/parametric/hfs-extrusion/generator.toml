@@ -5,8 +5,9 @@ license = "CC0-1.0"
 model = "hfs-extrusion.sc"
 
 [parameters]
-part_type = { type = "text", default = "HFS5" }
-profile = { type = "choice", values = ["2020", "2040", "4040", "3030"] }
+alts = { type = "text", min = 1, max = 80, escape = "[A-Za-z0-9-]" }
+part_type = { type = "text", default = "HFS5", min = 3, max = 8, escape = "[A-Za-z0-9]" }
+profile = { type = "text", values = ["2020", "2040", "4040", "3030"], min = 4, max = 6, escape = "[0-9]" }
 length = { type = "decimal", min = 50, max = 4000, step = 0.5, unit = "mm" }
 fixed = { type = "int", min = 0, max = 1 }
 tap_l = { type = "int", min = 0, max = 1 }
@@ -15,7 +16,7 @@ wl_rows = { type = "int", min = 0, max = 3 }
 wr_rows = { type = "int", min = 0, max = 3 }
 
 [[template]]
-pattern = '[K:fixed]{part_type: text 3..8 [A-Za-z0-9]}-{profile: text 4..6 [0-9]}[-{length: decimal}][-{alts: text 1..80 [A-Za-z0-9-]}]'
+pattern = '[K:fixed]{part_type}-{profile}[-{length: decimal}][-{alts}]'
 
 [rows."2020"]
 source = "MISUMI FA catalogue S1 (sources.toml), p.529"

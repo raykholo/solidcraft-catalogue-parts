@@ -6,8 +6,8 @@ from runtime.appearance import APPX
 from runtime.table import read_csv
 import rows as rw
 
-TEMPLATES = ["E-LB[{shape: F|K|H}[{variant: PM|CM|Z|M|P|C}]]{dr: text 1..2 [0-9]}{suffix: TUU|DMUU|DUU|LUU|UU}",
-             "{raw: text 1..80 [A-Za-z0-9 _./-]}"]
+TEMPLATES = ["E-LB[{shape: F|K|H}[{variant: PM|CM|Z|M|P|C}]]{dr}{suffix: TUU|DMUU|DUU|LUU|UU}",
+             "{raw}"]
 
 from runtime.parametric.kit import write_csv
 
@@ -51,4 +51,5 @@ def write_toml(pkg: Path, data: Path, model_rows):
     for r in model_rows:
         lines += [f'[rows."{r["name"]}"]', f'source = "MISUMI Economy Series catalogue {r["source"]} (sources.toml), {r["page"]}"',
                   f'page = "{r["page"]}"', f'status = "{r["status"]}"', ""]
-    (pkg / "generator.toml").write_text("\n".join(lines))
+    from runtime.parametric.manifest import write_manifest
+    write_manifest((pkg / "generator.toml"), "\n".join(lines), {'dr': {'type': 'text', 'min': 1, 'max': 2, 'escape': '[0-9]'}, 'raw': {'type': 'text', 'min': 1, 'max': 80, 'escape': '[A-Za-z0-9 _./-]'}})

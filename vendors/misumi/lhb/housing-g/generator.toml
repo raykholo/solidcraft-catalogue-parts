@@ -1,6 +1,6 @@
 id = "misumi.lhb.housing-g"
 name = "MISUMI Economy linear bushing housing units, center hole height optional: single (E-LBHG) and double (E-LBHGW)"
-version = "0.2.1"
+version = "0.2.2"
 kind = "generator"
 min_host_version = "0.49.1"
 preview_code = "E-LBHGW20-25"

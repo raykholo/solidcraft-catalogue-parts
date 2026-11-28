@@ -8,3 +8,5 @@ cp "$P/hbl-bracket/hbl-bracket.sc" "$O/hbl-bracket.sc.json"    # the built model
 
 # Optional link proof: release CLIs retain the legacy verdict unchanged.
 python3 -m runtime.parametric.links "vendors/misumi/hbl/bracket" "$O"
+
+python3 -m runtime.parametric.native_parse "vendors/misumi/hbl/bracket" "$O"

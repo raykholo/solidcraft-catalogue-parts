@@ -104,13 +104,14 @@ def build(out: Path):
                                                       ["other_types", other, "", "S9", "p.557 overview", "labelled"]])
     lines = ['format = "solidcraft-generator/2"', f'id = "{PKG}"', 'name = "MISUMI 5 series pre-assembly T-nuts (HNTT family)"', 'license = "CC0-1.0"',
              f'model = "{PKG}.sc"', "", "[parameters]", 'type = { type = "text", default = "HNTT5" }', 'm = { type = "text", default = "5" }', "",
-             "[[template]]", "pattern = '{type: text 3..9 [A-Za-z0-9]}[\\-{m: text 1..5 [0-9.]}]'", "",
+             "[[template]]", "pattern = '{type}[\\-{m}]'", "",
              "# a catch-all behind it, so that the script gives the Python 'expected ...' refusal for a code that is not a code", "[[template]]",
-             "pattern = '{raw: text 1..128 [A-Za-z0-9._ /-]}'", ""]
+             "pattern = '{raw}'", ""]
     for name, tp, m, E, T in rows_of_table():
         lines += [f'[rows."{name}"]', 'source = "MISUMI FA catalogue S9 (sources.toml), p.559"', 'page = "p.559 table"', 'status = "verified"',
                   'note = "tap drill derived (ISO coarse), edge rounds and flank measured: see the generator README, not guaranteed"', ""]
-    (pkg / "generator.toml").write_text("\n".join(lines))
+    from runtime.parametric.manifest import write_manifest
+    write_manifest((pkg / "generator.toml"), "\n".join(lines), {'type': {'type': 'text', 'min': 3, 'max': 9, 'escape': '[A-Za-z0-9]'}, 'm': {'type': 'text', 'min': 1, 'max': 5, 'escape': '[0-9.]'}, 'raw': {'type': 'text', 'min': 1, 'max': 128, 'escape': '[A-Za-z0-9._ /-]'}})
     shutil.rmtree(wd, ignore_errors=True)
     return ids
 

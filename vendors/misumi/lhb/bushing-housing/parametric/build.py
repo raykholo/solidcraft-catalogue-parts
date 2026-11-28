@@ -20,8 +20,8 @@ from runtime.parametric import kit as pk
 PKG = HERE / "bushing-housing"
 DATA = HERE.parent / "data"
 MODEL = "bushing-housing.sc"
-TEMPLATE = r"E\-LBHN[W:double]{dr: text 1..2 [0-9]}[{length: D|L}][\-P:dowel]"
-FALLBACK = "{raw: text 1..128 [ -~]}"
+TEMPLATE = r"E\-LBHN[W:double]{dr}[{length: D|L}][\-P:dowel]"
+FALLBACK = "{raw}"
 THREADS = ["M4", "M5", "M6", "M8", "M10"]
 
 # series -> (table, length column, L1 column, tolerance (upper, lower) columns; a number is a fixed 0)
@@ -56,7 +56,8 @@ def write_package():
              "[[template]]", f"pattern = '{TEMPLATE}'", "", "[[template]]", f"pattern = '{FALLBACK}'", ""]
     for name, series, r in cat:
         lines += [f'[rows."{name}"]', f'source = "MISUMI Economy catalogue 2025 ({r["source"]}, sources.toml)"', f'page = "{r["page"]}"', 'status = "verified"', ""]
-    (PKG / "generator.toml").write_text("\n".join(lines))
+    from runtime.parametric.manifest import write_manifest
+    write_manifest((PKG / "generator.toml"), "\n".join(lines), {'dr': {'type': 'text', 'min': 1, 'max': 2, 'escape': '[0-9]'}, 'raw': {'type': 'text', 'min': 1, 'max': 128, 'escape': '[ -~]'}})
 
 # ---- the model --------------------------------------------------------------------------------------------------------
 COLUMNS = ["dr", "bl", "l1", "bw", "bh", "hb", "h1", "h2", "w1", "td", "pd", "dp", "dl", "dwx", "dwy", "dowel", "dowel_ok"]

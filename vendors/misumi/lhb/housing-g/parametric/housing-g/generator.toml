@@ -5,14 +5,17 @@ license = "CC0-1.0"
 model = "housing-g.sc"
 
 [parameters]
+dr = { type = "text", min = 1, max = 2, escape = "[0-9]" }
+h = { type = "text", min = 1, max = 2, escape = "[0-9]" }
+raw = { type = "text", min = 1, max = 128, escape = "[ -~]" }
 hc = { type = "int", min = 15, max = 50, unit = "mm" }
 
 # Ordering code: E-LBHG[W]<dr>-<H>. The second template takes any other text so that generator.rhai can refuse it with the shape message.
 [[template]]
-pattern = 'E\-LBHG[W:double]{dr: text 1..2 [0-9]}\-{h: text 1..2 [0-9]}'
+pattern = 'E\-LBHG[W:double]{dr}\-{h}'
 
 [[template]]
-pattern = '{raw: text 1..128 [ -~]}'
+pattern = '{raw}'
 
 [rows."G-12"]
 source = "MISUMI Economy catalogue 2025 (S14, sources.toml)"

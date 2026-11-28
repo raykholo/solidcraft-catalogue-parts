@@ -9,3 +9,5 @@ cp vendors/misumi/lb/linear-bushing/parametric/linear-bushing/linear-bushing.sc 
 
 # Optional link proof: release CLIs retain the legacy verdict unchanged.
 python3 -m runtime.parametric.links "vendors/misumi/lb/linear-bushing" "$O"
+
+python3 -m runtime.parametric.native_parse "vendors/misumi/lb/linear-bushing" "$O"

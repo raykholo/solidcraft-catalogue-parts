@@ -6,8 +6,8 @@ from runtime import registry
 from runtime.table import read_csv
 
 TABLES = {"std": "dims", "thick": "thick", "xend": "xend", "slit": "slit", "slit_long": "slit_long", "mr": "mr"}
-TEMPLATES = ["E-[S:stainless]STH[{series: X=xend, W=slit, M=mr}]{shape: R=round, S=square, C=compact}[B:black][N:thick][L:long]{d: text 1..6 [0-9]}",
-             "E-{type: text 1..12 [A-Za-z]}{d: text 1..6 [0-9]}"]
+TEMPLATES = ["E-[S:stainless]STH[{series: X=xend, W=slit, M=mr}]{shape: R=round, S=square, C=compact}[B:black][N:thick][L:long]{d}",
+             "E-{type}{d}"]
 
 def write_tables(pkg: Path, data: Path):
     t = pkg / "tables"; t.mkdir(parents=True, exist_ok=True)
@@ -35,4 +35,5 @@ def write_toml(pkg: Path, data: Path, row_keys):
         D = key.rsplit("-", 1)[1]
         d = T["slit_long" if (series == "slit" and long) else series][D]
         lines += [f'[rows."{key}"]', f'source = "MISUMI Economy Series catalogue {d["source"]} (sources.toml), {d["page"]}"', f'page = "{d["page"]}"', f'status = "{d["status"]}"', ""]
-    (pkg / "generator.toml").write_text("\n".join(lines))
+    from runtime.parametric.manifest import write_manifest
+    write_manifest((pkg / "generator.toml"), "\n".join(lines), {'d': {'type': 'text', 'min': 1, 'max': 6, 'escape': '[0-9]'}, 'type': {'type': 'text', 'min': 1, 'max': 12, 'escape': '[A-Za-z]'}})

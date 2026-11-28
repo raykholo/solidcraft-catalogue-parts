@@ -5,14 +5,16 @@ license = "CC0-1.0"
 model = "bushing-housing.sc"
 
 [parameters]
+dr = { type = "text", min = 1, max = 2, escape = "[0-9]" }
+raw = { type = "text", min = 1, max = 128, escape = "[ -~]" }
 dowel = { type = "int", min = 0, max = 1 }
 
 # Ordering code: E-LBHN[W]<dr>[D|L][-P]. The second template takes any other text so that generator.rhai can refuse it with the shape message.
 [[template]]
-pattern = 'E\-LBHN[W:double]{dr: text 1..2 [0-9]}[{length: D|L}][\-P:dowel]'
+pattern = 'E\-LBHN[W:double]{dr}[{length: D|L}][\-P:dowel]'
 
 [[template]]
-pattern = '{raw: text 1..128 [ -~]}'
+pattern = '{raw}'
 
 [rows."single-6"]
 source = "MISUMI Economy catalogue 2025 (S12, sources.toml)"
